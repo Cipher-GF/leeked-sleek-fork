@@ -9,6 +9,7 @@ import me.kansio.client.modules.impl.exploit.Disabler;
 import me.kansio.client.modules.impl.movement.Flight;
 import me.kansio.client.modules.impl.movement.Speed;
 import me.kansio.client.modules.impl.player.NoFall;
+import me.kansio.client.modules.impl.player.Sprint;
 import me.kansio.client.modules.impl.visuals.ClickGUI;
 import me.kansio.client.modules.impl.visuals.HUD;
 import net.minecraft.client.gui.FontRenderer;
@@ -43,6 +44,7 @@ public class ModuleManager {
 
         //Player
         modules.add(new NoFall());
+        modules.add(new Sprint());
 
 
         //Toggle modules

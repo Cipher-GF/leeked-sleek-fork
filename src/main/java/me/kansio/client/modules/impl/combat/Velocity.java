@@ -42,6 +42,6 @@ public class Velocity extends Module {
 
     @Override
     public String getSuffix() {
-        return "" + modeValue.getValueAsString();
+        return " " + modeValue.getValueAsString();
     }
 }

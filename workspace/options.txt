@@ -16,7 +16,7 @@ ao:0
 renderClouds:fast
 resourcePacks:[]
 incompatibleResourcePacks:[]
-lastServer:sololegends.net
+lastServer:ghostly.live
 lang:en_US
 chatVisibility:0
 chatColors:true
