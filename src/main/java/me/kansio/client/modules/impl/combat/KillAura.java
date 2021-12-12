@@ -42,7 +42,7 @@ import java.util.Map;
 public class KillAura extends Module {
 
     public KillAura() {
-        super("Aura", Keyboard.KEY_R, ModuleCategory.COMBAT);
+        super("Kill Aura", Keyboard.KEY_R, ModuleCategory.COMBAT);
 
         register(
                 //enum values:

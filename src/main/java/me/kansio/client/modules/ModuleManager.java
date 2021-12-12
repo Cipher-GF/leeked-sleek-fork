@@ -3,6 +3,7 @@ package me.kansio.client.modules;
 import lombok.Getter;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.impl.Module;
+import me.kansio.client.modules.impl.combat.Criticals;
 import me.kansio.client.modules.impl.combat.KillAura;
 import me.kansio.client.modules.impl.combat.Velocity;
 import me.kansio.client.modules.impl.exploit.Disabler;
@@ -30,6 +31,7 @@ public class ModuleManager {
         //Combat
         modules.add(new KillAura());
         modules.add(new Velocity());
+        modules.add(new Criticals());
 
         //Movement
         modules.add(new Speed());
