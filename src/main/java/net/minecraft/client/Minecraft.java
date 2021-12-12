@@ -38,6 +38,7 @@ import java.util.concurrent.FutureTask;
 import javax.imageio.ImageIO;
 
 import me.kansio.client.Client;
+import me.kansio.client.clickgui.utils.render.animation.easings.Delta;
 import me.kansio.client.event.impl.KeyboardEvent;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -286,6 +287,13 @@ public class Minecraft implements IThreadListener, IPlayerUsage {
      * Skip render world
      */
     public boolean skipRenderWorld;
+
+    //Delta time util
+    long lastFrame = getTime();
+
+    long getTime() {
+        return (Sys.getTime() * 1000) / Sys.getTimerResolution();
+    }
 
     /**
      * The ray trace hit that the mouse is over.
@@ -978,6 +986,11 @@ public class Minecraft implements IThreadListener, IPlayerUsage {
      * Called repeatedly from run()
      */
     private void runGameLoop() throws IOException {
+        long currentTime = getTime();
+        int deltaTime = (int) (currentTime - lastFrame);
+        lastFrame = currentTime;
+        Delta.DELTATIME = deltaTime;
+
         long i = System.nanoTime();
         this.mcProfiler.startSection("root");
 

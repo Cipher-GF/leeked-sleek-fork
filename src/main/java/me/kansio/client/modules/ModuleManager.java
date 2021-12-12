@@ -5,6 +5,7 @@ import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.modules.impl.combat.Velocity;
 import me.kansio.client.modules.impl.movement.Speed;
+import me.kansio.client.modules.impl.visuals.ClickGUI;
 import me.kansio.client.modules.impl.visuals.HUD;
 
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class ModuleManager {
 
         //Visual
         modules.add(new HUD());
+        modules.add(new ClickGUI());
 
 
 

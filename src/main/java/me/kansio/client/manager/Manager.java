@@ -1,5 +1,7 @@
 package me.kansio.client.manager;
 
+import me.kansio.client.modules.impl.Module;
+
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -61,4 +63,5 @@ public abstract class Manager<T> {
     public void onCreated() {
 
     }
+
 }

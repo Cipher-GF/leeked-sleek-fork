@@ -10,10 +10,11 @@ import org.lwjgl.input.Keyboard;
 
 public class Speed extends Module {
 
-    private ModeValue mode = new ModeValue("Mode", this, "Vanilla");
+    private ModeValue mode = new ModeValue("Mode", this, "Vanilla", "Test");
 
     public Speed() {
         super("Speed", Keyboard.KEY_G, ModuleCategory.MOVEMENT);
+        register(mode);
     }
 
     @Subscribe
