@@ -1,6 +1,7 @@
 package net.minecraft.client.entity;
 
 import me.kansio.client.Client;
+import me.kansio.client.event.impl.MoveEvent;
 import me.kansio.client.event.impl.UpdateEvent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.MovingSoundMinecartRiding;
@@ -155,6 +156,16 @@ public class EntityPlayerSP extends AbstractClientPlayer {
      * Heal living entity (param: amount of half-hearts)
      */
     public void heal(float healAmount) {
+    }
+
+    @Override
+    public void moveEntity(double x, double y, double z) {
+        MoveEvent event = new MoveEvent(x, y, z);
+        Client.getInstance().getEventBus().publish(event);
+        if (event.isCancelled())
+            super.moveEntity(0, 0, 0);
+        else
+            super.moveEntity(event.getMotionX(), event.getMotionY(), event.getMotionZ());
     }
 
     /**

@@ -17,6 +17,11 @@ public class Speed extends Module {
         register(mode);
     }
 
+    @Override
+    public void onDisable() {
+        PlayerUtil.setMotion(0);
+    }
+
     @Subscribe
     public void onUpdate(UpdateEvent event) {
         switch (mode.getValueAsString()) {

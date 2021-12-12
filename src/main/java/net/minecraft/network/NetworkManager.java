@@ -32,6 +32,10 @@ import java.net.SocketAddress;
 import java.util.Queue;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 import javax.crypto.SecretKey;
+
+import me.kansio.client.Client;
+import me.kansio.client.event.PacketDirection;
+import me.kansio.client.event.impl.PacketEvent;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.CryptManager;
@@ -152,7 +156,12 @@ public class NetworkManager extends SimpleChannelInboundHandler<Packet>
         {
             try
             {
-                p_channelRead0_2_.processPacket(this.packetListener);
+                PacketEvent packetEvent = new PacketEvent(PacketDirection.INBOUND, p_channelRead0_2_);
+                Client.getInstance().getEventBus().publish(packetEvent);
+                if (packetEvent.isCancelled())
+                    return;
+                packetEvent.getPacket().processPacket(this.packetListener);
+                //p_channelRead0_2_.processPacket(this.packetListener);
             }
             catch (ThreadQuickExitException var4)
             {

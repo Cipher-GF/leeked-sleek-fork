@@ -3,11 +3,11 @@ package net.minecraft.client.renderer;
 import com.google.common.base.Predicate;
 import net.minecraft.entity.Entity;
 
-class EntityRenderer$1 implements Predicate
+class EntityRendererShit implements Predicate
 {
     final EntityRenderer field_90032_a;
 
-    EntityRenderer$1(EntityRenderer p_i1243_1_)
+    EntityRendererShit(EntityRenderer p_i1243_1_)
     {
         this.field_90032_a = p_i1243_1_;
     }
