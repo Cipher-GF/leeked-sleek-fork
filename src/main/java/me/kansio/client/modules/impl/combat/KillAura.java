@@ -33,6 +33,7 @@ import net.minecraft.network.play.client.*;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
+import org.lwjgl.input.Keyboard;
 
 import javax.vecmath.Vector2f;
 import java.util.HashMap;
@@ -41,7 +42,7 @@ import java.util.Map;
 public class KillAura extends Module {
 
     public KillAura() {
-        super("Aura", ModuleCategory.COMBAT);
+        super("Aura", Keyboard.KEY_R, ModuleCategory.COMBAT);
 
         register(
                 //enum values:
@@ -51,23 +52,23 @@ public class KillAura extends Module {
                 reach, crackSize, cps, rand, smoothness,
 
                 //booleans
-                crack, randomizeCps, doAim, silent, minecraftRotation, keepSprint, block, monsters, sleeping, invisible, teleportReach, blood, gcd, allowInInventory, sulfurUsers
+                crack, randomizeCps, doAim, silent, minecraftRotation, keepSprint, block, monsters, sleeping, invisible, teleportReach, blood, gcd, allowInInventory
         );
     }
 
     public ModeValue mode = new ModeValue("Mode", this, "Single");
-    public ModeValue rotation = new ModeValue("Rotation Mode", this, "");
+    public ModeValue rotation = new ModeValue("Rotation Mode", this, "Default", "Down", "NCP", "AAC", "GWEN");
     public ModeValue targetPriority = new ModeValue("Target Priority", this, "Health", "Distance", "Armor", "None");
     public ModeValue autoblockMode = new ModeValue("Autoblock Mode", this, "Real", "Fake");
     public ModeValue crackType = new ModeValue("Crack Type", this, "Enchant", "Normal");
     public ModeValue swingMode = new ModeValue("Swing Mode", this, "Attack", "None", "Silent");
-    public NumberValue crackSize = new NumberValue("Crack Size", this, 8, 1, 20);
-    public NumberValue cps = new NumberValue("CPS", this, 12, 1, 20);
+    public NumberValue crackSize = new NumberValue("Crack Size", this, 8, 1, 20, 1, true);
+    public NumberValue cps = new NumberValue("CPS", this, 12, 1, 20, 1, true);
     public BooleanValue randomizeCps = new BooleanValue("Randomize CPS", this, true);
-    public NumberValue rand = new NumberValue("Randomize", this, 3, 1, 10);
+    public NumberValue rand = new NumberValue("Randomize", this, 3, 1, 10, 1, true);
     public BooleanValue doAim = new BooleanValue("Rotate", this, true);
-    public NumberValue reach = new NumberValue("Attack Range", this, 4.5f, 2.5f, 9f);
-    public NumberValue smoothness = new NumberValue("Smoothness", this, 5, 0, 100);
+    public NumberValue reach = new NumberValue("Attack Range", this, 4.5f, 2.5f, 9f, 0.1f, false);
+    public NumberValue smoothness = new NumberValue("Smoothness", this, 5, 0, 100, 1, true);
     public BooleanValue rayCheck = new BooleanValue("Ray Check", this, true);
     public BooleanValue block = new BooleanValue("Auto Block", this, true);
     public BooleanValue monsters = new BooleanValue("Monsters", this, true);
@@ -81,7 +82,6 @@ public class KillAura extends Module {
     public BooleanValue teleportReach = new BooleanValue("Teleport Reach", this, false);
     public BooleanValue gcd = new BooleanValue("GCD", this, false);
     public BooleanValue allowInInventory = new BooleanValue("In Inventory", this, false);
-    public BooleanValue sulfurUsers = new BooleanValue("Sulfur Users", this, false);
 
     public static EntityLivingBase target;
 

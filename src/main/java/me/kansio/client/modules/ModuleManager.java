@@ -6,7 +6,9 @@ import me.kansio.client.modules.impl.Module;
 import me.kansio.client.modules.impl.combat.KillAura;
 import me.kansio.client.modules.impl.combat.Velocity;
 import me.kansio.client.modules.impl.exploit.Disabler;
+import me.kansio.client.modules.impl.movement.Flight;
 import me.kansio.client.modules.impl.movement.Speed;
+import me.kansio.client.modules.impl.player.NoFall;
 import me.kansio.client.modules.impl.visuals.ClickGUI;
 import me.kansio.client.modules.impl.visuals.HUD;
 import net.minecraft.client.gui.FontRenderer;
@@ -20,12 +22,17 @@ public class ModuleManager {
     private final ArrayList<Module> modules = new ArrayList<>();
 
     public ModuleManager() {
+        registerModules();
+    }
+
+    public void registerModules() {
         //Combat
         modules.add(new KillAura());
         modules.add(new Velocity());
 
         //Movement
         modules.add(new Speed());
+        modules.add(new Flight());
 
         //Visual
         modules.add(new HUD());
@@ -34,6 +41,8 @@ public class ModuleManager {
         //Exploit
         modules.add(new Disabler());
 
+        //Player
+        modules.add(new NoFall());
 
 
         //Toggle modules
@@ -41,7 +50,16 @@ public class ModuleManager {
         hud.toggle();
     }
 
-    public List<Module> getModulesSorted(FontRenderer customFontRenderer) { // TODO make this shit into 1 method
+    public void reloadModules() {
+        for (Module mod : modules) {
+            if (mod.isToggled())
+                mod.toggle();
+        }
+        modules.clear();
+        registerModules();
+    }
+
+    public List<Module> getModulesSorted(FontRenderer customFontRenderer) {
         List<Module> moduleList = new ArrayList<>(modules);
         moduleList.sort((a, b) -> {
             String dataA = a.getSuffix() == null ? "" : a.getSuffix();

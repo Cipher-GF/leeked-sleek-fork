@@ -1,6 +1,7 @@
 package me.kansio.client.commands;
 
 import me.kansio.client.commands.impl.Command;
+import me.kansio.client.commands.impl.ReloadCommand;
 import me.kansio.client.commands.impl.ToggleCommand;
 import me.kansio.client.utils.chat.ChatUtil;
 
@@ -12,6 +13,7 @@ public class CommandManager {
 
     public CommandManager() {
         commands.add(new ToggleCommand());
+        commands.add(new ReloadCommand());
     }
 
     public void callCommand(String cmd) {

@@ -21,16 +21,16 @@ public class HUD extends Module {
     public void onRenderOverlay(RenderOverlayEvent event) {
         mc.fontRendererObj.drawStringWithShadow("§bClient §7[1.0]", 4, 4, -1);
 
-        int y = 4;
+        int y = 3;
 
         for (Module mod : Client.getInstance().getModuleManager().getModulesSorted(mc.fontRendererObj)) {
             if (!mod.isToggled()) continue;
 
             String name = mod.getName() + "§7" + mod.getSuffix();
-            float xPos = event.getSr().getScaledWidth() - mc.fontRendererObj.getStringWidth(name) - 3;
+            float xPos = event.getSr().getScaledWidth() - mc.fontRendererObj.getStringWidth(name) - 6;
             Gui.drawRect(event.getSr().getScaledWidth() - 1.5, y - 2, event.getSr().getScaledWidth(), mc.fontRendererObj.FONT_HEIGHT + y + 3, -1);
-            Gui.drawRect(xPos - 3, y - 2, event.getSr().getScaledWidth(), mc.fontRendererObj.FONT_HEIGHT + y + 3, new Color(0, 0, 0, 64).getRGB());
-            mc.fontRendererObj.drawStringWithShadow(name, xPos, 2 + y, -1);
+            Gui.drawRect(xPos - 3, y - 2, event.getSr().getScaledWidth(), mc.fontRendererObj.FONT_HEIGHT + y + 3, new Color(0, 0, 0, 80).getRGB());
+            mc.fontRendererObj.drawStringWithShadow(name, xPos, (float) (1 + y), -1);
             y = y + 14;
         }
 

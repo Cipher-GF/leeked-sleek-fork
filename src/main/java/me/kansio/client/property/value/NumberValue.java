@@ -1,56 +1,23 @@
 package me.kansio.client.property.value;
 
+import lombok.Getter;
 import me.kansio.client.property.Unit;
 import me.kansio.client.property.Value;
 
+@Getter
 public final class NumberValue extends Value<Double> {
 
     private final double min, max;
-    private final Unit unit;
     private boolean isInt;
+    private double increment;
 
-    public NumberValue(String name, Object owner, double value, double min, double max, Unit unit) {
+    public NumberValue(String name, Object owner, double value, double min, double max, double increment, boolean isInt) {
         super(name, owner, value);
         checkRetardMoment(value);
         this.min = min;
-        this.max = max;
-        this.unit = unit;
-    }
-
-    public NumberValue(String name, Object owner, double value, double min, double max, Unit unit, boolean isInt) {
-        this(name, owner, value, min, max, unit);
         this.isInt = isInt;
-    }
-
-    public NumberValue(String name, Object owner, double value, double min, double max, Unit unit, boolean isInt, Value parent) {
-        this(name, owner, value, min, max, unit, isInt);
-        this.parent = parent;
-    }
-
-    public NumberValue(String name, Object owner, double value, double min, double max, Unit unit, Value parent) {
-        this(name, owner, value, min, max, unit, false, parent);
-    }
-
-    public NumberValue(String name, Object owner, double value, double min, double max, boolean isInt) {
-        this(name, owner, value, min, max, null, isInt);
-    }
-
-    public NumberValue(String name, Object owner, double value, double min, double max, boolean isInt, Value parent) {
-        this(name, owner, value, min, max, null, isInt, parent);
-    }
-
-    public NumberValue(String name, Object owner, double value, double min, double max) {
-        super(name, owner, value);
-        checkRetardMoment(value);
-        this.min = min;
         this.max = max;
-        this.unit = null;
-    }
-
-
-
-    public Unit getUnit() {
-        return unit;
+        this.increment = increment;
     }
 
     private void checkRetardMoment(double value) {
@@ -70,9 +37,6 @@ public final class NumberValue extends Value<Double> {
         }
     }
 
-    public boolean hasUnit() {
-        return unit != null;
-    }
 
     public double getMax() {
         return max;

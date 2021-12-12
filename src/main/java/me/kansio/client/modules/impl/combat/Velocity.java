@@ -19,7 +19,7 @@ public class Velocity extends Module {
     private ModeValue modeValue = new ModeValue("Mode", this, "Packet");
 
     public Velocity() {
-        super("Velocity", Keyboard.KEY_R, ModuleCategory.COMBAT);
+        super("Velocity", ModuleCategory.COMBAT);
         register(modeValue);
     }
 
@@ -38,6 +38,10 @@ public class Velocity extends Module {
                 break;
             }
         }
+    }
 
+    @Override
+    public String getSuffix() {
+        return "" + modeValue.getValueAsString();
     }
 }

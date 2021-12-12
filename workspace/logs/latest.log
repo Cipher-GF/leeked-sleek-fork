@@ -1,0 +1,1464 @@
+[15:26:33] [Client thread/INFO]: Setting user: sex_7230
+[15:26:33] [Client thread/INFO]: (Session ID is token:0:sex_7230)
+[15:26:33] [Client thread/INFO]: [OptiFine] *** Reflector Forge ***
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.Attributes
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: mods.betterfoliage.client.BetterFoliageClient
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.asm.transformers.BlamingTransformer
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.world.ChunkWatchEvent$UnWatch
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.relauncher.CoreModManager
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.DimensionManager
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.GuiScreenEvent$DrawScreenEvent$Pre
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.GuiScreenEvent$DrawScreenEvent$Post
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.EntityViewRenderEvent$CameraSetup
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.EntityViewRenderEvent$FogColors
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.eventhandler.Event
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.eventhandler.EventBus
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.eventhandler.Event$Result
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.property.ExtendedBlockState
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.FMLClientHandler
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.FMLCommonHandler
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.biome.BiomeGenBase.getWaterColorMultiplier
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.addDestroyEffects
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.addHitEffects
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.canCreatureSpawn
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.canRenderInLayer
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.doesSideBlockRendering
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getBedDirection
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getExtendedState
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.hasTileEntity
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isAir
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isBed
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isBedFoot
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isSideSolid
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.Entity.canRiderInteract
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Field not present: net.minecraft.entity.Entity.captureDrops
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Field not present: net.minecraft.entity.Entity.capturedDrops
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.Entity.shouldRenderInPass
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.Entity.shouldRiderSit
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.ForgeEventFactory
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.ForgeHooks
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.ForgeHooksClient
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.getDurabilityForDisplay
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.getModel
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.onEntitySwing
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.shouldCauseReequipAnimation
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.showDurabilityBar
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.ItemRecord.getRecordResource
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.ForgeModContainer
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.potion.PotionEffect.isCurativeItem
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.canRenderBreaking
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.getRenderBoundingBox
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.hasFastRenderer
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.shouldRenderInPass
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher.preDrawBatch
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher.drawBatch
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.vertex.VertexFormatElement$EnumUsage.preDraw
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.vertex.VertexFormatElement$EnumUsage.postDraw
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.World.countEntities
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.World.getPerWorldStorage
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getCloudRenderer
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getSkyRenderer
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getWeatherRenderer
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.GuiModList
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.IColoredBakedQuad
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.property.IExtendedBlockState
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.IRenderHandler
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.ISmartBlockModel
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.ItemModelMesherForge
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraft.launchwrapper.Launch
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.pipeline.LightUtil
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.MinecraftForge
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.MinecraftForgeClient
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.ModelLoader
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderBlockOverlayEvent$OverlayType
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.registry.RenderingRegistry
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderItemInFrameEvent
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Pre
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Post
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Specials$Pre
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Specials$Post
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.SplashProgress
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.world.WorldEvent$Load
+[15:26:33] [Client thread/INFO]: [OptiFine] *** Reflector Vanilla ***
+[15:26:33] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: optifine.OptiFineClassTransformer
+[15:26:33] [Client thread/INFO]: LWJGL Version: 2.9.4
+[15:26:34] [Client thread/INFO]: [OptiFine] 
+[15:26:34] [Client thread/INFO]: [OptiFine] OptiFine_1.8.8_HD_U_H8
+[15:26:34] [Client thread/INFO]: [OptiFine] Build: null
+[15:26:34] [Client thread/INFO]: [OptiFine] OS: Windows 10 (amd64) version 10.0
+[15:26:34] [Client thread/INFO]: [OptiFine] Java: 11.0.13, Amazon.com Inc.
+[15:26:34] [Client thread/INFO]: [OptiFine] VM: OpenJDK 64-Bit Server VM (mixed mode), Amazon.com Inc.
+[15:26:34] [Client thread/INFO]: [OptiFine] LWJGL: 2.9.4
+[15:26:34] [Client thread/INFO]: [OptiFine] OpenGL: NVIDIA GeForce RTX 3060/PCIe/SSE2, version 4.6.0 NVIDIA 497.09, NVIDIA Corporation
+[15:26:34] [Client thread/INFO]: [OptiFine] OpenGL Version: 4.6.0
+[15:26:34] [Client thread/INFO]: [OptiFine] Maximum texture size: 32768x32768
+[15:26:34] [Thread-5/INFO]: [OptiFine] Checking for new version
+[15:26:34] [Client thread/INFO]: [Shaders] ShadersMod version: 2.4.12
+[15:26:34] [Client thread/INFO]: [Shaders] OpenGL Version: 4.6.0 NVIDIA 497.09
+[15:26:34] [Client thread/INFO]: [Shaders] Vendor:  NVIDIA Corporation
+[15:26:34] [Client thread/INFO]: [Shaders] Renderer: NVIDIA GeForce RTX 3060/PCIe/SSE2
+[15:26:34] [Client thread/INFO]: [Shaders] Capabilities:  2.0  2.1  3.0  3.2  4.0 
+[15:26:34] [Client thread/INFO]: [Shaders] GL_MAX_DRAW_BUFFERS: 8
+[15:26:34] [Client thread/INFO]: [Shaders] GL_MAX_COLOR_ATTACHMENTS_EXT: 8
+[15:26:34] [Client thread/INFO]: [Shaders] GL_MAX_TEXTURE_IMAGE_UNITS: 32
+[15:26:34] [Client thread/INFO]: [Shaders] Load ShadersMod configuration.
+[15:26:34] [Client thread/INFO]: [Shaders] Save ShadersMod configuration.
+[15:26:34] [Client thread/INFO]: [Shaders] Shaders can not be loaded, Fast Render is enabled.
+[15:26:34] [Client thread/INFO]: [Shaders] No shaderpack loaded.
+[15:26:34] [Client thread/INFO]: Reloading ResourceManager: Default
+[15:26:34] [Client thread/INFO]: [OptiFine] *** Reloading textures ***
+[15:26:34] [Client thread/INFO]: [OptiFine] Resource packs: Default
+[15:26:34] [Sound Library Loader/INFO]: Starting up SoundSystem...
+[15:26:34] [Thread-6/INFO]: Initializing LWJGL OpenAL
+[15:26:34] [Thread-6/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
+[15:26:34] [Thread-6/INFO]: OpenAL initialized.
+[15:26:34] [Thread-5/INFO]: [OptiFine] Version found: I7
+[15:26:34] [Sound Library Loader/INFO]: Sound engine started
+[15:26:35] [Client thread/INFO]: [OptiFine] Mipmap levels: 4
+[15:26:35] [Client thread/INFO]: [OptiFine] Multitexture: false
+[15:26:35] [Client thread/INFO]: [OptiFine] Multipass connected textures: false
+[15:26:35] [Client thread/ERROR]: Using missing texture, unable to load minecraft:mcpatcher/ctm/default/empty.png, java.io.FileNotFoundException
+[15:26:35] [Client thread/INFO]: Created: 512x512 textures-atlas
+[15:26:36] [Client thread/INFO]: [OptiFine] *** Reloading custom textures ***
+[15:26:36] [Client thread/INFO]: [OptiFine] Enable face culling: acacia_leaves, birch_leaves, dark_oak_leaves, jungle_leaves, oak_leaves, spruce_leaves
+[15:26:48] [Client thread/INFO]: Connecting to np.holypvp.net, 25565
+[15:26:50] [Client thread/INFO]: [CHAT] of.message.newVersion
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Client thread/INFO]: [CHAT] 
+[15:26:51] [Chunk Batcher 0/WARN]: Needed to grow BufferBuilder buffer: Old size 1048576 bytes, new size 3145728 bytes.
+[15:26:52] [Chunk Batcher 0/WARN]: Needed to grow BufferBuilder buffer: Old size 1048576 bytes, new size 3145728 bytes.
+[15:26:53] [Chunk Batcher 1/WARN]: Needed to grow BufferBuilder buffer: Old size 1048576 bytes, new size 3145728 bytes.
+[15:26:53] [Client thread/INFO]: [CHAT] §8§m----------------------------------------------------
+[15:26:53] [Client thread/INFO]: [CHAT]                                        
+[15:26:53] [Client thread/INFO]: [CHAT]                  §eYou need to register first, please use
+[15:26:53] [Client thread/INFO]: [CHAT]                                        
+[15:26:53] [Client thread/INFO]: [CHAT]                   §a/register password password §c0078
+[15:26:53] [Client thread/INFO]: [CHAT]                                        
+[15:26:53] [Client thread/INFO]: [CHAT] §8§m----------------------------------------------------
+[15:26:58] [Client thread/INFO]: [CHAT] §8§m----------------------------------------------------
+[15:26:58] [Client thread/INFO]: [CHAT]                                        
+[15:26:58] [Client thread/INFO]: [CHAT]                  §eYou need to register first, please use
+[15:26:58] [Client thread/INFO]: [CHAT]                                        
+[15:26:58] [Client thread/INFO]: [CHAT]                   §a/register password password §c0078
+[15:26:58] [Client thread/INFO]: [CHAT]                                        
+[15:26:58] [Client thread/INFO]: [CHAT] §8§m----------------------------------------------------
+[15:27:08] [Client thread/INFO]: [CHAT] §8§m----------------------------------------------------
+[15:27:08] [Client thread/INFO]: [CHAT]                                        
+[15:27:08] [Client thread/INFO]: [CHAT]                  §eYou need to register first, please use
+[15:27:08] [Client thread/INFO]: [CHAT]                                        
+[15:27:08] [Client thread/INFO]: [CHAT]                   §a/register password password §c0078
+[15:27:08] [Client thread/INFO]: [CHAT]                                        
+[15:27:08] [Client thread/INFO]: [CHAT] §8§m----------------------------------------------------
+[15:27:18] [Client thread/INFO]: [CHAT] §8§m----------------------------------------------------
+[15:27:18] [Client thread/INFO]: [CHAT]                                        
+[15:27:18] [Client thread/INFO]: [CHAT]                  §eYou need to register first, please use
+[15:27:18] [Client thread/INFO]: [CHAT]                                        
+[15:27:18] [Client thread/INFO]: [CHAT]                   §a/register password password §c0078
+[15:27:18] [Client thread/INFO]: [CHAT]                                        
+[15:27:18] [Client thread/INFO]: [CHAT] §8§m----------------------------------------------------
+[15:28:26] [Client thread/INFO]: Connecting to np.holypvp.net, 25565
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] ------------------------------------
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] Welcome to HolyPvP Network
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] ✪ Store: store.holypvp.net
+[15:28:28] [Client thread/INFO]: [CHAT] ✪ TeamSpeak: ts.holypvp.net
+[15:28:28] [Client thread/INFO]: [CHAT] ✪ Twitter: twitter.com/holypvpnet
+[15:28:28] [Client thread/INFO]: [CHAT] ✪ Coins: 0
+[15:28:28] [Client thread/INFO]: [CHAT] 
+[15:28:28] [Client thread/INFO]: [CHAT] ------------------------------------
+[15:28:28] [Chunk Batcher 0/WARN]: Needed to grow BufferBuilder buffer: Old size 1048576 bytes, new size 3145728 bytes.
+[15:28:29] [Chunk Batcher 1/WARN]: Needed to grow BufferBuilder buffer: Old size 1048576 bytes, new size 3145728 bytes.
+[15:28:31] [Client thread/INFO]: [CHAT] §8§m----------------------------------------------------
+[15:28:31] [Client thread/INFO]: [CHAT]                                        
+[15:28:31] [Client thread/INFO]: [CHAT]                  §eYou need to register first, please use
+[15:28:31] [Client thread/INFO]: [CHAT]                                        
+[15:28:31] [Client thread/INFO]: [CHAT]                   §a/register password password §c0078
+[15:28:31] [Client thread/INFO]: [CHAT]                                        
+[15:28:31] [Client thread/INFO]: [CHAT] §8§m----------------------------------------------------
+[15:28:31] [Client thread/INFO]: [CHAT] §cYou used the register command incorrectly, use §e/register pass pass
+[15:28:33] [Client thread/INFO]: [CHAT] §aTrying to register your account
+[15:28:34] [Client thread/INFO]: [CHAT] §aYour account was successfully registered, have fun!
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] ------------------------------------
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] Welcome to HolyPvP Network
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] ✪ Store: store.holypvp.net
+[15:28:36] [Client thread/INFO]: [CHAT] ✪ TeamSpeak: ts.holypvp.net
+[15:28:36] [Client thread/INFO]: [CHAT] ✪ Twitter: twitter.com/holypvpnet
+[15:28:36] [Client thread/INFO]: [CHAT] ✪ Coins: 0
+[15:28:36] [Client thread/INFO]: [CHAT] 
+[15:28:36] [Client thread/INFO]: [CHAT] ------------------------------------
+[15:29:11] [Client thread/INFO]: [CHAT] You have joined the kitshcf queue.
+[15:29:12] [Client thread/INFO]: [CHAT] Sending you to kitshcf
+[15:29:12] [Client thread/INFO]: [CHAT] Kicked whilst connecting to kitshcf: Your account is currently suspended from HolyPvP Network!
+
+Reason: Cheating 
+Duration: 90 days
+Time until unban: 2 months 27 days 14 hours
+
+To appeal visit: ts.holypvp.net
+
+[15:29:13] [Client thread/INFO]: [CHAT] You are position #1 of 1 in the kitshcf queue.
+[15:29:13] [Client thread/INFO]: [CHAT] Purchase a rank at store.holypvp.net to get a higher queue priority.
+[15:29:13] [Client thread/INFO]: [CHAT] Type /leavequeue to leave your current queue.
+[15:29:22] [Client thread/INFO]: [CHAT] [VIP] jwho has joined your server...
+[15:29:26] [Client thread/INFO]: [CHAT] [VIP] jwho has left your server...
+[15:29:52] [Client thread/INFO]: Connecting to sololegends.net., 25565
+[15:29:56] [Client thread/INFO]: Connecting to sololegends.net., 25565
+[15:29:58] [Client thread/INFO]: [CHAT] §cPlease register your account using '§7/register §7<password> §7<repeat password> §7§l120765§c'.
+[15:29:58] [Client thread/INFO]: [CHAT] 
+[15:29:58] [Client thread/INFO]: [CHAT]  ☃ Hey, it seems that you don't have snow particles enabled! ☃
+[15:29:58] [Client thread/INFO]: [CHAT]            §eClick this message to enable snow particles!
+[15:29:58] [Client thread/INFO]: [CHAT] 
+[15:29:59] [Client thread/INFO]: [CHAT] -----------------------------------------------------
+[15:29:59] [Client thread/INFO]: [CHAT]  Welcome sex_7230 to the SoloLegends Network!
+[15:29:59] [Client thread/INFO]: [CHAT] 
+[15:29:59] [Client thread/INFO]: [CHAT]  ■ Store: store.sololegends.net
+[15:29:59] [Client thread/INFO]: [CHAT]  ■ Discord: discord.sololegends.net
+[15:29:59] [Client thread/INFO]: [CHAT]  ■ Twitter: @SoloLegendsNET
+[15:29:59] [Client thread/INFO]: [CHAT] 
+[15:29:59] [Client thread/INFO]: [CHAT]  Use the compass to travel between our diferent gamemodes.
+[15:29:59] [Client thread/INFO]: [CHAT] -----------------------------------------------------
+[15:30:03] [Client thread/INFO]: [CHAT] §cPlease register your account using '§7/register §7<password> §7<repeat password> §7§l120765§c'.
+[15:30:04] [Client thread/INFO]: [CHAT] §cPlease register your account using '§7/register §7<password> §7<repeat password> §7§l120765§c'.
+[15:30:11] [Client thread/INFO]: [CHAT] §7Registering your account...
+[15:30:12] [Client thread/INFO]: [CHAT] §aYour account was successfully registered, have fun :)!
+[15:30:20] [Client thread/INFO]: [CHAT] You have joined the KitMap-Pots queue.
+[15:30:21] [Client thread/INFO]: [CHAT] Sending you to KitMap-Pots
+[15:30:21] [Client thread/INFO]: [CHAT] Hey! It looks that you have a daily reward available to claim!
+[15:30:21] [Client thread/INFO]: [CHAT] Type '/dailystreak' or click here to claim your reward!
+[15:30:21] [Client thread/INFO]: [CHAT] You are not in a faction.
+[15:30:22] [Client thread/INFO]: [CHAT] OxLOOKxWHOxJUST[1] was burnt to a crisp whilst fighting ByGoldenGamer[8]
+[15:30:29] [Client thread/INFO]: [CHAT] _NahuelKing_[1] was slain by PeralNico_99[69] using Itz__PvP__Nico MUY MALO !
+[15:30:33] [Client thread/INFO]: [CHAT] zRoge_86 has gotten the Golden Apple killstreak by reaching 6 kills!
+[15:30:33] [Client thread/INFO]: [CHAT] Cranxiee[9] was slain by zRoge_86[17] using Angel Sword
+[15:30:38] [Client thread/INFO]: [CHAT] awitas12[1] was slain by BrYaNJUAN21[7] using Event Sword
+[15:30:44] [Client thread/INFO]: [CHAT] ChaparritoYT[0] fell from a high place
+[15:30:46] [Client thread/INFO]: [CHAT] joelgamer0401[2] was slain by yourlifeline[11] using Predator Sword
+[15:30:52] [Client thread/INFO]: [CHAT] jhossander21[0] was slain by ilyShawnaz_[104] using rrrrrrrrrrrrrrrrrrrr
+[15:30:52] [Client thread/INFO]: [CHAT] Phantom class has warmed up.
+[15:30:52] [Client thread/INFO]: [CHAT] Inventory updated with kit Phantom.
+[15:31:02] [Client thread/INFO]: [CHAT] Phantom class has been unloaded, its effects were removed.
+[15:31:02] [Client thread/INFO]: [CHAT] Yeti class has warmed up.
+[15:31:02] [Client thread/INFO]: [CHAT] Inventory updated with kit YetiFree.
+[15:31:04] [Client thread/INFO]: [CHAT] You cannot use that ability here.
+[15:31:05] [Client thread/INFO]: [CHAT] You cannot use that ability here.
+[15:31:06] [Client thread/INFO]: [CHAT] You cannot use that ability here.
+[15:31:06] [Client thread/INFO]: [CHAT] ItzJorge_[0] was burnt to a crisp whilst fighting PeralNico_99[70]
+[15:31:06] [Client thread/INFO]: [CHAT] You cannot use that ability here.
+[15:31:06] [Client thread/INFO]: [CHAT] You cannot use that ability here.
+[15:31:07] [Client thread/INFO]: [CHAT] Now leaving: §aSpawn (§aNon-Deathban)
+[15:31:07] [Client thread/INFO]: [CHAT] Now entering: §6South Road (§cDeathban)
+[15:31:07] [Client thread/INFO]: [CHAT] Now leaving: §6South Road (§cDeathban)
+[15:31:07] [Client thread/INFO]: [CHAT] Now entering: §aSpawn (§aNon-Deathban)
+[15:31:07] [Client thread/INFO]: [CHAT] You cannot use that ability here.
+[15:31:07] [Client thread/INFO]: [CHAT] Now leaving: §aSpawn (§aNon-Deathban)
+[15:31:07] [Client thread/INFO]: [CHAT] Now entering: §6South Road (§cDeathban)
+[15:31:08] [Client thread/INFO]: [CHAT] You have just used Iceberg ability!
+[15:31:08] [Client thread/INFO]: [CHAT] Now leaving: §6South Road (§cDeathban)
+[15:31:08] [Client thread/INFO]: [CHAT] Now entering: §aSpawn (§aNon-Deathban)
+[15:31:13] [Client thread/INFO]: [CHAT] You cannot use that ability here.
+[15:31:13] [Client thread/INFO]: [CHAT] You cannot use that ability here.
+[15:31:13] [Client thread/INFO]: [CHAT] You cannot use that ability here.
+[15:31:13] [Client thread/INFO]: [CHAT] You cannot use that ability here.
+[15:31:13] [Client thread/INFO]: [CHAT] diegaso889[0] was slain by patricio2019[18] using AGUANTE LA DROGAAAAAAAA
+[15:31:18] [Client thread/INFO]: [CHAT] [**Predator] CesitarMegaPro: OxLOOKxWHOxJUST?¿
+[15:31:18] [Client thread/INFO]: [CHAT] Yeti class has been unloaded, its effects were removed.
+[15:31:18] [Client thread/INFO]: [CHAT] Phantom class has warmed up.
+[15:31:18] [Client thread/INFO]: [CHAT] Inventory updated with kit Phantom.
+[15:31:21] [Client thread/INFO]: [CHAT] Now leaving: §aSpawn (§aNon-Deathban)
+[15:31:21] [Client thread/INFO]: [CHAT] Now entering: §6South Road (§cDeathban)
+[15:31:23] [Client thread/INFO]: [CHAT] Now leaving: §6South Road (§cDeathban)
+[15:31:23] [Client thread/INFO]: [CHAT] Now entering: §cWarzone (§cDeathban)
+[15:31:24] [Client thread/INFO]: [CHAT] You can not use your Fly perk again for another 32 seconds.
+[15:31:24] [Client thread/INFO]: [CHAT] You can not use your Fly perk again for another 32 seconds.
+[15:31:24] [Client thread/INFO]: [CHAT] You can not use your Fly perk again for another 32 seconds.
+[15:31:25] [Client thread/INFO]: [CHAT] You can not use your Fly perk again for another 31 seconds.
+[15:31:37] [Client thread/INFO]: [CHAT] Cranxiee[9] was slain by ilyShawnaz_[105] using rrrrrrrrrrrrrrrrrrrr
+[15:31:37] [Client thread/INFO]: [CHAT] Now leaving: §cWarzone (§cDeathban)
+[15:31:37] [Client thread/INFO]: [CHAT] Now entering: §6South Road (§cDeathban)
+[15:31:38] [Client thread/INFO]: [CHAT] You can not use your Fly perk again for another 18 seconds.
+[15:31:38] [Client thread/INFO]: [CHAT] You can not use your Fly perk again for another 17 seconds.
+[15:31:39] [Client thread/INFO]: [CHAT] You can not use your Fly perk again for another 17 seconds.
+[15:31:39] [Client thread/INFO]: [CHAT] You can not use your Fly perk again for another 17 seconds.
+[15:31:40] [Client thread/INFO]: [CHAT] Thechisus002[3] was slain by Senxual[45] using sisi como no claro que si
+[15:31:41] [Client thread/ERROR]: Item entity 710369 has no item?!
+[15:31:44] [Client thread/INFO]: [CHAT] MundoYT[0] fell from a high place
+[15:31:44] [Client thread/INFO]: [CHAT] Your Enderpearl timer has expired. You may now pearl again.
+[15:31:46] [Client thread/INFO]: [CHAT] You can not use Speed buff again for another 3 seconds.
+[15:31:46] [Client thread/INFO]: [CHAT] You can not use Speed buff again for another 2 seconds.
+[15:31:47] [Client thread/INFO]: [CHAT] You can not use Speed buff again for another 2 seconds.
+[15:31:47] [Client thread/INFO]: [CHAT] You can not use Speed buff again for another 1 second.
+[15:31:48] [Client thread/INFO]: [CHAT] You can not use Speed buff again for another 1 second.
+[15:31:48] [Client thread/INFO]: [CHAT] _NahuelKing_[1] was shot by ViktorCL3 using Archer Bow
+[15:31:48] [Client thread/INFO]: [CHAT] You can not use Speed buff again for another 0 seconds.
+[15:31:48] [Client thread/INFO]: [CHAT] You can not use Speed buff again for another 0 seconds.
+[15:31:48] [Client thread/INFO]: [CHAT] You can not use Speed buff again for another 0 seconds.
+[15:31:48] [Client thread/INFO]: [CHAT] You can not use Speed buff again for another 0 seconds.
+[15:31:49] [Client thread/INFO]: [CHAT] You can not use Speed buff again for another 0 seconds.
+[15:31:49] [Client thread/INFO]: [CHAT] You can not use Speed buff again for another 14 seconds.
+[15:31:49] [Client thread/INFO]: [CHAT] You can not use Speed buff again for another 14 seconds.
+[15:31:57] [Client thread/INFO]: [CHAT] MattStdv_[0] was slain by zRoge_86[18] using Angel Sword
+[15:32:02] [Client thread/INFO]: [CHAT] [**quepro] Legend SoySanti_: zRoge_86
+[15:32:03] [Client thread/INFO]: [CHAT] [**quepro] Legend SoySanti_: feo
+[15:32:05] [Client thread/INFO]: [CHAT] Anticheat > tuchicagaymer has been removed from the network.
+[15:32:06] [Client thread/INFO]: [CHAT] IgnVeryTeKch0 has gotten the Cobweb killstreak by reaching 20 kills!
+[15:32:06] [Client thread/INFO]: [CHAT] jhossander21[0] was slain by IgnVeryTeKch0[64] using Simp De IgnVeryTeKcha
+[15:32:07] [Client thread/INFO]: [CHAT] OxLOOKxWHOxJUST[1] fell from a high place
+[15:32:07] [Client thread/INFO]: [CHAT] You can not use your Fly perk again for another 25 seconds.
+[15:32:08] [Client thread/INFO]: [CHAT] You can not use your Fly perk again for another 25 seconds.
+[15:32:08] [Client thread/INFO]: [CHAT] You can not use your Fly perk again for another 25 seconds.
+[15:32:08] [Client thread/ERROR]: Item entity 712363 has no item?!
+[15:32:09] [Client thread/INFO]: [CHAT] ItzJorge_[0] was slain by Asiqn11[9] using youtube.com/c/Asiqn11
+[15:32:21] [Client thread/INFO]: [CHAT] Cranxiee[9] was slain by ruveen[5] using Spring Sword
+[15:32:44] [Client thread/INFO]: [CHAT] Thechisus002[3] was slain by IgnVeryTeKcha[62] using Simp De IgnVeryTeKch0
+[15:32:49] [Client thread/INFO]: [CHAT] jhossander21[0] was slain by owo38[0] using KillReward Sword
+[15:32:50] [Client thread/INFO]: [CHAT] ViktorCL3[10] fell from a high place
+[15:32:51] [Client thread/INFO]: [CHAT] MattStdv_[0] was slain by DavidYT66[0] using Savage Sword
+[15:33:06] [Client thread/INFO]: [CHAT] 
+[15:33:06] [Client thread/INFO]: [CHAT] [TIP] Trade your items with another person!
+[15:33:06] [Client thread/INFO]: [CHAT] Use: /trade <player>
+[15:33:06] [Client thread/INFO]: [CHAT] 
+[15:33:08] [Client thread/INFO]: [CHAT] CesitarMegaPro has gotten the Fire Resistance Potion (8:00) killstreak by reaching 3 kills!
+[15:33:08] [Client thread/INFO]: [CHAT] OxLOOKxWHOxJUST[1] was burnt to a crisp whilst fighting CesitarMegaPro[7]
+[15:33:08] [Client thread/INFO]: [CHAT] You got revealed for 10 seconds as _NahuelKing_ hit you.
+[15:33:08] [Client thread/INFO]: [CHAT] Marked! An archer has hit you. +20% damage for 15 seconds.
+[15:33:08] [Client thread/INFO]: [CHAT] You are now Combat Tagged for 30 seconds.
+[15:33:10] [Client thread/INFO]: [CHAT] joelgamer0401[2] fell from a high place
+[15:33:16] [Client thread/INFO]: [CHAT] Now leaving: §cWarzone (§cDeathban)
+[15:33:16] [Client thread/INFO]: [CHAT] Now entering: §6South Road (§cDeathban)
+[15:33:18] [Client thread/INFO]: [CHAT] Your invisibility has been restored.
+[15:33:19] [Client thread/INFO]: [CHAT] You can not use your Fly perk again for another 30 seconds.
+[15:33:20] [Client thread/INFO]: [CHAT] ROTVOTZIUR[1] fell from a high place
+[15:33:22] [Client thread/INFO]: [CHAT] Now leaving: §6South Road (§cDeathban)
+[15:33:22] [Client thread/INFO]: [CHAT] Now entering: §cWarzone (§cDeathban)
+[15:33:23] [Client thread/INFO]: [CHAT] You can not use your Fly perk again for another 26 seconds.
+[15:33:29] [Client thread/INFO]: [CHAT] kritty_krat[7] was slain by Advery[16] using lizita
+[15:33:32] [Client thread/INFO]: [CHAT] ByGoldenGamer has gotten the Debuffs killstreak by reaching 10 kills!
+[15:33:32] [Client thread/INFO]: [CHAT] _Z4X_[1] was slain by ByGoldenGamer[9] using casi me dropeas gg
+[15:33:34] [Client thread/INFO]: [CHAT] joelgamer0401[2] was slain by XslinderZ[25] using lamama de la mama de la mama de la mama de la mama de la mama de la mama
+[15:33:40] [Client thread/INFO]: [CHAT] [Noobs] lobo123jeje: 26
+[15:33:42] [Client thread/INFO]: [CHAT] diegaso889[0] was slain by Advery[17] using lizita
+[15:33:43] [Client thread/INFO]: [CHAT] _NahuelKing_[1] was slain by ViktorCL3[10] using Archer Sword
+[15:33:44] [Client thread/INFO]: [CHAT] Cranxiee[9] fell from a high place
+[15:33:50] [Client thread/INFO]: [CHAT] [GodsNew] themuzi11: voy a estar lejos de mi casa vuelvo tipo 7 hora argentina
+[15:33:51] [Client thread/INFO]: [CHAT] BrYaNJUAN21 has gotten the Fire Resistance Potion (8:00) killstreak by reaching 3 kills!
+[15:33:51] [Client thread/INFO]: [CHAT] Thechisus002[3] was slain by BrYaNJUAN21[8] using Event Sword
+[15:33:54] [Client thread/INFO]: [CHAT] You got revealed for 10 seconds as kritty_krat hit you.
+[15:33:54] [Client thread/INFO]: [CHAT] Marked! An archer has hit you. +20% damage for 15 seconds.
+[15:33:54] [Client thread/INFO]: [CHAT] You are now Combat Tagged for 30 seconds.
+[15:33:57] [Client thread/INFO]: [CHAT] XslinderZ[26] was slain by IgnVeryTeKcha[63] using Simp De IgnVeryTeKch0
+[15:34:01] [Client thread/INFO]: [CHAT] Now leaving: §cWarzone (§cDeathban)
+[15:34:01] [Client thread/INFO]: [CHAT] Now entering: §6South Road (§cDeathban)
+[15:34:03] [Client thread/INFO]: [CHAT] Senxual[46] was slain by ruveen[6] using Spring Sword
+[15:34:03] [Client thread/INFO]: [CHAT] Now leaving: §6South Road (§cDeathban)
+[15:34:03] [Client thread/INFO]: [CHAT] Now entering: §cWarzone (§cDeathban)
+[15:34:04] [Client thread/INFO]: [CHAT] Your invisibility has been restored.
+[15:34:08] [Client thread/INFO]: [CHAT] Renacido_z[13] was slain by ilyShawnaz_[106] using rrrrrrrrrrrrrrrrrrrr
+[15:34:13] [Client thread/INFO]: [CHAT] Sceptt[0] was slain by zKesaxs[9] using KillReward Sword
+[15:34:15] [Client thread/INFO]: [CHAT] $100 were added into your bank account.
+[15:34:15] [Client thread/INFO]: [CHAT] _NahuelKing_[1] was slain by sex_7230[0] using Phantom Sword
+[15:34:19] [Client thread/INFO]: [CHAT] ViktorCL3[11] was burnt to a crisp whilst fighting BrYaNJUAN21[9]
+[15:34:26] [Client thread/INFO]: [CHAT] Now leaving: §cWarzone (§cDeathban)
+[15:34:26] [Client thread/INFO]: [CHAT] Now entering: §6South Road (§cDeathban)
+[15:34:27] [Client thread/INFO]: [CHAT] You may not build in the territory of South Road.
+[15:34:27] [Client thread/INFO]: [CHAT] You may not build in the territory of South Road.
+[15:34:27] [Client thread/INFO]: [CHAT] 
+[15:34:27] [Client thread/INFO]: [CHAT] █████████
+[15:34:27] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:34:27] [Client thread/INFO]: [CHAT] █████████
+[15:34:27] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:34:27] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:34:27] [Client thread/INFO]: [CHAT] █████████
+[15:34:27] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:34:27] [Client thread/INFO]: [CHAT] █████████
+[15:34:27] [Client thread/INFO]: [CHAT] 
+[15:34:30] [Client thread/INFO]: [CHAT] 
+[15:34:30] [Client thread/INFO]: [CHAT] █████████
+[15:34:30] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:34:30] [Client thread/INFO]: [CHAT] █████████
+[15:34:30] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:34:30] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:34:30] [Client thread/INFO]: [CHAT] █████████
+[15:34:30] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:34:30] [Client thread/INFO]: [CHAT] █████████
+[15:34:30] [Client thread/INFO]: [CHAT] 
+[15:34:33] [Client thread/INFO]: [CHAT] Thechisus002[3] was slain by BrYaNJUAN21[10] using Event Sword
+[15:34:33] [Client thread/INFO]: [CHAT] 
+[15:34:33] [Client thread/INFO]: [CHAT] █████████
+[15:34:33] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:34:33] [Client thread/INFO]: [CHAT] █████████
+[15:34:33] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:34:33] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:34:33] [Client thread/INFO]: [CHAT] █████████
+[15:34:33] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:34:33] [Client thread/INFO]: [CHAT] █████████
+[15:34:33] [Client thread/INFO]: [CHAT] 
+[15:34:35] [Client thread/INFO]: [CHAT] [**Ghetto] ✔ fanst: run lkf
+[15:34:36] [Client thread/INFO]: [CHAT] 
+[15:34:36] [Client thread/INFO]: [CHAT] █████████
+[15:34:36] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:34:36] [Client thread/INFO]: [CHAT] █████████
+[15:34:36] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:34:36] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:34:36] [Client thread/INFO]: [CHAT] █████████
+[15:34:36] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:34:36] [Client thread/INFO]: [CHAT] █████████
+[15:34:36] [Client thread/INFO]: [CHAT] 
+[15:34:40] [Client thread/INFO]: [CHAT] 
+[15:34:40] [Client thread/INFO]: [CHAT] █████████
+[15:34:40] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:34:40] [Client thread/INFO]: [CHAT] █████████
+[15:34:40] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:34:40] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:34:40] [Client thread/INFO]: [CHAT] █████████
+[15:34:40] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:34:40] [Client thread/INFO]: [CHAT] █████████
+[15:34:40] [Client thread/INFO]: [CHAT] 
+[15:34:42] [Client thread/INFO]: [CHAT] 
+[15:34:42] [Client thread/INFO]: [CHAT] █████████
+[15:34:42] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:34:42] [Client thread/INFO]: [CHAT] █████████
+[15:34:42] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:34:42] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:34:42] [Client thread/INFO]: [CHAT] █████████
+[15:34:42] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:34:42] [Client thread/INFO]: [CHAT] █████████
+[15:34:42] [Client thread/INFO]: [CHAT] 
+[15:34:44] [Client thread/INFO]: [CHAT] (From §8[§aJr.Admin§8] §2✦§aShawnaz§r) Admites uso de hacks o ss?
+[15:34:45] [Client thread/INFO]: [CHAT] 
+[15:34:45] [Client thread/INFO]: [CHAT] █████████
+[15:34:45] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:34:45] [Client thread/INFO]: [CHAT] █████████
+[15:34:45] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:34:45] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:34:45] [Client thread/INFO]: [CHAT] █████████
+[15:34:45] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:34:45] [Client thread/INFO]: [CHAT] █████████
+[15:34:45] [Client thread/INFO]: [CHAT] 
+[15:34:48] [Client thread/INFO]: [CHAT] 
+[15:34:48] [Client thread/INFO]: [CHAT] █████████
+[15:34:48] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:34:48] [Client thread/INFO]: [CHAT] █████████
+[15:34:48] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:34:48] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:34:48] [Client thread/INFO]: [CHAT] █████████
+[15:34:48] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:34:48] [Client thread/INFO]: [CHAT] █████████
+[15:34:48] [Client thread/INFO]: [CHAT] 
+[15:34:49] [Client thread/INFO]: [CHAT] MattStdv_[0] was slain by PeralNico_99[71] using Itz__PvP__Nico MUY MALO !
+[15:34:49] [Client thread/INFO]: [CHAT] (To §8[§aJr.Admin§8] §2✦§aShawnaz§r) no hablo autismo
+[15:34:51] [Client thread/INFO]: [CHAT] 
+[15:34:51] [Client thread/INFO]: [CHAT] █████████
+[15:34:51] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:34:51] [Client thread/INFO]: [CHAT] █████████
+[15:34:51] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:34:51] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:34:51] [Client thread/INFO]: [CHAT] █████████
+[15:34:51] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:34:51] [Client thread/INFO]: [CHAT] █████████
+[15:34:51] [Client thread/INFO]: [CHAT] 
+[15:34:53] [Client thread/INFO]: [CHAT] OxLOOKxWHOxJUST[1] was slain by Senxual[46] using Predator Sword
+[15:34:54] [Client thread/INFO]: [CHAT] 
+[15:34:54] [Client thread/INFO]: [CHAT] █████████
+[15:34:54] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:34:54] [Client thread/INFO]: [CHAT] █████████
+[15:34:54] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:34:54] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:34:54] [Client thread/INFO]: [CHAT] █████████
+[15:34:54] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:34:54] [Client thread/INFO]: [CHAT] █████████
+[15:34:54] [Client thread/INFO]: [CHAT] 
+[15:34:55] [Client thread/INFO]: [CHAT] (From §8[§aJr.Admin§8] §2✦§aShawnaz§r) Admites uso de hacks o ss?
+[15:34:57] [Client thread/INFO]: [CHAT] (To §8[§aJr.Admin§8] §2✦§aShawnaz§r) so, speak the english.
+[15:34:57] [Client thread/INFO]: [CHAT] 
+[15:34:57] [Client thread/INFO]: [CHAT] █████████
+[15:34:57] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:34:57] [Client thread/INFO]: [CHAT] █████████
+[15:34:57] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:34:57] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:34:57] [Client thread/INFO]: [CHAT] █████████
+[15:34:57] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:34:57] [Client thread/INFO]: [CHAT] █████████
+[15:34:57] [Client thread/INFO]: [CHAT] 
+[15:34:57] [Client thread/INFO]: [CHAT] BrYaNJUAN21[11] was shot by Renacido_z using Chroma Bow
+[15:34:58] [Client thread/INFO]: [CHAT] (To §8[§aJr.Admin§8] §2✦§aShawnaz§r) no hablo autismo
+[15:34:59] [Client thread/INFO]: [CHAT] (To §8[§aJr.Admin§8] §2✦§aShawnaz§r) so, speak the english.
+[15:35:00] [Client thread/INFO]: [CHAT] 
+[15:35:00] [Client thread/INFO]: [CHAT] █████████
+[15:35:00] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:35:00] [Client thread/INFO]: [CHAT] █████████
+[15:35:00] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:35:00] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:35:00] [Client thread/INFO]: [CHAT] █████████
+[15:35:00] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:35:00] [Client thread/INFO]: [CHAT] █████████
+[15:35:00] [Client thread/INFO]: [CHAT] 
+[15:35:00] [Client thread/INFO]: [CHAT] (To §8[§aJr.Admin§8] §2✦§aShawnaz§r) no hablo autismo
+[15:35:01] [Client thread/INFO]: [CHAT] [**LKF] Nisup_: encima dropean p3 contra un p2
+[15:35:01] [Client thread/INFO]: [CHAT] (To §8[§aJr.Admin§8] §2✦§aShawnaz§r) so, speak the english.
+[15:35:03] [Client thread/INFO]: [CHAT] 
+[15:35:03] [Client thread/INFO]: [CHAT] █████████
+[15:35:03] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:35:03] [Client thread/INFO]: [CHAT] █████████
+[15:35:03] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:35:03] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:35:03] [Client thread/INFO]: [CHAT] █████████
+[15:35:03] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:35:03] [Client thread/INFO]: [CHAT] █████████
+[15:35:03] [Client thread/INFO]: [CHAT] 
+[15:35:04] [Client thread/INFO]: [CHAT] (From §8[§aJr.Admin§8] §2✦§aShawnaz§r) Admit or ss
+[15:35:06] [Client thread/INFO]: [CHAT] 
+[15:35:06] [Client thread/INFO]: [CHAT] █████████
+[15:35:06] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:35:06] [Client thread/INFO]: [CHAT] █████████
+[15:35:06] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:35:06] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:35:06] [Client thread/INFO]: [CHAT] █████████
+[15:35:06] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:35:06] [Client thread/INFO]: [CHAT] █████████
+[15:35:06] [Client thread/INFO]: [CHAT] 
+[15:35:08] [Client thread/INFO]: [CHAT] (To §8[§aJr.Admin§8] §2✦§aShawnaz§r) ss
+[15:35:09] [Client thread/INFO]: [CHAT] 
+[15:35:09] [Client thread/INFO]: [CHAT] █████████
+[15:35:09] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:35:09] [Client thread/INFO]: [CHAT] █████████
+[15:35:09] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:35:09] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:35:09] [Client thread/INFO]: [CHAT] █████████
+[15:35:09] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:35:09] [Client thread/INFO]: [CHAT] █████████
+[15:35:09] [Client thread/INFO]: [CHAT] 
+[15:35:11] [Client thread/INFO]: [CHAT] joelgamer0401[2] was slain by MINI_PIRA[7] using ilyShawnaz_ donde hasemos la boda? :3
+[15:35:12] [Client thread/INFO]: [CHAT] 
+[15:35:12] [Client thread/INFO]: [CHAT] █████████
+[15:35:12] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:35:12] [Client thread/INFO]: [CHAT] █████████
+[15:35:12] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:35:12] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:35:12] [Client thread/INFO]: [CHAT] █████████
+[15:35:12] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:35:12] [Client thread/INFO]: [CHAT] █████████
+[15:35:12] [Client thread/INFO]: [CHAT] 
+[15:35:13] [Client thread/INFO]: [CHAT] (From §8[§aJr.Admin§8] §2✦§aShawnaz§r) ts.sololegends.net
+[15:35:15] [Client thread/INFO]: [CHAT] Advery has gotten the Debuffs killstreak by reaching 10 kills!
+[15:35:15] [Client thread/INFO]: [CHAT] Thechisus002[3] was slain by Advery[18] using lizita
+[15:35:15] [Client thread/INFO]: [CHAT] [**LKF] Nisup_: como ddropeas en 4v2
+[15:35:15] [Client thread/INFO]: [CHAT] 
+[15:35:15] [Client thread/INFO]: [CHAT] █████████
+[15:35:15] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:35:15] [Client thread/INFO]: [CHAT] █████████
+[15:35:15] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:35:15] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:35:15] [Client thread/INFO]: [CHAT] █████████
+[15:35:15] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:35:15] [Client thread/INFO]: [CHAT] █████████
+[15:35:15] [Client thread/INFO]: [CHAT] 
+[15:35:16] [Client thread/INFO]: [CHAT] [Khalifa] ESP ilyShawnaz_: Donde quieras
+[15:35:18] [Client thread/INFO]: [CHAT] 
+[15:35:18] [Client thread/INFO]: [CHAT] █████████
+[15:35:18] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:35:18] [Client thread/INFO]: [CHAT] █████████
+[15:35:18] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:35:18] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:35:18] [Client thread/INFO]: [CHAT] █████████
+[15:35:18] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:35:18] [Client thread/INFO]: [CHAT] █████████
+[15:35:18] [Client thread/INFO]: [CHAT] 
+[15:35:18] [Client thread/INFO]: [CHAT] XslinderZ[26] was slain by PeralNico_99[72] using Itz__PvP__Nico MUY MALO !
+[15:35:21] [Client thread/INFO]: [CHAT] [Khalifa] ESP ilyShawnaz_: bueno afk comiendo
+[15:35:21] [Client thread/INFO]: [CHAT] 
+[15:35:21] [Client thread/INFO]: [CHAT] █████████
+[15:35:21] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:35:21] [Client thread/INFO]: [CHAT] █████████
+[15:35:21] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:35:21] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:35:21] [Client thread/INFO]: [CHAT] █████████
+[15:35:21] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:35:21] [Client thread/INFO]: [CHAT] █████████
+[15:35:21] [Client thread/INFO]: [CHAT] 
+[15:35:24] [Client thread/INFO]: [CHAT] 
+[15:35:24] [Client thread/INFO]: [CHAT] █████████
+[15:35:24] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:35:24] [Client thread/INFO]: [CHAT] █████████
+[15:35:24] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:35:24] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:35:24] [Client thread/INFO]: [CHAT] █████████
+[15:35:24] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:35:24] [Client thread/INFO]: [CHAT] █████████
+[15:35:24] [Client thread/INFO]: [CHAT] 
+[15:35:25] [Client thread/INFO]: [CHAT] Renacido_z[14] fell from a high place
+[15:35:27] [Client thread/INFO]: [CHAT] 
+[15:35:27] [Client thread/INFO]: [CHAT] █████████
+[15:35:27] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:35:27] [Client thread/INFO]: [CHAT] █████████
+[15:35:27] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:35:27] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:35:27] [Client thread/INFO]: [CHAT] █████████
+[15:35:27] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:35:27] [Client thread/INFO]: [CHAT] █████████
+[15:35:27] [Client thread/INFO]: [CHAT] 
+[15:35:30] [Client thread/INFO]: [CHAT] 
+[15:35:30] [Client thread/INFO]: [CHAT] █████████
+[15:35:30] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:35:30] [Client thread/INFO]: [CHAT] █████████
+[15:35:30] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:35:30] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:35:30] [Client thread/INFO]: [CHAT] █████████
+[15:35:30] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:35:30] [Client thread/INFO]: [CHAT] █████████
+[15:35:30] [Client thread/INFO]: [CHAT] 
+[15:35:33] [Client thread/INFO]: [CHAT] 
+[15:35:33] [Client thread/INFO]: [CHAT] █████████
+[15:35:33] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:35:33] [Client thread/INFO]: [CHAT] █████████
+[15:35:33] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:35:33] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:35:33] [Client thread/INFO]: [CHAT] █████████
+[15:35:33] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:35:33] [Client thread/INFO]: [CHAT] █████████
+[15:35:33] [Client thread/INFO]: [CHAT] 
+[15:35:36] [Client thread/INFO]: [CHAT] 
+[15:35:36] [Client thread/INFO]: [CHAT] █████████
+[15:35:36] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:35:36] [Client thread/INFO]: [CHAT] █████████
+[15:35:36] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:35:36] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:35:36] [Client thread/INFO]: [CHAT] █████████
+[15:35:36] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:35:36] [Client thread/INFO]: [CHAT] █████████
+[15:35:36] [Client thread/INFO]: [CHAT] 
+[15:35:37] [Client thread/INFO]: [CHAT] PeralNico_99[73] was slain by Advery[19] using lizita
+[15:35:39] [Client thread/INFO]: [CHAT] 
+[15:35:39] [Client thread/INFO]: [CHAT] █████████
+[15:35:39] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:35:39] [Client thread/INFO]: [CHAT] █████████
+[15:35:39] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:35:39] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:35:39] [Client thread/INFO]: [CHAT] █████████
+[15:35:39] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:35:39] [Client thread/INFO]: [CHAT] █████████
+[15:35:39] [Client thread/INFO]: [CHAT] 
+[15:35:42] [Client thread/INFO]: [CHAT] 
+[15:35:42] [Client thread/INFO]: [CHAT] █████████
+[15:35:42] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:35:42] [Client thread/INFO]: [CHAT] █████████
+[15:35:42] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:35:42] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:35:42] [Client thread/INFO]: [CHAT] █████████
+[15:35:42] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:35:42] [Client thread/INFO]: [CHAT] █████████
+[15:35:42] [Client thread/INFO]: [CHAT] 
+[15:35:44] [Client thread/INFO]: [CHAT] (To §8[§aJr.Admin§8] §2✦§aShawnaz§r) discord?
+[15:35:45] [Client thread/INFO]: [CHAT] 
+[15:35:45] [Client thread/INFO]: [CHAT] █████████
+[15:35:45] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:35:45] [Client thread/INFO]: [CHAT] █████████
+[15:35:45] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:35:45] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:35:45] [Client thread/INFO]: [CHAT] █████████
+[15:35:45] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:35:45] [Client thread/INFO]: [CHAT] █████████
+[15:35:45] [Client thread/INFO]: [CHAT] 
+[15:35:46] [Client thread/INFO]: [CHAT] _NahuelKing_: ahjajaja
+[15:35:48] [Client thread/INFO]: [CHAT] 
+[15:35:48] [Client thread/INFO]: [CHAT] █████████
+[15:35:48] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:35:48] [Client thread/INFO]: [CHAT] █████████
+[15:35:48] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:35:48] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:35:48] [Client thread/INFO]: [CHAT] █████████
+[15:35:48] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:35:48] [Client thread/INFO]: [CHAT] █████████
+[15:35:48] [Client thread/INFO]: [CHAT] 
+[15:35:49] [Client thread/INFO]: [CHAT] ViktorCL3[11] was slain by DavidYT66[1] using Savage Sword
+[15:35:51] [Client thread/INFO]: [CHAT] 
+[15:35:51] [Client thread/INFO]: [CHAT] █████████
+[15:35:51] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:35:51] [Client thread/INFO]: [CHAT] █████████
+[15:35:51] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:35:51] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:35:51] [Client thread/INFO]: [CHAT] █████████
+[15:35:51] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:35:51] [Client thread/INFO]: [CHAT] █████████
+[15:35:51] [Client thread/INFO]: [CHAT] 
+[15:35:54] [Client thread/INFO]: [CHAT] 
+[15:35:54] [Client thread/INFO]: [CHAT] █████████
+[15:35:54] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:35:54] [Client thread/INFO]: [CHAT] █████████
+[15:35:54] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:35:54] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:35:54] [Client thread/INFO]: [CHAT] █████████
+[15:35:54] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:35:54] [Client thread/INFO]: [CHAT] █████████
+[15:35:54] [Client thread/INFO]: [CHAT] 
+[15:35:57] [Client thread/INFO]: [CHAT] 
+[15:35:57] [Client thread/INFO]: [CHAT] █████████
+[15:35:57] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:35:57] [Client thread/INFO]: [CHAT] █████████
+[15:35:57] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:35:57] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:35:57] [Client thread/INFO]: [CHAT] █████████
+[15:35:57] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:35:57] [Client thread/INFO]: [CHAT] █████████
+[15:35:57] [Client thread/INFO]: [CHAT] 
+[15:36:00] [Client thread/INFO]: [CHAT] 
+[15:36:00] [Client thread/INFO]: [CHAT] █████████
+[15:36:00] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:36:00] [Client thread/INFO]: [CHAT] █████████
+[15:36:00] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:36:00] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:36:00] [Client thread/INFO]: [CHAT] █████████
+[15:36:00] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:36:00] [Client thread/INFO]: [CHAT] █████████
+[15:36:00] [Client thread/INFO]: [CHAT] 
+[15:36:03] [Client thread/INFO]: [CHAT] 
+[15:36:03] [Client thread/INFO]: [CHAT] █████████
+[15:36:03] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:36:03] [Client thread/INFO]: [CHAT] █████████
+[15:36:03] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:36:03] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:36:03] [Client thread/INFO]: [CHAT] █████████
+[15:36:03] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:36:03] [Client thread/INFO]: [CHAT] █████████
+[15:36:03] [Client thread/INFO]: [CHAT] 
+[15:36:06] [Client thread/INFO]: [CHAT] 
+[15:36:06] [Client thread/INFO]: [CHAT] █████████
+[15:36:06] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:36:06] [Client thread/INFO]: [CHAT] █████████
+[15:36:06] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:36:06] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:36:06] [Client thread/INFO]: [CHAT] █████████
+[15:36:06] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:36:06] [Client thread/INFO]: [CHAT] █████████
+[15:36:06] [Client thread/INFO]: [CHAT] 
+[15:36:08] [Client thread/INFO]: [CHAT] IgnVeryTeKcha has gotten the Fire Resistance Potion (8:00) killstreak by reaching 3 kills!
+[15:36:08] [Client thread/INFO]: [CHAT] OxLOOKxWHOxJUST[1] was slain by IgnVeryTeKcha[64] using Simp De IgnVeryTeKch0
+[15:36:09] [Client thread/INFO]: [CHAT] 
+[15:36:09] [Client thread/INFO]: [CHAT] █████████
+[15:36:09] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:36:09] [Client thread/INFO]: [CHAT] █████████
+[15:36:09] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:36:09] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:36:09] [Client thread/INFO]: [CHAT] █████████
+[15:36:09] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:36:09] [Client thread/INFO]: [CHAT] █████████
+[15:36:09] [Client thread/INFO]: [CHAT] 
+[15:36:10] [Client thread/INFO]: [CHAT] (From §8[§aJr.Admin§8] §2✦§aShawnaz§r) Do you want the ss for discord or teamspeak
+[15:36:12] [Client thread/INFO]: [CHAT] 
+[15:36:12] [Client thread/INFO]: [CHAT] █████████
+[15:36:12] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:36:12] [Client thread/INFO]: [CHAT] █████████
+[15:36:12] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:36:12] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:36:12] [Client thread/INFO]: [CHAT] █████████
+[15:36:12] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:36:12] [Client thread/INFO]: [CHAT] █████████
+[15:36:12] [Client thread/INFO]: [CHAT] 
+[15:36:13] [Client thread/INFO]: [CHAT] Renacido_z[14] fell from a high place
+[15:36:15] [Client thread/INFO]: [CHAT] 
+[15:36:15] [Client thread/INFO]: [CHAT] █████████
+[15:36:15] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:36:15] [Client thread/INFO]: [CHAT] █████████
+[15:36:15] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:36:15] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:36:15] [Client thread/INFO]: [CHAT] █████████
+[15:36:15] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:36:15] [Client thread/INFO]: [CHAT] █████████
+[15:36:15] [Client thread/INFO]: [CHAT] 
+[15:36:17] [Client thread/INFO]: [CHAT] Advery[20] fell from a high place
+[15:36:18] [Client thread/INFO]: [CHAT] 
+[15:36:18] [Client thread/INFO]: [CHAT] █████████
+[15:36:18] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:36:18] [Client thread/INFO]: [CHAT] █████████
+[15:36:18] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:36:18] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:36:18] [Client thread/INFO]: [CHAT] █████████
+[15:36:18] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:36:18] [Client thread/INFO]: [CHAT] █████████
+[15:36:18] [Client thread/INFO]: [CHAT] 
+[15:36:21] [Client thread/INFO]: [CHAT] 
+[15:36:21] [Client thread/INFO]: [CHAT] █████████
+[15:36:21] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:36:21] [Client thread/INFO]: [CHAT] █████████
+[15:36:21] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:36:21] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:36:21] [Client thread/INFO]: [CHAT] █████████
+[15:36:21] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:36:21] [Client thread/INFO]: [CHAT] █████████
+[15:36:21] [Client thread/INFO]: [CHAT] 
+[15:36:24] [Client thread/INFO]: [CHAT] 
+[15:36:24] [Client thread/INFO]: [CHAT] █████████
+[15:36:24] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:36:24] [Client thread/INFO]: [CHAT] █████████
+[15:36:24] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:36:24] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:36:24] [Client thread/INFO]: [CHAT] █████████
+[15:36:24] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:36:24] [Client thread/INFO]: [CHAT] █████████
+[15:36:24] [Client thread/INFO]: [CHAT] 
+[15:36:27] [Client thread/INFO]: [CHAT] 
+[15:36:27] [Client thread/INFO]: [CHAT] █████████
+[15:36:27] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:36:27] [Client thread/INFO]: [CHAT] █████████
+[15:36:27] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:36:27] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:36:27] [Client thread/INFO]: [CHAT] █████████
+[15:36:27] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:36:27] [Client thread/INFO]: [CHAT] █████████
+[15:36:27] [Client thread/INFO]: [CHAT] 
+[15:36:30] [Client thread/INFO]: [CHAT] 
+[15:36:30] [Client thread/INFO]: [CHAT] █████████
+[15:36:30] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:36:30] [Client thread/INFO]: [CHAT] █████████
+[15:36:30] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:36:30] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:36:30] [Client thread/INFO]: [CHAT] █████████
+[15:36:30] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:36:30] [Client thread/INFO]: [CHAT] █████████
+[15:36:30] [Client thread/INFO]: [CHAT] 
+[15:36:33] [Client thread/INFO]: [CHAT] 
+[15:36:33] [Client thread/INFO]: [CHAT] █████████
+[15:36:33] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:36:33] [Client thread/INFO]: [CHAT] █████████
+[15:36:33] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:36:33] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:36:33] [Client thread/INFO]: [CHAT] █████████
+[15:36:33] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:36:33] [Client thread/INFO]: [CHAT] █████████
+[15:36:33] [Client thread/INFO]: [CHAT] 
+[15:36:34] [Client thread/INFO]: [CHAT] (To §8[§aJr.Admin§8] §2✦§aShawnaz§r) discord
+[15:36:36] [Client thread/INFO]: [CHAT] 
+[15:36:36] [Client thread/INFO]: [CHAT] █████████
+[15:36:36] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:36:36] [Client thread/INFO]: [CHAT] █████████
+[15:36:36] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:36:36] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:36:36] [Client thread/INFO]: [CHAT] █████████
+[15:36:36] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:36:36] [Client thread/INFO]: [CHAT] █████████
+[15:36:36] [Client thread/INFO]: [CHAT] 
+[15:36:39] [Client thread/INFO]: [CHAT] 
+[15:36:39] [Client thread/INFO]: [CHAT] █████████
+[15:36:39] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:36:39] [Client thread/INFO]: [CHAT] █████████
+[15:36:39] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:36:39] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:36:39] [Client thread/INFO]: [CHAT] █████████
+[15:36:39] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:36:39] [Client thread/INFO]: [CHAT] █████████
+[15:36:39] [Client thread/INFO]: [CHAT] 
+[15:36:42] [Client thread/INFO]: [CHAT] 
+[15:36:42] [Client thread/INFO]: [CHAT] █████████
+[15:36:42] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:36:42] [Client thread/INFO]: [CHAT] █████████
+[15:36:42] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:36:42] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:36:42] [Client thread/INFO]: [CHAT] █████████
+[15:36:42] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:36:42] [Client thread/INFO]: [CHAT] █████████
+[15:36:42] [Client thread/INFO]: [CHAT] 
+[15:36:45] [Client thread/INFO]: [CHAT] 
+[15:36:45] [Client thread/INFO]: [CHAT] █████████
+[15:36:45] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:36:45] [Client thread/INFO]: [CHAT] █████████
+[15:36:45] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:36:45] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:36:45] [Client thread/INFO]: [CHAT] █████████
+[15:36:45] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:36:45] [Client thread/INFO]: [CHAT] █████████
+[15:36:45] [Client thread/INFO]: [CHAT] 
+[15:36:47] [Client thread/INFO]: [CHAT] You can not use your Fly perk again for another 34 seconds.
+[15:36:47] [Client thread/INFO]: [CHAT] You can not use your Fly perk again for another 34 seconds.
+[15:36:47] [Client thread/INFO]: [CHAT] You can not use your Fly perk again for another 34 seconds.
+[15:36:48] [Client thread/INFO]: [CHAT] 
+[15:36:48] [Client thread/INFO]: [CHAT] █████████
+[15:36:48] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:36:48] [Client thread/INFO]: [CHAT] █████████
+[15:36:48] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:36:48] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:36:48] [Client thread/INFO]: [CHAT] █████████
+[15:36:48] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:36:48] [Client thread/INFO]: [CHAT] █████████
+[15:36:48] [Client thread/INFO]: [CHAT] 
+[15:36:51] [Client thread/INFO]: [CHAT] 
+[15:36:51] [Client thread/INFO]: [CHAT] █████████
+[15:36:51] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:36:51] [Client thread/INFO]: [CHAT] █████████
+[15:36:51] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:36:51] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:36:51] [Client thread/INFO]: [CHAT] █████████
+[15:36:51] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:36:51] [Client thread/INFO]: [CHAT] █████████
+[15:36:51] [Client thread/INFO]: [CHAT] 
+[15:36:51] [Client thread/INFO]: [CHAT] Now leaving: §6South Road (§cDeathban)
+[15:36:51] [Client thread/INFO]: [CHAT] Now entering: §cWarzone (§cDeathban)
+[15:36:53] [Client thread/INFO]: [CHAT] (From §8[§aJr.Admin§8] §2✦§aShawnaz§r) do you have the discord of sololegends?
+[15:36:53] [Client thread/INFO]: [CHAT] [**Ghetto] ✔ fanst: aNOTCHEBASSAJDHAJD+
+[15:36:54] [Client thread/INFO]: [CHAT] 
+[15:36:54] [Client thread/INFO]: [CHAT] █████████
+[15:36:54] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:36:54] [Client thread/INFO]: [CHAT] █████████
+[15:36:54] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:36:54] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:36:54] [Client thread/INFO]: [CHAT] █████████
+[15:36:54] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:36:54] [Client thread/INFO]: [CHAT] █████████
+[15:36:54] [Client thread/INFO]: [CHAT] 
+[15:36:57] [Client thread/INFO]: [CHAT] 
+[15:36:57] [Client thread/INFO]: [CHAT] █████████
+[15:36:57] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:36:57] [Client thread/INFO]: [CHAT] █████████
+[15:36:57] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:36:57] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:36:57] [Client thread/INFO]: [CHAT] █████████
+[15:36:57] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:36:57] [Client thread/INFO]: [CHAT] █████████
+[15:36:57] [Client thread/INFO]: [CHAT] 
+[15:36:59] [Client thread/INFO]: [CHAT] (To §8[§aJr.Admin§8] §2✦§aShawnaz§r) no
+[15:37:00] [Client thread/INFO]: [CHAT] 
+[15:37:00] [Client thread/INFO]: [CHAT] █████████
+[15:37:00] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:37:00] [Client thread/INFO]: [CHAT] █████████
+[15:37:00] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:37:00] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:37:00] [Client thread/INFO]: [CHAT] █████████
+[15:37:00] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:37:00] [Client thread/INFO]: [CHAT] █████████
+[15:37:00] [Client thread/INFO]: [CHAT] 
+[15:37:02] [Client thread/INFO]: [CHAT] You can not use your Fly perk again for another 19 seconds.
+[15:37:03] [Client thread/INFO]: [CHAT] 
+[15:37:03] [Client thread/INFO]: [CHAT] █████████
+[15:37:03] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:37:03] [Client thread/INFO]: [CHAT] █████████
+[15:37:03] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:37:03] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:37:03] [Client thread/INFO]: [CHAT] █████████
+[15:37:03] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:37:03] [Client thread/INFO]: [CHAT] █████████
+[15:37:03] [Client thread/INFO]: [CHAT] 
+[15:37:04] [Client thread/INFO]: [CHAT] Ainpro2012[18] fell from a high place
+[15:37:06] [Client thread/INFO]: [CHAT] 
+[15:37:06] [Client thread/INFO]: [CHAT] █████████
+[15:37:06] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:37:06] [Client thread/INFO]: [CHAT] █████████
+[15:37:06] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:37:06] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:37:06] [Client thread/INFO]: [CHAT] █████████
+[15:37:06] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:37:06] [Client thread/INFO]: [CHAT] █████████
+[15:37:06] [Client thread/INFO]: [CHAT] 
+[15:37:09] [Client thread/INFO]: [CHAT] You are not longer frozen, thanks for contributing with the staff members.
+[15:37:10] [Client thread/INFO]: [CHAT] 
+[15:37:10] [Client thread/INFO]: [CHAT] █████████
+[15:37:10] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:37:10] [Client thread/INFO]: [CHAT] █████████
+[15:37:10] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:37:10] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:37:10] [Client thread/INFO]: [CHAT] █████████
+[15:37:10] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:37:10] [Client thread/INFO]: [CHAT] █████████
+[15:37:10] [Client thread/INFO]: [CHAT] 
+[15:37:13] [Client thread/INFO]: [CHAT] 
+[15:37:13] [Client thread/INFO]: [CHAT] █████████
+[15:37:13] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:37:13] [Client thread/INFO]: [CHAT] █████████
+[15:37:13] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:37:13] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:37:13] [Client thread/INFO]: [CHAT] █████████
+[15:37:13] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:37:13] [Client thread/INFO]: [CHAT] █████████
+[15:37:13] [Client thread/INFO]: [CHAT] 
+[15:37:16] [Client thread/INFO]: [CHAT] 
+[15:37:16] [Client thread/INFO]: [CHAT] █████████
+[15:37:16] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:37:16] [Client thread/INFO]: [CHAT] █████████
+[15:37:16] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:37:16] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:37:16] [Client thread/INFO]: [CHAT] █████████
+[15:37:16] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:37:16] [Client thread/INFO]: [CHAT] █████████
+[15:37:16] [Client thread/INFO]: [CHAT] 
+[15:37:19] [Client thread/INFO]: [CHAT] (From §8[§aJr.Admin§8] §2✦§aShawnaz§r) 1s
+[15:37:19] [Client thread/INFO]: [CHAT] 
+[15:37:19] [Client thread/INFO]: [CHAT] █████████
+[15:37:19] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:37:19] [Client thread/INFO]: [CHAT] █████████
+[15:37:19] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:37:19] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:37:19] [Client thread/INFO]: [CHAT] █████████
+[15:37:19] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:37:19] [Client thread/INFO]: [CHAT] █████████
+[15:37:19] [Client thread/INFO]: [CHAT] 
+[15:37:20] [Client thread/INFO]: [CHAT] [ElCallao] MINI_PIRA: XD
+[15:37:20] [Client thread/INFO]: [CHAT] Crachkeard has gotten the Debuffs killstreak by reaching 10 kills!
+[15:37:21] [Client thread/INFO]: [CHAT] _NahuelKing_[1] was slain by Crachkeard[16] using Predator Sword
+[15:37:22] [Client thread/INFO]: [CHAT] 
+[15:37:22] [Client thread/INFO]: [CHAT] █████████
+[15:37:22] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:37:22] [Client thread/INFO]: [CHAT] █████████
+[15:37:22] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:37:22] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:37:22] [Client thread/INFO]: [CHAT] █████████
+[15:37:22] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:37:22] [Client thread/INFO]: [CHAT] █████████
+[15:37:22] [Client thread/INFO]: [CHAT] 
+[15:37:25] [Client thread/INFO]: [CHAT] 
+[15:37:25] [Client thread/INFO]: [CHAT] █████████
+[15:37:25] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:37:25] [Client thread/INFO]: [CHAT] █████████
+[15:37:25] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:37:25] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:37:25] [Client thread/INFO]: [CHAT] █████████
+[15:37:25] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:37:25] [Client thread/INFO]: [CHAT] █████████
+[15:37:25] [Client thread/INFO]: [CHAT] 
+[15:37:28] [Client thread/INFO]: [CHAT] SoySanti_[4] fell from a high place
+[15:37:28] [Client thread/INFO]: [CHAT] 
+[15:37:28] [Client thread/INFO]: [CHAT] █████████
+[15:37:28] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:37:28] [Client thread/INFO]: [CHAT] █████████
+[15:37:28] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:37:28] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:37:28] [Client thread/INFO]: [CHAT] █████████
+[15:37:28] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:37:28] [Client thread/INFO]: [CHAT] █████████
+[15:37:28] [Client thread/INFO]: [CHAT] 
+[15:37:28] [Client thread/INFO]: [CHAT] (From §8[§aJr.Admin§8] §2✦§aShawnaz§r) https://discord.gg/NXPFC2pj
+[15:37:29] [Client thread/INFO]: [CHAT] [**quepro] Legend SoySanti_: :(
+[15:37:31] [Client thread/INFO]: [CHAT] 
+[15:37:31] [Client thread/INFO]: [CHAT] █████████
+[15:37:31] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:37:31] [Client thread/INFO]: [CHAT] █████████
+[15:37:31] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:37:31] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:37:31] [Client thread/INFO]: [CHAT] █████████
+[15:37:31] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:37:31] [Client thread/INFO]: [CHAT] █████████
+[15:37:31] [Client thread/INFO]: [CHAT] 
+[15:37:33] [Client thread/INFO]: [CHAT] SoySanti_[4] fell from a high place
+[15:37:34] [Client thread/INFO]: [CHAT] 
+[15:37:34] [Client thread/INFO]: [CHAT] █████████
+[15:37:34] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:37:34] [Client thread/INFO]: [CHAT] █████████
+[15:37:34] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:37:34] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:37:34] [Client thread/INFO]: [CHAT] █████████
+[15:37:34] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:37:34] [Client thread/INFO]: [CHAT] █████████
+[15:37:34] [Client thread/INFO]: [CHAT] 
+[15:37:37] [Client thread/INFO]: [CHAT] 
+[15:37:37] [Client thread/INFO]: [CHAT] █████████
+[15:37:37] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:37:37] [Client thread/INFO]: [CHAT] █████████
+[15:37:37] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:37:37] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:37:37] [Client thread/INFO]: [CHAT] █████████
+[15:37:37] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:37:37] [Client thread/INFO]: [CHAT] █████████
+[15:37:37] [Client thread/INFO]: [CHAT] 
+[15:37:40] [Client thread/INFO]: [CHAT] 
+[15:37:40] [Client thread/INFO]: [CHAT] █████████
+[15:37:40] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:37:40] [Client thread/INFO]: [CHAT] █████████
+[15:37:40] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:37:40] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:37:40] [Client thread/INFO]: [CHAT] █████████
+[15:37:40] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:37:40] [Client thread/INFO]: [CHAT] █████████
+[15:37:40] [Client thread/INFO]: [CHAT] 
+[15:37:43] [Client thread/INFO]: [CHAT] 
+[15:37:43] [Client thread/INFO]: [CHAT] █████████
+[15:37:43] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:37:43] [Client thread/INFO]: [CHAT] █████████
+[15:37:43] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:37:43] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:37:43] [Client thread/INFO]: [CHAT] █████████
+[15:37:43] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:37:43] [Client thread/INFO]: [CHAT] █████████
+[15:37:43] [Client thread/INFO]: [CHAT] 
+[15:37:46] [Client thread/INFO]: [CHAT] You can not use your Fly perk again for another 14 seconds.
+[15:37:46] [Client thread/INFO]: [CHAT] 
+[15:37:46] [Client thread/INFO]: [CHAT] █████████
+[15:37:46] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:37:46] [Client thread/INFO]: [CHAT] █████████
+[15:37:46] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:37:46] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:37:46] [Client thread/INFO]: [CHAT] █████████
+[15:37:46] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:37:46] [Client thread/INFO]: [CHAT] █████████
+[15:37:46] [Client thread/INFO]: [CHAT] 
+[15:37:47] [Client thread/INFO]: [CHAT] You can not use your Fly perk again for another 13 seconds.
+[15:37:47] [Client thread/INFO]: [CHAT] You can not use your Fly perk again for another 13 seconds.
+[15:37:47] [Client thread/INFO]: [CHAT] You can not use your Fly perk again for another 13 seconds.
+[15:37:47] [Client thread/INFO]: [CHAT] You can not use your Fly perk again for another 13 seconds.
+[15:37:47] [Client thread/INFO]: [CHAT] You can not use your Fly perk again for another 13 seconds.
+[15:37:48] [Client thread/INFO]: [CHAT] You can not use your Fly perk again for another 12 seconds.
+[15:37:48] [Client thread/INFO]: [CHAT] You can not use your Fly perk again for another 12 seconds.
+[15:37:48] [Client thread/INFO]: [CHAT] You can not use your Fly perk again for another 12 seconds.
+[15:37:48] [Client thread/INFO]: [CHAT] You can not use your Fly perk again for another 11 seconds.
+[15:37:49] [Client thread/INFO]: [CHAT] You can not use your Fly perk again for another 11 seconds.
+[15:37:49] [Client thread/INFO]: [CHAT] 
+[15:37:49] [Client thread/INFO]: [CHAT] █████████
+[15:37:49] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:37:49] [Client thread/INFO]: [CHAT] █████████
+[15:37:49] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:37:49] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:37:49] [Client thread/INFO]: [CHAT] █████████
+[15:37:49] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:37:49] [Client thread/INFO]: [CHAT] █████████
+[15:37:49] [Client thread/INFO]: [CHAT] 
+[15:37:49] [Client thread/INFO]: [CHAT] You can not use your Fly perk again for another 11 seconds.
+[15:37:52] [Client thread/INFO]: [CHAT] 
+[15:37:52] [Client thread/INFO]: [CHAT] █████████
+[15:37:52] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:37:52] [Client thread/INFO]: [CHAT] █████████
+[15:37:52] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:37:52] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:37:52] [Client thread/INFO]: [CHAT] █████████
+[15:37:52] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:37:52] [Client thread/INFO]: [CHAT] █████████
+[15:37:52] [Client thread/INFO]: [CHAT] 
+[15:37:55] [Client thread/INFO]: [CHAT] 
+[15:37:55] [Client thread/INFO]: [CHAT] █████████
+[15:37:55] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:37:55] [Client thread/INFO]: [CHAT] █████████
+[15:37:55] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:37:55] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:37:55] [Client thread/INFO]: [CHAT] █████████
+[15:37:55] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:37:55] [Client thread/INFO]: [CHAT] █████████
+[15:37:55] [Client thread/INFO]: [CHAT] 
+[15:37:58] [Client thread/INFO]: [CHAT] 
+[15:37:58] [Client thread/INFO]: [CHAT] █████████
+[15:37:58] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:37:58] [Client thread/INFO]: [CHAT] █████████
+[15:37:58] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:37:58] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:37:58] [Client thread/INFO]: [CHAT] █████████
+[15:37:58] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:37:58] [Client thread/INFO]: [CHAT] █████████
+[15:37:58] [Client thread/INFO]: [CHAT] 
+[15:38:01] [Client thread/INFO]: [CHAT] 
+[15:38:01] [Client thread/INFO]: [CHAT] █████████
+[15:38:01] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:38:01] [Client thread/INFO]: [CHAT] █████████
+[15:38:01] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:38:01] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:38:01] [Client thread/INFO]: [CHAT] █████████
+[15:38:01] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:38:01] [Client thread/INFO]: [CHAT] █████████
+[15:38:01] [Client thread/INFO]: [CHAT] 
+[15:38:04] [Client thread/INFO]: [CHAT] 
+[15:38:04] [Client thread/INFO]: [CHAT] █████████
+[15:38:04] [Client thread/INFO]: [CHAT] █████████ ATTENTION!
+[15:38:04] [Client thread/INFO]: [CHAT] █████████
+[15:38:04] [Client thread/INFO]: [CHAT] █████████ You have been frozen by an Staff Member.
+[15:38:04] [Client thread/INFO]: [CHAT] █████████ If you log out, you will be BANNED
+[15:38:04] [Client thread/INFO]: [CHAT] █████████
+[15:38:04] [Client thread/INFO]: [CHAT] █████████ Connect to our TeamSpeak ts.sololegends.net.
+[15:38:04] [Client thread/INFO]: [CHAT] █████████
+[15:38:04] [Client thread/INFO]: [CHAT] 
+[15:38:04] [Client thread/INFO]: [CHAT] Anticheat > sex_7230 has been removed from the network.
+[15:38:48] [Client thread/INFO]: Stopping!
+[15:38:48] [Client thread/INFO]: SoundSystem shutting down...
+[15:38:48] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com

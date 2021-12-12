@@ -7,16 +7,13 @@ import org.lwjgl.input.Keyboard;
 
 public class ClickGUI extends Module {
 
-    private NumberValue numberValue = new NumberValue("Test", this, 2, 1, 10);
-
     public ClickGUI() {
         super("Click GUI", Keyboard.KEY_RSHIFT, ModuleCategory.VISUALS);
-        register(numberValue);
     }
 
     @Override
     public void onEnable() {
-        mc.displayGuiScreen(new me.kansio.client.clickgui.ui.clickgui.frame2.ClickGUI());
+        mc.displayGuiScreen(new me.kansio.client.clickgui.ui.clickgui.frame.ClickGUI());
         toggle();
     }
 

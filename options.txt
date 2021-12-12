@@ -16,7 +16,7 @@ ao:0
 renderClouds:fast
 resourcePacks:[]
 incompatibleResourcePacks:[]
-lastServer:
+lastServer:np.holypvp.net
 lang:en_US
 chatVisibility:0
 chatColors:true
