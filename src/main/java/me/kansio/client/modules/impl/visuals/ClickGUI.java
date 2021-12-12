@@ -10,7 +10,7 @@ public class ClickGUI extends Module {
     private NumberValue numberValue = new NumberValue("Test", this, 2, 1, 10);
 
     public ClickGUI() {
-        super("GUI", Keyboard.KEY_RSHIFT, ModuleCategory.VISUALS);
+        super("Click GUI", Keyboard.KEY_RSHIFT, ModuleCategory.VISUALS);
         register(numberValue);
     }
 

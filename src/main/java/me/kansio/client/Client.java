@@ -59,7 +59,6 @@ public class Client {
 
             //if the bind == the key, toggle the module
             if (module.getKeyBind() == key) {
-                ChatUtil.log("Toggled " + module.getName());
                 module.toggle();
             }
         }

@@ -21,10 +21,7 @@ public class Velocity extends Module {
 
     @Override
     public void onEnable() {
-        System.out.println("on enable got called lol");
 
-        ChatUtil.log(shit.getValue().toString());
-        ChatUtil.log(customString.getValue().toString());
     }
 
     @Subscribe

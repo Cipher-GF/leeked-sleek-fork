@@ -7,6 +7,7 @@ import me.kansio.client.modules.impl.combat.Velocity;
 import me.kansio.client.modules.impl.movement.Speed;
 import me.kansio.client.modules.impl.visuals.ClickGUI;
 import me.kansio.client.modules.impl.visuals.HUD;
+import net.minecraft.client.gui.FontRenderer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +35,30 @@ public class ModuleManager {
         hud.toggle();
     }
 
+    public List<Module> getModulesSorted(FontRenderer customFontRenderer) { // TODO make this shit into 1 method
+        List<Module> moduleList = new ArrayList<>(modules);
+        moduleList.sort((a, b) -> {
+            String dataA = a.getSuffix() == null ? "" : a.getSuffix();
+            String dataB = b.getSuffix() == null ? "" : b.getSuffix();
+            String nameA = a.getName();
+            String nameB = b.getName();
+
+            int first = (int) customFontRenderer.getStringWidth(nameA + dataA);
+            int second = (int) customFontRenderer.getStringWidth(nameB + dataB);
+            return second - first;
+        });
+        return moduleList;
+    }
+
+    public void sort(FontRenderer fontRenderer) {
+        modules.sort((a, b) -> {
+            String dataA = a.getSuffix() == null ? "" : a.getSuffix();
+            String dataB = b.getSuffix() == null ? "" : b.getSuffix();
+            int first = fontRenderer.getStringWidth(a.getName() + dataA);
+            int second = fontRenderer.getStringWidth(b.getName() + dataB);
+            return second - first;
+        });
+    }
 
     public Module getModuleByName(String name) {
         for (Module module : modules) {

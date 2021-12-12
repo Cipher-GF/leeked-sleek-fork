@@ -19,7 +19,7 @@ public abstract class Module {
     private String name;
     private boolean toggled;
     private int keyBind;
-    private String suffix;
+    private String suffix = "";
     private ModuleCategory category;
 
     public Module(String name, int keyBind, ModuleCategory category) {
