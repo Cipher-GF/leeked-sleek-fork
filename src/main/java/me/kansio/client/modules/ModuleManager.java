@@ -1,6 +1,7 @@
 package me.kansio.client.modules;
 
 import lombok.Getter;
+import me.kansio.client.Client;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.modules.impl.combat.Criticals;
@@ -59,6 +60,7 @@ public class ModuleManager {
             if (mod.isToggled())
                 mod.toggle();
         }
+
         modules.clear();
         registerModules();
     }
