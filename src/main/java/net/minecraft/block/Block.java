@@ -135,13 +135,13 @@ public class Block {
     /**
      * true if the Block contains a Tile Entity
      */
-    protected boolean isBlockContainer;
-    protected double minX;
-    protected double minY;
-    protected double minZ;
-    protected double maxX;
-    protected double maxY;
-    protected double maxZ;
+    public boolean isBlockContainer;
+    public double minX;
+    public double minY;
+    public double minZ;
+    public double maxX;
+    public double maxY;
+    public double maxZ;
 
     /**
      * Sound of stepping on the block
@@ -450,7 +450,7 @@ public class Block {
         if (event.isCancelled())
             return;
 
-        AxisAlignedBB axisalignedbb = this.getCollisionBoundingBox(worldIn, pos, state);
+        AxisAlignedBB axisalignedbb = event.getAxisAlignedBB();
 
         if (axisalignedbb != null && mask.intersectsWith(axisalignedbb)) {
             list.add(axisalignedbb);

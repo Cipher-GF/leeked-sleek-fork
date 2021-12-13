@@ -11,6 +11,7 @@ import me.kansio.client.modules.impl.exploit.Disabler;
 import me.kansio.client.modules.impl.movement.Flight;
 import me.kansio.client.modules.impl.movement.Speed;
 import me.kansio.client.modules.impl.player.NoFall;
+import me.kansio.client.modules.impl.player.Scaffold;
 import me.kansio.client.modules.impl.player.Sprint;
 import me.kansio.client.modules.impl.visuals.ClickGUI;
 import me.kansio.client.modules.impl.visuals.HUD;
@@ -48,6 +49,7 @@ public class ModuleManager {
         //Player
         modules.add(new NoFall());
         modules.add(new Sprint());
+        modules.add(new Scaffold());
 
 
         //Toggle modules

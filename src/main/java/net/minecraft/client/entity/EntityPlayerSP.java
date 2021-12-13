@@ -126,6 +126,8 @@ public class EntityPlayerSP extends AbstractClientPlayer {
     public float prevRenderArmPitch;
     private int horseJumpPowerCounter;
     private float horseJumpPower;
+    public float renderPitchHead;
+    public float prevRenderPitchHead;
 
     /**
      * The amount of time an entity has been in a Portal
@@ -184,6 +186,8 @@ public class EntityPlayerSP extends AbstractClientPlayer {
      */
     public void onUpdate() {
         if (this.worldObj.isBlockLoaded(new BlockPos(this.posX, 0.0D, this.posZ))) {
+            prevRenderPitchHead = renderPitchHead;
+            renderPitchHead = rotationPitch;
             super.onUpdate();
 
             if (this.isRiding()) {
@@ -229,38 +233,38 @@ public class EntityPlayerSP extends AbstractClientPlayer {
             double d0 = this.posX - this.lastReportedPosX;
             double d1 = this.getEntityBoundingBox().minY - this.lastReportedPosY;
             double d2 = this.posZ - this.lastReportedPosZ;
-            double d3 = (double) (this.rotationYaw - this.lastReportedYaw);
-            double d4 = (double) (this.rotationPitch - this.lastReportedPitch);
+            double d3 = event.getRotationYaw() - this.lastReportedYaw;
+            double d4 = event.getRotationPitch() - this.lastReportedPitch;
             boolean flag2 = d0 * d0 + d1 * d1 + d2 * d2 > 9.0E-4D || this.positionUpdateTicks >= 20;
             boolean flag3 = d3 != 0.0D || d4 != 0.0D;
 
             if (this.ridingEntity == null) {
                 if (flag2 && flag3) {
-                    this.sendQueue.addToSendQueue(new C03PacketPlayer.C06PacketPlayerPosLook(this.posX, this.getEntityBoundingBox().minY, this.posZ, this.rotationYaw, this.rotationPitch, this.onGround));
+                    this.sendQueue.addToSendQueue(new C03PacketPlayer.C06PacketPlayerPosLook(event.getPosX(), event.getPosY(), event.getPosZ(), event.getRotationYaw(), event.getRotationPitch(), this.onGround));
                 } else if (flag2) {
-                    this.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(this.posX, this.getEntityBoundingBox().minY, this.posZ, this.onGround));
+                    this.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(event.getPosX(), event.getPosY(), event.getPosZ(), event.isOnGround()));
                 } else if (flag3) {
-                    this.sendQueue.addToSendQueue(new C03PacketPlayer.C05PacketPlayerLook(this.rotationYaw, this.rotationPitch, this.onGround));
+                    this.sendQueue.addToSendQueue(new C03PacketPlayer.C05PacketPlayerLook(event.getRotationYaw(), event.getRotationPitch(), event.isOnGround()));
                 } else {
                     this.sendQueue.addToSendQueue(new C03PacketPlayer(this.onGround));
                 }
             } else {
-                this.sendQueue.addToSendQueue(new C03PacketPlayer.C06PacketPlayerPosLook(this.motionX, -999.0D, this.motionZ, this.rotationYaw, this.rotationPitch, this.onGround));
+                this.sendQueue.addToSendQueue(new C03PacketPlayer.C06PacketPlayerPosLook(this.motionX, -999.0D, this.motionZ, event.getRotationYaw(), event.getRotationPitch(), this.onGround));
                 flag2 = false;
             }
 
             ++this.positionUpdateTicks;
 
             if (flag2) {
-                this.lastReportedPosX = this.posX;
-                this.lastReportedPosY = this.getEntityBoundingBox().minY;
-                this.lastReportedPosZ = this.posZ;
+                this.lastReportedPosX = event.getPosX();
+                this.lastReportedPosY = event.getPosY();
+                this.lastReportedPosZ = event.getPosZ();
                 this.positionUpdateTicks = 0;
             }
 
             if (flag3) {
-                this.lastReportedYaw = this.rotationYaw;
-                this.lastReportedPitch = this.rotationPitch;
+                this.lastReportedYaw = event.getRotationYaw();
+                this.lastReportedPitch = event.getRotationPitch();
             }
         }
         Client.getInstance().getEventBus().publish(new UpdateEvent(false));

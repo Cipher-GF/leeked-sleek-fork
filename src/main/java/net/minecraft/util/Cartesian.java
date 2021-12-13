@@ -37,12 +37,12 @@ public class Cartesian
             list.add(t);
         }
 
-        return (T[])((Object[])list.toArray(createArray(clazz, list.size())));
+        return list.toArray(createArray(clazz, list.size()));
     }
 
     private static <T> T[] createArray(Class <? super T > p_179319_0_, int p_179319_1_)
     {
-        return (T[])((Object[])((Object[])Array.newInstance(p_179319_0_, p_179319_1_)));
+        return (T[]) Array.newInstance(p_179319_0_, p_179319_1_);
     }
 
     static class GetList<T> implements Function<Object[], List<T>>
@@ -70,7 +70,8 @@ public class Cartesian
 
         public Iterator<T[]> iterator()
         {
-            return (Iterator<T[]>)(this.iterables.length <= 0 ? Collections.singletonList((Object[])Cartesian.createArray(this.clazz, 0)).iterator() : new Cartesian.Product.ProductIterator(this.clazz, this.iterables));
+            final Iterator<T[]> iterator = (this.iterables.length <= 0 ? Collections.singletonList(Cartesian.createArray(this.clazz, 0)).iterator() : new ProductIterator(this.clazz, this.iterables));
+            return iterator;
         }
 
         static class ProductIterator<T> extends UnmodifiableIterator<T[]>

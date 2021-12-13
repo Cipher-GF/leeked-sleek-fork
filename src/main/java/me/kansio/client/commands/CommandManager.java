@@ -1,9 +1,6 @@
 package me.kansio.client.commands;
 
-import me.kansio.client.commands.impl.BindCommand;
-import me.kansio.client.commands.impl.Command;
-import me.kansio.client.commands.impl.ReloadCommand;
-import me.kansio.client.commands.impl.ToggleCommand;
+import me.kansio.client.commands.impl.*;
 import me.kansio.client.utils.chat.ChatUtil;
 
 import java.util.ArrayList;
@@ -41,5 +38,6 @@ public class CommandManager {
         commands.add(new ToggleCommand());
         commands.add(new ReloadCommand());
         commands.add(new BindCommand());
+        commands.add(new ConfigCommand());
     }
 }
