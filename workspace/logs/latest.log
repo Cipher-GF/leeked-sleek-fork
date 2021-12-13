@@ -131,3 +131,11 @@
 [22:04:43] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Overworld
 [22:04:43] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Nether
 [22:04:43] [Server thread/INFO]: Saving chunks for level 'mcpworld'/The End
+[22:06:34] [Server thread/INFO]: Saving and pausing game...
+[22:06:34] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Overworld
+[22:06:34] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Nether
+[22:06:34] [Server thread/INFO]: Saving chunks for level 'mcpworld'/The End
+[22:08:45] [Client thread/INFO]: [CHAT] §7[§bClient§7] §fSaved Config teest
+[22:08:57] [Client thread/INFO]: [CHAT] §7[§bClient§7] §fLoaded Config teest
+[22:09:02] [Client thread/INFO]: [CHAT] §7[§bClient§7] §fLoaded Config teest
+[22:12:55] [Client thread/INFO]: [CHAT] §7[§bClient§7] §fSaved Config teest1

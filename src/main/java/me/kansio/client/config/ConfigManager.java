@@ -90,7 +90,7 @@ public class ConfigManager {
     }
 
     public void removeConfig(String cfg) {
-        File f = new File(dir, cfg + ".nitrogen");
+        File f = new File(dir, cfg + ".sleek");
         if (f.exists()) {
             try {
                 Files.delete(f.toPath());
