@@ -1,6 +1,7 @@
 package me.kansio.client.event.impl;
 
 import me.kansio.client.event.Event;
+import net.minecraft.client.Minecraft;
 
 public class UpdateEvent extends Event {
 
@@ -52,6 +53,8 @@ public class UpdateEvent extends Event {
     }
 
     public void setRotationYaw(float rotationYaw) {
+        Minecraft.getMinecraft().thePlayer.renderYawOffset = rotationYaw;
+        Minecraft.getMinecraft().thePlayer.rotationYawHead = rotationYaw;
         this.rotationYaw = rotationYaw;
     }
 
@@ -60,6 +63,7 @@ public class UpdateEvent extends Event {
     }
 
     public void setRotationPitch(float rotationPitch) {
+        Minecraft.getMinecraft().thePlayer.renderPitchHead = rotationPitch;
         this.rotationPitch = rotationPitch;
     }
 

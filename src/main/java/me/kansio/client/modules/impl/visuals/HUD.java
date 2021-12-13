@@ -21,7 +21,7 @@ public class HUD extends Module {
 
     @Subscribe
     public void onRenderOverlay(RenderOverlayEvent event) {
-        mc.fontRendererObj.drawStringWithShadow("§aClient v0.1", 4, 4, ColorPalette.GREEN.getColor().getRGB());
+        mc.fontRendererObj.drawStringWithShadow("§aSleek v0.1", 4, 4, ColorPalette.GREEN.getColor().getRGB());
 
         int y = 4;
 

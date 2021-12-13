@@ -119,6 +119,10 @@ public class AxisAlignedBB
         return new AxisAlignedBB(this.minX + x, this.minY + y, this.minZ + z, this.maxX + x, this.maxY + y, this.maxZ + z);
     }
 
+    public AxisAlignedBB offset(BlockPos pos) {
+        return new AxisAlignedBB(this.minX + pos.getX(), this.minY + pos.getY(), this.minZ + pos.getZ(), this.maxX + pos.getX(), this.maxY + pos.getY(), this.maxZ + pos.getZ());
+    }
+
     /**
      * if instance and the argument bounding boxes overlap in the Y and Z dimensions, calculate the offset between them
      * in the X dimension.  return var2 if the bounding boxes do not overlap or if var2 is closer to 0 then the

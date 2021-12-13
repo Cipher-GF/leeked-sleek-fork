@@ -1,5 +1,6 @@
 package me.kansio.client.utils.player;
 
+import me.kansio.client.event.impl.MoveEvent;
 import me.kansio.client.utils.Util;
 import me.kansio.client.utils.network.PacketUtil;
 import net.minecraft.block.BlockLiquid;
@@ -338,6 +339,52 @@ public class PlayerUtil extends Util {
     // From old base
     public static boolean isOnGround(double height) {
         return !mc.theWorld.getCollidingBoundingBoxes(mc.thePlayer, mc.thePlayer.getEntityBoundingBox().offset(0.0D, -height, 0.0D)).isEmpty();
+    }
+
+    /**
+     * @author aristhena
+     */
+    public static void setMotion(MoveEvent event, double moveSpeed) {
+        //EntityLivingBase entity = KillAura.currentTarget;
+
+        MovementInput movementInput = mc.thePlayer.movementInput;
+
+        double moveForward = movementInput.moveForward;
+        double moveStrafe =  movementInput.moveStrafe;
+
+        double rotationYaw =  mc.thePlayer.rotationYaw;
+
+        event.setStrafeSpeed(moveSpeed);
+
+        if (moveForward == 0.0D && moveStrafe == 0.0D) {
+            event.setMotionX(0);
+            event.setMotionZ(0);
+        } else {
+            if (moveStrafe > 0) {
+                moveStrafe = 1;
+            } else if (moveStrafe < 0) {
+                moveStrafe = -1;
+            }
+            if (moveForward != 0.0D) {
+                if (moveStrafe > 0.0D) {
+                    rotationYaw += moveForward > 0.0D ? -45 : 45;
+                } else if (moveStrafe < 0.0D) {
+                    rotationYaw += moveForward > 0.0D ? 45 : -45;
+                }
+                moveStrafe = 0.0D;
+                if (moveForward > 0.0D) {
+                    moveForward = 1.0D;
+                } else if (moveForward < 0.0D) {
+                    moveForward = -1.0D;
+                }
+            }
+            double cos = Math.cos(Math.toRadians(rotationYaw + 90.0F));
+            double sin = Math.sin(Math.toRadians(rotationYaw + 90.0F));
+            event.setMotionX(moveForward * moveSpeed * cos
+                    + moveStrafe * moveSpeed * sin);
+            event.setMotionZ(moveForward * moveSpeed * sin
+                    - moveStrafe * moveSpeed * cos);
+        }
     }
 
 }
