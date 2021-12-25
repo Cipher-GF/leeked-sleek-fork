@@ -4,49 +4,46 @@ import dorkbox.messageBus.annotations.Subscribe;
 import lombok.Getter;
 import me.kansio.client.Client;
 import me.kansio.client.event.impl.RenderOverlayEvent;
+import me.kansio.client.modules.impl.visuals.HUD;
 import me.kansio.client.utils.chat.ChatUtil;
 
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class NotificationManager {
-    @Getter
-    private static NotificationManager notificationManager = new NotificationManager();
 
-    @Getter private CopyOnWriteArrayList<Notification> notifications = new CopyOnWriteArrayList<>();
+    @Getter private static NotificationManager notificationManager = new NotificationManager();
+
+    @Getter private LinkedBlockingQueue<Notification> pendingNotifications = new LinkedBlockingQueue<>();
+
+    @Getter private Notification currentNotification = null;
 
     public NotificationManager() {
-        notifications.clear();
         Client.getInstance().getEventBus().subscribe(this);
     }
 
-    public void addNotification(Notification notification) {
-        notifications.add(notification);
+    public void show(Notification notification) {
+        pendingNotifications.add(notification);
     }
 
-    public void addNotification(String mainText, String title, long stayTime, int color) {
-        this.addNotification(new Notification(mainText, title, stayTime, color));
+    public void update() {
+        if (currentNotification != null && !currentNotification.isShown()) {
+            currentNotification = null;
+        }
+
+        if (currentNotification == null && !pendingNotifications.isEmpty()) {
+            currentNotification = pendingNotifications.poll();
+            currentNotification.show();
+        }
+
     }
 
     @Subscribe
-    public void onRenderOverlay(RenderOverlayEvent event) {
-        if (!notifications.isEmpty()) {
-            for (Notification notification : notifications) {
-                boolean stopwatchEnabled = notification.inPlace && notification.prevInPlaceValue;
-                if (notification.inPlace && !notification.prevInPlaceValue) {
-                    notification.getStopwatch().resetTime();
-                    ChatUtil.log("calllled");
-                }
-                if (notification.getStopwatch().timeElapsed(notification.getStayTime()) && stopwatchEnabled) {
+    public void render(RenderOverlayEvent event) {
+        if (!HUD.notifications) return;
+        update();
 
-                    notification.leavingAnimation(event);
-                } else {
-                    notification.render(event);
-                }
-               /* if (notification.getX() != event.getSr().getScaledWidth() -  notification.getWidth() - 13) {
-                    notification.setX(notification.getX() + 1);
-                }*/
-
-            }
-        }
+        if (currentNotification != null)
+            currentNotification.render();
     }
 }

@@ -1,157 +1,159 @@
 package me.kansio.client.notification;
-import lombok.*;
-import me.kansio.client.event.impl.RenderOverlayEvent;
-import me.kansio.client.utils.Stopwatch;
-import me.kansio.client.utils.chat.ChatUtil;
-import me.kansio.client.utils.render.ColorPalette;
-import me.kansio.client.utils.render.RenderUtils;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.gui.Gui;
-import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.client.renderer.entity.Render;
+import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.WorldRenderer;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 
 import java.awt.*;
 
 /**
  * @author Divine
- *
- * I would paste superblaubeerie7 notification system but that means im not learning
- *
+ * <p>
+ * I would paste superblaubeerie27 notification system but that means im not learning
+ * <p>
+ * ok im pasting superblaurbeerie27 notification system this shit too hard
  */
 public class Notification {
 
-    private String mainText;
+    private NotificationType type;
     private String title;
-    private long stayTime;
-    private int color;
-    private int x;
-    private int y;
-    @Getter @Setter private int width;
-    @Getter boolean inPlace;
-    @Getter boolean prevInPlaceValue;
-    private Stopwatch stopwatch;
-    double thing = 15;
+    private String messsage;
+    private long start;
 
-    public Notification(String mainText, String title, long stayTime, int color) {
-        this.mainText = mainText;
+    private long fadedIn;
+    private long fadeOut;
+    private long end;
+
+
+    public Notification(NotificationType type, String title, String messsage, int length) {
+        this.type = type;
         this.title = title;
-        this.stayTime = stayTime;
-        this.color = color;
-        this.width = 15 + Math.max(Minecraft.getMinecraft().fontRendererObj.getStringWidth(mainText), Minecraft.getMinecraft().fontRendererObj.getStringWidth(title));
-        this.stopwatch = new Stopwatch();
-        inPlace = false;
-        prevInPlaceValue = false;
-        x = new ScaledResolution(Minecraft.getMinecraft()).getScaledWidth() - 2;
-        y = new ScaledResolution(Minecraft.getMinecraft()).getScaledHeight() - 65;
-        stopwatch.resetTime();
+        this.messsage = messsage;
+
+        fadedIn = 200 * length;
+        fadeOut = fadedIn + 500 * length;
+        end = fadeOut + fadedIn;
     }
 
-    public void render(RenderOverlayEvent event) {
-
-        prevInPlaceValue = isInPlace();
-        double supposedX = event.getSr().getScaledWidth() - 2 - width;
-        FontRenderer fr = Minecraft.getMinecraft().fontRendererObj;
-
-        if (x > supposedX) {
-            x -= 3;
-
-        }
-        if (x <= supposedX) {
-            inPlace = true;
-        }
-        RenderUtils.drawBorderedRoundedRect(
-                x,
-                y,
-                width,
-                60,
-                10,
-                1,
-                new Color(color).darker().getRGB(),
-                ColorPalette.DARK_GREY.getColor().getRGB()
-        );
-
-
-        if (prevInPlaceValue) {
-            ChatUtil.log(thing + " " + stopwatch.getTimeRemaining(stayTime));
-            RenderUtils.drawRoundedRect(x, y + 50, thing, 10, 10, color);
-            thing += ((float)(stayTime)) / 1000;
-        }
+    public void show() {
+        start = System.currentTimeMillis();
     }
 
-    public void leavingAnimation(RenderOverlayEvent event) {
-        //double oldX = event.getSr().getScaledWidth() - 2 - width;
-        double finishedX = event.getSr().getScaledWidth() + 10;
+    public boolean isShown() {
+        return getTime() <= end;
+    }
 
-        if (x != finishedX) {
-            x += 5;
+    private long getTime() {
+        return System.currentTimeMillis() - start;
+    }
+
+    public void render() {
+        double offset = 0;
+        int width = 120;
+        int height = 30;
+        long time = getTime();
+
+        if (time < fadedIn) {
+            offset = Math.tanh(time / (double) (fadedIn) * 3.0) * width;
+        } else if (time > fadeOut) {
+            offset = (Math.tanh(3.0 - (time - fadeOut) / (double) (end - fadeOut) * 3.0) * width);
+        } else {
+            offset = width;
         }
 
-        if (x >= finishedX) {
-            NotificationManager.getNotificationManager().getNotifications().remove(this);
-            return;
+        Color color = new Color(0, 0, 0, 220);
+        Color color1;
+
+        if (type == NotificationType.INFO)
+            color1 = new Color(0, 26, 169);
+        else if (type == NotificationType.WARNING)
+            color1 = new Color(204, 193, 0);
+        else {
+            color1 = new Color(204, 0, 18);
+            int i = Math.max(0, Math.min(255, (int) (Math.sin(time / 100.0) * 255.0 / 2 + 127.5)));
+            color = new Color(i, 0, 0, 220);
         }
-        RenderUtils.drawBorderedRoundedRect(
-                x,
-                y,
-                width,
-                60,
-                10,
-                1,
-                new Color(color).darker().getRGB(),
-                ColorPalette.DARK_GREY.getColor().getRGB()
-        );
+
+        FontRenderer fontRenderer = Minecraft.getMinecraft().fontRendererObj;
+
+        drawRect(GuiScreen.width - offset, GuiScreen.height - 5 - height, GuiScreen.width, GuiScreen.height - 5, color.getRGB());
+        drawRect(GuiScreen.width - offset, GuiScreen.height - 5 - height, GuiScreen.width - offset + 4, GuiScreen.height - 5, color1.getRGB());
+
+        fontRenderer.drawString(title, (int) (GuiScreen.width - offset + 8), GuiScreen.height - 2 - height, -1);
+        fontRenderer.drawString(messsage, (int) (GuiScreen.width - offset + 8), GuiScreen.height - 15, -1);
     }
 
-    public String getMainText() {
-        return mainText;
+    public static void drawRect(double left, double top, double right, double bottom, int color) {
+        if (left < right) {
+            double i = left;
+            left = right;
+            right = i;
+        }
+
+        if (top < bottom) {
+            double j = top;
+            top = bottom;
+            bottom = j;
+        }
+
+        float f3 = (float) (color >> 24 & 255) / 255.0F;
+        float f = (float) (color >> 16 & 255) / 255.0F;
+        float f1 = (float) (color >> 8 & 255) / 255.0F;
+        float f2 = (float) (color & 255) / 255.0F;
+        Tessellator tessellator = Tessellator.getInstance();
+        WorldRenderer worldrenderer = tessellator.getWorldRenderer();
+        GlStateManager.enableBlend();
+        GlStateManager.disableTexture2D();
+        GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
+        GlStateManager.color(f, f1, f2, f3);
+        worldrenderer.begin(7, DefaultVertexFormats.POSITION);
+        worldrenderer.pos(left, bottom, 0.0D).endVertex();
+        worldrenderer.pos(right, bottom, 0.0D).endVertex();
+        worldrenderer.pos(right, top, 0.0D).endVertex();
+        worldrenderer.pos(left, top, 0.0D).endVertex();
+        tessellator.draw();
+        GlStateManager.enableTexture2D();
+        GlStateManager.disableBlend();
     }
 
-    public void setMainText(String mainText) {
-        this.mainText = mainText;
+    public static void drawRect(int mode, double left, double top, double right, double bottom, int color) {
+        if (left < right) {
+            double i = left;
+            left = right;
+            right = i;
+        }
+
+        if (top < bottom) {
+            double j = top;
+            top = bottom;
+            bottom = j;
+        }
+
+        float f3 = (float) (color >> 24 & 255) / 255.0F;
+        float f = (float) (color >> 16 & 255) / 255.0F;
+        float f1 = (float) (color >> 8 & 255) / 255.0F;
+        float f2 = (float) (color & 255) / 255.0F;
+        Tessellator tessellator = Tessellator.getInstance();
+        WorldRenderer worldrenderer = tessellator.getWorldRenderer();
+        GlStateManager.enableBlend();
+        GlStateManager.disableTexture2D();
+        GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
+        GlStateManager.color(f, f1, f2, f3);
+        worldrenderer.begin(mode, DefaultVertexFormats.POSITION);
+        worldrenderer.pos(left, bottom, 0.0D).endVertex();
+        worldrenderer.pos(right, bottom, 0.0D).endVertex();
+        worldrenderer.pos(right, top, 0.0D).endVertex();
+        worldrenderer.pos(left, top, 0.0D).endVertex();
+        tessellator.draw();
+        GlStateManager.enableTexture2D();
+        GlStateManager.disableBlend();
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public long getStayTime() {
-        return stayTime;
-    }
-
-    public void setStayTime(long stayTime) {
-        this.stayTime = stayTime;
-    }
-
-    public int getColor() {
-        return color;
-    }
-
-    public Stopwatch getStopwatch() {
-        return stopwatch;
-    }
-
-    public void setColor(int color) {
-        this.color = color;
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
+    public enum NotificationType {
+        INFO, WARNING, ERROR;
     }
 }

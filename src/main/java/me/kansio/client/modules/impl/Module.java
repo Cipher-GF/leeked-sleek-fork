@@ -47,12 +47,12 @@ public abstract class Module {
 
         if (toggled) {
             Client.getInstance().getEventBus().subscribe(this);
-            NotificationManager.getNotificationManager().addNotification(new Notification(this.name + " enabled", "Module enabled nigger", 1000, -1));
             onEnable();
         } else {
             Client.getInstance().getEventBus().unsubscribe(this);
             onDisable();
         }
+        NotificationManager.getNotificationManager().show(new Notification(Notification.NotificationType.INFO, getName(), toggled ? "Enabled" : "Disabled", 1));
         onToggled();
     }
 

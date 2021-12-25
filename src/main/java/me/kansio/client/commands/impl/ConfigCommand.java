@@ -38,7 +38,7 @@ public class ConfigCommand extends Command {
                 }
                 case "list": {
                     for (File file : Client.getInstance().getConfigManager().getDir().listFiles()) {
-                        ChatUtil.log(file.getName());
+                        ChatUtil.log("- "+ file.getName().replaceAll(".sleek", ""));
                     }
                     break;
                 }

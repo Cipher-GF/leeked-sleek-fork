@@ -1,0 +1,76 @@
+---- Minecraft Crash Report ----
+// You're mean.
+
+Time: 12/25/21, 2:29 PM
+Description: Initializing game
+
+java.lang.NullPointerException: Initializing game
+	at me.kansio.client.property.value.NumberValue.checkRetardMoment(NumberValue.java:20)
+	at me.kansio.client.property.value.NumberValue.<init>(NumberValue.java:13)
+	at me.kansio.client.modules.impl.combat.KillAura.<init>(KillAura.java:71)
+	at me.kansio.client.modules.ModuleManager.registerModules(ModuleManager.java:34)
+	at me.kansio.client.modules.ModuleManager.<init>(ModuleManager.java:29)
+	at me.kansio.client.Client.onStart(Client.java:50)
+	at net.minecraft.client.Minecraft.startGame(Minecraft.java:586)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:447)
+	at net.minecraft.client.main.Main.main(Main.java:114)
+	at Start.main(Start.java:11)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at me.kansio.client.property.value.NumberValue.checkRetardMoment(NumberValue.java:20)
+	at me.kansio.client.property.value.NumberValue.<init>(NumberValue.java:13)
+	at me.kansio.client.modules.impl.combat.KillAura.<init>(KillAura.java:71)
+	at me.kansio.client.modules.ModuleManager.registerModules(ModuleManager.java:34)
+	at me.kansio.client.modules.ModuleManager.<init>(ModuleManager.java:29)
+	at me.kansio.client.Client.onStart(Client.java:50)
+	at net.minecraft.client.Minecraft.startGame(Minecraft.java:586)
+
+-- Initialization --
+Details:
+Stacktrace:
+	at net.minecraft.client.Minecraft.run(Minecraft.java:447)
+	at net.minecraft.client.main.Main.main(Main.java:114)
+	at Start.main(Start.java:11)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.8.8
+	Operating System: Windows 10 (amd64) version 10.0
+	CPU: 8x Intel(R) Core(TM) i7-4770 CPU @ 3.40GHz
+	Java Version: 11.0.12, Amazon.com Inc.
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode), Amazon.com Inc.
+	Memory: 31868416 bytes (30 MB) / 140509184 bytes (134 MB) up to 2124414976 bytes (2026 MB)
+	JVM Flags: 0 total; 
+	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
+	Launched Version: mcp
+	LWJGL: 2.9.4
+	OpenGL: NVIDIA GeForce GTX 750 Ti/PCIe/SSE2 GL version 4.6.0 NVIDIA 466.11, NVIDIA Corporation
+	GL Caps: Using GL 1.3 multitexturing.
+Using GL 1.3 texture combiners.
+Using framebuffer objects because OpenGL 3.0 is supported and separate blending is supported.
+Shaders are available because OpenGL 2.1 is supported.
+VBOs are available because OpenGL 1.5 is supported.
+
+	Using VBOs: No
+	Is Modded: Very likely; Jar signature invalidated
+	Type: Client (map_client.txt)
+	Resource Packs: 
+	Current Language: English (US)
+	Profiler Position: N/A (disabled)
+	CPU: 8x Intel(R) Core(TM) i7-4770 CPU @ 3.40GHz
+	OptiFine Version: OptiFine_1.8.8_HD_U_H8
+	Render Distance Chunks: 8
+	Mipmaps: 4
+	Anisotropic Filtering: 1
+	Antialiasing: 0
+	Multitexture: false
+	Shaders: null
+	OpenGlVersion: 4.6.0 NVIDIA 466.11
+	OpenGlRenderer: NVIDIA GeForce GTX 750 Ti/PCIe/SSE2
+	OpenGlVendor: NVIDIA Corporation
+	CpuCount: 8

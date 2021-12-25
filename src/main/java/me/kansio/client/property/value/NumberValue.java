@@ -1,34 +1,31 @@
 package me.kansio.client.property.value;
 
 import lombok.Getter;
-import me.kansio.client.property.Unit;
 import me.kansio.client.property.Value;
 
 @Getter
-public final class NumberValue extends Value<Double> {
+public final class NumberValue<T extends Number> extends Value<T> {
 
-    private final double min, max;
-    private boolean isInt;
-    private double increment;
+    private final T min, max, increment;
 
-    public NumberValue(String name, Object owner, double value, double min, double max, double increment, boolean isInt) {
+    public NumberValue(String name, Object owner, T value, T min, T max, T increment) {
         super(name, owner, value);
-        checkRetardMoment(value);
+        //checkRetardMoment(value);
+        this.value = value;
         this.min = min;
-        this.isInt = isInt;
         this.max = max;
         this.increment = increment;
     }
 
-    private void checkRetardMoment(double value) {
-        if (value < min) {
+    private void checkRetardMoment(T value) {
+        if (value.doubleValue() < min.doubleValue()) {
             try {
                 throw new Exception("Retard Exception: Default Value < Min Value");
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-        if (min < 0 || max < 0) {
+        if (min.doubleValue() < 0 || max.doubleValue() < 0) {
             try {
                 throw new Exception("Retard Exception: Min or Max Value below zero!");
             } catch (Exception e) {
@@ -38,30 +35,27 @@ public final class NumberValue extends Value<Double> {
     }
 
 
-    public double getMax() {
+    public T getMax() {
         return max;
     }
 
-    public double getMin() {
+    public T getMin() {
         return min;
     }
 
     @SuppressWarnings("all")
-    public <T extends Number> T getCastedValue() {
-        return (T) super.getValue();
+    public T getCastedValue() {
+        return value;
     }
 
     @Override
-    public Double getValue() {
-        if (isInt) {
-            return (double) super.getValue().intValue();
-        }
-        return super.getValue();
+    public T getValue() {
+        return value;
     }
 
     @Override
-    public void setValueAutoSave(Double value) {
-        super.setValueAutoSave(Math.min(Math.max(min, value), max));
+    public void setValueAutoSave(T value) {
+        this.value = value;
     }
 
     @Override
@@ -70,7 +64,7 @@ public final class NumberValue extends Value<Double> {
     }
 
     public boolean isInteger() {
-        return isInt;
+        return (min instanceof Integer);
     }
 
 }

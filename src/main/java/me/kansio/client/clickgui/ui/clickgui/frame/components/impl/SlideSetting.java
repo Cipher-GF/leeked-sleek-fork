@@ -33,10 +33,10 @@ public class SlideSetting extends Component implements Priority {
         if (!Mouse.isButtonDown(0)) drag = false;
 
         NumberValue slide = (NumberValue) getSetting();
-        double min = slide.getMin();
-        double max = slide.getMax();
+        double min = slide.getMin().doubleValue();
+        double max = slide.getMax().doubleValue();
         double diff = Math.min(defaultWidth + 5, Math.max(0, mouseX - (this.x)));
-        double renderWidth = defaultWidth * (slide.getValue() - min) / (max - min);
+        double renderWidth = defaultWidth * (slide.getValue().doubleValue() - min) / (max - min);
         Gui.drawRect(x, y, x + (int) renderWidth, y + getOffset(), darkerMainColor);
 
         FontRenderer fontRenderer = Minecraft.getMinecraft().fontRendererObj;
@@ -51,7 +51,7 @@ public class SlideSetting extends Component implements Priority {
             }
         }
 
-        fontRenderer.drawString(getSetting().getName() + ": " + roundToPlace(((NumberValue) getSetting()).getValue(), 2), x + 5, y + (getOffset() / 2F - (fontRenderer.FONT_HEIGHT / 2F)), stringColor, true);
+        fontRenderer.drawString(getSetting().getName() + ": " + roundToPlace(((NumberValue) getSetting()).getValue().doubleValue(), 2), x + 5, y + (getOffset() / 2F - (fontRenderer.FONT_HEIGHT / 2F)), stringColor, true);
     }
 
 
@@ -73,9 +73,9 @@ public class SlideSetting extends Component implements Priority {
         return value;
     }
 
-    private void setValue(double value) {
+    private void setValue(Number value) {
         final NumberValue set = (NumberValue) getSetting();
-        set.setValue(MathHelper.clamp_double(snapToStep(value, set.getIncrement()), set.getMin(), set.getMax())); //change value step?
+        set.setValue(MathHelper.clamp_double(snapToStep(value.doubleValue(), set.getIncrement().doubleValue()), set.getMin().doubleValue(), set.getMax().doubleValue())); //change value step?
     }
 
     @Override

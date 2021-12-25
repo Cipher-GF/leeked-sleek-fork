@@ -14,7 +14,7 @@ import org.lwjgl.input.Keyboard;
 public class Speed extends Module {
 
     private ModeValue mode = new ModeValue("Mode", this, "Vanilla", "Verus", "Ghostly", "Ghostly Teleport");
-    private NumberValue speed = new NumberValue("Speed", this, 0.5, 0, 8, 0.1, false);
+    private NumberValue<Double> speed = new NumberValue<>("Speed", this, 0.5, 0.0, 8.0, 0.1);
 
     public Speed() {
         super("Speed", Keyboard.KEY_G, ModuleCategory.MOVEMENT);

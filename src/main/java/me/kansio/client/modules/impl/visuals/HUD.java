@@ -6,6 +6,8 @@ import me.kansio.client.clickgui.utils.render.RenderUtils;
 import me.kansio.client.event.impl.RenderOverlayEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.impl.Module;
+import me.kansio.client.notification.NotificationManager;
+import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.utils.render.ColorPalette;
 import me.kansio.client.utils.render.ColorUtil;
 import net.minecraft.client.gui.Gui;
@@ -15,12 +17,17 @@ import java.awt.*;
 
 public class HUD extends Module {
 
+    private BooleanValue noti = new BooleanValue("Notifications", this, true);
+    public static boolean notifications;
+
     public HUD() {
         super("HUD", ModuleCategory.VISUALS);
+        register(noti);
     }
 
     @Subscribe
     public void onRenderOverlay(RenderOverlayEvent event) {
+        notifications = noti.getValue();
         mc.fontRendererObj.drawStringWithShadow("§aSleek v0.1", 4, 4, ColorPalette.GREEN.getColor().getRGB());
 
         int y = 4;

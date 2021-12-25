@@ -2,6 +2,7 @@ package me.kansio.client.modules.impl.combat;
 
 import dorkbox.messageBus.annotations.Subscribe;
 import me.kansio.client.event.impl.PacketEvent;
+import me.kansio.client.event.impl.RenderOverlayEvent;
 import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.impl.Module;
@@ -11,6 +12,7 @@ import me.kansio.client.property.value.NumberValue;
 import me.kansio.client.utils.Stopwatch;
 import me.kansio.client.utils.math.MathUtil;
 import me.kansio.client.utils.network.PacketUtil;
+import me.kansio.client.utils.render.RenderUtils;
 import me.kansio.client.utils.rotations.AimUtil;
 import me.kansio.client.utils.rotations.Rotation;
 import me.kansio.client.utils.rotations.RotationUtil;
@@ -36,6 +38,7 @@ import net.minecraft.world.World;
 import org.lwjgl.input.Keyboard;
 
 import javax.vecmath.Vector2f;
+import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -52,7 +55,10 @@ public class KillAura extends Module {
                 reach, crackSize, cps, rand, smoothness,
 
                 //booleans
-                crack, randomizeCps, doAim, silent, minecraftRotation, keepSprint, block, monsters, sleeping, invisible, teleportReach, blood, gcd, allowInInventory
+                crack, randomizeCps, doAim, silent, minecraftRotation, keepSprint, block, monsters, sleeping, invisible, teleportReach, blood, gcd, allowInInventory,
+
+                // target hud settings
+                targethud, targethudX, targethudZ
         );
     }
 
@@ -62,13 +68,13 @@ public class KillAura extends Module {
     public ModeValue autoblockMode = new ModeValue("Autoblock Mode", this, "Real", "Fake");
     public ModeValue crackType = new ModeValue("Crack Type", this, "Enchant", "Normal");
     public ModeValue swingMode = new ModeValue("Swing Mode", this, "Attack", "None", "Silent");
-    public NumberValue crackSize = new NumberValue("Crack Size", this, 8, 1, 20, 1, true);
-    public NumberValue cps = new NumberValue("CPS", this, 12, 1, 20, 1, true);
+    public NumberValue<Integer> crackSize = new NumberValue("Crack Size", this, 8, 1, 20, 1);
+    public NumberValue<Integer> cps = new NumberValue("CPS", this, 12, 1, 20, 1);
     public BooleanValue randomizeCps = new BooleanValue("Randomize CPS", this, true);
-    public NumberValue rand = new NumberValue("Randomize", this, 3, 1, 10, 1, true);
+    public NumberValue<Integer> rand = new NumberValue("Randomize", this, 3, 1, 10, 1);
     public BooleanValue doAim = new BooleanValue("Rotate", this, true);
-    public NumberValue reach = new NumberValue("Attack Range", this, 4.5f, 2.5f, 9f, 0.1f, false);
-    public NumberValue smoothness = new NumberValue("Smoothness", this, 5, 0, 100, 1, true);
+    public NumberValue<Float> reach = new NumberValue("Attack Range", this, 4.5f, 2.5f, 9f, 0.1f);
+    public NumberValue<Integer> smoothness = new NumberValue("Smoothness", this, 5, 0, 100, 1);
     public BooleanValue rayCheck = new BooleanValue("Ray Check", this, true);
     public BooleanValue block = new BooleanValue("Auto Block", this, true);
     public BooleanValue monsters = new BooleanValue("Monsters", this, true);
@@ -82,6 +88,10 @@ public class KillAura extends Module {
     public BooleanValue teleportReach = new BooleanValue("Teleport Reach", this, false);
     public BooleanValue gcd = new BooleanValue("GCD", this, false);
     public BooleanValue allowInInventory = new BooleanValue("In Inventory", this, false);
+
+    public BooleanValue targethud = new BooleanValue("TargetHUD", this, true);
+    public NumberValue<Integer> targethudX = new NumberValue<>("TargetHUD X", this, 20, 0, 300, 1);
+    public NumberValue<Integer> targethudZ = new NumberValue<>("TargetHUD Y", this, 20, 0, 300, 1);
 
     public static EntityLivingBase target;
 
@@ -406,6 +416,14 @@ public class KillAura extends Module {
         }/*/
     }
 
+    @Subscribe
+    public void targetHudEvento(RenderOverlayEvent event) {
+        if (target != null && targethud.getValue()) {
+            int x = targethudX.getValue(),
+                    y = targethudZ.getValue();
+            RenderUtils.drawBorderedRect(x, y, 150, 150, 4, 0xFF000000, 0x80000000);
+        }
+    }
 
     @Subscribe
     public void onPacket(PacketEvent event) {

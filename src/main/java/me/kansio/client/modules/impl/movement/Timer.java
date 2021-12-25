@@ -6,7 +6,7 @@ import me.kansio.client.property.value.NumberValue;
 
 public class Timer extends Module {
 
-    private NumberValue speed = new NumberValue("Speed", this, 1, 0.05, 10, 0.1, false);
+    private NumberValue<Double> speed = new NumberValue<>("Speed", this, 1.0, 0.05, 10.0, 0.1);
 
     public Timer() {
         super("Timer", ModuleCategory.MOVEMENT);

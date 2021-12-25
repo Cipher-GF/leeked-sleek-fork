@@ -59,10 +59,10 @@ public abstract class GuiScreen extends Gui implements GuiYesNoCallback
     protected RenderItem itemRender;
 
     /** The width of the screen object. */
-    public int width;
+    public static int width;
 
     /** The height of the screen object. */
-    public int height;
+    public static int height;
     protected List<GuiButton> buttonList = Lists.<GuiButton>newArrayList();
     protected List<GuiLabel> labelList = Lists.<GuiLabel>newArrayList();
     public boolean allowUserInput;
@@ -768,5 +768,21 @@ public abstract class GuiScreen extends Gui implements GuiYesNoCallback
     public void onResize(Minecraft mcIn, int p_175273_2_, int p_175273_3_)
     {
         this.setWorldAndResolution(mcIn, p_175273_2_, p_175273_3_);
+    }
+
+    public static int getWidth() {
+        return width;
+    }
+
+    public static void setWidth(int width) {
+        GuiScreen.width = width;
+    }
+
+    public static int getHeight() {
+        return height;
+    }
+
+    public static void setHeight(int height) {
+        GuiScreen.height = height;
     }
 }

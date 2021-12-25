@@ -6,7 +6,7 @@ public abstract class Value<Type> {
 
     private final Object owner;
     protected Value<?> parent;
-    private Type value;
+    protected Type value;
 
     public Value(String name, Object owner, Type value) {
         this.name = name;
