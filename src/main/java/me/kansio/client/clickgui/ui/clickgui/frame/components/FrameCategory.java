@@ -187,4 +187,10 @@ public class FrameCategory implements Priority {
     {
         return height;
     }
+
+    public void keyTyped(int keyCode) {
+        modules.forEach(frameModule -> {
+            frameModule.keyTyped(keyCode);
+        });
+    }
 }

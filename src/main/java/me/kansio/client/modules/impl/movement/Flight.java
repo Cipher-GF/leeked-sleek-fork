@@ -17,7 +17,7 @@ import org.lwjgl.input.Keyboard;
 
 public class Flight extends Module {
 
-    private ModeValue modeValue = new ModeValue("Mode", this, "Vanilla", "Verus");
+    private ModeValue modeValue = new ModeValue("Mode", this, "Vanilla", "Verus", "Funcraft");
     private NumberValue speed = new NumberValue("Speed", this, 1, 0, 7, 0.1, false);
     private BooleanValue viewbob = new BooleanValue("View Bobbing", this, true);
     private boolean boosted = false;

@@ -6,6 +6,8 @@ import lombok.NonNull;
 import lombok.Setter;
 import me.kansio.client.Client;
 import me.kansio.client.modules.api.ModuleCategory;
+import me.kansio.client.notification.Notification;
+import me.kansio.client.notification.NotificationManager;
 import me.kansio.client.property.Value;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.ModeValue;
@@ -45,6 +47,7 @@ public abstract class Module {
 
         if (toggled) {
             Client.getInstance().getEventBus().subscribe(this);
+            NotificationManager.getNotificationManager().addNotification(new Notification(this.name + " enabled", "Module enabled nigger", 1000, -1));
             onEnable();
         } else {
             Client.getInstance().getEventBus().unsubscribe(this);
