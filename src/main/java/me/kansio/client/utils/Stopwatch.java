@@ -27,4 +27,10 @@ public final class Stopwatch extends Util {
     public boolean timeElapsed(long milliseconds) {
         return getCurrentTime() - getStartTime() >= milliseconds;
     }
+
+    public long getTimeRemaining(long milliseconds) {
+        long currentTime = getCurrentTime(),
+                startTime = getStartTime();
+        return currentTime - startTime >= milliseconds ? 0 : currentTime - startTime;
+    }
 }

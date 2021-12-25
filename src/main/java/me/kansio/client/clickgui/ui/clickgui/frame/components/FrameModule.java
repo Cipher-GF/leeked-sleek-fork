@@ -10,9 +10,11 @@ import me.kansio.client.modules.impl.Module;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.ModeValue;
 import me.kansio.client.property.value.NumberValue;
+import me.kansio.client.utils.chat.ChatUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import me.kansio.client.clickgui.utils.render.RenderUtils;
+import org.lwjgl.input.Keyboard;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -29,6 +31,7 @@ public class FrameModule implements Priority {
     private int offset;
 
     private boolean opened;
+    private boolean listening;
 
     public FrameModule(Module module, FrameCategory owner, int x, int y)
     {
@@ -38,7 +41,7 @@ public class FrameModule implements Priority {
         this.moduleAnimation = new Animate();
         moduleAnimation.setMin(0).setMax(255).setReversed(!module.isToggled()).setEase(Easing.LINEAR);
         this.opened = false;
-
+        this.listening = false;
         this.x = x;
         this.y = y;
 
@@ -76,6 +79,7 @@ public class FrameModule implements Priority {
         }
 
         Minecraft.getMinecraft().fontRendererObj.drawString(module.getName(), x+3, y + (moduleHeight / 2F - (Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2F)), stringColor, true);
+        if (!module.getValues().isEmpty()) Minecraft.getMinecraft().fontRendererObj.drawString(opened ? "-" : "+", (x+owner.getWidth()) - 9, y + (moduleHeight / 2F - (Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2F)), stringColor, true);
 
         int offset = 0;
 
@@ -109,6 +113,7 @@ public class FrameModule implements Priority {
                     opened = !opened;
                     break;
                 case 2:
+                    listening = true;
                     //TODO: Bind
                     break;
             }
@@ -138,6 +143,18 @@ public class FrameModule implements Priority {
 
         this.setOffset(moduleHeight + offset);
         return offset;
+    }
+
+
+    public void keyTyped(int keycode) {
+        if (listening) {
+            if (keycode == Keyboard.KEY_ESCAPE) {
+                module.setKeyBind(0);
+            } else {
+                module.setKeyBind(keycode);
+                ChatUtil.log(module.getName() + "'s keycode is now " + Keyboard.getKeyName(keycode));
+            }
+        }
     }
 
     public void setOffset(int offset) {

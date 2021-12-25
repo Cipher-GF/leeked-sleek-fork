@@ -1,147 +1,295 @@
-[18:19:17] [Client thread/ERROR]: Can't find the resource index file: assets\indexes\1.8.json
-[18:19:17] [Client thread/INFO]: Setting user: sex_3220
-[18:19:17] [Client thread/INFO]: (Session ID is token:0:sex_3220)
-[18:19:20] [Client thread/INFO]: [OptiFine] *** Reflector Forge ***
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.Attributes
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: mods.betterfoliage.client.BetterFoliageClient
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.asm.transformers.BlamingTransformer
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.world.ChunkWatchEvent$UnWatch
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.relauncher.CoreModManager
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.DimensionManager
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.GuiScreenEvent$DrawScreenEvent$Pre
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.GuiScreenEvent$DrawScreenEvent$Post
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.EntityViewRenderEvent$CameraSetup
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.EntityViewRenderEvent$FogColors
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.eventhandler.Event
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.eventhandler.EventBus
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.eventhandler.Event$Result
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.property.ExtendedBlockState
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.FMLClientHandler
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.FMLCommonHandler
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.biome.BiomeGenBase.getWaterColorMultiplier
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.addDestroyEffects
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.addHitEffects
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.canCreatureSpawn
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.canRenderInLayer
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.doesSideBlockRendering
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getBedDirection
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getExtendedState
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.hasTileEntity
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isAir
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isBed
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isBedFoot
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isSideSolid
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.Entity.canRiderInteract
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Field not present: net.minecraft.entity.Entity.captureDrops
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Field not present: net.minecraft.entity.Entity.capturedDrops
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.Entity.shouldRenderInPass
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.Entity.shouldRiderSit
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.ForgeEventFactory
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.ForgeHooks
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.ForgeHooksClient
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.getDurabilityForDisplay
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.getModel
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.onEntitySwing
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.shouldCauseReequipAnimation
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.showDurabilityBar
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.ItemRecord.getRecordResource
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.ForgeModContainer
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.potion.PotionEffect.isCurativeItem
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.canRenderBreaking
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.getRenderBoundingBox
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.hasFastRenderer
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.shouldRenderInPass
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher.preDrawBatch
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher.drawBatch
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.vertex.VertexFormatElement$EnumUsage.preDraw
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.vertex.VertexFormatElement$EnumUsage.postDraw
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.World.countEntities
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.World.getPerWorldStorage
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getCloudRenderer
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getSkyRenderer
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getWeatherRenderer
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.GuiModList
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.IColoredBakedQuad
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.property.IExtendedBlockState
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.IRenderHandler
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.ISmartBlockModel
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.ItemModelMesherForge
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraft.launchwrapper.Launch
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.pipeline.LightUtil
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.MinecraftForge
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.MinecraftForgeClient
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.ModelLoader
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderBlockOverlayEvent$OverlayType
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.registry.RenderingRegistry
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderItemInFrameEvent
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Pre
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Post
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Specials$Pre
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Specials$Post
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.SplashProgress
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.world.WorldEvent$Load
-[18:19:20] [Client thread/INFO]: [OptiFine] *** Reflector Vanilla ***
-[18:19:20] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: optifine.OptiFineClassTransformer
-[18:19:20] [Client thread/INFO]: LWJGL Version: 2.9.4
-[18:19:25] [Client thread/INFO]: [OptiFine] 
-[18:19:25] [Client thread/INFO]: [OptiFine] OptiFine_1.8.8_HD_U_H8
-[18:19:25] [Client thread/INFO]: [OptiFine] Build: null
-[18:19:25] [Client thread/INFO]: [OptiFine] OS: Windows 10 (amd64) version 10.0
-[18:19:25] [Client thread/INFO]: [OptiFine] Java: 11.0.12, Amazon.com Inc.
-[18:19:25] [Client thread/INFO]: [OptiFine] VM: OpenJDK 64-Bit Server VM (mixed mode), Amazon.com Inc.
-[18:19:25] [Client thread/INFO]: [OptiFine] LWJGL: 2.9.4
-[18:19:25] [Client thread/INFO]: [OptiFine] OpenGL: NVIDIA GeForce GTX 750 Ti/PCIe/SSE2, version 4.6.0 NVIDIA 466.11, NVIDIA Corporation
-[18:19:25] [Client thread/INFO]: [OptiFine] OpenGL Version: 4.6.0
-[18:19:25] [Client thread/INFO]: [OptiFine] Maximum texture size: 16384x16384
-[18:19:25] [Thread-5/INFO]: [OptiFine] Checking for new version
-[18:19:25] [Client thread/INFO]: [Shaders] ShadersMod version: 2.4.12
-[18:19:25] [Client thread/INFO]: [Shaders] OpenGL Version: 4.6.0 NVIDIA 466.11
-[18:19:25] [Client thread/INFO]: [Shaders] Vendor:  NVIDIA Corporation
-[18:19:25] [Client thread/INFO]: [Shaders] Renderer: NVIDIA GeForce GTX 750 Ti/PCIe/SSE2
-[18:19:25] [Client thread/INFO]: [Shaders] Capabilities:  2.0  2.1  3.0  3.2  4.0 
-[18:19:25] [Client thread/INFO]: [Shaders] GL_MAX_DRAW_BUFFERS: 8
-[18:19:25] [Client thread/INFO]: [Shaders] GL_MAX_COLOR_ATTACHMENTS_EXT: 8
-[18:19:25] [Client thread/INFO]: [Shaders] GL_MAX_TEXTURE_IMAGE_UNITS: 32
-[18:19:25] [Client thread/INFO]: [Shaders] Load ShadersMod configuration.
-[18:19:25] [Client thread/INFO]: [Shaders] Save ShadersMod configuration.
-[18:19:25] [Client thread/INFO]: [Shaders] Shaders can not be loaded, Fast Render is enabled.
-[18:19:25] [Client thread/INFO]: [Shaders] No shaderpack loaded.
-[18:19:25] [Thread-5/INFO]: [OptiFine] Version found: I7
-[18:19:28] [Client thread/INFO]: Reloading ResourceManager: Default
-[18:19:28] [Client thread/INFO]: [OptiFine] *** Reloading textures ***
-[18:19:28] [Client thread/INFO]: [OptiFine] Resource packs: Default
-[18:19:29] [Sound Library Loader/INFO]: Starting up SoundSystem...
-[18:19:29] [Thread-6/INFO]: Initializing LWJGL OpenAL
-[18:19:29] [Thread-6/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
-[18:19:29] [Thread-6/INFO]: OpenAL initialized.
-[18:19:29] [Sound Library Loader/INFO]: Sound engine started
-[18:19:32] [Client thread/INFO]: [OptiFine] Mipmap levels: 4
-[18:19:32] [Client thread/INFO]: [OptiFine] Multitexture: false
-[18:19:32] [Client thread/INFO]: [OptiFine] Multipass connected textures: false
-[18:19:32] [Client thread/ERROR]: Using missing texture, unable to load minecraft:mcpatcher/ctm/default/empty.png, java.io.FileNotFoundException
-[18:19:33] [Client thread/INFO]: Created: 512x512 textures-atlas
-[18:19:37] [Client thread/INFO]: [OptiFine] *** Reloading custom textures ***
-[18:19:37] [Client thread/INFO]: [OptiFine] Enable face culling: acacia_leaves, birch_leaves, dark_oak_leaves, jungle_leaves, oak_leaves, spruce_leaves
-[18:19:45] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:music.menu
-[18:20:11] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:music.menu
-[18:20:32] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:music.menu
-[18:20:46] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:music.menu
-[18:21:01] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:music.menu
-[18:21:06] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:music.menu
-[18:21:31] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:music.menu
-[18:21:57] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:music.menu
-[18:22:13] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:music.menu
-[18:22:22] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:music.menu
-[18:22:27] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:music.menu
-[18:22:42] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:music.menu
-[18:23:11] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:music.menu
-[18:23:16] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:gui.button.press
-[18:23:25] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:music.menu
-[18:23:25] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:gui.button.press
-[18:23:28] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:gui.button.press
-[18:23:28] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:gui.button.press
-[18:23:32] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:gui.button.press
-[18:23:33] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:gui.button.press
-[18:23:40] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:gui.button.press
-[18:23:41] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:music.menu
-[18:24:01] [Client Shutdown Thread/INFO]: Stopping server
+[14:49:48] [Client thread/ERROR]: Can't find the resource index file: assets\indexes\1.8.json
+[14:49:48] [Client thread/INFO]: Setting user: sex_5894
+[14:49:48] [Client thread/INFO]: (Session ID is token:0:sex_5894)
+[14:49:49] [Client thread/INFO]: [OptiFine] *** Reflector Forge ***
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.Attributes
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: mods.betterfoliage.client.BetterFoliageClient
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.asm.transformers.BlamingTransformer
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.world.ChunkWatchEvent$UnWatch
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.relauncher.CoreModManager
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.DimensionManager
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.GuiScreenEvent$DrawScreenEvent$Pre
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.GuiScreenEvent$DrawScreenEvent$Post
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.EntityViewRenderEvent$CameraSetup
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.EntityViewRenderEvent$FogColors
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.eventhandler.Event
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.eventhandler.EventBus
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.eventhandler.Event$Result
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.property.ExtendedBlockState
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.FMLClientHandler
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.FMLCommonHandler
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.biome.BiomeGenBase.getWaterColorMultiplier
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.addDestroyEffects
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.addHitEffects
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.canCreatureSpawn
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.canRenderInLayer
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.doesSideBlockRendering
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getBedDirection
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getExtendedState
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.hasTileEntity
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isAir
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isBed
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isBedFoot
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isSideSolid
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.Entity.canRiderInteract
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Field not present: net.minecraft.entity.Entity.captureDrops
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Field not present: net.minecraft.entity.Entity.capturedDrops
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.Entity.shouldRenderInPass
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.Entity.shouldRiderSit
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.ForgeEventFactory
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.ForgeHooks
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.ForgeHooksClient
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.getDurabilityForDisplay
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.getModel
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.onEntitySwing
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.shouldCauseReequipAnimation
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.showDurabilityBar
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.ItemRecord.getRecordResource
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.ForgeModContainer
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.potion.PotionEffect.isCurativeItem
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.canRenderBreaking
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.getRenderBoundingBox
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.hasFastRenderer
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.shouldRenderInPass
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher.preDrawBatch
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher.drawBatch
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.vertex.VertexFormatElement$EnumUsage.preDraw
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.vertex.VertexFormatElement$EnumUsage.postDraw
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.World.countEntities
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.World.getPerWorldStorage
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getCloudRenderer
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getSkyRenderer
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getWeatherRenderer
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.GuiModList
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.IColoredBakedQuad
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.property.IExtendedBlockState
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.IRenderHandler
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.ISmartBlockModel
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.ItemModelMesherForge
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraft.launchwrapper.Launch
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.pipeline.LightUtil
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.MinecraftForge
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.MinecraftForgeClient
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.ModelLoader
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderBlockOverlayEvent$OverlayType
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.registry.RenderingRegistry
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderItemInFrameEvent
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Pre
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Post
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Specials$Pre
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Specials$Post
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.SplashProgress
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.world.WorldEvent$Load
+[14:49:49] [Client thread/INFO]: [OptiFine] *** Reflector Vanilla ***
+[14:49:49] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: optifine.OptiFineClassTransformer
+[14:49:49] [Client thread/INFO]: LWJGL Version: 2.9.4
+[14:49:49] [Client thread/INFO]: [OptiFine] 
+[14:49:49] [Client thread/INFO]: [OptiFine] OptiFine_1.8.8_HD_U_H8
+[14:49:49] [Client thread/INFO]: [OptiFine] Build: null
+[14:49:49] [Client thread/INFO]: [OptiFine] OS: Windows 10 (amd64) version 10.0
+[14:49:49] [Client thread/INFO]: [OptiFine] Java: 11.0.13, Amazon.com Inc.
+[14:49:49] [Client thread/INFO]: [OptiFine] VM: OpenJDK 64-Bit Server VM (mixed mode), Amazon.com Inc.
+[14:49:49] [Client thread/INFO]: [OptiFine] LWJGL: 2.9.4
+[14:49:49] [Client thread/INFO]: [OptiFine] OpenGL: NVIDIA GeForce RTX 3060/PCIe/SSE2, version 4.6.0 NVIDIA 497.09, NVIDIA Corporation
+[14:49:49] [Client thread/INFO]: [OptiFine] OpenGL Version: 4.6.0
+[14:49:49] [Client thread/INFO]: [OptiFine] Maximum texture size: 32768x32768
+[14:49:49] [Thread-5/INFO]: [OptiFine] Checking for new version
+[14:49:49] [Client thread/INFO]: [Shaders] ShadersMod version: 2.4.12
+[14:49:49] [Client thread/INFO]: [Shaders] OpenGL Version: 4.6.0 NVIDIA 497.09
+[14:49:49] [Client thread/INFO]: [Shaders] Vendor:  NVIDIA Corporation
+[14:49:49] [Client thread/INFO]: [Shaders] Renderer: NVIDIA GeForce RTX 3060/PCIe/SSE2
+[14:49:49] [Client thread/INFO]: [Shaders] Capabilities:  2.0  2.1  3.0  3.2  4.0 
+[14:49:49] [Client thread/INFO]: [Shaders] GL_MAX_DRAW_BUFFERS: 8
+[14:49:49] [Client thread/INFO]: [Shaders] GL_MAX_COLOR_ATTACHMENTS_EXT: 8
+[14:49:49] [Client thread/INFO]: [Shaders] GL_MAX_TEXTURE_IMAGE_UNITS: 32
+[14:49:49] [Client thread/INFO]: [Shaders] Load ShadersMod configuration.
+[14:49:49] [Client thread/INFO]: [Shaders] Save ShadersMod configuration.
+[14:49:49] [Client thread/INFO]: [Shaders] Shaders can not be loaded, Fast Render is enabled.
+[14:49:49] [Client thread/INFO]: [Shaders] No shaderpack loaded.
+[14:49:50] [Client thread/INFO]: Reloading ResourceManager: Default
+[14:49:50] [Client thread/INFO]: [OptiFine] *** Reloading textures ***
+[14:49:50] [Client thread/INFO]: [OptiFine] Resource packs: Default
+[14:49:50] [Sound Library Loader/INFO]: Starting up SoundSystem...
+[14:49:50] [Thread-5/INFO]: [OptiFine] Version found: I7
+[14:49:50] [Thread-6/INFO]: Initializing LWJGL OpenAL
+[14:49:50] [Thread-6/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
+[14:49:50] [Thread-6/INFO]: OpenAL initialized.
+[14:49:50] [Sound Library Loader/INFO]: Sound engine started
+[14:49:51] [Client thread/INFO]: [OptiFine] Mipmap levels: 4
+[14:49:51] [Client thread/INFO]: [OptiFine] Multitexture: false
+[14:49:51] [Client thread/INFO]: [OptiFine] Multipass connected textures: false
+[14:49:51] [Client thread/ERROR]: Using missing texture, unable to load minecraft:mcpatcher/ctm/default/empty.png, java.io.FileNotFoundException
+[14:49:51] [Client thread/INFO]: Created: 512x512 textures-atlas
+[14:49:51] [Client thread/INFO]: [OptiFine] *** Reloading custom textures ***
+[14:49:51] [Client thread/INFO]: [OptiFine] Enable face culling: acacia_leaves, birch_leaves, dark_oak_leaves, jungle_leaves, oak_leaves, spruce_leaves
+[14:49:57] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:music.menu
+[14:50:02] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:gui.button.press
+[14:50:03] [Server thread/INFO]: Starting integrated minecraft server version 1.8.8
+[14:50:03] [Server thread/INFO]: Generating keypair
+[14:50:03] [Server thread/INFO]: Preparing start region for level 0
+[14:50:04] [Server thread/INFO]: Changing view distance to 8, from 10
+[14:50:04] [Server thread/INFO]: sex_5894[local:E:43307d65] logged in with entity id 116 at (202.30785177463767, 74.0, 573.6029407593185)
+[14:50:04] [Server thread/INFO]: sex_5894 joined the game
+[14:50:04] [Client thread/INFO]: [CHAT] of.message.newVersion
+[14:50:04] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:04] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:04] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:05] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:05] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:05] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:mob.zombie.step
+[14:50:05] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:05] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:05] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:05] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:06] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:06] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:06] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:06] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:step.grass
+[14:50:06] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:06] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:06] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:07] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:07] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:mob.sheep.say
+[14:50:07] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:07] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:07] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:07] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:07] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:07] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:08] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:08] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:08] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:08] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:08] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:08] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:08] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:09] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:09] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:09] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:09] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:09] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:09] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:09] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:10] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:10] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:10] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:10] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:10] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:10] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:11] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:11] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:11] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:11] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:11] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:11] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:11] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:12] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:12] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:12] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:12] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:12] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:12] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:13] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:13] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:13] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:13] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:13] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:13] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:music.game.creative
+[14:50:13] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:13] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:13] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:14] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:14] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:14] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:14] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:14] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:15] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:15] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:15] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:15] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:15] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:15] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:mob.sheep.say
+[14:50:15] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:15] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:16] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:16] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:16] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:16] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:16] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:16] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:16] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:17] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:17] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:17] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:17] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:17] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:17] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:17] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:18] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:18] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:18] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:18] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:18] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:18] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:18] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:19] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:19] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:19] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:19] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:19] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:19] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:19] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:19] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:20] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:20] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:20] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:20] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:20] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:20] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:20] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:21] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:21] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:21] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:21] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:21] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:21] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:21] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:21] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:22] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:22] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:22] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:22] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:22] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:22] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:22] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:23] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:23] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:23] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:23] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:23] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:23] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:23] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:24] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:24] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:24] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:24] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:mob.sheep.say
+[14:50:24] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:24] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:24] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:24] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:25] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:25] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:25] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:25] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:25] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:25] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:25] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:25] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:26] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:26] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:26] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:26] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:26] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:26] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:27] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:ambient.weather.rain
+[14:50:27] [Client Shutdown Thread/INFO]: Stopping server

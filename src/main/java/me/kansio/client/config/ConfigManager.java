@@ -69,23 +69,24 @@ public class ConfigManager {
 
     public void saveConfig(String cfgName) {
         // yes config is purposely misspelled
-        File cofig = new File(dir, cfgName + ".sleek");
+        File config = new File(dir, cfgName + ".sleek");
         try {
 
-            if (!cofig.exists()) {
-                cofig.createNewFile();
+            if (!config.exists()) {
+                config.createNewFile();
             }
-            Writer typeWRTIER = new FileWriter(cofig);
+            Writer typeWriter = new FileWriter(config);
             JsonArray arr = new JsonArray();
 
             Client.getInstance().getModuleManager().getModules().forEach(module -> arr.add(module.save()));
 
             String finalJson = new GsonBuilder().setPrettyPrinting().create().toJson(arr);
             System.out.println(finalJson);
-            typeWRTIER.write(finalJson);
+            typeWriter.write(finalJson);
+            typeWriter.close();
         } catch (Throwable throwable) {
             throwable.printStackTrace();
-            cofig.delete();
+            config.delete();
         }
     }
 
