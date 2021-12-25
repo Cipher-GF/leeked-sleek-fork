@@ -42,7 +42,7 @@ import java.util.Map;
 public class KillAura extends Module {
 
     public KillAura() {
-        super("KillAura", Keyboard.KEY_R, ModuleCategory.COMBAT);
+        super("Killaura", Keyboard.KEY_R, ModuleCategory.COMBAT);
 
         register(
                 //enum values:
@@ -52,7 +52,7 @@ public class KillAura extends Module {
                 reach, crackSize, cps, rand, smoothness,
 
                 //booleans
-                crack, randomizeCps, doAim, silent, minecraftRotation, keepSprint, block, monsters, sleeping, invisible, teleportReach, blood, gcd, allowInInventory
+                crack, randomizeCps, doAim, silent, minecraftRotation, keepSprint, block, monsters, sleeping, invisible, teleportReach, blood, gcd, allowInInventory, autoF5
         );
     }
 
@@ -81,6 +81,7 @@ public class KillAura extends Module {
     public BooleanValue blood = new BooleanValue("Blood Particles", this, false);
     public BooleanValue teleportReach = new BooleanValue("Teleport Reach", this, false);
     public BooleanValue gcd = new BooleanValue("GCD", this, false);
+    public BooleanValue autoF5 = new BooleanValue("Auto F5", this, false);
     public BooleanValue allowInInventory = new BooleanValue("In Inventory", this, false);
 
     public static EntityLivingBase target;
@@ -164,6 +165,14 @@ public class KillAura extends Module {
 
     @Subscribe
     public void onMotion(UpdateEvent event) {
+        if (autoF5.getValue()) {
+            if (target == null) {
+                mc.gameSettings.thirdPersonView = 0;
+            } else {
+                mc.gameSettings.thirdPersonView = 1;
+            }
+        }
+
         if (target != null && event.isPre()) {
 
             if (mc.thePlayer.getDistanceToEntity(target) >= reach.getValue()) {

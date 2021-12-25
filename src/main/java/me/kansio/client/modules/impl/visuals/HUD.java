@@ -6,6 +6,7 @@ import me.kansio.client.clickgui.utils.render.RenderUtils;
 import me.kansio.client.event.impl.RenderOverlayEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.impl.Module;
+import me.kansio.client.property.value.StringValue;
 import me.kansio.client.utils.render.ColorPalette;
 import me.kansio.client.utils.render.ColorUtil;
 import net.minecraft.client.gui.Gui;
@@ -15,20 +16,21 @@ import java.awt.*;
 
 public class HUD extends Module {
 
+    private StringValue name = new StringValue("Client Name", this, "Sleek");
+
     public HUD() {
         super("HUD", ModuleCategory.VISUALS);
     }
 
     @Subscribe
     public void onRenderOverlay(RenderOverlayEvent event) {
-        mc.fontRendererObj.drawStringWithShadow("§aSleek v0.1", 4, 4, ColorPalette.GREEN.getColor().getRGB());
-
         int y = 4;
+        Color color = ColorUtil.getGradientOffset(new Color(255, 0, 77), new Color(184, 0, 145), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + y / mc.fontRendererObj.FONT_HEIGHT * 9.95);
+
+        mc.fontRendererObj.drawStringWithShadow("Sleek", 4, 4, color.getRGB());
 
         for (Module mod : Client.getInstance().getModuleManager().getModulesSorted(mc.fontRendererObj)) {
             if (!mod.isToggled()) continue;
-
-            Color color = ColorUtil.getGradientOffset(new Color(0, 255, 128), new Color(212, 1, 1), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + y / mc.fontRendererObj.FONT_HEIGHT * 9.95);
 
             String name = mod.getName() + "§7" + mod.getSuffix();
             float xPos = event.getSr().getScaledWidth() - mc.fontRendererObj.getStringWidth(name) - 6;
