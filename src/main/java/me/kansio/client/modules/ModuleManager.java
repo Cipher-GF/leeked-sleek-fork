@@ -1,7 +1,6 @@
 package me.kansio.client.modules;
 
 import lombok.Getter;
-import me.kansio.client.Client;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.modules.impl.combat.Criticals;
@@ -11,7 +10,7 @@ import me.kansio.client.modules.impl.exploit.Disabler;
 import me.kansio.client.modules.impl.movement.Flight;
 import me.kansio.client.modules.impl.movement.Speed;
 import me.kansio.client.modules.impl.player.NoFall;
-import me.kansio.client.modules.impl.player.Scaffold;
+import me.kansio.client.modules.impl.world.Scaffold;
 import me.kansio.client.modules.impl.player.Sprint;
 import me.kansio.client.modules.impl.visuals.ClickGUI;
 import me.kansio.client.modules.impl.visuals.HUD;
@@ -49,6 +48,8 @@ public class ModuleManager {
         //Player
         modules.add(new NoFall());
         modules.add(new Sprint());
+
+        //World
         modules.add(new Scaffold());
 
 

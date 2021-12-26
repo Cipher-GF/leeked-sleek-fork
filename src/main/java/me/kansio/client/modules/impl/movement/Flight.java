@@ -87,6 +87,7 @@ public class Flight extends Module {
                 }
 
                 if (mc.gameSettings.keyBindSneak.isKeyDown()) {
+                    System.out.println("snek");
                     motionY = -0.4;
                 }
 
