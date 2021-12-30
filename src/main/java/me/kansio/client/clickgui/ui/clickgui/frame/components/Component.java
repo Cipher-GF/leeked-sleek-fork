@@ -1,6 +1,7 @@
 package me.kansio.client.clickgui.ui.clickgui.frame.components;
 
 
+import lombok.*;
 import me.kansio.client.property.Value;
 
 public abstract class Component
@@ -8,6 +9,7 @@ public abstract class Component
     private final FrameModule owner;
     private final Value setting;
     protected int x, y;
+    @Getter @Setter private boolean hidden;
 
 
     public Component(int x, int y, FrameModule owner, Value setting)  {

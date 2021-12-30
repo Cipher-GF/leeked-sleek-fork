@@ -9,18 +9,15 @@ import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.ModeValue;
 import me.kansio.client.property.value.NumberValue;
 import me.kansio.client.utils.Stopwatch;
+import me.kansio.client.utils.combat.FightUtil;
 import me.kansio.client.utils.math.MathUtil;
 import me.kansio.client.utils.network.PacketUtil;
 import me.kansio.client.utils.rotations.AimUtil;
 import me.kansio.client.utils.rotations.Rotation;
 import me.kansio.client.utils.rotations.RotationUtil;
 import net.minecraft.block.BlockAir;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.client.gui.inventory.GuiInventory;
-import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityArmorStand;
@@ -31,13 +28,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.network.play.client.*;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
+import org.apache.commons.lang3.RandomUtils;
 import org.lwjgl.input.Keyboard;
 
 import javax.vecmath.Vector2f;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class KillAura extends Module {
 
@@ -52,26 +50,30 @@ public class KillAura extends Module {
                 reach, crackSize, cps, rand, smoothness,
 
                 //booleans
-                crack, randomizeCps, doAim, silent, minecraftRotation, keepSprint, block, monsters, sleeping, invisible, teleportReach, blood, gcd, allowInInventory, autoF5
+                crack, randomizeCps, doAim, silent, minecraftRotation, keepSprint, block, players, animals, walls, monsters, sleeping, invisible, teleportReach, blood, gcd, allowInInventory, autoF5
         );
     }
 
-    public ModeValue mode = new ModeValue("Mode", this, "Single");
+    public ModeValue mode = new ModeValue("Mode", this, "Switch", "Smart");
     public ModeValue rotation = new ModeValue("Rotation Mode", this, "Default", "Down", "NCP", "AAC", "GWEN");
-    public ModeValue targetPriority = new ModeValue("Target Priority", this, "Health", "Distance", "Armor", "None");
+    public ModeValue targetPriority = new ModeValue("Target Priority", this, "Health", "Distance", "Armor", "HurtTime", "None");
     public ModeValue autoblockMode = new ModeValue("Autoblock Mode", this, "Real", "Fake");
     public ModeValue crackType = new ModeValue("Crack Type", this, "Enchant", "Normal");
     public ModeValue swingMode = new ModeValue("Swing Mode", this, "Attack", "None", "Silent");
-    public NumberValue crackSize = new NumberValue("Crack Size", this, 8, 1, 20, 1, true);
-    public NumberValue cps = new NumberValue("CPS", this, 12, 1, 20, 1, true);
+    public NumberValue<Integer> crackSize = new NumberValue<>("Crack Size", this, 8, 1, 20, 1);
+    public NumberValue<Double> cps = new NumberValue<>("CPS", this, 12.0, 1.0, 20.0, 1.0);
     public BooleanValue randomizeCps = new BooleanValue("Randomize CPS", this, true);
-    public NumberValue rand = new NumberValue("Randomize", this, 3, 1, 10, 1, true);
+    public NumberValue<Double> rand = new NumberValue<>("Randomize", this, 3.0, 1.0, 10.0, 1.0, randomizeCps);
     public BooleanValue doAim = new BooleanValue("Rotate", this, true);
-    public NumberValue reach = new NumberValue("Attack Range", this, 4.5f, 2.5f, 9f, 0.1f, false);
-    public NumberValue smoothness = new NumberValue("Smoothness", this, 5, 0, 100, 1, true);
+    public NumberValue<Double> reach = new NumberValue<>("Attack Range", this, 4.5, 2.5, 9.0, 0.1);
+    public NumberValue<Double> blockRange = new NumberValue<>("Block Range", this, 3.0, 1.0, 12.0, 0.1);
+    public NumberValue<Integer> smoothness = new NumberValue<>("Smoothness", this, 5, 0, 100, 1);
     public BooleanValue rayCheck = new BooleanValue("Ray Check", this, true);
     public BooleanValue block = new BooleanValue("Auto Block", this, true);
+    public BooleanValue players = new BooleanValue("Players", this, true);
     public BooleanValue monsters = new BooleanValue("Monsters", this, true);
+    public BooleanValue animals = new BooleanValue("Animals", this, true);
+    public BooleanValue walls = new BooleanValue("Animals", this, true);
     public BooleanValue sleeping = new BooleanValue("Sleeping", this, false);
     public BooleanValue invisible = new BooleanValue("Invisibles", this, true);
     public BooleanValue silent = new BooleanValue("Silent", this, true);
@@ -87,6 +89,7 @@ public class KillAura extends Module {
     public static EntityLivingBase target;
 
     public static boolean isBlocking, swinging;
+    private int index;
 
 
     public final Stopwatch attackTimer = new Stopwatch();
@@ -101,70 +104,35 @@ public class KillAura extends Module {
     float modelWidth, sWidth, sHeight, middleX, middleY, top, xOffset, nameYOffset, nameHeight, scale, healthTextHeight, healthPercentage, width, height, half, left, right, bottom, textLeft, healthTextY, health, downScale, healthBarY, healthBarHeight, healthBarRight, dif, healthWidth, healthBarEnd, damage, damageWidth;
     String healthText;
     int fadeColor = 0;
+    private boolean canBlock;
     private final Map<EntityLivingBase, Double> entityDamageMap = new HashMap<EntityLivingBase, Double>();
 
     private Rotation lastRotation;
 
     @Override
     public void onEnable() {
+        index = 0;
+        lastRotation = null;
+        target = null;
         this.attackTimer.resetTime();
     }
 
     @Override
     public void onDisable() {
-        this.target = null;
-        currentRotation = null;
-        isBlocking = false;
+        if (isBlocking) unblock();
         swinging = false;
+        currentRotation = null;
+        this.target = null;
     }
 
-    @Subscribe
-    public void onUpdate(UpdateEvent event) {
-        target = this.findTarget();
-        if (target == null) {
-            isBlocking = false;
-        }
-        if (target != null) {
-            mc.thePlayer.setSprinting(this.keepSprint.getValue());
-
-            if (!this.keepSprint.getValue()) {
-                mc.gameSettings.keyBindSprint.pressed = false;
-            }
-
-            if (mc.thePlayer.getDistanceToEntity(target) >= reach.getValue()) {
-                return;
-            }
-
-            if (!doAim.getValue()) return;
-
-            if (!silent.getValue() && target != null && mc.objectMouseOver.entityHit != target) {
-                Vector2f rotation = RotationUtil.getRotations(target);
-
-                if (currentRotation == null)
-                    currentRotation = new Vector2f(mc.thePlayer.rotationYaw, mc.thePlayer.rotationPitch);
-
-                if (smoothness.getValue() > 0f) {
-                    float yaw = RotationUtil.updateYawRotation(currentRotation.x, rotation.x,
-                            Math.max(1, 180 * (1 - smoothness.getValue().floatValue() / 100)));
-                    float pitch = RotationUtil.updatePitchRotation(currentRotation.y, rotation.y,
-                            Math.max(1, 90f * (1 - smoothness.getValue().floatValue() / 100)));
-
-                    rotation.x = yaw;
-                    rotation.y = pitch;
-
-                    currentRotation = rotation;
-                }
-
-                if (minecraftRotation.getValue()) rotation = RotationUtil.clampRotation(rotation);
-
-                mc.thePlayer.rotationYaw = rotation.x;
-                mc.thePlayer.rotationPitch = rotation.y;
-            }
-        }
-    }
 
     @Subscribe
     public void onMotion(UpdateEvent event) {
+        if (!keepSprint.getValue()) {
+            if (target != null) {
+                mc.thePlayer.setSprinting(false);
+            }
+        }
         if (autoF5.getValue()) {
             if (target == null) {
                 mc.gameSettings.thirdPersonView = 0;
@@ -173,6 +141,97 @@ public class KillAura extends Module {
             }
         }
 
+        List<EntityLivingBase> entities = FightUtil.getMultipleTargets(reach.getValue(), players.getValue(), animals.getValue(), walls.getValue(), monsters.getValue(), invisible.getValue());
+        List<EntityLivingBase> blockRangeEntites = FightUtil.getMultipleTargets(blockRange.getValue(), players.getValue(), animals.getValue(), walls.getValue(), monsters.getValue(), invisible.getValue());
+
+        entities.removeIf(e -> e.getName().contains("[NPC]"));
+
+        ItemStack heldItem = mc.thePlayer.getHeldItem();
+
+        canBlock = !blockRangeEntites.isEmpty() && block.getValue()
+                && heldItem != null
+                && heldItem.getItem() instanceof ItemSword;
+
+        if (event.isPre()) {
+            target = null;
+        }
+
+        if (entities.isEmpty()) {
+            index = 0;
+            
+            if (isBlocking && !autoblockMode.getValue().toLowerCase(Locale.ROOT).equals("real")) {
+                unblock();
+            }
+        } else {
+            if (index >= entities.size()) index = 0;
+
+            if (canBlock && !autoblockMode.getValue().equalsIgnoreCase("fake")) {
+                if (!event.isPre()) {
+                    blockHit(entities.get(index));
+                }
+            }
+
+            if (event.isPre()) {
+                switch (mode.getValue()) {
+                    case "Smart": {
+                        switch (targetPriority.getValue().toLowerCase()) {
+                            case "distance": {
+                                entities.sort(Comparator.comparingInt(e -> (int) -e.getDistanceToEntity(mc.thePlayer)));
+                                break;
+                            }
+                            case "armor": {
+                                entities.sort(Comparator.comparingInt(e -> -e.getTotalArmorValue()));
+                                break;
+                            }
+                            case "hurttime": {
+                                entities.sort(Comparator.comparingInt(e -> -e.hurtResistantTime));
+                                break;
+                            }
+                            case "health": {
+                                entities.sort(Comparator.comparingInt(e -> (int) -e.getHealth()));
+                                break;
+                            }
+                        }
+                        Collections.reverse(entities);
+                        target = entities.get(0);
+                        break;
+                    }
+                    case "switch": {
+                        target = entities.get(index);
+                        break;
+                    }
+                }
+                aimAtTarget(event, rotation.getValue(), target);
+            }
+
+            if (event.isPre()) {
+
+                boolean canIAttack = attackTimer.timeElapsed((long) (1000L / cps.getValue()));
+
+                if (canIAttack) {
+                    if (cps.getValue() > 9) {
+                        cps.setValue(cps.getValue() - RandomUtils.nextInt(0, rand.getValue().intValue()));
+                    } else {
+                        cps.setValue(cps.getValue() + RandomUtils.nextInt(0, rand.getValue().intValue()));
+                    }
+                    switch (mode.getValue()) {
+                        case "Switch": {
+                            if (canIAttack && attack(target, RandomUtils.nextInt(90, 100), autoblockMode.getValue())) {
+                                index++;
+                                attackTimer.resetTime();
+                            }
+                            break;
+                        }
+                        case "Smart": {
+                            if (canIAttack && attack(target, RandomUtils.nextInt(90, 100), autoblockMode.getValue())) {
+                                attackTimer.resetTime();
+                            }
+                        }
+                    }
+                }
+            }
+        }
+/*
         if (target != null && event.isPre()) {
 
             if (mc.thePlayer.getDistanceToEntity(target) >= reach.getValue()) {
@@ -191,7 +250,7 @@ public class KillAura extends Module {
             }
 
             sendUseItem();
-        }
+        }*/
     }
 
 
@@ -301,118 +360,66 @@ public class KillAura extends Module {
         }
     }
 
-    public void swing(Entity target) {
-        swinging = true;
-        double aps = cps.getValue() + MathUtil.getRandomInRange(0, rand.getValue());
+    private boolean attack(EntityLivingBase entity, double chance, String blockMode) {
+        if (FightUtil.canHit(chance / 100)) {
+            mc.thePlayer.swingItem();
 
-        if (!allowInInventory.getValue() && mc.currentScreen != null) {
-            return;
-        }
-
-        if (this.attackTimer.timeElapsed((long) (1000L / aps))) {
-            this.attackTimer.resetTime();
-
-            switch (swingMode.getValue()) {
-                case "Attack": {
-                    mc.thePlayer.swingItem();
-                    break;
-                }
-                case "Silent": {
-                    PacketUtil.sendPacket(new C0APacketAnimation());
-                    break;
-                }
-            }
-
-            final double distance = mc.thePlayer.getDistanceToEntity(target) - 0.5657;
-
-            //spawn blood particles
-            if (blood.getValue()) {
-                for (int i = 0; i < this.crackSize.getValue(); i++) {
-                    World targetWorld = target.getEntityWorld();
-                    double x, y, z;
-                    x = target.posX;
-                    y = target.posY;
-                    z = target.posZ;
-
-                    targetWorld.spawnParticle(EnumParticleTypes.BLOCK_CRACK, x + MathUtil.getRandomInRange(-0.5, 0.5), y + MathUtil.getRandomInRange(-1, 1), z + MathUtil.getRandomInRange(-0.5, 0.5), 23, 23, 23, 152);
-                }
-            }
-
-            //This thing does the tp reach
-            //Credits: Auth
-            if (teleportReach.getValue() && distance > 2.5) {
-                if (mc.theWorld.getBlockState(new BlockPos(target.posX, target.posY, target.posZ)).getBlock() instanceof BlockAir) {
-                    PacketUtil.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(target.posX, target.posY, target.posZ, false));
-                    mc.thePlayer.sendQueue.addToSendQueue(new C02PacketUseEntity(target, C02PacketUseEntity.Action.ATTACK));
-                }
+            if (keepSprint.getValue()) {
+                PacketUtil.sendPacket(new C0BPacketEntityAction(mc.thePlayer, C0BPacketEntityAction.Action.STOP_SPRINTING));
+                PacketUtil.sendPacket(new C02PacketUseEntity(entity, C02PacketUseEntity.Action.ATTACK));
+                PacketUtil.sendPacket(new C0BPacketEntityAction(mc.thePlayer, C0BPacketEntityAction.Action.START_SPRINTING));
             } else {
-                //do a normal hit if tp reach isnt on
-                doCritical();
-                mc.thePlayer.sendQueue.addToSendQueue(new C02PacketUseEntity(target, C02PacketUseEntity.Action.ATTACK));
+                PacketUtil.sendPacket(new C02PacketUseEntity(entity, C02PacketUseEntity.Action.ATTACK));
             }
+
+            if ((blockMode.equalsIgnoreCase("real") && canBlock)) {
+                blockHit(entity);
+            }
+
+            return true;
+        } else {
+            mc.thePlayer.swingItem();
         }
+        return false;
     }
 
-    public void aimAtTarget(UpdateEvent event, Entity target) {
-
-        if (!(target instanceof EntityLivingBase)) {
-            return;
-        }
-
-        Rotation rot = AimUtil.getRotationsRandom((EntityLivingBase) target);
+    public void aimAtTarget(UpdateEvent event, String mode, Entity target) {
+        Rotation rotation = AimUtil.getRotationsRandom((EntityLivingBase) target);
 
         if (lastRotation == null) {
-            lastRotation = rot;
+            lastRotation = rotation;
             attackTimer.resetTime();
             return;
         }
 
-        Rotation temp = rot;
+        Rotation temp = rotation;
 
-        rot = lastRotation;
+        rotation = lastRotation;
 
-        switch (rotation.getValue()) {
-            case "Default": {
-                Vector2f rotation = RotationUtil.getRotations(target);
-
-                if (smoothness.getValue() > 0f) {
-                    if (currentRotation == null)
-                        currentRotation = new Vector2f(mc.thePlayer.rotationYaw, mc.thePlayer.rotationPitch);
-                    float yaw = RotationUtil.updateYawRotation(currentRotation.x, rotation.x,
-                            Math.max(1, 180 * (1 - smoothness.getValue().floatValue() / 100f)));
-                    float pitch = RotationUtil.updatePitchRotation(currentRotation.y, rotation.y,
-                            Math.max(1, 90f * (1 - smoothness.getValue().floatValue() / 100f)));
-
-                    rotation.x = yaw;
-                    rotation.y = pitch;
-                    currentRotation = rotation;
-                }
-
-                if (minecraftRotation.getValue()) rotation = RotationUtil.clampRotation(rotation);
-                event.setRotationYaw(rotation.x);
-                event.setRotationPitch(Math.min(Math.max(rotation.y, -90), 90));
-                temp = new Rotation(rotation.x, Math.min(Math.max(rotation.y, -90), 90));
+        switch (mode.toUpperCase()) {
+            case "NCP":
+                lastRotation = temp = rotation = Rotation.fromFacing((EntityLivingBase) target);
+                event.setRotationYaw(rotation.getRotationYaw());
                 break;
-            }
-            case "Down": {
-                Vector2f rotation = RotationUtil.getRotations(target);
-                temp = new Rotation(rotation.x, 90.0f);
+            case "DEFAULT":
+                event.setRotationYaw(rotation.getRotationYaw());
+                event.setRotationPitch(rotation.getRotationPitch());
+                break;
+            case "DOWN":
+                temp = new Rotation(mc.thePlayer.rotationYaw, 90.0f);
                 event.setRotationPitch(90.0F);
-                event.setRotationYaw(rotation.x);
                 break;
-            }
-            case "NCP": {
-                lastRotation = temp = rot = Rotation.fromFacing((EntityLivingBase) target);
-                event.setRotationYaw(rot.getRotationYaw());
+            case "GWEN":
+                temp = mc.thePlayer.ticksExisted % 5 == 0 ? AimUtil.getRotationsRandom((EntityLivingBase) target) : lastRotation;
+                event.setRotationYaw(temp.getRotationYaw());
+                event.setRotationPitch(temp.getRotationPitch());
                 break;
-            }
+            case "AAC":
+                rotation = new Rotation(mc.thePlayer.rotationYaw, temp.getRotationPitch());
+                event.setRotationPitch(rotation.getRotationPitch());
+                break;
         }
-
-        /*/if (Sulfur.getInstance().getModuleManager().get(gg.sulfur.client.impl.modules.render.Rotations.class).isToggled()) {
-            mc.thePlayer.renderPitchHead = temp.getRotationPitch();
-            mc.thePlayer.renderYawOffset = temp.getRotationYaw();
-            mc.thePlayer.renderYawHead = temp.getRotationYaw();
-        }/*/
+        lastRotation = temp;
     }
 
 
@@ -434,6 +441,17 @@ public class KillAura extends Module {
         }
     }
 
+    public void blockHit(Entity target) {
+        mc.playerController.interactWithEntitySendPacket(mc.thePlayer, target);
+        PacketUtil.sendPacketNoEvent(new C08PacketPlayerBlockPlacement(new BlockPos(-1, -1, -1), 255, mc.thePlayer.getHeldItem(), 0, 0, 0));
+        isBlocking = true;
+    }
+
+    private void unblock() {
+        PacketUtil.sendPacketNoEvent(new C07PacketPlayerDigging(C07PacketPlayerDigging.Action.RELEASE_USE_ITEM, BlockPos.ORIGIN, EnumFacing.DOWN));
+        isBlocking = false;
+    }
+
     private boolean checkEnemiesNearby() {
         for (Entity ent : mc.theWorld.playerEntities) {
             if (ent.getDistanceSqToEntity(mc.thePlayer) <= 10) {
@@ -445,7 +463,10 @@ public class KillAura extends Module {
 
     @Override
     public String getSuffix() {
-        return " Single";
+        if (mode.getValue().equals("Smart")) {
+            return " Smart | " + targetPriority.getValue();
+        }
+        return " " + mode.getValue();
     }
 
     public static boolean isSwinging() {

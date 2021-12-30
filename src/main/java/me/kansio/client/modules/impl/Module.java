@@ -6,6 +6,7 @@ import lombok.NonNull;
 import lombok.Setter;
 import me.kansio.client.Client;
 import me.kansio.client.modules.api.ModuleCategory;
+import me.kansio.client.modules.impl.visuals.ClickGUI;
 import me.kansio.client.notification.Notification;
 import me.kansio.client.notification.NotificationManager;
 import me.kansio.client.property.Value;
@@ -52,6 +53,7 @@ public abstract class Module {
             Client.getInstance().getEventBus().unsubscribe(this);
             onDisable();
         }
+        if (!(this instanceof ClickGUI))
         NotificationManager.getNotificationManager().show(new Notification(Notification.NotificationType.INFO, getName(), toggled ? "Enabled" : "Disabled", 1));
         onToggled();
     }
@@ -97,7 +99,11 @@ public abstract class Module {
                     break;
                 }
                 case "enabled": {
-                    setToggled(ogzk.getValue().getAsBoolean());
+                    if (ogzk.getValue().getAsBoolean() && !this.isToggled()) {
+                        toggle();
+                    } else if (!ogzk.getValue().getAsBoolean() && this.isToggled()) {
+                        toggle();
+                    }
                     break;
                 }
             }

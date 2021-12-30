@@ -126,7 +126,45 @@ public class PlayerUtil extends Util {
         mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer(true));
 
         PacketUtil.sendPacketNoEvent(new C0BPacketEntityAction(mc.thePlayer, C0BPacketEntityAction.Action.START_SPRINTING));
-        mc.thePlayer.jump();
+        mc.thePlayer.motionY = 0.22;
+        //mc.thePlayer.jump();
+    }
+
+    public static void damageVerusNoMotion() {
+        PacketUtil.sendPacketNoEvent(
+                new C0BPacketEntityAction(mc.thePlayer, C0BPacketEntityAction.Action.STOP_SPRINTING));
+
+        double val1 = 0;
+
+        for (int i = 0; i <= 6; i++) {
+            val1 += 0.5;
+            mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX,
+                    mc.thePlayer.posY + val1, mc.thePlayer.posZ, true));
+        }
+
+        double val2 = mc.thePlayer.posY + val1;
+
+        ArrayList<Float> vals = new ArrayList<>();
+
+        vals.add(0.07840000152587834f);
+        vals.add(0.07840000152587834f);
+        vals.add(0.23052736891295922f);
+        vals.add(0.30431682745754074f);
+        vals.add(0.37663049823865435f);
+        vals.add(0.44749789698342113f);
+        vals.add(0.5169479491049742f);
+        vals.add(0.5850090015087517f);
+        vals.add(0.6517088341626192f);
+        vals.add(0.1537296175885956f);
+
+        for (float value : vals) {
+            val2 -= value;
+        }
+        mc.thePlayer.sendQueue.addToSendQueue(
+                new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, val2, mc.thePlayer.posZ, false));
+        mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer(true));
+
+        PacketUtil.sendPacketNoEvent(new C0BPacketEntityAction(mc.thePlayer, C0BPacketEntityAction.Action.START_SPRINTING));
     }
 
     /*/public static void damageVerus() {
@@ -385,6 +423,14 @@ public class PlayerUtil extends Util {
             event.setMotionZ(moveForward * moveSpeed * sin
                     - moveStrafe * moveSpeed * cos);
         }
+    }
+
+    public static double getVerusBaseSpeed() {
+        double base = 0.2865;
+        if (mc.thePlayer.isPotionActive(1)) {
+            base *= 1.0 + 0.0495 * (mc.thePlayer.getActivePotionEffect(Potion.moveSpeed).getAmplifier() + 1);
+        }
+        return base;
     }
 
 }

@@ -17,6 +17,10 @@ public final class BooleanValue extends Value<Boolean> {
         this.parent = parent;
     }
 
+    public BooleanValue(String name, Object owner, Boolean value, ModeValue modeValue, String mode) {
+        super(name, owner, value, modeValue, mode);
+    }
+
     @Override
     public Boolean getValue() {
         return super.getValue();

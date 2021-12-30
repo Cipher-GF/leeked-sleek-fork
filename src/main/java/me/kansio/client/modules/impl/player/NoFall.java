@@ -24,7 +24,7 @@ public class NoFall extends Module {
             switch (modeValue.getValueAsString()) {
                 case "Spoof": {
                     event.setOnGround(true);
-
+                    break;
                 }
                 case "Verus": {
                     double y = Math.round(mc.thePlayer.posY / 0.015625) * 0.015625;

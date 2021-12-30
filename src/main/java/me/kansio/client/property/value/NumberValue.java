@@ -17,6 +17,24 @@ public final class NumberValue<T extends Number> extends Value<T> {
         this.increment = increment;
     }
 
+    public NumberValue(String name, Object owner, T value, T min, T max, T increment, BooleanValue parent) {
+        super(name, owner, value, parent);
+        //checkRetardMoment(value);
+        this.value = value;
+        this.min = min;
+        this.max = max;
+        this.increment = increment;
+    }
+
+    public NumberValue(String name, Object owner, T value, T min, T max, T increment, ModeValue parent, String mode) {
+        super(name, owner, value, parent, mode);
+        //checkRetardMoment(value);
+        this.value = value;
+        this.min = min;
+        this.max = max;
+        this.increment = increment;
+    }
+
     private void checkRetardMoment(T value) {
         if (value.doubleValue() < min.doubleValue()) {
             try {

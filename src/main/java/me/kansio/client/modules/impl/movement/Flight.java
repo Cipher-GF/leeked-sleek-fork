@@ -22,11 +22,12 @@ import java.util.Locale;
 
 public class Flight extends Module {
 
-    private ModeValue modeValue = new ModeValue("Mode", this, "Vanilla", "Verus", "Funcraft", "Funcraft2");
-    private NumberValue<Float> speed = new NumberValue<>("Speed", this, 1f, 0f, 7f, 0.1f);
+    private ModeValue modeValue = new ModeValue("Mode", this, "Vanilla", "Verus", "Funcraft");
+    private NumberValue<Double> speed = new NumberValue<>("Speed", this, 1d, 0d, 7d, 0.1);
     private BooleanValue viewbob = new BooleanValue("View Bobbing", this, true);
-    private BooleanValue boost = new BooleanValue("Boost", this, true);
-    private BooleanValue extraBoost = new BooleanValue("Extra Boost", this, true);
+    private BooleanValue boost = new BooleanValue("Boost", this, true, modeValue, "Funcraft");
+    private BooleanValue extraBoost = new BooleanValue("Extra Boost", this, true, modeValue, "Funcraft");
+    private BooleanValue glide = new BooleanValue("Glide", this, true, modeValue, "Funcraft");
     private boolean boosted = false;
     double speedy = 2.5;
     Stopwatch stopwatch = new Stopwatch();
@@ -47,6 +48,7 @@ public class Flight extends Module {
         boosted = false;
         level = 0;
         lastDist = 0.0D;
+        spereeeedserz = 0.22;
         stopwatch.resetTime();
 
         if (modeValue.getValueAsString().toLowerCase(Locale.ROOT) == "funcraft") {
@@ -54,16 +56,12 @@ public class Flight extends Module {
         }
 
         ticks = 0;
-        if (modeValue.getValueAsString().equals("Verus")) {
-            spereeeedserz = 0.22;
-            PlayerUtil.damageVerus();
-        }
+
     }
 
     public void onDisable() {
-        lastDist = 0.0D;
-        boosted = false;
-        mc.timer.timerSpeed = 1f;
+        mc.thePlayer.motionX = 0;
+        mc.thePlayer.motionZ = 0;
     }
 
     @Subscribe
@@ -83,38 +81,26 @@ public class Flight extends Module {
                 double motionY = 0;
 
                 if (mc.gameSettings.keyBindJump.isKeyDown()) {
-                    motionY = 0.4;
+                    motionY = speed.getValue() / 2;
                 }
 
                 if (mc.gameSettings.keyBindSneak.isKeyDown()) {
-                    System.out.println("snek");
-                    motionY = -0.4;
+                    motionY = -(speed.getValue() / 2);
                 }
 
                 mc.thePlayer.motionY = motionY;
-                PlayerUtil.setMotion(speed.getValue());
+                PlayerUtil.setMotion(speed.getValue().floatValue());
                 break;
             }
             case "Verus": {
-                if (mc.thePlayer.hurtTime == 9) {
-                    boosted = true;
-                }
-                if (boosted) {
-                    if (mc.thePlayer.hurtTime > 8) {
-                        spereeeedserz = speed.getValue();
-                    } else if (mc.thePlayer.hurtResistantTime == 0) {
-                        spereeeedserz = 0.22;
-                    }
-                }
                 break;
             }
-            case "Funcraft2":
             case "Funcraft": {
                 if (event.isPre()) {
 
 
 
-                    if (modeValue.getValue() == "Funcraft2") {
+                    if (glide.getValue()) {
                         if (mc.thePlayer.onGround) {
                             event.setPosY(mc.thePlayer.motionY = 0.5);
                         } else {
@@ -149,11 +135,19 @@ public class Flight extends Module {
     public void onMove(MoveEvent event) {
         switch (modeValue.getValueAsString()) {
             case "Verus": {
-                if (!boosted) {
-                    PlayerUtil.setMotion(0);
-                } else {
-                    PlayerUtil.setMotion(event, spereeeedserz);
+                if (!mc.thePlayer.isInLava() && !mc.thePlayer.isInWater() && !mc.thePlayer.isOnLadder() && mc.thePlayer.ridingEntity == null && mc.thePlayer.hurtTime < 1) {
+                    if (mc.thePlayer.isMoving()) {
+                        mc.gameSettings.keyBindJump.pressed = false;
+                        if (mc.thePlayer.onGround) {
+                            mc.thePlayer.jump();
+                            mc.thePlayer.motionY = 0.0;
+                            PlayerUtil.strafe(1.22f);
+                            event.setMotionY(0.41999998688698);
+                        }
+                        PlayerUtil.strafe();
+                    }
                 }
+                break;
             }
             case "Funcraft2":
             case "Funcraft": {
@@ -228,7 +222,7 @@ public class Flight extends Module {
                 }
                 break;
             }
-         }
+        }
     }
 
     private double getBaseMoveSpeed() {

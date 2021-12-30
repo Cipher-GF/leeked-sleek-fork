@@ -3,9 +3,13 @@ package me.kansio.client.clickgui.ui.clickgui.frame.components;
 
 import me.kansio.client.Client;
 import me.kansio.client.clickgui.ui.clickgui.frame.Priority;
-import me.kansio.client.clickgui.ui.clickgui.frame.components.impl.*;
+import me.kansio.client.clickgui.ui.clickgui.frame.components.impl.BoolSetting;
+import me.kansio.client.clickgui.ui.clickgui.frame.components.impl.EnumSetting;
+import me.kansio.client.clickgui.ui.clickgui.frame.components.impl.SlideSetting;
 import me.kansio.client.clickgui.utils.render.ColorUtils;
-import me.kansio.client.clickgui.utils.render.animation.easings.*;
+import me.kansio.client.clickgui.utils.render.RenderUtils;
+import me.kansio.client.clickgui.utils.render.animation.easings.Animate;
+import me.kansio.client.clickgui.utils.render.animation.easings.Easing;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.ModeValue;
@@ -13,10 +17,9 @@ import me.kansio.client.property.value.NumberValue;
 import me.kansio.client.utils.chat.ChatUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
-import me.kansio.client.clickgui.utils.render.RenderUtils;
 import org.lwjgl.input.Keyboard;
 
-import java.awt.Color;
+import java.awt.*;
 import java.util.ArrayList;
 
 public class FrameModule implements Priority {
@@ -33,8 +36,7 @@ public class FrameModule implements Priority {
     private boolean opened;
     private boolean listening;
 
-    public FrameModule(Module module, FrameCategory owner, int x, int y)
-    {
+    public FrameModule(Module module, FrameCategory owner, int x, int y) {
         this.module = module;
         this.components = new ArrayList<>();
         this.owner = owner;
@@ -47,26 +49,22 @@ public class FrameModule implements Priority {
 
         /*/if(module.())
         {/*/
-            Client.getInstance().getValueManager().getValuesFromOwner(module).forEach(setting ->
-            {
-                if(setting instanceof BooleanValue)
-                {
-                    this.components.add(new BoolSetting(0, 0, this, setting));
-                }
-                if(setting instanceof ModeValue)
-                {
-                    this.components.add(new EnumSetting(0, 0, this, setting));
-                }
-                if(setting instanceof NumberValue)
-                {
-                    this.components.add(new SlideSetting(0, 0, this, setting));
-                }
-            });
+        Client.getInstance().getValueManager().getValuesFromOwner(module).forEach(setting ->
+        {
+            if (setting instanceof BooleanValue) {
+                this.components.add(new BoolSetting(0, 0, this, setting));
+            }
+            if (setting instanceof ModeValue) {
+                this.components.add(new EnumSetting(0, 0, this, setting));
+            }
+            if (setting instanceof NumberValue) {
+                this.components.add(new SlideSetting(0, 0, this, setting));
+            }
+        });
         //}
     }
 
-    public void drawScreen(int mouseX, int mouseY)
-    {
+    public void drawScreen(int mouseX, int mouseY) {
         moduleAnimation.setReversed(!module.isToggled());
         moduleAnimation.setSpeed(1000).update();
 
@@ -74,20 +72,35 @@ public class FrameModule implements Priority {
             GuiScreen.drawRect(x,y, x + defaultWidth, y + moduleHeight, darkerMainColor);
         }/*/
 
-        if(module.isToggled() || (moduleAnimation.isReversed() && moduleAnimation.getValue() != 0)) {
-            GuiScreen.drawRect(x,y, x + defaultWidth, y + moduleHeight, ColorUtils.setAlpha(new Color(enabledColor), (int) moduleAnimation.getValue()).getRGB());
+        if (module.isToggled() || (moduleAnimation.isReversed() && moduleAnimation.getValue() != 0)) {
+            GuiScreen.drawRect(x, y, x + defaultWidth, y + moduleHeight, ColorUtils.setAlpha(new Color(enabledColor), (int) moduleAnimation.getValue()).getRGB());
         }
 
-        Minecraft.getMinecraft().fontRendererObj.drawString(module.getName(), x+3, y + (moduleHeight / 2F - (Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2F)), stringColor, true);
-        if (!module.getValues().isEmpty()) Minecraft.getMinecraft().fontRendererObj.drawString(opened ? "-" : "+", (x+owner.getWidth()) - 9, y + (moduleHeight / 2F - (Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2F)), stringColor, true);
+        Minecraft.getMinecraft().fontRendererObj.drawString(listening ? "Press new keybind" : module.getName(), x + 3, y + (moduleHeight / 2F - (Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2F)), stringColor, true);
+        if (!module.getValues().isEmpty())
+            Minecraft.getMinecraft().fontRendererObj.drawString(opened ? "-" : "+", (x + owner.getWidth()) - 9, y + (moduleHeight / 2F - (Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2F)), stringColor, true);
 
         int offset = 0;
 
-        if(opened) {
+        if (opened) {
             for (Component component : this.components) { // using for loop because continue isn't supported on foreach
                 //component.getSetting().constantCheck();
                 //if(component.getSetting().isHide()) continue;
+                boolean shouldBeHidden;
 
+                if (component.getSetting().hasParent() && component.getSetting().getParent() != null) {
+                    if ((component.getSetting().getParent() instanceof ModeValue && ((ModeValue) component.getSetting().getParent()).getValue().equalsIgnoreCase(component.getSetting().getMode()))
+                            || (component.getSetting().getParent() instanceof BooleanValue && ((BooleanValue) component.getSetting().getParent()).getValue())) {
+                        shouldBeHidden = false;
+                    } else {
+                        shouldBeHidden = true;
+                    }
+                } else {
+                    shouldBeHidden = false;
+                }
+                component.setHidden(shouldBeHidden);
+
+                if (component.isHidden()) continue;
                 component.setX(x);
                 component.setY(y + moduleHeight + offset);
 
@@ -100,12 +113,9 @@ public class FrameModule implements Priority {
         this.setOffset(moduleHeight + offset);
     }
 
-    public boolean mouseClicked(int mouseX, int mouseY, int mouseButton)
-    {
-        if(RenderUtils.hover(x, y, mouseX, mouseY, defaultWidth, moduleHeight) && RenderUtils.hover(owner.getX(), owner.getY(), mouseX, mouseY, defaultWidth, owner.getHeight()))
-        {
-            switch(mouseButton)
-            {
+    public boolean mouseClicked(int mouseX, int mouseY, int mouseButton) {
+        if (RenderUtils.hover(x, y, mouseX, mouseY, defaultWidth, moduleHeight) && RenderUtils.hover(owner.getX(), owner.getY(), mouseX, mouseY, defaultWidth, owner.getHeight())) {
+            switch (mouseButton) {
                 case 0:
                     module.toggle();
                     break;
@@ -120,9 +130,10 @@ public class FrameModule implements Priority {
             return true;
         }
 
-        if(RenderUtils.hover(owner.getX(), owner.getY(), mouseX, mouseY, defaultWidth, owner.getHeight()) && opened) {
+        if (RenderUtils.hover(owner.getX(), owner.getY(), mouseX, mouseY, defaultWidth, owner.getHeight()) && opened) {
             for (Component component : this.components) {
-                if(component.mouseClicked(mouseX, mouseY, mouseButton))
+                if (component.isHidden()) continue;
+                if (component.mouseClicked(mouseX, mouseY, mouseButton))
                     return true;
             }
         }
@@ -132,10 +143,11 @@ public class FrameModule implements Priority {
 
     public int getOffset() {
         offset = 0;
-        if(opened) {
+        if (opened) {
             for (Component component : this.components) { // using for loop because continue isn't supported on foreach
                 //component.getSetting().constantCheck();
                 //if(component.getSetting().isHide()) continue;
+                if (component.isHidden()) continue;
 
                 offset += component.getOffset();
             }
@@ -153,6 +165,7 @@ public class FrameModule implements Priority {
             } else {
                 module.setKeyBind(keycode);
                 ChatUtil.log(module.getName() + "'s keycode is now " + Keyboard.getKeyName(keycode));
+                listening = false;
             }
         }
     }

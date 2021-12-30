@@ -5,6 +5,7 @@ import me.kansio.client.property.Value;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -16,6 +17,26 @@ public final class ModeValue extends Value<String> {
     public ModeValue(String name, Object owner, String... values) {
         super(name, owner, values[0]);
         choices = Arrays.asList(values);
+        choicesLowerCase = new ArrayList<>();
+        for (String choice : values) {
+            choicesLowerCase.add(choice.toLowerCase());
+        }
+    }
+
+    public ModeValue(String name, Object owner, ModeValue parent, String mode, String... values) {
+        super(name, owner, values[0], parent, mode);
+        choices = new ArrayList<>();
+        Collections.addAll(choices, values);
+        choicesLowerCase = new ArrayList<>();
+        for (String choice : values) {
+            choicesLowerCase.add(choice.toLowerCase());
+        }
+    }
+
+    public ModeValue(String name, Object owner, BooleanValue parent, String... values) {
+        super(name, owner, values[0], parent);
+        choices = new ArrayList<>();
+        Collections.addAll(choices, values);
         choicesLowerCase = new ArrayList<>();
         for (String choice : values) {
             choicesLowerCase.add(choice.toLowerCase());
