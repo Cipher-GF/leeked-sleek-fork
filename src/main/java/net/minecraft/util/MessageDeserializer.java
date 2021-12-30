@@ -10,15 +10,11 @@ import net.minecraft.network.EnumPacketDirection;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.PacketBuffer;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.Marker;
-import org.apache.logging.log4j.MarkerManager;
+import org.tinylog.Logger;
+
 
 public class MessageDeserializer extends ByteToMessageDecoder
 {
-    private static final Logger logger = LogManager.getLogger();
-    private static final Marker RECEIVED_PACKET_MARKER = MarkerManager.getMarker("PACKET_RECEIVED", NetworkManager.logMarkerPackets);
     private final EnumPacketDirection direction;
 
     public MessageDeserializer(EnumPacketDirection direction)
@@ -50,9 +46,9 @@ public class MessageDeserializer extends ByteToMessageDecoder
                 {
                     p_decode_3_.add(packet);
 
-                    if (logger.isDebugEnabled())
+                    if (Logger.isDebugEnabled())
                     {
-                        logger.debug(RECEIVED_PACKET_MARKER, " IN: [{}:{}] {}", new Object[] {p_decode_1_.channel().attr(NetworkManager.attrKeyConnectionState).get(), Integer.valueOf(i), packet.getClass().getName()});
+                        //Logger.debug("PACKET_RECEIVED IN: [{}:{}] {}", new Object[] {p_decode_1_.channel().attr(NetworkManager.attrKeyConnectionState).get(), Integer.valueOf(i), packet.getClass().getName()});
                     }
                 }
             }

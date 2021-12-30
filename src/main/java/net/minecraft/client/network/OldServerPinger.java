@@ -40,13 +40,13 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.IChatComponent;
 import net.minecraft.util.MathHelper;
 import org.apache.commons.lang3.ArrayUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+
 
 public class OldServerPinger
 {
     private static final Splitter PING_RESPONSE_SPLITTER = Splitter.on('\u0000').limit(6);
-    private static final Logger logger = LogManager.getLogger();
+    
     private final List<NetworkManager> pingDestinations = Collections.<NetworkManager>synchronizedList(Lists.<NetworkManager>newArrayList());
 
     public void ping(final ServerData server) throws UnknownHostException
@@ -139,7 +139,7 @@ public class OldServerPinger
                         }
                         else
                         {
-                            OldServerPinger.logger.error("Invalid server icon (unknown format)");
+                            org.tinylog.Logger.error("Invalid server icon (unknown format)");
                         }
                     }
                     else
@@ -163,7 +163,7 @@ public class OldServerPinger
             {
                 if (!this.field_147403_d)
                 {
-                    OldServerPinger.logger.error("Can\'t ping " + server.serverIP + ": " + reason.getUnformattedText());
+                    org.tinylog.Logger.error("Can\'t ping " + server.serverIP + ": " + reason.getUnformattedText());
                     server.serverMOTD = EnumChatFormatting.DARK_RED + "Can\'t connect to server.";
                     server.populationInfo = "";
                     OldServerPinger.this.tryCompatibilityPing(server);
@@ -178,7 +178,7 @@ public class OldServerPinger
         }
         catch (Throwable throwable)
         {
-            logger.error((Object)throwable);
+            org.tinylog.Logger.error((Object)throwable);
         }
     }
 

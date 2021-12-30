@@ -5,12 +5,12 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTTagString;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.WorldSavedData;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.tinylog.Logger;
+
 
 public class ScoreboardSaveData extends WorldSavedData
 {
-    private static final Logger logger = LogManager.getLogger();
+    
     private Scoreboard theScoreboard;
     private NBTTagCompound delayedInitNbt;
 
@@ -198,7 +198,7 @@ public class ScoreboardSaveData extends WorldSavedData
     {
         if (this.theScoreboard == null)
         {
-            logger.warn("Tried to save scoreboard without having a scoreboard...");
+            Logger.warn("Tried to save scoreboard without having a scoreboard...");
         }
         else
         {

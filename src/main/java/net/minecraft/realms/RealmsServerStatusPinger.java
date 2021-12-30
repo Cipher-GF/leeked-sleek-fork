@@ -19,12 +19,12 @@ import net.minecraft.network.status.server.S01PacketPong;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.IChatComponent;
 import org.apache.commons.lang3.ArrayUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+
 
 public class RealmsServerStatusPinger
 {
-    private static final Logger LOGGER = LogManager.getLogger();
+    
     private final List<NetworkManager> connections = Collections.<NetworkManager>synchronizedList(Lists.<NetworkManager>newArrayList());
 
     public void pingServer(final String p_pingServer_1_, final RealmsServerPing p_pingServer_2_) throws UnknownHostException
@@ -88,7 +88,7 @@ public class RealmsServerStatusPinger
                 {
                     if (!this.field_154345_e)
                     {
-                        RealmsServerStatusPinger.LOGGER.error("Can\'t ping " + p_pingServer_1_ + ": " + reason.getUnformattedText());
+                        org.tinylog.Logger.error("Can\'t ping " + p_pingServer_1_ + ": " + reason.getUnformattedText());
                     }
                 }
             });
@@ -100,7 +100,7 @@ public class RealmsServerStatusPinger
             }
             catch (Throwable throwable)
             {
-                LOGGER.error((Object)throwable);
+                org.tinylog.Logger.error((Object)throwable);
             }
         }
     }

@@ -32,12 +32,12 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.chunk.storage.ExtendedBlockStorage;
 import net.minecraft.world.gen.ChunkProviderDebug;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.tinylog.Logger;
+
 
 public class Chunk
 {
-    private static final Logger logger = LogManager.getLogger();
+    
 
     /**
      * Used to store block IDs, block MSBs, Sky-light maps, Block-light maps, and metadata. Each entry corresponds to a
@@ -852,7 +852,7 @@ public class Chunk
 
         if (i != this.xPosition || j != this.zPosition)
         {
-            logger.warn("Wrong location! (" + i + ", " + j + ") should be (" + this.xPosition + ", " + this.zPosition + "), " + entityIn, new Object[] {entityIn});
+            Logger.warn("Wrong location! (" + i + ", " + j + ") should be (" + this.xPosition + ", " + this.zPosition + "), " + entityIn, new Object[] {entityIn});
             entityIn.setDead();
         }
 
@@ -1290,7 +1290,7 @@ public class Chunk
     {
         if (this.storageArrays.length != newStorageArrays.length)
         {
-            logger.warn("Could not set level chunk sections, array length is " + newStorageArrays.length + " instead of " + this.storageArrays.length);
+            Logger.warn("Could not set level chunk sections, array length is " + newStorageArrays.length + " instead of " + this.storageArrays.length);
         }
         else
         {
@@ -1412,7 +1412,7 @@ public class Chunk
     {
         if (this.blockBiomeArray.length != biomeArray.length)
         {
-            logger.warn("Could not set level chunk biomes, array length is " + biomeArray.length + " instead of " + this.blockBiomeArray.length);
+            Logger.warn("Could not set level chunk biomes, array length is " + biomeArray.length + " instead of " + this.blockBiomeArray.length);
         }
         else
         {
@@ -1626,7 +1626,7 @@ public class Chunk
     {
         if (this.heightMap.length != newHeightMap.length)
         {
-            logger.warn("Could not set level chunk heightmap, array length is " + newHeightMap.length + " instead of " + this.heightMap.length);
+            Logger.warn("Could not set level chunk heightmap, array length is " + newHeightMap.length + " instead of " + this.heightMap.length);
         }
         else
         {

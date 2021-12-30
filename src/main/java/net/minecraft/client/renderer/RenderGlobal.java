@@ -101,19 +101,17 @@ import optifine.RandomMobs;
 import optifine.Reflector;
 import optifine.RenderInfoLazy;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.vector.Vector3f;
 import org.lwjgl.util.vector.Vector4f;
+import org.tinylog.Logger;
 import shadersmod.client.Shaders;
 import shadersmod.client.ShadersRender;
 import shadersmod.client.ShadowUtils;
 
 public class RenderGlobal implements IWorldAccess, IResourceManagerReloadListener
 {
-    private static final Logger logger = LogManager.getLogger();
     private static final ResourceLocation locationMoonPhasesPng = new ResourceLocation("textures/environment/moon_phases.png");
     private static final ResourceLocation locationSunPng = new ResourceLocation("textures/environment/sun.png");
     private static final ResourceLocation locationCloudsPng = new ResourceLocation("textures/environment/clouds.png");
@@ -288,13 +286,13 @@ public class RenderGlobal implements IWorldAccess, IResourceManagerReloadListene
             }
             catch (IOException ioexception)
             {
-                logger.warn((String)("Failed to load shader: " + resourcelocation), (Throwable)ioexception);
+                Logger.warn("Failed to load shader: " + resourcelocation, ioexception);
                 this.entityOutlineShader = null;
                 this.entityOutlineFramebuffer = null;
             }
             catch (JsonSyntaxException jsonsyntaxexception)
             {
-                logger.warn((String)("Failed to load shader: " + resourcelocation), (Throwable)jsonsyntaxexception);
+                Logger.warn("Failed to load shader: " + resourcelocation, jsonsyntaxexception);
                 this.entityOutlineShader = null;
                 this.entityOutlineFramebuffer = null;
             }

@@ -2,6 +2,7 @@ package me.kansio.client.modules.impl.combat;
 
 import dorkbox.messageBus.annotations.Subscribe;
 import me.kansio.client.event.impl.PacketEvent;
+import me.kansio.client.event.impl.RenderOverlayEvent;
 import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.impl.Module;
@@ -9,27 +10,24 @@ import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.ModeValue;
 import me.kansio.client.property.value.NumberValue;
 import me.kansio.client.utils.Stopwatch;
+import me.kansio.client.utils.chat.ChatUtil;
 import me.kansio.client.utils.combat.FightUtil;
 import me.kansio.client.utils.math.MathUtil;
 import me.kansio.client.utils.network.PacketUtil;
 import me.kansio.client.utils.rotations.AimUtil;
 import me.kansio.client.utils.rotations.Rotation;
-import me.kansio.client.utils.rotations.RotationUtil;
-import net.minecraft.block.BlockAir;
+import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.item.EntityArmorStand;
-import net.minecraft.entity.monster.EntityMob;
-import net.minecraft.entity.passive.EntityVillager;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.network.play.client.*;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import org.apache.commons.lang3.RandomUtils;
 import org.lwjgl.input.Keyboard;
@@ -47,10 +45,10 @@ public class KillAura extends Module {
                 mode, rotation, targetPriority, crackType, autoblockMode, swingMode,
 
                 //sliders:
-                reach, crackSize, cps, rand, smoothness,
+                reach, crackSize, cps, rand,
 
                 //booleans
-                crack, randomizeCps, doAim, silent, minecraftRotation, keepSprint, block, players, animals, walls, monsters, sleeping, invisible, teleportReach, blood, gcd, allowInInventory, autoF5
+                crack, randomizeCps, keepSprint, block, players, animals, walls, monsters, invisible, teleportReach, blood, bloodsound, gcd, allowInInventory, autoF5
         );
     }
 
@@ -64,23 +62,24 @@ public class KillAura extends Module {
     public NumberValue<Double> cps = new NumberValue<>("CPS", this, 12.0, 1.0, 20.0, 1.0);
     public BooleanValue randomizeCps = new BooleanValue("Randomize CPS", this, true);
     public NumberValue<Double> rand = new NumberValue<>("Randomize", this, 3.0, 1.0, 10.0, 1.0, randomizeCps);
-    public BooleanValue doAim = new BooleanValue("Rotate", this, true);
+    //public BooleanValue doAim = new BooleanValue("Rotate", this, true);
     public NumberValue<Double> reach = new NumberValue<>("Attack Range", this, 4.5, 2.5, 9.0, 0.1);
     public NumberValue<Double> blockRange = new NumberValue<>("Block Range", this, 3.0, 1.0, 12.0, 0.1);
-    public NumberValue<Integer> smoothness = new NumberValue<>("Smoothness", this, 5, 0, 100, 1);
-    public BooleanValue rayCheck = new BooleanValue("Ray Check", this, true);
+    //public NumberValue<Integer> smoothness = new NumberValue<>("Smoothness", this, 5, 0, 100, 1);
+    //public BooleanValue rayCheck = new BooleanValue("Ray Check", this, true);
     public BooleanValue block = new BooleanValue("Auto Block", this, true);
     public BooleanValue players = new BooleanValue("Players", this, true);
     public BooleanValue monsters = new BooleanValue("Monsters", this, true);
     public BooleanValue animals = new BooleanValue("Animals", this, true);
     public BooleanValue walls = new BooleanValue("Animals", this, true);
-    public BooleanValue sleeping = new BooleanValue("Sleeping", this, false);
+    //public BooleanValue sleeping = new BooleanValue("Sleeping", this, false);
     public BooleanValue invisible = new BooleanValue("Invisibles", this, true);
-    public BooleanValue silent = new BooleanValue("Silent", this, true);
+    //public BooleanValue silent = new BooleanValue("Silent", this, true);
     public BooleanValue keepSprint = new BooleanValue("Keep Sprint", this, false);
-    public BooleanValue minecraftRotation = new BooleanValue("Minecraft Rotation", this, true);
+    //public BooleanValue minecraftRotation = new BooleanValue("Minecraft Rotation", this, true);
     public BooleanValue crack = new BooleanValue("Crack", this, false);
     public BooleanValue blood = new BooleanValue("Blood Particles", this, false);
+    public BooleanValue bloodsound = new BooleanValue("Blood Sound", this, false, blood);
     public BooleanValue teleportReach = new BooleanValue("Teleport Reach", this, false);
     public BooleanValue gcd = new BooleanValue("GCD", this, false);
     public BooleanValue autoF5 = new BooleanValue("Auto F5", this, false);
@@ -158,8 +157,8 @@ public class KillAura extends Module {
 
         if (entities.isEmpty()) {
             index = 0;
-            
-            if (isBlocking && !autoblockMode.getValue().toLowerCase(Locale.ROOT).equals("real")) {
+
+            if (isBlocking && !autoblockMode.getValue().equalsIgnoreCase("real")) {
                 unblock();
             }
         } else {
@@ -254,95 +253,6 @@ public class KillAura extends Module {
     }
 
 
-    public EntityLivingBase findTarget() {
-        EntityLivingBase currentTarget = null;
-
-        double currentDistance = 0;
-        for (Entity entity : mc.theWorld.loadedEntityList) {
-            if (entity != null) {
-                if (!this.isEntityValid(entity)) continue;
-                if (!(entity instanceof EntityLivingBase)) continue;
-                EntityLivingBase target = (EntityLivingBase) entity;
-                if (currentTarget != null) {
-                    switch (targetPriority.getValue()) {
-                        case "Health": {
-                            if (target.getHealth() > currentTarget.getHealth()) currentTarget = target;
-                            break;
-                        }
-                        case "Distance": {
-                            if (target.getDistanceToEntity(mc.thePlayer) < currentDistance) {
-                                currentTarget = target;
-                                currentDistance = currentTarget.getDistanceToEntity(mc.thePlayer);
-                            }
-                            break;
-                        }
-                        case "Armor": {
-                            if (target.getTotalArmorValue() < currentTarget.getTotalArmorValue())
-                                currentTarget = target;
-                            break;
-                        }
-                        default:
-                            return target;
-                    }
-                    ;
-                } else {
-                    currentTarget = target;
-                    if (targetPriority.getValue().equalsIgnoreCase("Distance")) //So we don't unnecessary do distance checks
-                        currentDistance = currentTarget.getDistanceToEntity(mc.thePlayer);
-                }
-            }
-        }
-
-        return currentTarget;
-    }
-
-    private boolean isEntityValid(Entity entity) {
-        if (mc.thePlayer.isEntityEqual(entity)) return false;
-
-        if (mc.thePlayer.getDistanceToEntity(entity) >= reach.getValue()) return false;
-
-        if (!(entity instanceof EntityLivingBase))
-            return false;
-
-        if (!sleeping.getValue() && ((EntityLivingBase) entity).isPlayerSleeping())
-            return false;
-
-        if (entity.isInvisible() && !invisible.getValue())
-            return false;
-
-        if (entity instanceof EntityArmorStand)
-            return false;
-
-        if (entity.getName().equalsIgnoreCase("UPGRADES") || entity.getName().equalsIgnoreCase("SHOP"))
-            return false;
-
-        if (entity.isInvisible() && !invisible.getValue())
-            return false;
-
-        if (!monsters.getValue() && (entity instanceof EntityMob || entity instanceof EntityVillager))
-            return false;
-
-        return monsters.getValue() || entity instanceof EntityPlayer;
-    }
-
-    public boolean sendUseItem() {
-        if (autoblockMode.getValue().equalsIgnoreCase("Real") && block.getValue()) {
-            if (block.getValue() && mc.thePlayer.getHeldItem() != null && mc.thePlayer.getHeldItem().getItem() instanceof ItemSword) {
-                mc.playerController.syncCurrentPlayItem();
-                mc.getNetHandler().addToSendQueue(new C08PacketPlayerBlockPlacement(mc.thePlayer.getHeldItem()));
-                ItemStack itemstack = mc.thePlayer.getHeldItem().useItemRightClick(mc.theWorld, mc.thePlayer);
-                if (itemstack != mc.thePlayer.getHeldItem() || itemstack != null) {
-                    mc.thePlayer.inventory.mainInventory[mc.thePlayer.inventory.currentItem] = itemstack;
-                    if (itemstack.stackSize == 0)
-                        mc.thePlayer.inventory.mainInventory[mc.thePlayer.inventory.currentItem] = null;
-                }
-                return true;
-            }
-            return false;
-        }
-        return false;
-    }
-
     public void doCritical() {
         //DoCriticalEvent criticalEvent = new DoCriticalEvent();
         //Sulfur.getInstance().getEventBus().post(criticalEvent);
@@ -362,7 +272,9 @@ public class KillAura extends Module {
 
     private boolean attack(EntityLivingBase entity, double chance, String blockMode) {
         if (FightUtil.canHit(chance / 100)) {
-            mc.thePlayer.swingItem();
+            if (swingMode.getValue().equals("Attack")) {
+                mc.thePlayer.swingItem();
+            }
 
             if (keepSprint.getValue()) {
                 PacketUtil.sendPacket(new C0BPacketEntityAction(mc.thePlayer, C0BPacketEntityAction.Action.STOP_SPRINTING));
@@ -370,6 +282,10 @@ public class KillAura extends Module {
                 PacketUtil.sendPacket(new C0BPacketEntityAction(mc.thePlayer, C0BPacketEntityAction.Action.START_SPRINTING));
             } else {
                 PacketUtil.sendPacket(new C02PacketUseEntity(entity, C02PacketUseEntity.Action.ATTACK));
+            }
+            doCritical();
+            if (blood.getValue()) {
+                doBlood(bloodsound.getValue(), target);
             }
 
             if ((blockMode.equalsIgnoreCase("real") && canBlock)) {
@@ -382,6 +298,28 @@ public class KillAura extends Module {
         }
         return false;
     }
+
+    private void doBlood(boolean sound, EntityLivingBase target) {
+
+        double x, y, z;
+        x = target.posX;
+        y = target.posY;
+        z = target.posZ;
+
+        if (sound) {
+            mc.getSoundHandler().playSound(PositionedSoundRecord.create(new ResourceLocation("dig.stone"), (float) x, (float) y, (float) z));
+        }
+
+        if (blood.getValue()) {
+            for (int i = 0; i < this.crackSize.getValue(); i++) {
+                World targetWorld = target.getEntityWorld();
+
+                targetWorld.spawnParticle(EnumParticleTypes.BLOCK_CRACK, x + MathUtil.getRandomInRange(-0.5, 0.5), y + MathUtil.getRandomInRange(-1, 1), z + MathUtil.getRandomInRange(-0.5, 0.5), 23, 23, 23, 152);
+            }
+        }
+
+    }
+
 
     public void aimAtTarget(UpdateEvent event, String mode, Entity target) {
         Rotation rotation = AimUtil.getRotationsRandom((EntityLivingBase) target);
@@ -439,6 +377,14 @@ public class KillAura extends Module {
             p.pitch -= p.pitch % gcd;
             p.yaw -= p.yaw % gcd;
         }
+    }
+
+    @Subscribe
+    public void onRender(RenderOverlayEvent event) {
+        if (target == null) {
+            return;
+        }
+        TargetHUD.draw(event, target);
     }
 
     public void blockHit(Entity target) {

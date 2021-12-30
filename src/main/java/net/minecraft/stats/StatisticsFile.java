@@ -20,12 +20,12 @@ import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.IJsonSerializable;
 import net.minecraft.util.TupleIntJsonSerializable;
 import org.apache.commons.io.FileUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.tinylog.Logger;
+
 
 public class StatisticsFile extends StatFileWriter
 {
-    private static final Logger logger = LogManager.getLogger();
+    
     private final MinecraftServer mcServer;
     private final File statsFile;
     private final Set<StatBase> field_150888_e = Sets.<StatBase>newHashSet();
@@ -49,11 +49,11 @@ public class StatisticsFile extends StatFileWriter
             }
             catch (IOException ioexception)
             {
-                logger.error((String)("Couldn\'t read statistics file " + this.statsFile), (Throwable)ioexception);
+                Logger.error((String)("Couldn\'t read statistics file " + this.statsFile), (Throwable)ioexception);
             }
             catch (JsonParseException jsonparseexception)
             {
-                logger.error((String)("Couldn\'t parse statistics file " + this.statsFile), (Throwable)jsonparseexception);
+                Logger.error((String)("Couldn\'t parse statistics file " + this.statsFile), (Throwable)jsonparseexception);
             }
         }
     }
@@ -66,7 +66,7 @@ public class StatisticsFile extends StatFileWriter
         }
         catch (IOException ioexception)
         {
-            logger.error((String)"Couldn\'t save stats", (Throwable)ioexception);
+            Logger.error((String)"Couldn\'t save stats", (Throwable)ioexception);
         }
     }
 
@@ -153,7 +153,7 @@ public class StatisticsFile extends StatFileWriter
                             }
                             catch (Throwable throwable)
                             {
-                                logger.warn("Invalid statistic progress in " + this.statsFile, throwable);
+                                Logger.warn("Invalid statistic progress in " + this.statsFile, throwable);
                             }
                         }
                     }
@@ -162,7 +162,7 @@ public class StatisticsFile extends StatFileWriter
                 }
                 else
                 {
-                    logger.warn("Invalid statistic in " + this.statsFile + ": Don\'t know what " + (String)entry.getKey() + " is");
+                    Logger.warn("Invalid statistic in " + this.statsFile + ": Don\'t know what " + (String)entry.getKey() + " is");
                 }
             }
 
@@ -187,7 +187,7 @@ public class StatisticsFile extends StatFileWriter
                 }
                 catch (Throwable throwable)
                 {
-                    logger.warn("Couldn\'t save statistic " + ((StatBase)entry.getKey()).getStatName() + ": error serializing progress", throwable);
+                    Logger.warn("Couldn\'t save statistic " + ((StatBase)entry.getKey()).getStatName() + ": error serializing progress", throwable);
                 }
 
                 jsonobject.add(((StatBase)entry.getKey()).statId, jsonobject1);

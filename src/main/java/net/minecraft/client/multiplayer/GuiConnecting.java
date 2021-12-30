@@ -16,13 +16,13 @@ import net.minecraft.network.handshake.client.C00Handshake;
 import net.minecraft.network.login.client.C00PacketLoginStart;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.ChatComponentTranslation;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+
 
 public class GuiConnecting extends GuiScreen
 {
     private static final AtomicInteger CONNECTION_ID = new AtomicInteger(0);
-    private static final Logger logger = LogManager.getLogger();
+    
     private NetworkManager networkManager;
     private boolean cancel;
     private final GuiScreen previousGuiScreen;
@@ -47,7 +47,7 @@ public class GuiConnecting extends GuiScreen
 
     private void connect(final String ip, final int port)
     {
-        logger.info("Connecting to " + ip + ", " + port);
+        org.tinylog.Logger.info("Connecting to " + ip + ", " + port);
         (new Thread("Server Connector #" + CONNECTION_ID.incrementAndGet())
         {
             public void run()
@@ -74,7 +74,7 @@ public class GuiConnecting extends GuiScreen
                         return;
                     }
 
-                    GuiConnecting.logger.error((String)"Couldn\'t connect to server", (Throwable)unknownhostexception);
+                    org.tinylog.Logger.error((String)"Couldn\'t connect to server", (Throwable)unknownhostexception);
                     GuiConnecting.this.mc.displayGuiScreen(new GuiDisconnected(GuiConnecting.this.previousGuiScreen, "connect.failed", new ChatComponentTranslation("disconnect.genericReason", new Object[] {"Unknown host"})));
                 }
                 catch (Exception exception)
@@ -84,7 +84,7 @@ public class GuiConnecting extends GuiScreen
                         return;
                     }
 
-                    GuiConnecting.logger.error((String)"Couldn\'t connect to server", (Throwable)exception);
+                    org.tinylog.Logger.error((String)"Couldn\'t connect to server", (Throwable)exception);
                     String s = exception.toString();
 
                     if (inetaddress != null)

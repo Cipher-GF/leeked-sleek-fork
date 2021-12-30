@@ -19,12 +19,12 @@ import net.minecraft.client.renderer.texture.TextureUtil;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
 import org.apache.commons.lang3.Validate;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+
 
 public class ServerListEntryNormal implements GuiListExtended.IGuiListEntry
 {
-    private static final Logger logger = LogManager.getLogger();
+    
     private static final ThreadPoolExecutor field_148302_b = new ScheduledThreadPoolExecutor(5, (new ThreadFactoryBuilder()).setNameFormat("Server Pinger #%d").setDaemon(true).build());
     private static final ResourceLocation UNKNOWN_SERVER = new ResourceLocation("textures/misc/unknown_server.png");
     private static final ResourceLocation SERVER_SELECTION_BUTTONS = new ResourceLocation("textures/gui/server_selection.png");
@@ -264,7 +264,7 @@ public class ServerListEntryNormal implements GuiListExtended.IGuiListEntry
                 }
                 catch (Throwable throwable)
                 {
-                    logger.error("Invalid icon for server " + this.field_148301_e.serverName + " (" + this.field_148301_e.serverIP + ")", throwable);
+                    org.tinylog.Logger.error("Invalid icon for server " + this.field_148301_e.serverName + " (" + this.field_148301_e.serverIP + ")", throwable);
                     this.field_148301_e.setBase64EncodedIconData((String)null);
                 }
                 finally

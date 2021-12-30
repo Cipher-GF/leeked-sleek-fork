@@ -9,12 +9,12 @@ import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.ai.attributes.RangedAttribute;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+
 
 public class SharedMonsterAttributes
 {
-    private static final Logger logger = LogManager.getLogger();
+    
     public static final IAttribute maxHealth = (new RangedAttribute((IAttribute)null, "generic.maxHealth", 20.0D, 0.0D, 1024.0D)).setDescription("Max Health").setShouldWatch(true);
     public static final IAttribute followRange = (new RangedAttribute((IAttribute)null, "generic.followRange", 32.0D, 0.0D, 2048.0D)).setDescription("Follow Range");
     public static final IAttribute knockbackResistance = (new RangedAttribute((IAttribute)null, "generic.knockbackResistance", 0.0D, 0.0D, 1.0D)).setDescription("Knockback Resistance");
@@ -92,7 +92,7 @@ public class SharedMonsterAttributes
             }
             else
             {
-                logger.warn("Ignoring unknown attribute \'" + nbttagcompound.getString("Name") + "\'");
+                org.tinylog.Logger.warn("Ignoring unknown attribute \'" + nbttagcompound.getString("Name") + "\'");
             }
         }
     }
@@ -137,7 +137,7 @@ public class SharedMonsterAttributes
         }
         catch (Exception exception)
         {
-            logger.warn("Unable to create attribute: " + exception.getMessage());
+            org.tinylog.Logger.warn("Unable to create attribute: " + exception.getMessage());
             return null;
         }
     }

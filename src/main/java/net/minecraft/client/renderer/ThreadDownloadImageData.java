@@ -21,12 +21,12 @@ import optifine.HttpRequest;
 import optifine.HttpResponse;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+
 
 public class ThreadDownloadImageData extends SimpleTexture
 {
-    private static final Logger logger = LogManager.getLogger();
+    
     private static final AtomicInteger threadDownloadCounter = new AtomicInteger(0);
     private final File cacheFile;
     private final String imageUrl;
@@ -90,7 +90,7 @@ public class ThreadDownloadImageData extends SimpleTexture
         {
             if (this.cacheFile != null && this.cacheFile.isFile())
             {
-                logger.debug("Loading http texture from local cache ({})", new Object[] {this.cacheFile});
+                org.tinylog.Logger.debug("Loading http texture from local cache ({})", new Object[] {this.cacheFile});
 
                 try
                 {
@@ -105,7 +105,7 @@ public class ThreadDownloadImageData extends SimpleTexture
                 }
                 catch (IOException ioexception)
                 {
-                    logger.error((String)("Couldn\'t load skin " + this.cacheFile), (Throwable)ioexception);
+                    org.tinylog.Logger.error((String)("Couldn\'t load skin " + this.cacheFile), (Throwable)ioexception);
                     this.loadTextureFromServer();
                 }
             }
@@ -124,7 +124,7 @@ public class ThreadDownloadImageData extends SimpleTexture
             public void run()
             {
                 HttpURLConnection httpurlconnection = null;
-                ThreadDownloadImageData.logger.debug("Downloading http texture from {} to {}", new Object[] {ThreadDownloadImageData.this.imageUrl, ThreadDownloadImageData.this.cacheFile});
+                //org.tinylog.Logger.debug("Downloading http texture from {} to {}", new Object[] {ThreadDownloadImageData.this.imageUrl, ThreadDownloadImageData.this.cacheFile});
 
                 if (ThreadDownloadImageData.this.shouldPipeline())
                 {
@@ -170,7 +170,7 @@ public class ThreadDownloadImageData extends SimpleTexture
                     }
                     catch (Exception exception)
                     {
-                        ThreadDownloadImageData.logger.error("Couldn\'t download http texture: " + exception.getClass().getName() + ": " + exception.getMessage());
+                        org.tinylog.Logger.error("Couldn\'t download http texture: " + exception.getClass().getName() + ": " + exception.getMessage());
                         return;
                     }
                     finally
@@ -237,7 +237,7 @@ public class ThreadDownloadImageData extends SimpleTexture
         }
         catch (Exception exception)
         {
-            logger.error("Couldn\'t download http texture: " + exception.getClass().getName() + ": " + exception.getMessage());
+            org.tinylog.Logger.error("Couldn\'t download http texture: " + exception.getClass().getName() + ": " + exception.getMessage());
             return;
         }
         finally

@@ -14,12 +14,12 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.tinylog.Logger;
+
 
 public class EntityItem extends Entity
 {
-    private static final Logger logger = LogManager.getLogger();
+    
 
     /**
      * The age of this EntityItem (used to animate it up and down as well as expire it)
@@ -460,7 +460,7 @@ public class EntityItem extends Entity
         {
             if (this.worldObj != null)
             {
-                logger.error("Item entity " + this.getEntityId() + " has no item?!");
+                Logger.error("Item entity " + this.getEntityId() + " has no item?!");
             }
 
             return new ItemStack(Blocks.stone);

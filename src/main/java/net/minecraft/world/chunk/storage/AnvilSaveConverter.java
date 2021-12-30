@@ -22,12 +22,12 @@ import net.minecraft.world.storage.SaveFormatComparator;
 import net.minecraft.world.storage.SaveFormatOld;
 import net.minecraft.world.storage.WorldInfo;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+
 
 public class AnvilSaveConverter extends SaveFormatOld
 {
-    private static final Logger logger = LogManager.getLogger();
+    
 
     public AnvilSaveConverter(File p_i2144_1_)
     {
@@ -125,7 +125,7 @@ public class AnvilSaveConverter extends SaveFormatOld
         File file1 = new File(this.savesDirectory, filename);
         File file2 = new File(file1, "DIM-1");
         File file3 = new File(file1, "DIM1");
-        logger.info("Scanning folders...");
+        org.tinylog.Logger.info("Scanning folders...");
         this.addRegionFilesToCollection(file1, list);
 
         if (file2.exists())
@@ -139,7 +139,7 @@ public class AnvilSaveConverter extends SaveFormatOld
         }
 
         int i = list.size() + list1.size() + list2.size();
-        logger.info("Total conversion count is " + i);
+        org.tinylog.Logger.info("Total conversion count is " + i);
         WorldInfo worldinfo = this.getWorldInfo(filename);
         WorldChunkManager worldchunkmanager = null;
 
@@ -177,7 +177,7 @@ public class AnvilSaveConverter extends SaveFormatOld
 
         if (!file1.exists())
         {
-            logger.warn("Unable to create level.dat_mcr backup");
+            org.tinylog.Logger.warn("Unable to create level.dat_mcr backup");
         }
         else
         {
@@ -185,7 +185,7 @@ public class AnvilSaveConverter extends SaveFormatOld
 
             if (!file2.exists())
             {
-                logger.warn("Unable to create level.dat_mcr backup");
+                org.tinylog.Logger.warn("Unable to create level.dat_mcr backup");
             }
             else
             {
@@ -193,7 +193,7 @@ public class AnvilSaveConverter extends SaveFormatOld
 
                 if (!file2.renameTo(file3))
                 {
-                    logger.warn("Unable to create level.dat_mcr backup");
+                    org.tinylog.Logger.warn("Unable to create level.dat_mcr backup");
                 }
             }
         }
@@ -231,7 +231,7 @@ public class AnvilSaveConverter extends SaveFormatOld
 
                         if (datainputstream == null)
                         {
-                            logger.warn("Failed to fetch input stream");
+                            org.tinylog.Logger.warn("Failed to fetch input stream");
                         }
                         else
                         {

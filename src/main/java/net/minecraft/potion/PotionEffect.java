@@ -2,12 +2,12 @@ package net.minecraft.potion;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.nbt.NBTTagCompound;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.tinylog.Logger;
+
 
 public class PotionEffect
 {
-    private static final Logger LOGGER = LogManager.getLogger();
+    
 
     /** ID value of the potion this effect matches. */
     private int potionID;
@@ -64,7 +64,7 @@ public class PotionEffect
     {
         if (this.potionID != other.potionID)
         {
-            LOGGER.warn("This method should only be called for matching effects!");
+            Logger.warn("This method should only be called for matching effects!");
         }
 
         if (other.amplifier > this.amplifier)

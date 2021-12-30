@@ -45,8 +45,8 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.WorldServer;
 import org.apache.commons.io.IOUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+
 import org.lwjgl.LWJGLException;
 import org.lwjgl.Sys;
 import org.lwjgl.opengl.Display;
@@ -93,7 +93,7 @@ public class Config
     private static boolean desktopModeChecked = false;
     private static DefaultResourcePack defaultResourcePackLazy = null;
     public static final Float DEF_ALPHA_FUNC_LEVEL = Float.valueOf(0.1F);
-    private static final Logger LOGGER = LogManager.getLogger();
+    
 
     public static String getVersion()
     {
@@ -532,17 +532,17 @@ public class Config
 
     public static void dbg(String p_dbg_0_)
     {
-        LOGGER.info("[OptiFine] " + p_dbg_0_);
+        org.tinylog.Logger.info("[OptiFine] " + p_dbg_0_);
     }
 
     public static void warn(String p_warn_0_)
     {
-        LOGGER.warn("[OptiFine] " + p_warn_0_);
+        org.tinylog.Logger.warn("[OptiFine] " + p_warn_0_);
     }
 
     public static void error(String p_error_0_)
     {
-        LOGGER.error("[OptiFine] " + p_error_0_);
+        org.tinylog.Logger.error("[OptiFine] " + p_error_0_);
     }
 
     public static void log(String p_log_0_)

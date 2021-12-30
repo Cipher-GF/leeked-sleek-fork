@@ -20,12 +20,12 @@ import net.minecraft.client.util.JsonException;
 import net.minecraft.util.JsonUtils;
 import net.minecraft.util.ResourceLocation;
 import org.apache.commons.io.IOUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.tinylog.Logger;
+
 
 public class ShaderManager
 {
-    private static final Logger logger = LogManager.getLogger();
+    
     private static final ShaderDefault defaultShaderUniform = new ShaderDefault();
     private static ShaderManager staticShaderManager = null;
     private static int currentProgram = -1;
@@ -280,7 +280,7 @@ public class ShaderManager
 
             if (k == -1)
             {
-                logger.warn("Shader " + this.programFilename + "could not find sampler named " + s + " in the specified shader program.");
+                Logger.warn("Shader " + this.programFilename + "could not find sampler named " + s + " in the specified shader program.");
                 this.shaderSamplers.remove(s);
                 this.samplerNames.remove(j);
                 --j;
@@ -300,7 +300,7 @@ public class ShaderManager
 
             if (l == -1)
             {
-                logger.warn("Could not find uniform named " + s1 + " in the specified" + " shader program.");
+                Logger.warn("Could not find uniform named " + s1 + " in the specified" + " shader program.");
             }
             else
             {

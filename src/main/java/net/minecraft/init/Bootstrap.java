@@ -49,8 +49,8 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.LoggingPrintStream;
 import net.minecraft.util.StringUtils;
 import net.minecraft.world.World;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+
 
 public class Bootstrap
 {
@@ -58,7 +58,7 @@ public class Bootstrap
 
     /** Whether the blocks, items, etc have already been registered */
     private static boolean alreadyRegistered = false;
-    private static final Logger LOGGER = LogManager.getLogger();
+    
 
     /**
      * Is Bootstrap registration already done?
@@ -509,7 +509,7 @@ public class Bootstrap
         {
             alreadyRegistered = true;
 
-            if (LOGGER.isDebugEnabled())
+            if (org.tinylog.Logger.isDebugEnabled())
             {
                 redirectOutputToLog();
             }
@@ -523,7 +523,7 @@ public class Bootstrap
     }
 
     /**
-     * redirect standard streams to logger
+     * redirect standard streams to Logger
      */
     private static void redirectOutputToLog()
     {

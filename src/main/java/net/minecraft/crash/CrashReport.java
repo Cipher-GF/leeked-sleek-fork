@@ -21,13 +21,10 @@ import optifine.Reflector;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.ArrayUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.tinylog.Logger;
 
 public class CrashReport
 {
-    private static final Logger logger = LogManager.getLogger();
-
     /** Description of the crash report. */
     private final String description;
 
@@ -314,7 +311,7 @@ public class CrashReport
             }
             catch (Throwable throwable)
             {
-                logger.error("Could not save crash report to " + toFile, throwable);
+                Logger.error("Could not save crash report to " + toFile, throwable);
                 return false;
             }
         }

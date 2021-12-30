@@ -28,13 +28,13 @@ import net.minecraft.util.CryptManager;
 import net.minecraft.util.IChatComponent;
 import net.minecraft.util.ITickable;
 import org.apache.commons.lang3.Validate;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+
 
 public class NetHandlerLoginServer implements INetHandlerLoginServer, ITickable
 {
     private static final AtomicInteger AUTHENTICATOR_THREAD_ID = new AtomicInteger(0);
-    private static final Logger logger = LogManager.getLogger();
+    
     private static final Random RANDOM = new Random();
     private final byte[] verifyToken = new byte[4];
     private final MinecraftServer server;
@@ -86,14 +86,14 @@ public class NetHandlerLoginServer implements INetHandlerLoginServer, ITickable
     {
         try
         {
-            logger.info("Disconnecting " + this.getConnectionInfo() + ": " + reason);
+            org.tinylog.Logger.info("Disconnecting " + this.getConnectionInfo() + ": " + reason);
             ChatComponentText chatcomponenttext = new ChatComponentText(reason);
             this.networkManager.sendPacket(new S00PacketDisconnect(chatcomponenttext));
             this.networkManager.closeChannel(chatcomponenttext);
         }
         catch (Exception exception)
         {
-            logger.error((String)"Error whilst disconnecting player", (Throwable)exception);
+            org.tinylog.Logger.error((String)"Error whilst disconnecting player", (Throwable)exception);
         }
     }
 
@@ -145,7 +145,7 @@ public class NetHandlerLoginServer implements INetHandlerLoginServer, ITickable
      */
     public void onDisconnect(IChatComponent reason)
     {
-        logger.info(this.getConnectionInfo() + " lost connection: " + reason.getUnformattedText());
+        org.tinylog.Logger.info(this.getConnectionInfo() + " lost connection: " + reason.getUnformattedText());
     }
 
     public String getConnectionInfo()
@@ -196,33 +196,33 @@ public class NetHandlerLoginServer implements INetHandlerLoginServer, ITickable
 
                         if (NetHandlerLoginServer.this.loginGameProfile != null)
                         {
-                            NetHandlerLoginServer.logger.info("UUID of player " + NetHandlerLoginServer.this.loginGameProfile.getName() + " is " + NetHandlerLoginServer.this.loginGameProfile.getId());
+                            org.tinylog.Logger.info("UUID of player " + NetHandlerLoginServer.this.loginGameProfile.getName() + " is " + NetHandlerLoginServer.this.loginGameProfile.getId());
                             NetHandlerLoginServer.this.currentLoginState = NetHandlerLoginServer.LoginState.READY_TO_ACCEPT;
                         }
                         else if (NetHandlerLoginServer.this.server.isSinglePlayer())
                         {
-                            NetHandlerLoginServer.logger.warn("Failed to verify username but will let them in anyway!");
+                            org.tinylog.Logger.warn("Failed to verify username but will let them in anyway!");
                             NetHandlerLoginServer.this.loginGameProfile = NetHandlerLoginServer.this.getOfflineProfile(gameprofile);
                             NetHandlerLoginServer.this.currentLoginState = NetHandlerLoginServer.LoginState.READY_TO_ACCEPT;
                         }
                         else
                         {
                             NetHandlerLoginServer.this.closeConnection("Failed to verify username!");
-                            NetHandlerLoginServer.logger.error("Username \'" + NetHandlerLoginServer.this.loginGameProfile.getName() + "\' tried to join with an invalid session");
+                            org.tinylog.Logger.error("Username \'" + NetHandlerLoginServer.this.loginGameProfile.getName() + "\' tried to join with an invalid session");
                         }
                     }
                     catch (AuthenticationUnavailableException var3)
                     {
                         if (NetHandlerLoginServer.this.server.isSinglePlayer())
                         {
-                            NetHandlerLoginServer.logger.warn("Authentication servers are down but will let them in anyway!");
+                            org.tinylog.Logger.warn("Authentication servers are down but will let them in anyway!");
                             NetHandlerLoginServer.this.loginGameProfile = NetHandlerLoginServer.this.getOfflineProfile(gameprofile);
                             NetHandlerLoginServer.this.currentLoginState = NetHandlerLoginServer.LoginState.READY_TO_ACCEPT;
                         }
                         else
                         {
                             NetHandlerLoginServer.this.closeConnection("Authentication servers are down. Please try again later, sorry!");
-                            NetHandlerLoginServer.logger.error("Couldn\'t verify username because servers are unavailable");
+                            org.tinylog.Logger.error("Couldn\'t verify username because servers are unavailable");
                         }
                     }
                 }

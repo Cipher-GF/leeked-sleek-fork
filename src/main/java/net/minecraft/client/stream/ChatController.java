@@ -6,8 +6,8 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+
 import tv.twitch.AuthToken;
 import tv.twitch.Core;
 import tv.twitch.ErrorCode;
@@ -27,7 +27,7 @@ import tv.twitch.chat.StandardChatAPI;
 
 public class ChatController
 {
-    private static final Logger LOGGER = LogManager.getLogger();
+    
     protected ChatController.ChatListener field_153003_a = null;
     protected String field_153004_b = "";
     protected String field_153006_d = "";
@@ -461,7 +461,7 @@ public class ChatController
 
     protected void func_152995_h(String p_152995_1_)
     {
-        LOGGER.error(TwitchStream.STREAM_MARKER, "[Chat controller] {}", new Object[] {p_152995_1_});
+        org.tinylog.Logger.error("STREAM", "[Chat controller] {}", new Object[] {p_152995_1_});
     }
 
     public class ChatChannelListener implements IChatChannelListener

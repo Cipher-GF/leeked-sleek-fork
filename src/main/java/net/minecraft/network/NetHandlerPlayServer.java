@@ -92,12 +92,12 @@ import net.minecraft.util.IntHashMap;
 import net.minecraft.util.ReportedException;
 import net.minecraft.world.WorldServer;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.tinylog.Logger;
+
 
 public class NetHandlerPlayServer implements INetHandlerPlayServer, ITickable
 {
-    private static final Logger logger = LogManager.getLogger();
+    
     public final NetworkManager netManager;
     private final MinecraftServer serverController;
     public EntityPlayerMP playerEntity;
@@ -360,7 +360,7 @@ public class NetHandlerPlayServer implements INetHandlerPlayServer, ITickable
 
                     if (d15 - d14 > 100.0D && (!this.serverController.isSinglePlayer() || !this.serverController.getServerOwner().equals(this.playerEntity.getName())))
                     {
-                        logger.warn(this.playerEntity.getName() + " moved too quickly! " + d11 + "," + d12 + "," + d13 + " (" + d11 + ", " + d12 + ", " + d13 + ")");
+                        Logger.warn(this.playerEntity.getName() + " moved too quickly! " + d11 + "," + d12 + "," + d13 + " (" + d11 + ", " + d12 + ", " + d13 + ")");
                         this.setPlayerLocation(this.lastPosX, this.lastPosY, this.lastPosZ, this.playerEntity.rotationYaw, this.playerEntity.rotationPitch);
                         return;
                     }
@@ -390,7 +390,7 @@ public class NetHandlerPlayServer implements INetHandlerPlayServer, ITickable
                     if (d15 > 0.0625D && !this.playerEntity.isPlayerSleeping() && !this.playerEntity.theItemInWorldManager.isCreative())
                     {
                         flag1 = true;
-                        logger.warn(this.playerEntity.getName() + " moved wrongly!");
+                        Logger.warn(this.playerEntity.getName() + " moved wrongly!");
                     }
 
                     this.playerEntity.setPositionAndRotation(d8, d9, d10, f1, f2);
@@ -417,7 +417,7 @@ public class NetHandlerPlayServer implements INetHandlerPlayServer, ITickable
 
                             if (this.floatingTickCount > 80)
                             {
-                                logger.warn(this.playerEntity.getName() + " was kicked for floating too long!");
+                                Logger.warn(this.playerEntity.getName() + " was kicked for floating too long!");
                                 this.kickPlayerFromServer("Flying is not enabled on this server");
                                 return;
                             }
@@ -707,7 +707,7 @@ public class NetHandlerPlayServer implements INetHandlerPlayServer, ITickable
      */
     public void onDisconnect(IChatComponent reason)
     {
-        logger.info(this.playerEntity.getName() + " lost connection: " + reason);
+        Logger.info(this.playerEntity.getName() + " lost connection: " + reason);
         this.serverController.refreshStatusNextTick();
         ChatComponentTranslation chatcomponenttranslation = new ChatComponentTranslation("multiplayer.player.left", new Object[] {this.playerEntity.getDisplayName()});
         chatcomponenttranslation.getChatStyle().setColor(EnumChatFormatting.YELLOW);
@@ -717,7 +717,7 @@ public class NetHandlerPlayServer implements INetHandlerPlayServer, ITickable
 
         if (this.serverController.isSinglePlayer() && this.playerEntity.getName().equals(this.serverController.getServerOwner()))
         {
-            logger.info("Stopping singleplayer server as player logged out");
+            Logger.info("Stopping singleplayer server as player logged out");
             this.serverController.initiateShutdown();
         }
     }
@@ -773,7 +773,7 @@ public class NetHandlerPlayServer implements INetHandlerPlayServer, ITickable
         }
         else
         {
-            logger.warn(this.playerEntity.getName() + " tried to set an invalid carried item");
+            Logger.warn(this.playerEntity.getName() + " tried to set an invalid carried item");
         }
     }
 
@@ -1274,7 +1274,7 @@ public class NetHandlerPlayServer implements INetHandlerPlayServer, ITickable
             }
             catch (Exception exception3)
             {
-                logger.error((String)"Couldn\'t handle book info", (Throwable)exception3);
+                Logger.error((String)"Couldn\'t handle book info", (Throwable)exception3);
                 return;
             }
             finally
@@ -1319,7 +1319,7 @@ public class NetHandlerPlayServer implements INetHandlerPlayServer, ITickable
             }
             catch (Exception exception4)
             {
-                logger.error((String)"Couldn\'t sign book", (Throwable)exception4);
+                Logger.error((String)"Couldn\'t sign book", (Throwable)exception4);
                 return;
             }
             finally
@@ -1343,7 +1343,7 @@ public class NetHandlerPlayServer implements INetHandlerPlayServer, ITickable
             }
             catch (Exception exception2)
             {
-                logger.error((String)"Couldn\'t select trade", (Throwable)exception2);
+                Logger.error((String)"Couldn\'t select trade", (Throwable)exception2);
             }
         }
         else if ("MC|AdvCdm".equals(packetIn.getChannelName()))
@@ -1399,7 +1399,7 @@ public class NetHandlerPlayServer implements INetHandlerPlayServer, ITickable
                 }
                 catch (Exception exception1)
                 {
-                    logger.error((String)"Couldn\'t set command block", (Throwable)exception1);
+                    Logger.error((String)"Couldn\'t set command block", (Throwable)exception1);
                 }
                 finally
                 {
@@ -1434,7 +1434,7 @@ public class NetHandlerPlayServer implements INetHandlerPlayServer, ITickable
                 }
                 catch (Exception exception)
                 {
-                    logger.error((String)"Couldn\'t set beacon", (Throwable)exception);
+                    Logger.error((String)"Couldn\'t set beacon", (Throwable)exception);
                 }
             }
         }

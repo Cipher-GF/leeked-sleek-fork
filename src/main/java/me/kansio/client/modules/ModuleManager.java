@@ -8,9 +8,12 @@ import me.kansio.client.modules.impl.combat.KillAura;
 import me.kansio.client.modules.impl.combat.Velocity;
 import me.kansio.client.modules.impl.exploit.Disabler;
 import me.kansio.client.modules.impl.movement.Flight;
+import me.kansio.client.modules.impl.movement.InvMove;
 import me.kansio.client.modules.impl.movement.Speed;
+import me.kansio.client.modules.impl.player.ChestStealer;
+import me.kansio.client.modules.impl.player.InvManager;
 import me.kansio.client.modules.impl.player.NoFall;
-import me.kansio.client.modules.impl.world.Scaffold;
+import me.kansio.client.modules.impl.movement.Scaffold;
 import me.kansio.client.modules.impl.player.Sprint;
 import me.kansio.client.modules.impl.visuals.ClickGUI;
 import me.kansio.client.modules.impl.visuals.HUD;
@@ -37,6 +40,8 @@ public class ModuleManager {
         //Movement
         modules.add(new Speed());
         modules.add(new Flight());
+        modules.add(new Scaffold());
+        modules.add(new InvMove());
 
         //Visual
         modules.add(new HUD());
@@ -48,9 +53,11 @@ public class ModuleManager {
         //Player
         modules.add(new NoFall());
         modules.add(new Sprint());
+        modules.add(new ChestStealer());
+        modules.add(new InvManager());
 
         //World
-        modules.add(new Scaffold());
+
 
 
         //Toggle modules

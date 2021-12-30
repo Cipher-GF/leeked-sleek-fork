@@ -38,16 +38,17 @@ import optifine.RandomMobs;
 import optifine.Reflector;
 
 import org.apache.commons.lang3.ArrayUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.Display;
+import org.tinylog.Logger;
 import shadersmod.client.Shaders;
 
 public class GameSettings
 {
-    private static final Logger logger = LogManager.getLogger();
+    
     private static final Gson gson = new Gson();
     private static final ParameterizedType typeListString = new ParameterizedType()
     {
@@ -1152,7 +1153,7 @@ public class GameSettings
                 }
                 catch (Exception exception)
                 {
-                    logger.warn("Skipping bad option: " + s);
+                    Logger.warn("Skipping bad option: " + s);
                     exception.printStackTrace();
                 }
             }
@@ -1162,7 +1163,7 @@ public class GameSettings
         }
         catch (Exception exception1)
         {
-            logger.error((String)"Failed to load options", (Throwable)exception1);
+            Logger.error((String)"Failed to load options", (Throwable)exception1);
         }
 
         this.loadOfOptions();
@@ -1286,7 +1287,7 @@ public class GameSettings
         }
         catch (Exception exception)
         {
-            logger.error((String)"Failed to save options", (Throwable)exception);
+            Logger.error((String)"Failed to save options", (Throwable)exception);
         }
 
         this.saveOfOptions();

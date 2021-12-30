@@ -41,13 +41,13 @@ import net.minecraft.util.IRegistry;
 import net.minecraft.util.RegistrySimple;
 import net.minecraft.util.ResourceLocation;
 import org.apache.commons.io.IOUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+
 
 public class ModelBakery
 {
     private static final Set<ResourceLocation> LOCATIONS_BUILTIN_TEXTURES = Sets.newHashSet(new ResourceLocation[] {new ResourceLocation("blocks/water_flow"), new ResourceLocation("blocks/water_still"), new ResourceLocation("blocks/lava_flow"), new ResourceLocation("blocks/lava_still"), new ResourceLocation("blocks/destroy_stage_0"), new ResourceLocation("blocks/destroy_stage_1"), new ResourceLocation("blocks/destroy_stage_2"), new ResourceLocation("blocks/destroy_stage_3"), new ResourceLocation("blocks/destroy_stage_4"), new ResourceLocation("blocks/destroy_stage_5"), new ResourceLocation("blocks/destroy_stage_6"), new ResourceLocation("blocks/destroy_stage_7"), new ResourceLocation("blocks/destroy_stage_8"), new ResourceLocation("blocks/destroy_stage_9"), new ResourceLocation("items/empty_armor_slot_helmet"), new ResourceLocation("items/empty_armor_slot_chestplate"), new ResourceLocation("items/empty_armor_slot_leggings"), new ResourceLocation("items/empty_armor_slot_boots")});
-    private static final Logger LOGGER = LogManager.getLogger();
+    
     protected static final ModelResourceLocation MODEL_MISSING = new ModelResourceLocation("builtin/missing", "missing");
     private static final Map<String, String> BUILT_IN_MODELS = Maps.<String, String>newHashMap();
     private static final Joiner JOINER = Joiner.on(" -> ");
@@ -111,12 +111,12 @@ public class ModelBakery
                 }
                 catch (Exception var6)
                 {
-                    LOGGER.warn("Unable to load variant: " + modelresourcelocation.getVariant() + " from " + modelresourcelocation);
+                    org.tinylog.Logger.warn("Unable to load variant: " + modelresourcelocation.getVariant() + " from " + modelresourcelocation);
                 }
             }
             catch (Exception exception)
             {
-                LOGGER.warn((String)("Unable to load definition " + modelresourcelocation), (Throwable)exception);
+                org.tinylog.Logger.warn((String)("Unable to load definition " + modelresourcelocation), (Throwable)exception);
             }
         }
     }
@@ -191,7 +191,7 @@ public class ModelBakery
                     }
                     catch (Exception exception)
                     {
-                        LOGGER.warn((String)("Unable to load block model: \'" + resourcelocation + "\' for variant: \'" + modelresourcelocation + "\'"), (Throwable)exception);
+                        org.tinylog.Logger.warn((String)("Unable to load block model: \'" + resourcelocation + "\' for variant: \'" + modelresourcelocation + "\'"), (Throwable)exception);
                     }
                 }
             }
@@ -282,7 +282,7 @@ public class ModelBakery
                     }
                     catch (Exception exception)
                     {
-                        LOGGER.warn((String)("Unable to load item model: \'" + resourcelocation + "\' for item: \'" + Item.itemRegistry.getNameForObject(item) + "\'"), (Throwable)exception);
+                        org.tinylog.Logger.warn((String)("Unable to load item model: \'" + resourcelocation + "\' for item: \'" + Item.itemRegistry.getNameForObject(item) + "\'"), (Throwable)exception);
                     }
                 }
             }
@@ -371,13 +371,13 @@ public class ModelBakery
                 }
                 else
                 {
-                    LOGGER.warn("Missing model for: " + modelresourcelocation);
+                    org.tinylog.Logger.warn("Missing model for: " + modelresourcelocation);
                 }
             }
 
             if (i == 0)
             {
-                LOGGER.warn("No weighted models for: " + modelresourcelocation);
+                org.tinylog.Logger.warn("No weighted models for: " + modelresourcelocation);
             }
             else if (i == 1)
             {
@@ -408,7 +408,7 @@ public class ModelBakery
             }
             else
             {
-                LOGGER.warn("Missing model for: " + resourcelocation);
+                org.tinylog.Logger.warn("Missing model for: " + resourcelocation);
             }
         }
     }
@@ -435,7 +435,7 @@ public class ModelBakery
 
                 if (modelblock == null)
                 {
-                    LOGGER.warn("Missing model for: " + modelresourcelocation);
+                    org.tinylog.Logger.warn("Missing model for: " + modelresourcelocation);
                 }
                 else
                 {
@@ -529,7 +529,7 @@ public class ModelBakery
             }
             catch (Exception exception)
             {
-                LOGGER.warn((String)("In parent chain: " + JOINER.join(this.getParentPath(resourcelocation2)) + "; unable to load model: \'" + resourcelocation2 + "\'"), (Throwable)exception);
+                org.tinylog.Logger.warn((String)("In parent chain: " + JOINER.join(this.getParentPath(resourcelocation2)) + "; unable to load model: \'" + resourcelocation2 + "\'"), (Throwable)exception);
             }
 
             set.add(resourcelocation2);

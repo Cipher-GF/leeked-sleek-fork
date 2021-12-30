@@ -7,13 +7,12 @@ import net.minecraft.command.server.CommandBlockLogic;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.network.play.client.C17PacketCustomPayload;
 import net.minecraft.util.IChatComponent;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+
 import org.lwjgl.input.Keyboard;
 
 public class GuiCommandBlock extends GuiScreen
 {
-    private static final Logger field_146488_a = LogManager.getLogger();
 
     /** Text field containing the command block's command. */
     private GuiTextField commandTextField;

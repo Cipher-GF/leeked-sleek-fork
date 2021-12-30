@@ -22,7 +22,7 @@ import java.util.Locale;
 
 public class Flight extends Module {
 
-    private ModeValue modeValue = new ModeValue("Mode", this, "Vanilla", "Verus", "Funcraft");
+    private ModeValue modeValue = new ModeValue("Mode", this, "Vanilla", "Verus", "VerusDamage", "Funcraft");
     private NumberValue<Double> speed = new NumberValue<>("Speed", this, 1d, 0d, 7d, 0.1);
     private BooleanValue viewbob = new BooleanValue("View Bobbing", this, true);
     private BooleanValue boost = new BooleanValue("Boost", this, true, modeValue, "Funcraft");
@@ -39,7 +39,7 @@ public class Flight extends Module {
 
     public Flight() {
         super("Flight", Keyboard.KEY_F, ModuleCategory.MOVEMENT);
-        register(modeValue, speed, viewbob, boost, extraBoost);
+        register(modeValue, speed, viewbob, boost, extraBoost, glide);
     }
 
 
@@ -92,7 +92,15 @@ public class Flight extends Module {
                 PlayerUtil.setMotion(speed.getValue().floatValue());
                 break;
             }
-            case "Verus": {
+            case "Verus2": {
+                if (mc.thePlayer.hurtResistantTime > 18) {
+                    boosted = true;
+                    spereeeedserz = speed.getValue() / 2;
+                } else if (boosted && mc.thePlayer.hurtResistantTime < 2) {
+                    spereeeedserz = 0.22f;
+                } else if (boosted) {
+                    spereeeedserz -= 0.01;
+                }
                 break;
             }
             case "Funcraft": {
@@ -134,6 +142,10 @@ public class Flight extends Module {
     @Subscribe
     public void onMove(MoveEvent event) {
         switch (modeValue.getValueAsString()) {
+            case "Verus2": {
+                PlayerUtil.setMotion(event, spereeeedserz);
+                break;
+            }
             case "Verus": {
                 if (!mc.thePlayer.isInLava() && !mc.thePlayer.isInWater() && !mc.thePlayer.isOnLadder() && mc.thePlayer.ridingEntity == null && mc.thePlayer.hurtTime < 1) {
                     if (mc.thePlayer.isMoving()) {
@@ -141,7 +153,7 @@ public class Flight extends Module {
                         if (mc.thePlayer.onGround) {
                             mc.thePlayer.jump();
                             mc.thePlayer.motionY = 0.0;
-                            PlayerUtil.strafe(1.22f);
+                            PlayerUtil.strafe(speed.getValue().floatValue());
                             event.setMotionY(0.41999998688698);
                         }
                         PlayerUtil.strafe();
@@ -209,6 +221,7 @@ public class Flight extends Module {
     public void onCollide(BlockCollisionEvent event) {
 
         switch (modeValue.getValueAsString()) {
+            case "Verus2":
             case "Verus": {
                 if (event.getBlock() instanceof BlockAir) {
                     if (mc.thePlayer.isSneaking())

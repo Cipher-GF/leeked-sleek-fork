@@ -25,8 +25,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 import net.minecraft.server.MinecraftServer;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+
 
 public class HttpUtil
 {
@@ -34,7 +34,7 @@ public class HttpUtil
 
     /** The number of download threads that we have started so far. */
     private static final AtomicInteger downloadThreadsStarted = new AtomicInteger(0);
-    private static final Logger logger = LogManager.getLogger();
+    
 
     /**
      * Builds an encoded HTTP POST content string from a string map
@@ -128,7 +128,7 @@ public class HttpUtil
         {
             if (!skipLoggingErrors)
             {
-                logger.error((String)("Could not post to " + url), (Throwable)exception);
+                org.tinylog.Logger.error((String)("Could not post to " + url), (Throwable)exception);
             }
 
             return "";
@@ -194,7 +194,7 @@ public class HttpUtil
                                 return;
                             }
 
-                            HttpUtil.logger.warn("Deleting " + saveFile + " as it does not match what we currently have (" + i + " vs our " + j + ").");
+                            org.tinylog.Logger.warn("Deleting " + saveFile + " as it does not match what we currently have (" + i + " vs our " + j + ").");
                             FileUtils.deleteQuietly(saveFile);
                         }
                         else if (saveFile.getParentFile() != null)
@@ -237,7 +237,7 @@ public class HttpUtil
 
                             if (Thread.interrupted())
                             {
-                                HttpUtil.logger.error("INTERRUPTED");
+                                org.tinylog.Logger.error("INTERRUPTED");
 
                                 if (p_180192_4_ != null)
                                 {
@@ -266,7 +266,7 @@ public class HttpUtil
 
                             try
                             {
-                                HttpUtil.logger.error(IOUtils.toString(inputstream1));
+                                org.tinylog.Logger.error(IOUtils.toString(inputstream1));
                             }
                             catch (IOException ioexception)
                             {

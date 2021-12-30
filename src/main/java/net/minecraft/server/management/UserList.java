@@ -23,12 +23,11 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import org.apache.commons.io.IOUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.tinylog.Logger;
+
 
 public class UserList<K, V extends UserListEntry<K>>
 {
-    protected static final Logger logger = LogManager.getLogger();
     protected final Gson gson;
     private final File saveFile;
     private final Map<String, V> values = Maps.<String, V>newHashMap();
@@ -80,7 +79,7 @@ public class UserList<K, V extends UserListEntry<K>>
         }
         catch (IOException ioexception)
         {
-            logger.warn((String)"Could not save the list after adding a user.", (Throwable)ioexception);
+            Logger.warn((String)"Could not save the list after adding a user.", (Throwable)ioexception);
         }
     }
 
@@ -100,7 +99,7 @@ public class UserList<K, V extends UserListEntry<K>>
         }
         catch (IOException ioexception)
         {
-            logger.warn((String)"Could not save the list after removing a user.", (Throwable)ioexception);
+            Logger.warn((String)"Could not save the list after removing a user.", (Throwable)ioexception);
         }
     }
 

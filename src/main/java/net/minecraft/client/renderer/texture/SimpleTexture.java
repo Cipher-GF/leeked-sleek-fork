@@ -9,13 +9,13 @@ import net.minecraft.client.resources.data.TextureMetadataSection;
 import net.minecraft.util.ResourceLocation;
 import optifine.Config;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+
 import shadersmod.client.ShadersTex;
 
 public class SimpleTexture extends AbstractTexture
 {
-    private static final Logger logger = LogManager.getLogger();
+    
     protected final ResourceLocation textureLocation;
     private static final String __OBFID = "CL_00001052";
 
@@ -51,7 +51,7 @@ public class SimpleTexture extends AbstractTexture
                 }
                 catch (RuntimeException runtimeexception)
                 {
-                    logger.warn((String)("Failed reading metadata of: " + this.textureLocation), (Throwable)runtimeexception);
+                    org.tinylog.Logger.warn((String)("Failed reading metadata of: " + this.textureLocation), (Throwable)runtimeexception);
                 }
             }
 

@@ -4,7 +4,9 @@ import me.kansio.client.utils.Util;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityArmorStand;
+import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
@@ -34,6 +36,7 @@ public class FightUtil extends Util {
                     || entityLivingBase instanceof EntityAnimal && !animals
                     || entityLivingBase instanceof EntityPlayer && !players
                     || entityLivingBase instanceof EntityMob && !mobs
+                    || entityLivingBase instanceof EntitySlime && !mobs
                     || entityLivingBase.isInvisible() && !invis) continue;
             if (list.size() > 5)
                 continue;

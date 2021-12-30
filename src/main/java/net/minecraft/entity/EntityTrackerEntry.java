@@ -57,12 +57,12 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.storage.MapData;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.tinylog.Logger;
+
 
 public class EntityTrackerEntry
 {
-    private static final Logger logger = LogManager.getLogger();
+    
 
     /** The entity that this EntityTrackerEntry tracks. */
     public Entity trackedEntity;
@@ -486,7 +486,7 @@ public class EntityTrackerEntry
     {
         if (this.trackedEntity.isDead)
         {
-            logger.warn("Fetching addPacket for removed entity");
+            Logger.warn("Fetching addPacket for removed entity");
         }
 
         if (this.trackedEntity instanceof EntityItem)

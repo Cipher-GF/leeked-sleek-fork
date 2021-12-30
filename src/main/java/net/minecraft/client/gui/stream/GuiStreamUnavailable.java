@@ -16,15 +16,15 @@ import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.IChatComponent;
 import net.minecraft.util.Session;
 import net.minecraft.util.Util;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GLContext;
+import org.tinylog.Logger;
 import tv.twitch.ErrorCode;
 
 public class GuiStreamUnavailable extends GuiScreen
 {
-    private static final Logger field_152322_a = LogManager.getLogger();
     private final IChatComponent field_152324_f;
     private final GuiScreen parentScreen;
     private final GuiStreamUnavailable.Reason field_152326_h;
@@ -149,7 +149,7 @@ public class GuiStreamUnavailable extends GuiScreen
         }
         catch (Throwable throwable)
         {
-            field_152322_a.error("Couldn\'t open link", throwable);
+            Logger.error("Couldn\'t open link", throwable);
         }
     }
 

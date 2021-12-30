@@ -9,12 +9,12 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.handshake.client.C00Handshake;
 import net.minecraft.network.login.client.C00PacketLoginStart;
 import net.minecraft.util.ChatComponentTranslation;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.tinylog.Logger;
+
 
 public class RealmsConnect
 {
-    private static final Logger LOGGER = LogManager.getLogger();
+    
     private final RealmsScreen onlineScreen;
     private volatile boolean aborted = false;
     private NetworkManager connection;
@@ -74,7 +74,7 @@ public class RealmsConnect
                         return;
                     }
 
-                    RealmsConnect.LOGGER.error((String)"Couldn\'t connect to world", (Throwable)unknownhostexception);
+                    Logger.error((String)"Couldn\'t connect to world", (Throwable)unknownhostexception);
                     Minecraft.getMinecraft().getResourcePackRepository().func_148529_f();
                     Realms.setScreen(new DisconnectedRealmsScreen(RealmsConnect.this.onlineScreen, "connect.failed", new ChatComponentTranslation("disconnect.genericReason", new Object[] {"Unknown host \'" + p_connect_1_ + "\'"})));
                 }
@@ -87,7 +87,7 @@ public class RealmsConnect
                         return;
                     }
 
-                    RealmsConnect.LOGGER.error((String)"Couldn\'t connect to world", (Throwable)exception);
+                    Logger.error((String)"Couldn\'t connect to world", (Throwable)exception);
                     String s = exception.toString();
 
                     if (inetaddress != null)

@@ -174,8 +174,6 @@ import net.minecraft.world.storage.ISaveHandler;
 import net.minecraft.world.storage.WorldInfo;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.Validate;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.Sys;
 import org.lwjgl.input.Keyboard;
@@ -189,9 +187,9 @@ import org.lwjgl.opengl.GLContext;
 import org.lwjgl.opengl.OpenGLException;
 import org.lwjgl.opengl.PixelFormat;
 import org.lwjgl.util.glu.GLU;
+import org.tinylog.Logger;
 
 public class Minecraft implements IThreadListener, IPlayerUsage {
-    private static final Logger logger = LogManager.getLogger();
     private static final ResourceLocation locationMojangPng = new ResourceLocation("textures/gui/title/mojang.png");
     public static final boolean isRunningOnMac = Util.getOSType() == Util.EnumOS.OSX;
 
@@ -420,8 +418,8 @@ public class Minecraft implements IThreadListener, IPlayerUsage {
         this.proxy = gameConfig.userInfo.proxy == null ? Proxy.NO_PROXY : gameConfig.userInfo.proxy;
         this.sessionService = (new YggdrasilAuthenticationService(gameConfig.userInfo.proxy, UUID.randomUUID().toString())).createMinecraftSessionService();
         this.session = gameConfig.userInfo.session;
-        logger.info("Setting user: " + this.session.getUsername());
-        logger.info("(Session ID is " + this.session.getSessionID() + ")");
+        Logger.info("Setting user: " + this.session.getUsername());
+        Logger.info("(Session ID is " + this.session.getSessionID() + ")");
         this.isDemo = gameConfig.gameInfo.isDemo;
         this.displayWidth = gameConfig.displayInfo.width > 0 ? gameConfig.displayInfo.width : 1;
         this.displayHeight = gameConfig.displayInfo.height > 0 ? gameConfig.displayInfo.height : 1;
@@ -472,13 +470,13 @@ public class Minecraft implements IThreadListener, IPlayerUsage {
             } catch (ReportedException reportedexception) {
                 this.addGraphicsAndWorldToCrashReport(reportedexception.getCrashReport());
                 this.freeMemory();
-                logger.fatal((String) "Reported exception thrown!", (Throwable) reportedexception);
+                Logger.trace((String) "Reported exception thrown!", (Throwable) reportedexception);
                 this.displayCrashReport(reportedexception.getCrashReport());
                 break;
             } catch (Throwable throwable1) {
                 CrashReport crashreport1 = this.addGraphicsAndWorldToCrashReport(new CrashReport("Unexpected error", throwable1));
                 this.freeMemory();
-                logger.fatal("Unreported exception thrown!", throwable1);
+                Logger.trace("Unreported exception thrown!", throwable1);
                 this.displayCrashReport(crashreport1);
                 break;
             } finally {
@@ -502,7 +500,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage {
             this.displayHeight = this.gameSettings.overrideHeight;
         }
 
-        logger.info("LWJGL Version: " + Sys.getVersion());
+        Logger.info("LWJGL Version: " + Sys.getVersion());
         this.setWindowIcon();
         this.setInitialDisplayMode();
         this.createDisplay();
@@ -622,7 +620,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage {
             this.stream = new TwitchStream(this, (Property) Iterables.getFirst(this.twitchDetails.get("twitch_access_token"), null));
         } catch (Throwable throwable) {
             this.stream = new NullStream(throwable);
-            logger.error("Couldn\'t initialize twitch stream");
+            Logger.error("Couldn\'t initialize twitch stream");
         }
     }
 
@@ -633,7 +631,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage {
         try {
             Display.create((new PixelFormat()).withDepthBits(24));
         } catch (LWJGLException lwjglexception) {
-            logger.error((String) "Couldn\'t set pixel format", (Throwable) lwjglexception);
+            Logger.error((String) "Couldn\'t set pixel format", (Throwable) lwjglexception);
 
             try {
                 Thread.sleep(1000L);
@@ -675,7 +673,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage {
                     Display.setIcon(new ByteBuffer[]{this.readImageToBuffer(inputstream), this.readImageToBuffer(inputstream1)});
                 }
             } catch (IOException ioexception) {
-                logger.error((String) "Couldn\'t set icon", (Throwable) ioexception);
+                Logger.error((String) "Couldn\'t set icon", (Throwable) ioexception);
             } finally {
                 IOUtils.closeQuietly(inputstream);
                 IOUtils.closeQuietly(inputstream1);
@@ -764,7 +762,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage {
         try {
             this.mcResourceManager.reloadResources(list);
         } catch (RuntimeException runtimeexception) {
-            logger.info((String) "Caught error stitching, removing all assigned resourcepacks", (Throwable) runtimeexception);
+            Logger.info((String) "Caught error stitching, removing all assigned resourcepacks", (Throwable) runtimeexception);
             list.clear();
             list.addAll(this.defaultResourcePacks);
             this.mcResourcePackRepository.setRepositories(Collections.<ResourcePackRepository.Entry>emptyList());
@@ -860,7 +858,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage {
             this.mojangLogo = textureManagerInstance.getDynamicTextureLocation("logo", new DynamicTexture(ImageIO.read(inputstream)));
             textureManagerInstance.bindTexture(this.mojangLogo);
         } catch (IOException ioexception) {
-            logger.error((String) ("Unable to load logo: " + locationMojangPng), (Throwable) ioexception);
+            Logger.error((String) ("Unable to load logo: " + locationMojangPng), (Throwable) ioexception);
         } finally {
             IOUtils.closeQuietly(inputstream);
         }
@@ -948,9 +946,9 @@ public class Minecraft implements IThreadListener, IPlayerUsage {
 
             if (i != 0) {
                 String s = GLU.gluErrorString(i);
-                logger.error("########## GL ERROR ##########");
-                logger.error("@ " + message);
-                logger.error(i + ": " + s);
+                Logger.error("########## GL ERROR ##########");
+                Logger.error("@ " + message);
+                Logger.error(i + ": " + s);
             }
         }
     }
@@ -962,7 +960,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage {
     public void shutdownMinecraftApplet() {
         try {
             this.stream.shutdownStream();
-            logger.info("Stopping!");
+            Logger.info("Stopping!");
 
             try {
                 this.loadWorld((WorldClient) null);
@@ -1010,7 +1008,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage {
 
         synchronized (this.scheduledTasks) {
             while (!this.scheduledTasks.isEmpty()) {
-                Util.func_181617_a((FutureTask) this.scheduledTasks.poll(), logger);
+                Util.func_181617_a((FutureTask) this.scheduledTasks.poll());
             }
         }
 
@@ -1367,7 +1365,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage {
             this.thePlayer.swingItem();
 
             if (this.objectMouseOver == null) {
-                logger.error("Null returned as \'hitResult\', this shouldn\'t happen!");
+                Logger.error("Null returned as \'hitResult\', this shouldn\'t happen!");
 
                 if (this.playerController.isNotCreative()) {
                     this.leftClickCounter = 10;
@@ -1408,7 +1406,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage {
             ItemStack itemstack = this.thePlayer.inventory.getCurrentItem();
 
             if (this.objectMouseOver == null) {
-                logger.warn("Null returned as \'hitResult\', this shouldn\'t happen!");
+                Logger.warn("Null returned as \'hitResult\', this shouldn\'t happen!");
             } else {
                 switch (this.objectMouseOver.typeOfHit) {
                     case ENTITY:
@@ -1498,7 +1496,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage {
             Display.setVSyncEnabled(this.gameSettings.enableVsync);
             this.updateDisplay();
         } catch (Exception exception) {
-            logger.error((String) "Couldn\'t toggle fullscreen", (Throwable) exception);
+            Logger.error((String) "Couldn\'t toggle fullscreen", (Throwable) exception);
         }
     }
 

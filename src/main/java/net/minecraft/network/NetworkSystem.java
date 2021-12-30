@@ -42,12 +42,12 @@ import net.minecraft.util.MessageDeserializer2;
 import net.minecraft.util.MessageSerializer;
 import net.minecraft.util.MessageSerializer2;
 import net.minecraft.util.ReportedException;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.tinylog.Logger;
+
 
 public class NetworkSystem
 {
-    private static final Logger logger = LogManager.getLogger();
+    
     public static final LazyLoadBase<NioEventLoopGroup> eventLoops = new LazyLoadBase<NioEventLoopGroup>()
     {
         protected NioEventLoopGroup load()
@@ -98,13 +98,13 @@ public class NetworkSystem
             {
                 oclass = EpollServerSocketChannel.class;
                 lazyloadbase = field_181141_b;
-                logger.info("Using epoll channel type");
+                Logger.info("Using epoll channel type");
             }
             else
             {
                 oclass = NioServerSocketChannel.class;
                 lazyloadbase = eventLoops;
-                logger.info("Using default channel type");
+                Logger.info("Using default channel type");
             }
 
             this.endpoints.add(((ServerBootstrap)((ServerBootstrap)(new ServerBootstrap()).channel(oclass)).childHandler(new ChannelInitializer<Channel>()
@@ -170,7 +170,7 @@ public class NetworkSystem
             }
             catch (InterruptedException var4)
             {
-                logger.error("Interrupted whilst closing channel");
+                Logger.error("Interrupted whilst closing channel");
             }
         }
     }
@@ -218,7 +218,7 @@ public class NetworkSystem
                                 throw new ReportedException(crashreport);
                             }
 
-                            logger.warn((String)("Failed to handle packet for " + networkmanager.getRemoteAddress()), (Throwable)exception);
+                            Logger.warn((String)("Failed to handle packet for " + networkmanager.getRemoteAddress()), (Throwable)exception);
                             final ChatComponentText chatcomponenttext = new ChatComponentText("Internal server error");
                             networkmanager.sendPacket(new S40PacketDisconnect(chatcomponenttext), new GenericFutureListener < Future <? super Void >> ()
                             {

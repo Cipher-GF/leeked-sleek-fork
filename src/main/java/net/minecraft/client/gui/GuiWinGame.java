@@ -17,12 +17,12 @@ import net.minecraft.network.play.client.C16PacketClientStatus;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
 import org.apache.commons.io.Charsets;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+
 
 public class GuiWinGame extends GuiScreen
 {
-    private static final Logger logger = LogManager.getLogger();
+    
     private static final ResourceLocation MINECRAFT_LOGO = new ResourceLocation("textures/gui/title/minecraft.png");
     private static final ResourceLocation VIGNETTE_TEXTURE = new ResourceLocation("textures/misc/vignette.png");
     private int field_146581_h;
@@ -139,7 +139,7 @@ public class GuiWinGame extends GuiScreen
             }
             catch (Exception exception)
             {
-                logger.error((String)"Couldn\'t load credits", (Throwable)exception);
+                org.tinylog.Logger.error((String)"Couldn\'t load credits", (Throwable)exception);
             }
         }
     }

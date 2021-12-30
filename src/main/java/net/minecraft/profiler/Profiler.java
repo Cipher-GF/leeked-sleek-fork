@@ -10,13 +10,12 @@ import java.util.Map;
 import net.minecraft.client.renderer.GlStateManager;
 import optifine.Config;
 import optifine.Lagometer;
+import org.tinylog.Logger;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 public class Profiler
 {
-    private static final Logger logger = LogManager.getLogger();
+    
 
     /** List of parent sections */
     private final List sectionList = Lists.newArrayList();
@@ -141,7 +140,7 @@ public class Profiler
 
                 if (k > 100000000L)
                 {
-                    logger.warn("Something\'s taking too long! \'" + this.profilingSection + "\' took aprox " + (double)k / 1000000.0D + " ms");
+                    Logger.warn("Something\'s taking too long! \'" + this.profilingSection + "\' took aprox " + (double)k / 1000000.0D + " ms");
                 }
 
                 this.profilingSection = !this.sectionList.isEmpty() ? (String)this.sectionList.get(this.sectionList.size() - 1) : "";

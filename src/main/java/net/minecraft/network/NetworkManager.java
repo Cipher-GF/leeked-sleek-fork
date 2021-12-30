@@ -48,16 +48,12 @@ import net.minecraft.util.MessageSerializer;
 import net.minecraft.util.MessageSerializer2;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.Validate;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.Marker;
-import org.apache.logging.log4j.MarkerManager;
+import org.tinylog.Logger;
+
 
 public class NetworkManager extends SimpleChannelInboundHandler<Packet>
 {
-    private static final Logger logger = LogManager.getLogger();
-    public static final Marker logMarkerNetwork = MarkerManager.getMarker("NETWORK");
-    public static final Marker logMarkerPackets = MarkerManager.getMarker("NETWORK_PACKETS", logMarkerNetwork);
+    
     public static final AttributeKey<EnumConnectionState> attrKeyConnectionState = AttributeKey.<EnumConnectionState>valueOf("protocol");
     public static final LazyLoadBase<NioEventLoopGroup> CLIENT_NIO_EVENTLOOP = new LazyLoadBase<NioEventLoopGroup>()
     {
@@ -115,7 +111,7 @@ public class NetworkManager extends SimpleChannelInboundHandler<Packet>
         }
         catch (Throwable throwable)
         {
-            logger.fatal((Object)throwable);
+            Logger.trace((Object)throwable);
         }
     }
 
@@ -126,7 +122,7 @@ public class NetworkManager extends SimpleChannelInboundHandler<Packet>
     {
         this.channel.attr(attrKeyConnectionState).set(newState);
         this.channel.config().setAutoRead(true);
-        logger.debug("Enabled auto read");
+        Logger.debug("Enabled auto read");
     }
 
     public void channelInactive(ChannelHandlerContext p_channelInactive_1_) throws Exception
@@ -177,7 +173,7 @@ public class NetworkManager extends SimpleChannelInboundHandler<Packet>
     public void setNetHandler(INetHandler handler)
     {
         Validate.notNull(handler, "packetListener", new Object[0]);
-        logger.debug("Set listener of {} to {}", new Object[] {this, handler});
+        Logger.debug("Set listener of {} to {}", new Object[] {this, handler});
         this.packetListener = handler;
     }
 
@@ -236,7 +232,7 @@ public class NetworkManager extends SimpleChannelInboundHandler<Packet>
 
         if (enumconnectionstate1 != enumconnectionstate)
         {
-            logger.debug("Disabled auto read");
+            Logger.debug("Disabled auto read");
             this.channel.config().setAutoRead(false);
         }
 
@@ -508,7 +504,7 @@ public class NetworkManager extends SimpleChannelInboundHandler<Packet>
             }
             else
             {
-                logger.warn("handleDisconnection() called twice");
+                Logger.warn("handleDisconnection() called twice");
             }
         }
     }

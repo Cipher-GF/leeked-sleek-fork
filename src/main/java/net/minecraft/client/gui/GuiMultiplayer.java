@@ -10,13 +10,13 @@ import net.minecraft.client.multiplayer.ServerList;
 import net.minecraft.client.network.LanServerDetector;
 import net.minecraft.client.network.OldServerPinger;
 import net.minecraft.client.resources.I18n;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+
 import org.lwjgl.input.Keyboard;
 
 public class GuiMultiplayer extends GuiScreen implements GuiYesNoCallback
 {
-    private static final Logger logger = LogManager.getLogger();
+    
     private final OldServerPinger oldServerPinger = new OldServerPinger();
     private GuiScreen parentScreen;
     private ServerSelectionList serverListSelector;
@@ -66,7 +66,7 @@ public class GuiMultiplayer extends GuiScreen implements GuiYesNoCallback
             }
             catch (Exception exception)
             {
-                logger.warn("Unable to start LAN server detection: " + exception.getMessage());
+                org.tinylog.Logger.warn("Unable to start LAN server detection: " + exception.getMessage());
             }
 
             this.serverListSelector = new ServerSelectionList(this, this.mc, this.width, this.height, 32, this.height - 64, 36);

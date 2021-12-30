@@ -22,12 +22,12 @@ import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.EmptyChunk;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.chunk.storage.IChunkLoader;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.tinylog.Logger;
+
 
 public class ChunkProviderServer implements IChunkProvider
 {
-    private static final Logger logger = LogManager.getLogger();
+    
     private Set<Long> droppedChunksSet = Collections.<Long>newSetFromMap(new ConcurrentHashMap());
 
     /** a dummy chunk, returned in place of an actual chunk. */
@@ -177,7 +177,7 @@ public class ChunkProviderServer implements IChunkProvider
             }
             catch (Exception exception)
             {
-                logger.error((String)"Couldn\'t load chunk", (Throwable)exception);
+                Logger.error((String)"Couldn\'t load chunk", (Throwable)exception);
                 return null;
             }
         }
@@ -193,7 +193,7 @@ public class ChunkProviderServer implements IChunkProvider
             }
             catch (Exception exception)
             {
-                logger.error((String)"Couldn\'t save entities", (Throwable)exception);
+                Logger.error((String)"Couldn\'t save entities", (Throwable)exception);
             }
         }
     }
@@ -209,11 +209,11 @@ public class ChunkProviderServer implements IChunkProvider
             }
             catch (IOException ioexception)
             {
-                logger.error((String)"Couldn\'t save chunk", (Throwable)ioexception);
+                Logger.error((String)"Couldn\'t save chunk", (Throwable)ioexception);
             }
             catch (MinecraftException minecraftexception)
             {
-                logger.error((String)"Couldn\'t save chunk; already in use by another instance of Minecraft?", (Throwable)minecraftexception);
+                Logger.error((String)"Couldn\'t save chunk; already in use by another instance of Minecraft?", (Throwable)minecraftexception);
             }
         }
     }

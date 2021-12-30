@@ -8,12 +8,12 @@ import net.minecraft.client.renderer.texture.TextureUtil;
 import net.minecraft.client.resources.data.PackMetadataSection;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+
 
 public class ResourcePackListEntryDefault extends ResourcePackListEntry
 {
-    private static final Logger logger = LogManager.getLogger();
+    
     private final IResourcePack field_148320_d;
     private final ResourceLocation resourcePackIcon;
 
@@ -53,11 +53,11 @@ public class ResourcePackListEntryDefault extends ResourcePackListEntry
         }
         catch (JsonParseException jsonparseexception)
         {
-            logger.error((String)"Couldn\'t load metadata info", (Throwable)jsonparseexception);
+            org.tinylog.Logger.error((String)"Couldn\'t load metadata info", (Throwable)jsonparseexception);
         }
         catch (IOException ioexception)
         {
-            logger.error((String)"Couldn\'t load metadata info", (Throwable)ioexception);
+            org.tinylog.Logger.error((String)"Couldn\'t load metadata info", (Throwable)ioexception);
         }
 
         return EnumChatFormatting.RED + "Missing " + "pack.mcmeta" + " :(";

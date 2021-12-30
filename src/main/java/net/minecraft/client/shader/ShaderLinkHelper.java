@@ -3,12 +3,12 @@ package net.minecraft.client.shader;
 import java.io.IOException;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.util.JsonException;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+
 
 public class ShaderLinkHelper
 {
-    private static final Logger logger = LogManager.getLogger();
+    
     private static ShaderLinkHelper staticShaderLinkHelper;
 
     public static void setNewStaticShaderLinkHelper()
@@ -51,8 +51,8 @@ public class ShaderLinkHelper
 
         if (i == 0)
         {
-            logger.warn("Error encountered when linking program containing VS " + manager.getVertexShaderLoader().getShaderFilename() + " and FS " + manager.getFragmentShaderLoader().getShaderFilename() + ". Log output:");
-            logger.warn(OpenGlHelper.glGetProgramInfoLog(manager.getProgram(), 32768));
+            org.tinylog.Logger.warn("Error encountered when linking program containing VS " + manager.getVertexShaderLoader().getShaderFilename() + " and FS " + manager.getFragmentShaderLoader().getShaderFilename() + ". Log output:");
+            org.tinylog.Logger.warn(OpenGlHelper.glGetProgramInfoLog(manager.getProgram(), 32768));
         }
     }
 }

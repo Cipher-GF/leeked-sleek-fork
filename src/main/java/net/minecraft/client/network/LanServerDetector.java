@@ -11,13 +11,13 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ThreadLanServerPing;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+
 
 public class LanServerDetector
 {
     private static final AtomicInteger field_148551_a = new AtomicInteger(0);
-    private static final Logger logger = LogManager.getLogger();
+    
 
     public static class LanServer
     {
@@ -132,12 +132,12 @@ public class LanServerDetector
                 }
                 catch (IOException ioexception)
                 {
-                    LanServerDetector.logger.error((String)"Couldn\'t ping server", (Throwable)ioexception);
+                    org.tinylog.Logger.error((String)"Couldn\'t ping server", (Throwable)ioexception);
                     break;
                 }
 
                 String s = new String(datagrampacket.getData(), datagrampacket.getOffset(), datagrampacket.getLength());
-                LanServerDetector.logger.debug(datagrampacket.getAddress() + ": " + s);
+                org.tinylog.Logger.debug(datagrampacket.getAddress() + ": " + s);
                 this.localServerList.func_77551_a(s, datagrampacket.getAddress());
             }
 

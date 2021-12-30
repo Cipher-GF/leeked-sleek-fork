@@ -76,20 +76,20 @@ import optifine.Reflector;
 import optifine.ReflectorForge;
 import optifine.TextureUtils;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GLContext;
 import org.lwjgl.util.glu.GLU;
 import org.lwjgl.util.glu.Project;
+import org.tinylog.Logger;
 import shadersmod.client.Shaders;
 import shadersmod.client.ShadersRender;
 
 public class EntityRenderer implements IResourceManagerReloadListener
 {
-    private static final Logger logger = LogManager.getLogger();
     private static final ResourceLocation locationRainPng = new ResourceLocation("textures/environment/rain.png");
     private static final ResourceLocation locationSnowPng = new ResourceLocation("textures/environment/snow.png");
     public static boolean anaglyphEnable;
@@ -328,13 +328,13 @@ public class EntityRenderer implements IResourceManagerReloadListener
             }
             catch (IOException ioexception)
             {
-                logger.warn((String)("Failed to load shader: " + resourceLocationIn), (Throwable)ioexception);
+                Logger.warn((String)("Failed to load shader: " + resourceLocationIn), (Throwable)ioexception);
                 this.shaderIndex = shaderCount;
                 this.useShader = false;
             }
             catch (JsonSyntaxException jsonsyntaxexception)
             {
-                logger.warn((String)("Failed to load shader: " + resourceLocationIn), (Throwable)jsonsyntaxexception);
+                Logger.warn((String)("Failed to load shader: " + resourceLocationIn), (Throwable)jsonsyntaxexception);
                 this.shaderIndex = shaderCount;
                 this.useShader = false;
             }

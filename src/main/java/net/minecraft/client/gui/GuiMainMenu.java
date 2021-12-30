@@ -28,17 +28,18 @@ import net.minecraft.world.storage.ISaveFormat;
 import net.minecraft.world.storage.WorldInfo;
 import org.apache.commons.io.Charsets;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+
 import org.lwjgl.Sys;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GLContext;
 import org.lwjgl.util.glu.Project;
+import org.tinylog.Logger;
 
 public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
 {
     private static final AtomicInteger field_175373_f = new AtomicInteger(0);
-    private static final Logger logger = LogManager.getLogger();
+    
     private static final Random RANDOM = new Random();
 
     /** Counts the number of screen updates. */
@@ -283,7 +284,7 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
 
         if (button.id == 14)
         {
-            this.mc.session = new Session(RandomStringUtils.random(12, true, true), "", "", "mojang");
+            this.mc.session = new Session("sex_"+ RandomStringUtils.random(4, true, true), "", "", "mojang");
             System.out.println(mc.session.getUsername());
         }
 
@@ -337,7 +338,7 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
                 }
                 catch (Throwable throwable)
                 {
-                    logger.error("Couldn\'t open link", throwable);
+                    Logger.error("Couldn\'t open link", throwable);
                 }
             }
 

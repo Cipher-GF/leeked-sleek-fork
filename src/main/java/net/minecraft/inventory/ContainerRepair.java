@@ -14,12 +14,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+
 
 public class ContainerRepair extends Container
 {
-    private static final Logger logger = LogManager.getLogger();
+    
 
     /** Here comes out item you merged and/or renamed. */
     private IInventory outputSlot;

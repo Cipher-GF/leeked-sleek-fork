@@ -1,13 +1,15 @@
 package net.minecraft.client.renderer.vertex;
 
 import com.google.common.collect.Lists;
+import org.tinylog.Logger;
+
 import java.util.List;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+
 
 public class VertexFormat
 {
-    private static final Logger LOGGER = LogManager.getLogger();
+    
     private final List<VertexFormatElement> elements;
     private final List<Integer> offsets;
 
@@ -54,7 +56,7 @@ public class VertexFormat
     {
         if (p_181721_1_.isPositionElement() && this.hasPosition())
         {
-            LOGGER.warn("VertexFormat error: Trying to add a position VertexFormatElement when one already exists, ignoring.");
+            Logger.warn("VertexFormat error: Trying to add a position VertexFormatElement when one already exists, ignoring.");
             return this;
         }
         else

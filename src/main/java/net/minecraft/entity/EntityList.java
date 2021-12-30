@@ -71,12 +71,12 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.stats.StatBase;
 import net.minecraft.stats.StatList;
 import net.minecraft.world.World;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+
 
 public class EntityList
 {
-    private static final Logger logger = LogManager.getLogger();
+    
     private static final Map < String, Class <? extends Entity >> stringToClassMapping = Maps. < String, Class <? extends Entity >> newHashMap();
     private static final Map < Class <? extends Entity > , String > classToStringMapping = Maps. < Class <? extends Entity > , String > newHashMap();
     private static final Map < Integer, Class <? extends Entity >> idToClassMapping = Maps. < Integer, Class <? extends Entity >> newHashMap();
@@ -181,7 +181,7 @@ public class EntityList
         }
         else
         {
-            logger.warn("Skipping Entity with id " + nbt.getString("id"));
+            org.tinylog.Logger.warn("Skipping Entity with id " + nbt.getString("id"));
         }
 
         return entity;
@@ -210,7 +210,7 @@ public class EntityList
 
         if (entity == null)
         {
-            logger.warn("Skipping Entity with id " + entityID);
+            org.tinylog.Logger.warn("Skipping Entity with id " + entityID);
         }
 
         return entity;

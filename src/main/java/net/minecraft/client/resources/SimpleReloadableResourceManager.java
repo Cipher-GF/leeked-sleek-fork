@@ -13,12 +13,12 @@ import java.util.Map;
 import java.util.Set;
 import net.minecraft.client.resources.data.IMetadataSerializer;
 import net.minecraft.util.ResourceLocation;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+
 
 public class SimpleReloadableResourceManager implements IReloadableResourceManager
 {
-    private static final Logger logger = LogManager.getLogger();
+    
     private static final Joiner joinerResourcePacks = Joiner.on(", ");
     private final Map<String, FallbackResourceManager> domainResourceManagers = Maps.<String, FallbackResourceManager>newHashMap();
     private final List<IResourceManagerReloadListener> reloadListeners = Lists.<IResourceManagerReloadListener>newArrayList();
@@ -89,7 +89,7 @@ public class SimpleReloadableResourceManager implements IReloadableResourceManag
     public void reloadResources(List<IResourcePack> p_110541_1_)
     {
         this.clearResources();
-        logger.info("Reloading ResourceManager: " + joinerResourcePacks.join(Iterables.transform(p_110541_1_, new Function<IResourcePack, String>()
+        org.tinylog.Logger.info("Reloading ResourceManager: " + joinerResourcePacks.join(Iterables.transform(p_110541_1_, new Function<IResourcePack, String>()
         {
             public String apply(IResourcePack p_apply_1_)
             {

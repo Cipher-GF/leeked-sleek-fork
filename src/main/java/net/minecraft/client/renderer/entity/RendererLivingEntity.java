@@ -18,8 +18,8 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.MathHelper;
 import optifine.Config;
 import optifine.Reflector;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+
 import org.lwjgl.opengl.GL11;
 import shadersmod.client.Shaders;
 
@@ -27,7 +27,7 @@ import java.nio.FloatBuffer;
 import java.util.List;
 
 public abstract class RendererLivingEntity<T extends EntityLivingBase> extends Render<T> {
-    private static final Logger logger = LogManager.getLogger();
+    
     private static final DynamicTexture field_177096_e = new DynamicTexture(16, 16);
     protected ModelBase mainModel;
     protected FloatBuffer brightnessBuffer = GLAllocation.createDirectFloatBuffer(4);
@@ -173,7 +173,7 @@ public abstract class RendererLivingEntity<T extends EntityLivingBase> extends R
 
                 GlStateManager.disableRescaleNormal();
             } catch (Exception exception) {
-                logger.error((String) "Couldn\'t render entity", (Throwable) exception);
+                org.tinylog.Logger.error((String) "Couldn\'t render entity", (Throwable) exception);
             }
 
             GlStateManager.setActiveTexture(OpenGlHelper.lightmapTexUnit);

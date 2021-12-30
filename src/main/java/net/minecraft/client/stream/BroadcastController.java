@@ -7,8 +7,8 @@ import net.minecraft.crash.CrashReport;
 import net.minecraft.crash.CrashReportCategory;
 import net.minecraft.util.ReportedException;
 import net.minecraft.util.ThreadSafeBoundList;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+
 import tv.twitch.AuthToken;
 import tv.twitch.Core;
 import tv.twitch.ErrorCode;
@@ -38,7 +38,7 @@ import tv.twitch.broadcast.VideoParams;
 
 public class BroadcastController
 {
-    private static final Logger logger = LogManager.getLogger();
+    
     protected final int field_152865_a = 30;
     protected final int field_152866_b = 3;
     private static final ThreadSafeBoundList<String> field_152862_C = new ThreadSafeBoundList(String.class, 50);
@@ -1116,13 +1116,13 @@ public class BroadcastController
     {
         this.field_152863_D = p_152820_1_;
         field_152862_C.func_152757_a("<Error> " + p_152820_1_);
-        logger.error(TwitchStream.STREAM_MARKER, "[Broadcast controller] {}", new Object[] {p_152820_1_});
+        org.tinylog.Logger.error("STREAM", "[Broadcast controller] {}", new Object[] {p_152820_1_});
     }
 
     protected void func_152832_e(String p_152832_1_)
     {
         field_152862_C.func_152757_a("<Warning> " + p_152832_1_);
-        logger.warn(TwitchStream.STREAM_MARKER, "[Broadcast controller] {}", new Object[] {p_152832_1_});
+        org.tinylog.Logger.warn("STREAM", "[Broadcast controller] {}", new Object[] {p_152832_1_});
     }
 
     public interface BroadcastListener

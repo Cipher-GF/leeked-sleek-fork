@@ -12,12 +12,12 @@ import net.minecraft.client.renderer.RegionRenderCacheBuilder;
 import net.minecraft.crash.CrashReport;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.EnumWorldBlockLayer;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+
 
 public class ChunkRenderWorker implements Runnable
 {
-    private static final Logger LOGGER = LogManager.getLogger();
+    
     private final ChunkRenderDispatcher chunkRenderDispatcher;
     private final RegionRenderCacheBuilder regionRenderCacheBuilder;
 
@@ -42,7 +42,7 @@ public class ChunkRenderWorker implements Runnable
             }
             catch (InterruptedException var3)
             {
-                LOGGER.debug("Stopping due to interrupt");
+                org.tinylog.Logger.debug("Stopping due to interrupt");
                 return;
             }
             catch (Throwable throwable)
@@ -64,7 +64,7 @@ public class ChunkRenderWorker implements Runnable
             {
                 if (!generator.isFinished())
                 {
-                    LOGGER.warn("Chunk render task was " + generator.getStatus() + " when I expected it to be pending; ignoring task");
+                    org.tinylog.Logger.warn("Chunk render task was " + generator.getStatus() + " when I expected it to be pending; ignoring task");
                 }
 
                 return;
@@ -108,7 +108,7 @@ public class ChunkRenderWorker implements Runnable
                 {
                     if (!generator.isFinished())
                     {
-                        LOGGER.warn("Chunk render task was " + generator.getStatus() + " when I expected it to be compiling; aborting task");
+                        org.tinylog.Logger.warn("Chunk render task was " + generator.getStatus() + " when I expected it to be compiling; aborting task");
                     }
 
                     this.freeRenderBuilder(generator);
@@ -166,7 +166,7 @@ public class ChunkRenderWorker implements Runnable
 
                             if (!generator.isFinished())
                             {
-                                ChunkRenderWorker.LOGGER.warn("Chunk render task was " + generator.getStatus() + " when I expected it to be uploading; aborting task");
+                                org.tinylog.Logger.warn("Chunk render task was " + generator.getStatus() + " when I expected it to be uploading; aborting task");
                             }
                         }
                         finally

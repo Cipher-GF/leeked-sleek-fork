@@ -8,12 +8,12 @@ import java.io.InputStream;
 import java.util.List;
 import net.minecraft.client.resources.IResourceManager;
 import net.minecraft.util.ResourceLocation;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+
 
 public class LayeredTexture extends AbstractTexture
 {
-    private static final Logger logger = LogManager.getLogger();
+    
     public final List<String> layeredTextureNames;
 
     public LayeredTexture(String... textureNames)
@@ -46,7 +46,7 @@ public class LayeredTexture extends AbstractTexture
         }
         catch (IOException ioexception)
         {
-            logger.error((String)"Couldn\'t load layered image", (Throwable)ioexception);
+            org.tinylog.Logger.error((String)"Couldn\'t load layered image", (Throwable)ioexception);
             return;
         }
 

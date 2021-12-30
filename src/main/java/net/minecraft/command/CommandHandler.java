@@ -11,12 +11,12 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.EnumChatFormatting;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.tinylog.Logger;
+
 
 public class CommandHandler implements ICommandManager
 {
-    private static final Logger logger = LogManager.getLogger();
+    
     private final Map<String, ICommand> commandMap = Maps.<String, ICommand>newHashMap();
     private final Set<ICommand> commandSet = Sets.<ICommand>newHashSet();
 
@@ -107,7 +107,7 @@ public class CommandHandler implements ICommandManager
             ChatComponentTranslation chatcomponenttranslation = new ChatComponentTranslation("commands.generic.exception", new Object[0]);
             chatcomponenttranslation.getChatStyle().setColor(EnumChatFormatting.RED);
             sender.addChatMessage(chatcomponenttranslation);
-            logger.warn("Couldn\'t process command: \'" + input + "\'");
+            Logger.warn("Couldn\'t process command: \'" + input + "\'");
         }
 
         return false;

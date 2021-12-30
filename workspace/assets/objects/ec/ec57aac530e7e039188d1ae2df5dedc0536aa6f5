@@ -3819,7 +3819,7 @@
     "multiplayer.disconnect.unverified_username": "Klare\u00f0 it \u00e5v te kontollir brukernamn\u0119!",
     "multiplayer.downloadingStats": "Far etter statistik...",
     "multiplayer.downloadingTerrain": "Le\u00f0er milj\u00f6...",
-    "multiplayer.message_not_delivered": "Dug it stjikk tjatter, sj\u01eb serverlogger: %s",
+    "multiplayer.message_not_delivered": "Dug it stjikk tjatter, sj\u01eb serverLogger: %s",
     "multiplayer.player.joined": "%s kam in i spile\u00f0",
     "multiplayer.player.joined.renamed": "%s (kennd sos %s f\u00f6r) kam in i spile\u00f0",
     "multiplayer.player.left": "%s djikk yr spil\u0119",

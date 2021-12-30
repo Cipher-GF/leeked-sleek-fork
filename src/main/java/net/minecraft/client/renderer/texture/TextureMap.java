@@ -13,8 +13,8 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.concurrent.Callable;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -35,12 +35,13 @@ import optifine.Config;
 import optifine.ConnectedTextures;
 import optifine.Reflector;
 import optifine.TextureUtils;
+import org.tinylog.Logger;
 import shadersmod.client.ShadersTex;
 
 public class TextureMap extends AbstractTexture implements ITickableTextureObject
 {
     private static final boolean ENABLE_SKIP = Boolean.parseBoolean(System.getProperty("fml.skipFirstTextureLoad", "true"));
-    private static final Logger logger = LogManager.getLogger();
+    
     public static final ResourceLocation LOCATION_MISSING_TEXTURE = new ResourceLocation("missingno");
     public static final ResourceLocation locationBlocksTexture = new ResourceLocation("textures/atlas/blocks.png");
     private final List listAnimatedSprites;
@@ -218,7 +219,7 @@ public class TextureMap extends AbstractTexture implements ITickableTextureObjec
                                 }
                                 catch (IOException ioexception)
                                 {
-                                    logger.error("Unable to load miplevel {} from: {}", new Object[] {Integer.valueOf(j3), resourcelocation2, ioexception});
+                                    Logger.error("Unable to load miplevel {} from: {}", new Object[] {Integer.valueOf(j3), resourcelocation2, ioexception});
                                 }
                             }
                         }
@@ -229,12 +230,12 @@ public class TextureMap extends AbstractTexture implements ITickableTextureObjec
                 }
                 catch (RuntimeException runtimeexception)
                 {
-                    logger.error((String)("Unable to parse metadata from " + resourcelocation1), (Throwable)runtimeexception);
+                    Logger.error((String)("Unable to parse metadata from " + resourcelocation1), (Throwable)runtimeexception);
                     continue;
                 }
                 catch (IOException ioexception1)
                 {
-                    logger.error("Using missing texture, unable to load " + resourcelocation1 + ", " + ioexception1.getClass().getName());
+                    Logger.error("Using missing texture, unable to load " + resourcelocation1 + ", " + ioexception1.getClass().getName());
                     continue;
                 }
 
@@ -243,7 +244,7 @@ public class TextureMap extends AbstractTexture implements ITickableTextureObjec
 
                 if (k2 < k)
                 {
-                    logger.warn("Texture {} with size {}x{} limits mip level from {} to {}", new Object[] {resourcelocation1, Integer.valueOf(textureatlassprite1.getIconWidth()), Integer.valueOf(textureatlassprite1.getIconHeight()), Integer.valueOf(MathHelper.calculateLogBaseTwo(k)), Integer.valueOf(MathHelper.calculateLogBaseTwo(k2))});
+                    Logger.warn("Texture {} with size {}x{} limits mip level from {} to {}", new Object[] {resourcelocation1, Integer.valueOf(textureatlassprite1.getIconWidth()), Integer.valueOf(textureatlassprite1.getIconHeight()), Integer.valueOf(MathHelper.calculateLogBaseTwo(k)), Integer.valueOf(MathHelper.calculateLogBaseTwo(k2))});
                     k = k2;
                 }
 
@@ -266,7 +267,7 @@ public class TextureMap extends AbstractTexture implements ITickableTextureObjec
 
         if (j2 < this.mipmapLevels)
         {
-            logger.info("{}: dropping miplevel from {} to {}, because of minimum power of two: {}", new Object[] {this.basePath, Integer.valueOf(this.mipmapLevels), Integer.valueOf(j2), Integer.valueOf(i2)});
+            Logger.info("{}: dropping miplevel from {} to {}, because of minimum power of two: {}", new Object[] {this.basePath, Integer.valueOf(this.mipmapLevels), Integer.valueOf(j2), Integer.valueOf(i2)});
             this.mipmapLevels = j2;
         }
 
@@ -323,7 +324,7 @@ public class TextureMap extends AbstractTexture implements ITickableTextureObjec
             throw stitcherexception;
         }
 
-        logger.info("Created: {}x{} {}-atlas", new Object[] {Integer.valueOf(stitcher.getCurrentWidth()), Integer.valueOf(stitcher.getCurrentHeight()), this.basePath});
+        Logger.info("Created: {}x{} {}-atlas", new Object[] {Integer.valueOf(stitcher.getCurrentWidth()), Integer.valueOf(stitcher.getCurrentHeight()), this.basePath});
         TextureUtil.allocateTextureImpl(this.getGlTextureId(), this.mipmapLevels, stitcher.getCurrentWidth(), stitcher.getCurrentHeight());
         HashMap hashmap = Maps.newHashMap(this.mapRegisteredSprites);
 
