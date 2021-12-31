@@ -32,3 +32,8 @@ README.md
 *.json
 Client.rar
 workspace/Sleek/configs/bloox.sleek
+/workspace/assets/
+/workspace/screenshots/
+/workspace/saves/
+*.mca
+*.mca

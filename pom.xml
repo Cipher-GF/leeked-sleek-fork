@@ -234,6 +234,16 @@
             <artifactId>twitch</artifactId>
             <version>6.5</version>
         </dependency>
+
+        <dependency>
+
+            <groupId>io.imgui.java</groupId>
+            <artifactId>imgui-api</artifactId>
+            <version>1.8.6.0</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/libs/imgui-app-1.86.0.jar</systemPath>
+        </dependency>
+
     </dependencies>
 
 

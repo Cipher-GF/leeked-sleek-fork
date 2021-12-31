@@ -1,0 +1,124 @@
+---- Minecraft Crash Report ----
+// Why did you do that?
+
+Time: 12/31/21, 10:19 AM
+Description: Updating screen events
+
+java.lang.UnsatisfiedLinkError: Failed to locate library: lwjgl.dll
+	at org.lwjgl.system.Library.loadSystem(Library.java:164)
+	at org.lwjgl.system.Library.loadSystem(Library.java:63)
+	at org.lwjgl.system.Library.<clinit>(Library.java:51)
+	at org.lwjgl.system.MemoryUtil.<clinit>(MemoryUtil.java:100)
+	at org.lwjgl.system.Pointer$Default.<clinit>(Pointer.java:67)
+	at org.lwjgl.system.Callback.<clinit>(Callback.java:40)
+	at imgui.app.Window.initWindow(Window.java:70)
+	at imgui.app.Window.init(Window.java:48)
+	at imgui.app.Application.initialize(Application.java:92)
+	at imgui.app.Application.launch(Application.java:82)
+	at me.kansio.client.modules.impl.visuals.ClickGUI.onEnable(ClickGUI.java:31)
+	at me.kansio.client.modules.impl.Module.toggle(Module.java:51)
+	at me.kansio.client.clickgui.ui.clickgui.frame.components.FrameModule.mouseClicked(FrameModule.java:120)
+	at me.kansio.client.clickgui.ui.clickgui.frame.components.FrameCategory.mouseClicked(FrameCategory.java:126)
+	at me.kansio.client.clickgui.ui.clickgui.frame.ClickGUI.lambda$mouseClicked$2(ClickGUI.java:49)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+	at me.kansio.client.clickgui.ui.clickgui.frame.ClickGUI.mouseClicked(ClickGUI.java:49)
+	at net.minecraft.client.gui.GuiScreen.handleMouseInput(GuiScreen.java:582)
+	at net.minecraft.client.gui.GuiScreen.handleInput(GuiScreen.java:551)
+	at net.minecraft.client.Minecraft.runTick(Minecraft.java:1554)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1002)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:449)
+	at net.minecraft.client.main.Main.main(Main.java:114)
+	at Start.main(Start.java:11)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at org.lwjgl.system.Library.loadSystem(Library.java:164)
+	at org.lwjgl.system.Library.loadSystem(Library.java:63)
+	at org.lwjgl.system.Library.<clinit>(Library.java:51)
+	at org.lwjgl.system.MemoryUtil.<clinit>(MemoryUtil.java:100)
+	at org.lwjgl.system.Pointer$Default.<clinit>(Pointer.java:67)
+	at org.lwjgl.system.Callback.<clinit>(Callback.java:40)
+	at imgui.app.Window.initWindow(Window.java:70)
+	at imgui.app.Window.init(Window.java:48)
+	at imgui.app.Application.initialize(Application.java:92)
+	at imgui.app.Application.launch(Application.java:82)
+	at me.kansio.client.modules.impl.visuals.ClickGUI.onEnable(ClickGUI.java:31)
+	at me.kansio.client.modules.impl.Module.toggle(Module.java:51)
+	at me.kansio.client.clickgui.ui.clickgui.frame.components.FrameModule.mouseClicked(FrameModule.java:120)
+	at me.kansio.client.clickgui.ui.clickgui.frame.components.FrameCategory.mouseClicked(FrameCategory.java:126)
+	at me.kansio.client.clickgui.ui.clickgui.frame.ClickGUI.lambda$mouseClicked$2(ClickGUI.java:49)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+	at me.kansio.client.clickgui.ui.clickgui.frame.ClickGUI.mouseClicked(ClickGUI.java:49)
+	at net.minecraft.client.gui.GuiScreen.handleMouseInput(GuiScreen.java:582)
+	at net.minecraft.client.gui.GuiScreen.handleInput(GuiScreen.java:551)
+
+-- Affected screen --
+Details:
+	Screen name: me.kansio.client.clickgui.ui.clickgui.frame.ClickGUI
+
+-- Affected level --
+Details:
+	Level name: MpServer
+	All players: 1 total; [EntityPlayerSP['sex_6511'/197, l='MpServer', x=738.79, y=77.00, z=377.51]]
+	Chunk stats: MultiplayerChunkCache: 289, 289
+	Level seed: 0
+	Level generator: ID 02 - largeBiomes, ver 0. Features enabled: false
+	Level generator options: 
+	Level spawn location: 584.00,64.00,166.00 - World: (584,64,166), Chunk: (at 8,4,6 in 36,10; contains blocks 576,0,160 to 591,255,175), Region: (1,0; contains chunks 32,0 to 63,31, blocks 512,0,0 to 1023,255,511)
+	Level time: 842991 game time, 89981 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: false), thunder time: 0 (now: false)
+	Level game mode: Game mode: survival (ID 0). Hardcore: false. Cheats: false
+	Forced entities: 50 total; [EntitySkeleton['Skeleton'/132, l='MpServer', x=707.50, y=71.00, z=303.50], EntityBat['Bat'/388, l='MpServer', x=714.38, y=19.09, z=318.31], EntitySkeleton['Skeleton'/133, l='MpServer', x=710.47, y=68.00, z=314.88], EntityBat['Bat'/390, l='MpServer', x=711.41, y=19.97, z=319.78], EntityCreeper['Creeper'/409, l='MpServer', x=729.50, y=66.00, z=310.50], EntityZombie['Zombie'/165, l='MpServer', x=762.50, y=60.00, z=308.50], EntityCreeper['Creeper'/421, l='MpServer', x=694.30, y=73.00, z=396.68], EntitySpider['Spider'/425, l='MpServer', x=691.50, y=73.00, z=399.50], EntitySkeleton['Skeleton'/426, l='MpServer', x=704.09, y=20.00, z=425.79], EntityZombie['Zombie'/427, l='MpServer', x=703.30, y=19.00, z=426.36], EntitySkeleton['Skeleton'/428, l='MpServer', x=694.66, y=44.00, z=404.66], EntitySkeleton['Skeleton'/429, l='MpServer', x=694.71, y=45.15, z=403.44], EntitySkeleton['Skeleton'/430, l='MpServer', x=693.50, y=44.00, z=404.66], EntitySkeleton['Skeleton'/431, l='MpServer', x=697.50, y=44.00, z=402.50], EntitySkeleton['Skeleton'/317, l='MpServer', x=712.50, y=72.00, z=346.50], EntitySkeleton['Skeleton'/318, l='MpServer', x=709.50, y=72.00, z=344.50], EntityCreeper['Creeper'/457, l='MpServer', x=758.50, y=73.00, z=441.50], EntityBat['Bat'/202, l='MpServer', x=696.83, y=32.95, z=389.34], EntityBat['Bat'/203, l='MpServer', x=672.56, y=15.97, z=393.31], EntityPlayerSP['sex_6511'/197, l='MpServer', x=738.79, y=77.00, z=377.51], EntityZombie['Zombie'/205, l='MpServer', x=696.50, y=27.00, z=384.50], EntitySpider['Spider'/206, l='MpServer', x=706.28, y=29.09, z=386.25], EntityCreeper['Creeper'/207, l='MpServer', x=683.13, y=74.00, z=391.94], EntityCreeper['Creeper'/208, l='MpServer', x=693.50, y=74.00, z=389.50], EntityZombie['Zombie'/464, l='MpServer', x=667.50, y=78.00, z=320.50], EntityCreeper['Creeper'/209, l='MpServer', x=694.69, y=27.75, z=398.28], EntityZombie['Zombie'/465, l='MpServer', x=663.50, y=78.00, z=316.50], EntitySpider['Spider'/210, l='MpServer', x=693.94, y=31.00, z=408.03], EntitySpider['Spider'/466, l='MpServer', x=675.50, y=78.00, z=321.50], EntitySkeleton['Skeleton'/211, l='MpServer', x=696.09, y=31.00, z=407.50], EntitySkeleton['Skeleton'/212, l='MpServer', x=694.50, y=31.00, z=406.28], EntityZombie['Zombie'/213, l='MpServer', x=697.50, y=28.00, z=400.50], EntityBat['Bat'/214, l='MpServer', x=693.54, y=47.91, z=408.28], EntityWitch['Witch'/342, l='MpServer', x=686.31, y=44.00, z=403.81], EntityBat['Bat'/215, l='MpServer', x=691.59, y=36.69, z=419.63], EntityBat['Bat'/216, l='MpServer', x=690.48, y=34.97, z=415.25], EntityBat['Bat'/217, l='MpServer', x=690.84, y=36.06, z=418.41], EntityBat['Bat'/218, l='MpServer', x=687.68, y=31.97, z=415.70], EntityItem['item.item.string'/219, l='MpServer', x=703.19, y=20.00, z=424.34], EntitySkeleton['Skeleton'/220, l='MpServer', x=719.64, y=24.68, z=413.51], EntitySkeleton['Skeleton'/221, l='MpServer', x=716.19, y=23.00, z=403.84], EntitySkeleton['Skeleton'/222, l='MpServer', x=713.16, y=22.00, z=411.16], EntitySkeleton['Skeleton'/223, l='MpServer', x=715.69, y=23.00, z=408.91], EntitySpider['Spider'/224, l='MpServer', x=712.50, y=39.00, z=405.50], EntitySpider['Spider'/225, l='MpServer', x=758.50, y=17.00, z=406.50], EntityZombie['Zombie'/229, l='MpServer', x=791.10, y=24.00, z=426.23], EntitySpider['Spider'/230, l='MpServer', x=773.50, y=21.00, z=429.50], EntitySkeleton['Skeleton'/231, l='MpServer', x=769.50, y=38.00, z=425.50], EntitySkeleton['Skeleton'/232, l='MpServer', x=774.50, y=39.00, z=433.50], EntityCreeper['Creeper'/238, l='MpServer', x=806.50, y=68.00, z=416.50]]
+	Retry entities: 0 total; []
+	Server brand: vanilla
+	Server type: Integrated singleplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.WorldClient.addWorldInfoToCrashReport(WorldClient.java:401)
+	at net.minecraft.client.Minecraft.addGraphicsAndWorldToCrashReport(Minecraft.java:2322)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:462)
+	at net.minecraft.client.main.Main.main(Main.java:114)
+	at Start.main(Start.java:11)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.8.8
+	Operating System: Windows 10 (amd64) version 10.0
+	CPU: 8x Intel(R) Core(TM) i7-4770 CPU @ 3.40GHz
+	Java Version: 11.0.12, Amazon.com Inc.
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode), Amazon.com Inc.
+	Memory: 61776080 bytes (58 MB) / 255852544 bytes (244 MB) up to 2124414976 bytes (2026 MB)
+	JVM Flags: 0 total; 
+	IntCache: cache: 0, tcache: 0, allocated: 12, tallocated: 98
+	Launched Version: mcp
+	LWJGL: 2.9.4
+	OpenGL: NVIDIA GeForce GTX 750 Ti/PCIe/SSE2 GL version 4.6.0 NVIDIA 466.11, NVIDIA Corporation
+	GL Caps: Using GL 1.3 multitexturing.
+Using GL 1.3 texture combiners.
+Using framebuffer objects because OpenGL 3.0 is supported and separate blending is supported.
+Shaders are available because OpenGL 2.1 is supported.
+VBOs are available because OpenGL 1.5 is supported.
+
+	Using VBOs: No
+	Is Modded: Very likely; Jar signature invalidated
+	Type: Client (map_client.txt)
+	Resource Packs: 
+	Current Language: English (US)
+	Profiler Position: N/A (disabled)
+	CPU: 8x Intel(R) Core(TM) i7-4770 CPU @ 3.40GHz
+	OptiFine Version: OptiFine_1.8.8_HD_U_H8
+	Render Distance Chunks: 8
+	Mipmaps: 4
+	Anisotropic Filtering: 1
+	Antialiasing: 0
+	Multitexture: false
+	Shaders: null
+	OpenGlVersion: 4.6.0 NVIDIA 466.11
+	OpenGlRenderer: NVIDIA GeForce GTX 750 Ti/PCIe/SSE2
+	OpenGlVendor: NVIDIA Corporation
+	CpuCount: 8
