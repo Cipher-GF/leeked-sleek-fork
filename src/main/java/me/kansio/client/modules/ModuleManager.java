@@ -31,6 +31,7 @@ public class ModuleManager {
 
         //Exploit
         modules.add(new Disabler());
+        modules.add(new ACDetector());
 
         //Movement
         modules.add(new Speed());
