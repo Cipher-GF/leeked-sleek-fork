@@ -31,4 +31,11 @@ servers.dat
 README.md
 *.json
 Client.rar
-workspace/Sleek/configs/bloox.sleek
+workspace/saves/
+workspace/crash-reports
+workspace/logs
+workspace/resourcepacks
+workspace/assets
+workspace/screenshots
+workspace/shaderpacks
+workspace/Sleek/keybinds.json

@@ -13,7 +13,7 @@ public class ClickGUI extends Module {
 
     @Override
     public void onEnable() {
-        mc.displayGuiScreen(new me.kansio.client.clickgui.ui.clickgui.frame.ClickGUI());
+        mc.displayGuiScreen(new me.kansio.client.gui.clickgui.ui.clickgui.frame.ClickGUI());
         toggle();
     }
 

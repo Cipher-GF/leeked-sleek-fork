@@ -26,7 +26,7 @@ public class Speed extends Module {
     private final AtomicDouble hDist = new AtomicDouble();
 
     public Speed() {
-        super("Speed", Keyboard.KEY_G, ModuleCategory.MOVEMENT);
+        super("Speed", ModuleCategory.MOVEMENT);
         register(mode, speed, forceFriction, frictionMode);
     }
 

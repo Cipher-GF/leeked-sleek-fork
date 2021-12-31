@@ -38,7 +38,7 @@ public class Flight extends Module {
     private double spereeeedserz = 2.5;
 
     public Flight() {
-        super("Flight", Keyboard.KEY_F, ModuleCategory.MOVEMENT);
+        super("Flight", ModuleCategory.MOVEMENT);
         register(modeValue, speed, viewbob, boost, extraBoost, glide);
     }
 
@@ -249,5 +249,8 @@ public class Flight extends Module {
         return n;
     }
 
-
+    @Override
+    public String getSuffix() {
+        return " " + modeValue.getValueAsString();
+    }
 }
