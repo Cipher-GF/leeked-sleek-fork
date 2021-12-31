@@ -140,17 +140,20 @@
             <artifactId>commons-codec</artifactId>
             <version>1.9</version>
         </dependency>
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.22</version>
             <scope>provided</scope>
         </dependency>
+
         <dependency>
             <groupId>com.dorkbox</groupId>
             <artifactId>MessageBus</artifactId>
             <version>2.4</version>
         </dependency>
+
         <dependency>
             <groupId>net.java.jinput</groupId>
             <artifactId>jinput</artifactId>
@@ -219,29 +222,8 @@
 
         <dependency>
             <groupId>com.mojang</groupId>
-            <artifactId>realms</artifactId>
-            <version>1.7.39</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.mojang</groupId>
             <artifactId>authlib</artifactId>
             <version>1.5.21</version>
-        </dependency>
-
-         <dependency>
-            <groupId>tv.twitch</groupId>
-            <artifactId>twitch</artifactId>
-            <version>6.5</version>
-        </dependency>
-
-        <dependency>
-
-            <groupId>io.imgui.java</groupId>
-            <artifactId>imgui-api</artifactId>
-            <version>1.8.6.0</version>
-            <scope>system</scope>
-            <systemPath>${basedir}/libs/imgui-app-1.86.0.jar</systemPath>
         </dependency>
 
     </dependencies>
