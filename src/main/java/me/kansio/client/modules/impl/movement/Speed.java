@@ -19,7 +19,7 @@ import org.lwjgl.input.Keyboard;
 
 public class Speed extends Module {
 
-    private final ModeValue mode = new ModeValue("Mode", this, "Vanilla", "VanillaHop", "Verus", "Verus2", "Ghostly", "Ghostly Teleport");
+    private final ModeValue mode = new ModeValue("Mode", this, "Vanilla", "VanillaHop", "Verus", "Verus2", "Ghostly", "Ghostly TP");
     private final NumberValue<Double> speed = new NumberValue<>("Speed", this, 0.5, 0.0, 8.0, 0.1);
     private final BooleanValue forceFriction = new BooleanValue("Force Friction", this, true);
     private final ModeValue frictionMode = new ModeValue("Friction", this, forceFriction, "NCP", "NEW", "LEGIT", "SILENT");
@@ -87,7 +87,7 @@ public class Speed extends Module {
                 PlayerUtil.setMotion(speed.getValue().floatValue());
                 break;
             }
-            case "Ghostly Teleport": {
+            case "Ghostly TP": {
                 double yaw = Math.toRadians(mc.thePlayer.rotationYaw);
                 double x = -Math.sin(yaw) * 1.8;
                 double z = Math.cos(yaw) * 1.8;

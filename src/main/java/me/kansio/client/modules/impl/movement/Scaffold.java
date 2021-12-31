@@ -40,7 +40,7 @@ public class Scaffold extends Module {
     private BooleanValue swing = new BooleanValue("Swing", this, true);
     private BooleanValue sprint = new BooleanValue("Sprint", this, false);
     private BooleanValue tower = new BooleanValue("Tower", this, true);
-    private BooleanValue amount = new BooleanValue("Show Amount", this, true);
+    private BooleanValue info = new BooleanValue("Show Info", this, true);
     public BooleanValue safewalk = new BooleanValue("Safewalk", this, true);
     public BooleanValue keepY = new BooleanValue("Keep Y", this, false);
     private NumberValue<Double> delay = new NumberValue<>("Delay", this, 0d, 0d, 9000d, 1d);
@@ -55,7 +55,7 @@ public class Scaffold extends Module {
 
     public Scaffold() {
         super("Scaffold", ModuleCategory.MOVEMENT);
-        register(modeValue, swing, sprint, tower, amount, safewalk, delay, expansion);
+        register(modeValue, swing, sprint, tower, info, safewalk, keepY, delay, expansion);
     }
 
 
@@ -125,17 +125,17 @@ public class Scaffold extends Module {
 
     @Subscribe
     public void onRender(RenderOverlayEvent event) {
-        if (this.amount.getValue()) {
-            HUD hud = (HUD) Client.getInstance().getModuleManager().getModuleByName("HUD");
-            ScaledResolution scaledResolution = RenderUtils.getResolution();
+            if (this.info.getValue()) {
+                HUD hud = (HUD) Client.getInstance().getModuleManager().getModuleByName("HUD");
+                ScaledResolution scaledResolution = RenderUtils.getResolution();
 
-            RenderUtils.drawRect(scaledResolution.getScaledWidth() / 2 - 30, scaledResolution.getScaledHeight() / 2 + 50 + animation, 20 + mc.fontRendererObj.getStringWidth(getBlockCount() + "") + 10, 30, new Color(0, 0, 0, 105).getRGB());
-            RenderUtils.drawRect(scaledResolution.getScaledWidth() / 2 - 30, scaledResolution.getScaledHeight() / 2 + 50 + animation, 20 + mc.fontRendererObj.getStringWidth(getBlockCount() + "") + 10, 1, ColorPalette.GREEN.getColor().getRGB());
+                RenderUtils.drawRect(scaledResolution.getScaledWidth() / 2 - 30, scaledResolution.getScaledHeight() / 2 + 50 + animation, 20 + mc.fontRendererObj.getStringWidth(getBlockCount() + "") + 10, 30, new Color(0, 0, 0, 105).getRGB());
+                RenderUtils.drawRect(scaledResolution.getScaledWidth() / 2 - 30, scaledResolution.getScaledHeight() / 2 + 50 + animation, 20 + mc.fontRendererObj.getStringWidth(getBlockCount() + "") + 10, 1, ColorPalette.GREEN.getColor().getRGB());
 
-            mc.fontRendererObj.drawStringWithShadow(getBlockCount() + "", scaledResolution.getScaledWidth() / 2 - 5, scaledResolution.getScaledHeight() / 2 + 61 + animation, - 1);
+                mc.fontRendererObj.drawStringWithShadow(getBlockCount() + "", scaledResolution.getScaledWidth() / 2 - 5, scaledResolution.getScaledHeight() / 2 + 61 + animation, -1);
 
-            mc.getRenderItem().renderItemIntoGUI(mc.thePlayer.inventory.getStackInSlot(getSlotWithBlock()), scaledResolution.getScaledWidth() / 2 - 28, scaledResolution.getScaledHeight() / 2 + 57 + animation);
-        }
+                mc.getRenderItem().renderItemIntoGUI(mc.thePlayer.inventory.getStackInSlot(getSlotWithBlock()), scaledResolution.getScaledWidth() / 2 - 28, scaledResolution.getScaledHeight() / 2 + 57 + animation);
+            }
     }
 
 

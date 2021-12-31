@@ -11,14 +11,15 @@ buildNumber.properties
 .mvn/timing.properties
 
 #stuff
-saves/
-logs/
-screenshots/
-workspace/screenshots
-workspace/versions/
 workspace/saves/
 workspace/logs/
+workspace/screenshots/
+workspace/versions/
 workspace/libraries/
+workspace/crash-reports/
+workspace/resourcepacks/
+workspace/assets/
+workspace/shaderpacks/
 
 
 # Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
@@ -31,11 +32,4 @@ servers.dat
 README.md
 *.json
 Client.rar
-workspace/saves/
-workspace/crash-reports
-workspace/logs
-workspace/resourcepacks
-workspace/assets
-workspace/screenshots
-workspace/shaderpacks
 workspace/Sleek/keybinds.json
