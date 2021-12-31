@@ -29,3 +29,6 @@ MavenMCP.iml
 
 servers.dat
 README.md
+*.json
+Client.rar
+workspace/Sleek/configs/bloox.sleek
