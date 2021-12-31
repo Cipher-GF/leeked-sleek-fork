@@ -1,15 +1,14 @@
 package me.kansio.client.gui;
 
 import java.io.IOException;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.*;
-import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Session;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.lwjgl.opengl.GL11;
 
-public class MainMenu extends GuiScreen implements GuiYesNoCallback
+public class MainMenu extends GuiScreen
 {
     /**
      * Adds the buttons (and other controls) to the screen in question. Called when the GUI is displayed and when the
@@ -17,24 +16,13 @@ public class MainMenu extends GuiScreen implements GuiYesNoCallback
      */
     public void initGui()
     {
-        int i = 24;
         int j = this.height / 4 + 48;
-
-        this.addSingleplayerMultiplayerButtons(j, i);
-
-        this.mc.func_181537_a(false);
-    }
-
-    /**
-     * Adds Singleplayer and Multiplayer buttons on Main Menu for players who have bought the game.
-     */
-    private void addSingleplayerMultiplayerButtons(int p_73969_1_, int p_73969_2_)
-    {
-        this.buttonList.add(new GuiButton(1, this.width / 2 - 100, p_73969_1_, I18n.format("menu.singleplayer", new Object[0])));
-        this.buttonList.add(new GuiButton(2, this.width / 2 - 100, p_73969_1_ + p_73969_2_ * 1, I18n.format("menu.multiplayer", new Object[0])));
-        this.buttonList.add(new GuiButton(0, this.width / 2 - 100, p_73969_1_ + 72 + 12, 98, 20, I18n.format("menu.options", new Object[0])));
-        this.buttonList.add(new GuiButton(4, this.width / 2 + 2, p_73969_1_ + 72 + 12, 98, 20, I18n.format("menu.quit", new Object[0])));
-        this.buttonList.add(new GuiButton(14, this.width / 2 - 100, p_73969_1_ + p_73969_2_ * 2, "Generate Name"));
+        int i = 24;
+        this.buttonList.add(new GuiButton(0, this.width / 2 - 100, j, I18n.format("menu.singleplayer", new Object[0])));
+        this.buttonList.add(new GuiButton(1, this.width / 2 - 100, j + i * 1, I18n.format("menu.multiplayer", new Object[0])));
+        this.buttonList.add(new GuiButton(2, this.width / 2 - 100, j + i * 2, "Alt Manager"));
+        this.buttonList.add(new GuiButton(3, this.width / 2 - 100, j + 72 + 12, 98, 20, I18n.format("menu.options", new Object[0])));
+        this.buttonList.add(new GuiButton(4, this.width / 2 + 2, j + 72 + 12, 98, 20, I18n.format("menu.quit", new Object[0])));
     }
 
     /**
@@ -42,32 +30,26 @@ public class MainMenu extends GuiScreen implements GuiYesNoCallback
      */
     protected void actionPerformed(GuiButton button) throws IOException
     {
-        if (button.id == 0)
-        {
-            this.mc.displayGuiScreen(new GuiOptions(this, this.mc.gameSettings));
+        switch (button.id) {
+            case 0:
+                this.mc.displayGuiScreen(new GuiSelectWorld(this));
+                break;
+            case 1:
+                this.mc.displayGuiScreen(new GuiMultiplayer(this));
+                break;
+            case 2:
+                this.mc.session = new Session("sex_"+ RandomStringUtils.random(4, true, true), "", "", "mojang");
+                System.out.println(mc.session.getUsername());
+                break;
+            case 3:
+                this.mc.displayGuiScreen(new GuiOptions(this, this.mc.gameSettings));
+                break;
+            case 4:
+                this.mc.shutdown();
+                break;
+            case 5:
+                break;
         }
-
-        if (button.id == 1)
-        {
-            this.mc.displayGuiScreen(new GuiSelectWorld(this));
-        }
-
-        if (button.id == 2)
-        {
-            this.mc.displayGuiScreen(new GuiMultiplayer(this));
-        }
-
-        if (button.id == 14)
-        {
-            this.mc.session = new Session("sex_"+ RandomStringUtils.random(4, true, true), "", "", "mojang");
-            System.out.println(mc.session.getUsername());
-        }
-
-        if (button.id == 4)
-        {
-            this.mc.shutdown();
-        }
-
     }
 
     /**
@@ -75,9 +57,8 @@ public class MainMenu extends GuiScreen implements GuiYesNoCallback
      */
     public void drawScreen(int mouseX, int mouseY, float partialTicks)
     {
-
-        GlStateManager.disableBlend();
-        mc.getTextureManager().bindTexture(new ResourceLocation("sleek/bg1.png"));
+        //mc.getTextureManager().bindTexture(new ResourceLocation("sleek/bg1.png"));
+        Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation( "sleek/bp1.png"));
         Gui.drawModalRectWithCustomSizedTexture(0, 0, 0, 0, this.width, this.height, this.width, this.height);
         String s = "Sleek";
         this.drawString(this.fontRendererObj, s, 2, this.height - 10, -1);

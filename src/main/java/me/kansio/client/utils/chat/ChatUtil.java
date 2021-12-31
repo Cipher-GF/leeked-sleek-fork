@@ -6,7 +6,7 @@ import net.minecraft.util.ChatComponentText;
 public class ChatUtil extends Util {
 
     public static void log(String message) {
-        mc.thePlayer.addChatMessage(new ChatComponentText("§7[§bClient§7] §f" + message));
+        mc.thePlayer.addChatMessage(new ChatComponentText("§7[§bSleek§7] §f" + message));
     }
 
 }

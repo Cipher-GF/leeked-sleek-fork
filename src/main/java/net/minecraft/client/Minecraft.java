@@ -607,7 +607,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage {
 
     private void createDisplay() throws LWJGLException {
         Display.setResizable(true);
-        Display.setTitle("Minecraft 1.8.8");
+        Display.setTitle("Loading Sleek v0.1");
 
         try {
             Display.create((new PixelFormat()).withDepthBits(24));

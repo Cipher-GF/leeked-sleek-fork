@@ -12,6 +12,7 @@ import me.kansio.client.modules.ModuleManager;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.utils.chat.ChatUtil;
 import net.minecraft.client.Minecraft;
+import org.lwjgl.opengl.Display;
 
 import java.io.File;
 
@@ -64,6 +65,7 @@ public class Client {
         keybindManager.load();
 
         System.out.println("Client has been started.");
+        Display.setTitle("Sleek v0.1");
     }
 
     public void onShutdown() {

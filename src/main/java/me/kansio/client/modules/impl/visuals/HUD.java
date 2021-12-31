@@ -17,12 +17,13 @@ import java.awt.*;
 
 public class HUD extends Module {
 
+    private BooleanValue font = new BooleanValue("Font", this, false);
     private BooleanValue noti = new BooleanValue("Notifications", this, true);
     public static boolean notifications;
 
     public HUD() {
         super("HUD", ModuleCategory.VISUALS);
-        register(noti);
+        register(noti, font);
     }
 
     @Subscribe
