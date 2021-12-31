@@ -32,7 +32,7 @@ public class ConfigManager {
                 dir.mkdirs();
             }
             if (dir != null) {
-                File[] files = dir.listFiles(f -> !f.isDirectory() && FilenameUtils.getExtension(f.getName()).equals("nitrogen"));
+                File[] files = dir.listFiles(f -> !f.isDirectory() && FilenameUtils.getExtension(f.getName()).equals("sleek"));
                 for (File f : files) {
                     Config config = new Config(FilenameUtils.removeExtension(f.getName()).replace(" ", ""), f);
                     configs.add(config);

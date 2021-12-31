@@ -19,6 +19,9 @@ workspace/versions/
 workspace/saves/
 workspace/logs/
 workspace/libraries/
+workspace/resourcepacks
+workspace/assets
+workspace/Sleek/keybinds.json
 
 
 # Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
@@ -31,9 +34,3 @@ servers.dat
 README.md
 *.json
 Client.rar
-workspace/Sleek/configs/bloox.sleek
-/workspace/assets/
-/workspace/screenshots/
-/workspace/saves/
-*.mca
-*.mca
