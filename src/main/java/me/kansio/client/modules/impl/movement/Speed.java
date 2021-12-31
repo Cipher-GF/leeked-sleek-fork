@@ -62,10 +62,9 @@ public class Speed extends Module {
                 break;
             }
             case "Verus2": {
-                ChatUtil.log(hDist.get() + "");
                 if (mc.thePlayer.onGround) {
                     PlayerUtil.damageVerusNoMotion();
-                    event.setMotionY(handleFriction(hDist));
+                    //event.setMotionY(handleFriction(hDist));
                 }
                 PlayerUtil.setMotion(event, (speed.getValue() >= 5.5 ? 5.4 : speed.getValue()));
                 break;

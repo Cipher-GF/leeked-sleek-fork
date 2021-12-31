@@ -94,16 +94,19 @@ public abstract class Module {
                 case "name": {
                     break;
                 }
-                case "keybind": {
-                    this.keyBind = ogzk.getValue().getAsInt();
-                    break;
-                }
                 case "enabled": {
-                    if (ogzk.getValue().getAsBoolean() && !this.isToggled()) {
-                        toggle();
-                    } else if (!ogzk.getValue().getAsBoolean() && this.isToggled()) {
-                        toggle();
+                    toggled = ogzk.getValue().getAsBoolean();
+
+                    if (toggled) {
+                        Client.getInstance().getEventBus().subscribe(this);
+                        onEnable();
+                    } else {
+                        Client.getInstance().getEventBus().unsubscribe(this);
+                        onDisable();
                     }
+                    if (!(this instanceof ClickGUI))
+                        NotificationManager.getNotificationManager().show(new Notification(Notification.NotificationType.INFO, getName(), toggled ? "Enabled" : "Disabled", 1));
+                    onToggled();
                     break;
                 }
             }
@@ -128,9 +131,22 @@ public abstract class Module {
     public JsonObject save() {
         JsonObject json = new JsonObject();
         json.addProperty("name", this.name);
-        json.addProperty("keybind", this.keyBind);
         json.addProperty("enabled", this.toggled);
         getValues().forEach(value -> json.addProperty(value.getName(), value.getValue().toString()));
         return json;
+    }
+
+    public JsonObject saveKeybind() {
+        JsonObject json = new JsonObject();
+        json.addProperty("name", this.name);
+        json.addProperty("keybind", this.keyBind);
+        json.addProperty("keybind", Keyboard.getKeyName(this.keyBind));
+        return json;
+    }
+
+    public void setKeyBind(int keyBind) {
+        System.out.println("niggerman " + this.name);
+        this.keyBind = keyBind;
+        Client.getInstance().getKeybindManager().save();
     }
 }

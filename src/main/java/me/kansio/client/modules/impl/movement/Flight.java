@@ -51,6 +51,10 @@ public class Flight extends Module {
         spereeeedserz = 0.22;
         stopwatch.resetTime();
 
+        if (modeValue.getValueAsString() == "VerusDamage") {
+            PlayerUtil.damageVerus();
+        }
+
         if (modeValue.getValueAsString().toLowerCase(Locale.ROOT) == "funcraft") {
             mc.thePlayer.performHurtAnimation();
         }
@@ -92,7 +96,7 @@ public class Flight extends Module {
                 PlayerUtil.setMotion(speed.getValue().floatValue());
                 break;
             }
-            case "Verus2": {
+            case "VerusDamage": {
                 if (mc.thePlayer.hurtResistantTime > 18) {
                     boosted = true;
                     spereeeedserz = speed.getValue() / 2;
@@ -105,7 +109,6 @@ public class Flight extends Module {
             }
             case "Funcraft": {
                 if (event.isPre()) {
-
 
 
                     if (glide.getValue()) {
@@ -142,7 +145,7 @@ public class Flight extends Module {
     @Subscribe
     public void onMove(MoveEvent event) {
         switch (modeValue.getValueAsString()) {
-            case "Verus2": {
+            case "VerusDamage": {
                 PlayerUtil.setMotion(event, spereeeedserz);
                 break;
             }
@@ -221,7 +224,7 @@ public class Flight extends Module {
     public void onCollide(BlockCollisionEvent event) {
 
         switch (modeValue.getValueAsString()) {
-            case "Verus2":
+            case "VerusDamage":
             case "Verus": {
                 if (event.getBlock() instanceof BlockAir) {
                     if (mc.thePlayer.isSneaking())

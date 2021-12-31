@@ -480,6 +480,8 @@ public class Minecraft implements IThreadListener, IPlayerUsage {
                 this.displayCrashReport(crashreport1);
                 break;
             } finally {
+                // better place to call the method kansio bc this will almost guaranteed run
+                Client.getInstance().onShutdown();
                 this.shutdownMinecraftApplet();
             }
 
@@ -1297,7 +1299,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage {
      */
     public void shutdown() {
         //Call the exit method
-        Client.getInstance().onShutdown();
+
 
         this.running = false;
     }

@@ -90,7 +90,7 @@ public class ThreadDownloadImageData extends SimpleTexture
         {
             if (this.cacheFile != null && this.cacheFile.isFile())
             {
-                org.tinylog.Logger.debug("Loading http texture from local cache ({})", new Object[] {this.cacheFile});
+                //org.tinylog.Logger.debug("Loading http texture from local cache ({})", new Object[] {this.cacheFile});
 
                 try
                 {
