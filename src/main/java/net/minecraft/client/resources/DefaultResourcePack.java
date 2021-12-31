@@ -17,7 +17,7 @@ import optifine.ReflectorForge;
 
 public class DefaultResourcePack implements IResourcePack
 {
-    public static final Set defaultResourceDomains = ImmutableSet.of("minecraft", "realms");
+    public static final Set defaultResourceDomains = ImmutableSet.of("minecraft");
     private final Map mapAssets;
     private static final String __OBFID = "CL_00001073";
 
