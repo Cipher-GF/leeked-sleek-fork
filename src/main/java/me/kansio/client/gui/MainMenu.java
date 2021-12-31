@@ -10,6 +10,9 @@ import org.apache.commons.lang3.RandomStringUtils;
 
 public class MainMenu extends GuiScreen
 {
+
+    private static final ResourceLocation BACKGROUND = new ResourceLocation("sleek/Background.jpg");
+
     /**
      * Adds the buttons (and other controls) to the screen in question. Called when the GUI is displayed and when the
      * window resizes, the buttonList is cleared beforehand.
@@ -58,7 +61,7 @@ public class MainMenu extends GuiScreen
     public void drawScreen(int mouseX, int mouseY, float partialTicks)
     {
         //mc.getTextureManager().bindTexture(new ResourceLocation("sleek/bg1.png"));
-        Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation( "sleek/bp1.png"));
+        this.mc.getTextureManager().bindTexture(BACKGROUND);
         Gui.drawModalRectWithCustomSizedTexture(0, 0, 0, 0, this.width, this.height, this.width, this.height);
         String s = "Sleek";
         this.drawString(this.fontRendererObj, s, 2, this.height - 10, -1);
