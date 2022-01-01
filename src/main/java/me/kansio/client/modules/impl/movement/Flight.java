@@ -22,7 +22,6 @@ import java.util.Locale;
 
 public class Flight extends Module {
 
-
     private ModeValue modeValue = new ModeValue("Mode", this, "Vanilla", "Verus", "VerusDamage", "Funcraft", "Collide", "Ghostly", "Mush");
     private NumberValue<Double> speed = new NumberValue<>("Speed", this, 1d, 0d, 7d, 0.1);
     private BooleanValue viewbob = new BooleanValue("View Bobbing", this, true);
@@ -67,6 +66,7 @@ public class Flight extends Module {
 
     public void onDisable() {
         mc.thePlayer.motionX = 0;
+        mc.thePlayer.motionY = 0;
         mc.thePlayer.motionZ = 0;
     }
 

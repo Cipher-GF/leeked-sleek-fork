@@ -11,13 +11,7 @@ import java.awt.*;
 public class TargetHUD extends Util {
 
     public static void draw(RenderOverlayEvent event, EntityLivingBase target) {
-        RenderUtils.drawRoundedRect(
-                150,
-                350,
-                150,
-                90,
-                10,
-                0x80000000
+        RenderUtils.drawBorderedRoundedRect(150, 350, 150, 90, 10, 2, 2, 0x80000000
         );
     }
 }

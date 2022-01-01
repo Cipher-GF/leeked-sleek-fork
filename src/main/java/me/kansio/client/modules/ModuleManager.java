@@ -8,8 +8,7 @@ import me.kansio.client.modules.impl.exploit.*;
 import me.kansio.client.modules.impl.movement.*;
 import me.kansio.client.modules.impl.player.*;
 import me.kansio.client.modules.impl.visuals.*;
-//import me.kansio.client.modules.impl.world.*;
-import me.kansio.client.modules.impl.world.Scaffold;
+import me.kansio.client.modules.impl.world.*;
 import net.minecraft.client.gui.FontRenderer;
 
 import java.util.ArrayList;
@@ -29,6 +28,7 @@ public class ModuleManager {
         modules.add(new KillAura());
         modules.add(new Velocity());
         modules.add(new Criticals());
+        modules.add(new TargetStrafe());
 
         //Exploit
         modules.add(new Disabler());
@@ -54,6 +54,10 @@ public class ModuleManager {
         modules.add(new ClickGUI());
         modules.add(new ESP());
         modules.add(new Radar());
+        modules.add(new TimeChanger());
+        modules.add(new Brightness());
+        modules.add(new AttackEffect());
+        modules.add(new DeathEffect());
 
         //World
         modules.add(new Scaffold());

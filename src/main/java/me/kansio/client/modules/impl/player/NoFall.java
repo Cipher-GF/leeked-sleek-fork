@@ -11,17 +11,17 @@ import net.minecraft.network.play.client.C03PacketPlayer;
 
 public class NoFall extends Module {
 
-    private ModeValue modeValue = new ModeValue("Mode", this, "Packet", "Spoof", "Verus");
+    private ModeValue mode = new ModeValue("Mode", this, "Packet", "Spoof", "Verus");
 
     public NoFall() {
         super("No Fall", ModuleCategory.PLAYER);
-        register(modeValue);
+        register(mode);
     }
 
     @Subscribe
     public void onUpdate(UpdateEvent event) {
         if (event.isPre() && mc.thePlayer.fallDistance > 2F) {
-            switch (modeValue.getValueAsString()) {
+            switch (mode.getValueAsString()) {
                 case "Spoof": {
                     event.setOnGround(true);
                     break;
@@ -40,7 +40,7 @@ public class NoFall extends Module {
 
     @Subscribe
     public void onPacket(PacketEvent event) {
-        switch (modeValue.getValueAsString()) {
+        switch (mode.getValueAsString()) {
             case "Packet": {
                 if (event.getPacket() instanceof C03PacketPlayer) {
                     C03PacketPlayer c03 = event.getPacket();
@@ -50,4 +50,11 @@ public class NoFall extends Module {
             }
         }
     }
+
+    @Override
+    public String getSuffix() {
+        return " " + mode.getValueAsString();
+    }
+
+
 }

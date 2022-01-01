@@ -4,6 +4,7 @@ import dorkbox.messageBus.annotations.Subscribe;
 import me.kansio.client.event.impl.RenderOverlayEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.impl.Module;
+import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.utils.render.RenderUtils;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
@@ -15,8 +16,15 @@ import java.awt.*;
 
 public class Radar extends Module {
 
+    public BooleanValue players = new BooleanValue("Players", this, true);
+    public BooleanValue monsters = new BooleanValue("Monsters", this, false);
+    public BooleanValue animals = new BooleanValue("Animals", this, false);
+    public BooleanValue invisible = new BooleanValue("Invisibles", this, false);
+
+
     public Radar() {
         super("Radar", ModuleCategory.VISUALS);
+        register(players, monsters, animals, invisible);
     }
 
     @Subscribe
