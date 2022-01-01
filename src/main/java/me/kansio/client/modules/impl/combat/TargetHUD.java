@@ -9,6 +9,7 @@ import net.minecraft.entity.EntityLivingBase;
 import java.awt.*;
 
 public class TargetHUD extends Util {
+
     public static void draw(RenderOverlayEvent event, EntityLivingBase target) {
         RenderUtils.drawRoundedRect(
                 150,
@@ -18,6 +19,5 @@ public class TargetHUD extends Util {
                 10,
                 0x80000000
         );
-
     }
 }

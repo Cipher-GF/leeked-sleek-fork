@@ -9,6 +9,7 @@ import me.kansio.client.modules.impl.movement.*;
 import me.kansio.client.modules.impl.player.*;
 import me.kansio.client.modules.impl.visuals.*;
 //import me.kansio.client.modules.impl.world.*;
+import me.kansio.client.modules.impl.world.Scaffold;
 import net.minecraft.client.gui.FontRenderer;
 
 import java.util.ArrayList;
@@ -36,8 +37,8 @@ public class ModuleManager {
         //Movement
         modules.add(new Speed());
         modules.add(new Flight());
-        modules.add(new Scaffold());
         modules.add(new InvMove());
+        modules.add(new LongJump());
 
         //Player
         modules.add(new NoFall());
@@ -52,7 +53,7 @@ public class ModuleManager {
         modules.add(new ClickGUI());
 
         //World
-
+        modules.add(new Scaffold());
 
 
         //Toggle modules

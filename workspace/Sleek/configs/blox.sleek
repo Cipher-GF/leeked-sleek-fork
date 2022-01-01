@@ -1,16 +1,15 @@
 [
   {
     "name": "Killaura",
-    "keybind": 19,
     "enabled": false,
     "Mode": "Smart",
     "Rotation Mode": "Default",
-    "Target Priority": "Armor",
+    "Target Priority": "Health",
     "Crack Type": "Enchant",
-    "Autoblock Mode": "Fake",
+    "Autoblock Mode": "Real",
     "Swing Mode": "Attack",
-    "Attack Range": "3.3000000000000003",
-    "Crack Size": "8.0",
+    "Attack Range": "4.5",
+    "Crack Size": "8",
     "CPS": "10.0",
     "Randomize": "3.0",
     "Crack": "false",
@@ -20,102 +19,83 @@
     "Players": "true",
     "Animals": "true",
     "Monsters": "true",
-    "Invisibles": "true",
+    "Invisibles": "false",
     "Teleport Reach": "false",
-    "Blood Particles": "false",
-    "Blood Sound": "false",
-    "GCD": "false",
+    "Blood Particles": "true",
+    "Blood Sound": "true",
+    "GCD": "true",
     "In Inventory": "false",
     "Auto F5": "false"
   },
   {
     "name": "Velocity",
-    "keybind": 0,
     "enabled": true,
-    "Mode": "Packet"
+    "Mode": "Packet",
+    "Explotion": "true",
+    "Vertical": "100",
+    "Horizotal": "100"
   },
   {
     "name": "Criticals",
-    "keybind": 0,
-    "enabled": false
-  },
-  {
-    "name": "Speed",
-    "keybind": 48,
-    "enabled": false,
-    "Mode": "Verus",
-    "Speed": "1.0",
-    "Force Friction": "false",
-    "Friction": "NCP"
-  },
-  {
-    "name": "Flight",
-    "keybind": 47,
-    "enabled": false,
-    "Mode": "Verus",
-    "Speed": "1.0",
-    "View Bobbing": "false",
-    "Boost": "true",
-    "Extra Boost": "true",
-    "Glide": "false"
-  },
-  {
-    "name": "Scaffold",
-    "keybind": 37,
-    "enabled": false,
-    "Mode": "Verus",
-    "Swing": "true",
-    "Sprint": "false",
-    "Tower": "true",
-    "Show Amount": "true",
-    "Safewalk": "true",
-    "Delay": "0.0",
-    "Expansion": "4.0"
-  },
-  {
-    "name": "InvMove",
-    "keybind": 0,
-    "enabled": true
-  },
-  {
-    "name": "HUD",
-    "keybind": 0,
-    "enabled": true,
-    "Notifications": "true"
-  },
-  {
-    "name": "Click GUI",
-    "keybind": 54,
     "enabled": false
   },
   {
     "name": "Disabler",
-    "keybind": 0,
     "enabled": false,
     "Mode": "Verus Combat"
   },
   {
+    "name": "ACDetector",
+    "enabled": false,
+    "Delay": "1.0"
+  },
+  {
+    "name": "Speed",
+    "enabled": false,
+    "Mode": "Verus",
+    "Speed": "0.5",
+    "Force Friction": "true",
+    "Friction": "SILENT"
+  },
+  {
+    "name": "Flight",
+    "enabled": false,
+    "Mode": "Verus",
+    "Speed": "1.0",
+    "View Bobbing": "true",
+    "Boost": "true",
+    "Extra Boost": "true",
+    "Glide": "true"
+  },
+  {
+    "name": "InvMove",
+    "enabled": true
+  },
+  {
+    "name": "Long Jump",
+    "enabled": false,
+    "Mode": "Verus",
+    "Vertical Boost": "0.8",
+    "Speed": "1.45"
+  },
+  {
     "name": "No Fall",
-    "keybind": 0,
-    "enabled": true,
-    "Mode": "Spoof"
+    "enabled": false,
+    "Mode": "Packet"
   },
   {
     "name": "Sprint",
-    "keybind": 0,
     "enabled": true,
     "Omni": "false"
   },
   {
     "name": "ChestStealer",
-    "keybind": 0,
     "enabled": true,
     "Check Chest": "true",
     "Delay": "25.0"
   },
   {
     "name": "InvManager",
-    "keybind": 0,
     "enabled": true,
     "AutoSword": "true",
     "AutoSword Delay": "25.0",
@@ -126,5 +106,41 @@
     "Auto Armor": "true",
     "AutoArmor Delay": "25.0",
     "AutoArmor Only in Inv": "true"
+  },
+  {
+    "name": "Timer",
+    "enabled": false,
+    "Tick Timer": "false",
+    "Speed": "1.0",
+    "Ticks": "1.0"
+  },
+  {
+    "name": "No Rotate",
+    "enabled": true,
+    "Mode": "Packet"
+  },
+  {
+    "name": "HUD",
+    "enabled": true,
+    "Notifications": "true",
+    "Font": "false"
+  },
+  {
+    "name": "Click GUI",
+    "enabled": false,
+    "Font": "false"
+  },
+  {
+    "name": "Scaffold",
+    "enabled": false,
+    "Mode": "Verus",
+    "Swing": "true",
+    "Sprint": "false",
+    "Tower": "true",
+    "Show Info": "true",
+    "Safewalk": "true",
+    "Keep Y": "false",
+    "Delay": "0.0",
+    "Expansion": "4"
   }
 ]

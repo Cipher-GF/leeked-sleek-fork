@@ -1,4 +1,4 @@
-package me.kansio.client.modules.impl.movement;
+package me.kansio.client.modules.impl.world;
 
 import dorkbox.messageBus.annotations.Subscribe;
 import me.kansio.client.Client;
@@ -54,7 +54,7 @@ public class Scaffold extends Module {
     private boolean didPlaceBlock;
 
     public Scaffold() {
-        super("Scaffold", ModuleCategory.MOVEMENT);
+        super("Scaffold", ModuleCategory.WORLD);
         register(modeValue, swing, sprint, tower, info, safewalk, keepY, delay, expansion);
     }
 
