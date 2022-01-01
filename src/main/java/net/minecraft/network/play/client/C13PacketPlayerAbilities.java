@@ -1,6 +1,9 @@
 package net.minecraft.network.play.client;
 
 import java.io.IOException;
+
+import lombok.Getter;
+import lombok.Setter;
 import net.minecraft.entity.player.PlayerCapabilities;
 import net.minecraft.network.Packet;
 import net.minecraft.network.PacketBuffer;
@@ -8,12 +11,12 @@ import net.minecraft.network.play.INetHandlerPlayServer;
 
 public class C13PacketPlayerAbilities implements Packet<INetHandlerPlayServer>
 {
-    private boolean invulnerable;
-    private boolean flying;
-    private boolean allowFlying;
-    private boolean creativeMode;
-    private float flySpeed;
-    private float walkSpeed;
+    public boolean invulnerable;
+    public boolean flying;
+    public boolean allowFlying;
+    public boolean creativeMode;
+    public float flySpeed;
+    public float walkSpeed;
 
     public C13PacketPlayerAbilities()
     {
