@@ -1,12 +1,15 @@
 package me.kansio.client.gui;
 
 import java.io.IOException;
+
+import me.kansio.client.gui.alt.GuiAltManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.*;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Session;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.lwjgl.opengl.GL11;
 
 public class MainMenu extends GuiScreen
 {
@@ -41,8 +44,7 @@ public class MainMenu extends GuiScreen
                 this.mc.displayGuiScreen(new GuiMultiplayer(this));
                 break;
             case 2:
-                this.mc.session = new Session("sex_"+ RandomStringUtils.random(4, true, true), "", "", "mojang");
-                System.out.println(mc.session.getUsername());
+                this.mc.displayGuiScreen(new GuiAltManager(this));
                 break;
             case 3:
                 this.mc.displayGuiScreen(new GuiOptions(this, this.mc.gameSettings));
