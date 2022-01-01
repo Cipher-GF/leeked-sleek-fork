@@ -51,6 +51,7 @@ public class ModuleManager {
         //Visual
         modules.add(new HUD());
         modules.add(new ClickGUI());
+        modules.add(new ESP());
 
         //World
         modules.add(new Scaffold());

@@ -9,7 +9,7 @@
     "Autoblock Mode": "Real",
     "Swing Mode": "Attack",
     "Attack Range": "4.5",
-    "Crack Size": "8",
+    "Crack Size": "8.0",
     "CPS": "10.0",
     "Randomize": "3.0",
     "Crack": "false",
@@ -31,9 +31,9 @@
     "name": "Velocity",
     "enabled": true,
     "Mode": "Packet",
-    "Explotion": "true",
-    "Vertical": "100",
-    "Horizotal": "100"
+    "Explosion": "true",
+    "Vertical": "100.0",
+    "Horizontal": "100"
   },
   {
     "name": "Criticals",
@@ -128,7 +128,23 @@
   {
     "name": "Click GUI",
     "enabled": false,
-    "Font": "false"
+    "Font": "true"
+  },
+  {
+    "name": "ESP",
+    "enabled": true,
+    "Outline": "true",
+    "Box Type": "Corners",
+    "Name": "true",
+    "Health Bar": "true",
+    "Armor Bar": "true",
+    "Local": "true",
+    "Players": "true",
+    "Invisibles": "false",
+    "Monsters": "false",
+    "Animals": "false",
+    "Chests": "false",
+    "Dropped Items": "false"
   },
   {
     "name": "Scaffold",
@@ -141,6 +157,6 @@
     "Safewalk": "true",
     "Keep Y": "false",
     "Delay": "0.0",
-    "Expansion": "4"
+    "Expansion": "4.0"
   }
 ]

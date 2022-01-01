@@ -4,6 +4,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.*;
+import net.minecraft.client.renderer.culling.Frustum;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.AxisAlignedBB;
@@ -26,6 +27,8 @@ public class RenderUtils {
     private final static IntBuffer viewport = GLAllocation.createDirectIntBuffer(16);
     private final static FloatBuffer modelview = GLAllocation.createDirectFloatBuffer(16);
     private final static FloatBuffer projection = GLAllocation.createDirectFloatBuffer(16);
+
+    private static final Frustum frustrum = new Frustum();
 
     public static double interpolate(double current, double old, double scale) {
         return old + (current - old) * scale;
@@ -303,5 +306,15 @@ public class RenderUtils {
         GlStateManager.enableTexture2D();
         GlStateManager.disableBlend();
 
+    }
+
+    private static boolean isInViewFrustrum(AxisAlignedBB bb) {
+        Entity current = mc.getRenderViewEntity();
+        frustrum.setPosition(current.posX, current.posY, current.posZ);
+        return frustrum.isBoundingBoxInFrustum(bb);
+    }
+
+    public static boolean isInViewFrustrum(Entity entity) {
+        return isInViewFrustrum(entity.getEntityBoundingBox()) || entity.ignoreFrustumCheck;
     }
 }

@@ -4,6 +4,7 @@ import dorkbox.messageBus.annotations.Subscribe;
 import me.kansio.client.event.impl.PacketEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.impl.Module;
+import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.ModeValue;
 import me.kansio.client.utils.network.PacketUtil;
 import net.minecraft.entity.Entity;
@@ -12,7 +13,8 @@ import net.minecraft.network.play.client.C03PacketPlayer;
 
 public class Criticals extends Module {
 
-    private ModeValue mode = new ModeValue("Mode", this, "Packet");
+    private ModeValue mode = new ModeValue("Mode", this, "Packet", "Verus");
+    private final BooleanValue c06 = new BooleanValue("C06", this, true);
 
     public final double[] packetValues = new double[]{0.0625D, 0.0D, 0.05D, 0.0D};
 
@@ -41,6 +43,32 @@ public class Criticals extends Module {
                 }
                 break;
             }
+            case "Verus": {
+                sendPacket(0, 0.11, 0, false);
+                sendPacket(0, 0.1100013579, 0, false);
+                sendPacket(0, 0.0000013579, 0, false);
+                break;
+            }
+        }
+    }
+
+    void sendPacket(double xOffset, double yOffset, double zOffset, boolean ground) {
+        double x = mc.thePlayer.posX + xOffset;
+        double y = mc.thePlayer.posY + yOffset;
+        double z = mc.thePlayer.posZ + zOffset;
+        if (c06.getValue()) {
+            mc.getNetHandler().addToSendQueue(new
+                    C03PacketPlayer.C06PacketPlayerPosLook(
+                            x,
+                            y,
+                            z,
+                            mc.thePlayer.rotationYaw,
+                            mc.thePlayer.rotationPitch,
+                            ground
+                    )
+            );
+        } else {
+            mc.getNetHandler().addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(x, y, z, ground));
         }
     }
 
