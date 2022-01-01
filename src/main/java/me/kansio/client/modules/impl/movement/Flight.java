@@ -23,12 +23,13 @@ import java.util.Locale;
 public class Flight extends Module {
 
 
-    private ModeValue modeValue = new ModeValue("Mode", this, "Vanilla", "Verus", "VerusDamage", "Funcraft", "Collide", "Ghostly");
+    private ModeValue modeValue = new ModeValue("Mode", this, "Vanilla", "Verus", "VerusDamage", "Funcraft", "Collide", "Ghostly", "Mush");
     private NumberValue<Double> speed = new NumberValue<>("Speed", this, 1d, 0d, 7d, 0.1);
     private BooleanValue viewbob = new BooleanValue("View Bobbing", this, true);
     private BooleanValue boost = new BooleanValue("Boost", this, true, modeValue, "Funcraft");
     private BooleanValue extraBoost = new BooleanValue("Extra Boost", this, true, modeValue, "Funcraft");
     private BooleanValue glide = new BooleanValue("Glide", this, true, modeValue, "Funcraft");
+    private NumberValue<Double> timer = new NumberValue<>("Timer", this, 1d, 1d, 5d, 0.1, modeValue, "Mush");
     private boolean boosted = false;
     double speedy = 2.5;
     Stopwatch stopwatch = new Stopwatch();
@@ -40,7 +41,7 @@ public class Flight extends Module {
 
     public Flight() {
         super("Flight", ModuleCategory.MOVEMENT);
-        register(modeValue, speed, viewbob, boost, extraBoost, glide);
+        register(modeValue, speed, viewbob, boost, extraBoost, glide, timer);
     }
 
 
@@ -56,7 +57,7 @@ public class Flight extends Module {
             PlayerUtil.damageVerus();
         }
 
-        if (modeValue.getValueAsString().toLowerCase(Locale.ROOT) == "funcraft") {
+        if (modeValue.getValueAsString().equalsIgnoreCase("funcraft") || modeValue.getValueAsString().equalsIgnoreCase("mush")) {
             mc.thePlayer.performHurtAnimation();
         }
 
@@ -82,6 +83,16 @@ public class Flight extends Module {
             mc.thePlayer.cameraYaw = 0;
         }
         switch (modeValue.getValueAsString()) {
+            case "Mush": {
+                if (mc.timer.timerSpeed > 1) {
+                    mc.timer.timerSpeed -= 0.01;
+                }
+
+                if (speedy > 0.22) {
+                    speedy -= 0.01;
+                }
+                break;
+            }
             case "Vanilla": {
                 double motionY = 0;
 
@@ -233,6 +244,7 @@ public class Flight extends Module {
     public void onCollide(BlockCollisionEvent event) {
 
         switch (modeValue.getValueAsString()) {
+            case "Mush":
             case "Collide":
             case "VerusDamage":
             case "Verus": {

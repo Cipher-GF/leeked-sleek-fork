@@ -3,6 +3,7 @@ package me.kansio.client.gui;
 import java.io.IOException;
 
 import me.kansio.client.gui.alt.GuiAltManager;
+import me.kansio.client.utils.render.ColorPalette;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.*;
 import net.minecraft.client.resources.I18n;
@@ -14,7 +15,7 @@ import org.lwjgl.opengl.GL11;
 public class MainMenu extends GuiScreen
 {
 
-    private static final ResourceLocation BACKGROUND = new ResourceLocation("sleek/Background.jpg");
+    private static final ResourceLocation BACKGROUND = new ResourceLocation("sleek/bg1.png");
 
     /**
      * Adds the buttons (and other controls) to the screen in question. Called when the GUI is displayed and when the
@@ -68,6 +69,9 @@ public class MainMenu extends GuiScreen
         String s = "Sleek";
         this.drawString(this.fontRendererObj, s, 2, this.height - 10, -1);
 
+        String s3 = "S\247fleek";
+        int j = this.height / 4 + 24;
+        this.drawCenteredString(this.fontRendererObj, s3, this.width / 2 - 50, j, ColorPalette.GREEN.getColor().getRGB());
         String s1 = "Developed By Kansio, Divine, PC And Rzyy";
         this.drawString(this.fontRendererObj, s1, this.width - this.fontRendererObj.getStringWidth(s1) - 2, this.height - 10, -1);
 

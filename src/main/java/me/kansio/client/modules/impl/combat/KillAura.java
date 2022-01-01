@@ -45,7 +45,7 @@ public class KillAura extends Module {
                 mode, rotation, targetPriority, crackType, autoblockMode, swingMode,
 
                 //sliders:
-                reach, crackSize, cps, rand,
+                reach, blockRange, crackSize, cps, rand,
 
                 //booleans
                 crack, randomizeCps, keepSprint, block, players, animals, walls, monsters, invisible, teleportReach, blood, bloodsound, gcd, allowInInventory, autoF5
@@ -119,6 +119,7 @@ public class KillAura extends Module {
     @Override
     public void onDisable() {
         if (isBlocking) unblock();
+        isBlocking = false;
         swinging = false;
         currentRotation = null;
         this.target = null;
@@ -158,17 +159,27 @@ public class KillAura extends Module {
         if (entities.isEmpty()) {
             index = 0;
 
-            if (isBlocking && !autoblockMode.getValue().equalsIgnoreCase("real")) {
-                unblock();
-            }
+            isBlocking = false;
         } else {
             if (index >= entities.size()) index = 0;
 
-            if (canBlock && !autoblockMode.getValue().equalsIgnoreCase("fake")) {
-                if (!event.isPre()) {
-                    blockHit(entities.get(index));
+            if (canBlock) {
+                switch (autoblockMode.getValue()) {
+                    case "Real": {
+                        if (!event.isPre()) {
+                            mc.playerController.sendUseItem(mc.thePlayer, mc.theWorld, mc.thePlayer.getHeldItem());
+
+                        }
+                        break;
+                    }
+
+                    case "Fake": {
+                        isBlocking = true;
+                        break;
+                    }
                 }
             }
+
 
             if (event.isPre()) {
                 switch (mode.getValue()) {
@@ -388,13 +399,10 @@ public class KillAura extends Module {
     }
 
     public void blockHit(Entity target) {
-        mc.playerController.interactWithEntitySendPacket(mc.thePlayer, target);
-        PacketUtil.sendPacketNoEvent(new C08PacketPlayerBlockPlacement(new BlockPos(-1, -1, -1), 255, mc.thePlayer.getHeldItem(), 0, 0, 0));
-        isBlocking = true;
+
     }
 
     private void unblock() {
-        PacketUtil.sendPacketNoEvent(new C07PacketPlayerDigging(C07PacketPlayerDigging.Action.RELEASE_USE_ITEM, BlockPos.ORIGIN, EnumFacing.DOWN));
         isBlocking = false;
     }
 

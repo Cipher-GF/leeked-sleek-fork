@@ -50,6 +50,7 @@ public class ModuleManager {
 
         //Visual
         modules.add(new HUD());
+        modules.add(new Animations());
         modules.add(new ClickGUI());
         modules.add(new ESP());
 

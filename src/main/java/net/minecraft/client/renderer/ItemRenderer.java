@@ -1,5 +1,9 @@
 package net.minecraft.client.renderer;
 
+import me.kansio.client.Client;
+import me.kansio.client.modules.impl.combat.KillAura;
+import me.kansio.client.modules.impl.visuals.Animations;
+import me.kansio.client.utils.chat.ChatUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -44,8 +48,8 @@ public class ItemRenderer
     /**
      * How far the current item has been equipped (0 disequipped and 1 fully up)
      */
-    private float equippedProgress;
-    private float prevEquippedProgress;
+    public float equippedProgress;
+    public float prevEquippedProgress;
     private final RenderManager renderManager;
     private final RenderItem itemRenderer;
 
@@ -243,7 +247,7 @@ public class ItemRenderer
         GlStateManager.enableCull();
     }
 
-    private void func_178105_d(float p_178105_1_)
+    public void func_178105_d(float p_178105_1_)
     {
         float f = -0.4F * MathHelper.sin(MathHelper.sqrt_float(p_178105_1_) * (float)Math.PI);
         float f1 = 0.2F * MathHelper.sin(MathHelper.sqrt_float(p_178105_1_) * (float)Math.PI * 2.0F);
@@ -273,7 +277,7 @@ public class ItemRenderer
     /**
      * Performs transformations prior to the rendering of a held item in first person.
      */
-    private void transformFirstPersonItem(float equipProgress, float swingProgress)
+    public void transformFirstPersonItem(float equipProgress, float swingProgress)
     {
         GlStateManager.translate(0.56F, -0.52F, -0.71999997F);
         GlStateManager.translate(0.0F, equipProgress * -0.6F, 0.0F);
@@ -313,7 +317,7 @@ public class ItemRenderer
         GlStateManager.scale(1.0F, 1.0F, 1.0F + f1 * 0.2F);
     }
 
-    private void func_178103_d()
+    public void func_178103_d()
     {
         GlStateManager.translate(-0.5F, 0.2F, 0.0F);
         GlStateManager.rotate(30.0F, 0.0F, 1.0F, 0.0F);
@@ -343,9 +347,18 @@ public class ItemRenderer
             {
                 this.renderItemMap(entityplayersp, f2, f, f1);
             }
+            if (Client.getInstance().getModuleManager().getModuleByName("Animations").isToggled()) {
+                Animations anim = (Animations) Client.getInstance().getModuleManager().getModuleByName("Animations");
+                if (KillAura.isBlocking && Client.getInstance().getModuleManager().getModuleByName("Killaura").isToggled() && ((KillAura)Client.getInstance().getModuleManager().getModuleByName("Killaura")).autoblockMode.getValue().equalsIgnoreCase("Fake")) {
+                    ChatUtil.log("asnfijoqahbfuop 9u0fgb");
+                    anim.render(this.itemToRender, partialTicks);
+                }
+            }
             else if (entityplayersp.getItemInUseCount() > 0)
             {
                 EnumAction enumaction = this.itemToRender.getItemUseAction();
+
+
 
                 switch (ItemRenderer.ItemRenderer$1.field_178094_a[enumaction.ordinal()])
                 {
@@ -360,8 +373,13 @@ public class ItemRenderer
                         break;
 
                     case 4:
-                        this.transformFirstPersonItem(f, 0.0F);
-                        this.func_178103_d();
+                        if (Client.getInstance().getModuleManager().getModuleByName("Animations").isToggled() && !(((KillAura) Client.getInstance().getModuleManager().getModuleByName("KillAura")).autoblockMode.getValue().equals("Fake"))) {
+                            Animations anim = (Animations) Client.getInstance().getModuleManager().getModuleByName("Animations");
+                            anim.render(this.itemToRender, partialTicks);
+                        } else {
+                            this.transformFirstPersonItem(f, 0.0F);
+                            this.func_178103_d();
+                        }
                         break;
 
                     case 5:
