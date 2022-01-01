@@ -123,7 +123,7 @@ public class KillAura extends Module {
                     case "Real": {
                         if (!event.isPre()) {
                             mc.playerController.sendUseItem(mc.thePlayer, mc.theWorld, mc.thePlayer.getHeldItem());
-
+                            isBlocking = true;
                         }
                         break;
                     }

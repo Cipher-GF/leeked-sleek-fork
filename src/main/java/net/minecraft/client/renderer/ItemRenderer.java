@@ -342,37 +342,46 @@ public class ItemRenderer
 
         if (this.itemToRender != null)
         {
+            boolean fakeAB = Client.getInstance().getModuleManager().getModuleByName("Animations").isToggled() && KillAura.isBlocking && Client.getInstance().getModuleManager().getModuleByName("KillAura").isToggled();
+
+                /*
+                Animations anim = (Animations) Client.getInstance().getModuleManager().getModuleByName("Animations");
+                anim.render(this.itemToRender, partialTicks);
+                 */
+
+
             if (this.itemToRender.getItem() instanceof ItemMap)
             {
                 this.renderItemMap(entityplayersp, f2, f, f1);
             }
-            if (Client.getInstance().getModuleManager().getModuleByName("Animations").isToggled()) {
+            /*else if (Client.getInstance().getModuleManager().getModuleByName("Animations").isToggled()) {
                 Animations anim = (Animations) Client.getInstance().getModuleManager().getModuleByName("Animations");
-                if (KillAura.isBlocking && Client.getInstance().getModuleManager().getModuleByName("Killaura").isToggled() && ((KillAura)Client.getInstance().getModuleManager().getModuleByName("Killaura")).autoblockMode.getValue().equalsIgnoreCase("Fake")) {
+                if (KillAura.isBlocking && ((KillAura)Client.getInstance().getModuleManager().getModuleByName("Killaura")).autoblockMode.getValue().equalsIgnoreCase("Fake")) {
                     ChatUtil.log("asnfijoqahbfuop 9u0fgb");
                     anim.render(this.itemToRender, partialTicks);
                 }
-            }
-            else if (entityplayersp.getItemInUseCount() > 0)
+            }*/
+            else if (entityplayersp.getItemInUseCount() > 0 || fakeAB)
             {
-                EnumAction enumaction = this.itemToRender.getItemUseAction();
 
+                EnumAction enumaction = fakeAB ? EnumAction.BLOCK : this.itemToRender.getItemUseAction();
 
+                //ChatUtil.log(KillAura.isBlocking + " "+ (fakeAB ? "sad " : "") + enumaction);
 
-                switch (ItemRenderer.ItemRenderer$1.field_178094_a[enumaction.ordinal()])
+                switch (enumaction)
                 {
-                    case 1:
+                    case NONE:
                         this.transformFirstPersonItem(f, 0.0F);
                         break;
 
-                    case 2:
-                    case 3:
+                    case EAT:
+                    case DRINK:
                         this.func_178104_a(entityplayersp, partialTicks);
                         this.transformFirstPersonItem(f, 0.0F);
                         break;
 
-                    case 4:
-                        if (Client.getInstance().getModuleManager().getModuleByName("Animations").isToggled() && !(((KillAura) Client.getInstance().getModuleManager().getModuleByName("KillAura")).autoblockMode.getValue().equals("Fake"))) {
+                    case BLOCK:
+                        if (Client.getInstance().getModuleManager().getModuleByName("Animations").isToggled()) {
                             Animations anim = (Animations) Client.getInstance().getModuleManager().getModuleByName("Animations");
                             anim.render(this.itemToRender, partialTicks);
                         } else {
@@ -381,7 +390,7 @@ public class ItemRenderer
                         }
                         break;
 
-                    case 5:
+                    case BOW:
                         this.transformFirstPersonItem(f, 0.0F);
                         this.func_178098_a(partialTicks, entityplayersp);
                 }
@@ -391,6 +400,8 @@ public class ItemRenderer
                 this.func_178105_d(f1);
                 this.transformFirstPersonItem(f, f1);
             }
+
+
 
             this.renderItem(entityplayersp, this.itemToRender, ItemCameraTransforms.TransformType.FIRST_PERSON);
         }

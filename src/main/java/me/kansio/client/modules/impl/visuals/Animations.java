@@ -3,6 +3,7 @@ package me.kansio.client.modules.impl.visuals;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.property.value.ModeValue;
+import me.kansio.client.utils.chat.ChatUtil;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemStack;
@@ -20,6 +21,7 @@ public class Animations extends Module {
     }
 
     public void render(ItemStack itemToRender, float partialTicks) {
+
         float f = 1.0F - (mc.getItemRenderer().prevEquippedProgress + (mc.getItemRenderer().equippedProgress - mc.getItemRenderer().prevEquippedProgress) * partialTicks);
         EntityPlayerSP entityplayersp = mc.thePlayer;
         float f1 = entityplayersp.getSwingProgress(partialTicks);
