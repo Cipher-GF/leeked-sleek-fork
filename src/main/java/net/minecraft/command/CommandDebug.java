@@ -1,14 +1,15 @@
 package net.minecraft.command;
 
+import net.minecraft.profiler.Profiler;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.BlockPos;
+import org.tinylog.Logger;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import net.minecraft.profiler.Profiler;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.BlockPos;
-import org.tinylog.Logger;
 
 
 public class CommandDebug extends CommandBase

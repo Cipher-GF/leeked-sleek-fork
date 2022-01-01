@@ -1,16 +1,13 @@
 package me.kansio.client.gui;
 
-import java.io.IOException;
-
 import me.kansio.client.gui.alt.GuiAltManager;
 import me.kansio.client.utils.render.ColorPalette;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.*;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.Session;
-import org.apache.commons.lang3.RandomStringUtils;
-import org.lwjgl.opengl.GL11;
+
+import java.io.IOException;
 
 public class MainMenu extends GuiScreen
 {
@@ -63,7 +60,7 @@ public class MainMenu extends GuiScreen
      */
     public void drawScreen(int mouseX, int mouseY, float partialTicks)
     {
-        //mc.getTextureManager().bindTexture(new ResourceLocation("sleek/bg1.png"));
+        GlStateManager.color(1.0F,1.0F,1.0F,1.0F);
         this.mc.getTextureManager().bindTexture(BACKGROUND);
         Gui.drawModalRectWithCustomSizedTexture(0, 0, 0, 0, this.width, this.height, this.width, this.height);
         String s = "Sleek";

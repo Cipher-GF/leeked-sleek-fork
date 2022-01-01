@@ -1,7 +1,8 @@
 package me.kansio.client.gui.clickgui.ui.clickgui.frame.components;
 
 
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
 import me.kansio.client.property.Value;
 
 public abstract class Component

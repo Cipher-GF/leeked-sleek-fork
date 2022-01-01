@@ -29,13 +29,16 @@ import net.minecraft.util.AxisAlignedBB;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.glu.GLU;
+
 import javax.vecmath.Vector3d;
 import javax.vecmath.Vector4d;
 import java.awt.*;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class ESP extends Module {
 

@@ -2,16 +2,13 @@ package me.kansio.client.modules.impl.visuals;
 
 import dorkbox.messageBus.annotations.Subscribe;
 import me.kansio.client.Client;
-import me.kansio.client.gui.clickgui.utils.render.RenderUtils;
 import me.kansio.client.event.impl.RenderOverlayEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.impl.Module;
-import me.kansio.client.notification.NotificationManager;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.utils.render.ColorPalette;
 import me.kansio.client.utils.render.ColorUtil;
 import net.minecraft.client.gui.Gui;
-import net.minecraft.util.EnumChatFormatting;
 
 import java.awt.*;
 

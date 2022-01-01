@@ -10,7 +10,6 @@ import me.kansio.client.keybind.KeybindManager;
 import me.kansio.client.manager.ValueManager;
 import me.kansio.client.modules.ModuleManager;
 import me.kansio.client.modules.impl.Module;
-import me.kansio.client.utils.chat.ChatUtil;
 import net.minecraft.client.Minecraft;
 import org.lwjgl.opengl.Display;
 

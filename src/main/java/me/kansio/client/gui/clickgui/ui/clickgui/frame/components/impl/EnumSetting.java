@@ -1,9 +1,9 @@
 package me.kansio.client.gui.clickgui.ui.clickgui.frame.components.impl;
 
-import me.kansio.client.gui.clickgui.utils.render.RenderUtils;
 import me.kansio.client.gui.clickgui.ui.clickgui.frame.Priority;
 import me.kansio.client.gui.clickgui.ui.clickgui.frame.components.Component;
 import me.kansio.client.gui.clickgui.ui.clickgui.frame.components.FrameModule;
+import me.kansio.client.gui.clickgui.utils.render.RenderUtils;
 import me.kansio.client.property.Value;
 import me.kansio.client.property.value.ModeValue;
 import net.minecraft.client.Minecraft;

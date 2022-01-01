@@ -5,9 +5,7 @@ import lombok.Getter;
 import me.kansio.client.Client;
 import me.kansio.client.event.impl.RenderOverlayEvent;
 import me.kansio.client.modules.impl.visuals.HUD;
-import me.kansio.client.utils.chat.ChatUtil;
 
-import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class NotificationManager {

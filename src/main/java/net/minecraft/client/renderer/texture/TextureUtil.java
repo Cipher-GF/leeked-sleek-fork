@@ -1,11 +1,5 @@
 package net.minecraft.client.renderer.texture;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.IntBuffer;
-import javax.imageio.ImageIO;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GLAllocation;
 import net.minecraft.client.renderer.GlStateManager;
@@ -14,14 +8,18 @@ import net.minecraft.util.ResourceLocation;
 import optifine.Config;
 import optifine.Mipmaps;
 import optifine.Reflector;
-
 import org.apache.commons.io.IOUtils;
-
-
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL14;
 import org.lwjgl.opengl.GL12;
+import org.lwjgl.opengl.GL14;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.IntBuffer;
 
 public class TextureUtil
 {

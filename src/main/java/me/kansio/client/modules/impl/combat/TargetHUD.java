@@ -2,11 +2,8 @@ package me.kansio.client.modules.impl.combat;
 
 import me.kansio.client.event.impl.RenderOverlayEvent;
 import me.kansio.client.utils.Util;
-import me.kansio.client.utils.render.ColorPalette;
 import me.kansio.client.utils.render.RenderUtils;
 import net.minecraft.entity.EntityLivingBase;
-
-import java.awt.*;
 
 public class TargetHUD extends Util {
 

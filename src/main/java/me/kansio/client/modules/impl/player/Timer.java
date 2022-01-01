@@ -6,7 +6,6 @@ import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.NumberValue;
-import me.kansio.client.utils.chat.ChatUtil;
 
 public class Timer extends Module {
 

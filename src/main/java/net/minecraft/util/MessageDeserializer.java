@@ -3,14 +3,11 @@ package net.minecraft.util;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;
+import net.minecraft.network.*;
+import org.tinylog.Logger;
+
 import java.io.IOException;
 import java.util.List;
-import net.minecraft.network.EnumConnectionState;
-import net.minecraft.network.EnumPacketDirection;
-import net.minecraft.network.NetworkManager;
-import net.minecraft.network.Packet;
-import net.minecraft.network.PacketBuffer;
-import org.tinylog.Logger;
 
 
 public class MessageDeserializer extends ByteToMessageDecoder

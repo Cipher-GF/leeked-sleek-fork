@@ -18,8 +18,6 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.MathHelper;
 import optifine.Config;
 import optifine.Reflector;
-
-
 import org.lwjgl.opengl.GL11;
 import shadersmod.client.Shaders;
 

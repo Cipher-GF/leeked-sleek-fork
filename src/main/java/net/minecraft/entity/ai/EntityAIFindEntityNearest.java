@@ -1,8 +1,6 @@
 package net.minecraft.entity.ai;
 
 import com.google.common.base.Predicate;
-import java.util.Collections;
-import java.util.List;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -10,6 +8,9 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayerMP;
 import org.tinylog.Logger;
+
+import java.util.Collections;
+import java.util.List;
 
 
 public class EntityAIFindEntityNearest extends EntityAIBase

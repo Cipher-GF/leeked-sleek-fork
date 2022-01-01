@@ -6,7 +6,6 @@ import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.property.value.ModeValue;
-import net.minecraft.network.Packet;
 import net.minecraft.network.play.client.C03PacketPlayer;
 
 public class NoFall extends Module {

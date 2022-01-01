@@ -16,9 +16,6 @@ import me.kansio.client.utils.player.PlayerUtil;
 import net.minecraft.block.BlockAir;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.AxisAlignedBB;
-import org.lwjgl.input.Keyboard;
-
-import java.util.Locale;
 
 public class Flight extends Module {
 

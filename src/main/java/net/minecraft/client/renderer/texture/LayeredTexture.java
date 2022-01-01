@@ -1,13 +1,14 @@
 package net.minecraft.client.renderer.texture;
 
 import com.google.common.collect.Lists;
+import net.minecraft.client.resources.IResourceManager;
+import net.minecraft.util.ResourceLocation;
+
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
-import net.minecraft.client.resources.IResourceManager;
-import net.minecraft.util.ResourceLocation;
 
 
 

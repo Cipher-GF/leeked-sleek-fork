@@ -1,6 +1,7 @@
 package me.kansio.client.config;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.File;
 

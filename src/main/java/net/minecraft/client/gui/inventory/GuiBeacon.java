@@ -1,7 +1,6 @@
 package net.minecraft.client.gui.inventory;
 
 import io.netty.buffer.Unpooled;
-import java.io.IOException;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -18,6 +17,8 @@ import net.minecraft.network.play.client.C17PacketCustomPayload;
 import net.minecraft.potion.Potion;
 import net.minecraft.tileentity.TileEntityBeacon;
 import net.minecraft.util.ResourceLocation;
+
+import java.io.IOException;
 
 
 

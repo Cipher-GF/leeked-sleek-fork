@@ -1,7 +1,7 @@
 package me.kansio.client.gui.clickgui.utils.render;
 
-import net.minecraft.client.gui.ScaledResolution;
 import me.kansio.client.gui.clickgui.utils.IUtil;
+import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import org.lwjgl.opengl.GL11;
 

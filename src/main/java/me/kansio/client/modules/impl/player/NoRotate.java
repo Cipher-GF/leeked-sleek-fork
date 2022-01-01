@@ -4,9 +4,7 @@ import dorkbox.messageBus.annotations.Subscribe;
 import me.kansio.client.event.impl.PacketEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.impl.Module;
-import me.kansio.client.modules.impl.combat.KillAura;
 import me.kansio.client.property.value.ModeValue;
-import net.minecraft.network.play.client.C00PacketKeepAlive;
 import net.minecraft.network.play.server.S08PacketPlayerPosLook;
 
 public class NoRotate extends Module {

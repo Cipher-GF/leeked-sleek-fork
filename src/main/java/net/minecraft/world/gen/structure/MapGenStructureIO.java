@@ -1,9 +1,10 @@
 package net.minecraft.world.gen.structure;
 
 import com.google.common.collect.Maps;
-import java.util.Map;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
+
+import java.util.Map;
 
 
 

@@ -1,15 +1,12 @@
 package net.minecraft.client.resources;
 
 import com.google.common.collect.Lists;
-import java.io.ByteArrayOutputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.PrintStream;
-import java.util.List;
-import java.util.Set;
 import net.minecraft.client.resources.data.IMetadataSerializer;
 import net.minecraft.util.ResourceLocation;
+
+import java.io.*;
+import java.util.List;
+import java.util.Set;
 
 
 

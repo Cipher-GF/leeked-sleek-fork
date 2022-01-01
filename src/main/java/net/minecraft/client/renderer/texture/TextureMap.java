@@ -1,24 +1,7 @@
 package net.minecraft.client.renderer.texture;
 
-import java.awt.Dimension;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.TreeSet;
-import java.util.concurrent.Callable;
-
-
-
-
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.StitcherException;
@@ -37,6 +20,15 @@ import optifine.Reflector;
 import optifine.TextureUtils;
 import org.tinylog.Logger;
 import shadersmod.client.ShadersTex;
+
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
+import java.util.*;
+import java.util.Map.Entry;
+import java.util.concurrent.Callable;
 
 public class TextureMap extends AbstractTexture implements ITickableTextureObject
 {

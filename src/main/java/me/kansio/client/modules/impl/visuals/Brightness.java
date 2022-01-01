@@ -5,7 +5,6 @@ import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.property.value.ModeValue;
-import me.kansio.client.property.value.NumberValue;
 
 public class Brightness extends Module {
 
