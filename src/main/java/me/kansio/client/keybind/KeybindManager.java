@@ -35,6 +35,7 @@ public class KeybindManager {
                 String modName = obj.get("name").getAsString();
                 Module m = Client.getInstance().getModuleManager().getModuleByName(modName);
                 if (m != null) {
+                    System.out.println(obj.get("keybind").getAsInt());
                     m.setKeyBind(obj.get("keybind").getAsInt());
                 }
             });
