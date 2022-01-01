@@ -47,7 +47,8 @@ public final class GuiAltManager extends GuiScreen {
 
                 case 3:
                     thread = null;
-                    crackedStatus = RandomStringUtils.random(14, true, true);
+                    thread = new AltLoginThread(RandomStringUtils.random(14, true, true), "");
+                    thread.start();
                     break;
 
                 case 4:
