@@ -29,20 +29,20 @@ public class AttackEffect extends Module {
     public BooleanValue ench = new BooleanValue("Enchants", this, false);
     public NumberValue<Integer> enchnum = new NumberValue("Amount", this,1.0, 1.0, 20.0, 1.0, ench);
 
-
     public AttackEffect() {
         super("AttackEffect", ModuleCategory.VISUALS);
         register(mode, modenum, hitmarkersound, hitmarkermode, crit, critnum, ench, enchnum);
     }
 
     public void doPartical(EntityLivingBase target) {
-            for (int i = 0; i < critnum.getValue(); i++) {
-                if (crit.getValue()) {
+            if (crit.getValue()) {
+                for (int i = 0; i < critnum.getValue(); i++) {
                     mc.thePlayer.onCriticalHit(target);
                 }
             }
-            for (int i = 0; i < enchnum.getValue(); i++) {
-                if (crit.getValue()) {
+
+            if (ench.getValue()) {
+                for (int i = 0; i < enchnum.getValue(); i++) {
                     mc.thePlayer.onEnchantmentCritical(target);
                 }
             }

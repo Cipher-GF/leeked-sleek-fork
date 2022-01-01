@@ -62,15 +62,12 @@ public class KillAura extends Module {
     public BooleanValue keepSprint = new BooleanValue("Keep Sprint", this, false);
 
     public static EntityLivingBase target;
-
     public static boolean isBlocking, swinging;
     private int index;
-
     public final Stopwatch attackTimer = new Stopwatch();
     public Vector2f currentRotation = null;
     private boolean canBlock;
     private final Map<EntityLivingBase, Double> entityDamageMap = new HashMap<EntityLivingBase, Double>();
-
     private Rotation lastRotation;
 
     @Override
