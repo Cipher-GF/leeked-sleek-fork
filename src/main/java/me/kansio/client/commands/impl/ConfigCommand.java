@@ -4,7 +4,6 @@ import me.kansio.client.Client;
 import me.kansio.client.utils.chat.ChatUtil;
 
 import java.io.File;
-import java.util.Locale;
 
 public class ConfigCommand extends Command {
     public ConfigCommand() {

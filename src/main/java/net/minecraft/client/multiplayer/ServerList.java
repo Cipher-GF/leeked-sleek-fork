@@ -1,12 +1,13 @@
 package net.minecraft.client.multiplayer;
 
 import com.google.common.collect.Lists;
-import java.io.File;
-import java.util.List;
 import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.CompressedStreamTools;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+
+import java.io.File;
+import java.util.List;
 
 
 

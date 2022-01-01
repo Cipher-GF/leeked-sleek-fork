@@ -1,19 +1,20 @@
 package net.minecraft.network.play.server;
 
-import java.io.IOException;
-import java.util.EnumSet;
-import java.util.Set;
 import net.minecraft.network.Packet;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.network.play.INetHandlerPlayClient;
+
+import java.io.IOException;
+import java.util.EnumSet;
+import java.util.Set;
 
 public class S08PacketPlayerPosLook implements Packet<INetHandlerPlayClient>
 {
     private double x;
     private double y;
     private double z;
-    private float yaw;
-    private float pitch;
+    public float yaw;
+    public float pitch;
     private Set<S08PacketPlayerPosLook.EnumFlags> field_179835_f;
 
     public S08PacketPlayerPosLook()

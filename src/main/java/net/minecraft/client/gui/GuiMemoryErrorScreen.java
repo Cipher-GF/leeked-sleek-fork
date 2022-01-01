@@ -1,9 +1,9 @@
 package net.minecraft.client.gui;
 
-import java.io.IOException;
-
 import me.kansio.client.gui.MainMenu;
 import net.minecraft.client.resources.I18n;
+
+import java.io.IOException;
 
 public class GuiMemoryErrorScreen extends GuiScreen
 {

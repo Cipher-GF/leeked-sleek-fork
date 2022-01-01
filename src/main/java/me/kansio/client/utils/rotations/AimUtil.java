@@ -34,6 +34,7 @@ public final class AimUtil extends Util {
      * @return The {@code Rotation} for this {@code Entity}
      */
     public static Rotation getRotationsRandom(EntityLivingBase entity) {
+
         ThreadLocalRandom threadLocalRandom = ThreadLocalRandom.current();
         double randomXZ = threadLocalRandom.nextDouble(-0.05, 0.1);
         double randomY = threadLocalRandom.nextDouble(-0.05, 0.1);

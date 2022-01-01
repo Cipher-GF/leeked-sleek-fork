@@ -1,8 +1,9 @@
 package net.minecraft.client.shader;
 
-import java.io.IOException;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.util.JsonException;
+
+import java.io.IOException;
 
 
 

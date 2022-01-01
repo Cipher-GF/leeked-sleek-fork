@@ -1,8 +1,9 @@
 package net.minecraft.util;
 
+import org.tinylog.Logger;
+
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
-import org.tinylog.Logger;
 
 public class Util
 {

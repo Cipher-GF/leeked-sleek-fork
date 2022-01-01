@@ -1,7 +1,6 @@
 package net.minecraft.server.management;
 
 import com.google.common.collect.Lists;
-import java.util.List;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S21PacketChunkData;
@@ -16,6 +15,8 @@ import net.minecraft.world.WorldProvider;
 import net.minecraft.world.WorldServer;
 import net.minecraft.world.chunk.Chunk;
 import org.tinylog.Logger;
+
+import java.util.List;
 
 
 public class PlayerManager

@@ -1,6 +1,5 @@
 package me.kansio.client.property.value;
 
-import me.kansio.client.property.Unit;
 import me.kansio.client.property.Value;
 
 public class StringValue extends Value<String> {

@@ -6,7 +6,6 @@ import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.property.value.ModeValue;
 import me.kansio.client.property.value.NumberValue;
-import me.kansio.client.property.value.StringValue;
 import me.kansio.client.utils.player.PlayerUtil;
 
 public class LongJump extends Module {

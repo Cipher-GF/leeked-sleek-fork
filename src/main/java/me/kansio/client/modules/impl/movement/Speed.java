@@ -10,12 +10,10 @@ import me.kansio.client.modules.impl.Module;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.ModeValue;
 import me.kansio.client.property.value.NumberValue;
-import me.kansio.client.utils.chat.ChatUtil;
 import me.kansio.client.utils.player.PlayerUtil;
 import net.minecraft.block.BlockAir;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.AxisAlignedBB;
-import org.lwjgl.input.Keyboard;
 
 public class Speed extends Module {
 

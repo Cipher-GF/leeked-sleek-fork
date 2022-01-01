@@ -1,20 +1,18 @@
 package me.kansio.client.gui;
 
-import java.io.IOException;
-
 import me.kansio.client.gui.alt.GuiAltManager;
-import net.minecraft.client.Minecraft;
+import me.kansio.client.utils.render.ColorPalette;
 import net.minecraft.client.gui.*;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.Session;
-import org.apache.commons.lang3.RandomStringUtils;
-import org.lwjgl.opengl.GL11;
+
+import java.io.IOException;
 
 public class MainMenu extends GuiScreen
 {
 
-    private static final ResourceLocation BACKGROUND = new ResourceLocation("sleek/Background.jpg");
+    private static final ResourceLocation BACKGROUND = new ResourceLocation("sleek/bg1.png");
 
     /**
      * Adds the buttons (and other controls) to the screen in question. Called when the GUI is displayed and when the
@@ -62,12 +60,15 @@ public class MainMenu extends GuiScreen
      */
     public void drawScreen(int mouseX, int mouseY, float partialTicks)
     {
-        //mc.getTextureManager().bindTexture(new ResourceLocation("sleek/bg1.png"));
+        GlStateManager.color(1.0F,1.0F,1.0F,1.0F);
         this.mc.getTextureManager().bindTexture(BACKGROUND);
         Gui.drawModalRectWithCustomSizedTexture(0, 0, 0, 0, this.width, this.height, this.width, this.height);
         String s = "Sleek";
         this.drawString(this.fontRendererObj, s, 2, this.height - 10, -1);
 
+        String s3 = "S\247fleek";
+        int j = this.height / 4 + 24;
+        this.drawCenteredString(this.fontRendererObj, s3, this.width / 2 - 50, j, ColorPalette.GREEN.getColor().getRGB());
         String s1 = "Developed By Kansio, Divine, PC And Rzyy";
         this.drawString(this.fontRendererObj, s1, this.width - this.fontRendererObj.getStringWidth(s1) - 2, this.height - 10, -1);
 

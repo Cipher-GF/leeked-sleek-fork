@@ -16,19 +16,16 @@ import me.kansio.client.utils.player.PlayerUtil;
 import net.minecraft.block.BlockAir;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.AxisAlignedBB;
-import org.lwjgl.input.Keyboard;
-
-import java.util.Locale;
 
 public class Flight extends Module {
 
-
-    private ModeValue modeValue = new ModeValue("Mode", this, "Vanilla", "Verus", "VerusDamage", "Funcraft", "Collide", "Ghostly");
+    private ModeValue modeValue = new ModeValue("Mode", this, "Vanilla", "Verus", "VerusDamage", "Funcraft", "Collide", "Ghostly", "Mush", "VerusGlide");
     private NumberValue<Double> speed = new NumberValue<>("Speed", this, 1d, 0d, 7d, 0.1);
     private BooleanValue viewbob = new BooleanValue("View Bobbing", this, true);
     private BooleanValue boost = new BooleanValue("Boost", this, true, modeValue, "Funcraft");
     private BooleanValue extraBoost = new BooleanValue("Extra Boost", this, true, modeValue, "Funcraft");
     private BooleanValue glide = new BooleanValue("Glide", this, true, modeValue, "Funcraft");
+    private NumberValue<Double> timer = new NumberValue<>("Timer", this, 1d, 1d, 5d, 0.1, modeValue, "Mush");
     private boolean boosted = false;
     double speedy = 2.5;
     Stopwatch stopwatch = new Stopwatch();
@@ -40,7 +37,7 @@ public class Flight extends Module {
 
     public Flight() {
         super("Flight", ModuleCategory.MOVEMENT);
-        register(modeValue, speed, viewbob, boost, extraBoost, glide);
+        register(modeValue, speed, viewbob, boost, extraBoost, glide, timer);
     }
 
 
@@ -56,7 +53,7 @@ public class Flight extends Module {
             PlayerUtil.damageVerus();
         }
 
-        if (modeValue.getValueAsString().toLowerCase(Locale.ROOT) == "funcraft") {
+        if (modeValue.getValueAsString().equalsIgnoreCase("funcraft") || modeValue.getValueAsString().equalsIgnoreCase("mush")) {
             mc.thePlayer.performHurtAnimation();
         }
 
@@ -66,6 +63,7 @@ public class Flight extends Module {
 
     public void onDisable() {
         mc.thePlayer.motionX = 0;
+        mc.thePlayer.motionY = 0;
         mc.thePlayer.motionZ = 0;
     }
 
@@ -82,6 +80,16 @@ public class Flight extends Module {
             mc.thePlayer.cameraYaw = 0;
         }
         switch (modeValue.getValueAsString()) {
+            case "Mush": {
+                if (mc.timer.timerSpeed > 1) {
+                    mc.timer.timerSpeed -= 0.01;
+                }
+
+                if (speedy > 0.22) {
+                    speedy -= 0.01;
+                }
+                break;
+            }
             case "Vanilla": {
                 double motionY = 0;
 
@@ -155,6 +163,13 @@ public class Flight extends Module {
                 if (mc.thePlayer.ticksExisted % 3 == 0) {
                     mc.thePlayer.motionY = 0;
                     PlayerUtil.setMotion(speed.getValue().floatValue());
+                } else {
+                    PlayerUtil.setMotion(0.1f);
+                }
+            case "VerusGlide":
+                if (mc.thePlayer.ticksExisted % 4 == 0) {
+                    mc.thePlayer.motionY = 0.0f;
+                    PlayerUtil.setMotion(0.4f);
                 } else {
                     PlayerUtil.setMotion(0.1f);
                 }
@@ -233,9 +248,24 @@ public class Flight extends Module {
     public void onCollide(BlockCollisionEvent event) {
 
         switch (modeValue.getValueAsString()) {
+            case "VerusGlide":
+                if (event.getBlock() instanceof BlockAir) {
+                    if (mc.thePlayer.isSneaking())
+                        return;
+                    double x = event.getX();
+                    double y = event.getY();
+                    double z = event.getZ();
+                    if (y < mc.thePlayer.posY) {
+                        if (mc.thePlayer.ticksExisted % 5 == 0) {
+                            event.setAxisAlignedBB(AxisAlignedBB.fromBounds(-5, -1, -5, 5, 1.0F, 5).offset(x, y, z));
+                        }
+                    }
+                }
+                break;
+            case "Mush":
             case "Collide":
             case "VerusDamage":
-            case "Verus": {
+            case "Verus":
                 if (event.getBlock() instanceof BlockAir) {
                     if (mc.thePlayer.isSneaking())
                         return;
@@ -247,7 +277,6 @@ public class Flight extends Module {
                     }
                 }
                 break;
-            }
         }
     }
 

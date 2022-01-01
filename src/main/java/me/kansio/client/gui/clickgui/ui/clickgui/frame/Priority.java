@@ -2,7 +2,7 @@ package me.kansio.client.gui.clickgui.ui.clickgui.frame;
 
 import me.kansio.client.utils.render.ColorPalette;
 
-import java.awt.Color;
+import java.awt.*;
 
 public interface Priority {
     int stringColor = -1;

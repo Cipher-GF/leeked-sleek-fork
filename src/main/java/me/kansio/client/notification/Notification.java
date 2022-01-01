@@ -1,6 +1,5 @@
 package me.kansio.client.notification;
 
-import me.kansio.client.gui.clickgui.utils.render.RenderUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiScreen;

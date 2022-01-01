@@ -4,6 +4,13 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.mojang.authlib.properties.PropertyMap;
 import com.mojang.authlib.properties.PropertyMap.Serializer;
+import joptsimple.OptionParser;
+import joptsimple.OptionSet;
+import joptsimple.OptionSpec;
+import me.kansio.client.utils.math.MathUtil;
+import net.minecraft.client.Minecraft;
+import net.minecraft.util.Session;
+
 import java.io.File;
 import java.net.Authenticator;
 import java.net.InetSocketAddress;
@@ -11,12 +18,6 @@ import java.net.PasswordAuthentication;
 import java.net.Proxy;
 import java.net.Proxy.Type;
 import java.util.List;
-import joptsimple.OptionParser;
-import joptsimple.OptionSet;
-import joptsimple.OptionSpec;
-import me.kansio.client.utils.math.MathUtil;
-import net.minecraft.client.Minecraft;
-import net.minecraft.util.Session;
 
 public class Main
 {
