@@ -25,7 +25,7 @@ public class ChestStealer extends Module {
     private Stopwatch delayCounter = new Stopwatch();
 
     public ChestStealer() {
-        super("ChestStealer", ModuleCategory.PLAYER);
+        super("Chest Stealer", ModuleCategory.PLAYER);
         register(checkChest, delay);
     }
 
