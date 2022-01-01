@@ -53,6 +53,7 @@ public class ModuleManager {
         modules.add(new Animations());
         modules.add(new ClickGUI());
         modules.add(new ESP());
+        modules.add(new Radar());
 
         //World
         modules.add(new Scaffold());

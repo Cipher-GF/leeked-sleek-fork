@@ -1,7 +1,7 @@
 [
   {
     "name": "Killaura",
-    "enabled": false,
+    "enabled": true,
     "Mode": "Smart",
     "Rotation Mode": "Default",
     "Target Priority": "Health",
@@ -10,7 +10,7 @@
     "Swing Mode": "Attack",
     "Attack Range": "4.5",
     "Crack Size": "8.0",
-    "CPS": "10.0",
+    "CPS": "8.0",
     "Randomize": "3.0",
     "Crack": "false",
     "Randomize CPS": "true",
@@ -33,11 +33,12 @@
     "Mode": "Packet",
     "Explosion": "true",
     "Vertical": "100.0",
-    "Horizontal": "100"
+    "Horizontal": "100.0"
   },
   {
     "name": "Criticals",
-    "enabled": false
+    "enabled": true,
+    "Mode": "Verus"
   },
   {
     "name": "Disabler",
@@ -51,7 +52,7 @@
   },
   {
     "name": "Speed",
-    "enabled": false,
+    "enabled": true,
     "Mode": "Verus",
     "Speed": "0.5",
     "Force Friction": "true",
@@ -135,7 +136,7 @@
     "enabled": true,
     "Outline": "true",
     "Box Type": "Corners",
-    "Name": "true",
+    "Name": "false",
     "Health Bar": "true",
     "Armor Bar": "true",
     "Local": "true",
@@ -151,7 +152,7 @@
     "enabled": false,
     "Mode": "Verus",
     "Swing": "true",
-    "Sprint": "false",
+    "Sprint": "true",
     "Tower": "true",
     "Show Info": "true",
     "Safewalk": "true",

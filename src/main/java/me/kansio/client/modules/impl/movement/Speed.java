@@ -48,17 +48,20 @@ public class Speed extends Module {
                 break;
             }
             case "Verus": {
-                if (mc.thePlayer.onGround) {
-                    event.setMotionY(mc.thePlayer.motionY = 0.42);
+                if (mc.thePlayer.isMoving()) {
+
+                    if (mc.thePlayer.onGround) {
+                        event.setMotionY(mc.thePlayer.motionY = 0.42);
+                    }
+
+                    float sped2 = (float) (mc.thePlayer.isPotionActive(Potion.moveSpeed) ? 0.365 : 0.355);
+
+                    if (mc.thePlayer.hurtTime >= 1) {
+                        sped2 = speed.getValue().floatValue();
+                    }
+
+                    PlayerUtil.setMotion(sped2);
                 }
-
-                float sped2 = (float) (mc.thePlayer.isPotionActive(Potion.moveSpeed) ? 0.365 : 0.355);
-
-                if (mc.thePlayer.hurtTime >= 1) {
-                    sped2 = speed.getValue().floatValue();
-                }
-
-                PlayerUtil.setMotion(sped2);
                 break;
             }
             case "Verus2": {
