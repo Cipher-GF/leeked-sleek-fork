@@ -32,7 +32,7 @@ ofLagometer:false
 ofShowFps:false
 ofAutoSaveTicks:4000
 ofBetterGrass:3
-ofConnectedTextures:2
+ofConnectedTextures:3
 ofWeather:true
 ofSky:true
 ofStars:true
@@ -62,4 +62,4 @@ ofFullscreenMode:Default
 ofFastMath:false
 ofFastRender:true
 ofTranslucentBlocks:0
-key_of.key.zoom:45
+key_of.key.zoom:46

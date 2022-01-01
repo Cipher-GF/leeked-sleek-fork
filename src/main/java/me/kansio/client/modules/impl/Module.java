@@ -140,7 +140,7 @@ public abstract class Module {
         json.addProperty("name", this.name);
         json.addProperty("keybind", this.keyBind);
         json.addProperty("keybind", this.keyBind);
-        
+
         return json;
     }
 
