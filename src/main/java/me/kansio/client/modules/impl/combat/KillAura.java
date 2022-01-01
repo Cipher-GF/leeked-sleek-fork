@@ -38,7 +38,7 @@ import java.util.*;
 public class KillAura extends Module {
 
     public KillAura() {
-        super("Killaura", Keyboard.KEY_R, ModuleCategory.COMBAT);
+        super("Killaura", ModuleCategory.COMBAT);
 
         register(
                 //enum values:

@@ -2,7 +2,7 @@ package me.kansio.client.modules.impl.visuals;
 
 import dorkbox.messageBus.annotations.Subscribe;
 import me.kansio.client.Client;
-import me.kansio.client.clickgui.utils.render.RenderUtils;
+import me.kansio.client.gui.clickgui.utils.render.RenderUtils;
 import me.kansio.client.event.impl.RenderOverlayEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.impl.Module;
@@ -17,12 +17,13 @@ import java.awt.*;
 
 public class HUD extends Module {
 
+    private BooleanValue font = new BooleanValue("Font", this, false);
     private BooleanValue noti = new BooleanValue("Notifications", this, true);
     public static boolean notifications;
 
     public HUD() {
         super("HUD", ModuleCategory.VISUALS);
-        register(noti);
+        register(noti, font);
     }
 
     @Subscribe

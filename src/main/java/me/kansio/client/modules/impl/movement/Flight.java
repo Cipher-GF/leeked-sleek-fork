@@ -22,7 +22,8 @@ import java.util.Locale;
 
 public class Flight extends Module {
 
-    private ModeValue modeValue = new ModeValue("Mode", this, "Vanilla", "Verus", "Ghostly", "VerusDamage", "Funcraft");
+
+    private ModeValue modeValue = new ModeValue("Mode", this, "Vanilla", "Verus", "VerusDamage", "Funcraft", "Collide", "Ghostly");
     private NumberValue<Double> speed = new NumberValue<>("Speed", this, 1d, 0d, 7d, 0.1);
     private BooleanValue viewbob = new BooleanValue("View Bobbing", this, true);
     private BooleanValue boost = new BooleanValue("Boost", this, true, modeValue, "Funcraft");
@@ -38,7 +39,7 @@ public class Flight extends Module {
     private double spereeeedserz = 2.5;
 
     public Flight() {
-        super("Flight", Keyboard.KEY_F, ModuleCategory.MOVEMENT);
+        super("Flight", ModuleCategory.MOVEMENT);
         register(modeValue, speed, viewbob, boost, extraBoost, glide);
     }
 
@@ -232,6 +233,7 @@ public class Flight extends Module {
     public void onCollide(BlockCollisionEvent event) {
 
         switch (modeValue.getValueAsString()) {
+            case "Collide":
             case "VerusDamage":
             case "Verus": {
                 if (event.getBlock() instanceof BlockAir) {
@@ -257,5 +259,8 @@ public class Flight extends Module {
         return n;
     }
 
-
+    @Override
+    public String getSuffix() {
+        return " " + modeValue.getValueAsString();
+    }
 }

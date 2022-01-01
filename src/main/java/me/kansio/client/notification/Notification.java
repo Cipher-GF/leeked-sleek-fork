@@ -1,5 +1,6 @@
 package me.kansio.client.notification;
 
+import me.kansio.client.gui.clickgui.utils.render.RenderUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiScreen;
@@ -68,14 +69,18 @@ public class Notification {
         Color color = new Color(0, 0, 0, 220);
         Color color1;
 
-        if (type == NotificationType.INFO)
-            color1 = new Color(0, 26, 169);
-        else if (type == NotificationType.WARNING)
-            color1 = new Color(204, 193, 0);
-        else {
-            color1 = new Color(204, 0, 18);
-            int i = Math.max(0, Math.min(255, (int) (Math.sin(time / 100.0) * 255.0 / 2 + 127.5)));
-            color = new Color(i, 0, 0, 220);
+        switch (type) {
+            case INFO:
+                color1 = new Color(197, 197, 197);
+                break;
+            case WARNING:
+                color1 = new Color(204, 193, 0);
+                break;
+            case ERROR:
+                color1 = new Color(204, 0, 18);
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + type);
         }
 
         FontRenderer fontRenderer = Minecraft.getMinecraft().fontRendererObj;
