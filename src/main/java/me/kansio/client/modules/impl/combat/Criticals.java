@@ -20,6 +20,7 @@ public class Criticals extends Module {
 
     public Criticals() {
         super("Criticals", ModuleCategory.COMBAT);
+        register(mode);
     }
 
     @Subscribe
