@@ -18,9 +18,9 @@ import org.lwjgl.input.Keyboard;
 public class Velocity extends Module {
 
     private NumberValue<Integer> v = new NumberValue<>("Vertical", this, 100, 0, 100, 1);
-    private NumberValue<Integer> h = new NumberValue<>("Horizotal", this, 100, 0, 100, 1);
+    private NumberValue<Integer> h = new NumberValue<>("Horizontal", this, 100, 0, 100, 1);
     private ModeValue modeValue = new ModeValue("Mode", this, "Packet");
-    public BooleanValue explotion = new BooleanValue("Explotion", this, true);
+    public BooleanValue explotion = new BooleanValue("Explosion", this, true);
 
     public Velocity() {
         super("Velocity", ModuleCategory.COMBAT);
