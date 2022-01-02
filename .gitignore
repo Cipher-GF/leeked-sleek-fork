@@ -31,15 +31,12 @@ workspace/Sleek/keybinds.json
 MavenMCP.iml
 .idea/
 
-servers.dat
 README.md
-*.json
 Client.rar
 *.mca
 workspace/usercache.json
 workspace/options.txt
 *.txt
-*.json
 /.idea/
 *.lock
 *.dat
