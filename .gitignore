@@ -1,0 +1,43 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Maven template
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+
+#stuff
+saves/
+logs/
+screenshots/
+workspace/screenshots
+workspace/versions/
+workspace/saves/
+workspace/logs/
+workspace/libraries/
+workspace/resourcepacks
+workspace/assets
+workspace/Sleek/keybinds.json
+
+
+# Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
+!/.mvn/wrapper/maven-wrapper.jar
+
+MavenMCP.iml
+.idea/
+
+servers.dat
+README.md
+*.json
+Client.rar
+*.mca
+workspace/usercache.json
+workspace/options.txt
+workspace/options.txt
+*.txt
+*.json
+/.idea/
