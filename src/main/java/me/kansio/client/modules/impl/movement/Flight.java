@@ -50,6 +50,7 @@ public class Flight extends Module {
         stopwatch.resetTime();
 
         if (modeValue.getValueAsString() == "VerusDamage") {
+            mc.timer.timerSpeed = 0.3f;
             PlayerUtil.damageVerus();
         }
 
@@ -65,6 +66,7 @@ public class Flight extends Module {
         mc.thePlayer.motionX = 0;
         mc.thePlayer.motionY = 0;
         mc.thePlayer.motionZ = 0;
+        mc.timer.timerSpeed = 1f;
     }
 
     @Subscribe

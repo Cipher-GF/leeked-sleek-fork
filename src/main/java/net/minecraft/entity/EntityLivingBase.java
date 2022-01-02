@@ -4,6 +4,8 @@ import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Maps;
 import me.kansio.client.Client;
+import me.kansio.client.event.impl.NoSlowEvent;
+import me.kansio.client.modules.impl.player.NoSlow;
 import me.kansio.client.modules.impl.visuals.Animations;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -1699,12 +1701,19 @@ public abstract class EntityLivingBase extends Entity
                     f2 += (this.getAIMoveSpeed() * 1.0F - f2) * f3 / 3.0F;
                 }
 
+                final NoSlowEvent event = new NoSlowEvent(NoSlowEvent.Type.WATER);
+                Client.getInstance().getEventBus().publish(event);
                 this.moveFlying(strafe, forward, f2);
                 this.moveEntity(this.motionX, this.motionY, this.motionZ);
-                this.motionX *= (double)f1;
                 this.motionY *= 0.800000011920929D;
-                this.motionZ *= (double)f1;
-                this.motionY -= 0.02D;
+                if (!event.isCancelled()) {
+
+
+                    this.motionX *= (double) f1;
+
+                    this.motionZ *= (double) f1;
+                    this.motionY -= 0.02D;
+                }
 
                 if (this.isCollidedHorizontally && this.isOffsetPositionInLiquid(this.motionX, this.motionY + 0.6000000238418579D - this.posY + d0, this.motionZ))
                 {

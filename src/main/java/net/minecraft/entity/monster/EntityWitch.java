@@ -68,7 +68,7 @@ public class EntityWitch extends EntityMob implements IRangedAttackMob
      */
     protected String getHurtSound()
     {
-        return null;
+        return "mob.villager.hit";
     }
 
     /**
