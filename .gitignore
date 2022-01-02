@@ -41,3 +41,5 @@ workspace/options.txt
 *.txt
 *.json
 /.idea/
+*.lock
+*.dat
