@@ -4,6 +4,7 @@ import dorkbox.messageBus.annotations.Subscribe;
 import lombok.Getter;
 import me.kansio.client.Client;
 import me.kansio.client.event.impl.RenderOverlayEvent;
+import me.kansio.client.modules.impl.combat.KillAura;
 import me.kansio.client.modules.impl.visuals.HUD;
 
 import java.util.concurrent.LinkedBlockingQueue;
@@ -38,7 +39,7 @@ public class NotificationManager {
 
     @Subscribe
     public void render(RenderOverlayEvent event) {
-        if (!HUD.notifications) return;
+        if (!HUD.notifications && Client.getInstance().getModuleManager().getModuleByName("Hud").isToggled()) return;
         update();
 
         if (currentNotification != null)

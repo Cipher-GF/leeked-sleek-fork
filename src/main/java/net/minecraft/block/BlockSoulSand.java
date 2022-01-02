@@ -1,5 +1,7 @@
 package net.minecraft.block;
 
+import me.kansio.client.Client;
+import me.kansio.client.event.impl.NoSlowEvent;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -28,6 +30,9 @@ public class BlockSoulSand extends Block
      */
     public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entityIn)
     {
+        final NoSlowEvent event = new NoSlowEvent(NoSlowEvent.Type.SOULSAND);
+        Client.getInstance().getEventBus().publish(event);
+        if (event.isCancelled()) return;
         entityIn.motionX *= 0.4D;
         entityIn.motionZ *= 0.4D;
     }

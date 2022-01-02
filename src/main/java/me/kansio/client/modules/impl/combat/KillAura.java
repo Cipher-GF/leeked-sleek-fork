@@ -37,10 +37,10 @@ public class KillAura extends Module {
 
         register(
                 //enum values:
-                mode, moderotation, targetPriority, autoblockMode, swingMode,
+                mode, moderotation, targetPriority, autoblockmode, swingmode, targethudmode,
 
                 //sliders:
-                reach, autoblockRange, cps, rand,
+                swingrage, autoblockRange, cps, cprandom,
 
                 //booleans
                 autoblock, players, animals, monsters, invisible, walls, gcd
@@ -57,12 +57,21 @@ public class KillAura extends Module {
     public NumberValue<Double> autoblockRange = new NumberValue<>("Block Range", this, 3.0, 1.0, 12.0, 0.1);
     public NumberValue<Double> cps = new NumberValue<>("CPS", this, 12.0, 1.0, 20.0, 1.0);
     public NumberValue<Double> rand = new NumberValue<>("Randomize CPS", this, 3.0, 0.0, 10.0, 1.0);
-    public BooleanValue autoblock = new BooleanValue("Auto Block", this, true);
-    public BooleanValue players = new BooleanValue("Players", this, true);
+    public BooleanValue autoblock = new BooleanValue("Auto Block", this, true);public BooleanValue players = new BooleanValue("Players", this, true);
     public BooleanValue animals = new BooleanValue("Animals", this, true);
     public BooleanValue monsters = new BooleanValue("Monsters", this, true);
     public BooleanValue invisible = new BooleanValue("Invisibles", this, true);
     public BooleanValue walls = new BooleanValue("Walls", this, true);
+
+    public ModeValue autoblockmode = new ModeValue("Autoblock Mode", this, autoblock,"Real", "Fake");
+    public ModeValue swingmode = new ModeValue("Swing Mode", this,"Client", "Server");
+    public NumberValue<Double> swingrage = new NumberValue<>("Attack Range", this, 3.0, 1.0, 9.0, 0.1);
+
+    public BooleanValue targethud = new BooleanValue("TargetHud", this, false);
+    public ModeValue targethudmode = new ModeValue("TargetHud Mode", this, targethud, "Sleek", "Moon");
+
+    public NumberValue<Double> cprandom = new NumberValue<>("Randomize CPS", this, 3.0, 0.0, 10.0, 1.0);
+
     public BooleanValue gcd = new BooleanValue("GCD", this, false);
 
     public static EntityLivingBase target;
@@ -95,6 +104,14 @@ public class KillAura extends Module {
     @Subscribe
     public void onMotion(UpdateEvent event) {
         List<EntityLivingBase> entities = FightUtil.getMultipleTargets(reach.getValue(), players.getValue(), animals.getValue(), monsters.getValue(), invisible.getValue(), walls.getValue());
+        Sprint sprint = (Sprint) Client.getInstance().getModuleManager().getModuleByName("Sprint");
+
+        if (!sprint.getKeepSprint().getValue()) {
+            if (target != null) {
+                mc.thePlayer.setSprinting(false);
+            }
+        }
+
         List<EntityLivingBase> blockRangeEntites = FightUtil.getMultipleTargets(autoblockRange.getValue(), players.getValue(), animals.getValue(), monsters.getValue(), invisible.getValue(), walls.getValue());
 
         entities.removeIf(e -> e.getName().contains("[NPC]"));
@@ -117,7 +134,7 @@ public class KillAura extends Module {
             if (index >= entities.size()) index = 0;
 
             if (canBlock) {
-                switch (autoblockMode.getValue()) {
+                switch (autoblockmode.getValue()) {
                     case "Real": {
                         if (!event.isPre()) {
                             mc.playerController.sendUseItem(mc.thePlayer, mc.theWorld, mc.thePlayer.getHeldItem());
@@ -176,20 +193,20 @@ public class KillAura extends Module {
 
                 if (canIAttack) {
                     if (cps.getValue() > 9) {
-                        cps.setValue(cps.getValue() - RandomUtils.nextInt(0, rand.getValue().intValue()));
+                        cps.setValue(cps.getValue() - RandomUtils.nextInt(0, cprandom.getValue().intValue()));
                     } else {
-                        cps.setValue(cps.getValue() + RandomUtils.nextInt(0, rand.getValue().intValue()));
+                        cps.setValue(cps.getValue() + RandomUtils.nextInt(0, cprandom.getValue().intValue()));
                     }
                     switch (mode.getValue()) {
                         case "Switch": {
-                            if (canIAttack && attack(target, RandomUtils.nextInt(90, 100), autoblockMode.getValue())) {
+                            if (canIAttack && attack(target, RandomUtils.nextInt(90, 100), autoblockmode.getValue())) {
                                 index++;
                                 attackTimer.resetTime();
                             }
                             break;
                         }
                         case "Smart": {
-                            if (canIAttack && attack(target, RandomUtils.nextInt(90, 100), autoblockMode.getValue())) {
+                            if (canIAttack && attack(target, RandomUtils.nextInt(90, 100), autoblockmode.getValue())) {
                                 attackTimer.resetTime();
                             }
                         }
@@ -211,7 +228,6 @@ public class KillAura extends Module {
             if (canBlock && blockMode.equalsIgnoreCase("real")) {
                 blockHit(entity);
             }
-
             return true;
         } else {
             mc.thePlayer.swingItem();
@@ -236,9 +252,6 @@ public class KillAura extends Module {
             case "DEFAULT":
                 event.setRotationYaw(rotation.getRotationYaw());
                 event.setRotationPitch(rotation.getRotationPitch());
-                break;
-            case "None":
-
                 break;
             case "DOWN":
                 temp = new Rotation(mc.thePlayer.rotationYaw, 90.0f);
@@ -304,12 +317,12 @@ public class KillAura extends Module {
         return false;
     }
 
+    public static boolean isSwinging() {
+        return swinging;
+    }
+
     @Override
     public String getSuffix() {
         return " " + mode.getValueAsString();
-    }
-
-    public static boolean isSwinging() {
-        return swinging;
     }
 }

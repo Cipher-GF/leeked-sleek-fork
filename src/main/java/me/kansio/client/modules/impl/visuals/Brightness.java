@@ -18,28 +18,28 @@ public class Brightness extends Module {
         register(mode);
     }
 
+    public void onEnable() {
+        this.oldGamma = mc.gameSettings.gammaSetting;
+    }
+
     @Subscribe
     public void onUpdate(UpdateEvent event) {
         switch (mode.getValueAsString()) {
             case "Gamma":
-                this.oldGamma = mc.gameSettings.gammaSetting;
                 mc.gameSettings.gammaSetting = 2000f;
                 break;
             case "Potion":
-                mc.thePlayer.addPotionEffect(new PotionEffect(16, (817 * 20)));
+                mc.thePlayer.addPotionEffect(new PotionEffect(16, (817 * 20), 30));
                 break;
         }
     }
 
     @Override
     public void onDisable() {
-        switch (mode.getValueAsString()) {
-            case "Gamma":
-                mc.gameSettings.gammaSetting = this.oldGamma;
-                break;
-            case "Potion":
-                break;
-        }
+
+        mc.gameSettings.gammaSetting = this.oldGamma;
+        mc.thePlayer.removePotionEffect(16);
+
     }
 
 }

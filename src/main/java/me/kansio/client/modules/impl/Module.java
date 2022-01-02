@@ -149,7 +149,7 @@ public abstract class Module {
     }
 
     public void setKeyBind(int keyBind) {
-        System.out.println("niggerman " + this.name);
+        System.out.println("Saved Config " + this.name);
         this.keyBind = keyBind;
         Client.getInstance().getKeybindManager().save();
     }

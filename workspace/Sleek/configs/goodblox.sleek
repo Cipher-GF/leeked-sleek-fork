@@ -1,0 +1,228 @@
+[
+  {
+    "name": "Killaura",
+    "enabled": false,
+    "Mode": "Smart",
+    "Rotation Mode": "Default",
+    "Target Priority": "Health",
+    "Autoblock Mode": "Fake",
+    "Swing Mode": "Client",
+    "Attack Range": "4.5",
+    "Block Range": "12.0",
+    "CPS": "10.0",
+    "Randomize CPS": "3.0",
+    "Auto Block": "true",
+    "Players": "true",
+    "Animals": "true",
+    "Monsters": "true",
+    "Invisibles": "true",
+    "Walls": "true",
+    "GCD": "false",
+    "Keep Sprint": "false"
+  },
+  {
+    "name": "Velocity",
+    "enabled": false,
+    "Mode": "Packet",
+    "Explosion": "true",
+    "Vertical": "100",
+    "Horizontal": "100"
+  },
+  {
+    "name": "Criticals",
+    "enabled": true,
+    "Mode": "Verus"
+  },
+  {
+    "name": "Target Strafe",
+    "enabled": true,
+    "Auto F5": "false",
+    "On Jump": "true",
+    "Controllable": "true",
+    "Render": "true",
+    "Radius": "3.0",
+    "Width": "1.0",
+    "Red": "100.0",
+    "Green": "100.0",
+    "Blue": "100.0"
+  },
+  {
+    "name": "Disabler",
+    "enabled": false,
+    "Mode": "Keep-Alive",
+    "Cancel Transactions": "false",
+    "Cancel Keep Alive": "false",
+    "Delay Transactions": "false",
+    "Delay Keep Alive": "false",
+    "Delay Alive Amount": "1000",
+    "Transaction Delay": "1000",
+    "Send C0C": "false",
+    "Max Value C0C": "false",
+    "Void Teleport": "false",
+    "TP Delay": "3000",
+    "TP Amount": "-999999999",
+    "Spectate Spoof": "false",
+    "Abilities Spoof": "false"
+  },
+  {
+    "name": "ACDetector",
+    "enabled": false,
+    "Delay": "1.0"
+  },
+  {
+    "name": "Plugins",
+    "enabled": false,
+    "/About": "false"
+  },
+  {
+    "name": "Speed",
+    "enabled": false,
+    "Mode": "Verus",
+    "Speed": "0.5",
+    "Force Friction": "false",
+    "Friction": "NCP"
+  },
+  {
+    "name": "Flight",
+    "enabled": false,
+    "Mode": "VerusDamage",
+    "Speed": "3.0",
+    "View Bobbing": "false",
+    "Boost": "true",
+    "Extra Boost": "false",
+    "Glide": "false",
+    "Timer": "1.0"
+  },
+  {
+    "name": "InvMove",
+    "enabled": true
+  },
+  {
+    "name": "Long Jump",
+    "enabled": false,
+    "Mode": "Verus",
+    "Vertical Boost": "0.8",
+    "Speed": "1.45"
+  },
+  {
+    "name": "No Fall",
+    "enabled": true,
+    "Mode": "Verus"
+  },
+  {
+    "name": "Sprint",
+    "enabled": true,
+    "Omni": "false"
+  },
+  {
+    "name": "Chest Stealer",
+    "enabled": true,
+    "Check Chest": "true",
+    "Delay": "25.0"
+  },
+  {
+    "name": "InvManager",
+    "enabled": true,
+    "AutoSword": "true",
+    "AutoSword Delay": "25.0",
+    "AutoSword Only in Inv": "true",
+    "Inventory Cleaner": "true",
+    "InvCleaner Delay": "25.0",
+    "InvCleaner Only in Inv": "true",
+    "Auto Armor": "true",
+    "AutoArmor Delay": "25.0",
+    "AutoArmor Only in Inv": "true"
+  },
+  {
+    "name": "Timer",
+    "enabled": false,
+    "Tick Timer": "false",
+    "Speed": "1.0",
+    "Ticks": "1.0"
+  },
+  {
+    "name": "No Rotate",
+    "enabled": true,
+    "Mode": "Packet"
+  },
+  {
+    "name": "HUD",
+    "enabled": true,
+    "Notifications": "true",
+    "Font": "false"
+  },
+  {
+    "name": "Animations",
+    "enabled": true,
+    "Mode": "ETB",
+    "Swing Speed": "3.0"
+  },
+  {
+    "name": "Click GUI",
+    "enabled": false,
+    "Font": "false"
+  },
+  {
+    "name": "ESP",
+    "enabled": true,
+    "Outline": "true",
+    "Box Type": "Box",
+    "Name": "true",
+    "Health Bar": "true",
+    "Armor Bar": "true",
+    "Local": "true",
+    "Players": "true",
+    "Invisibles": "false",
+    "Monsters": "false",
+    "Animals": "false",
+    "Chests": "false",
+    "Dropped Items": "true"
+  },
+  {
+    "name": "Radar",
+    "enabled": true,
+    "Players": "true",
+    "Monsters": "false",
+    "Animals": "false",
+    "Invisibles": "false"
+  },
+  {
+    "name": "TimeChanger",
+    "enabled": true,
+    "Mode": "Night"
+  },
+  {
+    "name": "Brightness",
+    "enabled": true,
+    "Mode": "Potion"
+  },
+  {
+    "name": "AttackEffect",
+    "enabled": false,
+    "Partical Mode": "Blood",
+    "Amount": "1.0",
+    "Play Sound": "false",
+    "Sound Mode": "Blood",
+    "Criticals": "false",
+    "Enchants": "false"
+  },
+  {
+    "name": "DeathEffect",
+    "enabled": false,
+    "Effect Mode": "Blood",
+    "Play Sound": "false"
+  },
+  {
+    "name": "Scaffold",
+    "enabled": false,
+    "Mode": "Verus",
+    "Swing": "true",
+    "Sprint": "false",
+    "Tower": "true",
+    "Show Info": "true",
+    "Safewalk": "true",
+    "Keep Y": "false",
+    "Delay": "0.0",
+    "Expansion": "4"
+  }
+]

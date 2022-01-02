@@ -49,6 +49,7 @@ public class ModuleManager {
         modules.add(new InvManager());
         modules.add(new Timer());
         modules.add(new NoRotate());
+        modules.add(new NoSlow());
 
         //Visual
         modules.add(new HUD());
