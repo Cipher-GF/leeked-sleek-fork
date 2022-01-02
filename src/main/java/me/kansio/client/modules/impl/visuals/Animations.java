@@ -3,6 +3,7 @@ package me.kansio.client.modules.impl.visuals;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.property.value.ModeValue;
+import me.kansio.client.property.value.NumberValue;
 import me.kansio.client.utils.chat.ChatUtil;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.renderer.GlStateManager;
@@ -13,11 +14,12 @@ import org.lwjgl.opengl.GL11;
 
 public class Animations extends Module {
 
-    private ModeValue modeValue = new ModeValue("Mode", this, "Old", "Normal", "Hide", "Slide", "Lucky", "Exhi", "oHare", "Wizzard", "Lennox");
+    private ModeValue modeValue = new ModeValue("Mode", this, "Old", "Normal", "Hide", "Slide", "Lucky", "Exhi", "oHare", "Wizzard", "Lennox", "ETB");
+    public NumberValue<Double> slowdown = new NumberValue<>("Swing Speed", this, 1d, -4d, 12d, 1d);
 
     public Animations() {
         super("Animations", ModuleCategory.VISUALS);
-        register(modeValue);
+        register(modeValue, slowdown);
     }
 
     public void render(ItemStack itemToRender, float partialTicks) {
@@ -111,7 +113,20 @@ public class Animations extends Module {
 
                 }
                 break;
+            case "ETB":
+                mc.getItemRenderer().transformFirstPersonItem(f, 0.0F);
+                mc.getItemRenderer().func_178103_d();
+                final float var9 = MathHelper.sin(MathHelper.sqrt_float(f1) * 3.1415927f);
+                GlStateManager.translate(-0.05f, 0.6f, 0.3f);
+                GlStateManager.rotate(-var9 * (float) 80.0 / 2.0f, -4.0f, -0.0f, 18.0f);
+                GlStateManager.rotate(-var9 * (float) 70.0, 1.5f, -0.4f, -0.0f);
+                break;
         }
+    }
+
+    @Override
+    public String getSuffix() {
+        return " " + modeValue.getValue();
     }
 
 }

@@ -2,11 +2,15 @@ package me.kansio.client.modules.impl.combat;
 
 import dorkbox.messageBus.annotations.Subscribe;
 import me.kansio.client.Client;
+import me.kansio.client.event.impl.Render3DEvent;
 import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.NumberValue;
+import net.minecraft.entity.Entity;
+
+import static org.lwjgl.opengl.GL11.*;
 
 public class TargetStrafe extends Module {
 
@@ -16,12 +20,17 @@ public class TargetStrafe extends Module {
     public BooleanValue jump = new BooleanValue("On Jump", this, false);
     public BooleanValue control = new BooleanValue("Controllable", this, false);
     public BooleanValue render = new BooleanValue("Render", this, false);
-    public NumberValue radius = new NumberValue("Radius", this, 3d, 0.1d, 5d, 0.1, render);
-    public NumberValue width = new NumberValue("Width", this, 1d, 0.1d, 5d, 0.1, render);
+    public NumberValue<Double> radius = new NumberValue<>("Radius", this, 3d, 0.1d, 5d, 0.1);
+    public NumberValue<Double> width = new NumberValue<>("Width", this, 1d, 0.1d, 5d, 0.1, render);
+    // kansio had autism doing that for sulfur
+    // maybe, lazu
+    public NumberValue<Double> red = new NumberValue<>("Red", this, 100d, 0d, 255d, 1d, render);
+    public NumberValue<Double> green = new NumberValue<>("Green", this, 100d, 0d, 255d, 1d, render);
+    public NumberValue<Double> blue = new NumberValue<>("Blue", this, 100d, 0d, 255d, 1d, render);
 
     public TargetStrafe() {
         super("Target Strafe", ModuleCategory.COMBAT);
-        register(autoF5, jump, control, render, radius, width);
+        register(autoF5, jump, control, render, radius, width, red, green, blue);
     }
 
     @Override
@@ -31,12 +40,8 @@ public class TargetStrafe extends Module {
 
     @Subscribe
     public void onMotion(UpdateEvent event) {
-        if (autoF5.getValue() && Client.getInstance().getModuleManager().getModuleByName("KillAura").isToggled()) {
-            if (KillAura.target == null) {
-                mc.gameSettings.thirdPersonView = 0;
-            } else {
-                mc.gameSettings.thirdPersonView = 1;
-            }
+        if (canStrafe() && autoF5.getValue()) {
+            mc.gameSettings.thirdPersonView = 1;
         }
 
         if (event.isPre()) {
@@ -58,8 +63,19 @@ public class TargetStrafe extends Module {
         dir = -dir;
     }
 
+    @Subscribe
+    public void onRender(Render3DEvent event) {
+        if (canStrafe() && render.getValue()) {
+            drawCircle(KillAura.target, mc.timer.renderPartialTicks);
+        }
+    }
+
     public boolean canStrafe() {
         if (!Client.getInstance().getModuleManager().getModuleByName("KillAura").isToggled()) {
+            return false;
+        }
+
+        if (!this.isToggled()) {
             return false;
         }
 
@@ -72,4 +88,31 @@ public class TargetStrafe extends Module {
             return KillAura.target != null;
         }
     }
+
+    private void drawCircle(Entity entity, float partialTicks) {
+        glPushMatrix();
+        glColor3d(red.getValue(), green.getValue(), blue.getValue());
+        glDisable(GL_TEXTURE_2D);
+        glDisable(GL_DEPTH_TEST);
+        glDepthMask(false);
+        glLineWidth(width.getValue().floatValue());
+        glBegin(GL_LINE_STRIP);
+
+        final double x = entity.lastTickPosX + (entity.posX - entity.lastTickPosX) * partialTicks - mc.getRenderManager().viewerPosX;
+        final double y = entity.lastTickPosY + (entity.posY - entity.lastTickPosY) * partialTicks - mc.getRenderManager().viewerPosY;
+        final double z = entity.lastTickPosZ + (entity.posZ - entity.lastTickPosZ) * partialTicks - mc.getRenderManager().viewerPosZ;
+
+
+        final double pix2 = Math.PI * 2.0D;
+        for (int i = 0; i <= 90; ++i) {
+            glVertex3d(x + (radius.getValue() - 0.5) * Math.cos(i * pix2 / 45), y, z + (radius.getValue() - 0.5) * Math.sin(i * pix2 / 45));
+        }
+
+        glEnd();
+        glDepthMask(true);
+        glEnable(GL_DEPTH_TEST);
+        glEnable(GL_TEXTURE_2D);
+        glPopMatrix();
+    }
+
 }

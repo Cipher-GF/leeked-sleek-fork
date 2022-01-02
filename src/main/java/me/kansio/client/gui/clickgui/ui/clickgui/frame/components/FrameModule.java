@@ -164,7 +164,7 @@ public class FrameModule implements Priority {
                 module.setKeyBind(0);
             } else {
                 module.setKeyBind(keycode);
-                ChatUtil.log(module.getName() + "'s keycode is now " + Keyboard.getKeyName(keycode));
+                ChatUtil.log(module.getName() + " is now binded to " + Keyboard.getKeyName(keycode));
                 listening = false;
             }
         }

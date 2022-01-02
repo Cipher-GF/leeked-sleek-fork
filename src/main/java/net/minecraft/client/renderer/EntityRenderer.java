@@ -2,6 +2,8 @@ package net.minecraft.client.renderer;
 
 import com.google.common.base.Predicates;
 import com.google.gson.JsonSyntaxException;
+import me.kansio.client.Client;
+import me.kansio.client.event.impl.Render3DEvent;
 import me.kansio.client.gui.MainMenu;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBed;
@@ -1850,7 +1852,7 @@ public class EntityRenderer implements IResourceManagerReloadListener
 
         this.mc.mcProfiler.endStartSection("hand");
         boolean flag2 = ReflectorForge.renderFirstPersonHand(this.mc.renderGlobal, partialTicks, pass);
-
+        Client.getInstance().getEventBus().publish(new Render3DEvent(partialTicks));
         if (!flag2 && this.renderHand && !Shaders.isShadowPass)
         {
             if (flag)

@@ -5,6 +5,7 @@ import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.property.value.ModeValue;
+import net.minecraft.potion.PotionEffect;
 
 public class Brightness extends Module {
 
@@ -25,6 +26,7 @@ public class Brightness extends Module {
                 mc.gameSettings.gammaSetting = 2000f;
                 break;
             case "Potion":
+                mc.thePlayer.addPotionEffect(new PotionEffect(16, (817 * 20)));
                 break;
         }
     }

@@ -270,7 +270,7 @@ public class PlayerUtil extends Util {
         boolean targetStrafe = targetStrafeClass.canStrafe();
         MovementInput movementInput = mc.thePlayer.movementInput;
 
-        double moveForward = targetStrafe ? mc.thePlayer.getDistanceToEntity(entity) <= targetStrafeClass.width.getValue().floatValue() ? 0 : 1 : movementInput.moveForward;
+        double moveForward = targetStrafe ? mc.thePlayer.getDistanceToEntity(entity) <= targetStrafeClass.radius.getValue().floatValue() ? 0 : 1 : movementInput.moveForward;
         double moveStrafe = targetStrafe ? TargetStrafe.dir : movementInput.moveStrafe;
         double rotationYaw = targetStrafe ? AimUtil.getRotationsRandom(entity).getRotationYaw() : mc.thePlayer.rotationYaw;
 

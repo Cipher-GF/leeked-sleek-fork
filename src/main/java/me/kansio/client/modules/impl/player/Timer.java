@@ -7,6 +7,8 @@ import me.kansio.client.modules.impl.Module;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.NumberValue;
 
+import java.text.DecimalFormat;
+
 public class Timer extends Module {
 
     private final BooleanValue tick = new BooleanValue("Tick Timer", this, false);
@@ -20,6 +22,7 @@ public class Timer extends Module {
 
     @Subscribe
     public void onUpdate(UpdateEvent event) {
+        speed.setValue(Double.parseDouble(new DecimalFormat("0.#").format(speed.getValue())));
         if (this.tick.getValue()) {
             if (mc.thePlayer.ticksExisted % tickspeed.getValue() == 0) {
                 mc.timer.timerSpeed = speed.getValue().floatValue();

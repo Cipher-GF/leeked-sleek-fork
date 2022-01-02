@@ -139,7 +139,7 @@ public abstract class Module {
         JsonObject json = new JsonObject();
         json.addProperty("name", this.name);
         json.addProperty("keybind", this.keyBind);
-        json.addProperty("keybind", this.keyBind);
+        json.addProperty("keybindName", Keyboard.getKeyName(this.keyBind));
 
         return json;
     }

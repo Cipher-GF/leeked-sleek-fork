@@ -74,9 +74,9 @@ public final class GuiAltManager extends GuiScreen {
         drawDefaultBackground();
         username.drawTextBox();
         password.drawTextBox();
-        font.drawStringWithShadow("Account Login", (width / 2F) - 33, 20, -1);
-        font.drawStringWithShadow(thread == null ? (crackedStatus == null ? EnumChatFormatting.GRAY + "Idle" : EnumChatFormatting.GREEN + crackedStatus) : thread.getStatus(),
-                (width / 2f - 45),
+        this.drawCenteredString(font, "Account Login", (int) (width / 2F), 20, -1);
+        this.drawCenteredString(font, thread == null ? (crackedStatus == null ? EnumChatFormatting.GRAY + "Idle" : EnumChatFormatting.GREEN + crackedStatus) : thread.getStatus(),
+                (int) (width / 2f),
                 29,
                 -1);
         if (username.getText().isEmpty()) {

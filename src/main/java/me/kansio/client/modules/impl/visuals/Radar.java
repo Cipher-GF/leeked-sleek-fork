@@ -9,6 +9,9 @@ import me.kansio.client.utils.render.RenderUtils;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.passive.EntityAnimal;
+import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import org.lwjgl.opengl.GL11;
 
@@ -37,9 +40,9 @@ public class Radar extends Module {
         }
         int miX = 5, miY = 70;
         int maX = miX + 100, maY = miY + 100;
-        Gui.drawRect(miX, miY, maX, maY, new Color(0, 0, 0, 100).getRGB());
+        RenderUtils.drawRoundedRect(miX, miY, 100, maY - miY, 3, new Color(0, 0, 0, 100).getRGB());
         // drawing horizontal lines
-        Gui.drawRect(miX, miY - 1, maX, miY, Color.GREEN.getRGB()); // top
+        RenderUtils.drawRect(miX, miY - 1, 100, 1, Color.GREEN.getRGB()); // top
         // drawing vertical lines
         RenderUtils.draw2DPolygon(maX / 2 + 3, miY + 52, 5f, 3, -1); // self
         GL11.glPushMatrix();
@@ -48,12 +51,12 @@ public class Radar extends Module {
         GL11.glScissor(miX * scale, mc.displayHeight - scale * 170, maX * scale - (scale * 5), scale * 100);
 
         for (Entity en : mc.theWorld.loadedEntityList) {
-            if (!(en instanceof EntityPlayer)) {
-                continue;
-            }
-            if (en == mc.thePlayer) {
-                continue;
-            }
+            if (en instanceof EntityMob && !monsters.getValue()) continue;
+            if (en instanceof EntityAnimal && !animals.getValue()) continue;
+            if (en instanceof EntityVillager && !animals.getValue()) continue;
+            if (en.isInvisible() && !invisible.getValue()) continue;
+            if (en == mc.thePlayer) continue;
+
             double dist_sq = mc.thePlayer.getDistanceSqToEntity(en);
             if (dist_sq > 360) {
                 continue;

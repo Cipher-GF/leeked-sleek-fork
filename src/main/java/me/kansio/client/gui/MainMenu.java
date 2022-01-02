@@ -68,7 +68,7 @@ public class MainMenu extends GuiScreen
 
         String s3 = "S\247fleek";
         int j = this.height / 4 + 24;
-        this.drawCenteredString(this.fontRendererObj, s3, this.width / 2 - 50, j, ColorPalette.GREEN.getColor().getRGB());
+        this.drawCenteredString(this.fontRendererObj, s3, this.width / 2, j, ColorPalette.GREEN.getColor().getRGB());
         String s1 = "Developed By Kansio, Divine, PC And Rzyy";
         this.drawString(this.fontRendererObj, s1, this.width - this.fontRendererObj.getStringWidth(s1) - 2, this.height - 10, -1);
 

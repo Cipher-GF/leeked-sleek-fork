@@ -44,8 +44,8 @@ public class KillAura extends Module {
                 autoblock, players, animals, monsters, invisible, walls, gcd, keepSprint
         );
     }
-
-    public ModeValue mode = new ModeValue("Mode", this, "Switch", "Smart");
+// Switch aura doesn't work rn
+    public ModeValue mode = new ModeValue("Mode", this, /*"Switch",*/ "Smart");
     public ModeValue moderotation = new ModeValue("Rotation Mode", this, "Default", "None", "Down", "NCP", "AAC", "GWEN");
     public ModeValue targetPriority = new ModeValue("Target Priority", this, "Health", "Distance", "Armor", "HurtTime", "None");
     public ModeValue autoblockMode = new ModeValue("Autoblock Mode", this,"Real", "Fake");
@@ -165,6 +165,9 @@ public class KillAura extends Module {
                     }
                     case "switch": {
                         target = entities.get(index);
+                        if (target == null) {
+                            target = entities.get(0);
+                        }
                         break;
                     }
                 }
