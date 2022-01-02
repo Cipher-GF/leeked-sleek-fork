@@ -20,7 +20,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.network.play.client.C02PacketUseEntity;
 import net.minecraft.network.play.client.C03PacketPlayer;
+import net.minecraft.network.play.client.C08PacketPlayerBlockPlacement;
 import net.minecraft.network.play.client.C0BPacketEntityAction;
+import net.minecraft.util.BlockPos;
 import org.apache.commons.lang3.RandomUtils;
 
 import javax.vecmath.Vector2f;
@@ -315,7 +317,7 @@ public class KillAura extends Module {
     }
 
     public void blockHit(Entity target) {
-
+        PacketUtil.sendPacketNoEvent(new C08PacketPlayerBlockPlacement(new BlockPos(-1, -1, -1), 255, mc.thePlayer.getHeldItem(), 0, 0, 0));
     }
 
     private void unblock() {
