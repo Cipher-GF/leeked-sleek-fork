@@ -28,18 +28,23 @@ public class LongJump extends Module {
 
     @Override
     public void onEnable() {
-        if (mode.getValue().equalsIgnoreCase("verus")) {
+        switch (mode.getValue()) {
+            case "Veurs":
             if (!mc.thePlayer.onGround) {
                 toggle();
                 return;
             }
+
             mc.timer.timerSpeed = 0.3f;
             PlayerUtil.damageVerus();
+            break;
         }
     }
 
     @Override
     public void onDisable() {
+        mc.thePlayer.motionY = 0;
+        mc.thePlayer.motionZ = 0;
         mc.timer.timerSpeed = 1f;
         jumped = false;
     }
