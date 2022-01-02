@@ -40,3 +40,4 @@ workspace/options.txt
 workspace/options.txt
 *.txt
 *.json
+/.idea/
