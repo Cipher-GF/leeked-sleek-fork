@@ -1,6 +1,7 @@
 package me.kansio.client.modules.impl.player;
 
 import dorkbox.messageBus.annotations.Subscribe;
+import me.kansio.client.event.impl.NoSlowEvent;
 import me.kansio.client.event.impl.PacketEvent;
 import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
@@ -11,10 +12,12 @@ import net.minecraft.network.play.client.C0BPacketEntityAction;
 public class Sprint extends Module {
 
     private final BooleanValue omni = new BooleanValue("Omni", this, false);
+    public BooleanValue keepsprint = new BooleanValue("Keep Sprint", this, true);
+    private BooleanValue legit = new BooleanValue("Legit Sprint", this, true);
 
     public Sprint() {
         super("Sprint", ModuleCategory.PLAYER);
-        register(omni);
+        register(omni, legit, keepsprint);
     }
 
     @Subscribe
@@ -27,12 +30,12 @@ public class Sprint extends Module {
     }
 
     @Subscribe
-    public void onPacket(PacketEvent event) {
-        if (event.getPacket() instanceof C0BPacketEntityAction) {
-            C0BPacketEntityAction entityAction = event.getPacket();
-            if (entityAction.getAction() == C0BPacketEntityAction.Action.STOP_SPRINTING) {
-                //event.setCancelled(true);
-            }
+    public void NoSlowEvent(NoSlowEvent event) {
+        switch (event.getType()) {
+            case KEEPSPRINT:
+                event.setCancelled(keepsprint.getValue());
+                break;
+
         }
     }
 

@@ -4,6 +4,9 @@ import dorkbox.messageBus.annotations.Subscribe;
 import me.kansio.client.event.impl.PacketEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.impl.Module;
+import me.kansio.client.property.value.BooleanValue;
+import me.kansio.client.property.value.ModeValue;
+import me.kansio.client.property.value.NumberValue;
 import net.minecraft.client.gui.GuiChat;
 import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.client.settings.KeyBinding;
@@ -11,6 +14,9 @@ import net.minecraft.network.play.server.S2EPacketCloseWindow;
 import org.lwjgl.input.Keyboard;
 
 public class InvMove extends Module {
+
+    public ModeValue mode = new ModeValue("Mode", this, "Vanilla");
+    public BooleanValue noclose = new BooleanValue("No Close", this, true);
 
     private final KeyBinding[] keyBindings = new KeyBinding[]{
             mc.gameSettings.keyBindForward,
@@ -23,14 +29,17 @@ public class InvMove extends Module {
 
     public InvMove() {
         super("InvMove", ModuleCategory.MOVEMENT);
+        register(mode, noclose);
     }
 
     @Subscribe
     public void onPacket(PacketEvent event) {
-        if (event.getPacket() instanceof S2EPacketCloseWindow && (mc.currentScreen instanceof GuiInventory)) {
-            event.setCancelled(true);
+        if (noclose.getValue()) {
+            if (event.getPacket() instanceof S2EPacketCloseWindow && (mc.currentScreen instanceof GuiInventory)) {
+                event.setCancelled(true);
+            }
+            if (mc.currentScreen == null || mc.currentScreen instanceof GuiChat) return;
         }
-        if (mc.currentScreen == null || mc.currentScreen instanceof GuiChat) return;
 
         for (KeyBinding keyBinding : keyBindings) {
             keyBinding.pressed = Keyboard.isKeyDown(keyBinding.getKeyCode());

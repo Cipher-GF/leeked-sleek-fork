@@ -35,31 +35,39 @@ public class KillAura extends Module {
 
         register(
                 //enum values:
-                mode, moderotation, targetPriority, autoblockMode, swingMode,
+                mode, moderotation, targetPriority, autoblockmode, swingmode, targethudmode,
 
                 //sliders:
-                reach, autoblockRange, cps, rand,
+                swingrage, autoblockRange, cps, cprandom,
 
                 //booleans
-                autoblock, players, animals, monsters, invisible, walls, gcd, keepSprint
+                autoblock, targethud, keepSprint, gcd, players, animals, monsters, invisible, walls
         );
     }
 // Switch aura doesn't work rn
     public ModeValue mode = new ModeValue("Mode", this, /*"Switch",*/ "Smart");
-    public ModeValue moderotation = new ModeValue("Rotation Mode", this, "Default", "None", "Down", "NCP", "AAC", "GWEN");
-    public ModeValue targetPriority = new ModeValue("Target Priority", this, "Health", "Distance", "Armor", "HurtTime", "None");
-    public ModeValue autoblockMode = new ModeValue("Autoblock Mode", this,"Real", "Fake");
-    public ModeValue swingMode = new ModeValue("Swing Mode", this, "Client", "None", "Server");
-    public NumberValue<Double> reach = new NumberValue<>("Attack Range", this, 4.5, 2.5, 9.0, 0.1);
-    public NumberValue<Double> autoblockRange = new NumberValue<>("Block Range", this,3.0, 1.0, 12.0, 0.1);
-    public NumberValue<Double> cps = new NumberValue<>("CPS", this, 12.0, 1.0, 20.0, 1.0);
-    public NumberValue<Double> rand = new NumberValue<>("Randomize CPS", this, 3.0, 0.0, 10.0, 1.0);
-    public BooleanValue autoblock = new BooleanValue("Auto Block", this, true);
+    public ModeValue moderotation = new ModeValue("Rotation Mode", this, "None", "Default", "Down", "NCP", "AAC", "GWEN");
+
+    public ModeValue targetPriority = new ModeValue("Target Priority", this, "None", "Distance", "Armor", "HurtTime", "Health");
     public BooleanValue players = new BooleanValue("Players", this, true);
     public BooleanValue animals = new BooleanValue("Animals", this, true);
     public BooleanValue monsters = new BooleanValue("Monsters", this, true);
     public BooleanValue invisible = new BooleanValue("Invisibles", this, true);
     public BooleanValue walls = new BooleanValue("Walls", this, true);
+
+    public BooleanValue autoblock = new BooleanValue("Auto Block", this, true);
+    public ModeValue autoblockmode = new ModeValue("Autoblock Mode", this, autoblock,"Real", "Fake");
+    public NumberValue<Double> autoblockRange = new NumberValue<>("Block Range", this,3.0, 1.0, 12.0, 0.1, autoblock);
+
+    public ModeValue swingmode = new ModeValue("Swing Mode", this,"Client", "Server");
+    public NumberValue<Double> swingrage = new NumberValue<>("Attack Range", this, 3.0, 1.0, 9.0, 0.1);
+
+    public BooleanValue targethud = new BooleanValue("TargetHud", this, false);
+    public ModeValue targethudmode = new ModeValue("TargetHud Mode", this, targethud, "Sleek", "Moon");
+
+    public NumberValue<Double> cps = new NumberValue<>("CPS", this, 12.0, 1.0, 20.0, 1.0);
+    public NumberValue<Double> cprandom = new NumberValue<>("Randomize CPS", this, 3.0, 0.0, 10.0, 1.0);
+
     public BooleanValue gcd = new BooleanValue("GCD", this, false);
     public BooleanValue keepSprint = new BooleanValue("Keep Sprint", this, false);
 
@@ -98,7 +106,7 @@ public class KillAura extends Module {
             }
         }
 
-        List<EntityLivingBase> entities = FightUtil.getMultipleTargets(reach.getValue(), players.getValue(), animals.getValue(), monsters.getValue(), invisible.getValue(), walls.getValue());
+        List<EntityLivingBase> entities = FightUtil.getMultipleTargets(swingrage.getValue(), players.getValue(), animals.getValue(), monsters.getValue(), invisible.getValue(), walls.getValue());
         List<EntityLivingBase> blockRangeEntites = FightUtil.getMultipleTargets(autoblockRange.getValue(), players.getValue(), animals.getValue(), monsters.getValue(), invisible.getValue(), walls.getValue());
 
         entities.removeIf(e -> e.getName().contains("[NPC]"));
@@ -121,7 +129,7 @@ public class KillAura extends Module {
             if (index >= entities.size()) index = 0;
 
             if (canBlock) {
-                switch (autoblockMode.getValue()) {
+                switch (autoblockmode.getValue()) {
                     case "Real": {
                         if (!event.isPre()) {
                             mc.playerController.sendUseItem(mc.thePlayer, mc.theWorld, mc.thePlayer.getHeldItem());
@@ -180,20 +188,20 @@ public class KillAura extends Module {
 
                 if (canIAttack) {
                     if (cps.getValue() > 9) {
-                        cps.setValue(cps.getValue() - RandomUtils.nextInt(0, rand.getValue().intValue()));
+                        cps.setValue(cps.getValue() - RandomUtils.nextInt(0, cprandom.getValue().intValue()));
                     } else {
-                        cps.setValue(cps.getValue() + RandomUtils.nextInt(0, rand.getValue().intValue()));
+                        cps.setValue(cps.getValue() + RandomUtils.nextInt(0, cprandom.getValue().intValue()));
                     }
                     switch (mode.getValue()) {
                         case "Switch": {
-                            if (canIAttack && attack(target, RandomUtils.nextInt(90, 100), autoblockMode.getValue())) {
+                            if (canIAttack && attack(target, RandomUtils.nextInt(90, 100), autoblockmode.getValue())) {
                                 index++;
                                 attackTimer.resetTime();
                             }
                             break;
                         }
                         case "Smart": {
-                            if (canIAttack && attack(target, RandomUtils.nextInt(90, 100), autoblockMode.getValue())) {
+                            if (canIAttack && attack(target, RandomUtils.nextInt(90, 100), autoblockmode.getValue())) {
                                 attackTimer.resetTime();
                             }
                         }
@@ -225,7 +233,7 @@ public class KillAura extends Module {
 
     private boolean attack(EntityLivingBase entity, double chance, String blockMode) {
         if (FightUtil.canHit(chance / 100)) {
-            if (swingMode.getValue().equals("Client")) {
+            if (swingmode.getValue().equals("Client")) {
                 mc.thePlayer.swingItem();
             }
 
@@ -239,10 +247,6 @@ public class KillAura extends Module {
             if ((blockMode.equalsIgnoreCase("real") && canBlock)) {
                 blockHit(entity);
             }
-            //doPartical(entity);
-            //doCrack(entity);
-            //doSound(entity);
-
             return true;
         } else {
             mc.thePlayer.swingItem();
@@ -267,9 +271,6 @@ public class KillAura extends Module {
             case "DEFAULT":
                 event.setRotationYaw(rotation.getRotationYaw());
                 event.setRotationPitch(rotation.getRotationPitch());
-                break;
-            case "None":
-
                 break;
             case "DOWN":
                 temp = new Rotation(mc.thePlayer.rotationYaw, 90.0f);
@@ -316,7 +317,9 @@ public class KillAura extends Module {
         if (target == null) {
             return;
         }
-        TargetHUD.draw(event, target);
+        if (targethud.getValue()) {
+            TargetHUD.draw(event, target);
+        }
     }
 
     public void blockHit(Entity target) {
@@ -336,12 +339,12 @@ public class KillAura extends Module {
         return false;
     }
 
+    public static boolean isSwinging() {
+        return swinging;
+    }
+
     @Override
     public String getSuffix() {
         return " " + mode.getValueAsString();
-    }
-
-    public static boolean isSwinging() {
-        return swinging;
     }
 }

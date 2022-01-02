@@ -14,7 +14,7 @@ import org.lwjgl.opengl.GL11;
 
 public class Animations extends Module {
 
-    private ModeValue modeValue = new ModeValue("Mode", this, "Old", "Normal", "Hide", "Slide", "Lucky", "Exhi", "oHare", "Wizzard", "Lennox", "ETB");
+    private ModeValue modeValue = new ModeValue("Mode", this, "1.7", "Hide", "Slide", "Lucky", "Exhi", "oHare", "Wizzard", "Lennox", "ETB");
     public NumberValue<Double> slowdown = new NumberValue<>("Swing Speed", this, 1d, -4d, 12d, 1d);
 
     public Animations() {
@@ -30,7 +30,7 @@ public class Animations extends Module {
         float f2 = entityplayersp.prevRotationPitch + (entityplayersp.rotationPitch - entityplayersp.prevRotationPitch) * partialTicks;
         float f3 = entityplayersp.prevRotationYaw + (entityplayersp.rotationYaw - entityplayersp.prevRotationYaw) * partialTicks;
         switch (modeValue.getValue().toUpperCase()) {
-            case "OLD":
+            case "1.7":
                 if (itemToRender.getItem() instanceof ItemSword) {
                     mc.getItemRenderer().transformFirstPersonItem(0, f1);
                     mc.getItemRenderer().func_178103_d();

@@ -25,8 +25,8 @@ public class HUD extends Module {
 
     @Subscribe
     public void onRenderOverlay(RenderOverlayEvent event) {
-        notifications = noti.getValue();
-        mc.fontRendererObj.drawStringWithShadow("§aSleek v0.1", 4, 4, ColorPalette.GREEN.getColor().getRGB());
+        notifications = noti.getValue() && isToggled();
+        mc.fontRendererObj.drawStringWithShadow("§aS§7leek v0.1", 4, 4, ColorPalette.GREEN.getColor().getRGB());
 
         int y = 4;
 

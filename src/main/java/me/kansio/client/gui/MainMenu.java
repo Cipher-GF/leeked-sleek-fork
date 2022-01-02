@@ -63,13 +63,11 @@ public class MainMenu extends GuiScreen
         GlStateManager.color(1.0F,1.0F,1.0F,1.0F);
         this.mc.getTextureManager().bindTexture(BACKGROUND);
         Gui.drawModalRectWithCustomSizedTexture(0, 0, 0, 0, this.width, this.height, this.width, this.height);
-        String s = "Sleek";
-        this.drawString(this.fontRendererObj, s, 2, this.height - 10, -1);
 
-        String s3 = "S\247fleek";
+        String s = "§lS§7eek";
         int j = this.height / 4 + 24;
-        this.drawCenteredString(this.fontRendererObj, s3, this.width / 2, j, ColorPalette.GREEN.getColor().getRGB());
-        String s1 = "Developed By Kansio, Divine, PC And Rzyy";
+        this.drawCenteredString(this.fontRendererObj, s, this.width / 2, j, ColorPalette.GREEN.getColor().getRGB());
+        String s1 = "Made with <3 by NotRzyy, Kansio, PC, Divine";
         this.drawString(this.fontRendererObj, s1, this.width - this.fontRendererObj.getStringWidth(s1) - 2, this.height - 10, -1);
 
         super.drawScreen(mouseX, mouseY, partialTicks);

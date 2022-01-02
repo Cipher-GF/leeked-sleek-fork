@@ -1,7 +1,9 @@
 package net.minecraft.client.entity;
 
+import dorkbox.messageBus.annotations.Subscribe;
 import me.kansio.client.Client;
 import me.kansio.client.event.impl.MoveEvent;
+import me.kansio.client.event.impl.NoSlowEvent;
 import me.kansio.client.event.impl.UpdateEvent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.MovingSoundMinecartRiding;
@@ -670,7 +672,11 @@ public class EntityPlayerSP extends AbstractClientPlayer {
         boolean flag2 = this.movementInput.moveForward >= f;
         this.movementInput.updatePlayerMoveState();
 
-        if (this.isUsingItem() && !this.isRiding()) {
+        final NoSlowEvent event = new NoSlowEvent(NoSlowEvent.Type.ITEM);
+        Client.getInstance().getEventBus().publish(event);
+
+        if (this.isUsingItem() && !this.isRiding() && !event.isCancelled()) {
+
             this.movementInput.moveStrafe *= 0.2F;
             this.movementInput.moveForward *= 0.2F;
             this.sprintToggleTimer = 0;
