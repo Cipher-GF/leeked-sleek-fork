@@ -1,11 +1,15 @@
 package me.kansio.client.modules.impl.combat;
 
 import dorkbox.messageBus.annotations.Subscribe;
+import me.kansio.client.Client;
+import me.kansio.client.event.PacketDirection;
 import me.kansio.client.event.impl.PacketEvent;
 import me.kansio.client.event.impl.RenderOverlayEvent;
 import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.impl.Module;
+import me.kansio.client.modules.impl.player.Sprint;
+import me.kansio.client.modules.impl.visuals.HUD;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.ModeValue;
 import me.kansio.client.property.value.NumberValue;
@@ -18,11 +22,9 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
-import net.minecraft.network.play.client.C02PacketUseEntity;
-import net.minecraft.network.play.client.C03PacketPlayer;
-import net.minecraft.network.play.client.C08PacketPlayerBlockPlacement;
-import net.minecraft.network.play.client.C0BPacketEntityAction;
+import net.minecraft.network.play.client.*;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.Cartesian;
 import org.apache.commons.lang3.RandomUtils;
 
 import javax.vecmath.Vector2f;
@@ -41,17 +43,18 @@ public class KillAura extends Module {
                 reach, autoblockRange, cps, rand,
 
                 //booleans
-                autoblock, players, animals, monsters, invisible, walls, gcd, keepSprint
+                autoblock, players, animals, monsters, invisible, walls, gcd
         );
     }
-// Switch aura doesn't work rn
+
+    // Switch aura doesn't work rn
     public ModeValue mode = new ModeValue("Mode", this, /*"Switch",*/ "Smart");
     public ModeValue moderotation = new ModeValue("Rotation Mode", this, "Default", "None", "Down", "NCP", "AAC", "GWEN");
     public ModeValue targetPriority = new ModeValue("Target Priority", this, "Health", "Distance", "Armor", "HurtTime", "None");
-    public ModeValue autoblockMode = new ModeValue("Autoblock Mode", this,"Real", "Fake");
+    public ModeValue autoblockMode = new ModeValue("Autoblock Mode", this, "Real", "Fake");
     public ModeValue swingMode = new ModeValue("Swing Mode", this, "Client", "None", "Server");
     public NumberValue<Double> reach = new NumberValue<>("Attack Range", this, 4.5, 2.5, 9.0, 0.1);
-    public NumberValue<Double> autoblockRange = new NumberValue<>("Block Range", this,3.0, 1.0, 12.0, 0.1);
+    public NumberValue<Double> autoblockRange = new NumberValue<>("Block Range", this, 3.0, 1.0, 12.0, 0.1);
     public NumberValue<Double> cps = new NumberValue<>("CPS", this, 12.0, 1.0, 20.0, 1.0);
     public NumberValue<Double> rand = new NumberValue<>("Randomize CPS", this, 3.0, 0.0, 10.0, 1.0);
     public BooleanValue autoblock = new BooleanValue("Auto Block", this, true);
@@ -61,7 +64,6 @@ public class KillAura extends Module {
     public BooleanValue invisible = new BooleanValue("Invisibles", this, true);
     public BooleanValue walls = new BooleanValue("Walls", this, true);
     public BooleanValue gcd = new BooleanValue("GCD", this, false);
-    public BooleanValue keepSprint = new BooleanValue("Keep Sprint", this, false);
 
     public static EntityLivingBase target;
     public static boolean isBlocking, swinging;
@@ -92,12 +94,6 @@ public class KillAura extends Module {
 
     @Subscribe
     public void onMotion(UpdateEvent event) {
-        if (!keepSprint.getValue()) {
-            if (target != null) {
-                mc.thePlayer.setSprinting(false);
-            }
-        }
-
         List<EntityLivingBase> entities = FightUtil.getMultipleTargets(reach.getValue(), players.getValue(), animals.getValue(), monsters.getValue(), invisible.getValue(), walls.getValue());
         List<EntityLivingBase> blockRangeEntites = FightUtil.getMultipleTargets(autoblockRange.getValue(), players.getValue(), animals.getValue(), monsters.getValue(), invisible.getValue(), walls.getValue());
 
@@ -201,47 +197,20 @@ public class KillAura extends Module {
                 }
             }
         }
-/*
-        if (target != null && event.isPre()) {
-
-            if (mc.thePlayer.getDistanceToEntity(target) >= reach.getValue()) {
-                swinging = false;
-                return;
-            }
-
-            if (silent.getValue() && doAim.getValue()) {
-                aimAtTarget(event, target);
-            }
-
-            swing(target);
-
-            if (block.getValue() && autoblockMode.getValue().equalsIgnoreCase("Fake")) {
-                isBlocking = true;
-            }
-
-            sendUseItem();
-        }*/
     }
 
     private boolean attack(EntityLivingBase entity, double chance, String blockMode) {
         if (FightUtil.canHit(chance / 100)) {
-            if (swingMode.getValue().equals("Client")) {
+            if (swingMode.getValue().equalsIgnoreCase("client"))
                 mc.thePlayer.swingItem();
-            }
+            else if (swingMode.getValue().equalsIgnoreCase("server"))
+                mc.getNetHandler().addToSendQueue(new C0APacketAnimation());
 
-            if (keepSprint.getValue()) {
-                PacketUtil.sendPacket(new C0BPacketEntityAction(mc.thePlayer, C0BPacketEntityAction.Action.STOP_SPRINTING));
-                PacketUtil.sendPacket(new C02PacketUseEntity(entity, C02PacketUseEntity.Action.ATTACK));
-                PacketUtil.sendPacket(new C0BPacketEntityAction(mc.thePlayer, C0BPacketEntityAction.Action.START_SPRINTING));
-            } else {
-                PacketUtil.sendPacket(new C02PacketUseEntity(entity, C02PacketUseEntity.Action.ATTACK));
-            }
-            if ((blockMode.equalsIgnoreCase("real") && canBlock)) {
+            mc.playerController.attackEntity(mc.thePlayer, entity);
+
+            if (canBlock && blockMode.equalsIgnoreCase("real")) {
                 blockHit(entity);
             }
-            //doPartical(entity);
-            //doCrack(entity);
-            //doSound(entity);
 
             return true;
         } else {
@@ -295,12 +264,6 @@ public class KillAura extends Module {
 
     @Subscribe
     public void onPacket(PacketEvent event) {
-        if (!keepSprint.getValue()) {
-            if (event.getPacket() instanceof C0BPacketEntityAction) {
-                event.setCancelled(true);
-            }
-        }
-
         if (gcd.getValue() && target != null && event.getPacket() instanceof C03PacketPlayer && ((C03PacketPlayer) event.getPacket()).getRotating()) {
             C03PacketPlayer p = event.getPacket();
             float m = (float) (0.005 * mc.gameSettings.mouseSensitivity / 0.005);
@@ -316,7 +279,12 @@ public class KillAura extends Module {
         if (target == null) {
             return;
         }
-        TargetHUD.draw(event, target);
+
+        HUD hud = (HUD) Client.getInstance().getModuleManager().getModuleByName("HUD");
+
+        if (hud.getTargetHud().getValue()) {
+            TargetHUD.draw(event, target);
+        }
     }
 
     public void blockHit(Entity target) {

@@ -3,6 +3,7 @@ package net.minecraft.client.entity;
 import me.kansio.client.Client;
 import me.kansio.client.event.impl.MoveEvent;
 import me.kansio.client.event.impl.UpdateEvent;
+import me.kansio.client.modules.impl.player.Sprint;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.MovingSoundMinecartRiding;
 import net.minecraft.client.audio.PositionedSoundRecord;
@@ -456,6 +457,23 @@ public class EntityPlayerSP extends AbstractClientPlayer {
      * Set sprinting switch for Entity.
      */
     public void setSprinting(boolean sprinting) {
+
+        if (!sprinting) {
+            Sprint sprint = (Sprint) Client.getInstance().getModuleManager().getModuleByName("Sprint");
+
+            if (sprint.getKeepSprint().getValue()) {
+                return;
+            }
+        }
+
+        super.setSprinting(sprinting);
+        this.sprintingTicksLeft = sprinting ? 600 : 0;
+    }
+
+    /**
+     * Set sprinting switch for Entity.
+     */
+    public void forceSprinting(boolean sprinting) {
         super.setSprinting(sprinting);
         this.sprintingTicksLeft = sprinting ? 600 : 0;
     }

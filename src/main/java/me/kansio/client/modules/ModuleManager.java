@@ -29,6 +29,7 @@ public class ModuleManager {
         modules.add(new Velocity());
         modules.add(new Criticals());
         modules.add(new TargetStrafe());
+        modules.add(new FastBow());
 
         //Exploit
         modules.add(new Disabler());

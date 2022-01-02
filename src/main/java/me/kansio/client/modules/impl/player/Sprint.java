@@ -1,6 +1,7 @@
 package me.kansio.client.modules.impl.player;
 
 import dorkbox.messageBus.annotations.Subscribe;
+import lombok.Getter;
 import me.kansio.client.event.impl.PacketEvent;
 import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
@@ -12,9 +13,12 @@ public class Sprint extends Module {
 
     private final BooleanValue omni = new BooleanValue("Omni", this, false);
 
+    @Getter
+    private final BooleanValue keepSprint = new BooleanValue("Keep Sprint", this, true); //Handled in NetHandlerPlayerClient at "processEntityAction" and EntityPlayerSP at "setSprinting"
+
     public Sprint() {
         super("Sprint", ModuleCategory.PLAYER);
-        register(omni);
+        register(omni, keepSprint);
     }
 
     @Subscribe

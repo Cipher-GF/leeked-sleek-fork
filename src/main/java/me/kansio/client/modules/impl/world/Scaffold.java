@@ -148,7 +148,7 @@ public class Scaffold extends Module {
                 Vector2f vec2f = null;
 
                 if (mc.thePlayer.isMoving()) {
-                    mc.thePlayer.setSprinting(sprint.getValue());
+                    mc.thePlayer.forceSprinting(sprint.getValue());
                 }
 
                 if (this.blockEntry != null) {
@@ -212,7 +212,7 @@ public class Scaffold extends Module {
                 Vector2f vec2f = null;
 
                 if (mc.thePlayer.isMoving()) {
-                    mc.thePlayer.setSprinting(sprint.getValue());
+                    mc.thePlayer.forceSprinting(sprint.getValue());
                 }
 
                 int slot = getSlotWithBlock();
@@ -242,7 +242,7 @@ public class Scaffold extends Module {
                             this.lastBlockEntry.getFacing()));
 
                     if (mc.thePlayer.isMoving()) {
-                        mc.thePlayer.setSprinting(sprint.getValue());
+                        mc.thePlayer.forceSprinting(sprint.getValue());
                     }
 
                     event.setRotationPitch(rotation.y);
