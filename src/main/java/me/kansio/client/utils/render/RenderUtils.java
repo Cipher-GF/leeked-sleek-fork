@@ -131,17 +131,6 @@ public class RenderUtils {
         GL11.glColor4f(red, green, blue, alpha);
     }
 
-    public static int getRainbow(int speed, int offset) {
-        float hue = (System.currentTimeMillis() + offset) % speed;
-        hue /= speed;
-        return Color.getHSBColor(hue, 0.75f, 1f).getRGB();
-
-    }
-
-    public static float[] getRGBAs(int rgb) {
-        return new float[]{((rgb >> 16) & 255) / 255F, ((rgb >> 8) & 255) / 255F, (rgb & 255) / 255F, ((rgb >> 24) & 255) / 255F};
-    }
-
     public static void drawImage(ResourceLocation image, int x, int y, int width, int height) {
         OpenGlHelper.glBlendFunc(770, 771, 1, 0);
         GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
@@ -164,10 +153,6 @@ public class RenderUtils {
         glEnable(GL_DEPTH_TEST);
         glDepthMask(true);
         glDisable(GL_BLEND);
-    }
-
-    public static void color(int color) {
-        GL11.glColor4f((color >> 16 & 0xFF) / 255f, (color >> 8 & 0xFF) / 255f, (color & 0xFF) / 255f, (color >> 24 & 0xFF) / 255f);
     }
 
     public static Vector3d project(double x, double y, double z) {

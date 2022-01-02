@@ -8,7 +8,7 @@ import me.kansio.client.modules.impl.Module;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.utils.math.BPSUtil;
 import me.kansio.client.utils.render.ColorPalette;
-import me.kansio.client.utils.render.ColorUtil;
+import me.kansio.client.utils.render.ColorUtils;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.util.EnumChatFormatting;
 
@@ -46,7 +46,7 @@ public class HUD extends Module {
         for (Module mod : Client.getInstance().getModuleManager().getModulesSorted(mc.fontRendererObj)) {
             if (!mod.isToggled()) continue;
 
-            Color color = ColorUtil.getGradientOffset(new Color(0, 255, 128), new Color(212, 1, 1), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + y / mc.fontRendererObj.FONT_HEIGHT * 9.95);
+            Color color = ColorUtils.getGradientOffset(new Color(0, 255, 128), new Color(212, 1, 1), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + y / mc.fontRendererObj.FONT_HEIGHT * 9.95);
 
             String name = mod.getName() + "§7" + mod.getSuffix();
             float xPos = event.getSr().getScaledWidth() - mc.fontRendererObj.getStringWidth(name) - 6;
