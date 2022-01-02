@@ -1706,13 +1706,16 @@ public abstract class EntityLivingBase extends Entity
                 this.moveFlying(strafe, forward, f2);
                 this.moveEntity(this.motionX, this.motionY, this.motionZ);
                 this.motionY *= 0.800000011920929D;
+                this.motionY -= 0.02D;
                 if (!event.isCancelled()) {
 
 
                     this.motionX *= (double) f1;
-
                     this.motionZ *= (double) f1;
-                    this.motionY -= 0.02D;
+
+                } else {
+                    this.motionX *= 0.9f;
+                    this.motionZ *= 0.9f;
                 }
 
                 if (this.isCollidedHorizontally && this.isOffsetPositionInLiquid(this.motionX, this.motionY + 0.6000000238418579D - this.posY + d0, this.motionZ))

@@ -49,7 +49,7 @@ public class Flight extends Module {
         spereeeedserz = 0.22;
         stopwatch.resetTime();
 
-        if (modeValue.getValueAsString() == "VerusDamage") {
+        if (modeValue.getValue() == "VerusDamage") {
             mc.timer.timerSpeed = 0.3f;
             PlayerUtil.damageVerus();
         }

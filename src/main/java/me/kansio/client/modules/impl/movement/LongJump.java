@@ -29,7 +29,7 @@ public class LongJump extends Module {
     @Override
     public void onEnable() {
         switch (mode.getValue()) {
-            case "Veurs":
+            case "Verus":
             if (!mc.thePlayer.onGround) {
                 toggle();
                 return;
@@ -43,8 +43,6 @@ public class LongJump extends Module {
 
     @Override
     public void onDisable() {
-        mc.thePlayer.motionY = 0;
-        mc.thePlayer.motionZ = 0;
         mc.timer.timerSpeed = 1f;
         jumped = false;
     }

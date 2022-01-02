@@ -12,13 +12,13 @@ public class NoSlow extends Module {
 
     public ModeValue mode = new ModeValue("Mode", this, "Vanilla", "IDk");
     public BooleanValue item = new BooleanValue("Item", this, true);
-    public BooleanValue sneak = new BooleanValue("Sneak", this, false);
+    //public BooleanValue sneak = new BooleanValue("Sneak", this, false);
     public BooleanValue water = new BooleanValue("Water", this, false);
     public BooleanValue soulsand = new BooleanValue("SoulSand", this, false);
 
     public NoSlow() {
         super("No Slow", ModuleCategory.PLAYER);
-        register(mode, item, sneak, water, soulsand);
+        register(mode, item, water, soulsand);
     }
 
     @Subscribe
@@ -26,9 +26,6 @@ public class NoSlow extends Module {
         switch (event.getType()) {
             case ITEM:
                 event.setCancelled(item.getValue());
-                break;
-            case SNEAK:
-                event.setCancelled(sneak.getValue());
                 break;
             case WATER:
                 event.setCancelled(water.getValue());
