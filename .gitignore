@@ -11,18 +11,16 @@ buildNumber.properties
 .mvn/timing.properties
 
 #stuff
-saves/
-logs/
-screenshots/
-workspace/screenshots
+workspace/assets/
+workspace/crash-reports/
+workspace/libraries/
+workspace/screenshots/
 workspace/versions/
 workspace/saves/
 workspace/logs/
-workspace/libraries/
-workspace/resourcepacks
-workspace/assets
-workspace/assets/objects
 workspace/Sleek/keybinds.json
+workspace/usercache.json
+workspace/options.txt
 
 
 # Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
@@ -34,10 +32,6 @@ MavenMCP.iml
 README.md
 Client.rar
 *.mca
-/workspace/usercache.json
-workspace/usercache.json
-workspace/options.txt
 *.txt
-/.idea/
 *.lock
 *.dat
