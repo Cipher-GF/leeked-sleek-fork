@@ -43,7 +43,7 @@ public class KillAura extends Module {
                 swingrage, autoblockRange, cps, cprandom,
 
                 //booleans
-                autoblock, players, animals, monsters, invisible, walls, gcd
+                autoblock, players, friends, animals, monsters, invisible, walls, gcd
         );
     }
 
@@ -57,7 +57,9 @@ public class KillAura extends Module {
     public NumberValue<Double> autoblockRange = new NumberValue<>("Block Range", this, 3.0, 1.0, 12.0, 0.1);
     public NumberValue<Double> cps = new NumberValue<>("CPS", this, 12.0, 1.0, 20.0, 1.0);
     public NumberValue<Double> rand = new NumberValue<>("Randomize CPS", this, 3.0, 0.0, 10.0, 1.0);
-    public BooleanValue autoblock = new BooleanValue("Auto Block", this, true);public BooleanValue players = new BooleanValue("Players", this, true);
+    public BooleanValue autoblock = new BooleanValue("Auto Block", this, true);
+    public BooleanValue players = new BooleanValue("Players", this, true);
+    public BooleanValue friends = new BooleanValue("Friends", this, true);
     public BooleanValue animals = new BooleanValue("Animals", this, true);
     public BooleanValue monsters = new BooleanValue("Monsters", this, true);
     public BooleanValue invisible = new BooleanValue("Invisibles", this, true);
@@ -103,7 +105,7 @@ public class KillAura extends Module {
 
     @Subscribe
     public void onMotion(UpdateEvent event) {
-        List<EntityLivingBase> entities = FightUtil.getMultipleTargets(reach.getValue(), players.getValue(), animals.getValue(), monsters.getValue(), invisible.getValue(), walls.getValue());
+        List<EntityLivingBase> entities = FightUtil.getMultipleTargets(reach.getValue(), players.getValue(), friends.getValue(), animals.getValue(),  walls.getValue(), monsters.getValue(), invisible.getValue());
         Sprint sprint = (Sprint) Client.getInstance().getModuleManager().getModuleByName("Sprint");
 
         if (!sprint.getKeepSprint().getValue()) {
@@ -112,7 +114,7 @@ public class KillAura extends Module {
             }
         }
 
-        List<EntityLivingBase> blockRangeEntites = FightUtil.getMultipleTargets(autoblockRange.getValue(), players.getValue(), animals.getValue(), monsters.getValue(), invisible.getValue(), walls.getValue());
+        List<EntityLivingBase> blockRangeEntites = FightUtil.getMultipleTargets(autoblockRange.getValue(), players.getValue(), friends.getValue(), animals.getValue(), walls.getValue(), monsters.getValue(), invisible.getValue());
 
         entities.removeIf(e -> e.getName().contains("[NPC]"));
 

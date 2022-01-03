@@ -4,7 +4,6 @@ import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.property.value.ModeValue;
 import me.kansio.client.property.value.NumberValue;
-import me.kansio.client.utils.chat.ChatUtil;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemStack;
@@ -14,8 +13,9 @@ import org.lwjgl.opengl.GL11;
 
 public class Animations extends Module {
 
-    private ModeValue modeValue = new ModeValue("Mode", this, "1.7", "Hide", "Slide", "Lucky", "Exhi", "oHare", "Wizzard", "Lennox", "ETB");
+    private ModeValue modeValue = new ModeValue("Mode", this, "1.7", "Hide", "Slide", "Lucky", "DOWN", "Exhi", "oHare", "Wizzard", "Lennox", "ETB");
     public NumberValue<Double> slowdown = new NumberValue<>("Swing Speed", this, 1d, -4d, 12d, 1d);
+    private float rotate;
 
     public Animations() {
         super("Animations", ModuleCategory.VISUALS);
@@ -29,6 +29,7 @@ public class Animations extends Module {
         float f1 = entityplayersp.getSwingProgress(partialTicks);
         float f2 = entityplayersp.prevRotationPitch + (entityplayersp.rotationPitch - entityplayersp.prevRotationPitch) * partialTicks;
         float f3 = entityplayersp.prevRotationYaw + (entityplayersp.rotationYaw - entityplayersp.prevRotationYaw) * partialTicks;
+        final float var = MathHelper.sin((float) (MathHelper.sqrt_float(f1) * Math.PI));
         switch (modeValue.getValue().toUpperCase()) {
             case "1.7":
                 if (itemToRender.getItem() instanceof ItemSword) {
@@ -71,6 +72,15 @@ public class Animations extends Module {
                     GlStateManager.rotate(-var9 * (float) 70.0, 1.0f, -0.4f, -0.0f);
                 }
                 break;
+            case "DOWN":
+                if (itemToRender.getItem() instanceof ItemSword) {
+                    mc.getItemRenderer().transformFirstPersonItem(f1 - 0.125F, 0);
+                    GlStateManager.rotate(-var * 55 / 2.0F, -8.0F, 0.4f, 9.0F);
+                    GlStateManager.rotate(-var * 45, 1.0F, var / 2, -0.0F);
+                    GlStateManager.translate(0.0f, 0.1F, 0.0f);
+                    mc.getItemRenderer().func_178103_d();
+                }
+                break;
             case "EXHI":
                 if (itemToRender.getItem() instanceof ItemSword) {
                     float f6 = MathHelper.sin((float) (MathHelper.sqrt_float(f1) * 3.1));
@@ -80,6 +90,15 @@ public class Animations extends Module {
                     GlStateManager.rotate(-f6 * 40.0F / 2.0F, f6 / 2.0F, -0.0F, 9.0F);
                     GlStateManager.rotate(-f6 * 30.0F, 1.0F, f6 / 2.0F, -0.0F);
                     mc.getItemRenderer().func_178103_d();
+                }
+                break;
+            case "OHARE2":
+                if (itemToRender.getItem() instanceof ItemSword) {
+                    mc.getItemRenderer().transformFirstPersonItem(f1, 0.0F);
+                    mc.getItemRenderer().func_178103_d();
+                    GlStateManager.translate(-0.05F, 0.6F, 0.3F);
+                    GlStateManager.rotate(-var * 70.0F / 2.0F, -8.0F, -0.0F, 9.0F);
+                    GlStateManager.rotate(-var * 70.0F, 1.5F, -0.4F, -0.0F);
                 }
                 break;
             case "OHARE":
@@ -120,6 +139,14 @@ public class Animations extends Module {
                 GlStateManager.translate(-0.05f, 0.6f, 0.3f);
                 GlStateManager.rotate(-var9 * (float) 80.0 / 2.0f, -4.0f, -0.0f, 18.0f);
                 GlStateManager.rotate(-var9 * (float) 70.0, 1.5f, -0.4f, -0.0f);
+                break;
+            case "SPIN":
+                mc.getItemRenderer().transformFirstPersonItem(f, 0.0f);
+                mc.getItemRenderer().func_178103_d();
+                GL11.glRotatef(rotate, rotate, 0, rotate);
+                GL11.glScalef(0.5f, 0.5f, 0.5F);
+                //GL11.glTranslatef(0, 5, 0);
+                rotate++;
                 break;
         }
     }

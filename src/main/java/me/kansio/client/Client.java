@@ -6,6 +6,7 @@ import lombok.Getter;
 import me.kansio.client.commands.CommandManager;
 import me.kansio.client.config.ConfigManager;
 import me.kansio.client.event.impl.KeyboardEvent;
+import me.kansio.client.friend.FriendManager;
 import me.kansio.client.keybind.KeybindManager;
 import me.kansio.client.manager.ValueManager;
 import me.kansio.client.modules.ModuleManager;
@@ -40,6 +41,9 @@ public class Client {
     @Getter
     private KeybindManager keybindManager;
 
+    @Getter
+    private FriendManager friendManager;
+
     public void onStart() {
         //Set the client file directory
         dir = new File(Minecraft.getMinecraft().mcDataDir, "Sleek");
@@ -62,6 +66,9 @@ public class Client {
         //Set the keybind manager
         keybindManager = new KeybindManager(dir);
         keybindManager.load();
+
+        //Set the friend manager
+        friendManager = new FriendManager();
 
         System.out.println("Client has been started.");
         Display.setTitle("Sleek v0.1");

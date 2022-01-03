@@ -64,6 +64,7 @@ public class ModuleManager {
 
         //World
         modules.add(new Scaffold());
+        modules.add(new Breaker());
 
 
         //Toggle modules

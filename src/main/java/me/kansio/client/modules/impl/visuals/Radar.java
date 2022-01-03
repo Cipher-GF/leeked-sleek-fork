@@ -1,10 +1,12 @@
 package me.kansio.client.modules.impl.visuals;
 
 import dorkbox.messageBus.annotations.Subscribe;
+import me.kansio.client.Client;
 import me.kansio.client.event.impl.RenderOverlayEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.property.value.BooleanValue;
+import me.kansio.client.utils.chat.ChatUtil;
 import me.kansio.client.utils.render.RenderUtils;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
@@ -66,7 +68,7 @@ public class Radar extends Module {
             double angle = ((mc.thePlayer.rotationYaw + calc) % 360) * 0.01745329251f;
             double hypotenuse = dist_sq / 5;
             double x_shift = hypotenuse * Math.sin(angle), y_shift = hypotenuse * Math.cos(angle);
-            RenderUtils.draw2DPolygon(maX / 2 + 3 - x_shift, miY + 52 - y_shift, 3f, 4, Color.red.getRGB());
+            RenderUtils.draw2DPolygon(maX / 2 + 3 - x_shift, miY + 52 - y_shift, 3f, 4, Client.getInstance().getFriendManager().isFriend(en.getName()) ? Color.cyan.getRGB() : Color.red.getRGB());
         }
 
         GL11.glDisable(GL11.GL_SCISSOR_TEST);

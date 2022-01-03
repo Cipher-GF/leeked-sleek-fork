@@ -17,7 +17,7 @@ public class CommandManager {
         String[] split = cmd.split(" ");
         String command = split[0];
         String args = cmd.substring(command.length()).trim();
-            for (Command command1 : commands) {
+        for (Command command1 : commands) {
             String cmdName = "." + command1.getName();
             if (cmdName.equalsIgnoreCase(command)) {
                 try {
@@ -25,6 +25,7 @@ public class CommandManager {
                 } catch (Exception e) {
                     ChatUtil.log("Invalid command usage.");
                 }
+                break;
             }
         }
 
@@ -40,5 +41,6 @@ public class CommandManager {
         commands.add(new BindCommand());
         commands.add(new ConfigCommand());
         commands.add(new VClipCommand());
+        commands.add(new FriendCommand());
     }
 }
