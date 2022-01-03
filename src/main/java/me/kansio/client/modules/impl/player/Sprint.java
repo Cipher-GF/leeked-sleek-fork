@@ -36,6 +36,7 @@ public class Sprint extends Module {
     @Override
     public void onDisable() {
         super.onDisable();
+        mc.thePlayer.setSprinting(false);
     }
 
 }
