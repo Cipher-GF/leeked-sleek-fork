@@ -51,7 +51,7 @@ public class KillAura extends Module {
     public ModeValue mode = new ModeValue("Mode", this, /*"Switch",*/ "Smart");
     public ModeValue moderotation = new ModeValue("Rotation Mode", this, "Default", "None", "Down", "NCP", "AAC", "GWEN");
     public ModeValue targetPriority = new ModeValue("Target Priority", this, "Health", "Distance", "Armor", "HurtTime", "None");
-    public ModeValue autoblockMode = new ModeValue("Autoblock Mode", this, "Real", "Fake");
+    public ModeValue autoblockMode = new ModeValue("Autoblock Mode", this, "Real", "Hold", "Fake");
     public ModeValue swingMode = new ModeValue("Swing Mode", this, "Client", "None", "Server");
     public NumberValue<Double> reach = new NumberValue<>("Attack Range", this, 4.5, 2.5, 9.0, 0.1);
     public NumberValue<Double> autoblockRange = new NumberValue<>("Block Range", this, 3.0, 1.0, 12.0, 0.1);
@@ -97,9 +97,21 @@ public class KillAura extends Module {
     public void onDisable() {
         if (isBlocking) unblock();
         isBlocking = false;
+        mc.gameSettings.keyBindUseItem.pressed = false;
         swinging = false;
         currentRotation = null;
         target = null;
+    }
+
+    @Subscribe
+    public void doHoldBlock(UpdateEvent evente) {
+        if (autoblockMode.getValue().equalsIgnoreCase("Hold")) {
+            if (KillAura.target != null) {
+                mc.gameSettings.keyBindUseItem.pressed = true;
+            } else {
+                mc.gameSettings.keyBindUseItem.pressed = false;
+            }
+        }
     }
 
 

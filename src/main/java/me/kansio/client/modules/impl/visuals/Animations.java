@@ -13,7 +13,7 @@ import org.lwjgl.opengl.GL11;
 
 public class Animations extends Module {
 
-    private ModeValue modeValue = new ModeValue("Mode", this, "1.7", "Hide", "Slide", "Lucky", "Down", "Exhi", "oHare", "oHare2", "Wizzard", "Lennox", "ETB", "Spin");
+    private ModeValue modeValue = new ModeValue("Mode", this, "1.7", "Hide", "Slide", "Lucky", "DOWN", "Exhi", "oHare", "oHare2", "Wizzard", "Lennox", "ETB");
     public NumberValue<Double> slowdown = new NumberValue<>("Swing Speed", this, 1d, -4d, 12d, 1d);
     private float rotate;
 
@@ -92,15 +92,6 @@ public class Animations extends Module {
                     mc.getItemRenderer().func_178103_d();
                 }
                 break;
-            case "OHARE":
-                if (itemToRender.getItem() instanceof ItemSword) {
-                    float f6 = MathHelper.sin((MathHelper.sqrt_float(f1) * 3.1415927f));
-                    GL11.glTranslated(-0.05D, 0.0D, -0.25);
-                    mc.getItemRenderer().transformFirstPersonItem(f / 2, 0.0f);
-                    GlStateManager.rotate(-f6 * 60.0F, 2.0F, -f6 * 2, -0.0f);
-                    mc.getItemRenderer().func_178103_d();
-                }
-                break;
             case "OHARE2":
                 if (itemToRender.getItem() instanceof ItemSword) {
                     mc.getItemRenderer().transformFirstPersonItem(f1, 0.0F);
@@ -108,6 +99,15 @@ public class Animations extends Module {
                     GlStateManager.translate(-0.05F, 0.6F, 0.3F);
                     GlStateManager.rotate(-var * 70.0F / 2.0F, -8.0F, -0.0F, 9.0F);
                     GlStateManager.rotate(-var * 70.0F, 1.5F, -0.4F, -0.0F);
+                }
+                break;
+            case "OHARE":
+                if (itemToRender.getItem() instanceof ItemSword) {
+                    float f6 = MathHelper.sin((MathHelper.sqrt_float(f1) * 3.1415927f));
+                    GL11.glTranslated(-0.05D, 0.0D, -0.25);
+                    mc.getItemRenderer().transformFirstPersonItem(f / 2, 0.0f);
+                    GlStateManager.rotate(-f6 * 60.0F, 2.0F, -f6 * 2, -0.0f);
+                    mc.getItemRenderer().func_178103_d();
                 }
                 break;
             case "WIZZARD":
@@ -129,27 +129,24 @@ public class Animations extends Module {
                     GlStateManager.rotate(-f6 * 75.0F, 1.5F, f6 / 3.0F, -0.0F);
                     GlStateManager.rotate(f6 * 72.5F / 2.25F, f6 / 3.0F, -2.7F, 5.0F);
                     mc.getItemRenderer().func_178103_d();
+
                 }
                 break;
             case "ETB":
-                if (itemToRender.getItem() instanceof ItemSword) {
-                    mc.getItemRenderer().transformFirstPersonItem(f, 0.0F);
-                    mc.getItemRenderer().func_178103_d();
-                    final float var9 = MathHelper.sin(MathHelper.sqrt_float(f1) * 3.1415927f);
-                    GlStateManager.translate(-0.05f, 0.6f, 0.3f);
-                    GlStateManager.rotate(-var9 * (float) 80.0 / 2.0f, -4.0f, -0.0f, 18.0f);
-                    GlStateManager.rotate(-var9 * (float) 70.0, 1.5f, -0.4f, -0.0f);
-                }
+                mc.getItemRenderer().transformFirstPersonItem(f, 0.0F);
+                mc.getItemRenderer().func_178103_d();
+                final float var9 = MathHelper.sin(MathHelper.sqrt_float(f1) * 3.1415927f);
+                GlStateManager.translate(-0.05f, 0.6f, 0.3f);
+                GlStateManager.rotate(-var9 * (float) 80.0 / 2.0f, -4.0f, -0.0f, 18.0f);
+                GlStateManager.rotate(-var9 * (float) 70.0, 1.5f, -0.4f, -0.0f);
                 break;
             case "SPIN":
-                if (itemToRender.getItem() instanceof ItemSword) {
-                    mc.getItemRenderer().transformFirstPersonItem(f, 0.0f);
-                    mc.getItemRenderer().func_178103_d();
-                    GL11.glRotatef(rotate, rotate, 0, rotate);
-                    GL11.glScalef(0.5f, 0.5f, 0.5F);
-                    GL11.glTranslatef(0, 5, 0);
-                    rotate++;
-                }
+                mc.getItemRenderer().transformFirstPersonItem(f, 0.0f);
+                mc.getItemRenderer().func_178103_d();
+                GL11.glRotatef(rotate, rotate, 0, rotate);
+                GL11.glScalef(0.5f, 0.5f, 0.5F);
+                //GL11.glTranslatef(0, 5, 0);
+                rotate++;
                 break;
         }
     }

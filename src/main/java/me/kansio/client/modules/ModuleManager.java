@@ -35,6 +35,7 @@ public class ModuleManager {
         modules.add(new Disabler());
         modules.add(new ACDetector());
         modules.add(new Plugins());
+        modules.add(new Regen());
 
         //Movement
         modules.add(new Speed());
