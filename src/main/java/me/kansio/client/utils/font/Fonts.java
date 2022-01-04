@@ -6,12 +6,12 @@ import net.minecraft.util.ResourceLocation;
 import java.awt.*;
 
 public class Fonts {
-    public static final MCFontRenderer tabGuiIconFont = new MCFontRenderer(fontFromTTF(new ResourceLocation("client/font/Icon-Font.ttf"),22,0), true, true);
+    /*public static final MCFontRenderer tabGuiIconFont = new MCFontRenderer(fontFromTTF(new ResourceLocation("client/font/Icon-Font.ttf"),22,0), true, true);
     public static final MCFontRenderer clickGuiIconFont = new MCFontRenderer(fontFromTTF(new ResourceLocation("client/font/Icon-Font.ttf"),36,0), true, true);
     public static final MCFontRenderer clickGuiCatagoryFont = new MCFontRenderer(fontFromTTF(new ResourceLocation("client/font/Catagory-Font.ttf"),36,0), true, true);
     public static final MCFontRenderer clickGuiModuleFont = new MCFontRenderer(fontFromTTF(new ResourceLocation("client/font/Module-Font.ttf"),36,0), true, true);
     public static final MCFontRenderer notificationIconFont = new MCFontRenderer(fontFromTTF(new ResourceLocation("client/font/Notifications-Font.ttf"),36,0), true, true);
-    public static final MCFontRenderer configGuiIconFont = new MCFontRenderer(fontFromTTF(new ResourceLocation("client/font/Config-Font.ttf"),36,0), true, true);
+    public static final MCFontRenderer configGuiIconFont = new MCFontRenderer(fontFromTTF(new ResourceLocation("client/font/Config-Font.ttf"),36,0), true, true);*/
     public static final MCFontRenderer clickGuiTitleFont = new MCFontRenderer(new Font("Arial", Font.BOLD,24),true,true);
     public static final MCFontRenderer clickGuiFont = new MCFontRenderer(new Font("Arial", Font.PLAIN,18),true,true);
     public static final MCFontRenderer clickGuiSmallFont = new MCFontRenderer(new Font("Arial", Font.PLAIN,12),true,true);
