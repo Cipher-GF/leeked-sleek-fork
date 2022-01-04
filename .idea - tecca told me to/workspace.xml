@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2390f973-2b4a-4f41-83b8-977da28f7a4b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/kansio/client/modules/impl/combat/KillAura.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/kansio/client/modules/impl/combat/KillAura.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/kansio/client/modules/impl/combat/TargetHUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/kansio/client/modules/impl/combat/TargetHUD.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/kansio/client/modules/impl/exploit/Disabler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/kansio/client/modules/impl/exploit/Disabler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/kansio/client/modules/impl/combat/TargetHUD.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/kansio/client/modules/impl/combat/TargetHUD.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/net/minecraft/client/renderer/ItemRenderer$ItemRenderer$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/net/minecraft/client/renderer/ItemRenderer$ItemRenderer$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/net/minecraft/client/renderer/ItemRenderer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/net/minecraft/client/renderer/ItemRenderer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/workspace/Sleek/keybinds.json" beforeDir="false" afterPath="$PROJECT_DIR$/workspace/Sleek/keybinds.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/workspace/logs/latest.log" beforeDir="false" afterPath="$PROJECT_DIR$/workspace/logs/latest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/workspace/options.txt" beforeDir="false" afterPath="$PROJECT_DIR$/workspace/options.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/workspace/saves/MCP Development World/data/villages.dat" beforeDir="false" afterPath="$PROJECT_DIR$/workspace/saves/MCP Development World/data/villages.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/workspace/saves/MCP Development World/data/villages_end.dat" beforeDir="false" afterPath="$PROJECT_DIR$/workspace/saves/MCP Development World/data/villages_end.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/workspace/saves/MCP Development World/data/villages_nether.dat" beforeDir="false" afterPath="$PROJECT_DIR$/workspace/saves/MCP Development World/data/villages_nether.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/workspace/saves/MCP Development World/level.dat" beforeDir="false" afterPath="$PROJECT_DIR$/workspace/saves/MCP Development World/level.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/workspace/saves/MCP Development World/level.dat_old" beforeDir="false" afterPath="$PROJECT_DIR$/workspace/saves/MCP Development World/level.dat_old" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/workspace/saves/MCP Development World/region/r.0.-1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/workspace/saves/MCP Development World/region/r.0.-1.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/workspace/saves/MCP Development World/region/r.0.0.mca" beforeDir="false" afterPath="$PROJECT_DIR$/workspace/saves/MCP Development World/region/r.0.0.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/workspace/saves/MCP Development World/region/r.1.-1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/workspace/saves/MCP Development World/region/r.1.-1.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/workspace/saves/MCP Development World/region/r.1.0.mca" beforeDir="false" afterPath="$PROJECT_DIR$/workspace/saves/MCP Development World/region/r.1.0.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/workspace/servers.dat" beforeDir="false" afterPath="$PROJECT_DIR$/workspace/servers.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/workspace/usercache.json" beforeDir="false" afterPath="$PROJECT_DIR$/workspace/usercache.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="izqvqn06" />
+  </component>
+  <component name="ProjectId" id="229sslpJ7NnVB4YolZlZjdV7Q0f" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_MARK_IGNORED_FILES_AS_EXCLUDED" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File" value="GitIgnore" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/libs" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Kansio\IdeaProjects\Client\libs" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Start" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Start" />
+      <module name="MavenMCP" />
+      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;C:\Users\Kansio\IdeaProjects\Client\workspace\versions\1.8.8\1.8.8-natives&quot;" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/workspace" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Start" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2390f973-2b4a-4f41-83b8-977da28f7a4b" name="Changes" comment="" />
+      <created>1639261349184</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1639261349184</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+</project>
