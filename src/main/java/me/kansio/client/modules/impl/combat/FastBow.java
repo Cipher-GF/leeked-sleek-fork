@@ -96,8 +96,10 @@ public class FastBow extends Module {
     //returns -1 if it can't find a bow
     public int getBowSlot() {
         for (int i = 0; i < 8; i++) {
-            if (mc.thePlayer.inventory.getStackInSlot(i).getItem() instanceof ItemBow) {
-                return i;
+            if (mc.thePlayer.inventory.getStackInSlot(i) != null) {
+                if (mc.thePlayer.inventory.getStackInSlot(i).getItem() instanceof ItemBow) {
+                    return i;
+                }
             }
         }
 

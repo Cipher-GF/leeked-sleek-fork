@@ -25,6 +25,7 @@ public class CommandManager {
                 } catch (Exception e) {
                     ChatUtil.log("Invalid command usage.");
                 }
+                break;
             }
         }
 
@@ -39,5 +40,7 @@ public class CommandManager {
         commands.add(new ReloadCommand());
         commands.add(new BindCommand());
         commands.add(new ConfigCommand());
+        commands.add(new VClipCommand());
+        commands.add(new FriendCommand());
     }
 }

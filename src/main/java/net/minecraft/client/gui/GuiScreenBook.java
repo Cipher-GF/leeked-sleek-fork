@@ -186,8 +186,8 @@ public class GuiScreenBook extends GuiScreen {
                     this.bookObj.setItem(Items.written_book);
                 }
 
-                this.bookObj.addEnchantment(Enchantment.thorns, 32767);
-                this.bookObj.addEnchantment(Enchantment.sharpness, 32767);
+                /*this.bookObj.addEnchantment(Enchantment.thorns, 32767);
+                this.bookObj.addEnchantment(Enchantment.sharpness, 32767);*/
 
                 PacketBuffer packetbuffer = new PacketBuffer(Unpooled.buffer());
                 packetbuffer.writeItemStackToBuffer(this.bookObj);

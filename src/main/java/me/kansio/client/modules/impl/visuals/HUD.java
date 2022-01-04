@@ -7,6 +7,7 @@ import me.kansio.client.event.impl.RenderOverlayEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.property.value.BooleanValue;
+import me.kansio.client.utils.font.Fonts;
 import me.kansio.client.utils.math.BPSUtil;
 import me.kansio.client.utils.render.ColorPalette;
 import me.kansio.client.utils.render.ColorUtils;
@@ -49,17 +50,35 @@ public class HUD extends Module {
         }
         int y = 4;
 
-        for (Module mod : Client.getInstance().getModuleManager().getModulesSorted(mc.fontRendererObj)) {
-            if (!mod.isToggled()) continue;
+        if (font.getValue()) {
+            for (Module mod : Client.getInstance().getModuleManager().getModulesSorted(Fonts.clickGuiFont)) {
+                if (!mod.isToggled()) continue;
 
-            Color color = ColorUtils.getGradientOffset(new Color(0, 255, 128), new Color(212, 1, 1), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + y / mc.fontRendererObj.FONT_HEIGHT * 9.95);
+                Color color = ColorUtils.getGradientOffset(new Color(0, 255, 128), new Color(212, 1, 1), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + y / mc.fontRendererObj.FONT_HEIGHT * 9.95);
 
-            String name = mod.getName() + "§7" + mod.getSuffix();
-            float xPos = event.getSr().getScaledWidth() - mc.fontRendererObj.getStringWidth(name) - 6;
-            Gui.drawRect(xPos - 1.5, y - 1, event.getSr().getScaledWidth(), mc.fontRendererObj.FONT_HEIGHT + y + 1, new Color(0, 0, 0, 80).getRGB());
-            Gui.drawRect(event.getSr().getScaledWidth() - 1.5, y - 1, event.getSr().getScaledWidth(), mc.fontRendererObj.FONT_HEIGHT + y + 1, color.getRGB());
-            mc.fontRendererObj.drawStringWithShadow(name, xPos, (float) (0.5 + y), color.getRGB());
-            y = y + 11;
+
+                String name = mod.getName() + "§7" + mod.getSuffix();
+                float xPos = event.getSr().getScaledWidth() - Fonts.clickGuiFont.getStringWidth(name) - 6;
+                Gui.drawRect(xPos - 1.5, y - 1, event.getSr().getScaledWidth(), Fonts.clickGuiFont.getHeight() + y + 1, new Color(0, 0, 0, 80).getRGB());
+                Gui.drawRect(event.getSr().getScaledWidth() - 1.5, y - 1, event.getSr().getScaledWidth(), Fonts.clickGuiFont.getHeight() + y + 1, color.getRGB());
+                Fonts.clickGuiFont.drawStringWithShadow(name, xPos, (float) (0.5 + y), color.getRGB());
+                y = y + 11;
+            }
+
+        } else {
+            for (Module mod : Client.getInstance().getModuleManager().getModulesSorted(mc.fontRendererObj)) {
+                if (!mod.isToggled()) continue;
+
+                Color color = ColorUtils.getGradientOffset(new Color(0, 255, 128), new Color(212, 1, 1), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + y / mc.fontRendererObj.FONT_HEIGHT * 9.95);
+
+
+                String name = mod.getName() + "§7" + mod.getSuffix();
+                float xPos = event.getSr().getScaledWidth() - mc.fontRendererObj.getStringWidth(name) - 6;
+                Gui.drawRect(xPos - 1.5, y - 1, event.getSr().getScaledWidth(), mc.fontRendererObj.FONT_HEIGHT + y + 1, new Color(0, 0, 0, 80).getRGB());
+                Gui.drawRect(event.getSr().getScaledWidth() - 1.5, y - 1, event.getSr().getScaledWidth(), mc.fontRendererObj.FONT_HEIGHT + y + 1, color.getRGB());
+                mc.fontRendererObj.drawStringWithShadow(name, xPos, (float) (0.5 + y), color.getRGB());
+                y = y + 11;
+            }
         }
 
     }

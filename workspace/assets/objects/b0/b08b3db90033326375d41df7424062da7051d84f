@@ -1,6 +1,6 @@
 {
     "mco.account.privacy.info": "L\u00e6s mere om Mojang og privatlivslove",
-    "mco.account.privacyinfo": "Mojang implementerer visse procedurer for at beskytte b\u00f8rn og deres privatliv, herunder at overholde loven om beskyttelse (Online beskyttelse af privatliv) (COPPA) og generelle data beskyttelses forordningen (GDPR).\n\nDu skal muligvis f\u00e5 for\u00e6ldres samtykke, inden du f\u00e5r adgang til din Realms-konto.\n\nHvis du har en \u00e6ldre Minecraft-konto (du Logger ind med dit brugernavn), skal du overf\u00f8re kontoen til en Mojang-konto for at f\u00e5 adgang til Realms.",
+    "mco.account.privacyinfo": "Mojang implementerer visse procedurer for at beskytte b\u00f8rn og deres privatliv, herunder at overholde loven om beskyttelse (Online beskyttelse af privatliv) (COPPA) og generelle data beskyttelses forordningen (GDPR).\n\nDu skal muligvis f\u00e5 for\u00e6ldres samtykke, inden du f\u00e5r adgang til din Realms-konto.\n\nHvis du har en \u00e6ldre Minecraft-konto (du logger ind med dit brugernavn), skal du overf\u00f8re kontoen til en Mojang-konto for at f\u00e5 adgang til Realms.",
     "mco.account.update": "Opdater konto",
     "mco.activity.noactivity": "Ingen aktivitet i de sidste %s dage",
     "mco.activity.title": "Spilleraktivitet",

@@ -8,6 +8,7 @@ import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.NumberValue;
 import me.kansio.client.utils.Stopwatch;
 import net.minecraft.client.gui.inventory.GuiChest;
+import net.minecraft.client.gui.inventory.GuiCrafting;
 import net.minecraft.item.ItemEgg;
 import net.minecraft.item.ItemGlassBottle;
 import net.minecraft.item.ItemPotion;
@@ -58,7 +59,19 @@ public class ChestStealer extends Module {
 
                 delayCounter.resetTime();
             }
+        } else if (mc.currentScreen instanceof GuiCrafting) {
+
+            if (delayCounter.timeElapsed(delay.getValue().longValue())) {
+
+                GuiCrafting chest = (GuiCrafting) mc.currentScreen;
+
+                mc.playerController.windowClick(chest.inventorySlots.windowId, 0, 0, 1, mc.thePlayer);
+                delayCounter.resetTime();
+
+            }
+
         }
+
     }
 
     private boolean isChestEmpty(final GuiChest chest) {
@@ -84,7 +97,7 @@ public class ChestStealer extends Module {
 
     private boolean isTrash(ItemStack item) {
         return ((item.getItem().getUnlocalizedName().contains("tnt")) || item.getDisplayName().contains("frog") ||
-                (item.getItem().getUnlocalizedName().contains("stick"))||
+                (item.getItem().getUnlocalizedName().contains("stick")) ||
                 (item.getItem().getUnlocalizedName().contains("string")) || (item.getItem().getUnlocalizedName().contains("flint")) ||
                 (item.getItem().getUnlocalizedName().contains("feather")) || (item.getItem().getUnlocalizedName().contains("bucket")) ||
                 (item.getItem().getUnlocalizedName().contains("snow")) || (item.getItem().getUnlocalizedName().contains("enchant")) ||

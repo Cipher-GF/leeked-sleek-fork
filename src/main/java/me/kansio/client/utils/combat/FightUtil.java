@@ -1,5 +1,6 @@
 package me.kansio.client.utils.combat;
 
+import me.kansio.client.Client;
 import me.kansio.client.utils.Util;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -7,6 +8,7 @@ import net.minecraft.entity.item.EntityArmorStand;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.entity.passive.EntityAnimal;
+import net.minecraft.entity.passive.EntitySquid;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.scoreboard.Team;
@@ -20,7 +22,7 @@ public class FightUtil extends Util {
         return Math.random() <= chance;
     }
 
-    public static List<EntityLivingBase> getMultipleTargets(double range, boolean players, boolean animals, boolean walls, boolean mobs, boolean invis) {
+    public static List<EntityLivingBase> getMultipleTargets(double range, boolean players, boolean friends, boolean animals, boolean walls, boolean mobs, boolean invis) {
         List<EntityLivingBase> list = new ArrayList<>();
         for (Entity entity : mc.theWorld.loadedEntityList) {
             if (!(entity instanceof EntityLivingBase))
@@ -33,9 +35,11 @@ public class FightUtil extends Util {
                     || entityLivingBase instanceof EntityArmorStand
                     || entityLivingBase instanceof EntityVillager
                     || entityLivingBase instanceof EntityAnimal && !animals
+                    || entityLivingBase instanceof EntitySquid && !animals
                     || entityLivingBase instanceof EntityPlayer && !players
                     || entityLivingBase instanceof EntityMob && !mobs
                     || entityLivingBase instanceof EntitySlime && !mobs
+                    || Client.getInstance().getFriendManager().isFriend(entityLivingBase.getName()) && !friends
                     || entityLivingBase.isInvisible() && !invis) continue;
             if (list.size() > 5)
                 continue;

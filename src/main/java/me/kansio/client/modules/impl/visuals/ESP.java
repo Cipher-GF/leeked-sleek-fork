@@ -1,6 +1,7 @@
 package me.kansio.client.modules.impl.visuals;
 
 import dorkbox.messageBus.annotations.Subscribe;
+import me.kansio.client.Client;
 import me.kansio.client.event.impl.RenderOverlayEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.impl.Module;
@@ -205,9 +206,8 @@ public class ESP extends Module {
                     if (tag) {
                         float scaledHeight = 10.0F;
                         String name;
-                        String entName = entity.getName();
 
-                        name = entName;
+                        name = Client.getInstance().getFriendManager().isFriend(entity.getName()) ? Client.getInstance().getFriendManager().getFriend(entity.getName()).getDisplayName() : entity.getName();
 
 
                         if (entity instanceof EntityItem) {
@@ -263,7 +263,7 @@ public class ESP extends Module {
     }
 
     private boolean isFriendly(EntityPlayer player) {
-        return false;
+        return Client.getInstance().getFriendManager().isFriend(player.getName());
     }
 
     private void collectEntities() {

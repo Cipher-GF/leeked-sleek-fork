@@ -9,6 +9,7 @@ import me.kansio.client.modules.impl.movement.*;
 import me.kansio.client.modules.impl.player.*;
 import me.kansio.client.modules.impl.visuals.*;
 import me.kansio.client.modules.impl.world.*;
+import me.kansio.client.utils.font.MCFontRenderer;
 import net.minecraft.client.gui.FontRenderer;
 
 import java.util.ArrayList;
@@ -35,6 +36,7 @@ public class ModuleManager {
         modules.add(new Disabler());
         modules.add(new ACDetector());
         modules.add(new Plugins());
+        modules.add(new Regen());
 
         //Movement
         modules.add(new Speed());
@@ -64,6 +66,7 @@ public class ModuleManager {
 
         //World
         modules.add(new Scaffold());
+        modules.add(new Breaker());
 
 
         //Toggle modules
@@ -82,6 +85,21 @@ public class ModuleManager {
     }
 
     public List<Module> getModulesSorted(FontRenderer customFontRenderer) {
+        List<Module> moduleList = new ArrayList<>(modules);
+        moduleList.sort((a, b) -> {
+            String dataA = a.getSuffix() == null ? "" : a.getSuffix();
+            String dataB = b.getSuffix() == null ? "" : b.getSuffix();
+            String nameA = a.getName();
+            String nameB = b.getName();
+
+            int first = (int) customFontRenderer.getStringWidth(nameA + dataA);
+            int second = (int) customFontRenderer.getStringWidth(nameB + dataB);
+            return second - first;
+        });
+        return moduleList;
+    }
+
+    public List<Module> getModulesSorted(MCFontRenderer customFontRenderer) {
         List<Module> moduleList = new ArrayList<>(modules);
         moduleList.sort((a, b) -> {
             String dataA = a.getSuffix() == null ? "" : a.getSuffix();
