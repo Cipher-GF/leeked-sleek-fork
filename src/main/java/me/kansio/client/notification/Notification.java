@@ -65,15 +65,15 @@ public class Notification {
             offset = width;
         }
 
-        Color color = new Color(0, 0, 0, 220);
+        Color color = new Color(0, 0, 0, 100);
         Color color1;
 
         switch (type) {
             case INFO:
-                color1 = new Color(197, 197, 197);
+                color1 = new Color(0, 255, 128);
                 break;
             case WARNING:
-                color1 = new Color(204, 193, 0);
+                color1 = new Color(0, 255, 128);
                 break;
             case ERROR:
                 color1 = new Color(204, 0, 18);
@@ -85,7 +85,7 @@ public class Notification {
         FontRenderer fontRenderer = Minecraft.getMinecraft().fontRendererObj;
 
         drawRect(GuiScreen.width - offset, GuiScreen.height - 5 - height, GuiScreen.width, GuiScreen.height - 5, color.getRGB());
-        drawRect(GuiScreen.width - offset, GuiScreen.height - 5 - height, GuiScreen.width - offset + 4, GuiScreen.height - 5, color1.getRGB());
+        drawRect(GuiScreen.width - offset, GuiScreen.height - 5 - height, GuiScreen.width - offset + 2, GuiScreen.height - 5, color1.getRGB());
 
         fontRenderer.drawString(title, (int) (GuiScreen.width - offset + 8), GuiScreen.height - 2 - height, -1);
         fontRenderer.drawString(messsage, (int) (GuiScreen.width - offset + 8), GuiScreen.height - 15, -1);

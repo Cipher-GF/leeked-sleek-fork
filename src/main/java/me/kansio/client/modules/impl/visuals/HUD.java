@@ -38,7 +38,9 @@ public class HUD extends Module {
     @Subscribe
     public void onRenderOverlay(RenderOverlayEvent event) {
         notifications = noti.getValue() && isToggled();
+
         mc.fontRendererObj.drawStringWithShadow("§aS§7leek v0.1", 4, 4, ColorPalette.GREEN.getColor().getRGB());
+
         if (bps.getValue()) {
             double bps = BPSUtil.getBPS();
             if (bpsToMph.getValue()) {
@@ -59,8 +61,8 @@ public class HUD extends Module {
 
                 String name = mod.getName() + "§7" + mod.getSuffix();
                 float xPos = event.getSr().getScaledWidth() - Fonts.clickGuiFont.getStringWidth(name) - 6;
-                Gui.drawRect(xPos - 1.5, y - 1, event.getSr().getScaledWidth(), Fonts.clickGuiFont.getHeight() + y + 1, new Color(0, 0, 0, 80).getRGB());
-                Gui.drawRect(event.getSr().getScaledWidth() - 1.5, y - 1, event.getSr().getScaledWidth(), Fonts.clickGuiFont.getHeight() + y + 1, color.getRGB());
+                Gui.drawRect(xPos - 1.5, y - 3, event.getSr().getScaledWidth(), Fonts.clickGuiFont.getHeight() + y + 1, new Color(0, 0, 0, 80).getRGB());
+                Gui.drawRect(event.getSr().getScaledWidth() - 1, y - 3, event.getSr().getScaledWidth(), Fonts.clickGuiFont.getHeight() + y + 1, color.getRGB());
                 Fonts.clickGuiFont.drawStringWithShadow(name, xPos, (float) (0.5 + y), color.getRGB());
                 y = y + 11;
             }
