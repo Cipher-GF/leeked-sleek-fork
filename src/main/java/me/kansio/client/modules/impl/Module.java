@@ -9,10 +9,7 @@ import me.kansio.client.modules.impl.visuals.ClickGUI;
 import me.kansio.client.notification.Notification;
 import me.kansio.client.notification.NotificationManager;
 import me.kansio.client.property.Value;
-import me.kansio.client.property.value.BooleanValue;
-import me.kansio.client.property.value.ModeValue;
-import me.kansio.client.property.value.NumberValue;
-import me.kansio.client.property.value.StringValue;
+import me.kansio.client.property.value.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.multiplayer.WorldClient;
@@ -20,6 +17,7 @@ import net.minecraft.client.network.NetHandlerPlayClient;
 import net.minecraft.client.settings.GameSettings;
 import org.lwjgl.input.Keyboard;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -35,6 +33,7 @@ public abstract class Module {
     private int keyBind;
     private String suffix = "";
     private ModuleCategory category;
+    private List<SubCategory> subCategories = new ArrayList<>();
 
     public Module(String name, int keyBind, ModuleCategory category) {
         this.category = category;
@@ -75,6 +74,10 @@ public abstract class Module {
 
     public void onDisable() {
 
+    }
+
+    public void registerSubCategories(SubCategory... subCategories) {
+        Collections.addAll(this.subCategories, subCategories);
     }
 
     public void register(Value... properties) {

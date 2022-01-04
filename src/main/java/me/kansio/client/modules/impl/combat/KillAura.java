@@ -13,6 +13,7 @@ import me.kansio.client.modules.impl.visuals.HUD;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.ModeValue;
 import me.kansio.client.property.value.NumberValue;
+import me.kansio.client.property.value.SubCategory;
 import me.kansio.client.utils.Stopwatch;
 import me.kansio.client.utils.combat.FightUtil;
 import me.kansio.client.utils.network.PacketUtil;
@@ -34,7 +35,7 @@ public class KillAura extends Module {
 
     public KillAura() {
         super("Killaura", ModuleCategory.COMBAT);
-
+        registerSubCategories(blockSettings);
         register(
                 //enum values:
                 mode, moderotation, targetPriority, autoblockmode, swingmode, targethudmode,
@@ -51,13 +52,15 @@ public class KillAura extends Module {
     public ModeValue mode = new ModeValue("Mode", this, /*"Switch",*/ "Smart");
     public ModeValue moderotation = new ModeValue("Rotation Mode", this, "Default", "None", "Down", "NCP", "AAC", "GWEN");
     public ModeValue targetPriority = new ModeValue("Target Priority", this, "Health", "Distance", "Armor", "HurtTime", "None");
-    public ModeValue autoblockMode = new ModeValue("Autoblock Mode", this, "Real", "Hold", "Fake");
+    public BooleanValue autoblock = new BooleanValue("Auto Block", this, true);
+    public ModeValue autoblockmode = new ModeValue("Autoblock Mode", this, autoblock,"Real", "Fake");
+    public NumberValue<Double> autoblockRange = new NumberValue<>("Block Range", this, 3.0, 1.0, 12.0, 0.1);
+    private SubCategory blockSettings = new SubCategory("Block Setting", autoblockmode, autoblockRange);
     public ModeValue swingMode = new ModeValue("Swing Mode", this, "Client", "None", "Server");
     public NumberValue<Double> reach = new NumberValue<>("Attack Range", this, 4.5, 2.5, 9.0, 0.1);
-    public NumberValue<Double> autoblockRange = new NumberValue<>("Block Range", this, 3.0, 1.0, 12.0, 0.1);
     public NumberValue<Double> cps = new NumberValue<>("CPS", this, 12.0, 1.0, 20.0, 1.0);
     public NumberValue<Double> rand = new NumberValue<>("Randomize CPS", this, 3.0, 0.0, 10.0, 1.0);
-    public BooleanValue autoblock = new BooleanValue("Auto Block", this, true);
+
     public BooleanValue players = new BooleanValue("Players", this, true);
     public BooleanValue friends = new BooleanValue("Friends", this, true);
     public BooleanValue animals = new BooleanValue("Animals", this, true);
@@ -65,7 +68,7 @@ public class KillAura extends Module {
     public BooleanValue invisible = new BooleanValue("Invisibles", this, true);
     public BooleanValue walls = new BooleanValue("Walls", this, true);
 
-    public ModeValue autoblockmode = new ModeValue("Autoblock Mode", this, autoblock,"Real", "Fake");
+
     public ModeValue swingmode = new ModeValue("Swing Mode", this,"Client", "Server");
     public NumberValue<Double> swingrage = new NumberValue<>("Attack Range", this, 3.0, 1.0, 9.0, 0.1);
 
@@ -105,7 +108,7 @@ public class KillAura extends Module {
 
     @Subscribe
     public void doHoldBlock(UpdateEvent evente) {
-        if (autoblockMode.getValue().equalsIgnoreCase("Hold")) {
+        if (autoblockmode.getValue().equalsIgnoreCase("Hold")) {
             if (KillAura.target != null) {
                 mc.gameSettings.keyBindUseItem.pressed = true;
             } else {

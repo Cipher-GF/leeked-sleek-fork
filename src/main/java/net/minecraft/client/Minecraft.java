@@ -13,6 +13,7 @@ import com.mojang.authlib.properties.PropertyMap;
 import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
 import me.kansio.client.Client;
 import me.kansio.client.event.impl.KeyboardEvent;
+import me.kansio.client.event.impl.TickEvent;
 import me.kansio.client.gui.MainMenu;
 import me.kansio.client.gui.clickgui.utils.render.animation.easings.Delta;
 import net.minecraft.block.Block;
@@ -1439,6 +1440,8 @@ public class Minecraft implements IThreadListener, IPlayerUsage {
      * Runs the current tick.
      */
     public void runTick() throws IOException {
+        Client.getInstance().getEventBus().publish(new TickEvent());
+
         if (this.rightClickDelayTimer > 0) {
             --this.rightClickDelayTimer;
         }

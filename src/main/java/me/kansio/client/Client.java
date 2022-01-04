@@ -3,9 +3,11 @@ package me.kansio.client;
 import dorkbox.messageBus.MessageBus;
 import dorkbox.messageBus.annotations.Subscribe;
 import lombok.Getter;
+import lombok.Setter;
 import me.kansio.client.commands.CommandManager;
 import me.kansio.client.config.ConfigManager;
 import me.kansio.client.event.impl.KeyboardEvent;
+import me.kansio.client.event.impl.ServerJoinEvent;
 import me.kansio.client.friend.FriendManager;
 import me.kansio.client.keybind.KeybindManager;
 import me.kansio.client.manager.ValueManager;
@@ -17,6 +19,10 @@ import org.lwjgl.opengl.Display;
 import java.io.File;
 
 public class Client {
+
+    @Getter @Setter private String username;
+    @Getter @Setter private String uid;
+
 
     @Getter private File dir;
 
@@ -78,6 +84,11 @@ public class Client {
         //shutdown the event bus
         System.out.println("Shutting down...");
         eventBus.shutdown();
+    }
+
+    @Subscribe
+    public void onJoin(ServerJoinEvent event) {
+
     }
 
     @Subscribe

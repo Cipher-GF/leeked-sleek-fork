@@ -1,6 +1,6 @@
 package me.kansio.client.gui.clickgui.utils.render;
 
-import me.kansio.client.gui.clickgui.utils.IUtil;
+import me.kansio.client.utils.Util;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import org.lwjgl.opengl.GL11;
@@ -9,7 +9,7 @@ import java.awt.*;
 
 import static org.lwjgl.opengl.GL11.*;
 
-public class RenderUtils implements IUtil {
+public class RenderUtils extends Util {
 	public static void prepareScissorBox(float x2, float y2, float x22, float y22) {
         ScaledResolution scale = new ScaledResolution(mc);
         int factor = scale.getScaleFactor();
