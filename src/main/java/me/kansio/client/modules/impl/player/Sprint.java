@@ -28,7 +28,7 @@ public class Sprint extends Module {
     public void onUpdate(UpdateEvent event) {
         if (mc.thePlayer.isSneaking()) return;
 
-        if (mc.thePlayer.moveForward > 0) {
+        if (mc.thePlayer.isMoving()) {
             mc.thePlayer.setSprinting(true);
         }
     }

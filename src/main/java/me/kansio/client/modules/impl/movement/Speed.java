@@ -17,7 +17,7 @@ import net.minecraft.util.AxisAlignedBB;
 
 public class Speed extends Module {
 
-    private final ModeValue mode = new ModeValue("Mode", this, "Vanilla", "VanillaHop", "Verus", "Verus2", "Ghostly", "Ghostly TP");
+    private final ModeValue mode = new ModeValue("Mode", this, "Vanilla", "VanillaHop", "Verus", "Verus Ground", "Ghostly", "Ghostly TP");
     private final NumberValue<Double> speed = new NumberValue<>("Speed", this, 0.5, 0.0, 8.0, 0.1);
     private final BooleanValue forceFriction = new BooleanValue("Force Friction", this, true);
     private final ModeValue frictionMode = new ModeValue("Friction", this, forceFriction, "NCP", "NEW", "LEGIT", "SILENT");
@@ -58,16 +58,23 @@ public class Speed extends Module {
                         sped2 = speed.getValue().floatValue();
                     }
 
-                    PlayerUtil.setMotion(sped2);
+                    PlayerUtil.setMotion(event, sped2);
                 }
                 break;
             }
-            case "Verus2": {
-                if (mc.thePlayer.onGround) {
-                    PlayerUtil.damageVerusNoMotion();
-                    event.setMotionY(handleFriction(hDist));
+            case "Verus Ground": {
+                if (!mc.thePlayer.isInLava() && !mc.thePlayer.isInWater() && !mc.thePlayer.isOnLadder() && mc.thePlayer.ridingEntity == null) {
+                    if (mc.thePlayer.isMoving()) {
+                        mc.gameSettings.keyBindJump.pressed = false;
+                        if (mc.thePlayer.onGround) {
+                            mc.thePlayer.jump();
+                            mc.thePlayer.motionY = 0.0;
+                            PlayerUtil.strafe(0.61F);
+                            event.setMotionY(0.41999998688698);
+                        }
+                        PlayerUtil.strafe();
+                    }
                 }
-                PlayerUtil.setMotion(event, (speed.getValue() >= 5.5 ? 5.4 : speed.getValue()));
                 break;
             }
         }
@@ -100,32 +107,6 @@ public class Speed extends Module {
                 }
                 break;
             }
-            case "Verus2": {
-                if (mc.thePlayer.onGround) {
-                    hDist.set(speed.getValue());
-                }
-                break;
-            }
-        }
-    }
-
-    @Subscribe
-    public void dortSaidToDoThisOkKansio(BlockCollisionEvent event) {
-        switch (mode.getValue()) {
-            case "Verus2": {
-                if (event.getBlock() instanceof BlockAir) {
-                    if (mc.thePlayer.isSneaking())
-                        return;
-                    double x = event.getX();
-                    double y = event.getY();
-                    double z = event.getZ();
-                    if (y < mc.thePlayer.posY) {
-                        event.setAxisAlignedBB(AxisAlignedBB.fromBounds(-5, -1, -5, 5, 1.0F, 5).offset(x, y, z));
-                    }
-                }
-                break;
-            }
-
         }
     }
 

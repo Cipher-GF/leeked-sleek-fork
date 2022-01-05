@@ -87,8 +87,8 @@ public class ModuleManager {
     public List<Module> getModulesSorted(FontRenderer customFontRenderer) {
         List<Module> moduleList = new ArrayList<>(modules);
         moduleList.sort((a, b) -> {
-            String dataA = a.getSuffix() == null ? "" : a.getSuffix();
-            String dataB = b.getSuffix() == null ? "" : b.getSuffix();
+            String dataA = a.getFormattedSuffix() == null ? "" : a.getFormattedSuffix();
+            String dataB = b.getFormattedSuffix() == null ? "" : b.getFormattedSuffix();
             String nameA = a.getName();
             String nameB = b.getName();
 
@@ -102,8 +102,8 @@ public class ModuleManager {
     public List<Module> getModulesSorted(MCFontRenderer customFontRenderer) {
         List<Module> moduleList = new ArrayList<>(modules);
         moduleList.sort((a, b) -> {
-            String dataA = a.getSuffix() == null ? "" : a.getSuffix();
-            String dataB = b.getSuffix() == null ? "" : b.getSuffix();
+            String dataA = a.getFormattedSuffix() == null ? "" : a.getFormattedSuffix();
+            String dataB = b.getFormattedSuffix() == null ? "" : b.getFormattedSuffix();
             String nameA = a.getName();
             String nameB = b.getName();
 
@@ -116,8 +116,8 @@ public class ModuleManager {
 
     public void sort(FontRenderer fontRenderer) {
         modules.sort((a, b) -> {
-            String dataA = a.getSuffix() == null ? "" : a.getSuffix();
-            String dataB = b.getSuffix() == null ? "" : b.getSuffix();
+            String dataA = a.getFormattedSuffix() == null ? "" : a.getFormattedSuffix();
+            String dataB = b.getFormattedSuffix() == null ? "" : b.getFormattedSuffix();
             int first = fontRenderer.getStringWidth(a.getName() + dataA);
             int second = fontRenderer.getStringWidth(b.getName() + dataB);
             return second - first;

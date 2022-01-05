@@ -59,7 +59,7 @@ public class HUD extends Module {
                 Color color = ColorUtils.getGradientOffset(new Color(0, 255, 128), new Color(212, 1, 1), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + y / mc.fontRendererObj.FONT_HEIGHT * 9.95);
 
 
-                String name = mod.getName() + "§7" + mod.getSuffix();
+                String name = mod.getName() + "§7" + mod.getFormattedSuffix();
                 float xPos = event.getSr().getScaledWidth() - Fonts.clickGuiFont.getStringWidth(name) - 6;
                 Gui.drawRect(xPos - 1.5, y - 3, event.getSr().getScaledWidth(), Fonts.clickGuiFont.getHeight() + y + 1, new Color(0, 0, 0, 80).getRGB());
                 Gui.drawRect(event.getSr().getScaledWidth() - 1, y - 3, event.getSr().getScaledWidth(), Fonts.clickGuiFont.getHeight() + y + 1, color.getRGB());
@@ -74,7 +74,7 @@ public class HUD extends Module {
                 Color color = ColorUtils.getGradientOffset(new Color(0, 255, 128), new Color(212, 1, 1), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + y / mc.fontRendererObj.FONT_HEIGHT * 9.95);
 
 
-                String name = mod.getName() + "§7" + mod.getSuffix();
+                String name = mod.getName() + "§7" + mod.getFormattedSuffix();
                 float xPos = event.getSr().getScaledWidth() - mc.fontRendererObj.getStringWidth(name) - 6;
                 Gui.drawRect(xPos - 1.5, y - 1, event.getSr().getScaledWidth(), mc.fontRendererObj.FONT_HEIGHT + y + 1, new Color(0, 0, 0, 80).getRGB());
                 Gui.drawRect(event.getSr().getScaledWidth() - 1.5, y - 1, event.getSr().getScaledWidth(), mc.fontRendererObj.FONT_HEIGHT + y + 1, color.getRGB());

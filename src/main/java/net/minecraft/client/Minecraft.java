@@ -1737,18 +1737,6 @@ public class Minecraft implements IThreadListener, IPlayerUsage {
                 if (!this.gameSettings.keyBindUseItem.isKeyDown()) {
                     this.playerController.onStoppedUsingItem(this.thePlayer);
                 }
-
-                while (this.gameSettings.keyBindAttack.isPressed()) {
-                    ;
-                }
-
-                while (this.gameSettings.keyBindUseItem.isPressed()) {
-                    ;
-                }
-
-                while (this.gameSettings.keyBindPickBlock.isPressed()) {
-                    ;
-                }
             } else {
                 while (this.gameSettings.keyBindAttack.isPressed()) {
                     this.clickMouse();

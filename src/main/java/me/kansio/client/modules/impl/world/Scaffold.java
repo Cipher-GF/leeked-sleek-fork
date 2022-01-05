@@ -12,6 +12,7 @@ import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.ModeValue;
 import me.kansio.client.property.value.NumberValue;
 import me.kansio.client.utils.Stopwatch;
+import me.kansio.client.utils.chat.ChatUtil;
 import me.kansio.client.utils.math.MathUtil;
 import me.kansio.client.utils.render.ColorPalette;
 import me.kansio.client.utils.render.RenderUtils;
@@ -36,7 +37,7 @@ import java.awt.*;
 
 public class Scaffold extends Module {
 
-    private ModeValue modeValue = new ModeValue("Mode", this, "Verus", "Normal");
+    private ModeValue modeValue = new ModeValue("Mode", this, "Verus", "Normal", "Vulcan");
     private BooleanValue swing = new BooleanValue("Swing", this, true);
     private BooleanValue sprint = new BooleanValue("Sprint", this, false);
     private BooleanValue tower = new BooleanValue("Tower", this, true);
@@ -48,6 +49,7 @@ public class Scaffold extends Module {
     private int animation = 0;
     private final Stopwatch delayTimer = new Stopwatch();
     private final Stopwatch towerTimer = new Stopwatch();
+    private final Stopwatch sneakTimer = new Stopwatch();
     private BlockEntry blockEntry;
     private Scaffold.BlockEntry lastBlockEntry;
     private int startSlot, lastSlot;
@@ -125,25 +127,26 @@ public class Scaffold extends Module {
 
     @Subscribe
     public void onRender(RenderOverlayEvent event) {
-            if (this.info.getValue()) {
-                HUD hud = (HUD) Client.getInstance().getModuleManager().getModuleByName("HUD");
-                ScaledResolution scaledResolution = RenderUtils.getResolution();
+        if (this.info.getValue()) {
+            HUD hud = (HUD) Client.getInstance().getModuleManager().getModuleByName("HUD");
+            ScaledResolution scaledResolution = RenderUtils.getResolution();
 
-                //RenderUtils.drawRect(scaledResolution.getScaledWidth() / 2 - 30, scaledResolution.getScaledHeight() / 2 + 50 + animation, 20 + mc.fontRendererObj.getStringWidth(getBlockCount() + "") + 10, 30, new Color(0, 0, 0, 105).getRGB());
-                RenderUtils.drawRoundedRect(scaledResolution.getScaledWidth() / 2 - 30, scaledResolution.getScaledHeight() / 2 + 50 + animation, 20 + mc.fontRendererObj.getStringWidth(getBlockCount() + "") + 10, 30, 2, new Color(0, 0, 0, 105).getRGB());
-                //RenderUtils.drawRect(scaledResolution.getScaledWidth() / 2 - 30, scaledResolution.getScaledHeight() / 2 + 50 + animation, 20 + mc.fontRendererObj.getStringWidth(getBlockCount() + "") + 10, 1, ColorPalette.GREEN.getColor().getRGB());
-                RenderUtils.drawRoundedRect(scaledResolution.getScaledWidth() / 2 - 30, scaledResolution.getScaledHeight() / 2 + 50 + animation, 20 + mc.fontRendererObj.getStringWidth(getBlockCount() + "") + 10, 1, 1, ColorPalette.GREEN.getColor().getRGB());
+            //RenderUtils.drawRect(scaledResolution.getScaledWidth() / 2 - 30, scaledResolution.getScaledHeight() / 2 + 50 + animation, 20 + mc.fontRendererObj.getStringWidth(getBlockCount() + "") + 10, 30, new Color(0, 0, 0, 105).getRGB());
+            RenderUtils.drawRoundedRect(scaledResolution.getScaledWidth() / 2 - 30, scaledResolution.getScaledHeight() / 2 + 50 + animation, 20 + mc.fontRendererObj.getStringWidth(getBlockCount() + "") + 10, 30, 2, new Color(0, 0, 0, 105).getRGB());
+            //RenderUtils.drawRect(scaledResolution.getScaledWidth() / 2 - 30, scaledResolution.getScaledHeight() / 2 + 50 + animation, 20 + mc.fontRendererObj.getStringWidth(getBlockCount() + "") + 10, 1, ColorPalette.GREEN.getColor().getRGB());
+            RenderUtils.drawRoundedRect(scaledResolution.getScaledWidth() / 2 - 30, scaledResolution.getScaledHeight() / 2 + 50 + animation, 20 + mc.fontRendererObj.getStringWidth(getBlockCount() + "") + 10, 1, 1, ColorPalette.GREEN.getColor().getRGB());
 
-                mc.fontRendererObj.drawStringWithShadow(getBlockCount() + "", scaledResolution.getScaledWidth() / 2 - 5, scaledResolution.getScaledHeight() / 2 + 61 + animation, -1);
+            mc.fontRendererObj.drawStringWithShadow(getBlockCount() + "", scaledResolution.getScaledWidth() / 2 - 5, scaledResolution.getScaledHeight() / 2 + 61 + animation, -1);
 
-                mc.getRenderItem().renderItemIntoGUI(mc.thePlayer.inventory.getStackInSlot(getSlotWithBlock()), scaledResolution.getScaledWidth() / 2 - 28, scaledResolution.getScaledHeight() / 2 + 57 + animation);
-            }
+            mc.getRenderItem().renderItemIntoGUI(mc.thePlayer.inventory.getStackInSlot(getSlotWithBlock()), scaledResolution.getScaledWidth() / 2 - 28, scaledResolution.getScaledHeight() / 2 + 57 + animation);
+        }
     }
 
 
     @Subscribe
     public void onUpdate(UpdateEvent event) {
         switch (modeValue.getValueAsString()) {
+            case "Vulcan":
             case "Verus": {
                 Vector2f vec2f = null;
 
@@ -177,6 +180,16 @@ public class Scaffold extends Module {
                     mc.thePlayer.motionY -= 20;
                     this.didPlaceBlock = false;
                     return;
+                }
+
+                if (modeValue.getValueAsString().equalsIgnoreCase("vulcan")) {
+                    if (sneakTimer.timeElapsed(1000)) {
+                        mc.gameSettings.keyBindSneak.pressed = true;
+                        if (sneakTimer.timeElapsed(1100)) {
+                            mc.gameSettings.keyBindSneak.pressed = false;
+                            sneakTimer.resetTime();
+                        }
+                    }
                 }
 
                 if (this.blockEntry != null && vec2f != null && slot > -1 && event.isPre()) {
