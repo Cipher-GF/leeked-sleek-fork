@@ -10,6 +10,8 @@ import me.kansio.client.modules.impl.Module;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.ModeValue;
 import me.kansio.client.property.value.NumberValue;
+import me.kansio.client.utils.chat.ChatUtil;
+import me.kansio.client.utils.math.MathUtil;
 import me.kansio.client.utils.player.PlayerUtil;
 import net.minecraft.block.BlockAir;
 import net.minecraft.potion.Potion;
@@ -17,7 +19,7 @@ import net.minecraft.util.AxisAlignedBB;
 
 public class Speed extends Module {
 
-    private final ModeValue mode = new ModeValue("Mode", this, "Vanilla", "VanillaHop", "Verus", "Verus2", "Ghostly", "Ghostly TP");
+    private final ModeValue mode = new ModeValue("Mode", this, "Vanilla", "VanillaHop", "Hypixel", "Verus", "Verus2", "Ghostly", "Ghostly TP");
     private final NumberValue<Double> speed = new NumberValue<>("Speed", this, 0.5, 0.0, 8.0, 0.1);
     private final BooleanValue forceFriction = new BooleanValue("Force Friction", this, true);
     private final ModeValue frictionMode = new ModeValue("Friction", this, forceFriction, "NCP", "NEW", "LEGIT", "SILENT");
@@ -29,8 +31,14 @@ public class Speed extends Module {
     }
 
     @Override
+    public void onEnable() {
+        
+    }
+
+    @Override
     public void onDisable() {
         PlayerUtil.setMotion(0);
+        mc.timer.timerSpeed = 1.0f;
         hDist.set(0);
     }
 
@@ -65,7 +73,6 @@ public class Speed extends Module {
             case "Verus2": {
                 if (mc.thePlayer.onGround) {
                     PlayerUtil.damageVerusNoMotion();
-                    event.setMotionY(handleFriction(hDist));
                 }
                 PlayerUtil.setMotion(event, (speed.getValue() >= 5.5 ? 5.4 : speed.getValue()));
                 break;
@@ -103,6 +110,25 @@ public class Speed extends Module {
             case "Verus2": {
                 if (mc.thePlayer.onGround) {
                     hDist.set(speed.getValue());
+                }
+                break;
+            }
+
+            case "Hypixel": {
+                if (mc.thePlayer.onGround) {
+                    hDist.set(PlayerUtil.getBaseSpeed() * 1.06575F);
+                    //hDist.set((speed.getValue() * (mc.thePlayer.isPotionActive(Potion.moveSpeed) ? 1.5 : 1)) / 2);
+                }
+
+                if (mc.thePlayer.isMoving() && !(mc.thePlayer.isInWater() || mc.thePlayer.isInLava())) {
+                    if (mc.thePlayer.onGround && !mc.gameSettings.keyBindJump.pressed && mc.thePlayer.jumpTicks == 0) {
+                        mc.thePlayer.jump();
+                        mc.thePlayer.motionY = 0.24;
+                        mc.thePlayer.jumpTicks = 5;
+                    } else if (mc.thePlayer.motionY < 0) {
+                        mc.thePlayer.motionY *= 1.0625;
+                    }
+                    PlayerUtil.setMotion(handleFriction(hDist));
                 }
                 break;
             }

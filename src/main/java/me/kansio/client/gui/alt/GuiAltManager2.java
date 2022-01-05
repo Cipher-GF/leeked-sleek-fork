@@ -1,5 +1,7 @@
 package me.kansio.client.gui.alt;
 
+import fr.litarvan.openauth.microsoft.MicrosoftAuthResult;
+import fr.litarvan.openauth.microsoft.MicrosoftAuthenticator;
 import net.minecraft.client.gui.*;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.EnumChatFormatting;
@@ -11,8 +13,9 @@ import java.awt.*;
 import java.awt.datatransfer.DataFlavor;
 import java.io.IOException;
 import java.net.URI;
+import java.text.MessageFormat;
 
-public final class GuiAltManager extends GuiScreen {
+public final class GuiAltManager2 extends GuiScreen {
     private GuiTextField password;
     private final GuiScreen previousScreen;
     private GuiTextField username;
@@ -21,7 +24,7 @@ public final class GuiAltManager extends GuiScreen {
 
 
 
-    public GuiAltManager(GuiScreen previousScreen) {
+    public GuiAltManager2(GuiScreen previousScreen) {
         this.previousScreen = previousScreen;
     }
 
@@ -39,27 +42,9 @@ public final class GuiAltManager extends GuiScreen {
                     break;
 
                 case 2:
-                    String data = (String) Toolkit.getDefaultToolkit().getSystemClipboard().getData(DataFlavor.stringFlavor);
-                    if (!data.contains(":")) break;
-                    String[] credentials = data.split(":");
-                    username.setText(credentials[0]);
-                    password.setText(credentials[1]);
-                    break;
-
-                case 3:
-                    thread = null;
-                    thread = new AltLoginThread(RandomStringUtils.random(14, true, true), "");
-                    thread.start();
-                    break;
-
-                case 4:
-                    if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
-                        Desktop.getDesktop().browse(new URI("http://sellix.io/drilledalts"));
-                    }
-                    break;
-
-                case 5:
-                    mc.displayGuiScreen(new GuiAltManager2(this));
+                    MicrosoftAuthenticator authenticator = new MicrosoftAuthenticator();
+                    MicrosoftAuthResult result = authenticator.loginWithCredentials(username.getText(), password.getText());
+                    crackedStatus = MessageFormat.format( "Logged as {0}", result.getProfile().getName());
                     break;
 
                 default:
@@ -99,9 +84,6 @@ public final class GuiAltManager extends GuiScreen {
         buttonList.add(new GuiButton(0, width / 2 - 100, var3 + 72 + 12, "Login"));
         buttonList.add(new GuiButton(1, width / 2 - 100, var3 + 72 + 12 + 24, I18n.format("gui.cancel")));
         buttonList.add(new GuiButton(2, width / 2 - 100, var3 + 72 + 12 + 48, "Clipboard"));
-        buttonList.add(new GuiButton(3, width / 2 - 100, var3 + 72 + 12 + 48 + 24, "Generate Cracked Account"));
-        buttonList.add(new GuiButton(5, width / 2 - 100, var3 + 72 + 12 + 48 + 24 + 24, "Microsoft Login"));
-        buttonList.add(new GuiButton(4, width / 2 - 100, var3 + 72 + 12 + 48 + 24 * 3, "DrilledAlts (Good)"));
         username = new GuiTextField(var3, mc.fontRendererObj, width / 2 - 100, 60, 200, 20);
         password = new GuiTextField(var3, mc.fontRendererObj, width / 2 - 100, 100, 200, 20);
         username.setFocused(true);
