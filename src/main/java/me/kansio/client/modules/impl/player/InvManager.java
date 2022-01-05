@@ -69,6 +69,11 @@ public class InvManager extends Module {
     @Subscribe
     public void onUpdate(UpdateEvent event) {
         if (!event.isPre()) return;
+
+        if (mc.thePlayer.isMoving() || !mc.thePlayer.onGround) {
+            return;
+        }
+
         collectItems();
         collectBestArmor();
         collectTrash();

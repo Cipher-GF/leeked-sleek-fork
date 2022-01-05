@@ -1,5 +1,6 @@
 package me.kansio.client.modules.impl.visuals;
 
+import me.kansio.client.gui.external.ExternalClickGui;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.property.value.BooleanValue;
@@ -17,6 +18,7 @@ public class ClickGUI extends Module {
     @Override
     public void onEnable() {
         mc.displayGuiScreen(new me.kansio.client.gui.clickgui.ui.clickgui.frame.ClickGUI());
+        ExternalClickGui.runGui();
         toggle();
     }
 

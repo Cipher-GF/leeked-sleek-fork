@@ -20,7 +20,11 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
+import net.minecraft.network.Packet;
 import net.minecraft.network.play.client.*;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.Cartesian;
+import net.minecraft.util.EnumFacing;
 import org.apache.commons.lang3.RandomUtils;
 
 import javax.vecmath.Vector2f;
@@ -67,6 +71,8 @@ public class KillAura extends Module {
     public BooleanValue monsters = new BooleanValue("Monsters", this, true);
     public BooleanValue invisible = new BooleanValue("Invisibles", this, true);
     public BooleanValue walls = new BooleanValue("Walls", this, true);
+    public BooleanValue targethud = new BooleanValue("TargetHud", this, false);
+
     private SubSettings targetSettings = new SubSettings("Target Setting", players, friends, animals, monsters, invisible, walls);
 
     public static EntityLivingBase target;
@@ -93,6 +99,11 @@ public class KillAura extends Module {
         swinging = false;
         currentRotation = null;
         target = null;
+
+        if (!mc.thePlayer.isBlocking()) {
+            isBlocking = false;
+            mc.thePlayer.sendQueue.addToSendQueue(new C07PacketPlayerDigging(C07PacketPlayerDigging.Action.RELEASE_USE_ITEM, BlockPos.ORIGIN, EnumFacing.DOWN));
+        }
     }
 
     @Subscribe
@@ -143,9 +154,16 @@ public class KillAura extends Module {
                             isBlocking = true;
                         }
                         break;
-                    case "Fake":
+                    case "Fake": {
                         isBlocking = true;
                         break;
+                    }
+
+                    case "Verus": {
+                        mc.thePlayer.sendQueue.addToSendQueue(new C07PacketPlayerDigging(C07PacketPlayerDigging.Action.RELEASE_USE_ITEM, BlockPos.ORIGIN, EnumFacing.DOWN));
+                        isBlocking = true;
+                        break;
+                    }
                 }
             }
 
@@ -272,6 +290,14 @@ public class KillAura extends Module {
 
     @Subscribe
     public void onPacket(PacketEvent event) {
+        Packet packet = event.getPacket();
+        if (isBlocking && ((packet instanceof C07PacketPlayerDigging && ((C07PacketPlayerDigging) packet).getStatus() == C07PacketPlayerDigging.Action.RELEASE_USE_ITEM) || packet instanceof C08PacketPlayerBlockPlacement)) {
+            event.setCancelled(true);
+        }
+        if (packet instanceof C09PacketHeldItemChange) {
+            isBlocking = false;
+        }
+
         if (gcd.getValue() && target != null && event.getPacket() instanceof C03PacketPlayer && ((C03PacketPlayer) event.getPacket()).getRotating()) {
             C03PacketPlayer p = event.getPacket();
             float m = (float) (0.005 * mc.gameSettings.mouseSensitivity / 0.005);

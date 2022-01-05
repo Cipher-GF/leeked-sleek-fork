@@ -40,6 +40,18 @@ public abstract class Module {
         this(name, Keyboard.KEY_NONE, category);
     }
 
+    public String getFormattedSuffix() {
+        if (getSuffix().equalsIgnoreCase("")) return "";
+
+        String formatted = getSuffix();
+
+        if (getSuffix().startsWith(" ")) {
+            formatted = getSuffix().replaceFirst(" ", "");
+        }
+
+        return " [" + formatted + "]";
+    }
+
     public void toggle() {
         toggled = !toggled;
 
