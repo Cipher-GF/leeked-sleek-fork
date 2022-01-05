@@ -11,12 +11,7 @@ import me.kansio.client.notification.NotificationManager;
 import me.kansio.client.property.Value;
 import me.kansio.client.property.value.*;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.EntityPlayerSP;
-import net.minecraft.client.multiplayer.WorldClient;
-import net.minecraft.client.network.NetHandlerPlayClient;
-import net.minecraft.client.settings.GameSettings;
 import org.lwjgl.input.Keyboard;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -33,7 +28,7 @@ public abstract class Module {
     private int keyBind;
     private String suffix = "";
     private ModuleCategory category;
-    private List<SubCategory> subCategories = new ArrayList<>();
+    private List<SubSettings> subSettings = new ArrayList<>();
 
     public Module(String name, int keyBind, ModuleCategory category) {
         this.category = category;
@@ -76,8 +71,8 @@ public abstract class Module {
 
     }
 
-    public void registerSubCategories(SubCategory... subCategories) {
-        Collections.addAll(this.subCategories, subCategories);
+    public void registerSubSettings(SubSettings... subSettings) {
+        Collections.addAll(this.subSettings, subSettings);
     }
 
     public void register(Value... properties) {
