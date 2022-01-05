@@ -39,6 +39,10 @@ public class Notification {
         end = fadeOut + fadedIn;
     }
 
+    public enum NotificationType {
+        INFO, WARNING, ERROR;
+    }
+
     public void show() {
         start = System.currentTimeMillis();
     }
@@ -155,9 +159,5 @@ public class Notification {
         tessellator.draw();
         GlStateManager.enableTexture2D();
         GlStateManager.disableBlend();
-    }
-
-    public enum NotificationType {
-        INFO, WARNING, ERROR;
     }
 }

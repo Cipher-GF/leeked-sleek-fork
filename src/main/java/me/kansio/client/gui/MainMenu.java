@@ -1,6 +1,7 @@
 package me.kansio.client.gui;
 
 import me.kansio.client.gui.alt.GuiAltManager;
+import me.kansio.client.utils.font.Fonts;
 import me.kansio.client.utils.render.ColorPalette;
 import net.minecraft.client.gui.*;
 import net.minecraft.client.renderer.GlStateManager;
@@ -14,24 +15,17 @@ public class MainMenu extends GuiScreen
 
     private static final ResourceLocation BACKGROUND = new ResourceLocation("sleek/bg1.png");
 
-    /**
-     * Adds the buttons (and other controls) to the screen in question. Called when the GUI is displayed and when the
-     * window resizes, the buttonList is cleared beforehand.
-     */
     public void initGui()
     {
-        int j = this.height / 4 + 48;
+        int j = height / 4 + 48;
         int i = 24;
-        this.buttonList.add(new GuiButton(0, this.width / 2 - 100, j, I18n.format("menu.singleplayer", new Object[0])));
-        this.buttonList.add(new GuiButton(1, this.width / 2 - 100, j + i * 1, I18n.format("menu.multiplayer", new Object[0])));
-        this.buttonList.add(new GuiButton(2, this.width / 2 - 100, j + i * 2, "Alt Manager"));
-        this.buttonList.add(new GuiButton(3, this.width / 2 - 100, j + 72 + 12, 98, 20, I18n.format("menu.options", new Object[0])));
-        this.buttonList.add(new GuiButton(4, this.width / 2 + 2, j + 72 + 12, 98, 20, I18n.format("menu.quit", new Object[0])));
+        this.buttonList.add(new GuiButton(0, width / 2 - 100, j, I18n.format("menu.singleplayer")));
+        this.buttonList.add(new GuiButton(1, width / 2 - 100, j + i * 1, I18n.format("menu.multiplayer")));
+        this.buttonList.add(new GuiButton(2, width / 2 - 100, j + i * 2, "Alt Manager"));
+        this.buttonList.add(new GuiButton(3, width / 2 - 100, j + 72 + 12, 98, 20, I18n.format("menu.options")));
+        this.buttonList.add(new GuiButton(4, width / 2 + 2, j + 72 + 12, 98, 20, I18n.format("menu.quit")));
     }
 
-    /**
-     * Called by the controls from the buttonList when activated. (Mouse pressed for buttons)
-     */
     protected void actionPerformed(GuiButton button) throws IOException
     {
         switch (button.id) {
@@ -50,32 +44,24 @@ public class MainMenu extends GuiScreen
             case 4:
                 this.mc.shutdown();
                 break;
-            case 5:
-                break;
         }
     }
 
-    /**
-     * Draws the screen and all the components in it. Args : mouseX, mouseY, renderPartialTicks
-     */
     public void drawScreen(int mouseX, int mouseY, float partialTicks)
     {
         GlStateManager.color(1.0F,1.0F,1.0F,1.0F);
         this.mc.getTextureManager().bindTexture(BACKGROUND);
-        Gui.drawModalRectWithCustomSizedTexture(0, 0, 0, 0, this.width, this.height, this.width, this.height);
-// no
+        Gui.drawModalRectWithCustomSizedTexture(0, 0, 0, 0, width, height, width, height);
+
         String s = "§lS§fleek";
-        int j = this.height / 4 + 24;
-        this.drawCenteredString(this.fontRendererObj, s, this.width / 2, j, ColorPalette.GREEN.getColor().getRGB());
+        Fonts.MainMenuTitle.drawCenteredString(s, width / 2, height / 4 + 24, ColorPalette.GREEN.getColor().getRGB());
+
         String s1 = "Made with <3 by NotRzyy, Kansio, PC, Divine";
-        this.drawString(this.fontRendererObj, s1, this.width - this.fontRendererObj.getStringWidth(s1) - 2, this.height - 10, -1);
+        Fonts.clickGuiFont.drawCenteredString(s1, width - 2, height -0, -1);
 
         super.drawScreen(mouseX, mouseY, partialTicks);
     }
 
-    /**
-     * Called when the mouse is clicked. Args : mouseX, mouseY, clickedButton
-     */
     protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException
     {
         super.mouseClicked(mouseX, mouseY, mouseButton);

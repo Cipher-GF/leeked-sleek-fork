@@ -20,6 +20,7 @@ import net.minecraft.block.*;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemAnvilBlock;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -126,17 +127,15 @@ public class Scaffold extends Module {
     @Subscribe
     public void onRender(RenderOverlayEvent event) {
             if (this.info.getValue()) {
-                HUD hud = (HUD) Client.getInstance().getModuleManager().getModuleByName("HUD");
                 ScaledResolution scaledResolution = RenderUtils.getResolution();
 
-                //RenderUtils.drawRect(scaledResolution.getScaledWidth() / 2 - 30, scaledResolution.getScaledHeight() / 2 + 50 + animation, 20 + mc.fontRendererObj.getStringWidth(getBlockCount() + "") + 10, 30, new Color(0, 0, 0, 105).getRGB());
                 RenderUtils.drawRoundedRect(scaledResolution.getScaledWidth() / 2 - 30, scaledResolution.getScaledHeight() / 2 + 50 + animation, 20 + mc.fontRendererObj.getStringWidth(getBlockCount() + "") + 10, 30, 2, new Color(0, 0, 0, 105).getRGB());
-                //RenderUtils.drawRect(scaledResolution.getScaledWidth() / 2 - 30, scaledResolution.getScaledHeight() / 2 + 50 + animation, 20 + mc.fontRendererObj.getStringWidth(getBlockCount() + "") + 10, 1, ColorPalette.GREEN.getColor().getRGB());
                 RenderUtils.drawRoundedRect(scaledResolution.getScaledWidth() / 2 - 30, scaledResolution.getScaledHeight() / 2 + 50 + animation, 20 + mc.fontRendererObj.getStringWidth(getBlockCount() + "") + 10, 1, 1, ColorPalette.GREEN.getColor().getRGB());
 
                 mc.fontRendererObj.drawStringWithShadow(getBlockCount() + "", scaledResolution.getScaledWidth() / 2 - 5, scaledResolution.getScaledHeight() / 2 + 61 + animation, -1);
-
+                GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
                 mc.getRenderItem().renderItemIntoGUI(mc.thePlayer.inventory.getStackInSlot(getSlotWithBlock()), scaledResolution.getScaledWidth() / 2 - 28, scaledResolution.getScaledHeight() / 2 + 57 + animation);
+
             }
     }
 

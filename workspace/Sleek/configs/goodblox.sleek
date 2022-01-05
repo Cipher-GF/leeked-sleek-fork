@@ -1,20 +1,19 @@
 [
   {
     "name": "Killaura",
-    "enabled": false,
+    "enabled": true,
     "Mode": "Smart",
     "Rotation Mode": "Default",
     "Target Priority": "Health",
     "Autoblock Mode": "Fake",
     "Swing Mode": "Client",
     "TargetHud Mode": "Sleek",
-    "Attack Range": "9.0",
+    "Swing Range": "3.0",
     "Block Range": "12.0",
     "CPS": "10.0",
     "Randomize CPS": "3.0",
-    "Auto Block": "true",
     "Players": "true",
-    "Friends": "true",
+    "Friends": "false",
     "Animals": "false",
     "Monsters": "false",
     "Invisibles": "false",
@@ -23,7 +22,7 @@
   },
   {
     "name": "Velocity",
-    "enabled": true,
+    "enabled": false,
     "Mode": "Packet",
     "Explosion": "true"
   },
@@ -52,8 +51,8 @@
   },
   {
     "name": "Disabler",
-    "enabled": true,
-    "Mode": "CUM NIGGA BALLS DISABLER",
+    "enabled": false,
+    "Mode": "Keep-Alive",
     "Cancel Transactions": "false",
     "Cancel Keep Alive": "false",
     "Delay Transactions": "false",
@@ -92,9 +91,9 @@
   },
   {
     "name": "Speed",
-    "enabled": false,
+    "enabled": true,
     "Mode": "Verus",
-    "Speed": "1.0",
+    "Speed": "0.5",
     "Force Friction": "false",
     "Friction": "NCP"
   },
@@ -102,7 +101,7 @@
     "name": "Flight",
     "enabled": false,
     "Mode": "VerusDamage",
-    "Speed": "4.0",
+    "Speed": "3.0",
     "View Bobbing": "false",
     "Boost": "true",
     "Extra Boost": "false",
@@ -120,7 +119,7 @@
     "enabled": false,
     "Mode": "Verus",
     "Vertical Boost": "0.8",
-    "Speed": "2.0"
+    "Speed": "1.45"
   },
   {
     "name": "No Fall",
@@ -165,7 +164,7 @@
   },
   {
     "name": "No Slow",
-    "enabled": true,
+    "enabled": false,
     "Mode": "Vanilla",
     "Item": "true",
     "Water": "false",
@@ -176,13 +175,12 @@
     "enabled": true,
     "Notifications": "true",
     "Font": "false",
-    "BPS": "true",
-    "BPS to MPH": "true"
+    "BPS": "true"
   },
   {
     "name": "Animations",
     "enabled": true,
-    "Mode": "Exhi",
+    "Mode": "ETB",
     "Swing Speed": "3.0"
   },
   {
@@ -226,11 +224,11 @@
   },
   {
     "name": "AttackEffect",
-    "enabled": false,
+    "enabled": true,
     "Partical Mode": "Blood",
     "Amount": "1.0",
-    "Play Sound": "false",
-    "Sound Mode": "Blood",
+    "Play Sound": "true",
+    "Sound Mode": "Call Of Duty",
     "Criticals": "false",
     "Enchants": "false"
   },
@@ -257,6 +255,6 @@
   },
   {
     "name": "Breaker",
-    "enabled": true
+    "enabled": false
   }
 ]
