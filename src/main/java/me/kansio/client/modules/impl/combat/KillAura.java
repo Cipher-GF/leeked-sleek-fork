@@ -2,20 +2,18 @@ package me.kansio.client.modules.impl.combat;
 
 import dorkbox.messageBus.annotations.Subscribe;
 import me.kansio.client.Client;
-import me.kansio.client.event.PacketDirection;
 import me.kansio.client.event.impl.PacketEvent;
 import me.kansio.client.event.impl.RenderOverlayEvent;
 import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.modules.impl.player.Sprint;
-import me.kansio.client.modules.impl.visuals.HUD;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.ModeValue;
 import me.kansio.client.property.value.NumberValue;
+import me.kansio.client.property.value.SubSettings;
 import me.kansio.client.utils.Stopwatch;
 import me.kansio.client.utils.combat.FightUtil;
-import me.kansio.client.utils.network.PacketUtil;
 import me.kansio.client.utils.rotations.AimUtil;
 import me.kansio.client.utils.rotations.Rotation;
 import net.minecraft.entity.Entity;
@@ -36,47 +34,46 @@ public class KillAura extends Module {
 
     public KillAura() {
         super("Killaura", ModuleCategory.COMBAT);
-
+        registerSubSettings(attackSettings, renderSettings, targetSettings);
         register(
                 //enum values:
-                mode, moderotation, targetPriority, autoblockmode, swingmode, targethudmode,
+                mode, rotatemode, targetPriority, autoblockmode, swingmode, targethudmode,
 
                 //sliders:
                 swingrage, autoblockRange, cps, cprandom,
 
                 //booleans
-                autoblock, players, friends, animals, monsters, invisible, walls, gcd
+                players, friends, animals, monsters, invisible, walls, gcd
         );
     }
 
     // Switch aura doesn't work rn
     public ModeValue mode = new ModeValue("Mode", this, /*"Switch",*/ "Smart");
-    public ModeValue moderotation = new ModeValue("Rotation Mode", this, "Default", "None", "Down", "NCP", "AAC", "GWEN");
-    public ModeValue targetPriority = new ModeValue("Target Priority", this, "Health", "Distance", "Armor", "HurtTime", "None");
-    public ModeValue autoblockMode = new ModeValue("Autoblock Mode", this, "Real", "Hold", "Fake");
-    public ModeValue swingMode = new ModeValue("Swing Mode", this, "Client", "None", "Server");
-    public NumberValue<Double> reach = new NumberValue<>("Attack Range", this, 4.5, 2.5, 9.0, 0.1);
+
+    public ModeValue targetPriority = new ModeValue("Target Priority", this, "None", "Distance", "Armor", "HurtTime", "Health");
+    public ModeValue rotatemode = new ModeValue("Rotation Mode", this, "None", "Default", "Down", "NCP", "AAC", "GWEN");
+    public NumberValue<Double> swingrage = new NumberValue<>("Swing Range", this, 3.0, 1.0, 9.0, 0.1);
     public NumberValue<Double> autoblockRange = new NumberValue<>("Block Range", this, 3.0, 1.0, 12.0, 0.1);
     public NumberValue<Double> cps = new NumberValue<>("CPS", this, 12.0, 1.0, 20.0, 1.0);
-    public NumberValue<Double> rand = new NumberValue<>("Randomize CPS", this, 3.0, 0.0, 10.0, 1.0);
-    public BooleanValue autoblock = new BooleanValue("Auto Block", this, true);
+    public NumberValue<Double> cprandom = new NumberValue<>("Randomize CPS", this, 3.0, 0.0, 10.0, 1.0);
+    public ModeValue swingmode = new ModeValue("Swing Mode", this,"Client", "Server");
+    public ModeValue autoblockmode = new ModeValue("Autoblock Mode", this, "None", "Real", "Hold", "Fake");
+    public BooleanValue gcd = new BooleanValue("GCD", this, false);
+    private SubSettings attackSettings = new SubSettings("Attack Setting", targetPriority, rotatemode);
+
+    public ModeValue targethudmode = new ModeValue("TargetHud Mode", this, "Sleek", "Moon");
+    private SubSettings renderSettings = new SubSettings("Render Setting", targethudmode);
+
+
     public BooleanValue players = new BooleanValue("Players", this, true);
     public BooleanValue friends = new BooleanValue("Friends", this, true);
     public BooleanValue animals = new BooleanValue("Animals", this, true);
     public BooleanValue monsters = new BooleanValue("Monsters", this, true);
     public BooleanValue invisible = new BooleanValue("Invisibles", this, true);
     public BooleanValue walls = new BooleanValue("Walls", this, true);
-
-    public ModeValue autoblockmode = new ModeValue("Autoblock Mode", this, autoblock,"Real", "Fake", "Verus");
-    public ModeValue swingmode = new ModeValue("Swing Mode", this,"Client", "Server");
-    public NumberValue<Double> swingrage = new NumberValue<>("Attack Range", this, 3.0, 1.0, 9.0, 0.1);
-
     public BooleanValue targethud = new BooleanValue("TargetHud", this, false);
-    public ModeValue targethudmode = new ModeValue("TargetHud Mode", this, targethud, "Sleek", "Moon");
 
-    public NumberValue<Double> cprandom = new NumberValue<>("Randomize CPS", this, 3.0, 0.0, 10.0, 1.0);
-
-    public BooleanValue gcd = new BooleanValue("GCD", this, false);
+    private SubSettings targetSettings = new SubSettings("Target Setting", players, friends, animals, monsters, invisible, walls);
 
     public static EntityLivingBase target;
     public static boolean isBlocking, swinging;
@@ -84,7 +81,6 @@ public class KillAura extends Module {
     public final Stopwatch attackTimer = new Stopwatch();
     public Vector2f currentRotation = null;
     private boolean canBlock;
-    private final Map<EntityLivingBase, Double> entityDamageMap = new HashMap<EntityLivingBase, Double>();
     private Rotation lastRotation;
 
     @Override
@@ -111,20 +107,16 @@ public class KillAura extends Module {
     }
 
     @Subscribe
-    public void doHoldBlock(UpdateEvent evente) {
-        if (autoblockMode.getValue().equalsIgnoreCase("Hold")) {
-            if (KillAura.target != null) {
-                mc.gameSettings.keyBindUseItem.pressed = true;
-            } else {
-                mc.gameSettings.keyBindUseItem.pressed = false;
-            }
+    public void doHoldBlock(UpdateEvent event) {
+        if (autoblockmode.getValue().equalsIgnoreCase("Hold")) {
+            mc.gameSettings.keyBindUseItem.pressed = KillAura.target != null;
         }
     }
 
 
     @Subscribe
     public void onMotion(UpdateEvent event) {
-        List<EntityLivingBase> entities = FightUtil.getMultipleTargets(reach.getValue(), players.getValue(), friends.getValue(), animals.getValue(),  walls.getValue(), monsters.getValue(), invisible.getValue());
+        List<EntityLivingBase> entities = FightUtil.getMultipleTargets(swingrage.getValue(), players.getValue(), friends.getValue(), animals.getValue(),  walls.getValue(), monsters.getValue(), invisible.getValue());
         Sprint sprint = (Sprint) Client.getInstance().getModuleManager().getModuleByName("Sprint");
 
         if (!sprint.getKeepSprint().getValue()) {
@@ -139,7 +131,7 @@ public class KillAura extends Module {
 
         ItemStack heldItem = mc.thePlayer.getHeldItem();
 
-        canBlock = !blockRangeEntites.isEmpty() && autoblock.getValue()
+        canBlock = !blockRangeEntites.isEmpty()
                 && heldItem != null
                 && heldItem.getItem() instanceof ItemSword;
 
@@ -156,14 +148,12 @@ public class KillAura extends Module {
 
             if (canBlock) {
                 switch (autoblockmode.getValue()) {
-                    case "Real": {
+                    case "Real":
                         if (!event.isPre()) {
                             mc.playerController.sendUseItem(mc.thePlayer, mc.theWorld, mc.thePlayer.getHeldItem());
                             isBlocking = true;
                         }
                         break;
-                    }
-
                     case "Fake": {
                         isBlocking = true;
                         break;
@@ -211,7 +201,7 @@ public class KillAura extends Module {
                         break;
                     }
                 }
-                aimAtTarget(event, moderotation.getValue(), target);
+                aimAtTarget(event, rotatemode.getValue(), target);
             }
 
             if (event.isPre()) {
@@ -245,16 +235,12 @@ public class KillAura extends Module {
 
     private boolean attack(EntityLivingBase entity, double chance, String blockMode) {
         if (FightUtil.canHit(chance / 100)) {
-            if (swingMode.getValue().equalsIgnoreCase("client"))
+            if (swingmode.getValue().equalsIgnoreCase("client"))
                 mc.thePlayer.swingItem();
-            else if (swingMode.getValue().equalsIgnoreCase("server"))
+            else if (swingmode.getValue().equalsIgnoreCase("server"))
                 mc.getNetHandler().addToSendQueue(new C0APacketAnimation());
 
             mc.playerController.attackEntity(mc.thePlayer, entity);
-
-            if (canBlock && blockMode.equalsIgnoreCase("real")) {
-                blockHit(entity);
-            }
             return true;
         } else {
             mc.thePlayer.swingItem();
@@ -327,29 +313,11 @@ public class KillAura extends Module {
         if (target == null) {
             return;
         }
-
-        HUD hud = (HUD) Client.getInstance().getModuleManager().getModuleByName("HUD");
-
-        if (hud.getTargetHud().getValue()) {
             TargetHUD.draw(event, target);
-        }
-    }
-
-    public void blockHit(Entity target) {
-        PacketUtil.sendPacketNoEvent(new C08PacketPlayerBlockPlacement(new BlockPos(-1, -1, -1), 255, mc.thePlayer.getHeldItem(), 0, 0, 0));
     }
 
     private void unblock() {
         isBlocking = false;
-    }
-
-    private boolean checkEnemiesNearby() {
-        for (Entity ent : mc.theWorld.playerEntities) {
-            if (ent.getDistanceSqToEntity(mc.thePlayer) <= 10) {
-                return true;
-            }
-        }
-        return false;
     }
 
     public static boolean isSwinging() {

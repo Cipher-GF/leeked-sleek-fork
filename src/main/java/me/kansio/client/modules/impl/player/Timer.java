@@ -22,7 +22,6 @@ public class Timer extends Module {
 
     @Subscribe
     public void onUpdate(UpdateEvent event) {
-        speed.setValue(Double.parseDouble(new DecimalFormat("0.#").format(speed.getValue())));
         if (this.tick.getValue()) {
             if (mc.thePlayer.ticksExisted % tickspeed.getValue() == 0) {
                 mc.timer.timerSpeed = speed.getValue().floatValue();
@@ -38,11 +37,4 @@ public class Timer extends Module {
     public void onDisable() {
         mc.timer.timerSpeed = 1;
     }
-
-    @Override
-    public String getSuffix() {
-        return " " + speed.getValueAsString();
-    }
-
-
 }

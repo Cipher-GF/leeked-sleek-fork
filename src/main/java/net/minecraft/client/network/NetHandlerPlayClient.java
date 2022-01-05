@@ -8,6 +8,7 @@ import io.netty.buffer.Unpooled;
 import me.kansio.client.Client;
 import me.kansio.client.event.PacketDirection;
 import me.kansio.client.event.impl.PacketEvent;
+import me.kansio.client.event.impl.ServerJoinEvent;
 import me.kansio.client.gui.MainMenu;
 import net.minecraft.block.Block;
 import net.minecraft.client.ClientBrandRetriever;
@@ -144,6 +145,8 @@ public class NetHandlerPlayClient implements INetHandlerPlayClient {
         this.gameController.playerController.setGameType(packetIn.getGameType());
         this.gameController.gameSettings.sendSettingsToServer();
         this.netManager.sendPacket(new C17PacketCustomPayload("MC|Brand", (new PacketBuffer(Unpooled.buffer())).writeString(ClientBrandRetriever.getClientModName())));
+        String server = Minecraft.getMinecraft().getCurrentServerData() == null ? "Singleplayer" : Minecraft.getMinecraft().getCurrentServerData().serverIP;
+        Client.getInstance().getEventBus().publish(new ServerJoinEvent(server, Minecraft.getMinecraft().session.getUsername()));
     }
 
     /**

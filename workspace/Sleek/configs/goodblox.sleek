@@ -1,32 +1,30 @@
 [
   {
     "name": "Killaura",
-    "enabled": false,
+    "enabled": true,
     "Mode": "Smart",
     "Rotation Mode": "Default",
     "Target Priority": "Health",
     "Autoblock Mode": "Fake",
     "Swing Mode": "Client",
-    "Attack Range": "4.5",
+    "TargetHud Mode": "Sleek",
+    "Swing Range": "3.0",
     "Block Range": "12.0",
     "CPS": "10.0",
     "Randomize CPS": "3.0",
-    "Auto Block": "true",
     "Players": "true",
-    "Animals": "true",
-    "Monsters": "true",
-    "Invisibles": "true",
+    "Friends": "false",
+    "Animals": "false",
+    "Monsters": "false",
+    "Invisibles": "false",
     "Walls": "true",
-    "GCD": "false",
-    "Keep Sprint": "false"
+    "GCD": "false"
   },
   {
     "name": "Velocity",
     "enabled": false,
     "Mode": "Packet",
-    "Explosion": "true",
-    "Vertical": "100",
-    "Horizontal": "100"
+    "Explosion": "true"
   },
   {
     "name": "Criticals",
@@ -47,6 +45,11 @@
     "Blue": "100.0"
   },
   {
+    "name": "Fast Bow",
+    "enabled": false,
+    "Packets": "20"
+  },
+  {
     "name": "Disabler",
     "enabled": false,
     "Mode": "Keep-Alive",
@@ -54,13 +57,13 @@
     "Cancel Keep Alive": "false",
     "Delay Transactions": "false",
     "Delay Keep Alive": "false",
-    "Delay Alive Amount": "1000",
-    "Transaction Delay": "1000",
+    "Delay Alive Amount": "1000.0",
+    "Transaction Delay": "1000.0",
     "Send C0C": "false",
     "Max Value C0C": "false",
     "Void Teleport": "false",
-    "TP Delay": "3000",
-    "TP Amount": "-999999999",
+    "TP Delay": "3000.0",
+    "TP Amount": "-9.99999999E8",
     "Spectate Spoof": "false",
     "Abilities Spoof": "false"
   },
@@ -75,8 +78,20 @@
     "/About": "false"
   },
   {
-    "name": "Speed",
+    "name": "Regen",
     "enabled": false,
+    "Health": "15.0",
+    "Packets": "15.0"
+  },
+  {
+    "name": "Phase",
+    "enabled": false,
+    "Mode": "2.0",
+    "Sneak": "true"
+  },
+  {
+    "name": "Speed",
+    "enabled": true,
     "Mode": "Verus",
     "Speed": "0.5",
     "Force Friction": "false",
@@ -95,7 +110,9 @@
   },
   {
     "name": "InvMove",
-    "enabled": true
+    "enabled": true,
+    "Mode": "Vanilla",
+    "No Close": "true"
   },
   {
     "name": "Long Jump",
@@ -112,7 +129,9 @@
   {
     "name": "Sprint",
     "enabled": true,
-    "Omni": "false"
+    "Omni": "false",
+    "Legit Sprint": "true",
+    "Keep Sprint": "true"
   },
   {
     "name": "Chest Stealer",
@@ -128,10 +147,8 @@
     "AutoSword Only in Inv": "true",
     "Inventory Cleaner": "true",
     "InvCleaner Delay": "25.0",
-    "InvCleaner Only in Inv": "true",
     "Auto Armor": "true",
-    "AutoArmor Delay": "25.0",
-    "AutoArmor Only in Inv": "true"
+    "AutoArmor Delay": "25.0"
   },
   {
     "name": "Timer",
@@ -146,10 +163,19 @@
     "Mode": "Packet"
   },
   {
+    "name": "No Slow",
+    "enabled": false,
+    "Mode": "Vanilla",
+    "Item": "true",
+    "Water": "false",
+    "SoulSand": "false"
+  },
+  {
     "name": "HUD",
     "enabled": true,
     "Notifications": "true",
-    "Font": "false"
+    "Font": "false",
+    "BPS": "true"
   },
   {
     "name": "Animations",
@@ -198,19 +224,21 @@
   },
   {
     "name": "AttackEffect",
-    "enabled": false,
+    "enabled": true,
     "Partical Mode": "Blood",
     "Amount": "1.0",
-    "Play Sound": "false",
-    "Sound Mode": "Blood",
+    "Play Sound": "true",
+    "Sound Mode": "Call Of Duty",
     "Criticals": "false",
     "Enchants": "false"
   },
   {
     "name": "DeathEffect",
-    "enabled": false,
+    "enabled": true,
     "Effect Mode": "Blood",
-    "Play Sound": "false"
+    "Play Sound": "false",
+    "Meme Sounds": "true",
+    "Meme Mode": "Win Error"
   },
   {
     "name": "Scaffold",
@@ -223,6 +251,10 @@
     "Safewalk": "true",
     "Keep Y": "false",
     "Delay": "0.0",
-    "Expansion": "4"
+    "Expansion": "4.0"
+  },
+  {
+    "name": "Breaker",
+    "enabled": false
   }
 ]

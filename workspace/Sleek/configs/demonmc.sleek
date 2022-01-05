@@ -13,14 +13,13 @@
     "CPS": "9.0",
     "Randomize CPS": "3.0",
     "Auto Block": "true",
-    "TargetHud": "false",
-    "Keep Sprint": "false",
-    "GCD": "true",
     "Players": "true",
+    "Friends": "true",
     "Animals": "false",
     "Monsters": "false",
     "Invisibles": "false",
-    "Walls": "true"
+    "Walls": "true",
+    "GCD": "true"
   },
   {
     "name": "Velocity",
@@ -45,6 +44,11 @@
     "Red": "100.0",
     "Green": "100.0",
     "Blue": "100.0"
+  },
+  {
+    "name": "Fast Bow",
+    "enabled": false,
+    "Packets": "20"
   },
   {
     "name": "Disabler",
@@ -75,6 +79,12 @@
     "/About": "false"
   },
   {
+    "name": "Regen",
+    "enabled": false,
+    "Health": "15.0",
+    "Packets": "15.0"
+  },
+  {
     "name": "Speed",
     "enabled": false,
     "Mode": "Vanilla",
@@ -86,7 +96,7 @@
     "name": "Flight",
     "enabled": false,
     "Mode": "Vanilla",
-    "Speed": "3.9000000000000004",
+    "Speed": "4.0",
     "View Bobbing": "false",
     "Boost": "true",
     "Extra Boost": "false",
@@ -120,13 +130,13 @@
   },
   {
     "name": "Chest Stealer",
-    "enabled": true,
+    "enabled": false,
     "Check Chest": "true",
     "Delay": "25.0"
   },
   {
     "name": "InvManager",
-    "enabled": true,
+    "enabled": false,
     "AutoSword": "true",
     "AutoSword Delay": "25.0",
     "AutoSword Only in Inv": "true",
@@ -223,8 +233,8 @@
     "enabled": true,
     "Effect Mode": "Blood",
     "Play Sound": "false",
-    "Death Sounds": "true",
-    "OOF Sound": "Win Error"
+    "Meme Sounds": "false",
+    "Meme Mode": "OOF"
   },
   {
     "name": "Scaffold",
@@ -238,5 +248,9 @@
     "Keep Y": "false",
     "Delay": "72.0",
     "Expansion": "4.0"
+  },
+  {
+    "name": "Breaker",
+    "enabled": false
   }
 ]

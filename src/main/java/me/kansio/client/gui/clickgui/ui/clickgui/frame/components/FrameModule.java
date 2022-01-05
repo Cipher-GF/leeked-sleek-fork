@@ -49,6 +49,8 @@ public class FrameModule implements Priority {
 
         /*/if(module.())
         {/*/
+
+
         Client.getInstance().getValueManager().getValuesFromOwner(module).forEach(setting ->
         {
             if (setting instanceof BooleanValue) {

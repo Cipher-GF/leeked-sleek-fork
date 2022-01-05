@@ -1,10 +1,7 @@
 package me.kansio.client.utils.player;
 
-
-//import com.sun.javafx.geom.Vector2f;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
-
 import javax.vecmath.Vector2f;
 
 public class Location {

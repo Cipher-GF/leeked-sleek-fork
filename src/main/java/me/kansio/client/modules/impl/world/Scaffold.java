@@ -21,6 +21,7 @@ import net.minecraft.block.*;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemAnvilBlock;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
