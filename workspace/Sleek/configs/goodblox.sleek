@@ -7,26 +7,25 @@
     "Target Priority": "Health",
     "Autoblock Mode": "Fake",
     "Swing Mode": "Client",
-    "Attack Range": "4.5",
+    "TargetHud Mode": "Sleek",
+    "Attack Range": "9.0",
     "Block Range": "12.0",
     "CPS": "10.0",
     "Randomize CPS": "3.0",
     "Auto Block": "true",
     "Players": "true",
-    "Animals": "true",
-    "Monsters": "true",
-    "Invisibles": "true",
+    "Friends": "true",
+    "Animals": "false",
+    "Monsters": "false",
+    "Invisibles": "false",
     "Walls": "true",
-    "GCD": "false",
-    "Keep Sprint": "false"
+    "GCD": "false"
   },
   {
     "name": "Velocity",
-    "enabled": false,
+    "enabled": true,
     "Mode": "Packet",
-    "Explosion": "true",
-    "Vertical": "100",
-    "Horizontal": "100"
+    "Explosion": "true"
   },
   {
     "name": "Criticals",
@@ -47,20 +46,25 @@
     "Blue": "100.0"
   },
   {
-    "name": "Disabler",
+    "name": "Fast Bow",
     "enabled": false,
-    "Mode": "Keep-Alive",
+    "Packets": "20"
+  },
+  {
+    "name": "Disabler",
+    "enabled": true,
+    "Mode": "CUM NIGGA BALLS DISABLER",
     "Cancel Transactions": "false",
     "Cancel Keep Alive": "false",
     "Delay Transactions": "false",
     "Delay Keep Alive": "false",
-    "Delay Alive Amount": "1000",
-    "Transaction Delay": "1000",
+    "Delay Alive Amount": "1000.0",
+    "Transaction Delay": "1000.0",
     "Send C0C": "false",
     "Max Value C0C": "false",
     "Void Teleport": "false",
-    "TP Delay": "3000",
-    "TP Amount": "-999999999",
+    "TP Delay": "3000.0",
+    "TP Amount": "-9.99999999E8",
     "Spectate Spoof": "false",
     "Abilities Spoof": "false"
   },
@@ -75,10 +79,22 @@
     "/About": "false"
   },
   {
+    "name": "Regen",
+    "enabled": false,
+    "Health": "15.0",
+    "Packets": "15.0"
+  },
+  {
+    "name": "Phase",
+    "enabled": false,
+    "Mode": "2.0",
+    "Sneak": "true"
+  },
+  {
     "name": "Speed",
     "enabled": false,
     "Mode": "Verus",
-    "Speed": "0.5",
+    "Speed": "1.0",
     "Force Friction": "false",
     "Friction": "NCP"
   },
@@ -86,7 +102,7 @@
     "name": "Flight",
     "enabled": false,
     "Mode": "VerusDamage",
-    "Speed": "3.0",
+    "Speed": "4.0",
     "View Bobbing": "false",
     "Boost": "true",
     "Extra Boost": "false",
@@ -95,14 +111,16 @@
   },
   {
     "name": "InvMove",
-    "enabled": true
+    "enabled": true,
+    "Mode": "Vanilla",
+    "No Close": "true"
   },
   {
     "name": "Long Jump",
     "enabled": false,
     "Mode": "Verus",
     "Vertical Boost": "0.8",
-    "Speed": "1.45"
+    "Speed": "2.0"
   },
   {
     "name": "No Fall",
@@ -112,7 +130,9 @@
   {
     "name": "Sprint",
     "enabled": true,
-    "Omni": "false"
+    "Omni": "false",
+    "Legit Sprint": "true",
+    "Keep Sprint": "true"
   },
   {
     "name": "Chest Stealer",
@@ -128,10 +148,8 @@
     "AutoSword Only in Inv": "true",
     "Inventory Cleaner": "true",
     "InvCleaner Delay": "25.0",
-    "InvCleaner Only in Inv": "true",
     "Auto Armor": "true",
-    "AutoArmor Delay": "25.0",
-    "AutoArmor Only in Inv": "true"
+    "AutoArmor Delay": "25.0"
   },
   {
     "name": "Timer",
@@ -146,15 +164,25 @@
     "Mode": "Packet"
   },
   {
+    "name": "No Slow",
+    "enabled": true,
+    "Mode": "Vanilla",
+    "Item": "true",
+    "Water": "false",
+    "SoulSand": "false"
+  },
+  {
     "name": "HUD",
     "enabled": true,
     "Notifications": "true",
-    "Font": "false"
+    "Font": "false",
+    "BPS": "true",
+    "BPS to MPH": "true"
   },
   {
     "name": "Animations",
     "enabled": true,
-    "Mode": "ETB",
+    "Mode": "Exhi",
     "Swing Speed": "3.0"
   },
   {
@@ -208,9 +236,11 @@
   },
   {
     "name": "DeathEffect",
-    "enabled": false,
+    "enabled": true,
     "Effect Mode": "Blood",
-    "Play Sound": "false"
+    "Play Sound": "false",
+    "Meme Sounds": "true",
+    "Meme Mode": "Win Error"
   },
   {
     "name": "Scaffold",
@@ -223,6 +253,10 @@
     "Safewalk": "true",
     "Keep Y": "false",
     "Delay": "0.0",
-    "Expansion": "4"
+    "Expansion": "4.0"
+  },
+  {
+    "name": "Breaker",
+    "enabled": true
   }
 ]
