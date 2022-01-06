@@ -57,7 +57,7 @@ public class MainMenu extends GuiScreen
         Fonts.MainMenuTitle.drawCenteredString(s, width / 2, height / 4 + 24, ColorPalette.GREEN.getColor().getRGB());
 
         String s1 = "Made with <3 by NotRzyy, Kansio, PC, Divine";
-        Fonts.clickGuiFont.drawCenteredString(s1, width - 2, height -0, -1);
+        Fonts.clickGuiFont.drawString(s1, (this.width - Fonts.MainMenuTitle.getStringWidth(s1)) + 125, this.height - 10, -1);
 
         super.drawScreen(mouseX, mouseY, partialTicks);
     }

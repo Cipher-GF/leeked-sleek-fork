@@ -2,13 +2,10 @@ package me.kansio.client.modules.impl.player;
 
 import dorkbox.messageBus.annotations.Subscribe;
 import lombok.Getter;
-import me.kansio.client.event.impl.NoSlowEvent;
-import me.kansio.client.event.impl.PacketEvent;
 import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.property.value.BooleanValue;
-import net.minecraft.network.play.client.C0BPacketEntityAction;
 
 public class Sprint extends Module {
 
@@ -21,15 +18,19 @@ public class Sprint extends Module {
 
     public Sprint() {
         super("Sprint", ModuleCategory.PLAYER);
-        register(omni, legit, keepsprint);
+        register(omni, legit, keepSprint);
     }
 
     @Subscribe
     public void onUpdate(UpdateEvent event) {
         if (mc.thePlayer.isSneaking()) return;
 
-        if (mc.thePlayer.isMoving()) {
-            mc.thePlayer.setSprinting(true);
+        if (mc.thePlayer.moveForward > 0) {
+            if ((omni.getValue() && mc.thePlayer.moveStrafing != 0) || !omni.getValue()) {
+                if (!legit.getValue() || (legit.getValue() && !mc.thePlayer.isUsingItem() && !mc.thePlayer.isSneaking() && !mc.thePlayer.isCollidedHorizontally && mc.thePlayer.getFoodStats().getFoodLevel() >= 7 || !mc.thePlayer.getFoodStats().needFood())) {
+                    mc.thePlayer.setSprinting(true);
+                }
+            }
         }
     }
 
