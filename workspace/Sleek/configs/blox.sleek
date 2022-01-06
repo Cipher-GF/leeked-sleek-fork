@@ -1,15 +1,15 @@
 [
   {
     "name": "Killaura",
-    "enabled": false,
+    "enabled": true,
     "Mode": "Smart",
     "Rotation Mode": "Default",
     "Target Priority": "Health",
-    "Autoblock Mode": "Real",
-    "Swing Mode": "Server",
+    "Autoblock Mode": "Verus",
+    "Swing Mode": "Client",
     "TargetHud Mode": "Sleek",
-    "Swing Range": "3.0",
-    "Block Range": "3.8000000000000003",
+    "Swing Range": "3.4000000000000004",
+    "Block Range": "6.0",
     "CPS": "8.0",
     "Randomize CPS": "3.0",
     "Players": "true",
@@ -52,7 +52,7 @@
   {
     "name": "Disabler",
     "enabled": false,
-    "Mode": "Custom",
+    "Mode": "Verus Old",
     "Cancel Transactions": "false",
     "Cancel Keep Alive": "false",
     "Delay Transactions": "false",
@@ -85,23 +85,23 @@
   },
   {
     "name": "Phase",
-    "enabled": false,
+    "enabled": true,
     "Mode": "2.0",
-    "Sneak": "true"
+    "Sneak": "false"
   },
   {
     "name": "Speed",
     "enabled": false,
     "Mode": "Verus",
-    "Speed": "0.5",
+    "Speed": "1.0",
     "Force Friction": "true",
     "Friction": "NCP"
   },
   {
     "name": "Flight",
     "enabled": false,
-    "Mode": "VerusGlide",
-    "Speed": "1.0",
+    "Mode": "Vanilla",
+    "Speed": "0.9",
     "View Bobbing": "true",
     "Boost": "true",
     "Extra Boost": "true",
@@ -119,7 +119,7 @@
     "enabled": false,
     "Mode": "Verus",
     "Vertical Boost": "0.8",
-    "Speed": "1.45"
+    "Speed": "2.0"
   },
   {
     "name": "No Fall",
@@ -136,19 +136,19 @@
   {
     "name": "Chest Stealer",
     "enabled": true,
-    "Check Chest": "false",
+    "Check Chest": "true",
     "Delay": "56.0"
   },
   {
     "name": "InvManager",
     "enabled": true,
     "AutoSword": "true",
-    "AutoSword Delay": "25.0",
+    "AutoSword Delay": "40.0",
     "AutoSword Only in Inv": "true",
     "Inventory Cleaner": "true",
-    "InvCleaner Delay": "25.0",
+    "InvCleaner Delay": "112.0",
     "Auto Armor": "true",
-    "AutoArmor Delay": "25.0"
+    "AutoArmor Delay": "64.0"
   },
   {
     "name": "Timer",
@@ -200,7 +200,7 @@
     "Local": "true",
     "Players": "true",
     "Invisibles": "true",
-    "Monsters": "true",
+    "Monsters": "false",
     "Animals": "true",
     "Chests": "false",
     "Dropped Items": "true"

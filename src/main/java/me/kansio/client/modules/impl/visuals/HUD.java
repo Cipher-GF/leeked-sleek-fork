@@ -40,7 +40,7 @@ public class HUD extends Module {
 
         if (bps.getValue()) {
             double bps = BPSUtil.getBPS();
-                mc.fontRendererObj.drawStringWithShadow("BPS: " + EnumChatFormatting.GRAY + new DecimalFormat("0.##").format(bps), 3, event.getSr().getScaledHeight() - (mc.ingameGUI.getChatGUI().getChatOpen() ? 32 : 20), ColorPalette.GREEN.getColor().getRGB());
+                mc.fontRendererObj.drawStringWithShadow("BPS: " + EnumChatFormatting.GRAY + new DecimalFormat("0.##").format(bps), 3, event.getSr().getScaledHeight() - (mc.ingameGUI.getChatGUI().getChatOpen() ? 15 : 20), ColorPalette.GREEN.getColor().getRGB());
         }
         int y = 4;
 
