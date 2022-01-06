@@ -12,7 +12,7 @@ import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.ModeValue;
 import me.kansio.client.property.value.NumberValue;
 import me.kansio.client.property.value.SubSettings;
-import me.kansio.client.utils.Stopwatch;
+import me.kansio.client.utils.math.Stopwatch;
 import me.kansio.client.utils.combat.FightUtil;
 import me.kansio.client.utils.rotations.AimUtil;
 import me.kansio.client.utils.rotations.Rotation;

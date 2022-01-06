@@ -11,7 +11,7 @@ import me.kansio.client.modules.impl.visuals.HUD;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.ModeValue;
 import me.kansio.client.property.value.NumberValue;
-import me.kansio.client.utils.Stopwatch;
+import me.kansio.client.utils.math.Stopwatch;
 import me.kansio.client.utils.math.MathUtil;
 import me.kansio.client.utils.render.ColorPalette;
 import me.kansio.client.utils.render.RenderUtils;

@@ -5,7 +5,7 @@
     "Mode": "Smart",
     "Rotation Mode": "Default",
     "Target Priority": "Health",
-    "Autoblock Mode": "Fake",
+    "Autoblock Mode": "Verus",
     "Swing Mode": "Client",
     "TargetHud Mode": "Sleek",
     "Swing Range": "3.0",
@@ -22,7 +22,7 @@
   },
   {
     "name": "Velocity",
-    "enabled": false,
+    "enabled": true,
     "Mode": "Packet",
     "Explosion": "true"
   },
@@ -47,12 +47,12 @@
   {
     "name": "Fast Bow",
     "enabled": false,
-    "Packets": "20"
+    "Packets": "20.0"
   },
   {
     "name": "Disabler",
-    "enabled": false,
-    "Mode": "Keep-Alive",
+    "enabled": true,
+    "Mode": "Test Combat",
     "Cancel Transactions": "false",
     "Cancel Keep Alive": "false",
     "Delay Transactions": "false",
@@ -91,7 +91,7 @@
   },
   {
     "name": "Speed",
-    "enabled": true,
+    "enabled": false,
     "Mode": "Verus",
     "Speed": "0.5",
     "Force Friction": "false",
@@ -130,7 +130,7 @@
     "name": "Sprint",
     "enabled": true,
     "Omni": "false",
-    "Legit Sprint": "true",
+    "Legit Sprint": "false",
     "Keep Sprint": "true"
   },
   {
@@ -142,7 +142,7 @@
   {
     "name": "InvManager",
     "enabled": true,
-    "AutoSword": "true",
+    "AutoSword": "false",
     "AutoSword Delay": "25.0",
     "AutoSword Only in Inv": "true",
     "Inventory Cleaner": "true",
@@ -164,7 +164,7 @@
   },
   {
     "name": "No Slow",
-    "enabled": false,
+    "enabled": true,
     "Mode": "Vanilla",
     "Item": "true",
     "Water": "false",
@@ -174,13 +174,14 @@
     "name": "HUD",
     "enabled": true,
     "Notifications": "true",
-    "Font": "false",
-    "BPS": "true"
+    "Font": "true",
+    "BPS": "true",
+    "Client Name": "Sleek                                                   "
   },
   {
     "name": "Animations",
     "enabled": true,
-    "Mode": "ETB",
+    "Mode": "DOWN",
     "Swing Speed": "3.0"
   },
   {
@@ -215,7 +216,7 @@
   {
     "name": "TimeChanger",
     "enabled": true,
-    "Mode": "Night"
+    "Mode": "Mid Night"
   },
   {
     "name": "Brightness",
@@ -227,8 +228,8 @@
     "enabled": true,
     "Partical Mode": "Blood",
     "Amount": "1.0",
-    "Play Sound": "true",
-    "Sound Mode": "Call Of Duty",
+    "Play Sound": "false",
+    "Sound Mode": "Skeet",
     "Criticals": "false",
     "Enchants": "false"
   },
