@@ -2,17 +2,14 @@ package me.kansio.client.gui.alt;
 
 import fr.litarvan.openauth.microsoft.MicrosoftAuthResult;
 import fr.litarvan.openauth.microsoft.MicrosoftAuthenticator;
+import lombok.Getter;
+import lombok.Setter;
 import net.minecraft.client.gui.*;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.EnumChatFormatting;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.lwjgl.input.Keyboard;
-import lombok.Getter;
-import lombok.Setter;
-import java.awt.*;
-import java.awt.datatransfer.DataFlavor;
+
 import java.io.IOException;
-import java.net.URI;
 import java.text.MessageFormat;
 
 public final class GuiAltManager2 extends GuiScreen {

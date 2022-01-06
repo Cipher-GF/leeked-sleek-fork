@@ -1,5 +1,6 @@
 package me.kansio.client.utils.render;
 
+import me.kansio.client.utils.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
@@ -20,115 +21,63 @@ import java.nio.IntBuffer;
 
 import static org.lwjgl.opengl.GL11.*;
 
+public class RenderUtils extends Util {
 
-public class RenderUtils {
-    private final static Minecraft mc = Minecraft.getMinecraft();
     private final static IntBuffer viewport = GLAllocation.createDirectIntBuffer(16);
     private final static FloatBuffer modelview = GLAllocation.createDirectFloatBuffer(16);
     private final static FloatBuffer projection = GLAllocation.createDirectFloatBuffer(16);
 
     private static final Frustum frustrum = new Frustum();
 
-    public static double interpolate(double current, double old, double scale) {
-        return old + (current - old) * scale;
-    }
-
-    public static float calculateCompensation(float target, float current, long delta, double speed) {
-        float diff = current - target;
-        if (delta < 1) {
-            delta = 1;
-        }
-        if (delta > 1000) {
-            delta = 16;
-        }
-        if (diff > speed) {
-            double xD = (speed * delta / (1000 / 60) < 0.5 ? 0.5 : speed * delta / (1000 / 60));
-            current -= xD;
-            if (current < target) {
-                current = target;
-            }
-        } else if (diff < -speed) {
-            double xD = (speed * delta / (1000 / 60) < 0.5 ? 0.5 : speed * delta / (1000 / 60));
-            current += xD;
-            if (current > target) {
-                current = target;
-            }
-        } else {
-            current = target;
-        }
-        return current;
-    }
-
     public static ScaledResolution getResolution() {
         return new ScaledResolution(mc);
     }
 
-
-    public static void drawArrow(float x, float y, int hexColor) {
-        GL11.glPushMatrix();
-        GL11.glScaled(1.3, 1.3, 1.3);
-
-        x /= 1.3;
-        y /= 1.3;
-        GL11.glEnable(GL11.GL_LINE_SMOOTH);
-        GL11.glDisable(GL11.GL_TEXTURE_2D);
-        GL11.glEnable(GL11.GL_BLEND);
-        hexColor(hexColor);
-        GL11.glLineWidth(2);
-
-        GL11.glBegin(GL11.GL_LINES);
-        GL11.glVertex2d(x, y);
-        GL11.glVertex2d(x + 3, y + 4);
-        GL11.glEnd();
-        GL11.glBegin(GL11.GL_LINES);
-        GL11.glVertex2d(x + 3, y + 4);
-        GL11.glVertex2d(x + 6, y);
-        GL11.glEnd();
-
-        GL11.glDisable(GL11.GL_BLEND);
-        GL11.glEnable(GL11.GL_TEXTURE_2D);
-        GL11.glDisable(GL11.GL_LINE_SMOOTH);
-        GL11.glPopMatrix();
+    public static boolean hover(int x, int y, int mouseX, int mouseY, int width, int height) {
+        return mouseX >= x && mouseX <= x + width && mouseY >= y && mouseY <= y + height;
     }
 
-    public static void drawTracerPointer(float x, float y, float size, float widthDiv, float heightDiv, int color)
-    {
-        boolean blend = GL11.glIsEnabled(GL11.GL_BLEND);
-        GL11.glEnable(GL11.GL_BLEND);
-        GL11.glDisable(GL11.GL_TEXTURE_2D);
-        GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-        GL11.glEnable(GL11.GL_LINE_SMOOTH);
-
-        GL11.glPushMatrix();
-        hexColor(color);
-        GL11.glBegin(GL11.GL_QUADS);
-        GL11.glVertex2d(x, y);
-        GL11.glVertex2d(x - size / widthDiv, y + size);
-        GL11.glVertex2d(x, y + size / heightDiv);
-        GL11.glVertex2d(x + size / widthDiv, y + size);
-        GL11.glVertex2d(x, y);
-        GL11.glEnd();
-        GL11.glColor4f(0, 0, 0, 0.8f);
-        GL11.glBegin(GL11.GL_LINE_LOOP);
-        GL11.glVertex2d(x, y);
-        GL11.glVertex2d(x - size / widthDiv, y + size);
-        GL11.glVertex2d(x, y + size / heightDiv);
-        GL11.glVertex2d(x + size / widthDiv, y + size);
-        GL11.glVertex2d(x, y);
-        GL11.glEnd();
-        GL11.glPopMatrix();
-
-        GL11.glEnable(GL11.GL_TEXTURE_2D);
-        if(!blend)
-            GL11.glDisable(GL11.GL_BLEND);
-        GL11.glDisable(GL11.GL_LINE_SMOOTH);
+    public static void enable3D() {
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        glDisable(GL_TEXTURE_2D);
+        glEnable(GL_LINE_SMOOTH);
+        glDisable(GL_DEPTH_TEST);
+        glDepthMask(false);
     }
+
+    public static void disable3D() {
+        glDisable(GL_LINE_SMOOTH);
+        glEnable(GL_TEXTURE_2D);
+        glEnable(GL_DEPTH_TEST);
+        glDepthMask(true);
+        glDisable(GL_BLEND);
+    }
+
+
     public static void hexColor(int hexColor) {
         float red = (hexColor >> 16 & 0xFF) / 255.0F;
         float green = (hexColor >> 8 & 0xFF) / 255.0F;
         float blue = (hexColor & 0xFF) / 255.0F;
         float alpha = (hexColor >> 24 & 0xFF) / 255.0F;
         GL11.glColor4f(red, green, blue, alpha);
+    }
+
+    public static void glColor(Color color) {
+        GlStateManager.color((float) color.getRed() / 255F, (float) color.getGreen() / 255F, (float) color.getBlue() / 255F, (float) color.getAlpha() / 255F);
+    }
+
+    public static void prepareScissorBox(float x, float y, float width, float height) {
+        ScaledResolution scale = new ScaledResolution(mc);
+        int factor = scale.getScaleFactor();
+        GL11.glScissor((int)(x * (float)factor), (int)(((float)scale.getScaledHeight() - height) * (float)factor), (int)((width - x) * (float)factor), (int)((height - y) * (float)factor));
+    }
+
+    public static void drawImage(ResourceLocation image, int x, int y, int width, int height) {
+        OpenGlHelper.glBlendFunc(770, 771, 1, 0);
+        GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+        Minecraft.getMinecraft().getTextureManager().bindTexture(image);
+        Gui.drawModalRectWithCustomSizedTexture(x, y, 0.0f, 0.0f, width, height, width, height);
     }
 
     public static void drawScaledCustomSizeModalRect(int x, int y, float u, float v, int uWidth, int vHeight, int width, int height, float tileWidth, float tileHeight) {
@@ -161,30 +110,6 @@ public class RenderUtils {
                 64F, 64F);
     }
 
-    public static void drawImage(ResourceLocation image, int x, int y, int width, int height) {
-        OpenGlHelper.glBlendFunc(770, 771, 1, 0);
-        GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-        Minecraft.getMinecraft().getTextureManager().bindTexture(image);
-        Gui.drawModalRectWithCustomSizedTexture(x, y, 0.0f, 0.0f, width, height, width, height);
-    }
-
-    public static void enable3D() {
-        glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-        glDisable(GL_TEXTURE_2D);
-        glEnable(GL_LINE_SMOOTH);
-        glDisable(GL_DEPTH_TEST);
-        glDepthMask(false);
-    }
-
-    public static void disable3D() {
-        glDisable(GL_LINE_SMOOTH);
-        glEnable(GL_TEXTURE_2D);
-        glEnable(GL_DEPTH_TEST);
-        glDepthMask(true);
-        glDisable(GL_BLEND);
-    }
-
     public static Vector3d project(double x, double y, double z) {
         FloatBuffer vector = GLAllocation.createDirectFloatBuffer(4);
         GL11.glGetFloat(2982, modelview);
@@ -198,19 +123,75 @@ public class RenderUtils {
         return null;
     }
 
+    public static void drawArrow(float x, float y, int color) {
+        GL11.glPushMatrix();
+        GL11.glScaled(1.3, 1.3, 1.3);
+
+        x /= 1.3;
+        y /= 1.3;
+        GL11.glEnable(GL11.GL_LINE_SMOOTH);
+        GL11.glDisable(GL11.GL_TEXTURE_2D);
+        GL11.glEnable(GL11.GL_BLEND);
+        hexColor(color);
+        GL11.glLineWidth(2);
+
+        GL11.glBegin(GL11.GL_LINES);
+        GL11.glVertex2d(x, y);
+        GL11.glVertex2d(x + 3, y + 4);
+        GL11.glEnd();
+        GL11.glBegin(GL11.GL_LINES);
+        GL11.glVertex2d(x + 3, y + 4);
+        GL11.glVertex2d(x + 6, y);
+        GL11.glEnd();
+
+        GL11.glDisable(GL11.GL_BLEND);
+        GL11.glEnable(GL11.GL_TEXTURE_2D);
+        GL11.glDisable(GL11.GL_LINE_SMOOTH);
+        GL11.glPopMatrix();
+    }
+
+    public static void drawTracerPointer(float x, float y, float size, float widthDiv, float heightDiv, int color)
+    {
+        boolean blend = GL11.glIsEnabled(GL11.GL_BLEND);
+        GL11.glEnable(GL11.GL_BLEND);
+        GL11.glDisable(GL11.GL_TEXTURE_2D);
+        GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+        GL11.glEnable(GL11.GL_LINE_SMOOTH);
+
+        GL11.glPushMatrix();
+        hexColor(color);
+
+        GL11.glBegin(GL11.GL_QUADS);
+        GL11.glVertex2d(x, y);
+        GL11.glVertex2d(x - size / widthDiv, y + size);
+        GL11.glVertex2d(x, y + size / heightDiv);
+        GL11.glVertex2d(x + size / widthDiv, y + size);
+        GL11.glVertex2d(x, y);
+        GL11.glEnd();
+        GL11.glColor4f(0, 0, 0, 0.8f);
+        GL11.glBegin(GL11.GL_LINE_LOOP);
+        GL11.glVertex2d(x, y);
+        GL11.glVertex2d(x - size / widthDiv, y + size);
+        GL11.glVertex2d(x, y + size / heightDiv);
+        GL11.glVertex2d(x + size / widthDiv, y + size);
+        GL11.glVertex2d(x, y);
+        GL11.glEnd();
+        GL11.glPopMatrix();
+
+        GL11.glEnable(GL11.GL_TEXTURE_2D);
+        if(!blend)
+            GL11.glDisable(GL11.GL_BLEND);
+        GL11.glDisable(GL11.GL_LINE_SMOOTH);
+    }
 
     public static void drawCheckMark(float x, float y, int width, int color) {
-        float f = (color >> 24 & 255) / 255.0f;
-        float f1 = (color >> 16 & 255) / 255.0f;
-        float f2 = (color >> 8 & 255) / 255.0f;
-        float f3 = (color & 255) / 255.0f;
         GL11.glPushMatrix();
         glDisable(3553);
         glEnable(2848);
         glBlendFunc(770, 771);
         GL11.glLineWidth(2.2f);
         GL11.glBegin(3);
-        GL11.glColor4f(f1, f2, f3, f);
+        hexColor(color);
         GL11.glVertex2d(x + width - 6.5, y + 3);
         GL11.glVertex2d(x + width - 11.5, y + 10);
         GL11.glVertex2d(x + width - 13.5, y + 8);
@@ -220,51 +201,80 @@ public class RenderUtils {
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
     }
 
-    public static void prepareScissorBox(ScaledResolution sr, float x, float y, float width, float height) {
-        float x2 = x + width;
-        float y2 = y + height;
-        int factor = sr.getScaleFactor();
-        GL11.glScissor((int) (x * factor), (int) ((sr.getScaledHeight() - y2) * factor), (int) ((x2 - x) * factor), (int) ((y2 - y) * factor));
+    public static double interpolate(double current, double old, double scale) {
+        return old + (current - old) * scale;
     }
 
-    public static void drawBorderedRect(double x, double y, double width, double height, double lineSize, int borderColor, int color) {
-        drawRect(x, y, x + width, y + height, color);
-        drawRect(x, y, x + width, y + lineSize, borderColor);
-        drawRect(x, y, x + lineSize, y + height, borderColor);
-        drawRect(x + width, y, x + width - lineSize, y + height, borderColor);
-        drawRect(x, y + height, x + width, y + height - lineSize, borderColor);
-    }
-
-    public static void drawBordered(double x, double y, double x2, double y2, double thickness, int inside, int outline) {
-        double fix = 0.0;
-        if (thickness < 1.0) {
-            fix = 1.0;
+    public static float calculateCompensation(float target, float current, long delta, double speed) {
+        float diff = current - target;
+        if (delta < 1) {
+            delta = 1;
         }
-        drawRect2(x + thickness, y + thickness, x2 - thickness, y2 - thickness, inside);
-        drawRect2(x, y + 1.0 - fix, x + thickness, y2, outline);
-        drawRect2(x, y, x2 - 1.0 + fix, y + thickness, outline);
-        drawRect2(x2 - thickness, y, x2, y2 - 1.0 + fix, outline);
-        drawRect2(x + 1.0 - fix, y2 - thickness, x2, y2, outline);
+        if (delta > 1000) {
+            delta = 16;
+        }
+        if (diff > speed) {
+            double xD = (speed * delta / (1000 / 60) < 0.5 ? 0.5 : speed * delta / (1000 / 60));
+            current -= xD;
+            if (current < target) {
+                current = target;
+            }
+        } else if (diff < -speed) {
+            double xD = (speed * delta / (1000 / 60) < 0.5 ? 0.5 : speed * delta / (1000 / 60));
+            current += xD;
+            if (current > target) {
+                current = target;
+            }
+        } else {
+            current = target;
+        }
+        return current;
     }
 
+    // From LiquidBounce
+    public static void drawFilledCircle(final int xx, final int yy, final float radius, final Color color) {
+        int sections = 50;
+        double dAngle = 2 * Math.PI / sections;
+        float x, y;
+
+        glPushAttrib(GL_ENABLE_BIT);
+
+        glEnable(GL_BLEND);
+        glDisable(GL_TEXTURE_2D);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        glEnable(GL_LINE_SMOOTH);
+        glBegin(GL_TRIANGLE_FAN);
+
+        for (int i = 0; i < sections; i++) {
+            x = (float) (radius * Math.sin((i * dAngle)));
+            y = (float) (radius * Math.cos((i * dAngle)));
+
+            glColor(color);
+            glVertex2f(xx + x, yy + y);
+        }
+
+        glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+
+        glEnd();
+
+        glPopAttrib();
+    }
 
     public static void drawRect(double x, double y, double width, double height, int color) {
         Gui.drawRect(x, y, x + width, y + height, color);
     }
 
-    public static void drawRect2(double x, double y, double x2, double y2, int color) {
-        Gui.drawRect(x, y, x2, y2, color);
+    public static void drawBorderedRect(double x, double y, double width, double height, double boarderthickness, int borderC, int insideC) {
+        drawRect(x, y, x + width, y + height, insideC);
+        drawRect(x, y, x + width, y + boarderthickness, borderC);
+        drawRect(x, y, x + boarderthickness, y + height, borderC);
+        drawRect(x + width, y, x + width - boarderthickness, y + height, borderC);
+        drawRect(x, y + height, x + width, y + height - boarderthickness, borderC);
     }
-
 
     public static void drawBorderedRoundedRect(float x, float y, float width, float height, float radius, float borderSize, int borderC, int insideC) {
         drawRoundedRect(x, y, width, height, radius, borderC);
         drawRoundedRect(x + borderSize, y + borderSize, width - (borderSize * 2), height - (borderSize * 2), radius, insideC);
-    }
-
-    public static void drawRoundedRectWithShadow(double x, double y, double width, double height, double radius, int color) {
-        drawRoundedRect(x + 2, y + 1, width, height + 1, radius, new Color(0).getRGB());
-        drawRoundedRect(x, y, width, height, radius, color);
     }
 
     public static void drawRoundedRect(double x, double y, double width, double height, double radius, int color) {
@@ -292,7 +302,7 @@ public class RenderUtils {
         GL11.glBegin(GL11.GL_POLYGON);
 
         for (int i = 0; i <= 90; i += 3) {
-            GL11.glVertex2d(x + radius + +(Math.sin((i * Math.PI / 180)) * (radius * -1)), y + radius + (Math.cos((i * Math.PI / 180)) * (radius * -1)));
+            GL11.glVertex2d(x + radius + (Math.sin((i * Math.PI / 180)) * (radius * -1)), y + radius + (Math.cos((i * Math.PI / 180)) * (radius * -1)));
         }
 
         for (int i = 90; i <= 180; i += 3) {
@@ -322,20 +332,19 @@ public class RenderUtils {
 
     }
 
-    public static final int rectColor = new Color(0, 0, 0, 125).getRGB();
+    public static void drawRoundedRectWithShadow(double x, double y, double width, double height, double radius, int color) {
+        drawRoundedRect(x + 2, y + 1, width, height + 1, radius, new Color(0).getRGB());
+        drawRoundedRect(x, y, width, height, radius, color);
+    }
 
     public static void draw2DPolygon(double x, double y, double radius, int sides, int color) {
         if (sides < 3) return;
-        float a = (color >> 24 & 0xFF) / 255.0F;
-        float r = (color >> 16 & 0xFF) / 255.0F;
-        float g = (color >> 8 & 0xFF) / 255.0F;
-        float b = (color & 0xFF) / 255.0F;
         Tessellator tessellator = Tessellator.getInstance();
         WorldRenderer worldrenderer = tessellator.getWorldRenderer();
         GlStateManager.enableBlend();
         GlStateManager.disableTexture2D();
         GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
-        GL11.glColor4f(r, g, b, a);
+        hexColor(color);
         worldrenderer.begin(GL11.GL_TRIANGLE_FAN, DefaultVertexFormats.POSITION);
         for (int i = 0; i < sides; i++) {
             double angle = (Math.PI * 2 * i / sides) + Math.toRadians(180);
@@ -355,4 +364,5 @@ public class RenderUtils {
     public static boolean isInViewFrustrum(Entity entity) {
         return isInViewFrustrum(entity.getEntityBoundingBox()) || entity.ignoreFrustumCheck;
     }
+
 }

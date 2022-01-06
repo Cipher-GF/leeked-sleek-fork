@@ -1,12 +1,13 @@
 package me.kansio.client.gui.alt;
 
+import lombok.Getter;
+import lombok.Setter;
 import net.minecraft.client.gui.*;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.EnumChatFormatting;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.lwjgl.input.Keyboard;
-import lombok.Getter;
-import lombok.Setter;
+
 import java.awt.*;
 import java.awt.datatransfer.DataFlavor;
 import java.io.IOException;
