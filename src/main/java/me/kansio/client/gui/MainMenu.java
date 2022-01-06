@@ -3,6 +3,7 @@ package me.kansio.client.gui;
 import me.kansio.client.gui.alt.GuiAltManager;
 import me.kansio.client.utils.font.Fonts;
 import me.kansio.client.utils.render.ColorPalette;
+import me.kansio.client.utils.render.RenderUtils;
 import net.minecraft.client.gui.*;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
@@ -50,14 +51,13 @@ public class MainMenu extends GuiScreen
     public void drawScreen(int mouseX, int mouseY, float partialTicks)
     {
         GlStateManager.color(1.0F,1.0F,1.0F,1.0F);
-        this.mc.getTextureManager().bindTexture(BACKGROUND);
-        Gui.drawModalRectWithCustomSizedTexture(0, 0, 0, 0, width, height, width, height);
+        RenderUtils.drawImage(BACKGROUND, 0, 0, width, height);
 
         String s = "§lS§fleek";
         Fonts.MainMenuTitle.drawCenteredString(s, width / 2, height / 4 + 24, ColorPalette.GREEN.getColor().getRGB());
 
         String s1 = "Made with <3 by NotRzyy, Kansio, PC, Divine";
-        Fonts.clickGuiFont.drawString(s1, (this.width - Fonts.MainMenuTitle.getStringWidth(s1)) + 125, this.height - 10, -1);
+        Fonts.clickGuiFont.drawString(s1, (width - Fonts.MainMenuTitle.getStringWidth(s1)) + 125, height - 10, -1);
 
         super.drawScreen(mouseX, mouseY, partialTicks);
     }

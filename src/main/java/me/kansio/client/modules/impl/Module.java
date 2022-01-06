@@ -12,6 +12,7 @@ import me.kansio.client.property.Value;
 import me.kansio.client.property.value.*;
 import net.minecraft.client.Minecraft;
 import org.lwjgl.input.Keyboard;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;

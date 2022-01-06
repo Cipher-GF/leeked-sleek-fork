@@ -1,7 +1,6 @@
 package me.kansio.client.friend;
 
 import lombok.Getter;
-import me.kansio.client.utils.chat.ChatUtil;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 

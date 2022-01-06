@@ -9,7 +9,7 @@ import me.kansio.client.modules.impl.Module;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.ModeValue;
 import me.kansio.client.property.value.NumberValue;
-import me.kansio.client.utils.Stopwatch;
+import me.kansio.client.utils.math.Stopwatch;
 import me.kansio.client.utils.chat.ChatUtil;
 import me.kansio.client.utils.math.MathUtil;
 import me.kansio.client.utils.player.PlayerUtil;
@@ -20,7 +20,7 @@ import net.minecraft.util.AxisAlignedBB;
 public class Flight extends Module {
 
     private ModeValue modeValue = new ModeValue("Mode", this, "Vanilla", "Verus", "VerusDamage", "Funcraft", "Collide", "Ghostly", "Mush", "VerusGlide");
-    private NumberValue<Double> speed = new NumberValue<>("Speed", this, 1d, 0d, 7d, 0.1);
+    private NumberValue<Double> speed = new NumberValue<>("Speed", this, 1d, 0d, 10d, 0.1);
     private BooleanValue viewbob = new BooleanValue("View Bobbing", this, true);
     private BooleanValue boost = new BooleanValue("Boost", this, true, modeValue, "Funcraft");
     private BooleanValue extraBoost = new BooleanValue("Extra Boost", this, true, modeValue, "Funcraft");
@@ -59,6 +59,10 @@ public class Flight extends Module {
                 return;
             }
             mc.timer.timerSpeed = 0.8f;
+            PlayerUtil.damageVerus();
+        }
+
+        if (modeValue.getValue().equalsIgnoreCase("ghostly")) {
             PlayerUtil.damageVerus();
         }
 
@@ -170,12 +174,19 @@ public class Flight extends Module {
             }
 
             case "Ghostly":
-                if (mc.thePlayer.ticksExisted % 3 == 0) {
-                    mc.thePlayer.motionY = 0;
-                    PlayerUtil.setMotion(speed.getValue().floatValue());
-                } else {
-                    PlayerUtil.setMotion(0.1f);
+                double motionY = 0;
+
+                if (mc.gameSettings.keyBindJump.isKeyDown()) {
+                    motionY = speed.getValue() / 2;
                 }
+
+                if (mc.gameSettings.keyBindSneak.isKeyDown()) {
+                    motionY = -(speed.getValue() / 2);
+                }
+
+                mc.thePlayer.motionY = motionY;
+                PlayerUtil.setMotion(speed.getValue().floatValue());
+                break;
             case "VerusGlide":
                 if (mc.thePlayer.ticksExisted % 4 == 0) {
                     mc.thePlayer.motionY = 0.0f;
@@ -217,7 +228,7 @@ public class Flight extends Module {
                 }
 
                 if (boost.getValue()) {
-                    final float motionY = 0.42f + (mc.thePlayer.isPotionActive(Potion.jump) ? ((mc.thePlayer.getActivePotionEffect(Potion.jump).getAmplifier() + 1) * 0.1F) : 0);
+                    final float motY = 0.42f + (mc.thePlayer.isPotionActive(Potion.jump) ? ((mc.thePlayer.getActivePotionEffect(Potion.jump).getAmplifier() + 1) * 0.1F) : 0);
                     if (mc.thePlayer.isMoving()) {
                         if (level != 1) {
                             if (level == 2) {
@@ -238,7 +249,7 @@ public class Flight extends Module {
                             }
                         } else {
                             ChatUtil.log("sad");
-                            event.setMotionY(mc.thePlayer.motionY = motionY);
+                            event.setMotionY(mc.thePlayer.motionY = motY);
                             level = 2;
                             double boost = mc.thePlayer.isPotionActive(Potion.moveSpeed) ? 1.5 : 1.62;
                             moveSpeed = boost * getBaseMoveSpeed() - 0.01D;

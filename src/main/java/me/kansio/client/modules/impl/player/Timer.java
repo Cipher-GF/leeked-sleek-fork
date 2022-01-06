@@ -7,8 +7,6 @@ import me.kansio.client.modules.impl.Module;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.NumberValue;
 
-import java.text.DecimalFormat;
-
 public class Timer extends Module {
 
     private final BooleanValue tick = new BooleanValue("Tick Timer", this, false);

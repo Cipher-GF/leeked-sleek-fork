@@ -7,7 +7,6 @@ import me.kansio.client.gui.clickgui.ui.clickgui.frame.components.impl.BoolSetti
 import me.kansio.client.gui.clickgui.ui.clickgui.frame.components.impl.EnumSetting;
 import me.kansio.client.gui.clickgui.ui.clickgui.frame.components.impl.SlideSetting;
 import me.kansio.client.gui.clickgui.ui.clickgui.frame.components.impl.StringSetting;
-import me.kansio.client.gui.clickgui.utils.render.RenderUtils;
 import me.kansio.client.gui.clickgui.utils.render.animation.easings.Animate;
 import me.kansio.client.gui.clickgui.utils.render.animation.easings.Easing;
 import me.kansio.client.modules.impl.Module;
@@ -17,6 +16,7 @@ import me.kansio.client.property.value.NumberValue;
 import me.kansio.client.property.value.StringValue;
 import me.kansio.client.utils.chat.ChatUtil;
 import me.kansio.client.utils.render.ColorUtils;
+import me.kansio.client.utils.render.RenderUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import org.lwjgl.input.Keyboard;

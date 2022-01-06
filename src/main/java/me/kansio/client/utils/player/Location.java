@@ -2,6 +2,7 @@ package me.kansio.client.utils.player;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
+
 import javax.vecmath.Vector2f;
 
 public class Location {

@@ -12,7 +12,7 @@ import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.ModeValue;
 import me.kansio.client.property.value.NumberValue;
 import me.kansio.client.property.value.SubSettings;
-import me.kansio.client.utils.Stopwatch;
+import me.kansio.client.utils.math.Stopwatch;
 import me.kansio.client.utils.combat.FightUtil;
 import me.kansio.client.utils.rotations.AimUtil;
 import me.kansio.client.utils.rotations.Rotation;
@@ -57,7 +57,7 @@ public class KillAura extends Module {
     public NumberValue<Double> cps = new NumberValue<>("CPS", this, 12.0, 1.0, 20.0, 1.0);
     public NumberValue<Double> cprandom = new NumberValue<>("Randomize CPS", this, 3.0, 0.0, 10.0, 1.0);
     public ModeValue swingmode = new ModeValue("Swing Mode", this,"Client", "Server");
-    public ModeValue autoblockmode = new ModeValue("Autoblock Mode", this, "None", "Real", "Hold", "Verus","Fake");
+    public ModeValue autoblockmode = new ModeValue("Autoblock Mode", this, "None", "Real", "Verus", "Fake");
     public BooleanValue gcd = new BooleanValue("GCD", this, false);
     private SubSettings attackSettings = new SubSettings("Attack Setting", targetPriority, rotatemode);
 

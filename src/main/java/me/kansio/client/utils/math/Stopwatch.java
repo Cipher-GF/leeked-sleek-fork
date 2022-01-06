@@ -1,4 +1,6 @@
-package me.kansio.client.utils;
+package me.kansio.client.utils.math;
+
+import me.kansio.client.utils.Util;
 
 public final class Stopwatch extends Util {
 

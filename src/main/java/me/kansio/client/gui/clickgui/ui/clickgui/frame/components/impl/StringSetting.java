@@ -3,17 +3,13 @@ package me.kansio.client.gui.clickgui.ui.clickgui.frame.components.impl;
 import me.kansio.client.gui.clickgui.ui.clickgui.frame.Priority;
 import me.kansio.client.gui.clickgui.ui.clickgui.frame.components.Component;
 import me.kansio.client.gui.clickgui.ui.clickgui.frame.components.FrameModule;
-import me.kansio.client.gui.clickgui.utils.render.RenderUtils;
 import me.kansio.client.property.Value;
-import me.kansio.client.property.value.NumberValue;
 import me.kansio.client.property.value.StringValue;
-import me.kansio.client.utils.chat.ChatUtil;
+import me.kansio.client.utils.render.RenderUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
-import net.minecraft.util.MathHelper;
 import org.lwjgl.input.Keyboard;
-import org.lwjgl.input.Mouse;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
