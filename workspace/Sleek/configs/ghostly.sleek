@@ -3,22 +3,22 @@
     "name": "Killaura",
     "enabled": false,
     "Mode": "Smart",
-    "Rotation Mode": "Default",
-    "Target Priority": "Health",
-    "Autoblock Mode": "Real",
-    "Swing Mode": "Server",
+    "Rotation Mode": "None",
+    "Target Priority": "None",
+    "Autoblock Mode": "None",
+    "Swing Mode": "Client",
     "TargetHud Mode": "Sleek",
     "Swing Range": "3.0",
-    "Block Range": "3.8000000000000003",
-    "CPS": "8.0",
+    "Block Range": "3.0",
+    "CPS": "12.0",
     "Randomize CPS": "3.0",
     "Players": "true",
     "Friends": "true",
-    "Animals": "true",
-    "Monsters": "true",
+    "Animals": "false",
+    "Monsters": "false",
     "Invisibles": "false",
-    "Walls": "true",
-    "GCD": "false"
+    "Walls": "false",
+    "GCD": "true"
   },
   {
     "name": "Velocity",
@@ -28,17 +28,17 @@
   },
   {
     "name": "Criticals",
-    "enabled": true,
-    "Mode": "Verus"
+    "enabled": false,
+    "Mode": "Packet"
   },
   {
     "name": "Target Strafe",
-    "enabled": true,
+    "enabled": false,
     "Auto F5": "false",
-    "On Jump": "true",
+    "On Jump": "false",
     "Controllable": "false",
-    "Render": "true",
-    "Radius": "1.3",
+    "Render": "false",
+    "Radius": "3.0",
     "Width": "1.0",
     "Red": "100.0",
     "Green": "100.0",
@@ -47,30 +47,30 @@
   {
     "name": "Fast Bow",
     "enabled": false,
-    "Packets": "20.0"
+    "Packets": "20"
   },
   {
     "name": "Disabler",
     "enabled": false,
-    "Mode": "Custom",
+    "Mode": "Keep-Alive",
     "Cancel Transactions": "false",
     "Cancel Keep Alive": "false",
     "Delay Transactions": "false",
-    "Delay Keep Alive": "true",
-    "Delay Alive Amount": "28800.0",
-    "Transaction Delay": "6240.0",
+    "Delay Keep Alive": "false",
+    "Delay Alive Amount": "1000",
+    "Transaction Delay": "1000",
     "Send C0C": "false",
     "Max Value C0C": "false",
     "Void Teleport": "false",
-    "TP Delay": "3000.0",
-    "TP Amount": "-9.99999999E8",
+    "TP Delay": "3000",
+    "TP Amount": "-999999999",
     "Spectate Spoof": "false",
     "Abilities Spoof": "false"
   },
   {
     "name": "ACDetector",
     "enabled": false,
-    "Delay": "0.5"
+    "Delay": "1.0"
   },
   {
     "name": "Plugins",
@@ -92,16 +92,16 @@
   {
     "name": "Speed",
     "enabled": false,
-    "Mode": "Verus",
-    "Speed": "0.5",
+    "Mode": "Ghostly",
+    "Speed": "1.7000000000000002",
     "Force Friction": "true",
     "Friction": "NCP"
   },
   {
     "name": "Flight",
     "enabled": false,
-    "Mode": "VerusGlide",
-    "Speed": "1.0",
+    "Mode": "Ghostly",
+    "Speed": "9.9",
     "View Bobbing": "true",
     "Boost": "true",
     "Extra Boost": "true",
@@ -135,19 +135,19 @@
   },
   {
     "name": "Chest Stealer",
-    "enabled": true,
-    "Check Chest": "false",
-    "Delay": "56.0"
+    "enabled": false,
+    "Check Chest": "true",
+    "Delay": "25.0"
   },
   {
     "name": "InvManager",
-    "enabled": true,
-    "AutoSword": "true",
+    "enabled": false,
+    "AutoSword": "false",
     "AutoSword Delay": "25.0",
-    "AutoSword Only in Inv": "true",
-    "Inventory Cleaner": "true",
+    "AutoSword Only in Inv": "false",
+    "Inventory Cleaner": "false",
     "InvCleaner Delay": "25.0",
-    "Auto Armor": "true",
+    "Auto Armor": "false",
     "AutoArmor Delay": "25.0"
   },
   {
@@ -159,7 +159,7 @@
   },
   {
     "name": "No Rotate",
-    "enabled": true,
+    "enabled": false,
     "Mode": "Packet"
   },
   {
@@ -176,13 +176,13 @@
     "Notifications": "true",
     "Font": "false",
     "BPS": "true",
-    "Client Name": "bloxmc troll hack 420 v69"
+    "Client Name": "Sleek"
   },
   {
     "name": "Animations",
     "enabled": true,
     "Mode": "DOWN",
-    "Swing Speed": "1.0"
+    "Swing Speed": "10.0"
   },
   {
     "name": "Click GUI",
@@ -199,8 +199,8 @@
     "Armor Bar": "true",
     "Local": "true",
     "Players": "true",
-    "Invisibles": "true",
-    "Monsters": "true",
+    "Invisibles": "false",
+    "Monsters": "false",
     "Animals": "true",
     "Chests": "false",
     "Dropped Items": "true"
@@ -225,7 +225,7 @@
   },
   {
     "name": "AttackEffect",
-    "enabled": true,
+    "enabled": false,
     "Partical Mode": "Blood",
     "Amount": "1.0",
     "Play Sound": "false",
@@ -235,7 +235,7 @@
   },
   {
     "name": "DeathEffect",
-    "enabled": true,
+    "enabled": false,
     "Effect Mode": "Blood",
     "Play Sound": "false",
     "Meme Sounds": "false",
@@ -246,13 +246,13 @@
     "enabled": false,
     "Mode": "Verus",
     "Swing": "true",
-    "Sprint": "true",
+    "Sprint": "false",
     "Tower": "true",
     "Show Info": "true",
     "Safewalk": "true",
     "Keep Y": "false",
     "Delay": "0.0",
-    "Expansion": "4.0"
+    "Expansion": "4"
   },
   {
     "name": "Breaker",
