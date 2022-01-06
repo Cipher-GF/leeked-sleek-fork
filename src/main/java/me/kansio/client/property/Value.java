@@ -4,11 +4,15 @@ import lombok.Getter;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.ModeValue;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public abstract class Value<Type> {
 
     private final String name;
     @Getter
-    protected String mode;
+    protected List<String> modes = new ArrayList<>();
     private final Object owner;
     protected Value<?> parent;
     protected Type value;
@@ -19,10 +23,10 @@ public abstract class Value<Type> {
         this.value = value;
     }
 
-    public Value(String name, Object owner, Type value, ModeValue parent, String mode) {
+    public Value(String name, Object owner, Type value, ModeValue parent, String... modes) {
         this(name, owner, value);
         this.parent = parent;
-        this.mode = mode;
+        Collections.addAll(this.modes, modes);
     }
 
     public Value(String name, Object owner, Type value, BooleanValue parent) {

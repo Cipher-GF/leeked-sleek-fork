@@ -23,7 +23,7 @@ public final class ModeValue extends Value<String> {
         }
     }
 
-    public ModeValue(String name, Object owner, ModeValue parent, String mode, String... values) {
+    public ModeValue(String name, Object owner, ModeValue parent, String[] mode, String... values) {
         super(name, owner, values[0], parent, mode);
         choices = new ArrayList<>();
         Collections.addAll(choices, values);
