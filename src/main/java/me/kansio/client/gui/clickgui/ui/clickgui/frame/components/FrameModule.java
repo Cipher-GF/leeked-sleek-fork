@@ -6,6 +6,7 @@ import me.kansio.client.gui.clickgui.ui.clickgui.frame.Priority;
 import me.kansio.client.gui.clickgui.ui.clickgui.frame.components.impl.BoolSetting;
 import me.kansio.client.gui.clickgui.ui.clickgui.frame.components.impl.EnumSetting;
 import me.kansio.client.gui.clickgui.ui.clickgui.frame.components.impl.SlideSetting;
+import me.kansio.client.gui.clickgui.ui.clickgui.frame.components.impl.StringSetting;
 import me.kansio.client.gui.clickgui.utils.render.RenderUtils;
 import me.kansio.client.gui.clickgui.utils.render.animation.easings.Animate;
 import me.kansio.client.gui.clickgui.utils.render.animation.easings.Easing;
@@ -13,6 +14,7 @@ import me.kansio.client.modules.impl.Module;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.ModeValue;
 import me.kansio.client.property.value.NumberValue;
+import me.kansio.client.property.value.StringValue;
 import me.kansio.client.utils.chat.ChatUtil;
 import me.kansio.client.utils.render.ColorUtils;
 import net.minecraft.client.Minecraft;
@@ -61,6 +63,9 @@ public class FrameModule implements Priority {
             }
             if (setting instanceof NumberValue) {
                 this.components.add(new SlideSetting(0, 0, this, setting));
+            }
+            if (setting instanceof StringValue) {
+                this.components.add(new StringSetting(0, 0, this, setting));
             }
         });
         //}
@@ -160,10 +165,17 @@ public class FrameModule implements Priority {
     }
 
 
-    public void keyTyped(int keycode) {
+    public void keyTyped(char key, int keycode) {
+        for (Component component : this.components) {
+            if (component.isHidden()) continue;
+            component.keyTyped(key, keycode);
+
+        }
+
         if (listening) {
             if (keycode == Keyboard.KEY_ESCAPE) {
                 module.setKeyBind(0);
+
             } else {
                 module.setKeyBind(keycode);
                 ChatUtil.log(module.getName() + " is now binded to " + Keyboard.getKeyName(keycode));

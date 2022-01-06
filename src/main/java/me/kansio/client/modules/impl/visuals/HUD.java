@@ -7,6 +7,8 @@ import me.kansio.client.event.impl.RenderOverlayEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.property.value.BooleanValue;
+import me.kansio.client.property.value.StringValue;
+import me.kansio.client.utils.chat.ChatUtil;
 import me.kansio.client.utils.font.Fonts;
 import me.kansio.client.utils.math.BPSUtil;
 import me.kansio.client.utils.render.ColorPalette;
@@ -22,19 +24,20 @@ public class HUD extends Module {
     private BooleanValue font = new BooleanValue("Font", this, false);
     private BooleanValue noti = new BooleanValue("Notifications", this, true);
     private BooleanValue bps = new BooleanValue("BPS", this, true);
+    private StringValue clientName = new StringValue("Client Name", this, "Sleek");
 
     public static boolean notifications;
 
     public HUD() {
         super("HUD", ModuleCategory.VISUALS);
-        register(noti, font, bps);
+        register(noti, font, bps, clientName);
     }
 
     @Subscribe
     public void onRenderOverlay(RenderOverlayEvent event) {
         notifications = noti.getValue() && isToggled();
 
-        mc.fontRendererObj.drawStringWithShadow("§aS§7leek v0.1", 4, 4, ColorPalette.GREEN.getColor().getRGB());
+        mc.fontRendererObj.drawStringWithShadow(ChatUtil.translateColorCodes(clientName.getValueAsString()), 4, 4, ColorPalette.GREEN.getColor().getRGB());
 
         if (bps.getValue()) {
             double bps = BPSUtil.getBPS();

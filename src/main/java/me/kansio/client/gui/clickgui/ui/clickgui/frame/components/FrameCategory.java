@@ -32,8 +32,7 @@ public class FrameCategory implements Priority {
     private final Animate animation;
 
     // Asking x and y so categories are not on themself
-    public FrameCategory(ModuleCategory category, int x, int y)
-    {
+    public FrameCategory(ModuleCategory category, int x, int y) {
         this.category = category;
         this.modules = new ArrayList<>();
         this.animation = new Animate().setEase(Easing.CUBIC_OUT).setSpeed(250).setMin(0).setMax(defaultWidth / 2F);
@@ -52,29 +51,25 @@ public class FrameCategory implements Priority {
         Client.getInstance().getModuleManager().getModulesFromCategory(category).forEach(module -> this.modules.add(new FrameModule(module, this, 0, 0)));
     }
 
-    public void initGui()
-    {
+    public void initGui() {
         this.animation.setSpeed(100).reset();
     }
 
-    public void drawScreen(int mouseX, int mouseY)
-    {
+    public void drawScreen(int mouseX, int mouseY) {
         AtomicInteger offCat = new AtomicInteger();
         this.modules.forEach(module -> offCat.addAndGet(module.getOffset()));
 
         // Calculate height
         height = Math.min(categoryNameHeight + offCat.get(), defaultHeight);
 
-        if(Mouse.hasWheel() && RenderUtils.hover(x, y, mouseX, mouseY, defaultWidth, height))
-        {
+        if (Mouse.hasWheel() && RenderUtils.hover(x, y, mouseX, mouseY, defaultWidth, height)) {
             int wheel = Mouse.getDWheel();
-            if(wheel > 0 && offset - (moduleHeight - 1) > 0) {
+            if (wheel > 0 && offset - (moduleHeight - 1) > 0) {
                 offset -= moduleHeight;
-            } else if(wheel < 0 && offset + (moduleHeight - 1) <= offCat.get() - height + categoryNameHeight) {
+            } else if (wheel < 0 && offset + (moduleHeight - 1) <= offCat.get() - height + categoryNameHeight) {
                 offset += moduleHeight;
             }
         }
-
 
 
         // Drawing category base
@@ -91,7 +86,7 @@ public class FrameCategory implements Priority {
         }
 
         // Drag ClickGUI
-        if(drag) {
+        if (drag) {
             setX(this.xDrag + mouseX);
             setY(this.yDrag + mouseY);
         }
@@ -106,8 +101,7 @@ public class FrameCategory implements Priority {
 
         // Drawing modules
         int i = 0;
-        for (FrameModule module : this.modules)
-        {
+        for (FrameModule module : this.modules) {
             module.setX(x);
             module.setY(y + categoryNameHeight + i - offset);
             module.drawScreen(mouseX, mouseY);
@@ -118,19 +112,16 @@ public class FrameCategory implements Priority {
         GL11.glPopMatrix();
     }
 
-    public void mouseClicked(int mouseX, int mouseY, int mouseButton)
-    {
+    public void mouseClicked(int mouseX, int mouseY, int mouseButton) {
         // I really need to explain?
-        for (FrameModule module : this.modules)
-        {
-            if(module.mouseClicked(mouseX, mouseY, mouseButton)) {
+        for (FrameModule module : this.modules) {
+            if (module.mouseClicked(mouseX, mouseY, mouseButton)) {
                 setDrag(false);
                 return;
             }
         }
 
-        if(RenderUtils.hover(x, y, mouseX, mouseY, width, height) && mouseButton == 0)
-        {
+        if (RenderUtils.hover(x, y, mouseX, mouseY, width, height) && mouseButton == 0) {
             setDrag(true);
             setXDrag(getX() - mouseX);
             setYDrag(getY() - mouseY);
@@ -139,18 +130,15 @@ public class FrameCategory implements Priority {
     }
 
     @SuppressWarnings("unused")
-    public void mouseReleased(int mouseX, int mouseY, int state)
-    {
+    public void mouseReleased(int mouseX, int mouseY, int state) {
         this.drag = false;
     }
 
-    public int getX()
-    {
+    public int getX() {
         return x;
     }
 
-    public void setX(int x)
-    {
+    public void setX(int x) {
         this.x = x;
     }
 
@@ -158,39 +146,33 @@ public class FrameCategory implements Priority {
         this.y = y;
     }
 
-    public int getY()
-    {
+    public int getY() {
         return y;
     }
 
-    public void setXDrag(int xDrag)
-    {
+    public void setXDrag(int xDrag) {
         this.xDrag = xDrag;
     }
 
-    public void setYDrag(int yDrag)
-    {
+    public void setYDrag(int yDrag) {
         this.yDrag = yDrag;
     }
 
-    public void setDrag(boolean drag)
-    {
+    public void setDrag(boolean drag) {
         this.drag = drag;
     }
 
-    public int getWidth()
-    {
+    public int getWidth() {
         return width;
     }
 
-    public int getHeight()
-    {
+    public int getHeight() {
         return height;
     }
 
-    public void keyTyped(int keyCode) {
+    public void keyTyped(char key, int keyCode) {
         modules.forEach(frameModule -> {
-            frameModule.keyTyped(keyCode);
+            frameModule.keyTyped(key, keyCode);
         });
     }
 }

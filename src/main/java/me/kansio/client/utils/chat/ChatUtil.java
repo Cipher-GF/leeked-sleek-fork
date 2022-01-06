@@ -9,4 +9,8 @@ public class ChatUtil extends Util {
         mc.thePlayer.addChatMessage(new ChatComponentText("§7[§bSleek§7] §f" + message));
     }
 
+    public static String translateColorCodes(String toTranslate) {
+        return toTranslate.replaceAll("&", "§");
+    }
+
 }
