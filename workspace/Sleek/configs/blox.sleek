@@ -1,7 +1,7 @@
 [
   {
     "name": "Killaura",
-    "enabled": true,
+    "enabled": false,
     "Mode": "Smart",
     "Rotation Mode": "Default",
     "Target Priority": "Health",
@@ -85,7 +85,7 @@
   },
   {
     "name": "Phase",
-    "enabled": true,
+    "enabled": false,
     "Mode": "2.0",
     "Sneak": "false"
   },
@@ -100,8 +100,8 @@
   {
     "name": "Flight",
     "enabled": false,
-    "Mode": "Vanilla",
-    "Speed": "0.9",
+    "Mode": "BlocksMC",
+    "Speed": "1.7000000000000002",
     "View Bobbing": "true",
     "Boost": "true",
     "Extra Boost": "true",
@@ -199,7 +199,7 @@
     "Armor Bar": "true",
     "Local": "true",
     "Players": "true",
-    "Invisibles": "true",
+    "Invisibles": "false",
     "Monsters": "false",
     "Animals": "true",
     "Chests": "false",
