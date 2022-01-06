@@ -1,7 +1,7 @@
 [
   {
     "name": "Killaura",
-    "enabled": false,
+    "enabled": true,
     "Mode": "Smart",
     "Rotation Mode": "Default",
     "Target Priority": "Health",
@@ -10,7 +10,7 @@
     "TargetHud Mode": "Sleek",
     "Swing Range": "3.0",
     "Block Range": "3.8000000000000003",
-    "CPS": "8.0",
+    "CPS": "10.0",
     "Randomize CPS": "3.0",
     "Players": "true",
     "Friends": "true",
@@ -47,7 +47,7 @@
   {
     "name": "Fast Bow",
     "enabled": false,
-    "Packets": "20"
+    "Packets": "20.0"
   },
   {
     "name": "Disabler",
@@ -136,8 +136,8 @@
   {
     "name": "Chest Stealer",
     "enabled": true,
-    "Check Chest": "true",
-    "Delay": "25.0"
+    "Check Chest": "false",
+    "Delay": "56.0"
   },
   {
     "name": "InvManager",
