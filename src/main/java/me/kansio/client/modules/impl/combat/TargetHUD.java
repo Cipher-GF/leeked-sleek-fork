@@ -4,11 +4,13 @@ import me.kansio.client.Client;
 import me.kansio.client.event.impl.RenderOverlayEvent;
 import me.kansio.client.modules.impl.visuals.HUD;
 import me.kansio.client.utils.Util;
+import me.kansio.client.utils.chat.ChatUtil;
 import me.kansio.client.utils.font.Fonts;
 import me.kansio.client.utils.render.RenderUtils;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.network.NetworkPlayerInfo;
+import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
@@ -37,14 +39,16 @@ public class TargetHUD extends Util {
                 } else if (targetHealthWidth < currentHealthWidth) {
                     currentHealthWidth -= targetHealthWidth / 10;
                 }
-                RenderUtils.drawBorderedRoundedRect(150, 350, 150, 90, 10, 2, 2, new Color(target.hurtTime * 6, 0, 0, 100).getRGB());
-                mc.fontRendererObj.drawStringWithShadow(target.getName(), 160, 365, -1);
+                RenderUtils.drawBorderedRoundedRect(150, 350, 150, 60, 10, 2, 2, new Color(target.hurtTime * 6, 0, 0, 100).getRGB());
+                mc.fontRendererObj.drawStringWithShadow(target.getName(), 210, 370, -1);
 
-                RenderUtils.drawBorderedRoundedRect(155, 390, (float) (target.getHealth() > 0 ? targetHealthWidth : 6.9), 15, 5, 0.5f, new Color(2).getRGB(), new Color(0, 255, 0, 255).getRGB());
-                mc.fontRendererObj.drawStringWithShadow("Health: " + (int) target.getHealth(), 160, 393, -1);
-
-                RenderUtils.drawBorderedRoundedRect(155, 410, (float) (target.getTotalArmorValue() > 0 ? target.getTotalArmorValue() * 6.9 : 6.9), 15, 5, 0.5f, new Color(2).getRGB(), new Color(0, 255, 255, 255).getRGB());
-                mc.fontRendererObj.drawStringWithShadow("Armor: " + (int) target.getTotalArmorValue(), 160, 410, -1);
+                if (target instanceof EntityPlayer) {
+                    ResourceLocation skin = ((AbstractClientPlayer)target).getLocationSkin();
+                    RenderUtils.drawHead(skin, 160, 360, 30, 30);
+                    ChatUtil.log("drawing skin");
+                }
+                RenderUtils.drawBorderedRoundedRect(155, 400, (float) (20 * 6.9), 5, 5, 0.5f, new Color(40, 40, 40, 255).getRGB(), new Color(45, 45, 45, 255).getRGB());
+                RenderUtils.drawBorderedRoundedRect(155, 400, (float) (target.getHealth() > 0 ? targetHealthWidth : 6.9), 5, 5, 0.5f, new Color(189, 1, 1, 255).getRGB(), new Color(255, 0, 0, 255).getRGB());
                 break;
             }
             case "Moon": {

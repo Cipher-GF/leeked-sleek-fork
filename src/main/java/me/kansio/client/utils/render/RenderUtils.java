@@ -131,6 +131,36 @@ public class RenderUtils {
         GL11.glColor4f(red, green, blue, alpha);
     }
 
+    public static void drawScaledCustomSizeModalRect(int x, int y, float u, float v, int uWidth, int vHeight, int width, int height, float tileWidth, float tileHeight) {
+        float f = 1.0F / tileWidth;
+        float f1 = 1.0F / tileHeight;
+        Tessellator tessellator = Tessellator.getInstance();
+        WorldRenderer worldrenderer = tessellator.getWorldRenderer();
+        worldrenderer.begin(GL_QUADS, DefaultVertexFormats.POSITION_TEX);
+        worldrenderer.pos(x, y + height, 0.0D).tex(u * f, (v + (float) vHeight) * f1).endVertex();
+        worldrenderer.pos(x + width, y + height, 0.0D).tex((u + (float) uWidth) * f, (v + (float) vHeight) * f1).endVertex();
+        worldrenderer.pos(x + width, y, 0.0D).tex((u + (float) uWidth) * f, v * f1).endVertex();
+        worldrenderer.pos(x, y, 0.0D).tex(u * f, v * f1).endVertex();
+        tessellator.draw();
+    }
+
+    public static void drawHead(ResourceLocation skin, int x, int y, int width, int height) {
+        GL11.glColor4f(1F, 1F, 1F, 1F);
+        mc.getTextureManager().bindTexture(skin);
+        RenderUtils.drawScaledCustomSizeModalRect(x, y, 8F, 8F, 8, 8, width, height,
+                64F, 64F);
+        RenderUtils.drawScaledCustomSizeModalRect(x, y, 40F, 8F, 8, 8, width, height,
+                64F, 64F);
+    }
+
+    public static void quickDrawHead(ResourceLocation skin, int x, int y, int width, int height) {
+        mc.getTextureManager().bindTexture(skin);
+        RenderUtils.drawScaledCustomSizeModalRect(x, y, 8F, 8F, 8, 8, width, height,
+                64F, 64F);
+        RenderUtils.drawScaledCustomSizeModalRect(x, y, 40F, 8F, 8, 8, width, height,
+                64F, 64F);
+    }
+
     public static void drawImage(ResourceLocation image, int x, int y, int width, int height) {
         OpenGlHelper.glBlendFunc(770, 771, 1, 0);
         GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
