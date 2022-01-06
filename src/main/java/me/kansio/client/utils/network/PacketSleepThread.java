@@ -1,6 +1,5 @@
 package me.kansio.client.utils.network;
 
-import me.kansio.client.utils.chat.ChatUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.Packet;
 

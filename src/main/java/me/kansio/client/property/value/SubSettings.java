@@ -3,6 +3,7 @@ package me.kansio.client.property.value;
 import lombok.Getter;
 import lombok.Setter;
 import me.kansio.client.property.Value;
+
 import java.util.ArrayList;
 import java.util.Collections;
 

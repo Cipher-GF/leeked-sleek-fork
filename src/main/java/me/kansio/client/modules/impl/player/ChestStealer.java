@@ -38,7 +38,7 @@ public class ChestStealer extends Module {
             if (delayCounter.timeElapsed(delay.getValue().longValue())) {
                 GuiChest chest = (GuiChest) mc.currentScreen;
 
-                if (checkChest.getValue() && (!chest.lowerChestInventory.getDisplayName().getUnformattedText().contains("Chest") || !chest.lowerChestInventory.getDisplayName().getUnformattedText().contains("LOW"))) {
+                if (checkChest.getValue() && (!chest.lowerChestInventory.getDisplayName().getUnformattedText().contains("Chest") && !chest.lowerChestInventory.getDisplayName().getUnformattedText().contains("LOW"))) {
                     delayCounter.resetTime();
                     return;
                 }

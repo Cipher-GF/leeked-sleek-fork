@@ -2,15 +2,12 @@ package me.kansio.client.modules.impl.combat;
 
 import me.kansio.client.Client;
 import me.kansio.client.event.impl.RenderOverlayEvent;
-import me.kansio.client.modules.impl.visuals.HUD;
 import me.kansio.client.utils.Util;
-import me.kansio.client.utils.chat.ChatUtil;
 import me.kansio.client.utils.font.Fonts;
 import me.kansio.client.utils.render.RenderUtils;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.network.NetworkPlayerInfo;
-import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
