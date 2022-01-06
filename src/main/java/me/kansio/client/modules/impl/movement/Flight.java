@@ -49,6 +49,10 @@ public class Flight extends Module {
         spereeeedserz = 0.22;
         stopwatch.resetTime();
 
+        if (modeValue.getValueAsString().equalsIgnoreCase("mush")) {
+            speedy = speed.getValue();
+        }
+
         if (modeValue.getValue().equals("VerusDamage")) {
             if (!mc.thePlayer.onGround) {
                 toggle();
@@ -192,6 +196,10 @@ public class Flight extends Module {
                         PlayerUtil.strafe();
                     }
                 }
+                break;
+            }
+            case "Mush": {
+                PlayerUtil.setMotion(speedy);
                 break;
             }
             case "Funcraft2":

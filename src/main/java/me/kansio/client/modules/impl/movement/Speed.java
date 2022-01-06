@@ -2,38 +2,84 @@ package me.kansio.client.modules.impl.movement;
 
 import com.google.common.util.concurrent.AtomicDouble;
 import dorkbox.messageBus.annotations.Subscribe;
-import me.kansio.client.event.impl.BlockCollisionEvent;
+import lombok.Getter;
 import me.kansio.client.event.impl.MoveEvent;
+import me.kansio.client.event.impl.PacketEvent;
 import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.impl.Module;
+import me.kansio.client.modules.impl.movement.speed.SpeedMode;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.ModeValue;
 import me.kansio.client.property.value.NumberValue;
+import me.kansio.client.utils.chat.ChatUtil;
+import me.kansio.client.utils.java.ReflectUtils;
 import me.kansio.client.utils.player.PlayerUtil;
-import net.minecraft.block.BlockAir;
 import net.minecraft.potion.Potion;
-import net.minecraft.util.AxisAlignedBB;
+
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Speed extends Module {
 
-    private final ModeValue mode = new ModeValue("Mode", this, "Vanilla", "VanillaHop", "Verus", "Verus Ground", "Ghostly", "Ghostly TP");
-    private final NumberValue<Double> speed = new NumberValue<>("Speed", this, 0.5, 0.0, 8.0, 0.1);
-    private final BooleanValue forceFriction = new BooleanValue("Force Friction", this, true);
-    private final ModeValue frictionMode = new ModeValue("Friction", this, forceFriction, "NCP", "NEW", "LEGIT", "SILENT");
-    private final AtomicDouble hDist = new AtomicDouble();
+    private final List<? extends SpeedMode> modes = ReflectUtils.getRelects(this.getClass().getPackage().getName() + ".speed", SpeedMode.class).stream()
+            .map(aClass -> {
+                try {
+                    return aClass.getDeclaredConstructor().newInstance();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                return null;
+            })
+            .sorted(Comparator.comparing(speedMode -> speedMode != null ? speedMode.getName() : null))
+            .collect(Collectors.toList());
+
+    private final ModeValue mode = new ModeValue("Mode", this, modes.stream().map(SpeedMode::getName).collect(Collectors.toList()).toArray(new String[]{}));
+    /*new ModeValue("Mode", this, "Vanilla", "VanillaHop", "Verus", "Verus Ground", "TestPixel", "Ghostly", "Ghostly TP");*/
+    private SpeedMode currentMode = modes.stream().anyMatch(speedMode -> speedMode.getName().equalsIgnoreCase(mode.getValue())) ? modes.stream().filter(speedMode -> speedMode.getName().equalsIgnoreCase(mode.getValue())).findAny().get() : null ;
+
+    @Getter private final NumberValue<Double> speed = new NumberValue<>("Speed", this, 0.5, 0.0, 8.0, 0.1);
+    @Getter private final BooleanValue forceFriction = new BooleanValue("Force Friction", this, true);
+    @Getter private final ModeValue frictionMode = new ModeValue("Friction", this, forceFriction, "NCP", "NEW", "LEGIT", "SILENT");
+    @Getter private final AtomicDouble hDist = new AtomicDouble();
 
     public Speed() {
         super("Speed", ModuleCategory.MOVEMENT);
+
         register(mode, speed, forceFriction, frictionMode);
     }
 
     @Override
-    public void onDisable() {
-        PlayerUtil.setMotion(0);
-        hDist.set(0);
+    public void onEnable() {
+        currentMode = modes.stream().anyMatch(speedMode -> speedMode.getName().equalsIgnoreCase(mode.getValue())) ? modes.stream().filter(speedMode -> speedMode.getName().equalsIgnoreCase(mode.getValue())).findAny().get() : null ;
+        currentMode.onEnable();
     }
 
+    @Override
+    public void onDisable() {
+        mc.timer.timerSpeed = 1f;
+        PlayerUtil.setMotion(0);
+        hDist.set(0);
+
+        currentMode.onDisable();
+    }
+
+    @Subscribe
+    public void onUpdate(UpdateEvent event) {
+        currentMode.onUpdate(event);
+    }
+
+    @Subscribe
+    public void onMove(MoveEvent event) {
+        currentMode.onMove(event);
+    }
+
+    @Subscribe
+    public void onPacket(PacketEvent event) {
+        currentMode.onPacket(event);
+    }
+/*
     @Subscribe
     public void onMove(MoveEvent event) {
         switch (mode.getValueAsString()) {
@@ -77,6 +123,20 @@ public class Speed extends Module {
                 }
                 break;
             }
+            case "TestPixel": {
+                if (mc.thePlayer.isMovingOnGround()) {
+                    double speed = handleFriction(hDist);
+
+                    if (mc.thePlayer.moveStrafing != 0) {
+                        ChatUtil.log("This flags");
+                        return;
+                    }
+
+                    event.setMotionY(mc.thePlayer.motionY = PlayerUtil.getMotion(0.42f));
+                    PlayerUtil.setMotion(event, speed);
+                }
+                break;
+            }
         }
     }
 
@@ -95,6 +155,10 @@ public class Speed extends Module {
                 PlayerUtil.setMotion(speed.getValue().floatValue());
                 break;
             }
+            case "TestPixel": {
+                hDist.set(PlayerUtil.getBaseSpeed() * 1.06575F);
+                break;
+            }
             case "Ghostly TP": {
                 double yaw = Math.toRadians(mc.thePlayer.rotationYaw);
                 double x = -Math.sin(yaw) * 1.8;
@@ -108,9 +172,9 @@ public class Speed extends Module {
                 break;
             }
         }
-    }
+    }*/
 
-    private double handleFriction(AtomicDouble atomicDouble) {
+    public double handleFriction(AtomicDouble atomicDouble) {
         if (forceFriction.getValue()) {
             double value = atomicDouble.get();
             switch (frictionMode.getValue()) {
