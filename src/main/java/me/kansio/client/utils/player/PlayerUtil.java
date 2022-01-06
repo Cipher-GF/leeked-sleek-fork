@@ -68,6 +68,28 @@ public class PlayerUtil extends Util {
         mc.thePlayer.motionZ = Math.cos(yaw) * speed;
     }
 
+    public static void damagePlayer() {
+        if (!mc.thePlayer.onGround) return;
+        double[] normalValue = new double[]{0.062, 0.0};
+        double[] hypixelValue = new double[]{0.422993999998688697815, 0.002140803780930446};
+        if (mc.getCurrentServerData() != null && mc.getCurrentServerData().serverIP != null && (mc.getCurrentServerData().serverIP.toLowerCase().contains("hypixel") || mc.getCurrentServerData().serverIP.toLowerCase().contains("cubecraft"))) {
+            for (int i = 0; i < (mc.thePlayer.isPotionActive(Potion.jump) ? 15 : 8); ++i) {
+                for (int length = hypixelValue.length, j = 0; j < length; ++j) {
+                    mc.getNetHandler().getNetworkManager().sendPacket(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + hypixelValue[j], mc.thePlayer.posZ, false));
+                }
+            }
+        }
+        else {
+            for (int i = 0; i < (mc.thePlayer.isPotionActive(Potion.jump) ? 122 : 49); ++i) {
+                for (int length = normalValue.length, j = 0; j < length; ++j) {
+                    mc.getNetHandler().getNetworkManager().sendPacket(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + normalValue[j], mc.thePlayer.posZ, false));
+                }
+            }
+        }
+        //final double[] jumpValue = new double[]{0.42f, 0.7531999805212, 1.00133597911214, 1.16610926093821, 1.12160004615784, 0.96636804164123};
+        //double[] jumpValue = new double[]{0.0, 0.42f, 0.7531999805212, 1.00133597911214, 1.16610926093821, 1.20000004768372, 1.12160004615784, 0.96636804164123, 0.73584067272827, 0.43152384527073, 0.05489334703208, 0.0};
+    }
+
 
     /**
      * Attempts to damage the user via fall damage.

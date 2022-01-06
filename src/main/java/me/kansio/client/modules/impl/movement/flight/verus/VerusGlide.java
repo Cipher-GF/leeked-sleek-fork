@@ -1,13 +1,25 @@
 package me.kansio.client.modules.impl.movement.flight.verus;
 
 import me.kansio.client.event.impl.BlockCollisionEvent;
+import me.kansio.client.event.impl.MoveEvent;
 import me.kansio.client.modules.impl.movement.flight.FlightMode;
+import me.kansio.client.utils.player.PlayerUtil;
 import net.minecraft.block.BlockAir;
 import net.minecraft.util.AxisAlignedBB;
 
 public class VerusGlide extends FlightMode {
     public VerusGlide() {
         super("Verus Glide");
+    }
+
+    @Override
+    public void onMove(MoveEvent event) {
+        if (mc.thePlayer.ticksExisted % 4 == 0) {
+            mc.thePlayer.motionY = 0.0f;
+            PlayerUtil.setMotion(0.4f);
+        } else {
+            PlayerUtil.setMotion(0.1f);
+        }
     }
 
     @Override
