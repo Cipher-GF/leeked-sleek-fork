@@ -5,7 +5,7 @@ import net.minecraft.client.resources.IResourceManager;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
-import org.tinylog.Logger;
+
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -15,8 +15,14 @@ import java.io.InputStream;
 import java.util.List;
 
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 public class LayeredColorMaskTexture extends AbstractTexture
 {
+    /** Access to the Logger, for all your logging needs. */
+    private static final Logger LOG = LogManager.getLogger();
 
     /** The location of the texture. */
     private final ResourceLocation textureLocation;
@@ -84,7 +90,7 @@ public class LayeredColorMaskTexture extends AbstractTexture
         }
         catch (IOException ioexception)
         {
-            Logger.error((String)"Couldn\'t load layered image", (Throwable)ioexception);
+            LOG.error((String)"Couldn\'t load layered image", (Throwable)ioexception);
             return;
         }
 

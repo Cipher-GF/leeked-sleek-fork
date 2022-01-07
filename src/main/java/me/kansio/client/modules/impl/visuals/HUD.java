@@ -20,7 +20,7 @@ import java.text.DecimalFormat;
 
 public class HUD extends Module {
 
-    private BooleanValue font = new BooleanValue("Font", this, false);
+    public BooleanValue font = new BooleanValue("Font", this, false);
     private BooleanValue noti = new BooleanValue("Notifications", this, true);
     private BooleanValue bps = new BooleanValue("BPS", this, true);
     private StringValue clientName = new StringValue("Client Name", this, "Sleek");
@@ -45,17 +45,17 @@ public class HUD extends Module {
         int y = 4;
 
         if (font.getValue()) {
-            for (Module mod : Client.getInstance().getModuleManager().getModulesSorted(Fonts.clickGuiFont)) {
+            for (Module mod : Client.getInstance().getModuleManager().getModulesSorted(Fonts.Arial18)) {
                 if (!mod.isToggled()) continue;
 
                 Color color = ColorUtils.getGradientOffset(new Color(0, 255, 128), new Color(212, 1, 1), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + y / mc.fontRendererObj.FONT_HEIGHT * 9.95);
 
 
                 String name = mod.getName() + "§7" + mod.getFormattedSuffix();
-                float xPos = event.getSr().getScaledWidth() - Fonts.clickGuiFont.getStringWidth(name) - 6;
-                Gui.drawRect(xPos - 1.5, y - 3, event.getSr().getScaledWidth(), Fonts.clickGuiFont.getHeight() + y + 1, new Color(0, 0, 0, 80).getRGB());
-                Gui.drawRect(event.getSr().getScaledWidth() - 1, y - 3, event.getSr().getScaledWidth(), Fonts.clickGuiFont.getHeight() + y + 1, color.getRGB());
-                Fonts.clickGuiFont.drawStringWithShadow(name, xPos, (float) (0.5 + y), color.getRGB());
+                float xPos = event.getSr().getScaledWidth() - Fonts.Arial18.getStringWidth(name) - 6;
+                Gui.drawRect(xPos - 1.5, y - 3, event.getSr().getScaledWidth(), Fonts.Arial18.getHeight() + y + 1, new Color(0, 0, 0, 80).getRGB());
+                Gui.drawRect(event.getSr().getScaledWidth() - 1, y - 3, event.getSr().getScaledWidth(), Fonts.Arial18.getHeight() + y + 1, color.getRGB());
+                Fonts.Arial18.drawStringWithShadow(name, xPos, (float) (0.5 + y), color.getRGB());
                 y = y + 11;
             }
 

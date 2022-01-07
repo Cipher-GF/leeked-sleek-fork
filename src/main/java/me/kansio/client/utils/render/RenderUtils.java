@@ -93,7 +93,7 @@ public class RenderUtils extends Util {
         tessellator.draw();
     }
 
-    public static void drawHead(ResourceLocation skin, int x, int y, int width, int height) {
+    public static void drawFace(ResourceLocation skin, int x, int y, int width, int height) {
         GL11.glColor4f(1F, 1F, 1F, 1F);
         mc.getTextureManager().bindTexture(skin);
         RenderUtils.drawScaledCustomSizeModalRect(x, y, 8F, 8F, 8, 8, width, height,
@@ -102,7 +102,7 @@ public class RenderUtils extends Util {
                 64F, 64F);
     }
 
-    public static void quickDrawHead(ResourceLocation skin, int x, int y, int width, int height) {
+    public static void quickDrawFace(ResourceLocation skin, int x, int y, int width, int height) {
         mc.getTextureManager().bindTexture(skin);
         RenderUtils.drawScaledCustomSizeModalRect(x, y, 8F, 8F, 8, 8, width, height,
                 64F, 64F);
@@ -264,12 +264,12 @@ public class RenderUtils extends Util {
         Gui.drawRect(x, y, x + width, y + height, color);
     }
 
-    public static void drawBorderedRect(double x, double y, double width, double height, double boarderthickness, int borderC, int insideC) {
+    public static void drawBorderedRect(double x, double y, double width, double height, double thickness, int borderC, int insideC) {
         drawRect(x, y, x + width, y + height, insideC);
-        drawRect(x, y, x + width, y + boarderthickness, borderC);
-        drawRect(x, y, x + boarderthickness, y + height, borderC);
-        drawRect(x + width, y, x + width - boarderthickness, y + height, borderC);
-        drawRect(x, y + height, x + width, y + height - boarderthickness, borderC);
+        drawRect(x, y, x + width, y + thickness, borderC);
+        drawRect(x, y, x + thickness, y + height, borderC);
+        drawRect(x + width, y, x + width - thickness, y + height, borderC);
+        drawRect(x, y + height, x + width, y + height - thickness, borderC);
     }
 
     public static void drawBorderedRoundedRect(float x, float y, float width, float height, float radius, float borderSize, int borderC, int insideC) {

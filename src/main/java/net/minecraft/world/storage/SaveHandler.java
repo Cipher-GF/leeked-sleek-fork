@@ -8,13 +8,18 @@ import net.minecraft.world.MinecraftException;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.chunk.storage.IChunkLoader;
 
+
 import java.io.*;
 
 
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 public class SaveHandler implements ISaveHandler, IPlayerFileData
 {
-    
+    private static final Logger logger = LogManager.getLogger();
 
     /** The directory in which to save world data. */
     private final File worldDirectory;
@@ -262,7 +267,7 @@ public class SaveHandler implements ISaveHandler, IPlayerFileData
         }
         catch (Exception var5)
         {
-            org.tinylog.Logger.warn("Failed to save player data for " + player.getName());
+            logger.warn("Failed to save player data for " + player.getName());
         }
     }
 
@@ -284,7 +289,7 @@ public class SaveHandler implements ISaveHandler, IPlayerFileData
         }
         catch (Exception var4)
         {
-            org.tinylog.Logger.warn("Failed to load player data for " + player.getName());
+            logger.warn("Failed to load player data for " + player.getName());
         }
 
         if (nbttagcompound != null)

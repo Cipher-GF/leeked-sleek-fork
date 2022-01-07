@@ -3,7 +3,7 @@ package net.minecraft.command;
 import net.minecraft.profiler.Profiler;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.BlockPos;
-import org.tinylog.Logger;
+
 
 import java.io.File;
 import java.io.FileWriter;
@@ -12,9 +12,17 @@ import java.util.Date;
 import java.util.List;
 
 
+
+import net.minecraft.profiler.Profiler;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.BlockPos;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 public class CommandDebug extends CommandBase
 {
-    
+    private static final Logger logger = LogManager.getLogger();
     private long field_147206_b;
     private int field_147207_c;
 
@@ -106,7 +114,7 @@ public class CommandDebug extends CommandBase
         }
         catch (Throwable throwable)
         {
-            Logger.error("Could not save profiler results to " + file1, throwable);
+            logger.error("Could not save profiler results to " + file1, throwable);
         }
     }
 

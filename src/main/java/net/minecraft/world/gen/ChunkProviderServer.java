@@ -17,7 +17,7 @@ import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.EmptyChunk;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.chunk.storage.IChunkLoader;
-import org.tinylog.Logger;
+
 
 import java.io.IOException;
 import java.util.Collections;
@@ -26,9 +26,13 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 public class ChunkProviderServer implements IChunkProvider
 {
-    
+    private static final Logger logger = LogManager.getLogger();
     private Set<Long> droppedChunksSet = Collections.<Long>newSetFromMap(new ConcurrentHashMap());
 
     /** a dummy chunk, returned in place of an actual chunk. */
@@ -178,7 +182,7 @@ public class ChunkProviderServer implements IChunkProvider
             }
             catch (Exception exception)
             {
-                Logger.error((String)"Couldn\'t load chunk", (Throwable)exception);
+                logger.error((String)"Couldn\'t load chunk", (Throwable)exception);
                 return null;
             }
         }
@@ -194,7 +198,7 @@ public class ChunkProviderServer implements IChunkProvider
             }
             catch (Exception exception)
             {
-                Logger.error((String)"Couldn\'t save entities", (Throwable)exception);
+                logger.error((String)"Couldn\'t save entities", (Throwable)exception);
             }
         }
     }
@@ -210,11 +214,11 @@ public class ChunkProviderServer implements IChunkProvider
             }
             catch (IOException ioexception)
             {
-                Logger.error((String)"Couldn\'t save chunk", (Throwable)ioexception);
+                logger.error((String)"Couldn\'t save chunk", (Throwable)ioexception);
             }
             catch (MinecraftException minecraftexception)
             {
-                Logger.error((String)"Couldn\'t save chunk; already in use by another instance of Minecraft?", (Throwable)minecraftexception);
+                logger.error((String)"Couldn\'t save chunk; already in use by another instance of Minecraft?", (Throwable)minecraftexception);
             }
         }
     }

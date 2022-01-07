@@ -5,14 +5,19 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.util.ResourceLocation;
 
+
 import java.io.IOException;
 import java.net.URI;
 
 
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 public class GuiScreenDemo extends GuiScreen
 {
-    
+    private static final Logger logger = LogManager.getLogger();
     private static final ResourceLocation field_146348_f = new ResourceLocation("textures/gui/demo_background.png");
 
     /**
@@ -45,7 +50,7 @@ public class GuiScreenDemo extends GuiScreen
                 }
                 catch (Throwable throwable)
                 {
-                    org.tinylog.Logger.error("Couldn\'t open link", throwable);
+                    logger.error("Couldn\'t open link", throwable);
                 }
 
                 break;

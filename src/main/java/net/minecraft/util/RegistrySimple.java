@@ -2,7 +2,7 @@ package net.minecraft.util;
 
 import com.google.common.collect.Maps;
 import org.apache.commons.lang3.Validate;
-import org.tinylog.Logger;
+
 
 import java.util.Collections;
 import java.util.Iterator;
@@ -10,9 +10,15 @@ import java.util.Map;
 import java.util.Set;
 
 
+
+import org.apache.commons.lang3.Validate;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 public class RegistrySimple<K, V> implements IRegistry<K, V>
 {
-    
+    private static final Logger logger = LogManager.getLogger();
     protected final Map<K, V> registryObjects = this.createUnderlyingMap();
 
     protected Map<K, V> createUnderlyingMap()
@@ -35,7 +41,7 @@ public class RegistrySimple<K, V> implements IRegistry<K, V>
 
         if (this.registryObjects.containsKey(p_82595_1_))
         {
-            Logger.debug("Adding duplicate key \'" + p_82595_1_ + "\' to registry");
+            logger.debug("Adding duplicate key \'" + p_82595_1_ + "\' to registry");
         }
 
         this.registryObjects.put(p_82595_1_, p_82595_2_);

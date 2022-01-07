@@ -1,16 +1,19 @@
 package net.minecraft.client.shader;
 
 import net.minecraft.client.renderer.OpenGlHelper;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import org.lwjgl.BufferUtils;
 import org.lwjgl.util.vector.Matrix4f;
-import org.tinylog.Logger;
 
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 
 public class ShaderUniform
 {
-    
+    private static final Logger logger = LogManager.getLogger();
     private int uniformLocation;
     private final int uniformCount;
     private final int uniformType;
@@ -186,7 +189,7 @@ public class ShaderUniform
     {
         if (p_148097_1_.length < this.uniformCount)
         {
-            Logger.warn("Uniform.set called with a too-small value array (expected " + this.uniformCount + ", got " + p_148097_1_.length + "). Ignoring.");
+            logger.warn("Uniform.set called with a too-small value array (expected " + this.uniformCount + ", got " + p_148097_1_.length + "). Ignoring.");
         }
         else
         {
@@ -245,7 +248,7 @@ public class ShaderUniform
         {
             if (this.uniformType > 10)
             {
-                Logger.warn("Uniform.upload called, but type value (" + this.uniformType + ") is not " + "a valid type. Ignoring.");
+                logger.warn("Uniform.upload called, but type value (" + this.uniformType + ") is not " + "a valid type. Ignoring.");
                 return;
             }
 
@@ -274,7 +277,7 @@ public class ShaderUniform
                 break;
 
             default:
-                Logger.warn("Uniform.upload called, but count value (" + this.uniformCount + ") is " + " not in the range of 1 to 4. Ignoring.");
+                logger.warn("Uniform.upload called, but count value (" + this.uniformCount + ") is " + " not in the range of 1 to 4. Ignoring.");
         }
     }
 
@@ -299,7 +302,7 @@ public class ShaderUniform
                 break;
 
             default:
-                Logger.warn("Uniform.upload called, but count value (" + this.uniformCount + ") is " + "not in the range of 1 to 4. Ignoring.");
+                logger.warn("Uniform.upload called, but count value (" + this.uniformCount + ") is " + "not in the range of 1 to 4. Ignoring.");
         }
     }
 

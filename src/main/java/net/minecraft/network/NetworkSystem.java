@@ -22,8 +22,9 @@ import net.minecraft.crash.CrashReportCategory;
 import net.minecraft.network.play.server.S40PacketDisconnect;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.NetHandlerHandshakeTCP;
+
 import net.minecraft.util.*;
-import org.tinylog.Logger;
+
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -34,9 +35,20 @@ import java.util.List;
 import java.util.concurrent.Callable;
 
 
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.LazyLoadBase;
+import net.minecraft.util.MessageDeserializer;
+import net.minecraft.util.MessageDeserializer2;
+import net.minecraft.util.MessageSerializer;
+import net.minecraft.util.MessageSerializer2;
+import net.minecraft.util.ReportedException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 public class NetworkSystem
 {
-    
+    private static final Logger logger = LogManager.getLogger();
     public static final LazyLoadBase<NioEventLoopGroup> eventLoops = new LazyLoadBase<NioEventLoopGroup>()
     {
         protected NioEventLoopGroup load()
@@ -87,13 +99,13 @@ public class NetworkSystem
             {
                 oclass = EpollServerSocketChannel.class;
                 lazyloadbase = field_181141_b;
-                Logger.info("Using epoll channel type");
+                logger.info("Using epoll channel type");
             }
             else
             {
                 oclass = NioServerSocketChannel.class;
                 lazyloadbase = eventLoops;
-                Logger.info("Using default channel type");
+                logger.info("Using default channel type");
             }
 
             this.endpoints.add(((ServerBootstrap)((ServerBootstrap)(new ServerBootstrap()).channel(oclass)).childHandler(new ChannelInitializer<Channel>()
@@ -159,7 +171,7 @@ public class NetworkSystem
             }
             catch (InterruptedException var4)
             {
-                Logger.error("Interrupted whilst closing channel");
+                logger.error("Interrupted whilst closing channel");
             }
         }
     }
@@ -207,7 +219,7 @@ public class NetworkSystem
                                 throw new ReportedException(crashreport);
                             }
 
-                            Logger.warn((String)("Failed to handle packet for " + networkmanager.getRemoteAddress()), (Throwable)exception);
+                            logger.warn((String)("Failed to handle packet for " + networkmanager.getRemoteAddress()), (Throwable)exception);
                             final ChatComponentText chatcomponenttext = new ChatComponentText("Internal server error");
                             networkmanager.sendPacket(new S40PacketDisconnect(chatcomponenttext), new GenericFutureListener < Future <? super Void >> ()
                             {

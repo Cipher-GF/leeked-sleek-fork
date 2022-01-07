@@ -32,7 +32,7 @@ import net.minecraft.world.border.WorldBorder;
 import net.minecraft.world.demo.DemoWorldManager;
 import net.minecraft.world.storage.IPlayerFileData;
 import net.minecraft.world.storage.WorldInfo;
-import org.tinylog.Logger;
+
 
 import java.io.File;
 import java.net.SocketAddress;
@@ -43,13 +43,17 @@ import java.util.Set;
 import java.util.UUID;
 
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 public abstract class ServerConfigurationManager
 {
     public static final File FILE_PLAYERBANS = new File("banned-players.json");
     public static final File FILE_IPBANS = new File("banned-ips.json");
     public static final File FILE_OPS = new File("ops.json");
     public static final File FILE_WHITELIST = new File("whitelist.json");
-    
+    private static final Logger logger = LogManager.getLogger();
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd \'at\' HH:mm:ss z");
 
     /** Reference to the MinecraftServer object. */
@@ -117,7 +121,7 @@ public abstract class ServerConfigurationManager
             s1 = netManager.getRemoteAddress().toString();
         }
 
-        Logger.info(playerIn.getName() + "[" + s1 + "] logged in with entity id " + playerIn.getEntityId() + " at (" + playerIn.posX + ", " + playerIn.posY + ", " + playerIn.posZ + ")");
+        logger.info(playerIn.getName() + "[" + s1 + "] logged in with entity id " + playerIn.getEntityId() + " at (" + playerIn.posX + ", " + playerIn.posY + ", " + playerIn.posZ + ")");
         WorldServer worldserver = this.mcServer.worldServerForDimension(playerIn.dimension);
         WorldInfo worldinfo = worldserver.getWorldInfo();
         BlockPos blockpos = worldserver.getSpawnPoint();
@@ -268,7 +272,7 @@ public abstract class ServerConfigurationManager
         {
             playerIn.readFromNBT(nbttagcompound);
             nbttagcompound1 = nbttagcompound;
-            Logger.debug("loading single player");
+            logger.debug("loading single player");
         }
         else
         {
@@ -331,7 +335,7 @@ public abstract class ServerConfigurationManager
         if (playerIn.ridingEntity != null)
         {
             worldserver.removePlayerEntityDangerously(playerIn.ridingEntity);
-            Logger.debug("removing player mount");
+            logger.debug("removing player mount");
         }
 
         worldserver.removeEntity(playerIn);

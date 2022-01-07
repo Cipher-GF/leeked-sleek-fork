@@ -6,7 +6,7 @@ import com.google.common.collect.Sets;
 import net.minecraft.client.resources.data.IMetadataSerializer;
 import net.minecraft.client.resources.data.LanguageMetadataSection;
 import net.minecraft.util.StringTranslate;
-import org.tinylog.Logger;
+
 
 import java.io.IOException;
 import java.util.List;
@@ -14,9 +14,13 @@ import java.util.Map;
 import java.util.SortedSet;
 
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 public class LanguageManager implements IResourceManagerReloadListener
 {
-    
+    private static final Logger logger = LogManager.getLogger();
     private final IMetadataSerializer theMetadataSerializer;
     private String currentLanguage;
     protected static final Locale currentLocale = new Locale();
@@ -52,11 +56,11 @@ public class LanguageManager implements IResourceManagerReloadListener
             }
             catch (RuntimeException runtimeexception)
             {
-                Logger.warn((String)("Unable to parse metadata section of resourcepack: " + iresourcepack.getPackName()), (Throwable)runtimeexception);
+                logger.warn((String)("Unable to parse metadata section of resourcepack: " + iresourcepack.getPackName()), (Throwable)runtimeexception);
             }
             catch (IOException ioexception)
             {
-                Logger.warn((String)("Unable to parse metadata section of resourcepack: " + iresourcepack.getPackName()), (Throwable)ioexception);
+                logger.warn((String)("Unable to parse metadata section of resourcepack: " + iresourcepack.getPackName()), (Throwable)ioexception);
             }
         }
     }

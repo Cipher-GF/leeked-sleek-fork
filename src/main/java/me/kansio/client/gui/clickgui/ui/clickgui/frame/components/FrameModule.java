@@ -96,7 +96,7 @@ public class FrameModule implements Priority {
                 boolean shouldBeHidden;
 
                 if (component.getSetting().hasParent() && component.getSetting().getParent() != null) {
-                    if ((component.getSetting().getParent() instanceof ModeValue && ((ModeValue) component.getSetting().getParent()).getValue().equalsIgnoreCase(component.getSetting().getMode()))
+                    if ((component.getSetting().getParent() instanceof ModeValue && component.getSetting().getModes().contains(component.getSetting().getParent().getValue()))
                             || (component.getSetting().getParent() instanceof BooleanValue && ((BooleanValue) component.getSetting().getParent()).getValue())) {
                         shouldBeHidden = false;
                     } else {

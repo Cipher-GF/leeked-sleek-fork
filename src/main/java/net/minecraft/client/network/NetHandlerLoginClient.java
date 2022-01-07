@@ -22,15 +22,20 @@ import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.CryptManager;
 import net.minecraft.util.IChatComponent;
 
+
 import javax.crypto.SecretKey;
 import java.math.BigInteger;
 import java.security.PublicKey;
 
 
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 public class NetHandlerLoginClient implements INetHandlerLoginClient
 {
-    
+    private static final Logger logger = LogManager.getLogger();
     private final Minecraft mc;
     private final GuiScreen previousGuiScreen;
     private final NetworkManager networkManager;
@@ -58,7 +63,7 @@ public class NetHandlerLoginClient implements INetHandlerLoginClient
             }
             catch (AuthenticationException var10)
             {
-                org.tinylog.Logger.warn("Couldn\'t connect to auth servers but will continue to join LAN");
+                logger.warn("Couldn\'t connect to auth servers but will continue to join LAN");
             }
         }
         else

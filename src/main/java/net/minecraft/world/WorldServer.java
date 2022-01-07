@@ -43,14 +43,18 @@ import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.storage.ISaveHandler;
 import net.minecraft.world.storage.MapStorage;
 import net.minecraft.world.storage.WorldInfo;
-import org.tinylog.Logger;
+
 
 import java.util.*;
 
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 public class WorldServer extends World implements IThreadListener
 {
-    
+    private static final Logger logger = LogManager.getLogger();
     private final MinecraftServer mcServer;
     private final EntityTracker theEntityTracker;
     private final PlayerManager thePlayerManager;
@@ -803,7 +807,7 @@ public class WorldServer extends World implements IThreadListener
             }
             else
             {
-                Logger.warn("Unable to find spawn biome");
+                logger.warn("Unable to find spawn biome");
             }
 
             int l = 0;

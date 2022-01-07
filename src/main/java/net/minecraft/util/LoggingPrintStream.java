@@ -2,12 +2,12 @@ package net.minecraft.util;
 
 import java.io.OutputStream;
 import java.io.PrintStream;
-
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class LoggingPrintStream extends PrintStream
 {
-    
+    private static final Logger LOGGER = LogManager.getLogger();
     private final String domain;
 
     public LoggingPrintStream(String domainIn, OutputStream outStream)
@@ -30,6 +30,6 @@ public class LoggingPrintStream extends PrintStream
     {
         StackTraceElement[] astacktraceelement = Thread.currentThread().getStackTrace();
         StackTraceElement stacktraceelement = astacktraceelement[Math.min(3, astacktraceelement.length)];
-        org.tinylog.Logger.info("[{}]@.({}:{}): {}", new Object[] {this.domain, stacktraceelement.getFileName(), Integer.valueOf(stacktraceelement.getLineNumber()), string});
+        LOGGER.info("[{}]@.({}:{}): {}", new Object[] {this.domain, stacktraceelement.getFileName(), Integer.valueOf(stacktraceelement.getLineNumber()), string});
     }
 }

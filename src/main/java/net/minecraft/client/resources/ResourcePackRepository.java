@@ -23,7 +23,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.comparator.LastModifiedFileComparator;
 import org.apache.commons.io.filefilter.IOFileFilter;
 import org.apache.commons.io.filefilter.TrueFileFilter;
-import org.tinylog.Logger;
+
 
 import java.awt.image.BufferedImage;
 import java.io.Closeable;
@@ -34,9 +34,13 @@ import java.util.*;
 import java.util.concurrent.locks.ReentrantLock;
 
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 public class ResourcePackRepository
 {
-    
+    private static final Logger logger = LogManager.getLogger();
     private static final FileFilter resourcePackFilter = new FileFilter()
     {
         public boolean accept(File p_accept_1_)
@@ -81,7 +85,7 @@ public class ResourcePackRepository
                     }
 
                     iterator.remove();
-                    Logger.warn("Removed selected resource pack {} because it\'s no longer compatible", new Object[] {resourcepackrepository$entry.getResourcePackName()});
+                    logger.warn("Removed selected resource pack {} because it\'s no longer compatible", new Object[] {resourcepackrepository$entry.getResourcePackName()});
                 }
             }
         }
@@ -93,12 +97,12 @@ public class ResourcePackRepository
         {
             if (!this.dirResourcepacks.isDirectory() && (!this.dirResourcepacks.delete() || !this.dirResourcepacks.mkdirs()))
             {
-                Logger.warn("Unable to recreate resourcepack folder, it exists but is not a directory: " + this.dirResourcepacks);
+                logger.warn("Unable to recreate resourcepack folder, it exists but is not a directory: " + this.dirResourcepacks);
             }
         }
         else if (!this.dirResourcepacks.mkdirs())
         {
-            Logger.warn("Unable to create resourcepack folder: " + this.dirResourcepacks);
+            logger.warn("Unable to create resourcepack folder: " + this.dirResourcepacks);
         }
     }
 
@@ -201,12 +205,12 @@ public class ResourcePackRepository
                         return listenablefuture1;
                     }
 
-                    Logger.warn("File " + file1 + " had wrong hash (expected " + hash + ", found " + s1 + "). Deleting it.");
+                    logger.warn("File " + file1 + " had wrong hash (expected " + hash + ", found " + s1 + "). Deleting it.");
                     FileUtils.deleteQuietly(file1);
                 }
                 catch (IOException ioexception)
                 {
-                    Logger.warn((String)("File " + file1 + " couldn\'t be hashed. Deleting it."), (Throwable)ioexception);
+                    logger.warn((String)("File " + file1 + " couldn\'t be hashed. Deleting it."), (Throwable)ioexception);
                     FileUtils.deleteQuietly(file1);
                 }
             }
@@ -255,7 +259,7 @@ public class ResourcePackRepository
         {
             if (i++ >= 10)
             {
-                Logger.info("Deleting old server resource pack " + file1.getName());
+                logger.info("Deleting old server resource pack " + file1.getName());
                 FileUtils.deleteQuietly(file1);
             }
         }

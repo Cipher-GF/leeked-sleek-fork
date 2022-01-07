@@ -41,7 +41,7 @@ public class TargetHUD extends Util {
 
                 if (target instanceof EntityPlayer) {
                     ResourceLocation skin = ((AbstractClientPlayer)target).getLocationSkin();
-                    RenderUtils.drawHead(skin, 160, 360, 30, 30);
+                    RenderUtils.drawFace(skin, 160, 360, 30, 30);
                 }
                 RenderUtils.drawBorderedRoundedRect(155, 400, (float) (20 * 6.9), 5, 5, 0.5f, new Color(40, 40, 40, 255).getRGB(), new Color(45, 45, 45, 255).getRGB());
                 RenderUtils.drawBorderedRoundedRect(155, 400, (float) (target.getHealth() > 0 ? targetHealthWidth : 6.9), 5, 5, 0.5f, new Color(189, 1, 1, 255).getRGB(), new Color(255, 0, 0, 255).getRGB());
@@ -57,10 +57,10 @@ public class TargetHUD extends Util {
                         final String playerName = "Name: " + net.minecraft.util.StringUtils.stripControlCodes(target.getName());
                         RenderUtils.drawBorderedRect(x, y, 140, 45, 0.5, new Color(0, 0, 0, 255).getRGB(), new Color(0, 0, 0, 90).getRGB());
                         RenderUtils.drawRect(x, y, 45, 45, new Color(0, 0, 0).getRGB());
-                        Fonts.clickGuiSmallFont.drawStringWithShadow(playerName, x + 46.5, y + 4, -1);
-                        Fonts.clickGuiSmallFont.drawStringWithShadow("Distance: " + MathUtils.round(mc.thePlayer.getDistanceToEntity(target), 2), x + 46.5, y + 12, -1);
-                        Fonts.clickGuiSmallFont.drawStringWithShadow(ping, x + 46.5, y + 28, new Color(0x5D5B5C).getRGB());
-                        Fonts.clickGuiSmallFont.drawStringWithShadow("Health: " + MathUtils.round((Float.isNaN(target.getHealth()) ? 20 : target.getHealth()) / 2, 2), x + 46.5, y + 20, getHealthColor(target));
+                        Fonts.Arial12.drawStringWithShadow(playerName, x + 46.5, y + 4, -1);
+                        Fonts.Arial12.drawStringWithShadow("Distance: " + MathUtils.round(mc.thePlayer.getDistanceToEntity(target), 2), x + 46.5, y + 12, -1);
+                        Fonts.Arial12.drawStringWithShadow(ping, x + 46.5, y + 28, new Color(0x5D5B5C).getRGB());
+                        Fonts.Arial12.drawStringWithShadow("Health: " + MathUtils.round((Float.isNaN(target.getHealth()) ? 20 : target.getHealth()) / 2, 2), x + 46.5, y + 20, getHealthColor(target));
                         drawFace(x + 0.5, y + 0.5, 8, 8, 8, 8, 44, 44, 64, 64, (AbstractClientPlayer) target);
                         RenderUtils.drawBorderedRect(x + 46, y + 45 - 10, 92, 8, 0.5, new Color(0).getRGB(), new Color(35, 35, 35).getRGB());
                         double inc = 91 / target.getMaxHealth();

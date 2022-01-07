@@ -6,7 +6,7 @@ import com.google.common.collect.Maps;
 import com.google.common.io.Files;
 import com.google.gson.*;
 import org.apache.commons.io.IOUtils;
-import org.tinylog.Logger;
+
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -19,8 +19,15 @@ import java.util.List;
 import java.util.Map;
 
 
+
+import org.apache.commons.io.IOUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 public class UserList<K, V extends UserListEntry<K>>
 {
+    protected static final Logger logger = LogManager.getLogger();
     protected final Gson gson;
     private final File saveFile;
     private final Map<String, V> values = Maps.<String, V>newHashMap();
@@ -72,7 +79,7 @@ public class UserList<K, V extends UserListEntry<K>>
         }
         catch (IOException ioexception)
         {
-            Logger.warn((String)"Could not save the list after adding a user.", (Throwable)ioexception);
+            logger.warn((String)"Could not save the list after adding a user.", (Throwable)ioexception);
         }
     }
 
@@ -92,7 +99,7 @@ public class UserList<K, V extends UserListEntry<K>>
         }
         catch (IOException ioexception)
         {
-            Logger.warn((String)"Could not save the list after removing a user.", (Throwable)ioexception);
+            logger.warn((String)"Could not save the list after removing a user.", (Throwable)ioexception);
         }
     }
 

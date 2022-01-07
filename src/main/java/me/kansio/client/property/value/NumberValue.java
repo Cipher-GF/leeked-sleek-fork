@@ -26,7 +26,7 @@ public final class NumberValue<T extends Number> extends Value<T> {
         this.increment = increment;
     }
 
-    public NumberValue(String name, Object owner, T value, T min, T max, T increment, ModeValue parent, String parentmode) {
+    public NumberValue(String name, Object owner, T value, T min, T max, T increment, ModeValue parent, String... parentmode) {
         super(name, owner, value, parent, parentmode);
         //checkRetardMoment(value);
         this.value = value;

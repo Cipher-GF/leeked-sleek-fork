@@ -43,7 +43,7 @@ public class KillAura extends Module {
                 swingrage, autoblockRange, cps, cprandom,
 
                 //booleans
-                players, friends, animals, monsters, invisible, walls, gcd
+                targethud, gcd, players, friends, animals, monsters, invisible, walls
         );
     }
 
@@ -61,7 +61,8 @@ public class KillAura extends Module {
     public BooleanValue gcd = new BooleanValue("GCD", this, false);
     private SubSettings attackSettings = new SubSettings("Attack Setting", targetPriority, rotatemode);
 
-    public ModeValue targethudmode = new ModeValue("TargetHud Mode", this, "Sleek", "Moon");
+    public BooleanValue targethud = new BooleanValue("TargetHud", this, false);
+    public ModeValue targethudmode = new ModeValue("TargetHud Mode", this, targethud,"Sleek", "Moon");
     private SubSettings renderSettings = new SubSettings("Render Setting", targethudmode);
 
 
@@ -71,8 +72,6 @@ public class KillAura extends Module {
     public BooleanValue monsters = new BooleanValue("Monsters", this, true);
     public BooleanValue invisible = new BooleanValue("Invisibles", this, true);
     public BooleanValue walls = new BooleanValue("Walls", this, true);
-    public BooleanValue targethud = new BooleanValue("TargetHud", this, false);
-
     private SubSettings targetSettings = new SubSettings("Target Setting", players, friends, animals, monsters, invisible, walls);
 
     public static EntityLivingBase target;
@@ -313,7 +312,9 @@ public class KillAura extends Module {
         if (target == null) {
             return;
         }
+        if (targethud.getValue()){
             TargetHUD.draw(event, target);
+        }
     }
 
     private void unblock() {

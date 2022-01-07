@@ -4,13 +4,18 @@ import com.google.common.collect.Maps;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
+
 import java.util.Map;
 
 
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 public class MapGenStructureIO
 {
-    
+    private static final Logger logger = LogManager.getLogger();
     private static Map < String, Class <? extends StructureStart >> startNameToClassMap = Maps. < String, Class <? extends StructureStart >> newHashMap();
     private static Map < Class <? extends StructureStart > , String > startClassToNameMap = Maps. < Class <? extends StructureStart > , String > newHashMap();
     private static Map < String, Class <? extends StructureComponent >> componentNameToClassMap = Maps. < String, Class <? extends StructureComponent >> newHashMap();
@@ -53,7 +58,7 @@ public class MapGenStructureIO
         }
         catch (Exception exception)
         {
-            org.tinylog.Logger.warn("Failed Start with id " + tagCompound.getString("id"));
+            logger.warn("Failed Start with id " + tagCompound.getString("id"));
             exception.printStackTrace();
         }
 
@@ -63,7 +68,7 @@ public class MapGenStructureIO
         }
         else
         {
-            org.tinylog.Logger.warn("Skipping Structure with id " + tagCompound.getString("id"));
+            logger.warn("Skipping Structure with id " + tagCompound.getString("id"));
         }
 
         return structurestart;
@@ -84,7 +89,7 @@ public class MapGenStructureIO
         }
         catch (Exception exception)
         {
-            org.tinylog.Logger.warn("Failed Piece with id " + tagCompound.getString("id"));
+            logger.warn("Failed Piece with id " + tagCompound.getString("id"));
             exception.printStackTrace();
         }
 
@@ -94,7 +99,7 @@ public class MapGenStructureIO
         }
         else
         {
-            org.tinylog.Logger.warn("Skipping Piece with id " + tagCompound.getString("id"));
+            logger.warn("Skipping Piece with id " + tagCompound.getString("id"));
         }
 
         return structurecomponent;

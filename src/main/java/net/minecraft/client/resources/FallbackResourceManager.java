@@ -4,15 +4,20 @@ import com.google.common.collect.Lists;
 import net.minecraft.client.resources.data.IMetadataSerializer;
 import net.minecraft.util.ResourceLocation;
 
+
 import java.io.*;
 import java.util.List;
 import java.util.Set;
 
 
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 public class FallbackResourceManager implements IResourceManager
 {
-    
+    private static final Logger logger = LogManager.getLogger();
     protected final List<IResourcePack> resourcePacks = Lists.<IResourcePack>newArrayList();
     private final IMetadataSerializer frmMetadataSerializer;
 
@@ -64,7 +69,7 @@ public class FallbackResourceManager implements IResourceManager
     protected InputStream getInputStream(ResourceLocation location, IResourcePack resourcePack) throws IOException
     {
         InputStream inputstream = resourcePack.getInputStream(location);
-        return inputstream;
+        return (InputStream)(logger.isDebugEnabled() ? new FallbackResourceManager.InputStreamLeakedResourceLogger(inputstream, location, resourcePack.getPackName()) : inputstream);
     }
 
     public List<IResource> getAllResources(ResourceLocation location) throws IOException
@@ -120,7 +125,7 @@ public class FallbackResourceManager implements IResourceManager
         {
             if (!this.field_177329_c)
             {
-                org.tinylog.Logger.warn(this.field_177328_b);
+                FallbackResourceManager.logger.warn(this.field_177328_b);
             }
 
             super.finalize();

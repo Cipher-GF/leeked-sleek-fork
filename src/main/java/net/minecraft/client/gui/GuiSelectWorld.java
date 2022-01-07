@@ -11,6 +11,7 @@ import net.minecraft.world.storage.SaveFormatComparator;
 import net.minecraft.world.storage.WorldInfo;
 import org.apache.commons.lang3.StringUtils;
 
+
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -19,9 +20,13 @@ import java.util.Date;
 
 
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 public class GuiSelectWorld extends GuiScreen implements GuiYesNoCallback
 {
-    
+    private static final Logger logger = LogManager.getLogger();
     private final DateFormat field_146633_h = new SimpleDateFormat();
     protected GuiScreen parentScreen;
     protected String field_146628_f = "Select world";
@@ -57,7 +62,7 @@ public class GuiSelectWorld extends GuiScreen implements GuiYesNoCallback
         }
         catch (AnvilConverterException anvilconverterexception)
         {
-            org.tinylog.Logger.error((String)"Couldn\'t load level list", (Throwable)anvilconverterexception);
+            logger.error((String)"Couldn\'t load level list", (Throwable)anvilconverterexception);
             this.mc.displayGuiScreen(new GuiErrorScreen("Unable to load worlds", anvilconverterexception.getMessage()));
             return;
         }
@@ -217,7 +222,7 @@ public class GuiSelectWorld extends GuiScreen implements GuiYesNoCallback
                 }
                 catch (AnvilConverterException anvilconverterexception)
                 {
-                    org.tinylog.Logger.error((String)"Couldn\'t load level list", (Throwable)anvilconverterexception);
+                    logger.error((String)"Couldn\'t load level list", (Throwable)anvilconverterexception);
                 }
             }
 

@@ -12,9 +12,22 @@ import java.security.spec.X509EncodedKeySpec;
 
 
 
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.KeyGenerator;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 public class CryptManager
 {
-    
+    private static final Logger LOGGER = LogManager.getLogger();
 
     /**
      * Generate a new shared secret AES key from a secure random source
@@ -47,7 +60,7 @@ public class CryptManager
         catch (NoSuchAlgorithmException nosuchalgorithmexception)
         {
             nosuchalgorithmexception.printStackTrace();
-            org.tinylog.Logger.error("Key pair generation failed!");
+            LOGGER.error("Key pair generation failed!");
             return null;
         }
     }
@@ -111,7 +124,7 @@ public class CryptManager
             ;
         }
 
-        org.tinylog.Logger.error("Public key reconstitute failed!");
+        LOGGER.error("Public key reconstitute failed!");
         return null;
     }
 
@@ -157,7 +170,7 @@ public class CryptManager
             badpaddingexception.printStackTrace();
         }
 
-        org.tinylog.Logger.error("Cipher data failed!");
+        LOGGER.error("Cipher data failed!");
         return null;
     }
 
@@ -185,7 +198,7 @@ public class CryptManager
             nosuchpaddingexception.printStackTrace();
         }
 
-        org.tinylog.Logger.error("Cipher creation failed!");
+        LOGGER.error("Cipher creation failed!");
         return null;
     }
 

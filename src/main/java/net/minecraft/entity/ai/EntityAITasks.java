@@ -8,9 +8,15 @@ import java.util.List;
 
 
 
+
+import net.minecraft.profiler.Profiler;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 public class EntityAITasks
 {
-    
+    private static final Logger logger = LogManager.getLogger();
     private List<EntityAITasks.EntityAITaskEntry> taskEntries = Lists.<EntityAITasks.EntityAITaskEntry>newArrayList();
     private List<EntityAITasks.EntityAITaskEntry> executingTaskEntries = Lists.<EntityAITasks.EntityAITaskEntry>newArrayList();
 
