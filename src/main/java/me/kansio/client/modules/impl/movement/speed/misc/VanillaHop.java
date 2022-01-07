@@ -13,7 +13,6 @@ public class VanillaHop extends SpeedMode {
     @Override
     public void onUpdate(UpdateEvent event) {
         if (mc.thePlayer.isMovingOnGround()) {
-            ChatUtil.log("fun");
             mc.thePlayer.motionY = PlayerUtil.getMotion(0.42f);
         }
         PlayerUtil.setMotion(getSpeed().getSpeed().getValue().floatValue());
