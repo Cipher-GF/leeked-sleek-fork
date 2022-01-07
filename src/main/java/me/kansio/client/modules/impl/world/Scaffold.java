@@ -11,6 +11,7 @@ import me.kansio.client.modules.impl.visuals.HUD;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.ModeValue;
 import me.kansio.client.property.value.NumberValue;
+import me.kansio.client.utils.font.Fonts;
 import me.kansio.client.utils.math.Stopwatch;
 import me.kansio.client.utils.math.MathUtil;
 import me.kansio.client.utils.render.ColorPalette;
@@ -126,17 +127,18 @@ public class Scaffold extends Module {
 
     @Subscribe
     public void onRender(RenderOverlayEvent event) {
-        if (this.info.getValue()) {
+        if (info.getValue() && Client.getInstance().getModuleManager().getModuleByName("HUD").isToggled()) {
             HUD hud = (HUD) Client.getInstance().getModuleManager().getModuleByName("HUD");
             ScaledResolution scaledResolution = RenderUtils.getResolution();
-
-            //RenderUtils.drawRect(scaledResolution.getScaledWidth() / 2 - 30, scaledResolution.getScaledHeight() / 2 + 50 + animation, 20 + mc.fontRendererObj.getStringWidth(getBlockCount() + "") + 10, 30, new Color(0, 0, 0, 105).getRGB());
-            RenderUtils.drawRoundedRect(scaledResolution.getScaledWidth() / 2 - 30, scaledResolution.getScaledHeight() / 2 + 50 + animation, 20 + mc.fontRendererObj.getStringWidth(getBlockCount() + "") + 10, 30, 2, new Color(0, 0, 0, 105).getRGB());
-            //RenderUtils.drawRect(scaledResolution.getScaledWidth() / 2 - 30, scaledResolution.getScaledHeight() / 2 + 50 + animation, 20 + mc.fontRendererObj.getStringWidth(getBlockCount() + "") + 10, 1, ColorPalette.GREEN.getColor().getRGB());
-            RenderUtils.drawRoundedRect(scaledResolution.getScaledWidth() / 2 - 30, scaledResolution.getScaledHeight() / 2 + 50 + animation, 20 + mc.fontRendererObj.getStringWidth(getBlockCount() + "") + 10, 1, 1, ColorPalette.GREEN.getColor().getRGB());
-
-            mc.fontRendererObj.drawStringWithShadow(getBlockCount() + "", scaledResolution.getScaledWidth() / 2 - 5, scaledResolution.getScaledHeight() / 2 + 61 + animation, -1);
-
+            RenderUtils.drawRect(scaledResolution.getScaledWidth() / 2 - 30, scaledResolution.getScaledHeight() / 2 + 50 + animation, 20 + mc.fontRendererObj.getStringWidth(getBlockCount() + "") + 10, 30, new Color(0, 0, 0, 105).getRGB());
+            RenderUtils.drawRect(scaledResolution.getScaledWidth() / 2 - 30, scaledResolution.getScaledHeight() / 2 + 50 + animation, 20 + mc.fontRendererObj.getStringWidth(getBlockCount() + "") + 10, 1, ColorPalette.GREEN.getColor().getRGB());
+            if (hud.font.getValue()) {
+                Fonts.Arial18.drawString(getBlockCount() + "", scaledResolution.getScaledWidth() / 2 - 5, scaledResolution.getScaledHeight() / 2 + 61 + animation, -1);
+                Fonts.Arial18.drawString("Blocks", scaledResolution.getScaledWidth() / 2 - 15, scaledResolution.getScaledHeight() / 2 + 71 + animation, -1);
+            } else {
+                mc.fontRendererObj.drawString(getBlockCount() + "", scaledResolution.getScaledWidth() / 2 - 5, scaledResolution.getScaledHeight() / 2 + 61 + animation, -1);
+                mc.fontRendererObj.drawString("Blocks", scaledResolution.getScaledWidth() / 2 - 15, scaledResolution.getScaledHeight() / 2 + 71 + animation, -1);
+            }
             mc.getRenderItem().renderItemIntoGUI(mc.thePlayer.inventory.getStackInSlot(getSlotWithBlock()), scaledResolution.getScaledWidth() / 2 - 28, scaledResolution.getScaledHeight() / 2 + 57 + animation);
         }
     }

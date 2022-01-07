@@ -1,5 +1,9 @@
 package me.kansio.client.notification;
 
+import me.kansio.client.Client;
+import me.kansio.client.modules.impl.movement.Speed;
+import me.kansio.client.modules.impl.visuals.HUD;
+import me.kansio.client.utils.font.Fonts;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiScreen;
@@ -22,8 +26,8 @@ public class Notification {
     private NotificationType type;
     private String title;
     private String messsage;
-    private long start;
 
+    private long start;
     private long fadedIn;
     private long fadeOut;
     private long end;
@@ -69,18 +73,18 @@ public class Notification {
             offset = width;
         }
 
-        Color color = new Color(0, 0, 0, 100);
-        Color color1;
+        Color backgroundcolor = new Color(0, 0, 0, 100);
+        Color typecolor;
 
         switch (type) {
             case INFO:
-                color1 = new Color(0, 255, 128);
+                typecolor = new Color(255, 255, 255);
                 break;
             case WARNING:
-                color1 = new Color(0, 255, 128);
+                typecolor = new Color(228, 255, 0);
                 break;
             case ERROR:
-                color1 = new Color(204, 0, 18);
+                typecolor = new Color(255, 0, 21);
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + type);
@@ -88,11 +92,19 @@ public class Notification {
 
         FontRenderer fontRenderer = Minecraft.getMinecraft().fontRendererObj;
 
-        drawRect(GuiScreen.width - offset, GuiScreen.height - 5 - height, GuiScreen.width, GuiScreen.height - 5, color.getRGB());
-        drawRect(GuiScreen.width - offset, GuiScreen.height - 5 - height, GuiScreen.width - offset + 2, GuiScreen.height - 5, color1.getRGB());
+        drawRect(GuiScreen.width - offset, GuiScreen.height - 5 - height, GuiScreen.width, GuiScreen.height - 5, backgroundcolor.getRGB());
+        drawRect(GuiScreen.width - offset, GuiScreen.height - 5 - height, GuiScreen.width - offset + 2, GuiScreen.height - 5, typecolor.getRGB());
 
-        fontRenderer.drawString(title, (int) (GuiScreen.width - offset + 8), GuiScreen.height - 2 - height, -1);
-        fontRenderer.drawString(messsage, (int) (GuiScreen.width - offset + 8), GuiScreen.height - 15, -1);
+        HUD hud = (HUD) Client.getInstance().getModuleManager().getModuleByName("HUD");
+        if (hud.font.getValue()) {
+            Fonts.Arial18.drawString(title, (int) (GuiScreen.width - offset + 8), GuiScreen.height - 2 - height, -1);
+            Fonts.Arial18.drawString("icon", (int) (GuiScreen.width - offset + 100 / 5), GuiScreen.height - 2 - height, -1);
+            Fonts.Arial18.drawString(messsage, (int) (GuiScreen.width - offset + 8), GuiScreen.height - 15, -1);
+        } else {
+            fontRenderer.drawString(title, (int) (GuiScreen.width - offset + 8), GuiScreen.height - 2 - height, -1);
+            fontRenderer.drawString("icon", (int) (GuiScreen.width - offset + 10 / 5), GuiScreen.height - 2 - height, -1);
+            fontRenderer.drawString(messsage, (int) (GuiScreen.width - offset + 8), GuiScreen.height - 15, -1);
+        }
     }
 
     public static void drawRect(double left, double top, double right, double bottom, int color) {
