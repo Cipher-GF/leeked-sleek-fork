@@ -6,6 +6,7 @@ import lombok.Setter;
 import me.kansio.client.Client;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.impl.visuals.ClickGUI;
+import me.kansio.client.modules.impl.visuals.HUD;
 import me.kansio.client.notification.Notification;
 import me.kansio.client.notification.NotificationManager;
 import me.kansio.client.property.Value;
@@ -44,13 +45,21 @@ public abstract class Module {
     public String getFormattedSuffix() {
         if (getSuffix().equalsIgnoreCase("")) return "";
 
-        String formatted = getSuffix();
+        HUD hud = (HUD) Client.getInstance().getModuleManager().getModuleByName("HUD");
 
-        if (getSuffix().startsWith(" ")) {
-            formatted = getSuffix().replaceFirst(" ", "");
-        }
 
-        return " [" + formatted + "]";
+        String suffix;
+
+        if (getSuffix().startsWith(" "))
+            suffix = getSuffix().replaceFirst(" ", "");
+        else
+            suffix = getSuffix();
+
+        String formatted = hud.getListSuffix().getValue().replaceAll("%s", suffix);
+
+
+
+        return formatted;
     }
 
     public void toggle() {
