@@ -66,9 +66,7 @@ public class Flight extends Module {
 
     public void onEnable() {
         this.currentMode = modes.stream().anyMatch(speedMode -> speedMode.getName().equalsIgnoreCase(modeValue.getValue())) ? modes.stream().filter(speedMode -> speedMode.getName().equalsIgnoreCase(modeValue.getValue())).findAny().get() : null;
-        if (mc.thePlayer == null || mc.theWorld == null) return;
         currentMode.onEnable();
-
     }
 
     public void onDisable() {

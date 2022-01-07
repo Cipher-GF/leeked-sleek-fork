@@ -2,6 +2,7 @@ package net.minecraft.client.entity;
 
 import dorkbox.messageBus.annotations.Subscribe;
 import me.kansio.client.Client;
+import me.kansio.client.event.impl.ChatEvent;
 import me.kansio.client.event.impl.MoveEvent;
 import me.kansio.client.event.impl.NoSlowEvent;
 import me.kansio.client.event.impl.UpdateEvent;
@@ -266,8 +267,9 @@ public class EntityPlayerSP extends AbstractClientPlayer {
      */
     public void sendChatMessage(String message) {
         //This thing handles the chat commands
-        if (message.startsWith(".")) {
-            Client.getInstance().getCommandManager().callCommand(message);
+        ChatEvent event = new ChatEvent(message);
+        Client.getInstance().getEventBus().publish(event);
+        if (event.isCancelled()) {
             return;
         }
 

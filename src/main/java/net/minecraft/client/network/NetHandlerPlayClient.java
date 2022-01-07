@@ -566,7 +566,7 @@ public class NetHandlerPlayClient implements INetHandlerPlayClient {
     }
 
     public void addToSendQueue(Packet p_147297_1_) {
-        PacketEvent packetEvent = new PacketEvent(PacketDirection.OUTBOUND, p_147297_1_);
+        PacketEvent packetEvent = new PacketEvent(PacketDirection.INBOUND, p_147297_1_);
         Client.getInstance().getEventBus().publish(packetEvent);
         if (packetEvent.isCancelled())
             return;

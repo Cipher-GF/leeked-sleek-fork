@@ -142,7 +142,7 @@ public class NetworkManager extends SimpleChannelInboundHandler<Packet>
         {
             try
             {
-                PacketEvent packetEvent = new PacketEvent(PacketDirection.INBOUND, p_channelRead0_2_);
+                PacketEvent packetEvent = new PacketEvent(PacketDirection.OUTBOUND, p_channelRead0_2_);
                 Client.getInstance().getEventBus().publish(packetEvent);
                 if (packetEvent.isCancelled())
                     return;

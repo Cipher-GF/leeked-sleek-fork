@@ -98,11 +98,11 @@ public class Notification {
         HUD hud = (HUD) Client.getInstance().getModuleManager().getModuleByName("HUD");
         if (hud.font.getValue()) {
             Fonts.Arial18.drawString(title, (int) (GuiScreen.width - offset + 8), GuiScreen.height - 2 - height, -1);
-            Fonts.Arial18.drawString("icon", (int) (GuiScreen.width - offset + 100 / 5), GuiScreen.height - 2 - height, -1);
+            //Fonts.Arial18.drawString("icon", (int) (GuiScreen.width - offset + 100 / 5), GuiScreen.height - 2 - height, -1);
             Fonts.Arial18.drawString(messsage, (int) (GuiScreen.width - offset + 8), GuiScreen.height - 15, -1);
         } else {
             fontRenderer.drawString(title, (int) (GuiScreen.width - offset + 8), GuiScreen.height - 2 - height, -1);
-            fontRenderer.drawString("icon", (int) (GuiScreen.width - offset + 10 / 5), GuiScreen.height - 2 - height, -1);
+            //fontRenderer.drawString("icon", (int) (GuiScreen.width - offset + 10 / 5), GuiScreen.height - 2 - height, -1);
             fontRenderer.drawString(messsage, (int) (GuiScreen.width - offset + 8), GuiScreen.height - 15, -1);
         }
     }

@@ -57,6 +57,7 @@ public class ModuleManager {
         modules.add(new Timer());
         modules.add(new NoRotate());
         modules.add(new NoSlow());
+        modules.add(new IRC());
 
         //Visual
         modules.add(new HUD());

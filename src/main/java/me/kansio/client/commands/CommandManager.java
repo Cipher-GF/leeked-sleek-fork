@@ -1,6 +1,9 @@
 package me.kansio.client.commands;
 
+import dorkbox.messageBus.annotations.Subscribe;
+import me.kansio.client.Client;
 import me.kansio.client.commands.impl.*;
+import me.kansio.client.event.impl.ChatEvent;
 import me.kansio.client.utils.chat.ChatUtil;
 
 import java.util.ArrayList;
@@ -11,9 +14,14 @@ public class CommandManager {
 
     public CommandManager() {
         registerCommands();
+        Client.getInstance().getEventBus().subscribe(this);
     }
 
-    public void callCommand(String cmd) {
+    @Subscribe
+    public void callCommand(ChatEvent event) {
+        if (!event.getMessage().startsWith(".")) return;
+        event.setCancelled(true);
+        String cmd = event.getMessage();
         String[] split = cmd.split(" ");
         String command = split[0];
         String args = cmd.substring(command.length()).trim();
