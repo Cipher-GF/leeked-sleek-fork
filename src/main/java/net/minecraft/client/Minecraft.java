@@ -231,7 +231,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage {
     private PlayerUsageSnooper usageSnooper = new PlayerUsageSnooper("client", this, MinecraftServer.getCurrentTimeMillis());
     public WorldClient theWorld;
     public RenderGlobal renderGlobal;
-    private RenderManager renderManager;
+    public RenderManager renderManager;
     private RenderItem renderItem;
     private ItemRenderer itemRenderer;
     public EntityPlayerSP thePlayer;

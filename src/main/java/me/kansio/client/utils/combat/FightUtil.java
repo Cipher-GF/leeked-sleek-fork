@@ -64,6 +64,15 @@ public class FightUtil extends Util {
         if (entity.getTeam() != null && mc.thePlayer.getTeam() != null) {
             Team team1 = entity.getTeam();
             Team team2 = mc.thePlayer.getTeam();
+
+            if (entity.getName().contains("UPGRADES")) {
+                return false;
+            }
+
+            if (entity.getName().contains("SHOP")) {
+                return false;
+            }
+
             return team1 == team2;
         }
         return false;

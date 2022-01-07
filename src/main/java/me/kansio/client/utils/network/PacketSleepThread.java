@@ -1,5 +1,6 @@
 package me.kansio.client.utils.network;
 
+import me.kansio.client.utils.chat.ChatUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.Packet;
 
@@ -10,6 +11,7 @@ public class PacketSleepThread extends Thread {
             sleep_ms(delay);
             if (Minecraft.getMinecraft().thePlayer != null) {
                 PacketUtil.sendPacketNoEvent(packet);
+                ChatUtil.log("sent delayed packet");
             }
         });
     }

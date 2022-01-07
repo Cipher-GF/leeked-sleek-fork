@@ -459,15 +459,6 @@ public class EntityPlayerSP extends AbstractClientPlayer {
      * Set sprinting switch for Entity.
      */
     public void setSprinting(boolean sprinting) {
-
-        if (!sprinting) {
-            Sprint sprint = (Sprint) Client.getInstance().getModuleManager().getModuleByName("Sprint");
-
-            if (sprint.getKeepSprint().getValue()) {
-                return;
-            }
-        }
-
         super.setSprinting(sprinting);
         this.sprintingTicksLeft = sprinting ? 600 : 0;
     }

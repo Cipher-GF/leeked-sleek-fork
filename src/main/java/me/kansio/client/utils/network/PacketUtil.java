@@ -10,7 +10,7 @@ public class PacketUtil extends Util {
     }
 
     public static void sendPacketNoEvent(Packet packet) {
-        mc.getNetHandler().addToSendQueue(packet);
+        mc.getNetHandler().addToSendQueueNoEvent(packet);
     }
 
 }

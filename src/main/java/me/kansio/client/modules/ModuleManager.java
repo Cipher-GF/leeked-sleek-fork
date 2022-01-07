@@ -68,6 +68,7 @@ public class ModuleManager {
         modules.add(new Brightness());
         modules.add(new AttackEffect());
         modules.add(new DeathEffect());
+        modules.add(new PenisESP());
 
         //World
         modules.add(new Scaffold());
