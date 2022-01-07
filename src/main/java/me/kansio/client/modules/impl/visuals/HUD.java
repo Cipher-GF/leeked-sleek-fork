@@ -1,6 +1,7 @@
 package me.kansio.client.modules.impl.visuals;
 
 import dorkbox.messageBus.annotations.Subscribe;
+import lombok.Getter;
 import me.kansio.client.Client;
 import me.kansio.client.event.impl.RenderOverlayEvent;
 import me.kansio.client.modules.api.ModuleCategory;
@@ -18,18 +19,21 @@ import net.minecraft.util.EnumChatFormatting;
 import java.awt.*;
 import java.text.DecimalFormat;
 
+@Getter
 public class HUD extends Module {
 
     public BooleanValue font = new BooleanValue("Font", this, false);
     private BooleanValue noti = new BooleanValue("Notifications", this, true);
     private BooleanValue bps = new BooleanValue("BPS", this, true);
+    private BooleanValue importantOnly = new BooleanValue("Important Only", this, true);
     private StringValue clientName = new StringValue("Client Name", this, "Sleek");
+    private StringValue listSuffix = new StringValue("Module Suffix", this, " [%s]");
 
     public static boolean notifications;
 
     public HUD() {
         super("HUD", ModuleCategory.VISUALS);
-        register(noti, font, bps, clientName);
+        register(noti, font, importantOnly, clientName, listSuffix);
     }
 
     @Subscribe
@@ -50,12 +54,11 @@ public class HUD extends Module {
 
                 Color color = ColorUtils.getGradientOffset(new Color(0, 255, 128), new Color(212, 1, 1), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + y / mc.fontRendererObj.FONT_HEIGHT * 9.95);
 
-
                 String name = mod.getName() + "§7" + mod.getFormattedSuffix();
                 float xPos = event.getSr().getScaledWidth() - Fonts.Arial18.getStringWidth(name) - 6;
                 Gui.drawRect(xPos - 1.5, y - 3, event.getSr().getScaledWidth(), Fonts.Arial18.getHeight() + y + 1, new Color(0, 0, 0, 80).getRGB());
                 Gui.drawRect(event.getSr().getScaledWidth() - 1, y - 3, event.getSr().getScaledWidth(), Fonts.Arial18.getHeight() + y + 1, color.getRGB());
-                Fonts.Arial18.drawStringWithShadow(name, xPos, (float) (0.5 + y), color.getRGB());
+                Fonts.HUD.drawStringWithShadow(name, xPos, (float) (0.5 + y), color.getRGB());
                 y = y + 11;
             }
 

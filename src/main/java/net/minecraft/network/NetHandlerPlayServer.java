@@ -696,11 +696,7 @@ public class NetHandlerPlayServer implements INetHandlerPlayServer, ITickable {
                 break;
 
             case STOP_SPRINTING:
-                Sprint sprint = (Sprint) Client.getInstance().getModuleManager().getModuleByName("Sprint");
-
-                if (!sprint.getKeepSprint().getValue()) {
-                    this.playerEntity.setSprinting(false);
-                }
+                this.playerEntity.setSprinting(false);
                 break;
 
             case STOP_SLEEPING:

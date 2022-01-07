@@ -56,13 +56,13 @@ public class KillAura extends Module {
     public NumberValue<Double> autoblockRange = new NumberValue<>("Block Range", this, 3.0, 1.0, 12.0, 0.1);
     public NumberValue<Double> cps = new NumberValue<>("CPS", this, 12.0, 1.0, 20.0, 1.0);
     public NumberValue<Double> cprandom = new NumberValue<>("Randomize CPS", this, 3.0, 0.0, 10.0, 1.0);
-    public ModeValue swingmode = new ModeValue("Swing Mode", this,"Client", "Server");
+    public ModeValue swingmode = new ModeValue("Swing Mode", this, "Client", "Server");
     public ModeValue autoblockmode = new ModeValue("Autoblock Mode", this, "None", "Real", "Verus", "Fake");
     public BooleanValue gcd = new BooleanValue("GCD", this, false);
     private SubSettings attackSettings = new SubSettings("Attack Setting", targetPriority, rotatemode);
 
     public BooleanValue targethud = new BooleanValue("TargetHud", this, false);
-    public ModeValue targethudmode = new ModeValue("TargetHud Mode", this, targethud,"Sleek", "Moon");
+    public ModeValue targethudmode = new ModeValue("TargetHud Mode", this, targethud, "Sleek", "Moon");
     private SubSettings renderSettings = new SubSettings("Render Setting", targethudmode);
 
 
@@ -115,14 +115,9 @@ public class KillAura extends Module {
 
     @Subscribe
     public void onMotion(UpdateEvent event) {
-        List<EntityLivingBase> entities = FightUtil.getMultipleTargets(swingrage.getValue(), players.getValue(), friends.getValue(), animals.getValue(),  walls.getValue(), monsters.getValue(), invisible.getValue());
-        Sprint sprint = (Sprint) Client.getInstance().getModuleManager().getModuleByName("Sprint");
+        List<EntityLivingBase> entities = FightUtil.getMultipleTargets(swingrage.getValue(), players.getValue(), friends.getValue(), animals.getValue(), walls.getValue(), monsters.getValue(), invisible.getValue());
 
-        if (!sprint.getKeepSprint().getValue()) {
-            if (target != null) {
-                mc.thePlayer.setSprinting(false);
-            }
-        }
+        if (mc.currentScreen != null) return;
 
         List<EntityLivingBase> blockRangeEntites = FightUtil.getMultipleTargets(autoblockRange.getValue(), players.getValue(), friends.getValue(), animals.getValue(), walls.getValue(), monsters.getValue(), invisible.getValue());
 
@@ -312,7 +307,7 @@ public class KillAura extends Module {
         if (target == null) {
             return;
         }
-        if (targethud.getValue()){
+        if (targethud.getValue()) {
             TargetHUD.draw(event, target);
         }
     }

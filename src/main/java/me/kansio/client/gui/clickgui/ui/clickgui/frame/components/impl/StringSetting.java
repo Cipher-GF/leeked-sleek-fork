@@ -35,7 +35,7 @@ public class StringSetting extends Component implements Priority {
 
         FontRenderer fontRenderer = Minecraft.getMinecraft().fontRendererObj;
 
-        fontRenderer.drawString(getSetting().getValueAsString(), x + 5, y + (getOffset() / 2F - (fontRenderer.FONT_HEIGHT / 2F)), stringColor, true);
+        fontRenderer.drawString(slide.getName() + ": " + slide.getValueAsString(), x + 5, y + (getOffset() / 2F - (fontRenderer.FONT_HEIGHT / 2F)), stringColor, true);
 
         if (typing) {
             Gui.drawRect(x + 125, y + (getOffset() / 2F - (fontRenderer.FONT_HEIGHT / 2F)) + 9, defaultWidth - 8, y + (getOffset() / 2F - (fontRenderer.FONT_HEIGHT / 2F)) + 7 + 4, -1);
@@ -81,7 +81,7 @@ public class StringSetting extends Component implements Priority {
 
 
         //backspace
-        if (keyCode == 14) {
+        if (keyCode == 14 && typing) {
             if (slide.getValue().toCharArray().length == 0) {
                 return;
             }
@@ -94,11 +94,11 @@ public class StringSetting extends Component implements Priority {
                 '.', ',', '<', '>', '-', '$',
                 '!', '"', '\'', '\\', '/', '=',
                 '+', ',', '|', '^', '?', '`', ';', ':',
-                '@', '£', '%', '{', '}', '_', '*'
+                '@', '£', '%', '{', '}', '_', '*', '»'
         );
 
         for (char whitelistedChar : whitelistedChars) {
-            if (typedChar == whitelistedChar) {
+            if (typedChar == whitelistedChar && typing) {
                 slide.setValue(slide.getValue() + typedChar);
                 return;
             }

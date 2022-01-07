@@ -404,15 +404,10 @@ public class PlayerControllerMP {
     public void attackEntity(EntityPlayer playerIn, Entity targetEntity) {
         this.syncCurrentPlayItem();
         this.netClientHandler.addToSendQueue(new C02PacketUseEntity(targetEntity, C02PacketUseEntity.Action.ATTACK));
-
-        Sprint sprint = (Sprint) Client.getInstance().getModuleManager().getModuleByName("Sprint");
-
-        if (!sprint.getKeepSprint().getValue()) {
-
-            if (this.currentGameType != WorldSettings.GameType.SPECTATOR) {
-                playerIn.attackTargetEntityWithCurrentItem(targetEntity);
-            }
+        if (this.currentGameType != WorldSettings.GameType.SPECTATOR) {
+            playerIn.attackTargetEntityWithCurrentItem(targetEntity);
         }
+
     }
 
     /**
