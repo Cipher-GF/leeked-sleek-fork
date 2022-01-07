@@ -21,19 +21,15 @@ public class VerusDamage extends FlightMode {
     @Override
     public void onUpdate(UpdateEvent event) {
         
-        if (!boosted) {
-            veroos = 0.22f;
-        }
 
-        if (mc.thePlayer.hurtResistantTime > 18) {
+
+        if (mc.thePlayer.hurtTime > 8) {
             boosted = true;
             veroos = getFlight().getSpeed().getValue() / 2;
         }
 
-        if (boosted && mc.thePlayer.hurtResistantTime < 2) {
+        if (mc.thePlayer.hurtResistantTime < 2) {
             veroos = 0.22f;
-        } else if (boosted) {
-            veroos -= 0.01;
         }
 
         /* else if (boosted && mc.thePlayer.hurtResistantTime < 2) {
@@ -42,9 +38,7 @@ public class VerusDamage extends FlightMode {
             veroos -= 0.01;
         }*/
 
-        if (mc.thePlayer.isCollidedHorizontally && boosted) {
-            veroos = 0.22f;
-        }
+
     }
 
     @Override

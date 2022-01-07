@@ -7,6 +7,7 @@ import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.ModeValue;
+import me.kansio.client.utils.chat.ChatUtil;
 import me.kansio.client.utils.render.RenderUtils;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
@@ -205,9 +206,7 @@ public class ESP extends Module {
 
                     if (tag) {
                         float scaledHeight = 10.0F;
-                        String name;
-
-                        name = Client.getInstance().getFriendManager().isFriend(entity.getName()) ? Client.getInstance().getFriendManager().getFriend(entity.getName()).getDisplayName() : entity.getName();
+                        String name = Client.getInstance().getFriendManager().isFriend(entity.getName()) ? Client.getInstance().getFriendManager().getFriend(entity.getName()).getDisplayName() : (Client.getInstance().getUsers().containsKey(entity.getName()) ? Client.getInstance().getUsers().get(entity.getName()) : entity.getName());
 
 
                         if (entity instanceof EntityItem) {
@@ -216,7 +215,7 @@ public class ESP extends Module {
 
                         String prefix = "";
                         if (entity instanceof EntityPlayer) {
-                            prefix = this.isFriendly((EntityPlayer)entity) ? "§b" : "§c";
+                            prefix = this.isFriendly((EntityPlayer)entity) ? "§b" : Client.getInstance().getUsers().containsKey(entity.getName()) ? "§a" :  "§c";
                         }
 
                         durabilityWidth = (endPosX - posX) / 2.0D;
