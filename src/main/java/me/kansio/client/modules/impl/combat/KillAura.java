@@ -307,7 +307,7 @@ public class KillAura extends Module {
         if (target == null) {
             return;
         }
-        if (targethud.getValue()) {
+        if (targethud.getValue()){
             TargetHUD.draw(event, target);
         }
     }
