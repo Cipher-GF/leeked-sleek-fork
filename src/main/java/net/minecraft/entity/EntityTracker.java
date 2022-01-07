@@ -17,16 +17,20 @@ import net.minecraft.util.IntHashMap;
 import net.minecraft.util.ReportedException;
 import net.minecraft.world.WorldServer;
 import net.minecraft.world.chunk.Chunk;
-import org.tinylog.Logger;
+
 
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.Callable;
 
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 public class EntityTracker
 {
-    
+    private static final Logger logger = LogManager.getLogger();
     private final WorldServer theWorld;
     private Set<EntityTrackerEntry> trackedEntities = Sets.<EntityTrackerEntry>newHashSet();
     private IntHashMap<EntityTrackerEntry> trackedEntityHashTable = new IntHashMap();
@@ -211,7 +215,7 @@ public class EntityTracker
             }
             catch (ReportedException reportedexception)
             {
-                Logger.error((String)"\"Silently\" catching entity tracking error.", (Throwable)reportedexception);
+                logger.error((String)"\"Silently\" catching entity tracking error.", (Throwable)reportedexception);
             }
         }
     }

@@ -17,9 +17,17 @@ import java.util.Map.Entry;
 
 
 
+
+import net.minecraft.util.JsonUtils;
+import net.minecraft.util.ResourceLocation;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 public class ModelBlock
 {
-    
+    private static final Logger LOGGER = LogManager.getLogger();
     static final Gson SERIALIZER = (new GsonBuilder()).registerTypeAdapter(ModelBlock.class, new ModelBlock.Deserializer()).registerTypeAdapter(BlockPart.class, new BlockPart.Deserializer()).registerTypeAdapter(BlockPartFace.class, new BlockPartFace.Deserializer()).registerTypeAdapter(BlockFaceUV.class, new BlockFaceUV.Deserializer()).registerTypeAdapter(ItemTransformVec3f.class, new ItemTransformVec3f.Deserializer()).registerTypeAdapter(ItemCameraTransforms.class, new ItemCameraTransforms.Deserializer()).create();
     private final List<BlockPart> elements;
     private final boolean gui3d;
@@ -115,7 +123,7 @@ public class ModelBlock
         {
             if (this == p_178302_2_.modelExt)
             {
-                org.tinylog.Logger.warn("Unable to resolve texture due to upward reference: " + textureName + " in " + this.name);
+                LOGGER.warn("Unable to resolve texture due to upward reference: " + textureName + " in " + this.name);
                 return "missingno";
             }
             else

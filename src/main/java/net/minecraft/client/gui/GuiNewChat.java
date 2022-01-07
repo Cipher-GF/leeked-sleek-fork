@@ -7,15 +7,17 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.IChatComponent;
 import net.minecraft.util.MathHelper;
-import org.tinylog.Logger;
 
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 
 public class GuiNewChat extends Gui
 {
-    
+    private static final Logger logger = LogManager.getLogger();
     private final Minecraft mc;
     private final List<String> sentMessages = Lists.<String>newArrayList();
     private final List<ChatLine> chatLines = Lists.<ChatLine>newArrayList();
@@ -135,7 +137,7 @@ public class GuiNewChat extends Gui
     public void printChatMessageWithOptionalDeletion(IChatComponent p_146234_1_, int p_146234_2_)
     {
         this.setChatLine(p_146234_1_, p_146234_2_, this.mc.ingameGUI.getUpdateCounter(), false);
-        Logger.info("[CHAT] " + p_146234_1_.getUnformattedText());
+        logger.info("[CHAT] " + p_146234_1_.getUnformattedText());
     }
 
     private void setChatLine(IChatComponent p_146237_1_, int p_146237_2_, int p_146237_3_, boolean p_146237_4_)

@@ -11,9 +11,20 @@ import java.net.URI;
 import java.util.Collections;
 import java.util.List;
 
+import net.minecraft.client.resources.I18n;
+import net.minecraft.client.resources.ResourcePackListEntry;
+import net.minecraft.client.resources.ResourcePackListEntryDefault;
+import net.minecraft.client.resources.ResourcePackListEntryFound;
+import net.minecraft.client.resources.ResourcePackRepository;
+import net.minecraft.util.Util;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.lwjgl.Sys;
+
+
 public class GuiScreenResourcePacks extends GuiScreen
 {
-    
+    private static final Logger logger = LogManager.getLogger();
     private final GuiScreen parentScreen;
     private List<ResourcePackListEntry> availableResourcePacks;
     private List<ResourcePackListEntry> selectedResourcePacks;
@@ -115,13 +126,13 @@ public class GuiScreenResourcePacks extends GuiScreen
                 {
                     try
                     {
-                        org.tinylog.Logger.info(s);
+                        logger.info(s);
                         Runtime.getRuntime().exec(new String[] {"/usr/bin/open", s});
                         return;
                     }
                     catch (IOException ioexception1)
                     {
-                        org.tinylog.Logger.error((String)"Couldn\'t open file", (Throwable)ioexception1);
+                        logger.error((String)"Couldn\'t open file", (Throwable)ioexception1);
                     }
                 }
                 else if (Util.getOSType() == Util.EnumOS.WINDOWS)
@@ -135,7 +146,7 @@ public class GuiScreenResourcePacks extends GuiScreen
                     }
                     catch (IOException ioexception)
                     {
-                        org.tinylog.Logger.error((String)"Couldn\'t open file", (Throwable)ioexception);
+                        logger.error((String)"Couldn\'t open file", (Throwable)ioexception);
                     }
                 }
 
@@ -149,13 +160,13 @@ public class GuiScreenResourcePacks extends GuiScreen
                 }
                 catch (Throwable throwable)
                 {
-                    org.tinylog.Logger.error("Couldn\'t open link", throwable);
+                    logger.error("Couldn\'t open link", throwable);
                     flag = true;
                 }
 
                 if (flag)
                 {
-                    org.tinylog.Logger.info("Opening via system class!");
+                    logger.info("Opening via system class!");
                     Sys.openURL("file://" + s);
                 }
             }

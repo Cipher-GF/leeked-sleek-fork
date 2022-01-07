@@ -27,10 +27,15 @@ import net.minecraft.util.LoggingPrintStream;
 import net.minecraft.util.StringUtils;
 import net.minecraft.world.World;
 
+
 import java.io.PrintStream;
 import java.util.Random;
 import java.util.UUID;
 
+
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 
 public class Bootstrap
@@ -39,7 +44,7 @@ public class Bootstrap
 
     /** Whether the blocks, items, etc have already been registered */
     private static boolean alreadyRegistered = false;
-    
+    private static final Logger LOGGER = LogManager.getLogger();
 
     /**
      * Is Bootstrap registration already done?
@@ -490,7 +495,7 @@ public class Bootstrap
         {
             alreadyRegistered = true;
 
-            if (org.tinylog.Logger.isDebugEnabled())
+            if (LOGGER.isDebugEnabled())
             {
                 redirectOutputToLog();
             }
@@ -504,7 +509,7 @@ public class Bootstrap
     }
 
     /**
-     * redirect standard streams to Logger
+     * redirect standard streams to logger
      */
     private static void redirectOutputToLog()
     {

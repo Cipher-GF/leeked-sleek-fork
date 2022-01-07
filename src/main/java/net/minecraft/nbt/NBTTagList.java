@@ -1,18 +1,16 @@
 package net.minecraft.nbt;
 
 import com.google.common.collect.Lists;
-import org.tinylog.Logger;
-
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 import java.util.List;
-
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class NBTTagList extends NBTBase
 {
-    
+    private static final Logger LOGGER = LogManager.getLogger();
     private List<NBTBase> tagList = Lists.<NBTBase>newArrayList();
 
     /**
@@ -108,7 +106,7 @@ public class NBTTagList extends NBTBase
     {
         if (nbt.getId() == 0)
         {
-            Logger.warn("Invalid TagEnd added to ListTag");
+            LOGGER.warn("Invalid TagEnd added to ListTag");
         }
         else
         {
@@ -118,7 +116,7 @@ public class NBTTagList extends NBTBase
             }
             else if (this.tagType != nbt.getId())
             {
-                Logger.warn("Adding mismatching tag types to tag list");
+                LOGGER.warn("Adding mismatching tag types to tag list");
                 return;
             }
 
@@ -133,7 +131,7 @@ public class NBTTagList extends NBTBase
     {
         if (nbt.getId() == 0)
         {
-            Logger.warn("Invalid TagEnd added to ListTag");
+            LOGGER.warn("Invalid TagEnd added to ListTag");
         }
         else if (idx >= 0 && idx < this.tagList.size())
         {
@@ -143,7 +141,7 @@ public class NBTTagList extends NBTBase
             }
             else if (this.tagType != nbt.getId())
             {
-                Logger.warn("Adding mismatching tag types to tag list");
+                LOGGER.warn("Adding mismatching tag types to tag list");
                 return;
             }
 
@@ -151,7 +149,7 @@ public class NBTTagList extends NBTBase
         }
         else
         {
-            Logger.warn("index out of bounds to set tag in tag list");
+            LOGGER.warn("index out of bounds to set tag in tag list");
         }
     }
 

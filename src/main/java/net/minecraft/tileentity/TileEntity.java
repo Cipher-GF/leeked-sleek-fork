@@ -10,15 +10,19 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.Packet;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
-import org.tinylog.Logger;
+
 
 import java.util.Map;
 import java.util.concurrent.Callable;
 
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 public abstract class TileEntity
 {
-    
+    private static final Logger logger = LogManager.getLogger();
     private static Map < String, Class <? extends TileEntity >> nameToClassMap = Maps. < String, Class <? extends TileEntity >> newHashMap();
     private static Map < Class <? extends TileEntity > , String > classToNameMap = Maps. < Class <? extends TileEntity > , String > newHashMap();
 
@@ -120,7 +124,7 @@ public abstract class TileEntity
         }
         else
         {
-            Logger.warn("Skipping BlockEntity with id " + nbt.getString("id"));
+            logger.warn("Skipping BlockEntity with id " + nbt.getString("id"));
         }
 
         return tileentity;

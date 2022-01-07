@@ -1,12 +1,12 @@
 package net.minecraft.world.gen.layer;
 
 import net.minecraft.world.biome.BiomeGenBase;
-
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class GenLayerHills extends GenLayer
 {
-    
+    private static final Logger logger = LogManager.getLogger();
     private GenLayer field_151628_d;
 
     public GenLayerHills(long p_i45479_1_, GenLayer p_i45479_3_, GenLayer p_i45479_4_)
@@ -37,7 +37,7 @@ public class GenLayerHills extends GenLayer
 
                 if (k > 255)
                 {
-                    org.tinylog.Logger.debug("old! " + k);
+                    logger.debug("old! " + k);
                 }
 
                 if (k != 0 && l >= 2 && (l - 2) % 29 == 1 && k < 128)

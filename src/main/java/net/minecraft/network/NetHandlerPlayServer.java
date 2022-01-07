@@ -42,7 +42,8 @@ import net.minecraft.tileentity.TileEntitySign;
 import net.minecraft.util.*;
 import net.minecraft.world.WorldServer;
 import org.apache.commons.lang3.StringUtils;
-import org.tinylog.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -54,6 +55,7 @@ import java.util.concurrent.Callable;
 
 public class NetHandlerPlayServer implements INetHandlerPlayServer, ITickable {
 
+    private static final Logger logger = LogManager.getLogger();
     public final NetworkManager netManager;
     private final MinecraftServer serverController;
     public EntityPlayerMP playerEntity;
@@ -281,7 +283,7 @@ public class NetHandlerPlayServer implements INetHandlerPlayServer, ITickable {
                     double d15 = d11 * d11 + d12 * d12 + d13 * d13;
 
                     if (d15 - d14 > 100.0D && (!this.serverController.isSinglePlayer() || !this.serverController.getServerOwner().equals(this.playerEntity.getName()))) {
-                        Logger.warn(this.playerEntity.getName() + " moved too quickly! " + d11 + "," + d12 + "," + d13 + " (" + d11 + ", " + d12 + ", " + d13 + ")");
+                        logger.warn(this.playerEntity.getName() + " moved too quickly! " + d11 + "," + d12 + "," + d13 + " (" + d11 + ", " + d12 + ", " + d13 + ")");
                         this.setPlayerLocation(this.lastPosX, this.lastPosY, this.lastPosZ, this.playerEntity.rotationYaw, this.playerEntity.rotationPitch);
                         return;
                     }
@@ -308,7 +310,7 @@ public class NetHandlerPlayServer implements INetHandlerPlayServer, ITickable {
 
                     if (d15 > 0.0625D && !this.playerEntity.isPlayerSleeping() && !this.playerEntity.theItemInWorldManager.isCreative()) {
                         flag1 = true;
-                        Logger.warn(this.playerEntity.getName() + " moved wrongly!");
+                        logger.warn(this.playerEntity.getName() + " moved wrongly!");
                     }
 
                     this.playerEntity.setPositionAndRotation(d8, d9, d10, f1, f2);
@@ -330,7 +332,7 @@ public class NetHandlerPlayServer implements INetHandlerPlayServer, ITickable {
                             ++this.floatingTickCount;
 
                             if (this.floatingTickCount > 80) {
-                                Logger.warn(this.playerEntity.getName() + " was kicked for floating too long!");
+                                logger.warn(this.playerEntity.getName() + " was kicked for floating too long!");
                                 this.kickPlayerFromServer("Flying is not enabled on this server");
                                 return;
                             }
@@ -566,7 +568,7 @@ public class NetHandlerPlayServer implements INetHandlerPlayServer, ITickable {
      * Invoked when disconnecting, the parameter is a ChatComponent describing the reason for termination
      */
     public void onDisconnect(IChatComponent reason) {
-        Logger.info(this.playerEntity.getName() + " lost connection: " + reason);
+        logger.info(this.playerEntity.getName() + " lost connection: " + reason);
         this.serverController.refreshStatusNextTick();
         ChatComponentTranslation chatcomponenttranslation = new ChatComponentTranslation("multiplayer.player.left", new Object[]{this.playerEntity.getDisplayName()});
         chatcomponenttranslation.getChatStyle().setColor(EnumChatFormatting.YELLOW);
@@ -575,7 +577,7 @@ public class NetHandlerPlayServer implements INetHandlerPlayServer, ITickable {
         this.serverController.getConfigurationManager().playerLoggedOut(this.playerEntity);
 
         if (this.serverController.isSinglePlayer() && this.playerEntity.getName().equals(this.serverController.getServerOwner())) {
-            Logger.info("Stopping singleplayer server as player logged out");
+            logger.info("Stopping singleplayer server as player logged out");
             this.serverController.initiateShutdown();
         }
     }
@@ -618,7 +620,7 @@ public class NetHandlerPlayServer implements INetHandlerPlayServer, ITickable {
             this.playerEntity.inventory.currentItem = packetIn.getSlotId();
             this.playerEntity.markPlayerActive();
         } else {
-            Logger.warn(this.playerEntity.getName() + " tried to set an invalid carried item");
+            logger.warn(this.playerEntity.getName() + " tried to set an invalid carried item");
         }
     }
 
@@ -1038,7 +1040,7 @@ public class NetHandlerPlayServer implements INetHandlerPlayServer, ITickable {
                     return;
                 }
             } catch (Exception exception3) {
-                Logger.error((String) "Couldn\'t handle book info", (Throwable) exception3);
+                logger.error((String) "Couldn\'t handle book info", (Throwable) exception3);
                 return;
             } finally {
                 packetbuffer3.release();
@@ -1072,7 +1074,7 @@ public class NetHandlerPlayServer implements INetHandlerPlayServer, ITickable {
                     return;
                 }
             } catch (Exception exception4) {
-                Logger.error((String) "Couldn\'t sign book", (Throwable) exception4);
+                logger.error((String) "Couldn\'t sign book", (Throwable) exception4);
                 return;
             } finally {
                 packetbuffer2.release();
@@ -1088,7 +1090,7 @@ public class NetHandlerPlayServer implements INetHandlerPlayServer, ITickable {
                     ((ContainerMerchant) container).setCurrentRecipeIndex(i);
                 }
             } catch (Exception exception2) {
-                Logger.error((String) "Couldn\'t select trade", (Throwable) exception2);
+                logger.error((String) "Couldn\'t select trade", (Throwable) exception2);
             }
         } else if ("MC|AdvCdm".equals(packetIn.getChannelName())) {
             if (!this.serverController.isCommandBlockEnabled()) {
@@ -1129,7 +1131,7 @@ public class NetHandlerPlayServer implements INetHandlerPlayServer, ITickable {
                         this.playerEntity.addChatMessage(new ChatComponentTranslation("advMode.setCommand.success", new Object[]{s1}));
                     }
                 } catch (Exception exception1) {
-                    Logger.error((String) "Couldn\'t set command block", (Throwable) exception1);
+                    logger.error((String) "Couldn\'t set command block", (Throwable) exception1);
                 } finally {
                     packetbuffer.release();
                 }
@@ -1153,7 +1155,7 @@ public class NetHandlerPlayServer implements INetHandlerPlayServer, ITickable {
                         iinventory.markDirty();
                     }
                 } catch (Exception exception) {
-                    Logger.error((String) "Couldn\'t set beacon", (Throwable) exception);
+                    logger.error((String) "Couldn\'t set beacon", (Throwable) exception);
                 }
             }
         } else if ("MC|ItemName".equals(packetIn.getChannelName()) && this.playerEntity.openContainer instanceof ContainerRepair) {

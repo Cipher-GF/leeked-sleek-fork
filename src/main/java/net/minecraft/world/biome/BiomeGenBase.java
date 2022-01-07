@@ -21,14 +21,26 @@ import net.minecraft.world.ColorizerGrass;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.gen.NoiseGeneratorPerlin;
+
 import net.minecraft.world.gen.feature.*;
-import org.tinylog.Logger;
+
+
+import net.minecraft.world.gen.feature.WorldGenAbstractTree;
+import net.minecraft.world.gen.feature.WorldGenBigTree;
+import net.minecraft.world.gen.feature.WorldGenDoublePlant;
+import net.minecraft.world.gen.feature.WorldGenSwamp;
+import net.minecraft.world.gen.feature.WorldGenTallGrass;
+import net.minecraft.world.gen.feature.WorldGenTrees;
+import net.minecraft.world.gen.feature.WorldGenerator;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 
 import java.util.*;
 
 public abstract class BiomeGenBase
 {
-
+    private static final Logger logger = LogManager.getLogger();
     protected static final BiomeGenBase.Height height_Default = new BiomeGenBase.Height(0.1F, 0.2F);
     protected static final BiomeGenBase.Height height_ShallowWaters = new BiomeGenBase.Height(-0.5F, 0.0F);
     protected static final BiomeGenBase.Height height_Oceans = new BiomeGenBase.Height(-1.0F, 0.1F);
@@ -563,7 +575,7 @@ public abstract class BiomeGenBase
         }
         else
         {
-            Logger.warn("Biome ID is out of bounds: " + biomeId + ", defaulting to 0 (Ocean)");
+            logger.warn("Biome ID is out of bounds: " + biomeId + ", defaulting to 0 (Ocean)");
             return ocean;
         }
     }

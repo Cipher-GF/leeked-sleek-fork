@@ -6,14 +6,19 @@ import net.minecraft.nbt.CompressedStreamTools;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 
+
 import java.io.File;
 import java.util.List;
 
 
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 public class ServerList
 {
-    
+    private static final Logger logger = LogManager.getLogger();
 
     /** The Minecraft instance. */
     private final Minecraft mc;
@@ -50,7 +55,7 @@ public class ServerList
         }
         catch (Exception exception)
         {
-            org.tinylog.Logger.error((String)"Couldn\'t load server list", (Throwable)exception);
+            logger.error((String)"Couldn\'t load server list", (Throwable)exception);
         }
     }
 
@@ -75,7 +80,7 @@ public class ServerList
         }
         catch (Exception exception)
         {
-            org.tinylog.Logger.error((String)"Couldn\'t save server list", (Throwable)exception);
+            logger.error((String)"Couldn\'t save server list", (Throwable)exception);
         }
     }
 

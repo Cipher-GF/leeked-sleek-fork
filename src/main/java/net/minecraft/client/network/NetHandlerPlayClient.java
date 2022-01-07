@@ -64,7 +64,7 @@ import net.minecraft.world.WorldProviderSurface;
 import net.minecraft.world.WorldSettings;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.storage.MapData;
-import org.tinylog.Logger;
+
 
 import java.io.File;
 import java.io.IOException;
@@ -72,8 +72,12 @@ import java.util.*;
 import java.util.Map.Entry;
 
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 public class NetHandlerPlayClient implements INetHandlerPlayClient {
-    
+    private static final Logger logger = LogManager.getLogger();
 
     /**
      * The NetworkManager instance used to communicate with the server (used only by handlePlayerPosLook to update
@@ -1386,7 +1390,7 @@ public class NetHandlerPlayClient implements INetHandlerPlayClient {
                     imerchant.setRecipes(merchantrecipelist);
                 }
             } catch (IOException ioexception) {
-                Logger.error((String) "Couldn\'t load trade info", (Throwable) ioexception);
+                logger.error((String) "Couldn\'t load trade info", (Throwable) ioexception);
             } finally {
                 packetbuffer.release();
             }
@@ -1520,7 +1524,7 @@ public class NetHandlerPlayClient implements INetHandlerPlayClient {
             try {
                 this.clientWorldController.spawnParticle(packetIn.getParticleType(), packetIn.isLongDistance(), packetIn.getXCoordinate(), packetIn.getYCoordinate(), packetIn.getZCoordinate(), d0, d2, d4, packetIn.getParticleArgs());
             } catch (Throwable var17) {
-                Logger.warn("Could not spawn particle effect " + packetIn.getParticleType());
+                logger.warn("Could not spawn particle effect " + packetIn.getParticleType());
             }
         } else {
             for (int i = 0; i < packetIn.getParticleCount(); ++i) {
@@ -1534,7 +1538,7 @@ public class NetHandlerPlayClient implements INetHandlerPlayClient {
                 try {
                     this.clientWorldController.spawnParticle(packetIn.getParticleType(), packetIn.isLongDistance(), packetIn.getXCoordinate() + d1, packetIn.getYCoordinate() + d3, packetIn.getZCoordinate() + d5, d6, d7, d8, packetIn.getParticleArgs());
                 } catch (Throwable var16) {
-                    Logger.warn("Could not spawn particle effect " + packetIn.getParticleType());
+                    logger.warn("Could not spawn particle effect " + packetIn.getParticleType());
                     return;
                 }
             }

@@ -14,13 +14,18 @@ import net.minecraft.world.ChunkCoordIntPair;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.WorldServer;
 import net.minecraft.world.chunk.Chunk;
-import org.tinylog.Logger;
+
 
 import java.util.List;
 
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 public class PlayerManager
 {
+    private static final Logger pmLogger = LogManager.getLogger();
     private final WorldServer theWorldServer;
     private final List<EntityPlayerMP> players = Lists.<EntityPlayerMP>newArrayList();
     private final LongHashMap playerInstances = new LongHashMap();
@@ -369,7 +374,7 @@ public class PlayerManager
         {
             if (this.playersWatchingChunk.contains(player))
             {
-                Logger.debug("Failed to add player. {} already is in chunk {}, {}", new Object[] {player, Integer.valueOf(this.chunkCoords.chunkXPos), Integer.valueOf(this.chunkCoords.chunkZPos)});
+                PlayerManager.pmLogger.debug("Failed to add player. {} already is in chunk {}, {}", new Object[] {player, Integer.valueOf(this.chunkCoords.chunkXPos), Integer.valueOf(this.chunkCoords.chunkZPos)});
             }
             else
             {

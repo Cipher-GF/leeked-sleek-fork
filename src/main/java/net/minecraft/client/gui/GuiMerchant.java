@@ -18,13 +18,15 @@ import net.minecraft.village.MerchantRecipe;
 import net.minecraft.village.MerchantRecipeList;
 import net.minecraft.world.World;
 
-import java.io.IOException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+import java.io.IOException;
 
 
 public class GuiMerchant extends GuiContainer
 {
-    
+    private static final Logger logger = LogManager.getLogger();
 
     /** The GUI texture for the villager merchant GUI. */
     private static final ResourceLocation MERCHANT_GUI_TEXTURE = new ResourceLocation("textures/gui/container/villager.png");

@@ -12,13 +12,18 @@ import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.EmptyChunk;
 import net.minecraft.world.chunk.IChunkProvider;
 
+
 import java.util.List;
 
 
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 public class ChunkProviderClient implements IChunkProvider
 {
-    
+    private static final Logger logger = LogManager.getLogger();
 
     /**
      * The completely empty chunk used by ChunkProviderClient when chunkMapping doesn't contain the requested
@@ -115,7 +120,7 @@ public class ChunkProviderClient implements IChunkProvider
 
         if (System.currentTimeMillis() - i > 100L)
         {
-            org.tinylog.Logger.info("Warning: Clientside chunk ticking took {} ms", new Object[] {Long.valueOf(System.currentTimeMillis() - i)});
+            logger.info("Warning: Clientside chunk ticking took {} ms", new Object[] {Long.valueOf(System.currentTimeMillis() - i)});
         }
 
         return false;

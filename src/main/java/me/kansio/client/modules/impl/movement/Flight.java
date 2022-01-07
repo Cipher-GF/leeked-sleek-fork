@@ -60,7 +60,7 @@ public class Flight extends Module {
 
     public Flight() {
         super("Flight", ModuleCategory.MOVEMENT);
-        register(modeValue, speed, viewbob, boost, extraBoost, glide, timer);
+        register(modeValue, speed, viewbob, boost, extraBoost, boostMode, timer);
     }
 
 

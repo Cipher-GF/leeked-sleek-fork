@@ -1,0 +1,309 @@
+[18:49:11] [Client thread/INFO]: Setting user: sex_6016
+[18:49:11] [Client thread/INFO]: (Session ID is token:0:sex_6016)
+[18:49:12] [Client thread/INFO]: [OptiFine] *** Reflector Forge ***
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.Attributes
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: mods.betterfoliage.client.BetterFoliageClient
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.asm.transformers.BlamingTransformer
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.world.ChunkWatchEvent$UnWatch
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.relauncher.CoreModManager
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.DimensionManager
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.GuiScreenEvent$DrawScreenEvent$Pre
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.GuiScreenEvent$DrawScreenEvent$Post
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.EntityViewRenderEvent$CameraSetup
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.EntityViewRenderEvent$FogColors
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.eventhandler.Event
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.eventhandler.EventBus
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.eventhandler.Event$Result
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.property.ExtendedBlockState
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.FMLClientHandler
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.FMLCommonHandler
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.biome.BiomeGenBase.getWaterColorMultiplier
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.addDestroyEffects
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.addHitEffects
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.canCreatureSpawn
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.canRenderInLayer
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.doesSideBlockRendering
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getBedDirection
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getExtendedState
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.hasTileEntity
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isAir
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isBed
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isBedFoot
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isSideSolid
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.Entity.canRiderInteract
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Field not present: net.minecraft.entity.Entity.captureDrops
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Field not present: net.minecraft.entity.Entity.capturedDrops
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.Entity.shouldRenderInPass
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.Entity.shouldRiderSit
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.ForgeEventFactory
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.ForgeHooks
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.ForgeHooksClient
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.getDurabilityForDisplay
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.getModel
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.onEntitySwing
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.shouldCauseReequipAnimation
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.showDurabilityBar
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.ItemRecord.getRecordResource
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.ForgeModContainer
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.potion.PotionEffect.isCurativeItem
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.canRenderBreaking
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.getRenderBoundingBox
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.hasFastRenderer
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.shouldRenderInPass
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher.preDrawBatch
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher.drawBatch
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.vertex.VertexFormatElement$EnumUsage.preDraw
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.vertex.VertexFormatElement$EnumUsage.postDraw
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.World.countEntities
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.World.getPerWorldStorage
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getCloudRenderer
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getSkyRenderer
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getWeatherRenderer
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.GuiModList
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.IColoredBakedQuad
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.property.IExtendedBlockState
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.IRenderHandler
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.ISmartBlockModel
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.ItemModelMesherForge
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraft.launchwrapper.Launch
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.pipeline.LightUtil
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.MinecraftForge
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.MinecraftForgeClient
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.ModelLoader
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderBlockOverlayEvent$OverlayType
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.registry.RenderingRegistry
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderItemInFrameEvent
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Pre
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Post
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Specials$Pre
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Specials$Post
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.SplashProgress
+[18:49:12] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.world.WorldEvent$Load
+[18:49:12] [Client thread/INFO]: [OptiFine] *** Reflector Vanilla ***
+[18:49:13] [Client thread/INFO]: [OptiFine] (Reflector) Field not present: me.kansio.client.gui.MainMenu.(type: class java.lang.String, index: 0)
+[18:49:13] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: optifine.OptiFineClassTransformer
+[18:49:13] [Client thread/INFO]: LWJGL Version: 2.9.4
+[18:49:14] [Client thread/INFO]: [OptiFine] 
+[18:49:14] [Client thread/INFO]: [OptiFine] OptiFine_1.8.8_HD_U_H8
+[18:49:14] [Client thread/INFO]: [OptiFine] Build: null
+[18:49:14] [Client thread/INFO]: [OptiFine] OS: Windows 10 (amd64) version 10.0
+[18:49:14] [Client thread/INFO]: [OptiFine] Java: 11.0.13, Amazon.com Inc.
+[18:49:14] [Client thread/INFO]: [OptiFine] VM: OpenJDK 64-Bit Server VM (mixed mode), Amazon.com Inc.
+[18:49:14] [Client thread/INFO]: [OptiFine] LWJGL: 2.9.4
+[18:49:14] [Client thread/INFO]: [OptiFine] OpenGL: NVIDIA GeForce GTX 750 Ti/PCIe/SSE2, version 4.6.0 NVIDIA 466.11, NVIDIA Corporation
+[18:49:14] [Client thread/INFO]: [OptiFine] OpenGL Version: 4.6.0
+[18:49:14] [Client thread/INFO]: [OptiFine] Maximum texture size: 16384x16384
+[18:49:14] [Thread-5/INFO]: [OptiFine] Checking for new version
+[18:49:14] [Client thread/INFO]: [Shaders] ShadersMod version: 2.4.12
+[18:49:14] [Client thread/INFO]: [Shaders] OpenGL Version: 4.6.0 NVIDIA 466.11
+[18:49:14] [Client thread/INFO]: [Shaders] Vendor:  NVIDIA Corporation
+[18:49:14] [Client thread/INFO]: [Shaders] Renderer: NVIDIA GeForce GTX 750 Ti/PCIe/SSE2
+[18:49:14] [Client thread/INFO]: [Shaders] Capabilities:  2.0  2.1  3.0  3.2  4.0 
+[18:49:14] [Client thread/INFO]: [Shaders] GL_MAX_DRAW_BUFFERS: 8
+[18:49:14] [Client thread/INFO]: [Shaders] GL_MAX_COLOR_ATTACHMENTS_EXT: 8
+[18:49:14] [Client thread/INFO]: [Shaders] GL_MAX_TEXTURE_IMAGE_UNITS: 32
+[18:49:14] [Client thread/INFO]: [Shaders] Load ShadersMod configuration.
+[18:49:14] [Client thread/INFO]: [Shaders] Shaders can not be loaded, Fast Render is enabled.
+[18:49:14] [Client thread/INFO]: [Shaders] No shaderpack loaded.
+[18:49:16] [Thread-5/INFO]: [OptiFine] Version found: I7
+[18:49:16] [Client thread/INFO]: Reloading ResourceManager: Default, !         §dBom§6bies §8[§f80k§8] - §drose§6gold.zip
+[18:49:16] [Client thread/INFO]: [OptiFine] *** Reloading textures ***
+[18:49:16] [Client thread/INFO]: [OptiFine] Resource packs: !         §dBom§6bies §8[§f80k§8] - §drose§6gold.zip
+[18:49:17] [Sound Library Loader/INFO]: Starting up SoundSystem...
+[18:49:17] [Thread-6/INFO]: Initializing LWJGL OpenAL
+[18:49:17] [Thread-6/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
+[18:49:17] [Thread-6/INFO]: OpenAL initialized.
+[18:49:17] [Client thread/WARN]: File minecraft:sounds/sleek/deatheffect/oof.ogg does not exist, cannot add it to event minecraft:deatheffect.oof
+[18:49:17] [Client thread/WARN]: File minecraft:sounds/deatheffect/gta.ogg does not exist, cannot add it to event minecraft:deatheffect.gta
+[18:49:17] [Sound Library Loader/INFO]: Sound engine started
+[18:49:22] [Client thread/INFO]: [OptiFine] Mipmap levels: 4
+[18:49:22] [Client thread/INFO]: [OptiFine] Multitexture: false
+[18:49:22] [Client thread/INFO]: Created: 512x512 textures-atlas
+[18:49:24] [Client thread/INFO]: [OptiFine] *** Reloading custom textures ***
+[18:49:24] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky1.properties
+[18:49:25] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky2.properties
+[18:49:25] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky3.properties
+[18:49:26] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky4.properties
+[18:49:26] [Client thread/INFO]: [OptiFine] CustomSky: Texture not found: minecraft:mcpatcher/sky/world0/starfield01.png
+[18:49:26] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky5.properties
+[18:49:26] [Client thread/INFO]: [OptiFine] CustomSky: Texture not found: minecraft:mcpatcher/sky/world0/starfield02.png
+[18:49:26] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky6.properties
+[18:49:27] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky7.properties
+[18:49:27] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky8.properties
+[18:49:27] [Client thread/INFO]: [OptiFine] Enable face culling: acacia_leaves, birch_leaves, dark_oak_leaves, jungle_leaves, oak_leaves, spruce_leaves
+[18:51:49] [Server thread/INFO]: Starting integrated minecraft server version 1.8.8
+[18:51:49] [Server thread/INFO]: Generating keypair
+[18:51:49] [Server thread/INFO]: Preparing start region for level 0
+[18:51:50] [Server thread/INFO]: Changing view distance to 4, from 10
+[18:51:51] [Server thread/INFO]: sex_6016[local:E:5fbe49ab] logged in with entity id 134 at (737.2190292983216, 56.0, 69.65352338996283)
+[18:51:51] [Server thread/INFO]: sex_6016 joined the game
+[18:51:53] [Chunk Batcher 0/WARN]: Biome ID is out of bounds: 55578, defaulting to 0 (Ocean)
+[18:52:50] [Server thread/INFO]: [sex_6016: Given [Wooden Sword] * 1 to sex_6016]
+[18:52:50] [Client thread/INFO]: [CHAT] Given [Wooden Sword] * 1 to sex_6016
+[18:53:08] [Server thread/INFO]: [sex_6016: Given [Soul Sand] * 1 to sex_6016]
+[18:53:08] [Client thread/INFO]: [CHAT] Given [Soul Sand] * 1 to sex_6016
+[18:54:30] [Server thread/INFO]: Saving and pausing game...
+[18:54:30] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Overworld
+[18:54:30] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Nether
+[18:54:30] [Server thread/INFO]: Saving chunks for level 'mcpworld'/The End
+[18:57:10] [Server thread/INFO]: sex_6016 was pricked to death
+[18:57:10] [Client thread/INFO]: [CHAT] sex_6016 was pricked to death
+[18:57:33] [Server thread/WARN]: sex_6016 moved wrongly!
+[18:57:36] [Server thread/WARN]: sex_6016 moved wrongly!
+[18:57:36] [Server thread/WARN]: sex_6016 moved wrongly!
+[18:57:39] [Server thread/WARN]: sex_6016 moved wrongly!
+[18:57:40] [Server thread/WARN]: sex_6016 moved wrongly!
+[18:57:46] [Server thread/WARN]: sex_6016 moved wrongly!
+[18:57:46] [Server thread/WARN]: sex_6016 moved wrongly!
+[18:57:46] [Server thread/WARN]: sex_6016 moved wrongly!
+[18:57:46] [Server thread/WARN]: sex_6016 moved wrongly!
+[18:57:46] [Server thread/WARN]: sex_6016 moved wrongly!
+[18:57:47] [Server thread/WARN]: sex_6016 moved wrongly!
+[18:57:47] [Server thread/WARN]: sex_6016 moved wrongly!
+[18:57:47] [Server thread/WARN]: sex_6016 moved wrongly!
+[18:57:47] [Server thread/WARN]: sex_6016 moved wrongly!
+[18:57:47] [Server thread/WARN]: sex_6016 moved wrongly!
+[18:57:47] [Server thread/WARN]: sex_6016 moved wrongly!
+[18:57:47] [Server thread/WARN]: sex_6016 moved wrongly!
+[18:57:47] [Server thread/WARN]: sex_6016 moved wrongly!
+[18:57:56] [Server thread/WARN]: sex_6016 moved wrongly!
+[18:57:56] [Server thread/WARN]: sex_6016 moved wrongly!
+[18:57:57] [Server thread/WARN]: sex_6016 moved wrongly!
+[18:57:59] [Server thread/WARN]: sex_6016 moved wrongly!
+[18:57:59] [Server thread/WARN]: sex_6016 moved wrongly!
+[18:57:59] [Server thread/WARN]: sex_6016 moved wrongly!
+[18:58:01] [Server thread/WARN]: sex_6016 moved wrongly!
+[18:58:12] [Server thread/WARN]: sex_6016 moved wrongly!
+[18:58:12] [Server thread/WARN]: sex_6016 moved wrongly!
+[18:58:13] [Server thread/WARN]: sex_6016 moved wrongly!
+[18:58:13] [Server thread/WARN]: sex_6016 moved wrongly!
+[18:58:13] [Server thread/WARN]: sex_6016 moved wrongly!
+[18:58:15] [Server thread/WARN]: sex_6016 moved wrongly!
+[18:58:15] [Server thread/WARN]: sex_6016 moved wrongly!
+[18:58:15] [Server thread/WARN]: sex_6016 moved wrongly!
+[18:58:15] [Server thread/WARN]: sex_6016 moved wrongly!
+[18:58:16] [Server thread/WARN]: sex_6016 moved wrongly!
+[18:58:18] [Server thread/WARN]: sex_6016 moved wrongly!
+[18:58:19] [Server thread/WARN]: sex_6016 moved wrongly!
+[18:58:55] [Server thread/INFO]: sex_6016 fell from a high place
+[18:58:55] [Client thread/INFO]: [CHAT] sex_6016 fell from a high place
+[18:59:23] [Server thread/INFO]: Saving and pausing game...
+[18:59:23] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Overworld
+[18:59:23] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Nether
+[18:59:23] [Server thread/INFO]: Saving chunks for level 'mcpworld'/The End
+[19:01:13] [Server thread/INFO]: Saving and pausing game...
+[19:01:13] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Overworld
+[19:01:13] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Nether
+[19:01:13] [Server thread/INFO]: Saving chunks for level 'mcpworld'/The End
+[19:02:00] [Server thread/INFO]: Saving and pausing game...
+[19:02:00] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Overworld
+[19:02:00] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Nether
+[19:02:00] [Server thread/INFO]: Saving chunks for level 'mcpworld'/The End
+[19:03:14] [Client thread/INFO]: [CHAT] §7[§bSleek§7] §fReloaded.
+[19:03:33] [Server thread/INFO]: sex_6016 fell out of the world
+[19:03:33] [Client thread/INFO]: [CHAT] sex_6016 fell out of the world
+[19:03:33] [Server thread/INFO]: [sex_6016: Killed sex_6016]
+[19:03:33] [Client thread/INFO]: [CHAT] Killed sex_6016
+[19:04:08] [Server thread/INFO]: Saving and pausing game...
+[19:04:08] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Overworld
+[19:04:08] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Nether
+[19:04:08] [Server thread/INFO]: Saving chunks for level 'mcpworld'/The End
+[19:04:11] [Server thread/INFO]: Saving and pausing game...
+[19:04:11] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Overworld
+[19:04:11] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Nether
+[19:04:11] [Server thread/INFO]: Saving chunks for level 'mcpworld'/The End
+[19:04:12] [Server thread/INFO]: Stopping server
+[19:04:12] [Server thread/INFO]: Saving players
+[19:04:12] [Server thread/INFO]: Saving worlds
+[19:04:12] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Overworld
+[19:04:12] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Nether
+[19:04:12] [Server thread/INFO]: Saving chunks for level 'mcpworld'/The End
+[19:07:24] [Alt Login Thread/INFO]: Logging in with username & password
+[19:07:28] [Client thread/ERROR]: Can't ping 135.148.121.249: Disconnected
+[19:07:44] [Client thread/INFO]: Connecting to zerotwoclient.xyz, 25565
+[19:07:45] [Client thread/INFO]: [CHAT] You are not on a team.
+[19:07:49] [Client thread/INFO]: [CHAT] Unknown command. Type "/help" for help.
+[19:08:22] [Client thread/INFO]: [CHAT] Unknown command. Type "/help" for help.
+[19:08:26] [Client thread/INFO]: [CHAT] §7[§bSleek§7] §fListening for a S3APacketTabComplete for 20s!
+[19:08:26] [Netty Client IO #14/INFO]: [CHAT] §7[§bSleek§7] §f§7Plugins (§f14§7): §a ahcf§8, §aclearlag§8, §acrazyenchantments§8, §adynamicbungeeauth§8, §agrapplinghook§8, §ahcfitems§8, §aholographicdisplays§8, §alitebans§8, §apermissionsex§8, §aprefix§8, §aremovelag§8, §avault§8, §avytrexability§8, §aworldedit§7.
+[19:09:05] [Client thread/INFO]: [CHAT] Croale: yo
+[19:09:08] [Client thread/INFO]: [CHAT] Croale: make me op
+[19:09:17] [Client thread/INFO]: [CHAT] Jurib: one sec
+[19:09:35] [Client thread/INFO]: [CHAT] Croale: how do I edit gkits?
+[19:09:51] [Client thread/INFO]: [CHAT] Croale: how do I edit gkits?
+[19:09:55] [Client thread/INFO]: [CHAT] Jurib: u do in files
+[19:10:19] [Client thread/INFO]: [CHAT] Croale: can u change it and make the p3 gkit "mythic" p2 and make the rivals gkit called VAX
+[19:10:41] [Client thread/INFO]: [CHAT] [Famous] Croale: t
+[19:12:23] [Client thread/INFO]: [CHAT] [Famous] Croale: can u make it non cracked?
+[19:12:24] [Client thread/INFO]: [CHAT] Jurib: lemme try something
+[19:12:27] [Client thread/INFO]: [CHAT] Jurib: maybe
+[19:12:30] [Client thread/INFO]: [CHAT] Croale has used /reclaim to receive their Famous package! 
+[19:12:33] [Client thread/INFO]: [CHAT] [Famous] Croale: FUCK
+[19:12:38] [Client thread/INFO]: [CHAT] [Famous] Croale: We gotta set up reclaims
+[19:12:40] [Client thread/INFO]: [CHAT] [Famous] Croale: do u know how?
+[19:12:57] [Client thread/INFO]: [CHAT] [Owner] Croale: kewl
+[19:13:01] [Client thread/INFO]: [CHAT] [Lag] Ground items will be removed in 60 seconds!
+[19:13:11] [Client thread/INFO]: [CHAT] You have been granted OP permissions by CONSOLE.
+[19:13:11] [Client thread/INFO]: [CHAT] [CONSOLE: Has given permissions to jurib]
+[19:13:15] [Client thread/INFO]: [CHAT] Jurib: one sec
+[19:13:27] [Client thread/INFO]: [CHAT] Jurib has just earned the achievement [Taking Inventory]
+[19:13:28] [Client thread/INFO]: [CHAT] [Owner] Croale: Can u make it so it doesn't say hcrival on the side?
+[19:13:41] [Client thread/INFO]: [CHAT] [Lag] Ground items will be removed in 20 seconds!
+[19:13:54] [Client thread/INFO]: [CHAT] [Owner] Croale: we need crate plugin
+[19:14:04] [Client thread/INFO]: [CHAT] Jurib: yea
+[19:15:39] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:step.anvil
+[19:15:43] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:step.anvil
+[19:15:44] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:step.anvil
+[19:15:46] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:step.anvil
+[19:15:47] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:step.anvil
+[19:15:48] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:step.anvil
+[19:16:10] [Client thread/INFO]: [CHAT] Croale has just earned the achievement [Taking Inventory]
+[19:17:22] [Client thread/INFO]: [CHAT] [Owner] Croale: Can u make it so it doesn't say hcrival on the side? and on tab and the ktis make it so it doesn't
+[19:17:25] [Client thread/INFO]: [CHAT] [Owner] Croale: say rival and rival+
+[19:17:40] [Client thread/INFO]: [CHAT] Jurib: what u want me to change it to
+[19:17:51] [Client thread/INFO]: [CHAT] [Owner] Croale: make it Vax and Vax+
+[19:17:53] [Client thread/INFO]: [CHAT] [Owner] Croale: and then
+[19:18:00] [Client thread/INFO]: [CHAT] [Owner] Croale: make the mythic gkit prot 2
+[19:18:01] [Client thread/INFO]: [CHAT] [Owner] Croale: sharp 2
+[19:18:07] [Client thread/INFO]: [CHAT] [Owner] Croale: instead of prot 3 and sharp 3
+[19:18:25] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:step.anvil
+[19:18:40] [Client thread/INFO]: [CHAT] Croale has their PvP Timer.
+[19:18:40] [Client thread/INFO]: [CHAT] Croale has their PvP Timer.
+[19:18:40] [Client thread/INFO]: [CHAT] Croale has their PvP Timer.
+[19:18:40] [Client thread/INFO]: [CHAT] Croale has their PvP Timer.
+[19:18:41] [Client thread/INFO]: [CHAT] Croale has their PvP Timer.
+[19:18:41] [Client thread/INFO]: [CHAT] Croale has their PvP Timer.
+[19:18:41] [Client thread/INFO]: [CHAT] Croale has their PvP Timer.
+[19:18:41] [Client thread/INFO]: [CHAT] Croale has their PvP Timer.
+[19:18:41] [Client thread/INFO]: [CHAT] Croale has their PvP Timer.
+[19:18:41] [Client thread/INFO]: [CHAT] Croale has their PvP Timer.
+[19:18:42] [Client thread/INFO]: [CHAT] Croale has their PvP Timer.
+[19:18:42] [Client thread/INFO]: [CHAT] Croale has their PvP Timer.
+[19:18:42] [Client thread/INFO]: [CHAT] Croale has their PvP Timer.
+[19:18:42] [Client thread/INFO]: [CHAT] Croale has their PvP Timer.
+[19:18:42] [Client thread/INFO]: [CHAT] Croale has their PvP Timer.
+[19:18:42] [Client thread/INFO]: [CHAT] Croale has their PvP Timer.
+[19:18:43] [Client thread/INFO]: [CHAT] Croale has their PvP Timer.
+[19:18:43] [Client thread/INFO]: [CHAT] Croale has their PvP Timer.
+[19:18:43] [Client thread/INFO]: [CHAT] Croale has their PvP Timer.
+[19:18:44] [Client thread/INFO]: [CHAT] Croale has their PvP Timer.
+[19:18:44] [Client thread/INFO]: [CHAT] Croale has their PvP Timer.
+[19:18:45] [Client thread/INFO]: [CHAT] Croale has their PvP Timer.
+[19:18:45] [Client thread/INFO]: [CHAT] Croale has their PvP Timer.
+[19:18:45] [Client thread/INFO]: [CHAT] Croale has their PvP Timer.
+[19:18:45] [Client thread/INFO]: [CHAT] Croale has their PvP Timer.
+[19:18:45] [Client thread/INFO]: [CHAT] Croale has their PvP Timer.
+[19:18:45] [Client thread/INFO]: [CHAT] Croale has their PvP Timer.
+[19:18:45] [Client thread/INFO]: [CHAT] Croale has their PvP Timer.
+[19:18:45] [Client thread/INFO]: [CHAT] [Croale has given Croale 64 Ender Pearl]
+[19:18:46] [Client thread/INFO]: [CHAT] Croale has their PvP Timer.
+[19:18:46] [Client thread/INFO]: [CHAT] Croale has their PvP Timer.
+[19:18:46] [Client thread/INFO]: [CHAT] Croale has their PvP Timer.
+[19:18:46] [Client thread/INFO]: [CHAT] Croale has their PvP Timer.
+[19:18:46] [Client thread/INFO]: [CHAT] Croale has their PvP Timer.
+[19:18:46] [Client thread/INFO]: [CHAT] Croale has their PvP Timer.
+[19:18:46] [Client thread/INFO]: [CHAT] Croale has their PvP Timer.
+[19:18:47] [Client thread/INFO]: [CHAT] Croale has their PvP Timer.
+[19:18:48] [Client thread/INFO]: [CHAT] [Owner] Croale: yo
+[19:18:50] [Client thread/INFO]: [CHAT] [Owner] Croale: lets test pearls
+[19:18:50] [Client thread/INFO]: [CHAT] Jurib: ye

@@ -25,9 +25,10 @@ import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.IChatComponent;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
-import org.tinylog.Logger;
 
 import java.awt.*;
 import java.awt.datatransfer.ClipboardOwner;
@@ -42,8 +43,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
+
 public abstract class GuiScreen extends Gui implements GuiYesNoCallback
 {
+    private static final Logger LOGGER = LogManager.getLogger();
     private static final Set<String> PROTOCOLS = Sets.newHashSet(new String[] {"http", "https"});
     private static final Splitter NEWLINE_SPLITTER = Splitter.on('\n');
 
@@ -426,7 +429,7 @@ public abstract class GuiScreen extends Gui implements GuiYesNoCallback
                     }
                     catch (URISyntaxException urisyntaxexception)
                     {
-                        Logger.error((String)("Can\'t open url for " + clickevent), (Throwable)urisyntaxexception);
+                        LOGGER.error((String)("Can\'t open url for " + clickevent), (Throwable)urisyntaxexception);
                     }
                 }
                 else if (clickevent.getAction() == ClickEvent.Action.OPEN_FILE)
@@ -444,7 +447,7 @@ public abstract class GuiScreen extends Gui implements GuiYesNoCallback
                 }
                 else
                 {
-                    Logger.error("Don\'t know how to handle " + clickevent);
+                    LOGGER.error("Don\'t know how to handle " + clickevent);
                 }
 
                 return true;
@@ -698,7 +701,7 @@ public abstract class GuiScreen extends Gui implements GuiYesNoCallback
         }
         catch (Throwable throwable)
         {
-            Logger.error("Couldn\'t open link", throwable);
+            LOGGER.error("Couldn\'t open link", throwable);
         }
     }
 

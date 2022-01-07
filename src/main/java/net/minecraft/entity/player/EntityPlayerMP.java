@@ -49,6 +49,7 @@ import net.minecraft.world.*;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
 
+
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
@@ -56,9 +57,13 @@ import java.util.Set;
 
 
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 public class EntityPlayerMP extends EntityPlayer implements ICrafting
 {
-    
+    private static final Logger logger = LogManager.getLogger();
     private String translator = "en_US";
 
     /**

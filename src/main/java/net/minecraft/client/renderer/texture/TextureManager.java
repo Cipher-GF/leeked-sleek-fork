@@ -10,7 +10,12 @@ import net.minecraft.util.ReportedException;
 import net.minecraft.util.ResourceLocation;
 import optifine.Config;
 import optifine.RandomMobs;
-import org.tinylog.Logger;
+
+
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import shadersmod.client.ShadersTex;
 
 import java.io.IOException;
@@ -22,6 +27,7 @@ import java.util.concurrent.Callable;
 
 public class TextureManager implements ITickable, IResourceManagerReloadListener
 {
+    private static final Logger logger = LogManager.getLogger();
     private final Map mapTextureObjects = Maps.newHashMap();
     private final List listTickables = Lists.newArrayList();
     private final Map mapTextureCounters = Maps.newHashMap();
@@ -82,7 +88,7 @@ public class TextureManager implements ITickable, IResourceManagerReloadListener
         }
         catch (IOException ioexception)
         {
-            Logger.warn((String)("Failed to load texture: " + textureLocation), (Throwable)ioexception);
+            logger.warn((String)("Failed to load texture: " + textureLocation), (Throwable)ioexception);
             itextureobject = TextureUtil.missingTexture;
             this.mapTextureObjects.put(textureLocation, itextureobject);
             flag = false;

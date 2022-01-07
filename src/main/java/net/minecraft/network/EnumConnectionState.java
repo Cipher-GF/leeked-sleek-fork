@@ -16,9 +16,12 @@ import net.minecraft.network.status.client.C00PacketServerQuery;
 import net.minecraft.network.status.client.C01PacketPing;
 import net.minecraft.network.status.server.S00PacketServerInfo;
 import net.minecraft.network.status.server.S01PacketPong;
-import org.tinylog.Logger;
+
 
 import java.util.Map;
+
+
+import org.apache.logging.log4j.LogManager;
 
 
 public enum EnumConnectionState
@@ -181,7 +184,7 @@ public enum EnumConnectionState
         if (bimap.containsValue(packetClass))
         {
             String s = direction + " packet " + packetClass + " is already known to ID " + bimap.inverse().get(packetClass);
-            Logger.trace(s);
+            LogManager.getLogger().fatal(s);
             throw new IllegalArgumentException(s);
         }
         else

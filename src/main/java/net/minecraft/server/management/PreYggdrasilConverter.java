@@ -17,9 +17,17 @@ import java.util.UUID;
 
 
 
+
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.StringUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 public class PreYggdrasilConverter
 {
-    
+    private static final Logger LOGGER = LogManager.getLogger();
     public static final File OLD_IPBAN_FILE = new File("banned-ips.txt");
     public static final File OLD_PLAYERBAN_FILE = new File("banned-players.txt");
     public static final File OLD_OPS_FILE = new File("ops.txt");
@@ -73,7 +81,7 @@ public class PreYggdrasilConverter
                     }
                     public void onProfileLookupFailed(GameProfile p_onProfileLookupFailed_1_, Exception p_onProfileLookupFailed_2_)
                     {
-                        org.tinylog.Logger.warn((String)("Could not lookup user whitelist entry for " + p_onProfileLookupFailed_1_.getName()), (Throwable)p_onProfileLookupFailed_2_);
+                        PreYggdrasilConverter.LOGGER.warn((String)("Could not lookup user whitelist entry for " + p_onProfileLookupFailed_1_.getName()), (Throwable)p_onProfileLookupFailed_2_);
                     }
                 };
                 lookupNames(minecraftserver, Lists.newArrayList(new String[] {p_152719_0_}), profilelookupcallback);

@@ -9,14 +9,19 @@ import net.minecraft.client.resources.data.IMetadataSection;
 import net.minecraft.client.resources.data.IMetadataSerializer;
 import net.minecraft.util.ResourceLocation;
 import org.apache.commons.io.IOUtils;
-import org.tinylog.Logger;
+
 
 import java.awt.image.BufferedImage;
 import java.io.*;
 
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 public abstract class AbstractResourcePack implements IResourcePack
 {
+    private static final Logger resourceLog = LogManager.getLogger();
     public final File resourcePackFile;
     private static final String __OBFID = "CL_00001072";
 
@@ -51,7 +56,7 @@ public abstract class AbstractResourcePack implements IResourcePack
 
     protected void logNameNotLowercase(String p_110594_1_)
     {
-        Logger.warn("ResourcePack: ignored non-lowercase namespace: {} in {}", new Object[] {p_110594_1_, this.resourcePackFile});
+        resourceLog.warn("ResourcePack: ignored non-lowercase namespace: {} in {}", new Object[] {p_110594_1_, this.resourcePackFile});
     }
 
     public IMetadataSection getPackMetadata(IMetadataSerializer p_135058_1_, String p_135058_2_) throws IOException

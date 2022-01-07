@@ -6,6 +6,7 @@ import net.minecraft.nbt.CompressedStreamTools;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IProgressUpdate;
 
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -13,9 +14,13 @@ import java.util.List;
 
 
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 public class SaveFormatOld implements ISaveFormat
 {
-    
+    private static final Logger logger = LogManager.getLogger();
 
     /**
      * Reference to the File object representing the directory for the world saves
@@ -87,7 +92,7 @@ public class SaveFormatOld implements ISaveFormat
                 }
                 catch (Exception exception1)
                 {
-                    org.tinylog.Logger.error((String)("Exception reading " + file2), (Throwable)exception1);
+                    logger.error((String)("Exception reading " + file2), (Throwable)exception1);
                 }
             }
 
@@ -103,7 +108,7 @@ public class SaveFormatOld implements ISaveFormat
                 }
                 catch (Exception exception)
                 {
-                    org.tinylog.Logger.error((String)("Exception reading " + file2), (Throwable)exception);
+                    logger.error((String)("Exception reading " + file2), (Throwable)exception);
                 }
             }
 
@@ -158,7 +163,7 @@ public class SaveFormatOld implements ISaveFormat
             }
             catch (Throwable throwable)
             {
-                org.tinylog.Logger.warn("Couldn\'t make new level", throwable);
+                logger.warn("Couldn\'t make new level", throwable);
                 return false;
             }
         }
@@ -178,18 +183,18 @@ public class SaveFormatOld implements ISaveFormat
         }
         else
         {
-            org.tinylog.Logger.info("Deleting level " + p_75802_1_);
+            logger.info("Deleting level " + p_75802_1_);
 
             for (int i = 1; i <= 5; ++i)
             {
-                org.tinylog.Logger.info("Attempt " + i + "...");
+                logger.info("Attempt " + i + "...");
 
                 if (deleteFiles(file1.listFiles()))
                 {
                     break;
                 }
 
-                org.tinylog.Logger.warn("Unsuccessful in deleting contents.");
+                logger.warn("Unsuccessful in deleting contents.");
 
                 if (i < 5)
                 {
@@ -217,17 +222,17 @@ public class SaveFormatOld implements ISaveFormat
         for (int i = 0; i < files.length; ++i)
         {
             File file1 = files[i];
-            org.tinylog.Logger.debug("Deleting " + file1);
+            logger.debug("Deleting " + file1);
 
             if (file1.isDirectory() && !deleteFiles(file1.listFiles()))
             {
-                org.tinylog.Logger.warn("Couldn\'t delete directory " + file1);
+                logger.warn("Couldn\'t delete directory " + file1);
                 return false;
             }
 
             if (!file1.delete())
             {
-                org.tinylog.Logger.warn("Couldn\'t delete file " + file1);
+                logger.warn("Couldn\'t delete file " + file1);
                 return false;
             }
         }

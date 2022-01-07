@@ -19,9 +19,16 @@ import java.util.Map.Entry;
 
 
 
+
+import net.minecraft.util.JsonUtils;
+import org.apache.commons.io.IOUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 public class ResourceIndex
 {
-    
+    private static final Logger logger = LogManager.getLogger();
     private final Map<String, File> resourceMap = Maps.<String, File>newHashMap();
 
     public ResourceIndex(File p_i1047_1_, String p_i1047_2_)
@@ -54,11 +61,11 @@ public class ResourceIndex
             }
             catch (JsonParseException var20)
             {
-                org.tinylog.Logger.error("Unable to parse resource index file: " + file2);
+                logger.error("Unable to parse resource index file: " + file2);
             }
             catch (FileNotFoundException var21)
             {
-                org.tinylog.Logger.error("Can\'t find the resource index file: " + file2);
+                logger.error("Can\'t find the resource index file: " + file2);
             }
             finally
             {
