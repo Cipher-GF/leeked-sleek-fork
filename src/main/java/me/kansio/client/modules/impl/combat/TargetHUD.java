@@ -36,7 +36,9 @@ public class TargetHUD extends Util {
                 } else if (targetHealthWidth < currentHealthWidth) {
                     currentHealthWidth -= targetHealthWidth / 10;
                 }
+
                 RenderUtils.drawBorderedRoundedRect(150, 350, 150, 60, 10, 2, 2, new Color(target.hurtTime * 6, 0, 0, 100).getRGB());
+
                 mc.fontRendererObj.drawStringWithShadow(target.getName(), 210, 370, -1);
 
                 if (target instanceof EntityPlayer) {

