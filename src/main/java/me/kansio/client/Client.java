@@ -16,6 +16,7 @@ import me.kansio.client.keybind.KeybindManager;
 import me.kansio.client.manager.ValueManager;
 import me.kansio.client.modules.ModuleManager;
 import me.kansio.client.modules.impl.Module;
+import me.kansio.client.modules.impl.player.hackerdetect.CheckManager;
 import me.kansio.client.utils.chat.ChatUtil;
 import me.kansio.client.utils.network.HttpUtil;
 import net.minecraft.client.Minecraft;
@@ -70,6 +71,9 @@ public class Client {
     @Getter
     private FriendManager friendManager;
 
+    @Getter
+    private CheckManager checkManager;
+
     public void onStart() {
         //Set the client file directory
         dir = new File(Minecraft.getMinecraft().mcDataDir, "Sleek");
@@ -95,6 +99,9 @@ public class Client {
 
         //Set the friend manager
         friendManager = new FriendManager();
+
+        //Set the check manager
+        checkManager = new CheckManager();
 
         System.out.println("Client has been started.");
         Display.setTitle("Sleek v0.1");

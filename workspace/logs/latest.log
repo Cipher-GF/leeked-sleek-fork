@@ -50746,3 +50746,180 @@ Caused by: java.lang.NullPointerException
 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java) ~[?:?]
 	at net.minecraft.util.Util.func_181617_a(Util.java:23) ~[classes/:?]
 	... 4 more
+[07:21:32] [Client thread/INFO]: [CHAT] AR ▏ mcc » 现在在中国
+[07:21:35] [Client thread/FATAL]: Error executing task
+java.util.concurrent.ExecutionException: java.lang.NullPointerException
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122) ~[?:?]
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:191) ~[?:?]
+	at net.minecraft.util.Util.func_181617_a(Util.java:24) [classes/:?]
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:998) [classes/:?]
+	at net.minecraft.client.Minecraft.run(Minecraft.java:456) [classes/:?]
+	at net.minecraft.client.main.Main.main(Main.java:115) [classes/:?]
+	at Start.main(Start.java:11) [classes/:?]
+Caused by: java.lang.NullPointerException
+	at net.minecraft.client.network.NetHandlerPlayClient.handleSpawnPlayer(NetHandlerPlayClient.java:342) ~[classes/:?]
+	at net.minecraft.network.play.server.S0CPacketSpawnPlayer.processPacket(S0CPacketSpawnPlayer.java:84) ~[classes/:?]
+	at net.minecraft.network.play.server.S0CPacketSpawnPlayer.processPacket(S0CPacketSpawnPlayer.java:16) ~[classes/:?]
+	at net.minecraft.network.PacketThreadUtil$1.run(PacketThreadUtil.java:10) ~[classes/:?]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[?:?]
+	at java.base/java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:264) ~[?:?]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java) ~[?:?]
+	at net.minecraft.util.Util.func_181617_a(Util.java:23) ~[classes/:?]
+	... 4 more
+[07:21:36] [Client thread/FATAL]: Error executing task
+java.util.concurrent.ExecutionException: java.lang.NullPointerException
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122) ~[?:?]
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:191) ~[?:?]
+	at net.minecraft.util.Util.func_181617_a(Util.java:24) [classes/:?]
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:998) [classes/:?]
+	at net.minecraft.client.Minecraft.run(Minecraft.java:456) [classes/:?]
+	at net.minecraft.client.main.Main.main(Main.java:115) [classes/:?]
+	at Start.main(Start.java:11) [classes/:?]
+Caused by: java.lang.NullPointerException
+	at net.minecraft.client.network.NetHandlerPlayClient.handleSpawnPlayer(NetHandlerPlayClient.java:342) ~[classes/:?]
+	at net.minecraft.network.play.server.S0CPacketSpawnPlayer.processPacket(S0CPacketSpawnPlayer.java:84) ~[classes/:?]
+	at net.minecraft.network.play.server.S0CPacketSpawnPlayer.processPacket(S0CPacketSpawnPlayer.java:16) ~[classes/:?]
+	at net.minecraft.network.PacketThreadUtil$1.run(PacketThreadUtil.java:10) ~[classes/:?]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[?:?]
+	at java.base/java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:264) ~[?:?]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java) ~[?:?]
+	at net.minecraft.util.Util.func_181617_a(Util.java:23) ~[classes/:?]
+	... 4 more
+[07:21:38] [Client thread/FATAL]: Error executing task
+java.util.concurrent.ExecutionException: java.lang.NullPointerException
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122) ~[?:?]
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:191) ~[?:?]
+	at net.minecraft.util.Util.func_181617_a(Util.java:24) [classes/:?]
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:998) [classes/:?]
+	at net.minecraft.client.Minecraft.run(Minecraft.java:456) [classes/:?]
+	at net.minecraft.client.main.Main.main(Main.java:115) [classes/:?]
+	at Start.main(Start.java:11) [classes/:?]
+Caused by: java.lang.NullPointerException
+	at net.minecraft.client.network.NetHandlerPlayClient.handleSpawnPlayer(NetHandlerPlayClient.java:342) ~[classes/:?]
+	at net.minecraft.network.play.server.S0CPacketSpawnPlayer.processPacket(S0CPacketSpawnPlayer.java:84) ~[classes/:?]
+	at net.minecraft.network.play.server.S0CPacketSpawnPlayer.processPacket(S0CPacketSpawnPlayer.java:16) ~[classes/:?]
+	at net.minecraft.network.PacketThreadUtil$1.run(PacketThreadUtil.java:10) ~[classes/:?]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[?:?]
+	at java.base/java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:264) ~[?:?]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java) ~[?:?]
+	at net.minecraft.util.Util.func_181617_a(Util.java:23) ~[classes/:?]
+	... 4 more
+[07:21:38] [Client thread/INFO]: [CHAT] BW ▏ xiaochang123456 » emm....
+[07:21:39] [Client thread/FATAL]: Error executing task
+java.util.concurrent.ExecutionException: java.lang.NullPointerException
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122) ~[?:?]
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:191) ~[?:?]
+	at net.minecraft.util.Util.func_181617_a(Util.java:24) [classes/:?]
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:998) [classes/:?]
+	at net.minecraft.client.Minecraft.run(Minecraft.java:456) [classes/:?]
+	at net.minecraft.client.main.Main.main(Main.java:115) [classes/:?]
+	at Start.main(Start.java:11) [classes/:?]
+Caused by: java.lang.NullPointerException
+	at net.minecraft.client.network.NetHandlerPlayClient.handleSpawnPlayer(NetHandlerPlayClient.java:342) ~[classes/:?]
+	at net.minecraft.network.play.server.S0CPacketSpawnPlayer.processPacket(S0CPacketSpawnPlayer.java:84) ~[classes/:?]
+	at net.minecraft.network.play.server.S0CPacketSpawnPlayer.processPacket(S0CPacketSpawnPlayer.java:16) ~[classes/:?]
+	at net.minecraft.network.PacketThreadUtil$1.run(PacketThreadUtil.java:10) ~[classes/:?]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[?:?]
+	at java.base/java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:264) ~[?:?]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java) ~[?:?]
+	at net.minecraft.util.Util.func_181617_a(Util.java:23) ~[classes/:?]
+	... 4 more
+[07:21:41] [Client thread/FATAL]: Error executing task
+java.util.concurrent.ExecutionException: java.lang.NullPointerException
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122) ~[?:?]
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:191) ~[?:?]
+	at net.minecraft.util.Util.func_181617_a(Util.java:24) [classes/:?]
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:998) [classes/:?]
+	at net.minecraft.client.Minecraft.run(Minecraft.java:456) [classes/:?]
+	at net.minecraft.client.main.Main.main(Main.java:115) [classes/:?]
+	at Start.main(Start.java:11) [classes/:?]
+Caused by: java.lang.NullPointerException
+	at net.minecraft.client.network.NetHandlerPlayClient.handleSpawnPlayer(NetHandlerPlayClient.java:342) ~[classes/:?]
+	at net.minecraft.network.play.server.S0CPacketSpawnPlayer.processPacket(S0CPacketSpawnPlayer.java:84) ~[classes/:?]
+	at net.minecraft.network.play.server.S0CPacketSpawnPlayer.processPacket(S0CPacketSpawnPlayer.java:16) ~[classes/:?]
+	at net.minecraft.network.PacketThreadUtil$1.run(PacketThreadUtil.java:10) ~[classes/:?]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[?:?]
+	at java.base/java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:264) ~[?:?]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java) ~[?:?]
+	at net.minecraft.util.Util.func_181617_a(Util.java:23) ~[classes/:?]
+	... 4 more
+[07:21:41] [Client thread/INFO]: [CHAT] 05 ▏ Flouxtime » fk
+[07:21:43] [Client thread/FATAL]: Error executing task
+java.util.concurrent.ExecutionException: java.lang.NullPointerException
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122) ~[?:?]
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:191) ~[?:?]
+	at net.minecraft.util.Util.func_181617_a(Util.java:24) [classes/:?]
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:998) [classes/:?]
+	at net.minecraft.client.Minecraft.run(Minecraft.java:456) [classes/:?]
+	at net.minecraft.client.main.Main.main(Main.java:115) [classes/:?]
+	at Start.main(Start.java:11) [classes/:?]
+Caused by: java.lang.NullPointerException
+	at net.minecraft.client.network.NetHandlerPlayClient.handleSpawnPlayer(NetHandlerPlayClient.java:342) ~[classes/:?]
+	at net.minecraft.network.play.server.S0CPacketSpawnPlayer.processPacket(S0CPacketSpawnPlayer.java:84) ~[classes/:?]
+	at net.minecraft.network.play.server.S0CPacketSpawnPlayer.processPacket(S0CPacketSpawnPlayer.java:16) ~[classes/:?]
+	at net.minecraft.network.PacketThreadUtil$1.run(PacketThreadUtil.java:10) ~[classes/:?]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[?:?]
+	at java.base/java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:264) ~[?:?]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java) ~[?:?]
+	at net.minecraft.util.Util.func_181617_a(Util.java:23) ~[classes/:?]
+	... 4 more
+[07:21:45] [Client thread/FATAL]: Error executing task
+java.util.concurrent.ExecutionException: java.lang.NullPointerException
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122) ~[?:?]
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:191) ~[?:?]
+	at net.minecraft.util.Util.func_181617_a(Util.java:24) [classes/:?]
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:998) [classes/:?]
+	at net.minecraft.client.Minecraft.run(Minecraft.java:456) [classes/:?]
+	at net.minecraft.client.main.Main.main(Main.java:115) [classes/:?]
+	at Start.main(Start.java:11) [classes/:?]
+Caused by: java.lang.NullPointerException
+	at net.minecraft.client.network.NetHandlerPlayClient.handleSpawnPlayer(NetHandlerPlayClient.java:342) ~[classes/:?]
+	at net.minecraft.network.play.server.S0CPacketSpawnPlayer.processPacket(S0CPacketSpawnPlayer.java:84) ~[classes/:?]
+	at net.minecraft.network.play.server.S0CPacketSpawnPlayer.processPacket(S0CPacketSpawnPlayer.java:16) ~[classes/:?]
+	at net.minecraft.network.PacketThreadUtil$1.run(PacketThreadUtil.java:10) ~[classes/:?]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[?:?]
+	at java.base/java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:264) ~[?:?]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java) ~[?:?]
+	at net.minecraft.util.Util.func_181617_a(Util.java:23) ~[classes/:?]
+	... 4 more
+[07:21:46] [Client thread/FATAL]: Error executing task
+java.util.concurrent.ExecutionException: java.lang.NullPointerException
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122) ~[?:?]
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:191) ~[?:?]
+	at net.minecraft.util.Util.func_181617_a(Util.java:24) [classes/:?]
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:998) [classes/:?]
+	at net.minecraft.client.Minecraft.run(Minecraft.java:456) [classes/:?]
+	at net.minecraft.client.main.Main.main(Main.java:115) [classes/:?]
+	at Start.main(Start.java:11) [classes/:?]
+Caused by: java.lang.NullPointerException
+	at net.minecraft.client.network.NetHandlerPlayClient.handleSpawnPlayer(NetHandlerPlayClient.java:342) ~[classes/:?]
+	at net.minecraft.network.play.server.S0CPacketSpawnPlayer.processPacket(S0CPacketSpawnPlayer.java:84) ~[classes/:?]
+	at net.minecraft.network.play.server.S0CPacketSpawnPlayer.processPacket(S0CPacketSpawnPlayer.java:16) ~[classes/:?]
+	at net.minecraft.network.PacketThreadUtil$1.run(PacketThreadUtil.java:10) ~[classes/:?]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[?:?]
+	at java.base/java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:264) ~[?:?]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java) ~[?:?]
+	at net.minecraft.util.Util.func_181617_a(Util.java:23) ~[classes/:?]
+	... 4 more
+[07:21:46] [Client thread/FATAL]: Error executing task
+java.util.concurrent.ExecutionException: java.lang.NullPointerException
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122) ~[?:?]
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:191) ~[?:?]
+	at net.minecraft.util.Util.func_181617_a(Util.java:24) [classes/:?]
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:998) [classes/:?]
+	at net.minecraft.client.Minecraft.run(Minecraft.java:456) [classes/:?]
+	at net.minecraft.client.main.Main.main(Main.java:115) [classes/:?]
+	at Start.main(Start.java:11) [classes/:?]
+Caused by: java.lang.NullPointerException
+	at net.minecraft.client.network.NetHandlerPlayClient.handleSpawnPlayer(NetHandlerPlayClient.java:342) ~[classes/:?]
+	at net.minecraft.network.play.server.S0CPacketSpawnPlayer.processPacket(S0CPacketSpawnPlayer.java:84) ~[classes/:?]
+	at net.minecraft.network.play.server.S0CPacketSpawnPlayer.processPacket(S0CPacketSpawnPlayer.java:16) ~[classes/:?]
+	at net.minecraft.network.PacketThreadUtil$1.run(PacketThreadUtil.java:10) ~[classes/:?]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[?:?]
+	at java.base/java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:264) ~[?:?]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java) ~[?:?]
+	at net.minecraft.util.Util.func_181617_a(Util.java:23) ~[classes/:?]
+	... 4 more
+[07:21:47] [Client thread/INFO]: Stopping!
+[07:21:47] [Client thread/INFO]: SoundSystem shutting down...
+[07:21:47] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com
