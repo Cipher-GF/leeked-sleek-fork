@@ -48,7 +48,10 @@ public abstract class Value<Type> {
 
     public void setValueAutoSave(Type value) {
         this.value = value;
-        //Sulfur.getInstance().getFileManager().getObjects().forEach(MFile::save);
+        /**
+         *
+        ////Sulfur.getInstance().getFileManager().getObjects().forEach(MFile::save);
+        */
     }
 
 

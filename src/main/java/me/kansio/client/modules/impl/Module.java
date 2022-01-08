@@ -98,7 +98,7 @@ public abstract class Module {
     }
 
     public void register(Value... properties) {
-        System.out.println(Client.getInstance().getValueManager());
+        //System.out.println(Client.getInstance().getValueManager());
         Collections.addAll(Client.getInstance().getValueManager().getObjects(), properties);
     }
 

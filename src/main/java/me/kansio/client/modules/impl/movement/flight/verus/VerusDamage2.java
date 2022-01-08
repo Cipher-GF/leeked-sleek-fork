@@ -3,6 +3,7 @@ package me.kansio.client.modules.impl.movement.flight.verus;
 import me.kansio.client.event.impl.MoveEvent;
 import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.impl.movement.flight.FlightMode;
+import me.kansio.client.utils.chat.ChatUtil;
 import me.kansio.client.utils.player.PlayerUtil;
 
 public class VerusDamage2 extends FlightMode {
@@ -12,17 +13,22 @@ public class VerusDamage2 extends FlightMode {
     }
 
     public void onEnable() {
-        PlayerUtil.damageVerus();
+
     }
 
     @Override
     public void onMove(MoveEvent event) {
+        if (mc.thePlayer.hurtResistantTime < 1){
+            if (mc.thePlayer.onGround) {
+                PlayerUtil.damageVerus();
+            }
+        }
         if (mc.thePlayer.hurtResistantTime > 1) {
-            int motionY;
+            double motionY;
             if (mc.gameSettings.keyBindJump.isPressed()) {
-                motionY = 1;
+                motionY = getFlight().getSpeed().getValue() / 2;
             } else if (mc.gameSettings.keyBindSneak.isPressed()) {
-                motionY = -1;
+                motionY = -getFlight().getSpeed().getValue() / 2;
             } else {
                 motionY = 0;
             }
@@ -30,8 +36,6 @@ public class VerusDamage2 extends FlightMode {
             event.setMotionY(motionY);
 
             PlayerUtil.setMotion(event, getFlight().getSpeed().getValue());
-        } else if (mc.thePlayer.onGround) {
-            PlayerUtil.damageVerus();
         }
     }
 }
