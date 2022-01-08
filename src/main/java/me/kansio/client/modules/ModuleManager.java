@@ -52,6 +52,7 @@ public class ModuleManager {
 
         //Player
         modules.add(new NoFall());
+        modules.add(new AntiVoid());
         modules.add(new Sprint());
         modules.add(new ChestStealer());
         modules.add(new InvManager());

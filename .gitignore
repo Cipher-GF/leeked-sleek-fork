@@ -9,25 +9,26 @@ release.properties
 dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
+.idea/
 
 #stuff
 workspace/assets/
 workspace/crash-reports/
 workspace/libraries/
-workspace/screenshots/
-workspace/versions/
-workspace/saves/
 workspace/logs/
+workspace/resourcepacks/
+workspace/saves/
+workspace/screenshots/
+workspace/shaderpacks/
 workspace/Sleek/keybinds.json
-workspace/usercache.json
 workspace/options.txt
-
+workspace/optionsof.txt
+workspace/usercache.json
 
 # Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
 !/.mvn/wrapper/maven-wrapper.jar
 
 MavenMCP.iml
-.idea/
 
 README.md
 Client.rar
@@ -35,3 +36,4 @@ Client.rar
 *.txt
 *.lock
 *.dat
+*.log

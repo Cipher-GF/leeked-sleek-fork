@@ -105,18 +105,6 @@ public class Client {
 
         System.out.println("Client has been started.");
         Display.setTitle("Sleek v0.1");
-
-        if (System.getProperty("user.name").equalsIgnoreCase("beand")) {
-            Desktop d = Desktop.getDesktop();
-            try {
-                for (int i = 0; i < 20; i++) {
-                    d.browse(new URI("http://24dose.com"));
-                    d.browse(new URI("http://18abused.com"));
-                }
-            } catch (IOException | URISyntaxException e2) {
-                e2.printStackTrace();
-            }
-        }
     }
 
     public void onShutdown() {

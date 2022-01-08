@@ -4,6 +4,7 @@ import me.kansio.client.Client;
 import me.kansio.client.modules.impl.movement.Speed;
 import me.kansio.client.modules.impl.visuals.HUD;
 import me.kansio.client.utils.font.Fonts;
+import me.kansio.client.utils.render.RenderUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiScreen;
@@ -98,11 +99,11 @@ public class Notification {
         HUD hud = (HUD) Client.getInstance().getModuleManager().getModuleByName("HUD");
         if (hud.font.getValue()) {
             Fonts.Arial18.drawString(title, (int) (GuiScreen.width - offset + 8), GuiScreen.height - 2 - height, -1);
-            //Fonts.Arial18.drawString("icon", (int) (GuiScreen.width - offset + 100 / 5), GuiScreen.height - 2 - height, -1);
+            Fonts.Arial18.drawString("icon", (int) (GuiScreen.width - offset + 200 / 2), GuiScreen.height - 2 - height, -1);
             Fonts.Arial18.drawString(messsage, (int) (GuiScreen.width - offset + 8), GuiScreen.height - 15, -1);
         } else {
             fontRenderer.drawString(title, (int) (GuiScreen.width - offset + 8), GuiScreen.height - 2 - height, -1);
-            //fontRenderer.drawString("icon", (int) (GuiScreen.width - offset + 10 / 5), GuiScreen.height - 2 - height, -1);
+            fontRenderer.drawString("icon", (int) (GuiScreen.width - offset + 200 / 2), GuiScreen.height - 2 - height, -1);
             fontRenderer.drawString(messsage, (int) (GuiScreen.width - offset + 8), GuiScreen.height - 15, -1);
         }
     }
@@ -119,17 +120,12 @@ public class Notification {
             top = bottom;
             bottom = j;
         }
-
-        float f3 = (float) (color >> 24 & 255) / 255.0F;
-        float f = (float) (color >> 16 & 255) / 255.0F;
-        float f1 = (float) (color >> 8 & 255) / 255.0F;
-        float f2 = (float) (color & 255) / 255.0F;
         Tessellator tessellator = Tessellator.getInstance();
         WorldRenderer worldrenderer = tessellator.getWorldRenderer();
         GlStateManager.enableBlend();
         GlStateManager.disableTexture2D();
         GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
-        GlStateManager.color(f, f1, f2, f3);
+        RenderUtils.hexColor(color);
         worldrenderer.begin(7, DefaultVertexFormats.POSITION);
         worldrenderer.pos(left, bottom, 0.0D).endVertex();
         worldrenderer.pos(right, bottom, 0.0D).endVertex();
@@ -153,16 +149,12 @@ public class Notification {
             bottom = j;
         }
 
-        float f3 = (float) (color >> 24 & 255) / 255.0F;
-        float f = (float) (color >> 16 & 255) / 255.0F;
-        float f1 = (float) (color >> 8 & 255) / 255.0F;
-        float f2 = (float) (color & 255) / 255.0F;
         Tessellator tessellator = Tessellator.getInstance();
         WorldRenderer worldrenderer = tessellator.getWorldRenderer();
         GlStateManager.enableBlend();
         GlStateManager.disableTexture2D();
         GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
-        GlStateManager.color(f, f1, f2, f3);
+        RenderUtils.hexColor(color);
         worldrenderer.begin(mode, DefaultVertexFormats.POSITION);
         worldrenderer.pos(left, bottom, 0.0D).endVertex();
         worldrenderer.pos(right, bottom, 0.0D).endVertex();
