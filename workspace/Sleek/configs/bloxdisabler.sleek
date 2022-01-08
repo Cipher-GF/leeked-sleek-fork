@@ -10,9 +10,9 @@
     "TargetHud Mode": "Sleek",
     "Swing Range": "6.0",
     "Block Range": "6.0",
-    "CPS": "8.0",
+    "CPS": "9.0",
     "Randomize CPS": "3.0",
-    "TargetHud": "false",
+    "TargetHud": "true",
     "GCD": "false",
     "Players": "true",
     "Friends": "true",
@@ -35,7 +35,7 @@
   {
     "name": "Target Strafe",
     "enabled": true,
-    "Auto F5": "false",
+    "Auto F5": "true",
     "On Jump": "true",
     "Controllable": "true",
     "Render": "true",
@@ -53,7 +53,7 @@
   {
     "name": "Disabler",
     "enabled": true,
-    "Mode": "Test",
+    "Mode": "BlocksMC",
     "Cancel Transactions": "false",
     "Cancel Keep Alive": "false",
     "Delay Transactions": "false",
@@ -91,10 +91,14 @@
     "Sneak": "false"
   },
   {
+    "name": "Fast Use",
+    "enabled": true
+  },
+  {
     "name": "Speed",
     "enabled": false,
     "Mode": "VanillaHop",
-    "Speed": "0.4",
+    "Speed": "0.5",
     "Force Friction": "true",
     "Friction": "NCP"
   },
@@ -138,18 +142,18 @@
     "name": "Chest Stealer",
     "enabled": true,
     "Check Chest": "true",
-    "Delay": "56.0"
+    "Delay": "8.0"
   },
   {
     "name": "InvManager",
     "enabled": true,
     "AutoSword": "true",
-    "AutoSword Delay": "40.0",
+    "AutoSword Delay": "24.0",
     "AutoSword Only in Inv": "true",
     "Inventory Cleaner": "true",
-    "InvCleaner Delay": "112.0",
+    "InvCleaner Delay": "16.0",
     "Auto Armor": "true",
-    "AutoArmor Delay": "64.0"
+    "AutoArmor Delay": "16.0"
   },
   {
     "name": "Timer",
@@ -172,17 +176,22 @@
     "SoulSand": "false"
   },
   {
+    "name": "IRC",
+    "enabled": true
+  },
+  {
     "name": "HUD",
     "enabled": true,
     "Notifications": "true",
     "Font": "false",
-    "BPS": "true",
-    "Client Name": "bloxmc troll hack 420 v69"
+    "Important Only": "true",
+    "Client Name": "bloxmc troll hack 420 v69",
+    "Module Suffix": " %s"
   },
   {
     "name": "Animations",
     "enabled": true,
-    "Mode": "DOWN",
+    "Mode": "ETB",
     "Swing Speed": "8.0"
   },
   {
@@ -241,6 +250,19 @@
     "Play Sound": "false",
     "Meme Sounds": "false",
     "Meme Mode": "OOF"
+  },
+  {
+    "name": "Penis ESP",
+    "enabled": false
+  },
+  {
+    "name": "Chams",
+    "enabled": false,
+    "Fill": "true",
+    "Red": "255",
+    "Green": "255",
+    "Blue": "255",
+    "Alpha": "255"
   },
   {
     "name": "Scaffold",

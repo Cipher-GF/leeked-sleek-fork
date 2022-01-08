@@ -1,9 +1,11 @@
 package me.kansio.client.modules.impl.combat;
 
 import dorkbox.messageBus.annotations.Subscribe;
+import me.kansio.client.Client;
 import me.kansio.client.event.impl.PacketEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.impl.Module;
+import me.kansio.client.modules.impl.movement.Flight;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.ModeValue;
 import me.kansio.client.utils.network.PacketUtil;
@@ -25,6 +27,11 @@ public class Criticals extends Module {
 
     @Subscribe
     public void onPacket(PacketEvent event) {
+        Flight flight = (Flight) Client.getInstance().getModuleManager().getModuleByName("Flight");
+
+        if (flight.isToggled())
+            return;
+
         if (event.getPacket() instanceof C02PacketUseEntity && ((C02PacketUseEntity) event.getPacket()).getAction() == C02PacketUseEntity.Action.ATTACK) {
             final C02PacketUseEntity packetUseEntity = event.getPacket();
             final Entity entity = packetUseEntity.getEntityFromWorld(mc.theWorld);

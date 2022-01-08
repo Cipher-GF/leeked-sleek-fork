@@ -42,6 +42,7 @@ public class ModuleManager {
         modules.add(new Plugins());
         modules.add(new Regen());
         modules.add(new Phase());
+        modules.add(new FastUse());
 
         //Movement
         modules.add(new Speed());
@@ -70,6 +71,7 @@ public class ModuleManager {
         modules.add(new AttackEffect());
         modules.add(new DeathEffect());
         modules.add(new PenisESP());
+        modules.add(new Chams());
 
         //World
         modules.add(new Scaffold());

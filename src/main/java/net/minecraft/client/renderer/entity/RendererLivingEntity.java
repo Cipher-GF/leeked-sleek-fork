@@ -1,6 +1,10 @@
 package net.minecraft.client.renderer.entity;
 
 import com.google.common.collect.Lists;
+import me.kansio.client.Client;
+import me.kansio.client.event.impl.EntityLivingRenderEvent;
+import me.kansio.client.modules.impl.visuals.Chams;
+import me.kansio.client.utils.render.ColorUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.FontRenderer;
@@ -86,6 +90,10 @@ public abstract class RendererLivingEntity<T extends EntityLivingBase> extends R
      * double d2, float f, float f1). But JAD is pre 1.5 so doe
      */
     public void doRender(T entity, double x, double y, double z, float entityYaw, float partialTicks) {
+        EntityLivingRenderEvent e = new EntityLivingRenderEvent(true, entity);
+        Client.getInstance().getEventBus().publish(e);
+        if (e.isCancelled()) return;
+
         if (!Reflector.RenderLivingEvent_Pre_Constructor.exists() || !Reflector.postForgeBusEvent(Reflector.RenderLivingEvent_Pre_Constructor, new Object[]{entity, this, Double.valueOf(x), Double.valueOf(y), Double.valueOf(z)})) {
             GlStateManager.pushMatrix();
             GlStateManager.disableCull();
@@ -162,6 +170,37 @@ public abstract class RendererLivingEntity<T extends EntityLivingBase> extends R
                     boolean flag = this.setDoRenderBrightness(entity, partialTicks);
                     this.renderModel(entity, f6, f5, f7, f2, f8, 0.0625F);
 
+                    boolean valid = entity instanceof EntityPlayer;
+                    if (valid) {
+                        Chams chams = (Chams) Client.getInstance().getModuleManager().getModuleByName("Chams");
+                        boolean shouldFill = Client.getInstance().getModuleManager().getModuleByName("Chams").isToggled() && chams.fill.getValue();
+                        if (shouldFill) {
+                            Minecraft mc = Minecraft.getMinecraft();
+                            mc.entityRenderer.enableLightmap();
+
+                            ColorUtils.glColor(chams.alpha.getValue(), chams.r.getValue(), chams.g.getValue(), chams.b.getValue());
+
+
+                            GL11.glPushMatrix();
+                            GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+                            GL11.glDisable(GL11.GL_TEXTURE_2D);
+                            RenderHelper.disableStandardItemLighting();
+
+                            GL11.glEnable(32823);
+                            GL11.glPolygonOffset(1.0f, -3900000.0f);
+                            this.renderModel(entity, f6, f5, f8, f2, f7, 0.0625F);
+                            GL11.glEnable(GL11.GL_TEXTURE_2D);
+                            GL11.glEnable(GL11.GL_LIGHTING);
+                            GL11.glEnable(GL11.GL_DEPTH_TEST);
+                            GlStateManager.enableLighting();
+                            GlStateManager.enableColorMaterial();
+
+                            GL11.glPopMatrix();
+                            mc.entityRenderer.disableLightmap();
+                            ColorUtils.glColor(-1);
+                        }
+                    }
+
                     if (flag) {
                         this.unsetBrightness();
                     }
@@ -187,6 +226,9 @@ public abstract class RendererLivingEntity<T extends EntityLivingBase> extends R
             if (!this.renderOutlines) {
                 super.doRender(entity, x, y, z, entityYaw, partialTicks);
             }
+
+            EntityLivingRenderEvent ePost = new EntityLivingRenderEvent(false, entity);
+            Client.getInstance().getEventBus().publish(ePost);
 
             if (!Reflector.RenderLivingEvent_Post_Constructor.exists() || !Reflector.postForgeBusEvent(Reflector.RenderLivingEvent_Post_Constructor, new Object[]{entity, this, Double.valueOf(x), Double.valueOf(y), Double.valueOf(z)})) {
                 ;
