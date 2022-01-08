@@ -76,7 +76,7 @@ public class ESP extends Module {
         this.color = Color.WHITE.getRGB();
         this.backgroundColor = (new Color(0, 0, 0, 120)).getRGB();
         this.black = Color.BLACK.getRGB();
-        register(this.outline, this.boxMode, this.tag, this.healthBar, this.armorBar, this.localPlayer, this.players, this.invisibles, this.mobs, this.animals, this.chests, this.droppedItems);
+        register(this.outline, this.boxMode, this.tag, this.healthBar, this.armorBar, this.localPlayer, this.players, this.fillInside, this.invisibles, this.mobs, this.animals, this.chests, this.droppedItems);
     }
 
     @Subscribe
@@ -107,9 +107,9 @@ public class ESP extends Module {
         for(int collectedEntitiesSize = collectedEntities.size(); i < collectedEntitiesSize; ++i) {
             Entity entity = (Entity)collectedEntities.get(i);
             if (this.isValid(entity) && RenderUtils.isInViewFrustrum(entity)) {
-                double x = RenderUtils.interpolate(entity.posX, entity.lastTickPosX, (double)partialTicks);
-                double y = RenderUtils.interpolate(entity.posY, entity.lastTickPosY, (double)partialTicks);
-                double z = RenderUtils.interpolate(entity.posZ, entity.lastTickPosZ, (double)partialTicks);
+                double x = RenderUtils.interpolate(entity.posX, entity.lastTickPosX, partialTicks);
+                double y = RenderUtils.interpolate(entity.posY, entity.lastTickPosY, partialTicks);
+                double z = RenderUtils.interpolate(entity.posZ, entity.lastTickPosZ, partialTicks);
                 double width = (double)entity.width / 1.5D;
                 double height = (double)entity.height + (entity.isSneaking() ? -0.3D : 0.2D);
                 AxisAlignedBB aabb = new AxisAlignedBB(x - width, y, z - width, x + width, y + height, z + width);

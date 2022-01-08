@@ -111,8 +111,10 @@ public class Client {
     }
 
     public void onShutdown() {
+        //save keybinds
+        keybindManager.save();
+
         //shutdown the event bus
-        System.out.println("Shutting down...");
         eventBus.shutdown();
     }
 

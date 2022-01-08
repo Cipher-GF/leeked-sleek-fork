@@ -36,7 +36,6 @@ public class Speed extends Module {
             .collect(Collectors.toList());
 
     private final ModeValue mode = new ModeValue("Mode", this, modes.stream().map(SpeedMode::getName).collect(Collectors.toList()).toArray(new String[]{}));
-    /*new ModeValue("Mode", this, "Vanilla", "VanillaHop", "Verus", "Verus Ground", "TestPixel", "Ghostly", "Ghostly TP");*/
     private SpeedMode currentMode = modes.stream().anyMatch(speedMode -> speedMode.getName().equalsIgnoreCase(mode.getValue())) ? modes.stream().filter(speedMode -> speedMode.getName().equalsIgnoreCase(mode.getValue())).findAny().get() : null ;
 
     @Getter private final NumberValue<Double> speed = new NumberValue<>("Speed", this, 0.5, 0.0, 8.0, 0.1);

@@ -132,6 +132,10 @@
     "Mode": "Packet"
   },
   {
+    "name": "AntiVoid",
+    "enabled": false
+  },
+  {
     "name": "Sprint",
     "enabled": true,
     "Omni": "false",
@@ -180,8 +184,18 @@
     "enabled": true
   },
   {
+    "name": "Hacker Detect",
+    "enabled": false
+  },
+  {
+    "name": "Auto Server",
+    "enabled": true,
+    "Mode": "Armorer"
+  },
+  {
     "name": "HUD",
     "enabled": true,
+    "Mode": "Sleek",
     "Notifications": "true",
     "Font": "false",
     "Important Only": "true",
@@ -209,6 +223,7 @@
     "Armor Bar": "true",
     "Local": "true",
     "Players": "true",
+    "Fill": "true",
     "Invisibles": "false",
     "Monsters": "false",
     "Animals": "true",
@@ -259,10 +274,10 @@
     "name": "Chams",
     "enabled": false,
     "Fill": "true",
-    "Red": "255",
-    "Green": "255",
-    "Blue": "255",
-    "Alpha": "255"
+    "Red": "255.0",
+    "Green": "255.0",
+    "Blue": "255.0",
+    "Alpha": "255.0"
   },
   {
     "name": "Scaffold",

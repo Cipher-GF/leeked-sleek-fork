@@ -124,7 +124,7 @@ public class KillAura extends Module {
 
         if (mc.thePlayer.ticksExisted < 5) {
             if (isToggled()) {
-                NotificationManager.getNotificationManager().show(new Notification(Notification.NotificationType.INFO, "World Change!", "Killaura has been disabled", 5));
+                NotificationManager.getNotificationManager().show(new Notification(Notification.NotificationType.INFO, "World Change!", "Killaura disabled", 5));
                 toggle();
             }
         }
