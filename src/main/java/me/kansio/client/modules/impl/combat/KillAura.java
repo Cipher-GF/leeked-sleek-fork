@@ -8,6 +8,8 @@ import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.modules.impl.player.Sprint;
+import me.kansio.client.notification.Notification;
+import me.kansio.client.notification.NotificationManager;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.ModeValue;
 import me.kansio.client.property.value.NumberValue;
@@ -118,6 +120,14 @@ public class KillAura extends Module {
         List<EntityLivingBase> entities = FightUtil.getMultipleTargets(swingrage.getValue(), players.getValue(), friends.getValue(), animals.getValue(), walls.getValue(), monsters.getValue(), invisible.getValue());
 
         if (mc.currentScreen != null) return;
+
+
+        if (mc.thePlayer.ticksExisted < 5) {
+            if (isToggled()) {
+                NotificationManager.getNotificationManager().show(new Notification(Notification.NotificationType.INFO, "World Change!", "Killaura has been disabled", 5));
+                toggle();
+            }
+        }
 
         List<EntityLivingBase> blockRangeEntites = FightUtil.getMultipleTargets(autoblockRange.getValue(), players.getValue(), friends.getValue(), animals.getValue(), walls.getValue(), monsters.getValue(), invisible.getValue());
 

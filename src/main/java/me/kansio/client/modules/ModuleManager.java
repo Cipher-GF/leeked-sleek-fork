@@ -62,6 +62,7 @@ public class ModuleManager {
         modules.add(new NoSlow());
         modules.add(new IRC());
         modules.add(new HackerDetect());
+        modules.add(new AutoServer());
 
         //Visual
         modules.add(new HUD());
