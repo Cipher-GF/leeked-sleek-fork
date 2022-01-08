@@ -10,6 +10,7 @@ import me.kansio.client.modules.impl.movement.InvMove;
 import me.kansio.client.modules.impl.movement.LongJump;
 import me.kansio.client.modules.impl.movement.Speed;
 import me.kansio.client.modules.impl.player.*;
+import me.kansio.client.modules.impl.player.hackerdetect.HackerDetect;
 import me.kansio.client.modules.impl.visuals.*;
 import me.kansio.client.modules.impl.world.Breaker;
 import me.kansio.client.modules.impl.world.Scaffold;
@@ -60,6 +61,7 @@ public class ModuleManager {
         modules.add(new NoRotate());
         modules.add(new NoSlow());
         modules.add(new IRC());
+        modules.add(new HackerDetect());
 
         //Visual
         modules.add(new HUD());

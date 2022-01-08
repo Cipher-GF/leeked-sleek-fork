@@ -95,6 +95,7 @@ public class Client {
 
         //Set the keybind manager
         keybindManager = new KeybindManager(dir);
+        //load the keybinds
         keybindManager.load();
 
         //Set the friend manager
@@ -104,6 +105,8 @@ public class Client {
         checkManager = new CheckManager();
 
         System.out.println("Client has been started.");
+
+        //set the window title
         Display.setTitle("Sleek v0.1");
     }
 
@@ -115,7 +118,6 @@ public class Client {
 
     @Subscribe
     public void onJoin(ServerJoinEvent event) {
-
         try {
             System.out.println(HttpUtil.delete(MessageFormat.format("http://zerotwoclient.xyz:13337/api/v1/leaveserver?clientname={0}", System.getProperty("user.name"))));
 
