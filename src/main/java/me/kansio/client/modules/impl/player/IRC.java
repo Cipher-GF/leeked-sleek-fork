@@ -7,6 +7,7 @@ import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.irc.IRCClient;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.utils.chat.ChatUtil;
+import org.apache.commons.lang3.RandomStringUtils;
 
 import java.net.URISyntaxException;
 
@@ -37,6 +38,4 @@ public class IRC extends Module {
             client.send(client.getAttachment().toString() + IRCClient.SPLIT + event.getMessage().replace("- ", ""));
         }
     }
-
-
 }
