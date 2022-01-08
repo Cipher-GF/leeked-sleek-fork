@@ -13,7 +13,7 @@ import org.lwjgl.opengl.GL11;
 
 public class Animations extends Module {
 
-    private ModeValue modeValue = new ModeValue("Mode", this, "1.7", "Hide", "Slide", "Lucky", "DOWN", "Exhi", "oHare", "oHare2", "Wizzard", "Lennox", "ETB");
+    private ModeValue modeValue = new ModeValue("Mode", this, "1.7", "Hide", "Slide", "Lucky", "Down", "Exhi", "oHare", "oHare2", "Wizzard", "Lennox", "ETB");
     public NumberValue<Double> slowdown = new NumberValue<>("Swing Speed", this, 1d, -4d, 12d, 1d);
     private float rotate;
 
@@ -133,20 +133,24 @@ public class Animations extends Module {
                 }
                 break;
             case "ETB":
-                mc.getItemRenderer().transformFirstPersonItem(f, 0.0F);
-                mc.getItemRenderer().func_178103_d();
-                final float var9 = MathHelper.sin(MathHelper.sqrt_float(f1) * 3.1415927f);
-                GlStateManager.translate(-0.05f, 0.6f, 0.3f);
-                GlStateManager.rotate(-var9 * (float) 80.0 / 2.0f, -4.0f, -0.0f, 18.0f);
-                GlStateManager.rotate(-var9 * (float) 70.0, 1.5f, -0.4f, -0.0f);
+                if (itemToRender.getItem() instanceof ItemSword) {
+                    mc.getItemRenderer().transformFirstPersonItem(f, 0.0F);
+                    mc.getItemRenderer().func_178103_d();
+                    final float var9 = MathHelper.sin(MathHelper.sqrt_float(f1) * 3.1415927f);
+                    GlStateManager.translate(-0.05f, 0.6f, 0.3f);
+                    GlStateManager.rotate(-var9 * (float) 80.0 / 2.0f, -4.0f, -0.0f, 18.0f);
+                    GlStateManager.rotate(-var9 * (float) 70.0, 1.5f, -0.4f, -0.0f);
+                }
                 break;
             case "SPIN":
-                mc.getItemRenderer().transformFirstPersonItem(f, 0.0f);
-                mc.getItemRenderer().func_178103_d();
-                GL11.glRotatef(rotate, rotate, 0, rotate);
-                GL11.glScalef(0.5f, 0.5f, 0.5F);
-                //GL11.glTranslatef(0, 5, 0);
-                rotate++;
+                if (itemToRender.getItem() instanceof ItemSword) {
+                    mc.getItemRenderer().transformFirstPersonItem(f, 0.0f);
+                    mc.getItemRenderer().func_178103_d();
+                    GL11.glRotatef(rotate, rotate, 0, rotate);
+                    GL11.glScalef(0.5f, 0.5f, 0.5F);
+                    //GL11.glTranslatef(0, 5, 0);
+                    rotate++;
+                }
                 break;
         }
     }
