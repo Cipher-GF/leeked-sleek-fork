@@ -39,6 +39,7 @@ import javax.imageio.ImageIO;
 
 import me.kansio.client.Client;
 import me.kansio.client.event.impl.KeyboardEvent;
+import me.kansio.client.event.impl.MouseEvent;
 import me.kansio.client.gui.MainMenu;
 import me.kansio.client.gui.clickgui.utils.render.animation.easings.Delta;
 import net.minecraft.block.Block;
@@ -1583,6 +1584,8 @@ public class Minecraft implements IThreadListener, IPlayerUsage {
                 KeyBinding.setKeyBindState(i - 100, Mouse.getEventButtonState());
 
                 if (Mouse.getEventButtonState()) {
+                    final MouseEvent event = new MouseEvent(i);
+                    Client.getInstance().getEventBus().publish(event);
                     if (this.thePlayer.isSpectator() && i == 2) {
                         this.ingameGUI.getSpectatorGui().func_175261_b();
                     } else {

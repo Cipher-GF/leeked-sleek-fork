@@ -287,6 +287,38 @@
             <version>1.5.2</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.viaversion</groupId>
+            <artifactId>ViaBackwards</artifactId>
+            <version>4.1.2-SNAPSHOT</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/ViaBackwards-4.1.2-SNAPSHOT.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>de.gerrygames</groupId>
+            <artifactId>ViaRewind</artifactId>
+            <version>2.0.3-SNAPSHOT</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/ViaRewind-2.0.3-SNAPSHOT.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>ViaSnakeYaml</artifactId>
+            <version>1.2.7</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/ViaSnakeYaml-1.27.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>com.viaversion</groupId>
+            <artifactId>ViaVersion</artifactId>
+            <version>4.1.2-SNAPSHOT</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/ViaVersion-4.1.2-SNAPSHOT.jar</systemPath>
+        </dependency>
+
     </dependencies>
 
 </project>

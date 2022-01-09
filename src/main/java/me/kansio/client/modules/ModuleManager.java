@@ -63,6 +63,7 @@ public class ModuleManager {
         modules.add(new IRC());
         modules.add(new HackerDetect());
         modules.add(new AutoServer());
+        modules.add(new MCF());
 
         //Visual
         modules.add(new HUD());

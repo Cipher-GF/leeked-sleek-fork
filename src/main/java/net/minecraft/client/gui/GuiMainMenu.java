@@ -8,6 +8,7 @@ import com.google.gson.JsonParser;
 import me.kansio.client.Client;
 import me.kansio.client.gui.MainMenu;
 import me.kansio.client.utils.network.HttpUtil;
+import me.kansio.client.utils.render.ColorPalette;
 import negroidslayer.NegroidFarm;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
@@ -95,10 +96,11 @@ public class GuiMainMenu extends GuiScreen
         //Gui.drawRect(0, 0, scaledResolution.getScaledWidth(), scaledResolution.getScaledHeight(), new Color(50, 50, 50).getRGB());
         drawDefaultBackground();
         username.drawTextBox();
-        this.drawCenteredString(font, "Login", (int) (width / 2F), 20, -1);
+        drawString(mc.fontRendererObj, "Client has been skidded by vncat", mc.fontRendererObj.getStringWidth("Client has been skidded by vncat") / 2, height - 120, ColorPalette.AMBER.getColor().getRGB());
+        this.drawCenteredString(font, "Login", (int) (width / 2F), 20 + 60, -1);
 
         if (username.getText().isEmpty()) {
-            font.drawStringWithShadow("UID", width / 2F - 96, 66, -7829368);
+            font.drawStringWithShadow("UID", width / 2F - 96, 66 + 60, -7829368);
         }
         super.drawScreen(x, y2, z);
     }
@@ -106,8 +108,8 @@ public class GuiMainMenu extends GuiScreen
     @Override
     public void initGui() {
         int var3 = height / 4 + 24;
-        buttonList.add(new GuiButton(0, width / 2 - 100, 84, "Login"));
-        username = new GuiTextField(var3, mc.fontRendererObj, width / 2 - 100, 60, 200, 20);
+        buttonList.add(new GuiButton(0, width / 2 - 100, 84 + 60, "Login"));
+        username = new GuiTextField(var3, mc.fontRendererObj, width / 2 - 100, 60 + 60, 200, 20);
         username.setFocused(true);
         Keyboard.enableRepeatEvents(true);
     }

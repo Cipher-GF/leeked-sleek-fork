@@ -17,18 +17,14 @@ import me.kansio.client.manager.ValueManager;
 import me.kansio.client.modules.ModuleManager;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.modules.impl.player.hackerdetect.CheckManager;
-import me.kansio.client.utils.chat.ChatUtil;
 import me.kansio.client.utils.network.HttpUtil;
 import net.minecraft.client.Minecraft;
 import org.lwjgl.opengl.Display;
+import viamcp.ViaMCP;
 
-import java.awt.*;
 import java.io.File;
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.text.MessageFormat;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -103,6 +99,13 @@ public class Client {
 
         //Set the check manager
         checkManager = new CheckManager();
+
+        //Setup ViaMCP
+        try {
+            ViaMCP.getInstance().start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         System.out.println("Client has been started.");
 

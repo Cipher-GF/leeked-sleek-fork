@@ -29,7 +29,7 @@ public class TestPixel extends SpeedMode {
     @Override
     public void onMove(MoveEvent event) {
         if (mc.thePlayer.moveStrafing != 0) {
-            ChatUtil.log("This flags ");
+            mc.thePlayer.moveStrafing = 0;
             return;
         }
         if (mc.thePlayer.isMovingOnGround()) {
