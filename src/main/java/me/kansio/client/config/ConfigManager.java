@@ -76,14 +76,6 @@ public class ConfigManager {
                 Module m = Client.getInstance().getModuleManager().getModuleByName(modName);
                 if (m != null) {
                     m.load(obj);
-                    NotificationManager.getNotificationManager().show(
-                            new Notification(
-                                    Notification.NotificationType.INFO,
-                                    "Config",
-                                    "Loaded the config",
-                                    5
-                            )
-                    );
                 }
             });
         } catch (Exception throwable) {

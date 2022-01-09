@@ -40,3 +40,5 @@ Client.rar
 workspace/logs/latest.log
 workspace/usercache.json
 workspace/logs/latest.log
+*.log
+workspace/logs/latest.log
