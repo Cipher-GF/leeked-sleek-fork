@@ -25,8 +25,8 @@ public class AutoServer extends Module {
 
     private boolean hasClickedAutoPlay;
 
-    private ModeValue modeValue = new ModeValue("Mode", this, "BlocksMC");
-    private ModeValue kitValue = new ModeValue("Mode", this, "Armorer", "Knight");
+    private ModeValue modeValue = new ModeValue("Server", this, "BlocksMC");
+    private ModeValue kitValue = new ModeValue("Kit", this, "Armorer", "Knight");
 
     public AutoServer() {
         super("Auto Server", ModuleCategory.PLAYER);

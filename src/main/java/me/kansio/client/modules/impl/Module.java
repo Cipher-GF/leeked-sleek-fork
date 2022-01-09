@@ -73,7 +73,6 @@ public abstract class Module {
             onDisable();
         }
         if (!(this instanceof ClickGUI))
-        NotificationManager.getNotificationManager().show(new Notification(Notification.NotificationType.INFO, getName(), toggled ? "Enabled" : "Disabled", 1));
         onToggled();
     }
 
@@ -98,7 +97,6 @@ public abstract class Module {
     }
 
     public void register(Value... properties) {
-        //System.out.println(Client.getInstance().getValueManager());
         Collections.addAll(Client.getInstance().getValueManager().getObjects(), properties);
     }
 
@@ -127,8 +125,7 @@ public abstract class Module {
                         Client.getInstance().getEventBus().unsubscribe(this);
                         onDisable();
                     }
-                    if (!(this instanceof ClickGUI))
-                        NotificationManager.getNotificationManager().show(new Notification(Notification.NotificationType.INFO, getName(), toggled ? "Enabled" : "Disabled", 1));
+
                     onToggled();
                     break;
                 }

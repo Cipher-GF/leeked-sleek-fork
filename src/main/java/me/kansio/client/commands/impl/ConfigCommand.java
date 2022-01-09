@@ -21,7 +21,6 @@ public class ConfigCommand extends Command {
                 }
                 case "load": {
                     Client.getInstance().getConfigManager().loadConfig(args[1]);
-                    ChatUtil.log("Loaded Config " + args[1]);
                     break;
                 }
                 case "reload": {

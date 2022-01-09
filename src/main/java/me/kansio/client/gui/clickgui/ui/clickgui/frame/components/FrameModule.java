@@ -75,9 +75,9 @@ public class FrameModule implements Priority {
         moduleAnimation.setReversed(!module.isToggled());
         moduleAnimation.setSpeed(1000).update();
 
-        /*/if(GuiScreen.hover(x, y, mouseX, mouseY, defaultWidth, moduleHeight) && hoveredColor) {
+        if(RenderUtils.hover(x, y, mouseX, mouseY, defaultWidth, moduleHeight) && hoveredColor) {
             GuiScreen.drawRect(x,y, x + defaultWidth, y + moduleHeight, darkerMainColor);
-        }/*/
+        }
 
         if (module.isToggled() || (moduleAnimation.isReversed() && moduleAnimation.getValue() != 0)) {
             GuiScreen.drawRect(x, y, x + defaultWidth, y + moduleHeight, ColorUtils.setAlpha(new Color(enabledColor), (int) moduleAnimation.getValue()).getRGB());

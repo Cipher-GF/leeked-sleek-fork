@@ -67,9 +67,7 @@ public class GuiMainMenu extends GuiScreen
                             JsonObject obj = element.getAsJsonObject();
                             if (obj.get("uid").getAsString().equals(Client.getInstance().getUid())) {
                                 try {
-                                    System.out.println("zgroidiidiiidiiidiic");
                                     if (obj.get("hwid").getAsString().equals(NegroidFarm.guisdafghiusfgfsdhusdfghifsdhuidsfhuifdshuifsdhiudsfhiusfdhsdiuffsdhiudhsifusdfhiufsdhiufsdhiusdfhiufsdhiufsdhiu())) {
-                                        System.out.println("negroidiidiiidiiidiic");
                                         Client.getInstance().onStart();
                                         Client.getInstance().setUsername(obj.get("username").getAsString());
                                         mc.displayGuiScreen(new MainMenu());

@@ -5,11 +5,17 @@ import lombok.Getter;
 import lombok.Setter;
 import me.kansio.client.Client;
 import me.kansio.client.modules.impl.Module;
+import me.kansio.client.modules.impl.visuals.ClickGUI;
+import me.kansio.client.notification.Notification;
+import me.kansio.client.notification.NotificationManager;
+import me.kansio.client.utils.chat.ChatUtil;
+import net.minecraft.client.Minecraft;
 import org.apache.commons.io.FilenameUtils;
 
 import java.io.*;
 import java.nio.file.Files;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class ConfigManager {
 
@@ -24,6 +30,16 @@ public class ConfigManager {
 
     @Getter
     private CopyOnWriteArrayList<Config> configs = new CopyOnWriteArrayList<>();
+
+    public Config configByName(String name) {
+        for (Config config : configs) {
+            if (config.getName().equalsIgnoreCase(name)) {
+                return config;
+            }
+        }
+
+        return null;
+    }
 
     public void loadConfigs() {
         configs.clear();
@@ -60,15 +76,24 @@ public class ConfigManager {
                 Module m = Client.getInstance().getModuleManager().getModuleByName(modName);
                 if (m != null) {
                     m.load(obj);
+                    NotificationManager.getNotificationManager().show(
+                            new Notification(
+                                    Notification.NotificationType.INFO,
+                                    "Config",
+                                    "Loaded the config",
+                                    5
+                            )
+                    );
                 }
             });
-        } catch (Throwable throwable) {
-            throwable.printStackTrace();
+        } catch (Exception throwable) {
+            ChatUtil.log("Config not found...");
+
+            return;
         }
     }
 
     public void saveConfig(String cfgName) {
-        // yes config is purposely misspelled
         File config = new File(dir, cfgName + ".sleek");
         try {
 
@@ -88,16 +113,32 @@ public class ConfigManager {
             throwable.printStackTrace();
             config.delete();
         }
+
+        //reload the configs
+        loadConfigs();
     }
 
     public void removeConfig(String cfg) {
+        //remove the config from memory
+        configs.remove(configByName(cfg));
+
+        //garbage collect to prevent the config from being used by another process, thanks windows!
+        System.gc();
+
+        //actually delete the file from disk
         File f = new File(dir, cfg + ".sleek");
         if (f.exists()) {
             try {
                 Files.delete(f.toPath());
             } catch (IOException e) {
+                NotificationManager.getNotificationManager().show(
+                        new Notification(Notification.NotificationType.ERROR,
+                                "Error",
+                                "Couldn't delete the config from disk.",
+                                5
+                        ));
+                e.printStackTrace();
             }
         }
-        configs.remove(cfg);
     }
 }

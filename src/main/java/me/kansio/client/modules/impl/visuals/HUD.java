@@ -2,6 +2,7 @@ package me.kansio.client.modules.impl.visuals;
 
 import dorkbox.messageBus.annotations.Subscribe;
 import lombok.Getter;
+import me.kansio.client.Client;
 import me.kansio.client.event.impl.RenderOverlayEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.impl.Module;
@@ -10,6 +11,10 @@ import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.ModeValue;
 import me.kansio.client.property.value.StringValue;
 import me.kansio.client.utils.java.ReflectUtils;
+import me.kansio.client.utils.network.UserUtil;
+import me.kansio.client.utils.render.RenderUtils;
+import net.minecraft.client.gui.ScaledResolution;
+
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -49,6 +54,7 @@ public class HUD extends Module {
     @Override
     public void onEnable() {
         currentMode = modes.stream().anyMatch(hudMode -> hudMode.getName().equalsIgnoreCase(mode.getValue())) ? modes.stream().filter(hudMode -> hudMode.getName().equalsIgnoreCase(mode.getValue())).findAny().get() : null ;
+        assert currentMode != null;
         currentMode.onEnable();
     }
 
@@ -60,6 +66,14 @@ public class HUD extends Module {
     @Subscribe
     public void onRenderOverlay(RenderOverlayEvent event) {
         currentMode.onRenderOverlay(event);
+
+        ScaledResolution scaledResolution = RenderUtils.getResolution();
+
+        String text = "§7" + UserUtil.getBuildType(Integer.parseInt(Client.getInstance().getUid())) + " - §f" + Client.getInstance().getUid();
+        int y = mc.ingameGUI.getChatGUI().getChatOpen() ? 12 : 0;
+
+
+        mc.fontRendererObj.drawStringWithShadow(text, scaledResolution.getScaledWidth() - mc.fontRendererObj.getStringWidth(text) - 2, scaledResolution.getScaledHeight() - mc.fontRendererObj.FONT_HEIGHT - 2 - y, -1);
     }
 
 }

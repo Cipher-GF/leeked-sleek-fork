@@ -82,6 +82,10 @@ public class ModuleManager {
         modules.add(new Breaker());
 
 
+        //Hidden
+        modules.add(new Configs());
+
+
         //Toggle modules
         HUD hud = (HUD) getModuleByName("HUD");
         hud.toggle();

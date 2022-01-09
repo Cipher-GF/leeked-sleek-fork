@@ -61,7 +61,7 @@ public class Notification {
     }
 
     public void render() {
-        double offset = 0;
+        double offset;
         int width = 120;
         int height = 30;
         long time = getTime();
@@ -112,18 +112,18 @@ public class Notification {
         //RenderUtils.drawRect(GuiScreen.width - offset, GuiScreen.height - 5 - height, GuiScreen.width, GuiScreen.height - 5, backgroundcolor.getRGB());
         //RenderUtils.drawRect(GuiScreen.width - offset, GuiScreen.height - 5 - height, 5, GuiScreen.height - 5,  typecolor.getRGB());
 
-        drawRect(GuiScreen.width - offset, GuiScreen.height - 5 - height, GuiScreen.width, GuiScreen.height - 5, backgroundcolor.getRGB());
-        drawRect(GuiScreen.width - offset, GuiScreen.height - 5 - height, GuiScreen.width - offset + 2, GuiScreen.height - 5, typecolor.getRGB());
+        drawRect(GuiScreen.width - offset, GuiScreen.height - 5 - height - 20, GuiScreen.width, GuiScreen.height - 10 - 20, backgroundcolor.getRGB());
+        drawRect(GuiScreen.width - offset, GuiScreen.height - 5 - height - 20, GuiScreen.width - offset + 2, GuiScreen.height - 10 - 20, typecolor.getRGB());
 
         HUD hud = (HUD) Client.getInstance().getModuleManager().getModuleByName("HUD");
         if (hud.font.getValue()) {
-            Fonts.Arial18.drawString(title, (int) (GuiScreen.width - offset + 8), GuiScreen.height - 2 - height, -1);
-            Fonts.NotifIcon.drawString(icon, (int) (GuiScreen.width - offset + 200 / 2), GuiScreen.height + 5 / 2 - height, -1);
-            Fonts.Arial18.drawString(messsage, (int) (GuiScreen.width - offset + 8), GuiScreen.height - 15, -1);
+            Fonts.Arial18.drawString(title, (int) (GuiScreen.width - offset + 8), GuiScreen.height - 2 - height - 20, -1);
+            Fonts.NotifIcon.drawString(icon, (int) (GuiScreen.width - offset + 200 / 2), GuiScreen.height + 5 / 2 - height - 20, -1);
+            Fonts.Arial18.drawString(messsage, (int) (GuiScreen.width - offset + 8), GuiScreen.height - 40, -1);
         } else {
-            fontRenderer.drawString(title, (int) (GuiScreen.width - offset + 8), GuiScreen.height - 2 - height, -1);
-            Fonts.NotifIcon.drawString(icon, (int) (GuiScreen.width - offset + 200 / 2), GuiScreen.height + 5 / 2 - height, -1);
-            fontRenderer.drawString(messsage, (int) (GuiScreen.width - offset + 8), GuiScreen.height - 15, -1);
+            fontRenderer.drawString(title, (int) (GuiScreen.width - offset + 8), GuiScreen.height - 2 - height - 20, -1);
+            Fonts.NotifIcon.drawString(icon, (int) (GuiScreen.width - offset + 200 / 2), GuiScreen.height + 5 / 2 - height - 20, -1);
+            fontRenderer.drawString(messsage, (int) (GuiScreen.width - offset + 8), GuiScreen.height - 20 - 20, -1);
         }
     }
 

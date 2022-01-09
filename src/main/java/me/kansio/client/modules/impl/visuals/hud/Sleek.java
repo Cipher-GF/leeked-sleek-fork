@@ -44,7 +44,7 @@ public class Sleek extends HudMode{
 
                 if (hud.bps.getValue()) {
                     double bps = BPSUtil.getBPS();
-                    Fonts.Arial18.drawStringWithShadow("BPS: " + EnumChatFormatting.GRAY + new DecimalFormat("0.##").format(bps), 3, event.getSr().getScaledHeight() - (mc.ingameGUI.getChatGUI().getChatOpen() ? 15 : 20), ColorPalette.GREEN.getColor().getRGB());
+                    Fonts.Arial18.drawStringWithShadow("BPS: " + EnumChatFormatting.GRAY + new DecimalFormat("0.##").format(bps), 3, event.getSr().getScaledHeight() - (mc.ingameGUI.getChatGUI().getChatOpen() ? 22 : 10), ColorPalette.GREEN.getColor().getRGB());
                 }
 
             }
@@ -65,7 +65,7 @@ public class Sleek extends HudMode{
 
                 if (hud.bps.getValue()) {
                     double bps = BPSUtil.getBPS();
-                    mc.fontRendererObj.drawStringWithShadow("BPS: " + EnumChatFormatting.GRAY + new DecimalFormat("0.##").format(bps), 3, event.getSr().getScaledHeight() - (mc.ingameGUI.getChatGUI().getChatOpen() ? 15 : 20), ColorPalette.GREEN.getColor().getRGB());
+                    mc.fontRendererObj.drawStringWithShadow("BPS: " + EnumChatFormatting.GRAY + new DecimalFormat("0.##").format(bps), 3, event.getSr().getScaledHeight() - (mc.ingameGUI.getChatGUI().getChatOpen() ? 22 : 10), ColorPalette.GREEN.getColor().getRGB());
                 }
 
             }
