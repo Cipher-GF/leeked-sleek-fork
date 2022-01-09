@@ -37,3 +37,6 @@ Client.rar
 *.lock
 *.dat
 *.log
+workspace/logs/latest.log
+workspace/usercache.json
+workspace/logs/latest.log
