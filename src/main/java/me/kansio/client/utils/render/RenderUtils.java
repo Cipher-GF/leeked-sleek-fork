@@ -47,24 +47,11 @@ public class RenderUtils extends Util {
     }
 
     public static void disable3D() {
-        glDisable(GL_LINE_SMOOTH);
+        glDisable(GL_BLEND);
         glEnable(GL_TEXTURE_2D);
+        glDisable(GL_LINE_SMOOTH);
         glEnable(GL_DEPTH_TEST);
         glDepthMask(true);
-        glDisable(GL_BLEND);
-    }
-
-
-    public static void hexColor(int hexColor) {
-        float red = (hexColor >> 16 & 0xFF) / 255.0F;
-        float green = (hexColor >> 8 & 0xFF) / 255.0F;
-        float blue = (hexColor & 0xFF) / 255.0F;
-        float alpha = (hexColor >> 24 & 0xFF) / 255.0F;
-        GL11.glColor4f(red, green, blue, alpha);
-    }
-
-    public static void glColor(Color color) {
-        GlStateManager.color((float) color.getRed() / 255F, (float) color.getGreen() / 255F, (float) color.getBlue() / 255F, (float) color.getAlpha() / 255F);
     }
 
     public static void prepareScissorBox(float x, float y, float width, float height) {
@@ -132,7 +119,7 @@ public class RenderUtils extends Util {
         GL11.glEnable(GL11.GL_LINE_SMOOTH);
         GL11.glDisable(GL11.GL_TEXTURE_2D);
         GL11.glEnable(GL11.GL_BLEND);
-        hexColor(color);
+        ColorUtils.glColor(color);
         GL11.glLineWidth(2);
 
         GL11.glBegin(GL11.GL_LINES);
@@ -159,7 +146,7 @@ public class RenderUtils extends Util {
         GL11.glEnable(GL11.GL_LINE_SMOOTH);
 
         GL11.glPushMatrix();
-        hexColor(color);
+        ColorUtils.glColor(color);
 
         GL11.glBegin(GL11.GL_QUADS);
         GL11.glVertex2d(x, y);
@@ -191,7 +178,7 @@ public class RenderUtils extends Util {
         glBlendFunc(770, 771);
         GL11.glLineWidth(2.2f);
         GL11.glBegin(3);
-        hexColor(color);
+        ColorUtils.glColor(color);
         GL11.glVertex2d(x + width - 6.5, y + 3);
         GL11.glVertex2d(x + width - 11.5, y + 10);
         GL11.glVertex2d(x + width - 13.5, y + 8);
@@ -249,7 +236,7 @@ public class RenderUtils extends Util {
             x = (float) (radius * Math.sin((i * dAngle)));
             y = (float) (radius * Math.cos((i * dAngle)));
 
-            glColor(color);
+            ColorUtils.glColor(color);
             glVertex2f(xx + x, yy + y);
         }
 
@@ -283,10 +270,6 @@ public class RenderUtils extends Util {
         GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
         double x1 = x + width;
         double y1 = y + height;
-        float f = (color >> 24 & 0xFF) / 255.0F;
-        float f1 = (color >> 16 & 0xFF) / 255.0F;
-        float f2 = (color >> 8 & 0xFF) / 255.0F;
-        float f3 = (color & 0xFF) / 255.0F;
         GL11.glPushAttrib(0);
         GL11.glScaled(0.5, 0.5, 0.5);
 
@@ -296,7 +279,7 @@ public class RenderUtils extends Util {
         y1 *= 2;
 
         glDisable(GL11.GL_TEXTURE_2D);
-        GL11.glColor4f(f1, f2, f3, f);
+        ColorUtils.glColor(color);
         glEnable(GL11.GL_LINE_SMOOTH);
 
         GL11.glBegin(GL11.GL_POLYGON);
@@ -344,7 +327,7 @@ public class RenderUtils extends Util {
         GlStateManager.enableBlend();
         GlStateManager.disableTexture2D();
         GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
-        hexColor(color);
+        ColorUtils.glColor(color);
         worldrenderer.begin(GL11.GL_TRIANGLE_FAN, DefaultVertexFormats.POSITION);
         for (int i = 0; i < sides; i++) {
             double angle = (Math.PI * 2 * i / sides) + Math.toRadians(180);

@@ -178,8 +178,7 @@ public abstract class RendererLivingEntity<T extends EntityLivingBase> extends R
                             Minecraft mc = Minecraft.getMinecraft();
                             mc.entityRenderer.enableLightmap();
 
-                            ColorUtils.glColor(chams.alpha.getValue(), chams.r.getValue(), chams.g.getValue(), chams.b.getValue());
-
+                            ColorUtils.glColor(chams.r.getValue(), chams.g.getValue(), chams.b.getValue(), chams.alpha.getValue());
 
                             GL11.glPushMatrix();
                             GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);

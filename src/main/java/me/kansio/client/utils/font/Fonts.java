@@ -11,8 +11,7 @@ public class Fonts extends Util {
     public static final MCFontRenderer Arial18 = new MCFontRenderer(new Font("Arial", Font.PLAIN,18),true,true);
     public static final MCFontRenderer Arial12 = new MCFontRenderer(new Font("Arial", Font.PLAIN,12),true,true);
     public static final MCFontRenderer HUD = new MCFontRenderer(new Font("Arial", Font.PLAIN,18),true,true);
-    public static final MCFontRenderer NotifIcon = new MCFontRenderer(new Font("Arial", Font.PLAIN,12),true,true);
-
+    public static final MCFontRenderer NotifIcon = new MCFontRenderer(fontFromTTF(new ResourceLocation("sleek/fonts/notif-icon.ttf"),20,0), true, true);
 
     private static Font fontFromTTF(ResourceLocation fontLocation, float fontSize, int fontType) {
         Font output = null;
