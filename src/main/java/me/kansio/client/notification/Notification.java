@@ -1,18 +1,18 @@
 package me.kansio.client.notification;
 
 import me.kansio.client.Client;
-import me.kansio.client.modules.impl.movement.Speed;
 import me.kansio.client.modules.impl.visuals.HUD;
 import me.kansio.client.utils.font.Fonts;
-import me.kansio.client.utils.render.RenderUtils;
+import me.kansio.client.utils.render.ColorPalette;
+import me.kansio.client.utils.render.ColorUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiScreen;
+import me.kansio.client.utils.render.RenderUtils;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.WorldRenderer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
-
 import java.awt.*;
 
 /**
@@ -45,7 +45,7 @@ public class Notification {
     }
 
     public enum NotificationType {
-        INFO, WARNING, ERROR;
+        TOGGLEON, TOGGLEOFF, TIME, INFO, WARNING, ERROR;
     }
 
     public void show() {
@@ -76,16 +76,32 @@ public class Notification {
 
         Color backgroundcolor = new Color(0, 0, 0, 100);
         Color typecolor;
+        String icon;
 
         switch (type) {
+            case TOGGLEON:
+                typecolor = new Color (ColorPalette.GREEN.getColor().getRGB());
+                icon = "E";
+                break;
+            case TOGGLEOFF:
+                typecolor = new Color (ColorPalette.RED.getColor().getRGB());
+                icon = "D";
+                break;
+            case TIME:
+                typecolor = new Color(255, 255, 255);
+                icon = "F";
+                break;
             case INFO:
                 typecolor = new Color(255, 255, 255);
+                icon = "C";
                 break;
             case WARNING:
-                typecolor = new Color(228, 255, 0);
+                typecolor = new Color(ColorPalette.YELLOW.getColor().getRGB());
+                icon = "A";
                 break;
             case ERROR:
-                typecolor = new Color(255, 0, 21);
+                typecolor = new Color(ColorPalette.RED.getColor().getRGB());
+                icon = "B";
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + type);
@@ -93,17 +109,20 @@ public class Notification {
 
         FontRenderer fontRenderer = Minecraft.getMinecraft().fontRendererObj;
 
+        //RenderUtils.drawRect(GuiScreen.width - offset, GuiScreen.height - 5 - height, GuiScreen.width, GuiScreen.height - 5, backgroundcolor.getRGB());
+        //RenderUtils.drawRect(GuiScreen.width - offset, GuiScreen.height - 5 - height, 5, GuiScreen.height - 5,  typecolor.getRGB());
+
         drawRect(GuiScreen.width - offset, GuiScreen.height - 5 - height, GuiScreen.width, GuiScreen.height - 5, backgroundcolor.getRGB());
         drawRect(GuiScreen.width - offset, GuiScreen.height - 5 - height, GuiScreen.width - offset + 2, GuiScreen.height - 5, typecolor.getRGB());
 
         HUD hud = (HUD) Client.getInstance().getModuleManager().getModuleByName("HUD");
         if (hud.font.getValue()) {
             Fonts.Arial18.drawString(title, (int) (GuiScreen.width - offset + 8), GuiScreen.height - 2 - height, -1);
-            Fonts.Arial18.drawString("icon", (int) (GuiScreen.width - offset + 200 / 2), GuiScreen.height - 2 - height, -1);
+            Fonts.NotifIcon.drawString(icon, (int) (GuiScreen.width - offset + 200 / 2), GuiScreen.height + 5 / 2 - height, -1);
             Fonts.Arial18.drawString(messsage, (int) (GuiScreen.width - offset + 8), GuiScreen.height - 15, -1);
         } else {
             fontRenderer.drawString(title, (int) (GuiScreen.width - offset + 8), GuiScreen.height - 2 - height, -1);
-            fontRenderer.drawString("icon", (int) (GuiScreen.width - offset + 200 / 2), GuiScreen.height - 2 - height, -1);
+            Fonts.NotifIcon.drawString(icon, (int) (GuiScreen.width - offset + 200 / 2), GuiScreen.height + 5 / 2 - height, -1);
             fontRenderer.drawString(messsage, (int) (GuiScreen.width - offset + 8), GuiScreen.height - 15, -1);
         }
     }
@@ -125,7 +144,7 @@ public class Notification {
         GlStateManager.enableBlend();
         GlStateManager.disableTexture2D();
         GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
-        RenderUtils.hexColor(color);
+        ColorUtils.glColor(color);
         worldrenderer.begin(7, DefaultVertexFormats.POSITION);
         worldrenderer.pos(left, bottom, 0.0D).endVertex();
         worldrenderer.pos(right, bottom, 0.0D).endVertex();
@@ -154,7 +173,7 @@ public class Notification {
         GlStateManager.enableBlend();
         GlStateManager.disableTexture2D();
         GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
-        RenderUtils.hexColor(color);
+        ColorUtils.glColor(color);
         worldrenderer.begin(mode, DefaultVertexFormats.POSITION);
         worldrenderer.pos(left, bottom, 0.0D).endVertex();
         worldrenderer.pos(right, bottom, 0.0D).endVertex();
@@ -164,4 +183,5 @@ public class Notification {
         GlStateManager.enableTexture2D();
         GlStateManager.disableBlend();
     }
+
 }
