@@ -1,1156 +1,133 @@
-[08:36:13] [Client thread/INFO]: Setting user: sex_3322
-[08:36:13] [Client thread/INFO]: (Session ID is token:0:sex_3322)
-[08:36:17] [Client thread/INFO]: [OptiFine] *** Reflector Forge ***
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.Attributes
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: mods.betterfoliage.client.BetterFoliageClient
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.asm.transformers.BlamingTransformer
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.world.ChunkWatchEvent$UnWatch
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.relauncher.CoreModManager
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.DimensionManager
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.GuiScreenEvent$DrawScreenEvent$Pre
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.GuiScreenEvent$DrawScreenEvent$Post
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.EntityViewRenderEvent$CameraSetup
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.EntityViewRenderEvent$FogColors
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.eventhandler.Event
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.eventhandler.EventBus
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.eventhandler.Event$Result
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.property.ExtendedBlockState
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.FMLClientHandler
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.FMLCommonHandler
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.biome.BiomeGenBase.getWaterColorMultiplier
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.addDestroyEffects
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.addHitEffects
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.canCreatureSpawn
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.canRenderInLayer
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.doesSideBlockRendering
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getBedDirection
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getExtendedState
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.hasTileEntity
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isAir
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isBed
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isBedFoot
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isSideSolid
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.Entity.canRiderInteract
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Field not present: net.minecraft.entity.Entity.captureDrops
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Field not present: net.minecraft.entity.Entity.capturedDrops
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.Entity.shouldRenderInPass
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.Entity.shouldRiderSit
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.ForgeEventFactory
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.ForgeHooks
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.ForgeHooksClient
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.getDurabilityForDisplay
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.getModel
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.onEntitySwing
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.shouldCauseReequipAnimation
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.showDurabilityBar
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.ItemRecord.getRecordResource
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.ForgeModContainer
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.potion.PotionEffect.isCurativeItem
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.canRenderBreaking
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.getRenderBoundingBox
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.hasFastRenderer
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.shouldRenderInPass
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher.preDrawBatch
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher.drawBatch
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.vertex.VertexFormatElement$EnumUsage.preDraw
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.vertex.VertexFormatElement$EnumUsage.postDraw
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.World.countEntities
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.World.getPerWorldStorage
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getCloudRenderer
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getSkyRenderer
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getWeatherRenderer
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.GuiModList
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.IColoredBakedQuad
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.property.IExtendedBlockState
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.IRenderHandler
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.ISmartBlockModel
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.ItemModelMesherForge
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraft.launchwrapper.Launch
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.pipeline.LightUtil
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.MinecraftForge
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.MinecraftForgeClient
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.ModelLoader
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderBlockOverlayEvent$OverlayType
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.registry.RenderingRegistry
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderItemInFrameEvent
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Pre
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Post
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Specials$Pre
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Specials$Post
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.SplashProgress
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.world.WorldEvent$Load
-[08:36:17] [Client thread/INFO]: [OptiFine] *** Reflector Vanilla ***
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Field not present: me.kansio.client.gui.MainMenu.(type: class java.lang.String, index: 0)
-[08:36:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: optifine.OptiFineClassTransformer
-[08:36:17] [Client thread/INFO]: LWJGL Version: 2.9.4
-[08:36:19] [Client thread/INFO]: [OptiFine] 
-[08:36:19] [Client thread/INFO]: [OptiFine] OptiFine_1.8.8_HD_U_H8
-[08:36:19] [Client thread/INFO]: [OptiFine] Build: null
-[08:36:19] [Client thread/INFO]: [OptiFine] OS: Windows 10 (amd64) version 10.0
-[08:36:19] [Client thread/INFO]: [OptiFine] Java: 11.0.13, Amazon.com Inc.
-[08:36:19] [Client thread/INFO]: [OptiFine] VM: OpenJDK 64-Bit Server VM (mixed mode), Amazon.com Inc.
-[08:36:19] [Client thread/INFO]: [OptiFine] LWJGL: 2.9.4
-[08:36:19] [Client thread/INFO]: [OptiFine] OpenGL: NVIDIA GeForce GTX 750 Ti/PCIe/SSE2, version 4.6.0 NVIDIA 466.11, NVIDIA Corporation
-[08:36:19] [Client thread/INFO]: [OptiFine] OpenGL Version: 4.6.0
-[08:36:19] [Client thread/INFO]: [OptiFine] Maximum texture size: 16384x16384
-[08:36:19] [Thread-3/INFO]: [OptiFine] Checking for new version
-[08:36:19] [Thread-3/INFO]: [OptiFine] Version found: I7
-[08:36:19] [Client thread/INFO]: [Shaders] ShadersMod version: 2.4.12
-[08:36:19] [Client thread/INFO]: [Shaders] OpenGL Version: 4.6.0 NVIDIA 466.11
-[08:36:19] [Client thread/INFO]: [Shaders] Vendor:  NVIDIA Corporation
-[08:36:19] [Client thread/INFO]: [Shaders] Renderer: NVIDIA GeForce GTX 750 Ti/PCIe/SSE2
-[08:36:19] [Client thread/INFO]: [Shaders] Capabilities:  2.0  2.1  3.0  3.2  4.0 
-[08:36:19] [Client thread/INFO]: [Shaders] GL_MAX_DRAW_BUFFERS: 8
-[08:36:19] [Client thread/INFO]: [Shaders] GL_MAX_COLOR_ATTACHMENTS_EXT: 8
-[08:36:19] [Client thread/INFO]: [Shaders] GL_MAX_TEXTURE_IMAGE_UNITS: 32
-[08:36:19] [Client thread/INFO]: [Shaders] Load ShadersMod configuration.
-[08:36:19] [Client thread/INFO]: [Shaders] Shaders can not be loaded, Fast Render is enabled.
-[08:36:19] [Client thread/INFO]: [Shaders] No shaderpack loaded.
-[08:36:23] [Client thread/INFO]: Reloading ResourceManager: Default, !         §dBom§6bies §8[§f80k§8] - §drose§6gold.zip
-[08:36:23] [Client thread/INFO]: [OptiFine] *** Reloading textures ***
-[08:36:23] [Client thread/INFO]: [OptiFine] Resource packs: !         §dBom§6bies §8[§f80k§8] - §drose§6gold.zip
-[08:36:23] [Sound Library Loader/INFO]: Starting up SoundSystem...
-[08:36:23] [Thread-4/INFO]: Initializing LWJGL OpenAL
-[08:36:23] [Thread-4/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
-[08:36:24] [Thread-4/INFO]: OpenAL initialized.
-[08:36:24] [Sound Library Loader/INFO]: Sound engine started
-[08:36:24] [Client thread/WARN]: File minecraft:sounds/sleek/deatheffect/oof.ogg does not exist, cannot add it to event minecraft:deatheffect.oof
-[08:36:24] [Client thread/WARN]: File minecraft:sounds/deatheffect/gta.ogg does not exist, cannot add it to event minecraft:deatheffect.gta
-[08:36:41] [Client thread/INFO]: [OptiFine] Mipmap levels: 4
-[08:36:41] [Client thread/INFO]: [OptiFine] Multitexture: false
-[08:36:42] [Client thread/INFO]: Created: 512x512 textures-atlas
-[08:36:42] [Client thread/INFO]: [OptiFine] *** Reloading custom textures ***
-[08:36:43] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky1.properties
-[08:36:44] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky2.properties
-[08:36:44] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky3.properties
-[08:36:47] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky4.properties
-[08:36:47] [Client thread/INFO]: [OptiFine] CustomSky: Texture not found: minecraft:mcpatcher/sky/world0/starfield01.png
-[08:36:47] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky5.properties
-[08:36:47] [Client thread/INFO]: [OptiFine] CustomSky: Texture not found: minecraft:mcpatcher/sky/world0/starfield02.png
-[08:36:47] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky6.properties
-[08:36:52] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky7.properties
-[08:36:52] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky8.properties
-[08:36:53] [Client thread/INFO]: [OptiFine] Enable face culling: acacia_leaves, birch_leaves, dark_oak_leaves, jungle_leaves, oak_leaves, spruce_leaves
-[08:38:50] [Via-Mappingloader-0/INFO]: Loading 1.12 -> 1.13 mappings...
-[08:38:51] [Via-Mappingloader-1/INFO]: Loading 1.13 -> 1.13.2 mappings...
-[08:38:51] [Via-Mappingloader-2/INFO]: Loading 1.13.2 -> 1.14 mappings...
-[08:38:51] [Via-Mappingloader-3/INFO]: Loading 1.14 -> 1.15 mappings...
-[08:38:51] [Via-Mappingloader-4/INFO]: Loading 1.15 -> 1.16 mappings...
-[08:38:51] [Via-Mappingloader-5/INFO]: Loading 1.16 -> 1.16.2 mappings...
-[08:38:51] [Via-Mappingloader-6/INFO]: Loading 1.16.2 -> 1.17 mappings...
-[08:38:51] [Via-Mappingloader-7/INFO]: Loading 1.17 -> 1.18 mappings...
-[08:38:51] [Client thread/INFO]: Loading translations...
-[08:38:51] [Via-Mappingloader-8/INFO]: Loading 1.10 -> 1.9.4 mappings...
-[08:38:51] [Via-Mappingloader-0/INFO]: Loading block connection mappings ...
-[08:38:51] [Via-Mappingloader-8/INFO]: Loading 1.11 -> 1.10 mappings...
-[08:38:52] [Via-Mappingloader-6/INFO]: Loading 1.12 -> 1.11 mappings...
-[08:38:52] [Via-Mappingloader-7/INFO]: Loading 1.13.2 -> 1.13 mappings...
-[08:38:52] [Via-Mappingloader-7/INFO]: Loading 1.14 -> 1.13.2 mappings...
-[08:38:52] [Via-Mappingloader-5/INFO]: Loading 1.15 -> 1.14 mappings...
-[08:38:52] [Via-Mappingloader-6/INFO]: Loading 1.16 -> 1.15 mappings...
-[08:38:52] [Via-Mappingloader-2/INFO]: Loading 1.16.2 -> 1.16 mappings...
-[08:38:52] [Via-Mappingloader-4/INFO]: Loading 1.17 -> 1.16.2 mappings...
-[08:38:52] [Via-Mappingloader-8/INFO]: Loading 1.18 -> 1.17 mappings...
-[08:38:52] [Via-Mappingloader-3/INFO]: Loading 1.13 -> 1.12 mappings...
-[08:38:52] [ViaMCP-0/INFO]: ViaVersion detected server version: 1.8.x (47)
-[08:38:52] [ViaMCP-0/WARN]: This version of Minecraft is extremely outdated and support for it has reached its end of life. You will still be able to run Via on this Minecraft version, but we are unlikely to provide any further fixes or help with problems specific to legacy Minecraft versions. Please consider updating to give your players a better experience and to avoid issues that have long been fixed.
-[08:38:52] [ViaMCP-0/WARN]: You are running an outdated Java version, please consider updating it to at least Java 17 (your version is 11.0.13). At some point in the future, ViaVersion will no longer be compatible with this version of Java.
-[08:38:52] [ViaMCP-0/INFO]: Finished mapping loading, shutting down loader executor!
-[08:39:01] [Server thread/INFO]: Starting integrated minecraft server version 1.8.8
-[08:39:01] [Server thread/INFO]: Generating keypair
-[08:39:02] [Server thread/INFO]: Preparing start region for level 0
-[08:39:03] [Server thread/INFO]: Preparing spawn area: 7%
-[08:39:04] [Server thread/INFO]: Preparing spawn area: 40%
-[08:39:05] [Server thread/INFO]: Changing view distance to 4, from 10
-[08:39:05] [Server thread/INFO]: sex_3322[local:E:05e7b4c8] logged in with entity id 309 at (594.6999999880791, 64.0, 182.78515445770557)
-[08:39:05] [Server thread/INFO]: sex_3322 joined the game
-[08:39:06] [Server thread/INFO]: Saving and pausing game...
-[08:39:06] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Overworld
-[08:39:06] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Nether
-[08:39:06] [Server thread/INFO]: Saving chunks for level 'mcpworld'/The End
-[08:39:32] [Server thread/INFO]: Saving and pausing game...
-[08:39:32] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Overworld
-[08:39:33] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Nether
-[08:39:33] [Server thread/INFO]: Saving chunks for level 'mcpworld'/The End
-[08:41:03] [Server thread/INFO]: Saving and pausing game...
-[08:41:03] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Overworld
-[08:41:03] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Nether
-[08:41:03] [Server thread/INFO]: Saving chunks for level 'mcpworld'/The End
-[08:42:33] [Server thread/INFO]: Saving and pausing game...
-[08:42:33] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Overworld
-[08:42:33] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Nether
-[08:42:33] [Server thread/INFO]: Saving chunks for level 'mcpworld'/The End
-[08:43:07] [Server thread/INFO]: sex_3322 was blown up by Creeper
-[08:43:07] [Client thread/INFO]: [CHAT] sex_3322 was blown up by Creeper
-[08:43:19] [Server thread/INFO]: sex_3322 was blown up by Creeper
-[08:43:19] [Client thread/INFO]: [CHAT] sex_3322 was blown up by Creeper
-[08:43:36] [Server thread/INFO]: [sex_3322: Given Speed (ID 1) * 1 to sex_3322 for 30 seconds]
-[08:43:36] [Client thread/INFO]: [CHAT] Given Speed (ID 1) * 1 to sex_3322 for 30 seconds
-[08:44:05] [Server thread/INFO]: sex_3322 was slain by Spider
-[08:44:05] [Client thread/INFO]: [CHAT] sex_3322 was slain by Spider
-[08:44:08] [Server thread/INFO]: Saving and pausing game...
-[08:44:08] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Overworld
-[08:44:08] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Nether
-[08:44:08] [Server thread/INFO]: Saving chunks for level 'mcpworld'/The End
-[08:44:42] [Server thread/INFO]: [sex_3322: Given Speed (ID 1) * 1 to sex_3322 for 30 seconds]
-[08:44:42] [Client thread/INFO]: [CHAT] Given Speed (ID 1) * 1 to sex_3322 for 30 seconds
-[08:45:19] [Client thread/INFO]: [CHAT] minecraft:instant_health, minecraft:instant_damage
-[08:45:21] [Server thread/INFO]: [sex_3322: Given Instant Health (ID 6) * 123 to sex_3322 for 123 seconds]
-[08:45:21] [Client thread/INFO]: [CHAT] Given Instant Health (ID 6) * 123 to sex_3322 for 123 seconds
-[08:45:24] [Server thread/INFO]: sex_3322 has just earned the achievement [Taking Inventory]
-[08:45:24] [Client thread/INFO]: [CHAT] sex_3322 has just earned the achievement [Taking Inventory]
-[08:45:35] [Server thread/INFO]: [sex_3322: Given Speed (ID 1) * 2 to sex_3322 for 120 seconds]
-[08:45:35] [Client thread/INFO]: [CHAT] Given Speed (ID 1) * 2 to sex_3322 for 120 seconds
-[08:46:13] [Server thread/INFO]: sex_3322 was slain by Zombie
-[08:46:13] [Client thread/INFO]: [CHAT] sex_3322 was slain by Zombie
-[08:46:20] [Client thread/INFO]: [CHAT] §bSleek §7» §fConfig not found...
-[08:46:24] [Client thread/INFO]: [CHAT] §bSleek §7» §f- blox
-[08:47:08] [WebSocketConnectReadThread-98/INFO]: [CHAT] §7[§bIRC§7] §fConnected
-[08:47:08] [WebSocketConnectReadThread-98/INFO]: [CHAT] §7[§bIRC§7] §cSERVER§f: Welcome to the server!
-[08:47:08] [WebSocketConnectReadThread-98/INFO]: [CHAT] §7[§bIRC§7] §cSERVER§f: new connection: /
-[08:48:02] [Server thread/INFO]: Saving and pausing game...
-[08:48:02] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Overworld
-[08:48:02] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Nether
-[08:48:02] [Server thread/INFO]: Saving chunks for level 'mcpworld'/The End
-[08:48:11] [Server thread/INFO]: Saving and pausing game...
-[08:48:11] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Overworld
-[08:48:11] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Nether
-[08:48:11] [Server thread/INFO]: Saving chunks for level 'mcpworld'/The End
-[08:48:21] [Server thread/INFO]: Saving and pausing game...
-[08:48:21] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Overworld
-[08:48:21] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Nether
-[08:48:21] [Server thread/INFO]: Saving chunks for level 'mcpworld'/The End
-[08:48:31] [Server thread/INFO]: Saving and pausing game...
-[08:48:31] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Overworld
-[08:48:31] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Nether
-[08:48:31] [Server thread/INFO]: Saving chunks for level 'mcpworld'/The End
-[08:48:55] [Server thread/INFO]: Saving and pausing game...
-[08:48:55] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Overworld
-[08:48:55] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Nether
-[08:48:55] [Server thread/INFO]: Saving chunks for level 'mcpworld'/The End
-[08:49:08] [Server thread/INFO]: Saving and pausing game...
-[08:49:08] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Overworld
-[08:49:08] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Nether
-[08:49:08] [Server thread/INFO]: Saving chunks for level 'mcpworld'/The End
-[08:50:01] [Server thread/INFO]: Stopping server
-[08:50:01] [Server thread/INFO]: Saving players
-[08:50:01] [Server thread/INFO]: Saving worlds
-[08:50:01] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Overworld
-[08:50:01] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Nether
-[08:50:01] [Server thread/INFO]: Saving chunks for level 'mcpworld'/The End
-[08:50:04] [Alt Login Thread/INFO]: Logging in with username & password
-[08:51:26] [Alt Login Thread/INFO]: Logging in with username & password
-[08:51:34] [Client thread/ERROR]: Can't ping 135.148.121.249: Disconnected
-[08:51:45] [Client thread/INFO]: Connecting to funcraft.net, 25565
-[08:51:47] [Client thread/ERROR]: Item entity 10971 has no item?!
-[08:51:48] [Client thread/ERROR]: Item entity 10971 has no item?!
-[08:51:50] [Client thread/INFO]: [CHAT] ✴⭐Mini-VIP Smomy: wtf
-[08:51:50] [Client thread/INFO]: [CHAT] --------------------------------------------------
-Nous vous conseillons d'utiliser le ⭐AZ Launcher pour profiter pleinement de FunCraft !
- 
- Téléchargez-le ici: https://www.az-launcher.nz/ 
---------------------------------------------------
-[08:51:50] [Client thread/INFO]: [CHAT] --------------------------------------
-     Achète des Faveurs sur la boutique :
-        >> http://bit.ly/funcraft-noel <<
---------------------------------------
-
-[08:51:51] [Client thread/INFO]: [CHAT]  LovePepitaa Vlekeso a rejoint le lobby !
-[08:51:55] [WebSocketConnectReadThread-98/INFO]: [CHAT] §7[§bIRC§7] §fDisconnected
-[08:51:56] [Client thread/INFO]: [CHAT] ✴⭐Mini-VIP Smomy: loqoo
-[08:51:58] [Client thread/INFO]: [CHAT] ✴⭐Mini-VIP Smomy: you gay
-[08:52:08] [Client thread/INFO]: [CHAT] ✴⭐guez Sukrez: qui mdt
-[08:52:09] [Client thread/INFO]: [CHAT] ✴⭐Mini-VIP loqoo: yes ?
-[08:52:10] [Client thread/INFO]: [CHAT] ✴⭐VIP ZAYLOXX: qui mdt 5V5
-[08:52:15] [Client thread/INFO]: [CHAT] ✴⭐Mini-VIP Smomy: rien
-[08:52:16] [Client thread/INFO]: [CHAT] ✴⭐Mini-VIP Smomy: su
-[08:52:17] [Client thread/INFO]: [CHAT]  FanNemya SkyZou a rejoint le lobby !
-[08:52:18] [Client thread/INFO]: [CHAT] ✴⭐Mini-VIP loqoo: sus
-[08:52:26] [Client thread/INFO]: [CHAT] ✴⭐VIP ZAYLOXX: qui mdt 5V5<
-[08:52:32] [Client thread/INFO]: [CHAT]  guez Sukrez a rejoint le lobby !
-[08:52:32] [Client thread/INFO]: [CHAT]  Legend Clarinee a rejoint le lobby !
-[08:52:40] [Client thread/INFO]: [CHAT]  Galaxie wMoon_light a rejoint le lobby !
-[08:52:41] [Client thread/INFO]: [CHAT]  Furry Kutara a rejoint le lobby !
-[08:52:45] [Client thread/ERROR]: Can't ping 135.148.121.249: Disconnected
-[08:52:48] [Client thread/INFO]: Connecting to funcraft.net, 25565
-[08:52:52] [Client thread/INFO]: [CHAT] --------------------------------------------------
-Nous vous conseillons d'utiliser le ⭐AZ Launcher pour profiter pleinement de FunCraft !
- 
- Téléchargez-le ici: https://www.az-launcher.nz/ 
---------------------------------------------------
-[08:52:53] [Client thread/INFO]: [CHAT]  x Menzuu a rejoint le lobby !
-[08:52:54] [Client thread/INFO]: [CHAT] ✴⭐x Menzuu: qui mdt
-[08:53:08] [Client thread/INFO]: [CHAT] ✴⭐Mini-VIP Mermoude_yt: yooo
-[08:53:09] [Client thread/INFO]: [CHAT]  x iPrisc a rejoint le lobby !
-[08:53:12] [Client thread/INFO]: [CHAT] ✴⭐x Menzuu: qui mdt
-[08:53:14] [Client thread/INFO]: [CHAT] ✴⭐VIP+ Matthzeph: tt
-[08:53:20] [Client thread/INFO]: [CHAT] ✴⭐x Menzuu: qui mdt
-[08:53:30] [Client thread/INFO]: [CHAT] [Booster] Pensez à remercier les boosters avec le /merci !
-[08:53:33] [Client thread/INFO]: [CHAT] ✴⭐VIP+ _Aram__: mdr
-[08:53:37] [Client thread/INFO]: [CHAT] ✴⭐Mini-VIP Smomy: mais
-[08:53:39] [Client thread/INFO]: [CHAT] [File d'attente] Vous avez rejoint la file SkyWars Solo !
-Priorité: Normale
-[08:53:39] [Client thread/INFO]: [CHAT] [File d'attente] Vous rejoignez skywars12_35.834 !
-[08:53:39] [Client thread/INFO]: [CHAT] + Exodus_syx s'est connecté. (8/12)
-[08:54:23] [Client thread/INFO]: [CHAT] Les alliances sont interdites en parties solo !
-
-[08:54:42] [Client thread/INFO]: [CHAT] ⚔ BreakfastBoy a été tué par le vide.
-[08:54:59] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[08:54:59] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[08:55:00] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.crit
-[08:55:00] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[08:55:00] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.crit
-[08:55:01] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[08:55:02] [Client thread/INFO]: [CHAT] ⚔ Ozotrix a été tué par Kryptons.
-[08:55:02] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[08:55:02] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[08:55:02] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.sweep
-[08:55:03] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[08:55:03] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[08:55:03] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.crit
-[08:55:03] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.crit
-[08:55:04] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[08:55:04] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[08:55:04] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.crit
-[08:55:05] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[08:55:05] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[08:55:05] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[08:55:05] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[08:55:05] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.crit
-[08:55:07] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.sweep
-[08:55:07] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.crit
-[08:55:07] [Client thread/INFO]: [CHAT] ⚔ Exodus_syx a été tué par Shik0sa.
-[08:55:07] [Client thread/ERROR]: Item entity 260 has no item?!
-[08:55:07] [Client thread/ERROR]: Item entity 260 has no item?!
-[08:55:07] [Client thread/ERROR]: Item entity 260 has no item?!
-[08:55:07] [Client thread/ERROR]: Item entity 260 has no item?!
-[08:55:07] [Client thread/ERROR]: Item entity 260 has no item?!
-[08:55:07] [Client thread/ERROR]: Item entity 260 has no item?!
-[08:55:07] [Client thread/ERROR]: Item entity 260 has no item?!
-[08:55:07] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.crit
-[08:55:07] [Netty Client IO #2/ERROR]: Could not find 1.10 type id 0 isObject=false
-[08:55:07] [Netty Client IO #2/ERROR]: Could not find 1.10 type id 0 isObject=false
-[08:55:07] [Client thread/WARN]: Skipping Entity with id 0
-[08:55:07] [Client thread/FATAL]: Error executing task
-java.util.concurrent.ExecutionException: java.lang.NullPointerException
-	at java.util.concurrent.FutureTask.report(FutureTask.java:122) ~[?:?]
-	at java.util.concurrent.FutureTask.get(FutureTask.java:191) ~[?:?]
-	at net.minecraft.util.Util.func_181617_a(Util.java:24) [classes/:?]
-	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:990) [classes/:?]
-	at net.minecraft.client.Minecraft.run(Minecraft.java:446) [classes/:?]
-	at net.minecraft.client.main.Main.main(Main.java:115) [classes/:?]
-	at Start.main(Start.java:11) [classes/:?]
-Caused by: java.lang.NullPointerException
-	at net.minecraft.client.network.NetHandlerPlayClient.handleSpawnMob(NetHandlerPlayClient.java:662) ~[classes/:?]
-	at net.minecraft.network.play.server.S0FPacketSpawnMob.processPacket(S0FPacketSpawnMob.java:128) ~[classes/:?]
-	at net.minecraft.network.play.server.S0FPacketSpawnMob.processPacket(S0FPacketSpawnMob.java:14) ~[classes/:?]
-	at net.minecraft.network.PacketThreadUtil$1.run(PacketThreadUtil.java:10) ~[classes/:?]
-	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[?:?]
-	at java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:264) ~[?:?]
-	at java.util.concurrent.FutureTask.run(FutureTask.java) ~[?:?]
-	at net.minecraft.util.Util.func_181617_a(Util.java:23) ~[classes/:?]
-	... 4 more
-[08:55:08] [Client thread/INFO]: [CHAT]  
-Ouvrez votre inventaire (E) pour accéder au menu.
-[Afficher vos statistiques] [Retourner au lobby]
- 
-[08:55:11] [Client thread/INFO]: [CHAT] ⚔ Mikitiv a été tué par Kryptons.
-[08:55:14] [Client thread/INFO]: [CHAT] ✴[2k] ⭐Mini-VIP Shik0sa: GROsse Merde
-[08:55:17] [Client thread/INFO]: [CHAT] ✴[2k] ⭐Mini-VIP Shik0sa: Exodus_syx
-[08:55:17] [Client thread/INFO]: [CHAT] ✴[2k] ⭐Mini-VIP Shik0sa: Exodus_syx
-[08:55:33] [Client thread/INFO]: [CHAT] [File d'attente] Vous avez rejoint la file skywars12 !
-Priorité: Normale
-[08:55:34] [Client thread/INFO]: [CHAT] [File d'attente] Vous rejoignez skywars12_34.484 !
-[08:55:34] [Client thread/INFO]: [CHAT] + Exodus_syx s'est connecté. (8/12)
-[08:55:36] [Client thread/INFO]: [CHAT] + Loe159 s'est connecté. (9/12)
-[08:55:51] [Client thread/INFO]: [CHAT] ✴[149k] ⭐VIP+ Ushankaa: gl hf
-[08:55:55] [Client thread/INFO]: [CHAT] ✴[141k] ⭐GyRo Kidi_Zoom: gl
-[08:55:57] [Client thread/INFO]: [CHAT] ✴[78k] ⭐VIP xKumy_: gl
-[08:56:07] [Client thread/INFO]: [CHAT] ⚔ lIlIlIlIIllIlIl est mort.
-[08:56:08] [Client thread/INFO]: [CHAT] Les alliances sont interdites en parties solo !
-
-[08:56:17] [Client thread/INFO]: [CHAT] [skywars12_35.834] Partie terminée, vous remportez 5.07 Gloires !
-[08:56:20] [Client thread/INFO]: [CHAT] ----------------------------------------------
-        Le MEGA PACK DE NOEL est disponible !
-
- * Tous les Grades (Mini-VIP, VIP, VIP+, Héros, Grade Perso)
- * Et 6 mega-boosters !
-
-   || Prix: 100 000 Faveurs 20 000 Faveurs (-80%) ||
-----------------------------------------------
-
-[08:56:28] [Client thread/INFO]: [CHAT] --------------------------------------
-     Achète des Faveurs sur la boutique :
-        >> http://bit.ly/funcraft-noel <<
---------------------------------------
-
-[08:56:30] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[08:56:30] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[08:56:30] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[08:56:30] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[08:56:31] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.crit
-[08:56:31] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[08:56:31] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[08:56:31] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[08:56:32] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[08:56:32] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[08:56:32] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[08:56:32] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[08:56:32] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.crit
-[08:56:32] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[08:56:32] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[08:56:33] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.crit
-[08:56:35] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[08:56:35] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[08:56:35] [Client thread/INFO]: [CHAT] ⚔ Loe159 a été tué par Exodus_syx.
-[08:56:35] [Client thread/ERROR]: Item entity 75 has no item?!
-[08:56:35] [Client thread/ERROR]: Item entity 75 has no item?!
-[08:56:35] [Client thread/ERROR]: Item entity 75 has no item?!
-[08:56:35] [Client thread/ERROR]: Item entity 75 has no item?!
-[08:56:35] [Client thread/ERROR]: Item entity 75 has no item?!
-[08:56:35] [Client thread/ERROR]: Item entity 75 has no item?!
-[08:56:35] [Client thread/ERROR]: Item entity 75 has no item?!
-[08:56:35] [Client thread/ERROR]: Item entity 75 has no item?!
-[08:56:50] [Client thread/INFO]: [CHAT] ⚔ smak54 a été tué par Ushankaa.
-[08:56:58] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[08:56:58] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[08:57:03] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[08:57:03] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[08:57:04] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.sweep
-[08:57:04] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[08:57:04] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.crit
-[08:57:05] [Client thread/INFO]: [CHAT] ⚔ Exodus_syx a été tué par Kidi_Zoom.
-[08:57:05] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[08:57:05] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[08:57:05] [Netty Client IO #2/ERROR]: Could not find 1.10 type id 0 isObject=false
-[08:57:05] [Netty Client IO #2/ERROR]: Could not find 1.10 type id 0 isObject=false
-[08:57:05] [Client thread/WARN]: Skipping Entity with id 0
-[08:57:05] [Client thread/FATAL]: Error executing task
-java.util.concurrent.ExecutionException: java.lang.NullPointerException
-	at java.util.concurrent.FutureTask.report(FutureTask.java:122) ~[?:?]
-	at java.util.concurrent.FutureTask.get(FutureTask.java:191) ~[?:?]
-	at net.minecraft.util.Util.func_181617_a(Util.java:24) [classes/:?]
-	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:990) [classes/:?]
-	at net.minecraft.client.Minecraft.run(Minecraft.java:446) [classes/:?]
-	at net.minecraft.client.main.Main.main(Main.java:115) [classes/:?]
-	at Start.main(Start.java:11) [classes/:?]
-Caused by: java.lang.NullPointerException
-	at net.minecraft.client.network.NetHandlerPlayClient.handleSpawnMob(NetHandlerPlayClient.java:662) ~[classes/:?]
-	at net.minecraft.network.play.server.S0FPacketSpawnMob.processPacket(S0FPacketSpawnMob.java:128) ~[classes/:?]
-	at net.minecraft.network.play.server.S0FPacketSpawnMob.processPacket(S0FPacketSpawnMob.java:14) ~[classes/:?]
-	at net.minecraft.network.PacketThreadUtil$1.run(PacketThreadUtil.java:10) ~[classes/:?]
-	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[?:?]
-	at java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:264) ~[?:?]
-	at java.util.concurrent.FutureTask.run(FutureTask.java) ~[?:?]
-	at net.minecraft.util.Util.func_181617_a(Util.java:23) ~[classes/:?]
-	... 4 more
-[08:57:06] [Client thread/INFO]: [CHAT]  
-Ouvrez votre inventaire (E) pour accéder au menu.
-[Afficher vos statistiques] [Retourner au lobby]
- 
-[08:57:16] [Client thread/INFO]: [CHAT] [File d'attente] Vous avez rejoint la file skywars12 !
-Priorité: Normale
-[08:57:16] [Client thread/INFO]: [CHAT] [File d'attente] Vous rejoignez skywars12_34.317 !
-[08:57:17] [Client thread/INFO]: [CHAT] + Exodus_syx s'est connecté. (2/12)
-[08:57:17] [Client thread/INFO]: [CHAT]  
-§7§m--------------------------------------------------
-             §f§lVous avez accumulé un total de 
-                     §b§l2 Points §f§ldans ce jeu !
- 
-     §7Classement: https://www.funcraft.net/fr/classement
-§7§m--------------------------------------------------
- 
-[08:57:24] [Client thread/INFO]: [CHAT] + ABCCEC s'est connecté. (3/12)
-[08:57:26] [Client thread/INFO]: [CHAT] + Fnaf3 s'est connecté. (4/12)
-[08:57:29] [Client thread/INFO]: [CHAT] + lIlIlIlIIllIlIl s'est connecté. (5/12)
-[08:57:29] [Client thread/INFO]: [CHAT] + BreakfastBoy s'est connecté. (6/12)
-[08:57:31] [Client thread/INFO]: [CHAT] + alix___fille___1 s'est connecté. (7/12)
-[08:57:31] [Client thread/INFO]: [CHAT] + Rafleon_M1nRay s'est connecté. (8/12)
-[08:57:33] [Client thread/INFO]: [CHAT] - lIlIlIlIIllIlIl s'est déconnecté. (7/12)
-[08:57:36] [Client thread/INFO]: [CHAT] ✴[120k] ⭐VIP Fnaf3: BreakfastBoy
-[08:57:36] [Client thread/INFO]: [CHAT] + Skylled_TV s'est connecté. (8/12)
-[08:57:40] [Client thread/INFO]: [CHAT] ✴[0] Joueur BreakfastBoy: what nigger
-[08:57:41] [Client thread/INFO]: [CHAT] + Loe159 s'est connecté. (9/12)
-[08:57:46] [Client thread/INFO]: [CHAT] ✴[120k] ⭐VIP Fnaf3: r u english
-[08:57:48] [Client thread/INFO]: [CHAT] ✴[0] Joueur BreakfastBoy: yes
-[08:57:54] [Client thread/INFO]: [CHAT] ✴[120k] ⭐VIP Fnaf3: you are cheating
-[08:57:55] [Client thread/INFO]: [CHAT] + lIlIlIlIIllIlIl s'est connecté. (10/12)
-[08:57:56] [Client thread/INFO]: [CHAT] ✴[0] Joueur BreakfastBoy: yes
-[08:57:57] [Client thread/INFO]: [CHAT] - lIlIlIlIIllIlIl s'est déconnecté. (9/12)
-[08:57:57] [Client thread/INFO]: [CHAT] ✴[120k] ⭐VIP Fnaf3: but you still lose
-[08:58:00] [Client thread/INFO]: [CHAT] ✴[120k] ⭐VIP Fnaf3: explain me how
-[08:58:02] [Client thread/INFO]: [CHAT] ✴[59k] ⭐Mini-VIP Skylled_TV: nononononononononono
-[08:58:03] [Client thread/INFO]: [CHAT] - Loe159 s'est déconnecté. (8/12)
-[08:58:03] [Client thread/INFO]: [CHAT] ✴[0] Joueur BreakfastBoy: i got kicked
-[08:58:08] [Client thread/INFO]: [CHAT] ✴[120k] ⭐VIP Fnaf3: no
-[08:58:10] [Client thread/INFO]: [CHAT] ✴[120k] ⭐VIP Fnaf3: you lost
-[08:58:14] [Client thread/INFO]: [CHAT] ✴[120k] ⭐VIP Fnaf3: you fat kid
-[08:58:26] [Client thread/INFO]: [CHAT] Les alliances sont interdites en parties solo !
-
-[08:58:30] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[08:58:30] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[08:58:30] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[08:58:30] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[08:58:30] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.crit
-[08:58:30] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.crit
-[08:58:31] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.crit
-[08:58:31] [Client thread/INFO]: [CHAT] ⚔ Fnaf3 a été tué par Exodus_syx.
-[08:58:31] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.crit
-[08:58:33] [Client thread/INFO]: [CHAT] ⚔ BreakfastBoy a été tué par smak54.
-[08:58:51] [Chunk Batcher 1/WARN]: Needed to grow BufferBuilder buffer: Old size 524288 bytes, new size 2621440 bytes.
-[08:58:51] [Chunk Batcher 0/WARN]: Needed to grow BufferBuilder buffer: Old size 524288 bytes, new size 2621440 bytes.
-[08:58:51] [Chunk Batcher 1/WARN]: Needed to grow BufferBuilder buffer: Old size 524288 bytes, new size 2621440 bytes.
-[08:58:51] [Chunk Batcher 0/WARN]: Needed to grow BufferBuilder buffer: Old size 524288 bytes, new size 2621440 bytes.
-[08:59:17] [Client thread/INFO]: [CHAT] --- [FunSecurity/55999e7-1627] ---
-Tentative de triche ! NET_MOVEFREQUENCY (2320/100466/23.0)
-[08:59:17] [Client thread/INFO]: [CHAT] ✴⭐Mini-VIP Smomy: aller viens GOT
-[08:59:21] [Client thread/INFO]: [CHAT] ✴⭐Mini-VIP Smomy: aller viens GOTsukooo
-[08:59:24] [Client thread/INFO]: [CHAT] [Gadget] Pour désactiver les gadgets [Clique ici]
-[08:59:26] [Client thread/INFO]: [CHAT]  Sativa Ayshy a rejoint le lobby !
-[08:59:31] [Client thread/INFO]: [CHAT] ✴Joueur Exodus_syx: wtf nigger
-[08:59:32] [Client thread/INFO]: [CHAT] ✴⭐Mini-VIP Craftertroll17: qui rush fast 1v1
-[08:59:36] [Client thread/INFO]: [CHAT]  GyRo Kidi_Zoom a rejoint le lobby !
-[08:59:36] [Client thread/INFO]: [CHAT] [File d'attente] Vous avez rejoint la file SkyWars Solo !
-Priorité: Normale
-[08:59:44] [Client thread/INFO]: [CHAT] [File d'attente] Vous rejoignez skywars12_35.499 !
-[08:59:45] [Client thread/INFO]: [CHAT] + Exodus_syx s'est connecté. (2/12)
-[08:59:45] [Client thread/INFO]: [CHAT] + J4ncast3x s'est connecté. (3/12)
-[08:59:45] [Client thread/INFO]: [CHAT]  
-§7§m--------------------------------------------------
-             §f§lVous avez accumulé un total de 
-                     §b§l2 Points §f§ldans ce jeu !
- 
-     §7Classement: https://www.funcraft.net/fr/classement
-§7§m--------------------------------------------------
- 
-[08:59:58] [Client thread/INFO]: [CHAT] ----------------------------------------------
-                      [PROMO DE NOEL]
- Jusqu'à -80% sur les grades et boosters !
- Le VIP+ est à seulement 4200 Faveurs !
-----------------------------------------------
-
-[09:00:06] [Client thread/INFO]: [CHAT] --------------------------------------
-     Achète des Faveurs sur la boutique :
-        >> http://bit.ly/funcraft-noel <<
---------------------------------------
-
-[09:00:09] [Client thread/INFO]: [CHAT] + Fnaf3 s'est connecté. (4/12)
-[09:00:19] [Client thread/INFO]: [CHAT] + BreakfastBoy s'est connecté. (5/12)
-[09:00:27] [Client thread/INFO]: [CHAT] ✴[120k] ⭐VIP Fnaf3: BreakfastBoy
-[09:00:29] [Client thread/INFO]: [CHAT] + ___Machete___ s'est connecté. (6/12)
-[09:00:32] [Client thread/INFO]: [CHAT] ✴[0] Joueur BreakfastBoy: kys fag
-[09:00:34] [Client thread/INFO]: [CHAT] ✴[0] Joueur BreakfastBoy: monkey fag
-[09:00:36] [Client thread/INFO]: [CHAT] + xKumy_ s'est connecté. (7/12)
-[09:00:38] [Client thread/INFO]: [CHAT] ✴[2] Joueur Exodus_syx: BreakfastBoy ok faggot
-[09:00:41] [Client thread/INFO]: [CHAT] ✴[2] Joueur Exodus_syx: suck my dick nigger
-[09:00:45] [Client thread/INFO]: [CHAT] ✴[0] Joueur BreakfastBoy: end ur lifepooron
-[09:00:48] [Client thread/INFO]: [CHAT] - ___Machete___ s'est déconnecté. (6/12)
-[09:00:52] [Client thread/INFO]: [CHAT] ✴[2] Joueur Exodus_syx: ight u sad bitch
-[09:00:52] [Client thread/INFO]: [CHAT] - xKumy_ s'est déconnecté. (5/12)
-[09:00:57] [Client thread/INFO]: [CHAT] ✴[25k] ⭐Mini-VIP J4ncast3x: vous savez ce qui ma dit l'autre con xD savoir jouer est un art
-[09:01:02] [Client thread/INFO]: [CHAT] ✴[2] Joueur Exodus_syx: oh on not french\
-[09:01:08] [Client thread/INFO]: [CHAT] Les alliances sont interdites en parties solo !
-
-[09:01:14] [Client thread/INFO]: [CHAT] [skywars12_34.484] Partie terminée, vous remportez 23.40 Gloires !
-[09:01:32] [Client thread/INFO]: [CHAT] ⚔ Fnaf3 a été tué par Kidi_Zoom.
-[09:01:33] [Client thread/INFO]: [CHAT] ⚔ J4ncast3x a été tué par BreakfastBoy.
-[09:01:33] [Client thread/INFO]: [CHAT] ✴[0] Joueur BreakfastBoy: J4ncast3x, ALT+F4 devrait résoudre tes problèmes ❤
-[09:01:49] [Client thread/INFO]: [CHAT] Flying is not enabled on this server
-[09:01:49] [Client thread/INFO]: [CHAT] ✴⭐Mini-VIP Smomy: secret
-[09:01:52] [Client thread/INFO]: [CHAT]  Galaxie wMoon_light a rejoint le lobby !
-[09:02:00] [Client thread/INFO]: [CHAT] [File d'attente] Vous avez rejoint la file SkyWars Solo !
-Priorité: Normale
-[09:02:04] [Client thread/INFO]: [CHAT] ✴⭐Mini-VIP Smomy: bv
-[09:02:09] [Client thread/INFO]: [CHAT] ✴Joueur Exodus_syx: bro wtf is this mob
-[09:02:11] [Client thread/INFO]: [CHAT] [File d'attente] Vous rejoignez skywars12_35.379 !
-[09:02:13] [Client thread/INFO]: [CHAT] + Exodus_syx s'est connecté. (5/12)
-[09:02:13] [Client thread/INFO]: [CHAT]  
-§7§m--------------------------------------------------
-             §f§lVous avez accumulé un total de 
-                     §b§l7 Points §f§ldans ce jeu !
- 
-     §7Classement: https://www.funcraft.net/fr/classement
-§7§m--------------------------------------------------
- 
-[09:02:19] [Client thread/INFO]: [CHAT] + rezok_exe s'est connecté. (6/12)
-[09:02:19] [Client thread/INFO]: [CHAT] + GalaxieNoir96 s'est connecté. (7/12)
-[09:02:21] [Client thread/INFO]: [CHAT] ✴[747] ⭐Joueur GalaxieNoir96: gg
-[09:02:23] [Client thread/INFO]: [CHAT] ✴[141k] ⭐GyRo Kidi_Zoom: 2 cheater mskn
-[09:02:24] [Client thread/INFO]: [CHAT] + ___Machete___ s'est connecté. (8/12)
-[09:02:29] [Client thread/INFO]: [CHAT] + ABCCEC s'est connecté. (9/12)
-[09:02:30] [Client thread/INFO]: [CHAT] ------------------------------
- 
-|| Cosloy_ a boosté le SkyWars ! ||
- Gloires +200% Points +50%
- 
-Faites /merci pour le remercier !
- 
-------------------------------
-[09:02:32] [Client thread/INFO]: [CHAT] + AKDZ s'est connecté. (10/12)
-[09:02:37] [Client thread/INFO]: [CHAT] ✴[7] Joueur Exodus_syx: i added checks
-[09:02:43] [Client thread/INFO]: [CHAT] - Kidi_Zoom s'est déconnecté. (9/12)
-[09:02:45] [Client thread/INFO]: [CHAT] - AKDZ s'est déconnecté. (8/12)
-[09:02:56] [Client thread/INFO]: [CHAT] ⚔ ___Machete___ est mort.
-[09:03:10] [Client thread/INFO]: [CHAT] Les alliances sont interdites en parties solo !
-
-[09:03:24] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:03:25] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:03:25] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.crit
-[09:03:26] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:03:28] [Client thread/ERROR]: Item entity 55 has no item?!
-[09:03:28] [Client thread/ERROR]: Item entity 55 has no item?!
-[09:03:28] [Client thread/ERROR]: Item entity 55 has no item?!
-[09:03:28] [Client thread/ERROR]: Item entity 55 has no item?!
-[09:03:28] [Client thread/ERROR]: Item entity 55 has no item?!
-[09:03:28] [Client thread/ERROR]: Item entity 55 has no item?!
-[09:03:28] [Client thread/ERROR]: Item entity 55 has no item?!
-[09:03:32] [Client thread/INFO]: [CHAT] ✴[14] Joueur BreakfastBoy: pov: lime crack
-[09:03:41] [Client thread/INFO]: [CHAT] ✴[7] Joueur Exodus_syx: me when no lime crack
-[09:03:49] [Client thread/INFO]: [CHAT] ✴[14] Joueur BreakfastBoy: what client
-[09:03:50] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:03:50] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:03:50] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.crit
-[09:03:50] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:03:55] [Client thread/INFO]: [CHAT] ⚔ rezok_exe a été tué par BreakfastBoy.
-[09:03:55] [Client thread/INFO]: [CHAT] ✴[14] Joueur BreakfastBoy: T'as le pc, le clavier, la souris, il te manque plus que le niveau
-[09:04:01] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:04:01] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:04:01] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:04:01] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.crit
-[09:04:03] [Client thread/INFO]: [CHAT] ⚔ BreakfastBoy a été tué par Cosloy_.
-[09:04:06] [Client thread/INFO]: [CHAT] ----------------------------------------------
-        Le MEGA PACK DE NOEL est disponible !
-
- * Tous les Grades (Mini-VIP, VIP, VIP+, Héros, Grade Perso)
- * Et 6 mega-boosters !
-
-   || Prix: 100 000 Faveurs 20 000 Faveurs (-80%) ||
-----------------------------------------------
-
-[09:04:11] [Client thread/INFO]: [CHAT] ✴[7] Joueur Exodus_syx: sleek
-[09:04:14] [Client thread/INFO]: [CHAT] --------------------------------------
-     Achète des Faveurs sur la boutique :
-        >> http://bit.ly/funcraft-noel <<
---------------------------------------
-
-[09:04:19] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:04:20] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:04:22] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:04:22] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:04:30] [Client thread/INFO]: [CHAT] ⚔ Exodus_syx a été tué par Cosloy_.
-[09:04:30] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:04:30] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:04:30] [Netty Client IO #2/ERROR]: Could not find 1.10 type id 0 isObject=false
-[09:04:30] [Netty Client IO #2/ERROR]: Could not find 1.10 type id 0 isObject=false
-[09:04:30] [Client thread/WARN]: Skipping Entity with id 0
-[09:04:30] [Client thread/FATAL]: Error executing task
-java.util.concurrent.ExecutionException: java.lang.NullPointerException
-	at java.util.concurrent.FutureTask.report(FutureTask.java:122) ~[?:?]
-	at java.util.concurrent.FutureTask.get(FutureTask.java:191) ~[?:?]
-	at net.minecraft.util.Util.func_181617_a(Util.java:24) [classes/:?]
-	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:990) [classes/:?]
-	at net.minecraft.client.Minecraft.run(Minecraft.java:446) [classes/:?]
-	at net.minecraft.client.main.Main.main(Main.java:115) [classes/:?]
-	at Start.main(Start.java:11) [classes/:?]
-Caused by: java.lang.NullPointerException
-	at net.minecraft.client.network.NetHandlerPlayClient.handleSpawnMob(NetHandlerPlayClient.java:662) ~[classes/:?]
-	at net.minecraft.network.play.server.S0FPacketSpawnMob.processPacket(S0FPacketSpawnMob.java:128) ~[classes/:?]
-	at net.minecraft.network.play.server.S0FPacketSpawnMob.processPacket(S0FPacketSpawnMob.java:14) ~[classes/:?]
-	at net.minecraft.network.PacketThreadUtil$1.run(PacketThreadUtil.java:10) ~[classes/:?]
-	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[?:?]
-	at java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:264) ~[?:?]
-	at java.util.concurrent.FutureTask.run(FutureTask.java) ~[?:?]
-	at net.minecraft.util.Util.func_181617_a(Util.java:23) ~[classes/:?]
-	... 4 more
-[09:04:30] [Client thread/INFO]: [CHAT]  
-Ouvrez votre inventaire (E) pour accéder au menu.
-[Afficher vos statistiques] [Retourner au lobby]
- 
-[09:04:41] [Client thread/INFO]: [CHAT] [File d'attente] Vous avez rejoint la file skywars12 !
-Priorité: Normale
-[09:04:41] [Client thread/INFO]: [CHAT] [File d'attente] Vous rejoignez skywars12_34.130 !
-[09:04:42] [Client thread/INFO]: [CHAT] + Exodus_syx s'est connecté. (4/12)
-[09:04:42] [Client thread/INFO]: [CHAT]  
-§7§m--------------------------------------------------
-             §f§lVous avez accumulé un total de 
-                     §b§l7 Points §f§ldans ce jeu !
- 
-     §7Classement: https://www.funcraft.net/fr/classement
-§7§m--------------------------------------------------
- 
-[09:04:43] [Client thread/INFO]: [CHAT] + p6mme s'est connecté. (5/12)
-[09:04:47] [Client thread/INFO]: [CHAT] + Kidi_Zoom s'est connecté. (6/12)
-[09:04:52] [Client thread/INFO]: [CHAT] + Fnaf3 s'est connecté. (7/12)
-[09:04:52] [Client thread/INFO]: [CHAT] + Vzlou45 s'est connecté. (8/12)
-[09:05:07] [Client thread/INFO]: [CHAT] ✴[120k] ⭐VIP Fnaf3: z0zz
-[09:05:41] [Client thread/INFO]: [CHAT] Les alliances sont interdites en parties solo !
-
-[09:05:44] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:05:44] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:05:45] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.crit
-[09:05:45] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:05:45] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:05:46] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:05:46] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:05:46] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:05:46] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:05:47] [Client thread/INFO]: [CHAT] ⚔ Vzlou45 a été tué par Exodus_syx.
-[09:05:47] [Client thread/ERROR]: Item entity 51 has no item?!
-[09:05:47] [Client thread/ERROR]: Item entity 51 has no item?!
-[09:05:47] [Client thread/ERROR]: Item entity 51 has no item?!
-[09:05:47] [Client thread/ERROR]: Item entity 51 has no item?!
-[09:05:47] [Client thread/ERROR]: Item entity 51 has no item?!
-[09:05:47] [Client thread/ERROR]: Item entity 51 has no item?!
-[09:05:47] [Client thread/ERROR]: Item entity 51 has no item?!
-[09:05:47] [Client thread/ERROR]: Item entity 51 has no item?!
-[09:05:47] [Client thread/ERROR]: Item entity 58 has no item?!
-[09:05:47] [Client thread/ERROR]: Item entity 58 has no item?!
-[09:05:47] [Client thread/ERROR]: Item entity 58 has no item?!
-[09:05:47] [Client thread/ERROR]: Item entity 58 has no item?!
-[09:05:47] [Client thread/ERROR]: Item entity 58 has no item?!
-[09:05:47] [Client thread/ERROR]: Item entity 58 has no item?!
-[09:05:47] [Client thread/ERROR]: Item entity 58 has no item?!
-[09:05:47] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.crit
-[09:05:56] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:05:59] [Client thread/INFO]: [CHAT] ⚔ Fnaf3 a été tué par p6mme.
-[09:06:07] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:06:07] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:06:07] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.crit
-[09:06:07] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:item.armor.equip_iron
-[09:06:07] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:item.armor.equip_iron
-[09:06:08] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:06:10] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:06:10] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:06:12] [Client thread/INFO]: [CHAT] ⚔ Kidi_Zoom a été tué par Exodus_syx.
-[09:06:22] [Client thread/INFO]: [CHAT] ✴[64] ⭐Joueur Dzkick: BZ T MOr
-[09:06:22] [Client thread/INFO]: [CHAT] ⚔ Dzkick a été tué par le vide et J4ncast3x.
-[09:06:24] [Client thread/INFO]: [CHAT] Les items de ce coffre sont couverts d'étoiles.
-[09:06:24] [Client thread/INFO]: [CHAT] S'ils tombaient au sol, ils seraient trop lourds à ramasser.
-[09:06:24] [Client thread/INFO]: [CHAT] Récupérez les items avant de casser le coffre.
-[09:06:36] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:06:36] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:06:36] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:06:36] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:06:36] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.crit
-[09:06:36] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.crit
-[09:06:37] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.crit
-[09:06:37] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:06:37] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:06:38] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.crit
-[09:06:38] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:06:38] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:06:38] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.crit
-[09:06:38] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:06:39] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:06:39] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:06:39] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:06:39] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:06:40] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.crit
-[09:06:40] [Client thread/INFO]: [CHAT] ⚔ Exodus_syx a été tué par p6mme.
-[09:06:40] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.crit
-[09:06:40] [Netty Client IO #2/ERROR]: Could not find 1.10 type id 0 isObject=false
-[09:06:40] [Netty Client IO #2/ERROR]: Could not find 1.10 type id 0 isObject=false
-[09:06:40] [Client thread/WARN]: Skipping Entity with id 0
-[09:06:40] [Client thread/FATAL]: Error executing task
-java.util.concurrent.ExecutionException: java.lang.NullPointerException
-	at java.util.concurrent.FutureTask.report(FutureTask.java:122) ~[?:?]
-	at java.util.concurrent.FutureTask.get(FutureTask.java:191) ~[?:?]
-	at net.minecraft.util.Util.func_181617_a(Util.java:24) [classes/:?]
-	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:990) [classes/:?]
-	at net.minecraft.client.Minecraft.run(Minecraft.java:446) [classes/:?]
-	at net.minecraft.client.main.Main.main(Main.java:115) [classes/:?]
-	at Start.main(Start.java:11) [classes/:?]
-Caused by: java.lang.NullPointerException
-	at net.minecraft.client.network.NetHandlerPlayClient.handleSpawnMob(NetHandlerPlayClient.java:662) ~[classes/:?]
-	at net.minecraft.network.play.server.S0FPacketSpawnMob.processPacket(S0FPacketSpawnMob.java:128) ~[classes/:?]
-	at net.minecraft.network.play.server.S0FPacketSpawnMob.processPacket(S0FPacketSpawnMob.java:14) ~[classes/:?]
-	at net.minecraft.network.PacketThreadUtil$1.run(PacketThreadUtil.java:10) ~[classes/:?]
-	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[?:?]
-	at java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:264) ~[?:?]
-	at java.util.concurrent.FutureTask.run(FutureTask.java) ~[?:?]
-	at net.minecraft.util.Util.func_181617_a(Util.java:23) ~[classes/:?]
-	... 4 more
-[09:06:41] [Client thread/INFO]: [CHAT]  
-Ouvrez votre inventaire (E) pour accéder au menu.
-[Afficher vos statistiques] [Retourner au lobby]
- 
-[09:06:45] [Client thread/INFO]: [CHAT] [File d'attente] Vous avez rejoint la file skywars12 !
-Priorité: Normale
-[09:06:52] [Client thread/INFO]: [CHAT] [File d'attente] Vous rejoignez skywars12_34.735 !
-[09:06:52] [Client thread/INFO]: [CHAT] + Exodus_syx s'est connecté. (1/12)
-[09:06:52] [Client thread/INFO]: [CHAT]  
-§7§m--------------------------------------------------
-             §f§lVous avez accumulé un total de 
-                     §b§l7 Points §f§ldans ce jeu !
- 
-     §7Classement: https://www.funcraft.net/fr/classement
-§7§m--------------------------------------------------
- 
-[09:06:54] [Client thread/INFO]: [CHAT] + Alzacool3 s'est connecté. (2/12)
-[09:07:04] [Client thread/INFO]: [CHAT] + nicky575 s'est connecté. (3/12)
-[09:07:07] [Client thread/INFO]: [CHAT] + rezok_exe s'est connecté. (4/12)
-[09:07:07] [Client thread/INFO]: [CHAT] + ppomijy s'est connecté. (5/12)
-[09:07:07] [Client thread/INFO]: [CHAT] + GalaxieNoir96 s'est connecté. (6/12)
-[09:07:11] [Client thread/INFO]: [CHAT] ✴[7] Joueur Exodus_syx: THE Fly Is Supposed Be Like Vanilla
-[09:07:14] [Client thread/INFO]: [CHAT] + Fnaf3 s'est connecté. (7/12)
-[09:07:14] [Client thread/INFO]: [CHAT] + anissk67 s'est connecté. (8/12)
-[09:07:14] [Client thread/INFO]: [CHAT] ✴[7] Joueur Exodus_syx: oops
-[09:07:16] [Client thread/INFO]: [CHAT] ✴[7] Joueur Exodus_syx: negroid
-[09:07:19] [Client thread/INFO]: [CHAT] + DoritoCheese s'est connecté. (9/12)
-[09:07:24] [Client thread/INFO]: [CHAT] + Rafleon_M1nRay s'est connecté. (10/12)
-[09:07:40] [Client thread/INFO]: [CHAT] + Quinouu s'est connecté. (11/12)
-[09:07:44] [Client thread/INFO]: [CHAT] + 11ms_ s'est connecté. (12/12)
-[09:07:55] [Client thread/INFO]: [CHAT] ✴[3k] ⭐Joueur rezok_exe: vos vieux cheat la
-[09:07:58] [Client thread/INFO]: [CHAT] ✴[7] Joueur Exodus_syx: no
-[09:08:06] [Client thread/INFO]: [CHAT] Les alliances sont interdites en parties solo !
-
-[09:08:12] [Client thread/INFO]: [CHAT] ⚔ Alzacool3 a été tué par nicky575.
-[09:08:12] [Client thread/INFO]: [CHAT] ✴[110] Joueur nicky575: Alzacool3, ALT+F4 devrait résoudre tes problèmes ❤
-[09:08:16] [Client thread/INFO]: [CHAT] ⚔ Rafleon_M1nRay a été tué par le vide et nicky575.
-[09:08:16] [Client thread/INFO]: [CHAT] ⚔ Fnaf3 a été tué par 11ms_.
-[09:08:24] [Client thread/INFO]: [CHAT] ⚔ ppomijy a été tué par le vide et nicky575.
-[09:08:35] [Client thread/INFO]: [CHAT] ⚔ GalaxieNoir96 a été tué par nicky575.
-[09:08:35] [Client thread/INFO]: [CHAT] ✴[110] Joueur nicky575: se faire ban c'est pas cheater
-[09:08:41] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:08:41] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:08:41] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:08:41] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:08:42] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:08:42] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:08:43] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.crit
-[09:08:43] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:08:44] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:08:44] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:08:44] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:08:44] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:08:44] [Client thread/INFO]: [CHAT] ----------------------------------------------
-        Le MEGA PACK DE NOEL est disponible !
-
- * Tous les Grades (Mini-VIP, VIP, VIP+, Héros, Grade Perso)
- * Et 6 mega-boosters !
-
-   || Prix: 100 000 Faveurs 20 000 Faveurs (-80%) ||
-----------------------------------------------
-
-[09:08:44] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.crit
-[09:08:44] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.crit
-[09:08:44] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:08:44] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:08:45] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:08:45] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:08:45] [Client thread/INFO]: [CHAT] ⚔ Exodus_syx a été tué par Quinouu.
-[09:08:45] [Client thread/ERROR]: Item entity 266 has no item?!
-[09:08:45] [Client thread/ERROR]: Item entity 266 has no item?!
-[09:08:45] [Netty Client IO #2/ERROR]: Could not find 1.10 type id 0 isObject=false
-[09:08:45] [Netty Client IO #2/ERROR]: Could not find 1.10 type id 0 isObject=false
-[09:08:45] [Client thread/ERROR]: Item entity 266 has no item?!
-[09:08:45] [Client thread/ERROR]: Item entity 266 has no item?!
-[09:08:45] [Client thread/ERROR]: Item entity 266 has no item?!
-[09:08:45] [Client thread/ERROR]: Item entity 266 has no item?!
-[09:08:45] [Client thread/ERROR]: Item entity 266 has no item?!
-[09:08:45] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.sweep
-[09:08:45] [Client thread/WARN]: Skipping Entity with id 0
-[09:08:45] [Client thread/FATAL]: Error executing task
-java.util.concurrent.ExecutionException: java.lang.NullPointerException
-	at java.util.concurrent.FutureTask.report(FutureTask.java:122) ~[?:?]
-	at java.util.concurrent.FutureTask.get(FutureTask.java:191) ~[?:?]
-	at net.minecraft.util.Util.func_181617_a(Util.java:24) [classes/:?]
-	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:990) [classes/:?]
-	at net.minecraft.client.Minecraft.run(Minecraft.java:446) [classes/:?]
-	at net.minecraft.client.main.Main.main(Main.java:115) [classes/:?]
-	at Start.main(Start.java:11) [classes/:?]
-Caused by: java.lang.NullPointerException
-	at net.minecraft.client.network.NetHandlerPlayClient.handleSpawnMob(NetHandlerPlayClient.java:662) ~[classes/:?]
-	at net.minecraft.network.play.server.S0FPacketSpawnMob.processPacket(S0FPacketSpawnMob.java:128) ~[classes/:?]
-	at net.minecraft.network.play.server.S0FPacketSpawnMob.processPacket(S0FPacketSpawnMob.java:14) ~[classes/:?]
-	at net.minecraft.network.PacketThreadUtil$1.run(PacketThreadUtil.java:10) ~[classes/:?]
-	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[?:?]
-	at java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:264) ~[?:?]
-	at java.util.concurrent.FutureTask.run(FutureTask.java) ~[?:?]
-	at net.minecraft.util.Util.func_181617_a(Util.java:23) ~[classes/:?]
-	... 4 more
-[09:08:46] [Client thread/INFO]: [CHAT] ⚔ rezok_exe a été tué par le vide et Quinouu.
-[09:08:46] [Client thread/INFO]: [CHAT]  
-Ouvrez votre inventaire (E) pour accéder au menu.
-[Afficher vos statistiques] [Retourner au lobby]
- 
-[09:08:49] [Client thread/INFO]: [CHAT] [File d'attente] Vous avez rejoint la file skywars12 !
-Priorité: Normale
-[09:08:50] [Client thread/INFO]: [CHAT] ⚔ anissk67 a été tué par nicky575.
-[09:08:50] [Client thread/INFO]: [CHAT] ✴[110] Joueur nicky575: l'anticheat est ma seule crainte
-[09:08:50] [Client thread/INFO]: [CHAT] ⚔ DoritoCheese a été tué par nicky575.
-[09:08:50] [Client thread/INFO]: [CHAT] ✴[110] Joueur nicky575: DoritoCheese, reviens ici j'ai pas fini de te demarrer
-[09:08:51] [Client thread/INFO]: [CHAT] ✴[⭐Mini-VIP anissk67 -> Spectateur] :RE
-[09:08:52] [Client thread/INFO]: [CHAT] [skywars12_34.130] Partie terminée, vous remportez 45.35 Gloires !
-[09:08:52] [Client thread/INFO]: [CHAT] --------------------------------------
-     Achète des Faveurs sur la boutique :
-        >> http://bit.ly/funcraft-noel <<
---------------------------------------
-
-[09:09:02] [Client thread/INFO]: [CHAT] [File d'attente] Vous rejoignez skywars12_35.940 !
-[09:09:03] [Client thread/INFO]: [CHAT] + Exodus_syx s'est connecté. (2/12)
-[09:09:03] [Client thread/INFO]: [CHAT] + J4ncast3x s'est connecté. (3/12)
-[09:09:03] [Client thread/INFO]: [CHAT]  
-§7§m--------------------------------------------------
-             §f§lVous avez accumulé un total de 
-                    §b§l15 Points §f§ldans ce jeu !
- 
-     §7Classement: https://www.funcraft.net/fr/classement
-§7§m--------------------------------------------------
- 
-[09:09:22] [Client thread/INFO]: [CHAT] + nicky575 s'est connecté. (4/12)
-[09:09:44] [Client thread/INFO]: [CHAT] + DieuDali s'est connecté. (5/12)
-[09:09:47] [Client thread/INFO]: [CHAT] + Kidi_Zoom s'est connecté. (6/12)
-[09:09:58] [Client thread/INFO]: [CHAT] ✴[481k] ⭐Mini-VIP FashionGirl: gl
-[09:10:01] [Client thread/INFO]: [CHAT] ✴[141k] ⭐GyRo Kidi_Zoom: gl
-[09:10:21] [Client thread/INFO]: [CHAT] Les alliances sont interdites en parties solo !
-
-[09:10:41] [Client thread/INFO]: [CHAT] ✴[2k] Joueur DieuDali: cheat
-[09:10:43] [Client thread/INFO]: [CHAT] ⚔ DieuDali a été tué par le vide et Kidi_Zoom.
-[09:10:46] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:10:46] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:10:47] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:10:47] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:10:47] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:10:48] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:10:48] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:10:48] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:10:48] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:10:49] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.crit
-[09:10:49] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:10:49] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:10:49] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.crit
-[09:10:49] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:10:49] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:10:50] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:10:50] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:10:50] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:10:50] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:10:50] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.crit
-[09:10:51] [Client thread/INFO]: [CHAT] ✴[25k] ⭐Mini-VIP J4ncast3x: cheh
-[09:10:52] [Client thread/INFO]: [CHAT] ✴[141k] ⭐GyRo Kidi_Zoom: mdr
-[09:10:53] [Client thread/INFO]: [CHAT] ⚔ J4ncast3x a été tué par FashionGirl.
-[09:10:54] [Client thread/INFO]: [CHAT] ✴[15] Joueur Exodus_syx: negroid
-[09:11:07] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:11:07] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:11:07] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.crit
-[09:11:08] [Client thread/INFO]: [CHAT] ⚔ Exodus_syx a été tué par Kidi_Zoom.
-[09:11:08] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.sweep
-[09:11:08] [Netty Client IO #2/ERROR]: Could not find 1.10 type id 0 isObject=false
-[09:11:08] [Netty Client IO #2/ERROR]: Could not find 1.10 type id 0 isObject=false
-[09:11:08] [Client thread/WARN]: Skipping Entity with id 0
-[09:11:08] [Client thread/FATAL]: Error executing task
-java.util.concurrent.ExecutionException: java.lang.NullPointerException
-	at java.util.concurrent.FutureTask.report(FutureTask.java:122) ~[?:?]
-	at java.util.concurrent.FutureTask.get(FutureTask.java:191) ~[?:?]
-	at net.minecraft.util.Util.func_181617_a(Util.java:24) [classes/:?]
-	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:990) [classes/:?]
-	at net.minecraft.client.Minecraft.run(Minecraft.java:446) [classes/:?]
-	at net.minecraft.client.main.Main.main(Main.java:115) [classes/:?]
-	at Start.main(Start.java:11) [classes/:?]
-Caused by: java.lang.NullPointerException
-	at net.minecraft.client.network.NetHandlerPlayClient.handleSpawnMob(NetHandlerPlayClient.java:662) ~[classes/:?]
-	at net.minecraft.network.play.server.S0FPacketSpawnMob.processPacket(S0FPacketSpawnMob.java:128) ~[classes/:?]
-	at net.minecraft.network.play.server.S0FPacketSpawnMob.processPacket(S0FPacketSpawnMob.java:14) ~[classes/:?]
-	at net.minecraft.network.PacketThreadUtil$1.run(PacketThreadUtil.java:10) ~[classes/:?]
-	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[?:?]
-	at java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:264) ~[?:?]
-	at java.util.concurrent.FutureTask.run(FutureTask.java) ~[?:?]
-	at net.minecraft.util.Util.func_181617_a(Util.java:23) ~[classes/:?]
-	... 4 more
-[09:11:09] [Client thread/INFO]: [CHAT]  
-Ouvrez votre inventaire (E) pour accéder au menu.
-[Afficher vos statistiques] [Retourner au lobby]
- 
-[09:11:12] [Client thread/INFO]: [CHAT] [File d'attente] Vous avez rejoint la file skywars12 !
-Priorité: Normale
-[09:11:14] [Client thread/INFO]: [CHAT] [File d'attente] Vous rejoignez skywars12_34.552 !
-[09:11:15] [Client thread/INFO]: [CHAT] + Exodus_syx s'est connecté. (2/12)
-[09:11:15] [Client thread/INFO]: [CHAT] + FoxTyX s'est connecté. (3/12)
-[09:11:15] [Client thread/INFO]: [CHAT]  
-§7§m--------------------------------------------------
-             §f§lVous avez accumulé un total de 
-                    §b§l15 Points §f§ldans ce jeu !
- 
-     §7Classement: https://www.funcraft.net/fr/classement
-§7§m--------------------------------------------------
- 
-[09:11:22] [Client thread/INFO]: [CHAT] + Rafleon_M1nRay s'est connecté. (4/12)
-[09:11:23] [Client thread/INFO]: [CHAT] + P0LO s'est connecté. (5/12)
-[09:11:27] [Client thread/INFO]: [CHAT] + FashionGirl s'est connecté. (6/12)
-[09:11:39] [Client thread/INFO]: [CHAT] + NumberFive_ s'est connecté. (7/12)
-[09:11:39] [Client thread/INFO]: [CHAT] + Chocoww s'est connecté. (8/12)
-[09:11:39] [Client thread/INFO]: [CHAT] + O02_ s'est connecté. (9/12)
-[09:11:39] [Client thread/INFO]: [CHAT] + ___Machete___ s'est connecté. (10/12)
-[09:11:41] [Client thread/INFO]: [CHAT] ✴[15] Joueur Exodus_syx: yea
-[09:11:43] [Client thread/INFO]: [CHAT] [skywars12_35.940] Partie terminée, vous remportez 26.17 Gloires !
-[09:11:44] [Client thread/INFO]: [CHAT] + rezok_exe s'est connecté. (11/12)
-[09:11:50] [Client thread/INFO]: [CHAT] - Chocoww s'est déconnecté. (10/12)
-[09:11:53] [Client thread/INFO]: [CHAT] - P0LO s'est déconnecté. (9/12)
-[09:11:53] [Client thread/INFO]: [CHAT] - rezok_exe s'est déconnecté. (8/12)
-[09:11:58] [Client thread/INFO]: [CHAT] ✴[9k] Mini-VIP O02_: gl
-[09:11:58] [Client thread/INFO]: [CHAT] [skywars12_34.735] Partie terminée, vous remportez 16.59 Gloires !
-[09:12:06] [Client thread/INFO]: [CHAT] + 11ms_ s'est connecté. (9/12)
-[09:12:06] [Client thread/INFO]: [CHAT] ✴[481k] ⭐Mini-VIP FashionGirl: gl
-[09:12:09] [Client thread/INFO]: [CHAT] ✴[15] Joueur Exodus_syx: ok
-[09:12:13] [Client thread/INFO]: [CHAT] ✴[815] Mini-VIP terminat0r: gl
-[09:12:21] [Client thread/INFO]: [CHAT] Les alliances sont interdites en parties solo !
-
-[09:12:22] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:12:22] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:12:22] [Client thread/INFO]: [CHAT] ----------------------------------------------
-                      [PROMO DE NOEL]
- Jusqu'à -80% sur les grades et boosters !
- Le VIP+ est à seulement 4200 Faveurs !
-----------------------------------------------
-
-[09:12:22] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:12:22] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:12:23] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:12:23] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:12:24] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:12:24] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:12:24] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:12:25] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:12:25] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.crit
-[09:12:25] [Client thread/INFO]: [CHAT] ⚔ FoxTyX a été tué par Exodus_syx.
-[09:12:25] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:12:25] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:12:30] [Client thread/INFO]: [CHAT] [Booster] Pensez à remercier les boosters avec le /merci !
-[09:12:30] [Client thread/INFO]: [CHAT] --------------------------------------
-     Achète des Faveurs sur la boutique :
-        >> http://bit.ly/funcraft-noel <<
---------------------------------------
-
-[09:12:37] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:12:37] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:12:37] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:12:38] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:12:38] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:12:38] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:12:39] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:12:39] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:12:40] [Client thread/INFO]: [CHAT] ⚔ Rafleon_M1nRay a été tué par Exodus_syx.
-[09:12:40] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:12:44] [Client thread/INFO]: [CHAT] [skywars12_35.379] Partie terminée, vous remportez 27.80 Gloires !
-[09:12:56] [Client thread/INFO]: [CHAT] ⚔ O02_ a été tué par NumberFive_ et 11ms_.
-[09:13:00] [Client thread/INFO]: [CHAT] ⚔ FashionGirl a été tué par ___Machete___.
-[09:13:25] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:13:25] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:13:26] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:13:26] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:13:26] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:13:26] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:13:27] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.crit
-[09:13:27] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:13:27] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:13:28] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:13:28] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:13:29] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:13:29] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:13:30] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:13:30] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:13:30] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:13:31] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:13:31] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:13:32] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:13:32] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:13:32] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:13:32] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:13:33] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:13:33] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:13:33] [Client thread/INFO]: [CHAT] ⚔ ___Machete___ a été tué par Exodus_syx.
-[09:13:33] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:13:33] [Client thread/INFO]: [CHAT] ⚔ NumberFive_ a été tué par 11ms_.
-[09:13:47] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:13:47] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:13:48] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:13:49] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:13:49] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:13:51] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:13:51] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:13:51] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:13:51] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:13:52] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:13:52] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:13:53] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:13:53] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:13:53] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.sweep
-[09:13:53] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:13:53] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.crit
-[09:13:54] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.sweep
-[09:13:54] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:13:54] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.sweep
-[09:13:54] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:13:55] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:13:55] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:13:55] [Client thread/INFO]: [CHAT] ⚔ 11ms_ a été tué par Exodus_syx.
-[09:13:55] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:13:59] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.knockback
-[09:13:59] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:13:59] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:13:59] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:14:00] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:14:00] [Client thread/INFO]: [CHAT] ⚔ terminat0r a été tué par Exodus_syx.
-[09:14:00] [Client thread/ERROR]: Item entity 435 has no item?!
-[09:14:00] [Client thread/ERROR]: Item entity 435 has no item?!
-[09:14:00] [Client thread/ERROR]: Item entity 435 has no item?!
-[09:14:00] [Client thread/ERROR]: Item entity 435 has no item?!
-[09:14:00] [Client thread/ERROR]: Item entity 435 has no item?!
-[09:14:00] [Client thread/ERROR]: Item entity 435 has no item?!
-[09:14:00] [Client thread/ERROR]: Item entity 435 has no item?!
-[09:14:00] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:entity.player.attack.strong
-[09:14:00] [Client thread/INFO]: [CHAT] [SkyWars] Exodus_syx a gagné !
-[09:14:00] [Client thread/INFO]: [CHAT]  
---------------------------------------------------
-                  Yeah ! +50 Points ! (+50%)
- 
-             Vous remportez 14.82 Gloires et 
-               71.14 Gloires BONUS (+480%) !
- 
-                        Temps de jeu +01:54s
-                           Kills +5  Morts +0
---------------------------------------------------
- 
-[09:14:02] [Client thread/INFO]: [CHAT] [File d'attente] Vous avez rejoint la file skywars12 !
-Priorité: Normale
-[09:14:06] [Client thread/INFO]: [CHAT]  
-Ouvrez votre inventaire (E) pour accéder au menu.
-[Afficher vos statistiques] [Retourner au lobby]
- 
-[09:14:12] [Client thread/INFO]: [CHAT] [File d'attente] Vous rejoignez skywars12_34.317 !
-[09:14:13] [Client thread/INFO]: [CHAT] + Exodus_syx s'est connecté. (2/12)
-[09:14:13] [Client thread/INFO]: [CHAT] + ___Machete___ s'est connecté. (3/12)
-[09:14:13] [Client thread/INFO]: [CHAT] + O02_ s'est connecté. (4/12)
-[09:14:13] [Client thread/INFO]: [CHAT]  
-§7§m--------------------------------------------------
-             §f§lVous avez accumulé un total de 
-                    §b§l81 Points §f§ldans ce jeu !
- 
-     §7Classement: https://www.funcraft.net/fr/classement
-§7§m--------------------------------------------------
- 
-[09:14:16] [Client thread/INFO]: [CHAT] + _Anoyu_ s'est connecté. (5/12)
-[09:14:19] [Client thread/INFO]: [CHAT] + Kidi_Zoom s'est connecté. (6/12)
-[09:14:22] [Client thread/INFO]: [CHAT] + UhhDonuts s'est connecté. (7/12)
-[09:14:22] [Client thread/INFO]: [CHAT] + Cosloy_ s'est connecté. (8/12)
-[09:14:30] [Client thread/INFO]: [CHAT] ------------------------------
- 
-|| Imparfait a MEGA-BOOSTÉ le Infecté ! ||
- Gloires +400% Points +200%
- 
-Faites /merci pour le méga-remercier !
- 
-------------------------------
-[09:14:32] [Client thread/INFO]: [CHAT] + Zawh3k s'est connecté. (9/12)
-[09:14:32] [Client thread/INFO]: [CHAT] + MqqdeInAlgeria s'est connecté. (10/12)
-[09:14:32] [Client thread/INFO]: [CHAT] + SunnyL64 s'est connecté. (11/12)
-[09:14:34] [Client thread/INFO]: [CHAT] ✴[904k] ⭐VIP Cosloy_: Exodus_syx Le cheater qui ne sais pas cheater
-[09:14:44] [Client thread/INFO]: [CHAT]  
-[Récompenses] ghfyjlh a gagné des Gloires sur le site:
-http://bit.ly/funcraft-recompenses 
- 
-[09:14:44] [Client thread/INFO]: [CHAT] ✴[78k] ⭐VIP+ _Anoyu_: roh banissez les cheateurs
-[09:14:51] [Client thread/INFO]: [CHAT] ✴[42k] ⭐VIP+ UhhDonuts: pas de modo
-[09:14:52] [Client thread/INFO]: [CHAT] ✴[141k] ⭐GyRo Kidi_Zoom: il est meilleur sans
-[09:14:52] [Client thread/INFO]: [CHAT] - _Anoyu_ s'est déconnecté. (10/12)
+[11:24:32] [Client thread/INFO]: Setting user: sex_2818
+[11:24:32] [Client thread/INFO]: (Session ID is token:0:sex_2818)
+[11:24:35] [Client thread/INFO]: [OptiFine] *** Reflector Forge ***
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.Attributes
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: mods.betterfoliage.client.BetterFoliageClient
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.asm.transformers.BlamingTransformer
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.world.ChunkWatchEvent$UnWatch
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.relauncher.CoreModManager
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.DimensionManager
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.GuiScreenEvent$DrawScreenEvent$Pre
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.GuiScreenEvent$DrawScreenEvent$Post
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.EntityViewRenderEvent$CameraSetup
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.EntityViewRenderEvent$FogColors
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.eventhandler.Event
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.eventhandler.EventBus
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.eventhandler.Event$Result
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.property.ExtendedBlockState
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.FMLClientHandler
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.FMLCommonHandler
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.biome.BiomeGenBase.getWaterColorMultiplier
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.addDestroyEffects
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.addHitEffects
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.canCreatureSpawn
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.canRenderInLayer
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.doesSideBlockRendering
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getBedDirection
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getExtendedState
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.hasTileEntity
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isAir
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isBed
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isBedFoot
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isSideSolid
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.Entity.canRiderInteract
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Field not present: net.minecraft.entity.Entity.captureDrops
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Field not present: net.minecraft.entity.Entity.capturedDrops
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.Entity.shouldRenderInPass
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.Entity.shouldRiderSit
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.ForgeEventFactory
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.ForgeHooks
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.ForgeHooksClient
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.getDurabilityForDisplay
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.getModel
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.onEntitySwing
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.shouldCauseReequipAnimation
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.showDurabilityBar
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.ItemRecord.getRecordResource
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.ForgeModContainer
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.potion.PotionEffect.isCurativeItem
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.canRenderBreaking
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.getRenderBoundingBox
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.hasFastRenderer
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.shouldRenderInPass
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher.preDrawBatch
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher.drawBatch
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.vertex.VertexFormatElement$EnumUsage.preDraw
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.vertex.VertexFormatElement$EnumUsage.postDraw
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.World.countEntities
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.World.getPerWorldStorage
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getCloudRenderer
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getSkyRenderer
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getWeatherRenderer
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.GuiModList
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.IColoredBakedQuad
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.property.IExtendedBlockState
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.IRenderHandler
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.ISmartBlockModel
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.ItemModelMesherForge
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraft.launchwrapper.Launch
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.pipeline.LightUtil
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.MinecraftForge
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.MinecraftForgeClient
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.ModelLoader
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderBlockOverlayEvent$OverlayType
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.registry.RenderingRegistry
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderItemInFrameEvent
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Pre
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Post
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Specials$Pre
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Specials$Post
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.SplashProgress
+[11:24:35] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.world.WorldEvent$Load
+[11:24:35] [Client thread/INFO]: [OptiFine] *** Reflector Vanilla ***
+[11:24:36] [Client thread/INFO]: [OptiFine] (Reflector) Field not present: me.kansio.client.gui.MainMenu.(type: class java.lang.String, index: 0)
+[11:24:36] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: optifine.OptiFineClassTransformer
+[11:24:36] [Client thread/INFO]: LWJGL Version: 2.9.4
+[11:24:40] [Client thread/INFO]: [OptiFine] 
+[11:24:40] [Client thread/INFO]: [OptiFine] OptiFine_1.8.8_HD_U_H8
+[11:24:40] [Client thread/INFO]: [OptiFine] Build: null
+[11:24:40] [Client thread/INFO]: [OptiFine] OS: Windows 10 (amd64) version 10.0
+[11:24:40] [Client thread/INFO]: [OptiFine] Java: 11.0.13, Amazon.com Inc.
+[11:24:40] [Client thread/INFO]: [OptiFine] VM: OpenJDK 64-Bit Server VM (mixed mode), Amazon.com Inc.
+[11:24:40] [Client thread/INFO]: [OptiFine] LWJGL: 2.9.4
+[11:24:40] [Client thread/INFO]: [OptiFine] OpenGL: NVIDIA GeForce GTX 750 Ti/PCIe/SSE2, version 4.6.0 NVIDIA 466.11, NVIDIA Corporation
+[11:24:40] [Client thread/INFO]: [OptiFine] OpenGL Version: 4.6.0
+[11:24:40] [Client thread/INFO]: [OptiFine] Maximum texture size: 16384x16384
+[11:24:40] [Thread-3/INFO]: [OptiFine] Checking for new version
+[11:24:40] [Thread-3/INFO]: [OptiFine] Version found: I7
+[11:24:41] [Client thread/INFO]: [Shaders] ShadersMod version: 2.4.12
+[11:24:41] [Client thread/INFO]: [Shaders] OpenGL Version: 4.6.0 NVIDIA 466.11
+[11:24:41] [Client thread/INFO]: [Shaders] Vendor:  NVIDIA Corporation
+[11:24:41] [Client thread/INFO]: [Shaders] Renderer: NVIDIA GeForce GTX 750 Ti/PCIe/SSE2
+[11:24:41] [Client thread/INFO]: [Shaders] Capabilities:  2.0  2.1  3.0  3.2  4.0 
+[11:24:41] [Client thread/INFO]: [Shaders] GL_MAX_DRAW_BUFFERS: 8
+[11:24:41] [Client thread/INFO]: [Shaders] GL_MAX_COLOR_ATTACHMENTS_EXT: 8
+[11:24:41] [Client thread/INFO]: [Shaders] GL_MAX_TEXTURE_IMAGE_UNITS: 32
+[11:24:41] [Client thread/INFO]: [Shaders] Load ShadersMod configuration.
+[11:24:41] [Client thread/INFO]: [Shaders] Shaders can not be loaded, Fast Render is enabled.
+[11:24:41] [Client thread/INFO]: [Shaders] No shaderpack loaded.
+[11:24:55] [Client thread/INFO]: Reloading ResourceManager: Default, !         §dBom§6bies §8[§f80k§8] - §drose§6gold.zip
+[11:24:55] [Client thread/INFO]: [OptiFine] *** Reloading textures ***
+[11:24:55] [Client thread/INFO]: [OptiFine] Resource packs: !         §dBom§6bies §8[§f80k§8] - §drose§6gold.zip
+[11:24:56] [Sound Library Loader/INFO]: Starting up SoundSystem...
+[11:24:56] [Thread-4/INFO]: Initializing LWJGL OpenAL
+[11:24:56] [Thread-4/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
+[11:24:56] [Thread-4/INFO]: OpenAL initialized.
+[11:24:56] [Sound Library Loader/INFO]: Sound engine started
+[11:24:57] [Client thread/WARN]: File minecraft:sounds/sleek/deatheffect/oof.ogg does not exist, cannot add it to event minecraft:deatheffect.oof
+[11:24:57] [Client thread/WARN]: File minecraft:sounds/deatheffect/gta.ogg does not exist, cannot add it to event minecraft:deatheffect.gta
+[11:25:21] [Client thread/INFO]: [OptiFine] Mipmap levels: 4
+[11:25:21] [Client thread/INFO]: [OptiFine] Multitexture: false
+[11:25:21] [Client thread/INFO]: Created: 512x512 textures-atlas
+[11:25:23] [Client thread/INFO]: [OptiFine] *** Reloading custom textures ***
+[11:25:23] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky1.properties
+[11:25:24] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky2.properties
+[11:25:24] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky3.properties
+[11:25:26] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky4.properties
+[11:25:26] [Client thread/INFO]: [OptiFine] CustomSky: Texture not found: minecraft:mcpatcher/sky/world0/starfield01.png
+[11:25:26] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky5.properties
+[11:25:26] [Client thread/INFO]: [OptiFine] CustomSky: Texture not found: minecraft:mcpatcher/sky/world0/starfield02.png
+[11:25:26] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky6.properties
+[11:25:28] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky7.properties
+[11:25:28] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky8.properties
+[11:25:28] [Client thread/INFO]: [OptiFine] Enable face culling: acacia_leaves, birch_leaves, dark_oak_leaves, jungle_leaves, oak_leaves, spruce_leaves

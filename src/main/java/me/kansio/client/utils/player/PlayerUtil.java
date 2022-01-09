@@ -72,7 +72,7 @@ public class PlayerUtil extends Util {
         if (!mc.thePlayer.onGround) return;
         double[] normalValue = new double[]{0.062, 0.0};
         double[] hypixelValue = new double[]{0.422993999998688697815, 0.002140803780930446};
-        if (mc.getCurrentServerData() != null && mc.getCurrentServerData().serverIP != null && (mc.getCurrentServerData().serverIP.toLowerCase().contains("hypixel") || mc.getCurrentServerData().serverIP.toLowerCase().contains("cubecraft"))) {
+        if (mc.getCurrentServerData() != null && mc.getCurrentServerData().serverIP != null && (mc.getCurrentServerData().serverIP.toLowerCase().contains("funcraft") || mc.getCurrentServerData().serverIP.toLowerCase().contains("cubecraft"))) {
             for (int i = 0; i < (mc.thePlayer.isPotionActive(Potion.jump) ? 15 : 8); ++i) {
                 for (int length = hypixelValue.length, j = 0; j < length; ++j) {
                     mc.getNetHandler().getNetworkManager().sendPacket(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + hypixelValue[j], mc.thePlayer.posZ, false));
