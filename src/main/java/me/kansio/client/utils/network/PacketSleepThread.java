@@ -11,7 +11,6 @@ public class PacketSleepThread extends Thread {
             sleep_ms(delay);
             if (Minecraft.getMinecraft().thePlayer != null) {
                 PacketUtil.sendPacketNoEvent(packet);
-                ChatUtil.log("sent delayed packet");
             }
         });
     }

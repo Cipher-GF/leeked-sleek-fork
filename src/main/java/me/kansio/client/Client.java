@@ -121,9 +121,9 @@ public class Client {
     @Subscribe
     public void onJoin(ServerJoinEvent event) {
         try {
-            System.out.println(HttpUtil.delete(MessageFormat.format("http://zerotwoclient.xyz:13337/api/v1/leaveserver?clientname={0}", System.getProperty("user.name"))));
+            System.out.println(HttpUtil.delete(MessageFormat.format("http://zerotwoclient.xyz:13337/api/v1/leaveserver?clientname={0}", username)));
 
-            System.out.println(HttpUtil.post("http://zerotwoclient.xyz:13337/api/v1/joinserver?name=" + System.getProperty("user.name") + "&uid=1" + "&ign=" + event.getIgn() + "&serverIP=" + event.getServerIP(), ""));
+            System.out.println(HttpUtil.post("http://zerotwoclient.xyz:13337/api/v1/joinserver?name=" + this.username + "&uid=1" + "&ign=" + event.getIgn() + "&serverIP=" + event.getServerIP(), ""));
             JsonElement node = new JsonParser().parse(HttpUtil.get("http://zerotwoclient.xyz:13337/api/v1/getclientplayers"));
 
             if (node.isJsonArray()) {

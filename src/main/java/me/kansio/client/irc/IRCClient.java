@@ -1,5 +1,6 @@
 package me.kansio.client.irc;
 
+import me.kansio.client.Client;
 import me.kansio.client.utils.chat.ChatUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.ChatComponentText;
@@ -15,7 +16,7 @@ public class IRCClient extends WebSocketClient {
 
     public IRCClient() throws URISyntaxException {
         super(new URI("ws://zerotwoclient.xyz:1337"));
-        this.setAttachment(System.getProperty("user.name"));
+        this.setAttachment(Client.getInstance().getUsername());
         this.addHeader("name", this.getAttachment());
     }
 
@@ -33,6 +34,8 @@ public class IRCClient extends WebSocketClient {
             String message = split[1];
 
             Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("§7[§bIRC§7] §b" + username + "§f: " + message));
+        } else {
+            Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("§7[§bIRC§7] §cSERVER" + "§f: " + s));
         }
     }
 

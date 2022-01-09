@@ -10,9 +10,9 @@
     "TargetHud Mode": "Sleek",
     "Swing Range": "6.0",
     "Block Range": "6.0",
-    "CPS": "9.0",
+    "CPS": "8.0",
     "Randomize CPS": "3.0",
-    "TargetHud": "true",
+    "TargetHud": "false",
     "GCD": "false",
     "Players": "true",
     "Friends": "true",
@@ -35,7 +35,7 @@
   {
     "name": "Target Strafe",
     "enabled": true,
-    "Auto F5": "true",
+    "Auto F5": "false",
     "On Jump": "true",
     "Controllable": "true",
     "Render": "true",
@@ -53,7 +53,7 @@
   {
     "name": "Disabler",
     "enabled": true,
-    "Mode": "BlocksMC",
+    "Mode": "Test",
     "Cancel Transactions": "false",
     "Cancel Keep Alive": "false",
     "Delay Transactions": "false",
@@ -91,14 +91,10 @@
     "Sneak": "false"
   },
   {
-    "name": "Fast Use",
-    "enabled": true
-  },
-  {
     "name": "Speed",
     "enabled": false,
     "Mode": "VanillaHop",
-    "Speed": "0.5",
+    "Speed": "0.4",
     "Force Friction": "true",
     "Friction": "NCP"
   },
@@ -132,10 +128,6 @@
     "Mode": "Packet"
   },
   {
-    "name": "AntiVoid",
-    "enabled": false
-  },
-  {
     "name": "Sprint",
     "enabled": true,
     "Omni": "false",
@@ -146,18 +138,18 @@
     "name": "Chest Stealer",
     "enabled": true,
     "Check Chest": "true",
-    "Delay": "8.0"
+    "Delay": "56.0"
   },
   {
     "name": "InvManager",
     "enabled": true,
     "AutoSword": "true",
-    "AutoSword Delay": "24.0",
+    "AutoSword Delay": "40.0",
     "AutoSword Only in Inv": "true",
     "Inventory Cleaner": "true",
-    "InvCleaner Delay": "16.0",
+    "InvCleaner Delay": "112.0",
     "Auto Armor": "true",
-    "AutoArmor Delay": "16.0"
+    "AutoArmor Delay": "64.0"
   },
   {
     "name": "Timer",
@@ -180,32 +172,17 @@
     "SoulSand": "false"
   },
   {
-    "name": "IRC",
-    "enabled": true
-  },
-  {
-    "name": "Hacker Detect",
-    "enabled": false
-  },
-  {
-    "name": "Auto Server",
-    "enabled": true,
-    "Mode": "Armorer"
-  },
-  {
     "name": "HUD",
     "enabled": true,
-    "Mode": "Sleek",
     "Notifications": "true",
     "Font": "false",
-    "Important Only": "true",
-    "Client Name": "bloxmc troll hack 420 v69",
-    "Module Suffix": " %s"
+    "BPS": "true",
+    "Client Name": "bloxmc troll hack 420 v69"
   },
   {
     "name": "Animations",
     "enabled": true,
-    "Mode": "ETB",
+    "Mode": "DOWN",
     "Swing Speed": "8.0"
   },
   {
@@ -223,7 +200,6 @@
     "Armor Bar": "true",
     "Local": "true",
     "Players": "true",
-    "Fill": "true",
     "Invisibles": "false",
     "Monsters": "false",
     "Animals": "true",
@@ -265,19 +241,6 @@
     "Play Sound": "false",
     "Meme Sounds": "false",
     "Meme Mode": "OOF"
-  },
-  {
-    "name": "Penis ESP",
-    "enabled": false
-  },
-  {
-    "name": "Chams",
-    "enabled": false,
-    "Fill": "true",
-    "Red": "255.0",
-    "Green": "255.0",
-    "Blue": "255.0",
-    "Alpha": "255.0"
   },
   {
     "name": "Scaffold",

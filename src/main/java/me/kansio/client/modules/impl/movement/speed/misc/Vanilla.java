@@ -13,7 +13,7 @@ public class Vanilla extends SpeedMode {
 
     @Override
     public void onUpdate(UpdateEvent event) {
-        ChatUtil.log("el");
+
         PlayerUtil.setMotion(getSpeed().getSpeed().getValue());
     }
 }

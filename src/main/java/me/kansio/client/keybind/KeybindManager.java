@@ -4,10 +4,7 @@ import com.google.gson.*;
 import me.kansio.client.Client;
 import me.kansio.client.modules.impl.Module;
 
-import java.awt.*;
 import java.io.*;
-import java.net.URI;
-import java.net.URISyntaxException;
 
 public class KeybindManager {
 
