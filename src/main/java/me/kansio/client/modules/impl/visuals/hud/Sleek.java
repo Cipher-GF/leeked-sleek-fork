@@ -8,6 +8,7 @@ import me.kansio.client.modules.impl.visuals.HUD;
 import me.kansio.client.utils.chat.ChatUtil;
 import me.kansio.client.utils.font.Fonts;
 import me.kansio.client.utils.math.BPSUtil;
+import me.kansio.client.utils.network.UserUtil;
 import me.kansio.client.utils.render.ColorPalette;
 import me.kansio.client.utils.render.ColorUtils;
 import net.minecraft.client.gui.Gui;
@@ -26,7 +27,6 @@ public class Sleek extends HudMode{
         HUD hud = (HUD) Client.getInstance().getModuleManager().getModuleByName("HUD");
         HUD.notifications = hud.noti.getValue() && hud.isToggled();
 
-        mc.fontRendererObj.drawStringWithShadow(ChatUtil.translateColorCodes(hud.clientName.getValueAsString()), 4, 4, ColorPalette.GREEN.getColor().getRGB());
         int y = 4;
 
         if (hud.font.getValue()) {
@@ -35,16 +35,21 @@ public class Sleek extends HudMode{
 
                 Color color = ColorUtils.getGradientOffset(new Color(0, 255, 128), new Color(212, 1, 1), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + y / Fonts.Arial18.getHeight() * 9.95);
 
+                Fonts.HUD.drawStringWithShadow(ChatUtil.translateColorCodes(hud.clientName.getValueAsString()), 4, 4, ColorPalette.GREEN.getColor().getRGB());
+
                 String name = mod.getName() + "§7" + mod.getFormattedSuffix();
+                String userinfo = "§7" + UserUtil.getBuildType(Integer.parseInt(Client.getInstance().getUid())) + " - §f" + Client.getInstance().getUid();
                 float xPos = event.getSr().getScaledWidth() - Fonts.Arial18.getStringWidth(name) - 6;
                 Gui.drawRect(xPos - 1.5, y - 3, event.getSr().getScaledWidth(), Fonts.Arial18.getHeight() + y + 1, new Color(0, 0, 0, 80).getRGB());
                 Gui.drawRect(event.getSr().getScaledWidth() - 1, y - 3, event.getSr().getScaledWidth(), Fonts.Arial18.getHeight() + y + 1, color.getRGB());
                 Fonts.HUD.drawStringWithShadow(name, xPos, (float) (0.5 + y), color.getRGB());
                 y = y + 11;
 
+                Fonts.HUD.drawStringWithShadow(userinfo, event.getSr().getScaledWidth() - mc.fontRendererObj.getStringWidth(userinfo) - 2, event.getSr().getScaledHeight() - (mc.ingameGUI.getChatGUI().getChatOpen() ? 24 : 10), -1);
+
                 if (hud.bps.getValue()) {
                     double bps = BPSUtil.getBPS();
-                    Fonts.Arial18.drawStringWithShadow("BPS: " + EnumChatFormatting.GRAY + new DecimalFormat("0.##").format(bps), 3, event.getSr().getScaledHeight() - (mc.ingameGUI.getChatGUI().getChatOpen() ? 22 : 10), ColorPalette.GREEN.getColor().getRGB());
+                    Fonts.HUD.drawStringWithShadow("BPS: " + EnumChatFormatting.GRAY + new DecimalFormat("0.##").format(bps), 3, event.getSr().getScaledHeight() - (mc.ingameGUI.getChatGUI().getChatOpen() ? 22 : 10), ColorPalette.GREEN.getColor().getRGB());
                 }
 
             }
@@ -55,17 +60,21 @@ public class Sleek extends HudMode{
 
                 Color color = ColorUtils.getGradientOffset(new Color(0, 255, 128), new Color(212, 1, 1), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + y / mc.fontRendererObj.FONT_HEIGHT * 9.95);
 
+                mc.fontRendererObj.drawStringWithShadow(ChatUtil.translateColorCodes(hud.clientName.getValueAsString()), 4, 4, ColorPalette.GREEN.getColor().getRGB());
 
                 String name = mod.getName() + "§7" + mod.getFormattedSuffix();
+                String userinfo = "§7" + UserUtil.getBuildType(Integer.parseInt(Client.getInstance().getUid())) + " - §f" + Client.getInstance().getUid();
                 float xPos = event.getSr().getScaledWidth() - mc.fontRendererObj.getStringWidth(name) - 6;
                 Gui.drawRect(xPos - 1.5, y - 1, event.getSr().getScaledWidth(), mc.fontRendererObj.FONT_HEIGHT + y + 1, new Color(0, 0, 0, 80).getRGB());
                 Gui.drawRect(event.getSr().getScaledWidth() - 1.5, y - 1, event.getSr().getScaledWidth(), mc.fontRendererObj.FONT_HEIGHT + y + 1, color.getRGB());
                 mc.fontRendererObj.drawStringWithShadow(name, xPos, (float) (0.5 + y), color.getRGB());
                 y = y + 11;
 
+                mc.fontRendererObj.drawStringWithShadow(userinfo, event.getSr().getScaledWidth() - mc.fontRendererObj.getStringWidth(userinfo) - 2, event.getSr().getScaledHeight() - (mc.ingameGUI.getChatGUI().getChatOpen() ? 24 : 10), -1);
+
                 if (hud.bps.getValue()) {
                     double bps = BPSUtil.getBPS();
-                    mc.fontRendererObj.drawStringWithShadow("BPS: " + EnumChatFormatting.GRAY + new DecimalFormat("0.##").format(bps), 3, event.getSr().getScaledHeight() - (mc.ingameGUI.getChatGUI().getChatOpen() ? 22 : 10), ColorPalette.GREEN.getColor().getRGB());
+                    mc.fontRendererObj.drawStringWithShadow("BPS: " + EnumChatFormatting.GRAY + new DecimalFormat("0.##").format(bps), 3, event.getSr().getScaledHeight() - (mc.ingameGUI.getChatGUI().getChatOpen() ? 24 : 10), ColorPalette.GREEN.getColor().getRGB());
                 }
 
             }

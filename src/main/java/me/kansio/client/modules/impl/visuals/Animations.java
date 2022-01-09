@@ -13,7 +13,7 @@ import org.lwjgl.opengl.GL11;
 
 public class Animations extends Module {
 
-    private ModeValue modeValue = new ModeValue("Mode", this, "1.7", "Hide", "Slide", "Lucky", "Down", "Exhi", "oHare", "oHare2", "Wizzard", "Lennox", "ETB");
+    private ModeValue modeValue = new ModeValue("Mode", this, "1.7", "Hide", "Slide", "Lucky", "Down", "Exhi", "oHare", "oHare2", "Wizzard", "Lennox", "ETB", "Spin");
     public NumberValue<Double> slowdown = new NumberValue<>("Swing Speed", this, 1d, -4d, 12d, 1d);
     private float rotate;
 

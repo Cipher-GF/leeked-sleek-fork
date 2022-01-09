@@ -35,7 +35,7 @@ public class HUD extends Module {
             .collect(Collectors.toList());
 
     private final ModeValue mode = new ModeValue("Mode", this, modes.stream().map(HudMode::getName).collect(Collectors.toList()).toArray(new String[]{}));
-    private HudMode currentMode = modes.stream().anyMatch(speedMode -> speedMode.getName().equalsIgnoreCase(mode.getValue())) ? modes.stream().filter(hudMode -> hudMode.getName().equalsIgnoreCase(mode.getValue())).findAny().get() : null ;
+    private HudMode currentMode = modes.stream().anyMatch(hudMode -> hudMode.getName().equalsIgnoreCase(mode.getValue())) ? modes.stream().filter(hudMode -> hudMode.getName().equalsIgnoreCase(mode.getValue())).findAny().get() : null ;
 
     public BooleanValue font = new BooleanValue("Font", this, false);
     public BooleanValue noti = new BooleanValue("Notifications", this, true);
@@ -66,14 +66,6 @@ public class HUD extends Module {
     @Subscribe
     public void onRenderOverlay(RenderOverlayEvent event) {
         currentMode.onRenderOverlay(event);
-
-        ScaledResolution scaledResolution = RenderUtils.getResolution();
-
-        String text = "§7" + UserUtil.getBuildType(Integer.parseInt(Client.getInstance().getUid())) + " - §f" + Client.getInstance().getUid();
-        int y = mc.ingameGUI.getChatGUI().getChatOpen() ? 12 : 0;
-
-
-        mc.fontRendererObj.drawStringWithShadow(text, scaledResolution.getScaledWidth() - mc.fontRendererObj.getStringWidth(text) - 2, scaledResolution.getScaledHeight() - mc.fontRendererObj.FONT_HEIGHT - 2 - y, -1);
     }
 
 }

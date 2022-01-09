@@ -21,7 +21,7 @@ public abstract class HudMode extends Util {
         return name;
     }
 
-    public HUD getSpeed() {
+    public HUD getHud() {
         return (HUD) Client.getInstance().getModuleManager().getModuleByName("Hud");
     }
 
