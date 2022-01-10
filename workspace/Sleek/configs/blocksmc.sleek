@@ -53,7 +53,7 @@
   {
     "name": "Disabler",
     "enabled": true,
-    "Mode": "Test",
+    "Mode": "BlocksMC",
     "Cancel Transactions": "false",
     "Cancel Keep Alive": "false",
     "Delay Transactions": "false",
@@ -92,7 +92,7 @@
   },
   {
     "name": "Fast Use",
-    "enabled": false
+    "enabled": true
   },
   {
     "name": "Speed",
@@ -189,7 +189,7 @@
   },
   {
     "name": "Auto Server",
-    "enabled": false,
+    "enabled": true,
     "Server": "BlocksMC",
     "Kit": "Armorer"
   },
@@ -273,8 +273,8 @@
   },
   {
     "name": "Chams",
-    "enabled": false,
-    "Fill": "true",
+    "enabled": true,
+    "Fill": "false",
     "Red": "255.0",
     "Green": "255.0",
     "Blue": "255.0",
