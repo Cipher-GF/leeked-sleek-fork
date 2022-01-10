@@ -50,5 +50,6 @@ public class CommandManager {
         commands.add(new ConfigCommand());
         commands.add(new VClipCommand());
         commands.add(new FriendCommand());
+        commands.add(new FocusCommand());
     }
 }

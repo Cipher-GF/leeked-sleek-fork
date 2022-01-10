@@ -42,3 +42,5 @@ workspace/usercache.json
 workspace/logs/latest.log
 *.log
 workspace/logs/latest.log
+out/artifacts/MavenMCP_jar/MavenMCP.jar
+out/artifacts/Sleek/Sleek.jar
