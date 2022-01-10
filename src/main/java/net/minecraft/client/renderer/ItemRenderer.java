@@ -344,30 +344,13 @@ public class ItemRenderer
         {
             boolean fakeAB = Client.getInstance().getModuleManager().getModuleByName("Animations").isToggled() && KillAura.isBlocking && Client.getInstance().getModuleManager().getModuleByName("KillAura").isToggled();
 
-                /*
-                Animations anim = (Animations) Client.getInstance().getModuleManager().getModuleByName("Animations");
-                anim.render(this.itemToRender, partialTicks);
-                 */
-
-
             if (this.itemToRender.getItem() instanceof ItemMap)
             {
                 this.renderItemMap(entityplayersp, f2, f, f1);
             }
-            /*else if (Client.getInstance().getModuleManager().getModuleByName("Animations").isToggled()) {
-                Animations anim = (Animations) Client.getInstance().getModuleManager().getModuleByName("Animations");
-                if (KillAura.isBlocking && ((KillAura)Client.getInstance().getModuleManager().getModuleByName("Killaura")).autoblockMode.getValue().equalsIgnoreCase("Fake")) {
-                    ChatUtil.log("asnfijoqahbfuop 9u0fgb");
-                    anim.render(this.itemToRender, partialTicks);
-                }
-            }*/
             else if (entityplayersp.getItemInUseCount() > 0 || fakeAB)
             {
-
                 EnumAction enumaction = fakeAB ? EnumAction.BLOCK : this.itemToRender.getItemUseAction();
-
-                //ChatUtil.log(KillAura.isBlocking + " "+ (fakeAB ? "sad " : "") + enumaction);
-
                 switch (enumaction)
                 {
                     case NONE:
