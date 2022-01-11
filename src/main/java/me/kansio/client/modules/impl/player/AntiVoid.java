@@ -1,9 +1,11 @@
 package me.kansio.client.modules.impl.player;
 
 import dorkbox.messageBus.annotations.Subscribe;
+import me.kansio.client.Client;
 import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.impl.Module;
+import me.kansio.client.modules.impl.movement.Flight;
 import me.kansio.client.property.value.NumberValue;
 import me.kansio.client.utils.block.BlockUtil;
 import me.kansio.client.utils.chat.ChatUtil;
@@ -20,8 +22,8 @@ public class AntiVoid extends Module {
     double prevY = 0;
     double prevZ = 0;
 
-    private final NumberValue<Integer> fallDist = new NumberValue<Integer>("Fall Distance", this, 7, 0, 30, 1);
-    private final NumberValue<Integer> compareBelow = new NumberValue<Integer>("Compared Y", this, 10, 0, 100, 1);
+    private final NumberValue fallDist = new NumberValue<>("Fall Distance", this, 7, 0, 30, 1);
+    private final NumberValue compareBelow = new NumberValue<>("Compared Y", this, 10, 0, 100, 1);
 
     public AntiVoid() {
         super("Anti Void", ModuleCategory.PLAYER);
@@ -40,17 +42,42 @@ public class AntiVoid extends Module {
         //check if they should be teleported back to the safe position
         if (shouldTeleportBack()) {
             mc.thePlayer.setPositionAndUpdate(prevX, prevY, prevZ);
+
+            //set the motion to 0
+            mc.thePlayer.motionZ = 0;
+            mc.thePlayer.motionX = 0;
+            mc.thePlayer.motionY = 0;
         }
     }
 
     public boolean shouldTeleportBack() {
-        //check if fall distance is greater than fall distance required to tp back
-        if (mc.thePlayer.fallDistance >= fallDist.getValue()) {
-            //get the block 10 blocks under
-            Block below = BlockUtil.getBlockAt(new BlockPos(mc.thePlayer.posX, mc.thePlayer.posY - compareBelow.getValue(), mc.thePlayer.posZ));
+        Flight flight = (Flight) Client.getInstance().getModuleManager().getModuleByName("Flight");
 
-            //if it's air this returns true.
-            return below instanceof BlockAir;
+        //don't antivoid while using flight
+        if (flight.isToggled())
+            return false;
+
+        //don't teleport them if they're on the ground
+        if (mc.thePlayer.onGround)
+            return false;
+
+        //don't teleport them if they're collided vertically
+        if (mc.thePlayer.isCollidedVertically)
+            return false;
+
+
+        //check if fall distance is greater than fall distance required to tp back
+        if (mc.thePlayer.fallDistance >= fallDist.getValue().doubleValue()) {
+            //loop through all the blocks below the player
+            for (double i = mc.thePlayer.posY + 1; i > 0; i--) {
+                Block below = BlockUtil.getBlockAt(new BlockPos(mc.thePlayer.posX, mc.thePlayer.posY - i, mc.thePlayer.posZ));
+
+                //if it's air this returns true.
+                if (!(below instanceof BlockAir))
+                 return false;
+            }
+            //return true because there aren't any blocks under the player
+            return true;
         }
         return false;
     }

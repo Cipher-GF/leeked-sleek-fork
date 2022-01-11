@@ -62,7 +62,12 @@ public class EntitySlime extends EntityLiving implements IMob
      */
     public int getSlimeSize()
     {
-        return this.dataWatcher.getWatchableObjectByte(16);
+        //Sleek: This caused a crash for some reason...?
+        try {
+            return this.dataWatcher.getWatchableObjectByte(16);
+        }catch (Exception e) {
+            return 1;
+        }
     }
 
     /**

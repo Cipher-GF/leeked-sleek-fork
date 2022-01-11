@@ -78,7 +78,7 @@ public class DataWatcher
      */
     public byte getWatchableObjectByte(int id)
     {
-        return ((Byte)this.getWatchedObject(id).getObject()).byteValue();
+        return (Byte) this.getWatchedObject(id).getObject();
     }
 
     public short getWatchableObjectShort(int id)
