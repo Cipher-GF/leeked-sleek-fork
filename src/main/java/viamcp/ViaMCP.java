@@ -6,6 +6,8 @@ import com.viaversion.viaversion.api.Via;
 import com.viaversion.viaversion.api.data.MappingDataLoader;
 import io.netty.channel.EventLoop;
 import io.netty.channel.local.LocalEventLoopGroup;
+import me.kansio.client.Client;
+import net.minecraft.client.Minecraft;
 import org.apache.logging.log4j.LogManager;
 import viamcp.loader.MCPBackwardsLoader;
 import viamcp.loader.MCPViaLoader;
@@ -43,17 +45,17 @@ public class ViaMCP
 
     public void start()
     {
-        ThreadFactory factory = new ThreadFactoryBuilder().setDaemon(true).setNameFormat("ViaMCP-%d").build();
+        ThreadFactory factory = new ThreadFactoryBuilder().setDaemon(true).setNameFormat("Sleek-Protocol%d").build();
         ASYNC_EXEC = Executors.newFixedThreadPool(8, factory);
 
         EVENT_LOOP = new LocalEventLoopGroup(1, factory).next();
         EVENT_LOOP.submit(INIT_FUTURE::join);
 
         setVersion(PROTOCOL_VERSION);
-        this.file = new File("ViaMCP");
+        this.file = new File(Client.getInstance().getDir() + "/Protocol");
         if (this.file.mkdir())
         {
-            this.getjLogger().info("Creating ViaMCP Folder");
+            this.getjLogger().info("Creating Protocol Folder");
         }
 
         Via.init(ViaManagerImpl.builder().injector(new MCPViaInjector()).loader(new MCPViaLoader()).platform(new MCPViaPlatform(file)).build());

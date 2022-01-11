@@ -1,6 +1,8 @@
 package me.kansio.client.modules.impl.combat;
 
 import dorkbox.messageBus.annotations.Subscribe;
+import lombok.Getter;
+import lombok.Setter;
 import me.kansio.client.Client;
 import me.kansio.client.event.impl.PacketEvent;
 import me.kansio.client.event.impl.RenderOverlayEvent;
@@ -49,6 +51,9 @@ public class KillAura extends Module {
                 targethud, gcd, players, friends, animals, monsters, invisible, walls
         );
     }
+
+    @Getter @Setter
+    private static String focus = "Notch";
 
     // Switch aura doesn't work rn
     public ModeValue mode = new ModeValue("Mode", this, /*"Switch",*/ "Smart");
@@ -190,6 +195,11 @@ public class KillAura extends Module {
                         }
                         Collections.reverse(entities);
                         target = entities.get(0);
+                        entities.forEach(entityLivingBase -> {
+                            if (entityLivingBase.getName().equals(focus)) {
+                                target = entities.get(entities.indexOf(entityLivingBase));
+                            }
+                        });
                         break;
                     }
                     case "switch": {

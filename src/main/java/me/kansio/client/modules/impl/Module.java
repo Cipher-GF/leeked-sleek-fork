@@ -166,7 +166,7 @@ public abstract class Module {
     }
 
     public void setKeyBind(int keyBind) {
-        System.out.println("Saved Config " + this.name);
+        System.out.println("Saved KeyBinds " + this.name);
         this.keyBind = keyBind;
         Client.getInstance().getKeybindManager().save();
     }

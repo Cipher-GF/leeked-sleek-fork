@@ -1,0 +1,308 @@
+[
+  {
+    "name": "Killaura",
+    "enabled": false,
+    "Mode": "Smart",
+    "Rotation Mode": "Default",
+    "Target Priority": "Health",
+    "Autoblock Mode": "Fake",
+    "Swing Mode": "Client",
+    "TargetHud Mode": "Sleek",
+    "Swing Range": "4.0",
+    "Block Range": "6.0",
+    "CPS": "10.0",
+    "Randomize CPS": "3.0",
+    "TargetHud": "true",
+    "GCD": "true",
+    "Players": "true",
+    "Friends": "true",
+    "Animals": "false",
+    "Monsters": "false",
+    "Invisibles": "false",
+    "Walls": "true"
+  },
+  {
+    "name": "Velocity",
+    "enabled": true,
+    "Mode": "Packet",
+    "Explosion": "true"
+  },
+  {
+    "name": "Criticals",
+    "enabled": true,
+    "Mode": "Verus"
+  },
+  {
+    "name": "Target Strafe",
+    "enabled": true,
+    "Auto F5": "false",
+    "On Jump": "true",
+    "Controllable": "true",
+    "Render": "true",
+    "Radius": "4.0",
+    "Width": "1.0",
+    "Red": "100.0",
+    "Green": "100.0",
+    "Blue": "100.0"
+  },
+  {
+    "name": "Fast Bow",
+    "enabled": false,
+    "Packets": "20.0"
+  },
+  {
+    "name": "Disabler",
+    "enabled": true,
+    "Mode": "Test Combat",
+    "Cancel Transactions": "false",
+    "Cancel Keep Alive": "false",
+    "Delay Transactions": "false",
+    "Delay Keep Alive": "true",
+    "Delay Alive Amount": "28800.0",
+    "Transaction Delay": "6240.0",
+    "Send C0C": "false",
+    "Max Value C0C": "false",
+    "Void Teleport": "false",
+    "TP Delay": "3000.0",
+    "TP Amount": "-9.99999999E8",
+    "Spectate Spoof": "false",
+    "Abilities Spoof": "false"
+  },
+  {
+    "name": "ACDetector",
+    "enabled": false,
+    "Delay": "0.5"
+  },
+  {
+    "name": "Plugins",
+    "enabled": false,
+    "/About": "false"
+  },
+  {
+    "name": "Regen",
+    "enabled": false,
+    "Health": "15.0",
+    "Packets": "15.0"
+  },
+  {
+    "name": "Phase",
+    "enabled": false,
+    "Mode": "2.0",
+    "Sneak": "true"
+  },
+  {
+    "name": "Fast Use",
+    "enabled": false
+  },
+  {
+    "name": "Speed",
+    "enabled": false,
+    "Mode": "Verus",
+    "Speed": "0.4",
+    "Force Friction": "true",
+    "Friction": "NCP"
+  },
+  {
+    "name": "Flight",
+    "enabled": false,
+    "Mode": "Verus Damage",
+    "Speed": "10.0",
+    "View Bobbing": "false",
+    "Boost": "true",
+    "Extra Boost": "true",
+    "Boost Mode": "Normal",
+    "Timer": "1.0"
+  },
+  {
+    "name": "InvMove",
+    "enabled": true,
+    "Mode": "Vanilla",
+    "No Close": "true"
+  },
+  {
+    "name": "Long Jump",
+    "enabled": false,
+    "Mode": "Verus",
+    "Vertical Boost": "0.8",
+    "Speed": "6.2"
+  },
+  {
+    "name": "No Fall",
+    "enabled": false,
+    "Mode": "Packet"
+  },
+  {
+    "name": "AntiVoid",
+    "enabled": false
+  },
+  {
+    "name": "Sprint",
+    "enabled": true,
+    "Omni": "false",
+    "Legit Sprint": "true",
+    "Keep Sprint": "false"
+  },
+  {
+    "name": "Chest Stealer",
+    "enabled": false,
+    "Check Chest": "true",
+    "Delay": "0.0"
+  },
+  {
+    "name": "InvManager",
+    "enabled": true,
+    "AutoSword": "true",
+    "AutoSword Delay": "0.0",
+    "AutoSword Only in Inv": "true",
+    "Inventory Cleaner": "true",
+    "InvCleaner Delay": "0.0",
+    "Auto Armor": "true",
+    "AutoArmor Delay": "0.0"
+  },
+  {
+    "name": "Timer",
+    "enabled": false,
+    "Tick Timer": "false",
+    "Speed": "1.2000000000000002",
+    "Ticks": "1.0"
+  },
+  {
+    "name": "No Rotate",
+    "enabled": true,
+    "Mode": "Packet"
+  },
+  {
+    "name": "No Slow",
+    "enabled": true,
+    "Mode": "Vanilla",
+    "Item": "true",
+    "Water": "false",
+    "SoulSand": "false"
+  },
+  {
+    "name": "IRC",
+    "enabled": true
+  },
+  {
+    "name": "Hacker Detect",
+    "enabled": false
+  },
+  {
+    "name": "Auto Server",
+    "enabled": true,
+    "Server": "BlocksMC",
+    "Kit": "Knight"
+  },
+  {
+    "name": "MCF",
+    "enabled": true
+  },
+  {
+    "name": "HUD",
+    "enabled": true,
+    "Mode": "Sleek",
+    "Notifications": "true",
+    "Font": "false",
+    "Important Only": "true",
+    "Client Name": "bloxmc troll hack 420 v69",
+    "Module Suffix": " [%s]"
+  },
+  {
+    "name": "Animations",
+    "enabled": true,
+    "Mode": "Exhi",
+    "Swing Speed": "6.0"
+  },
+  {
+    "name": "Click GUI",
+    "enabled": false,
+    "Font": "false"
+  },
+  {
+    "name": "ESP",
+    "enabled": true,
+    "Outline": "true",
+    "Box Type": "Box",
+    "Name": "true",
+    "Health Bar": "true",
+    "Armor Bar": "true",
+    "Local": "true",
+    "Players": "true",
+    "Fill": "true",
+    "Invisibles": "false",
+    "Monsters": "false",
+    "Animals": "true",
+    "Chests": "false",
+    "Dropped Items": "true"
+  },
+  {
+    "name": "Radar",
+    "enabled": true,
+    "Players": "true",
+    "Monsters": "false",
+    "Animals": "false",
+    "Invisibles": "false"
+  },
+  {
+    "name": "TimeChanger",
+    "enabled": true,
+    "Mode": "Night"
+  },
+  {
+    "name": "Brightness",
+    "enabled": true,
+    "Mode": "Gamma"
+  },
+  {
+    "name": "AttackEffect",
+    "enabled": true,
+    "Partical Mode": "Blood",
+    "Amount": "1.0",
+    "Play Sound": "false",
+    "Sound Mode": "Blood",
+    "Criticals": "false",
+    "Enchants": "false"
+  },
+  {
+    "name": "DeathEffect",
+    "enabled": true,
+    "Effect Mode": "Blood",
+    "Play Sound": "false",
+    "Meme Sounds": "false",
+    "Meme Mode": "OOF"
+  },
+  {
+    "name": "Penis ESP",
+    "enabled": false
+  },
+  {
+    "name": "Chams",
+    "enabled": false,
+    "Fill": "true",
+    "Red": "255.0",
+    "Green": "255.0",
+    "Blue": "255.0",
+    "Alpha": "255.0"
+  },
+  {
+    "name": "Scaffold",
+    "enabled": false,
+    "Mode": "Verus",
+    "Swing": "true",
+    "Sprint": "true",
+    "Tower": "false",
+    "Show Info": "true",
+    "Safewalk": "true",
+    "Keep Y": "false",
+    "Delay": "0.0",
+    "Expansion": "4.0"
+  },
+  {
+    "name": "Breaker",
+    "enabled": false
+  },
+  {
+    "name": "Configs",
+    "enabled": false
+  }
+]

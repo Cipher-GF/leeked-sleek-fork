@@ -10,14 +10,14 @@
     "TargetHud Mode": "Sleek",
     "Swing Range": "6.0",
     "Block Range": "6.0",
-    "CPS": "8.0",
+    "CPS": "9.0",
     "Randomize CPS": "3.0",
-    "TargetHud": "false",
-    "GCD": "false",
+    "TargetHud": "true",
+    "GCD": "true",
     "Players": "true",
-    "Friends": "true",
-    "Animals": "true",
-    "Monsters": "true",
+    "Friends": "false",
+    "Animals": "false",
+    "Monsters": "false",
     "Invisibles": "false",
     "Walls": "true"
   },
@@ -88,7 +88,7 @@
     "name": "Phase",
     "enabled": true,
     "Mode": "2.0",
-    "Sneak": "false"
+    "Sneak": "true"
   },
   {
     "name": "Fast Use",
@@ -105,9 +105,9 @@
   {
     "name": "Flight",
     "enabled": false,
-    "Mode": "Vanilla",
-    "Speed": "2.0",
-    "View Bobbing": "true",
+    "Mode": "Funcraft",
+    "Speed": "10.0",
+    "View Bobbing": "false",
     "Boost": "true",
     "Extra Boost": "true",
     "Boost Mode": "Normal",
@@ -115,7 +115,7 @@
   },
   {
     "name": "InvMove",
-    "enabled": false,
+    "enabled": true,
     "Mode": "Vanilla",
     "No Close": "true"
   },
@@ -194,6 +194,10 @@
     "Kit": "Armorer"
   },
   {
+    "name": "MCF",
+    "enabled": true
+  },
+  {
     "name": "HUD",
     "enabled": true,
     "Mode": "Sleek",
@@ -206,7 +210,7 @@
   {
     "name": "Animations",
     "enabled": true,
-    "Mode": "DOWN",
+    "Mode": "ETB",
     "Swing Speed": "8.0"
   },
   {
