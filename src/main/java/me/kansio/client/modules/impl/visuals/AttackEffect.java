@@ -18,7 +18,7 @@ import net.minecraft.world.World;
 public class AttackEffect extends Module {
 
     // Particals
-    public ModeValue mode = new ModeValue("Partical Mode", this, "Blood", "None");
+    public ModeValue mode = new ModeValue("Particle Mode", this, "Blood", "None");
     public NumberValue<Double> modenum = new NumberValue<>("Amount", this,1.0, 1.0, 20.0, 1.0);
     public BooleanValue modesound = new BooleanValue("Play Sound", this, false);
 
@@ -41,7 +41,7 @@ public class AttackEffect extends Module {
     public void onUpdate(UpdateEvent event) {
         if (KillAura.target != null && KillAura.target.hurtTime > 8 ){
 
-                doPartical(KillAura.target);
+                doParticle(KillAura.target);
                 doCrack(KillAura.target);
                 if (hitmarkersound.getValue()) {
                     doSound(KillAura.target);
@@ -50,7 +50,7 @@ public class AttackEffect extends Module {
         }
     }
 
-    public void doPartical(EntityLivingBase target) {
+    public void doParticle(EntityLivingBase target) {
             if (crit.getValue()) {
                 for (int i = 0; i < critnum.getValue(); i++) {
                     mc.thePlayer.onCriticalHit(target);
