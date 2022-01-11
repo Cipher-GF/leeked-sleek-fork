@@ -46,7 +46,7 @@ public class TargetHUD extends Util {
                     ResourceLocation skin = ((AbstractClientPlayer)target).getLocationSkin();
                     RenderUtils.drawFace(skin, 160, 360, 30, 30);
                     //draw the animation on the head
-                    RenderUtils.drawRect(160, 360, 30, 30, new Color(255, 0, 0, (float) (target.hurtTime * 1.2)).getRGB());
+                    //RenderUtils.drawRect(160, 360, 30, 30, new Color(255, 0, 0, (float) (target.hurtTime * 1.2)).getRGB());
                 }
 
 

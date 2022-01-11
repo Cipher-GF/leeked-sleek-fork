@@ -105,7 +105,7 @@ public class KillAura extends Module {
         mc.gameSettings.keyBindUseItem.pressed = false;
         swinging = false;
         currentRotation = null;
-        target = null;
+        target = null; 
 
         if (!mc.thePlayer.isBlocking()) {
             isBlocking = false;
