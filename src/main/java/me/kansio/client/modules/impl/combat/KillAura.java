@@ -23,6 +23,7 @@ import me.kansio.client.utils.rotations.AimUtil;
 import me.kansio.client.utils.rotations.Rotation;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.network.Packet;
@@ -51,10 +52,6 @@ public class KillAura extends Module {
                 targethud, gcd, players, friends, animals, monsters, invisible, walls
         );
     }
-
-    @Getter @Setter
-    private static String focus = "Notch";
-
     // Switch aura doesn't work rn
     public ModeValue mode = new ModeValue("Mode", this, /*"Switch",*/ "Smart");
 
@@ -200,8 +197,10 @@ public class KillAura extends Module {
                         }
                         Collections.reverse(entities);
                         target = entities.get(0);
+
+                        //set the targetted players as main targets.
                         entities.forEach(entityLivingBase -> {
-                            if (entityLivingBase.getName().equals(focus)) {
+                            if (entityLivingBase instanceof EntityPlayer && Client.getInstance().getTargetManager().isTarget((EntityPlayer) target)) {
                                 target = entities.get(entities.indexOf(entityLivingBase));
                             }
                         });

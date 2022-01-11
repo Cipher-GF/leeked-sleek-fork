@@ -17,6 +17,7 @@ import me.kansio.client.manager.ValueManager;
 import me.kansio.client.modules.ModuleManager;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.modules.impl.player.hackerdetect.CheckManager;
+import me.kansio.client.targets.TargetManager;
 import me.kansio.client.utils.network.HttpUtil;
 import net.minecraft.client.Minecraft;
 import org.lwjgl.opengl.Display;
@@ -70,6 +71,9 @@ public class Client {
     @Getter
     private CheckManager checkManager;
 
+    @Getter
+    private TargetManager targetManager;
+
     public void onStart() {
         //Set the client file directory
         dir = new File(Minecraft.getMinecraft().mcDataDir, "Sleek");
@@ -96,6 +100,9 @@ public class Client {
 
         //Set the friend manager
         friendManager = new FriendManager();
+
+        //set the target manager
+        targetManager = new TargetManager();
 
         //Set the check manager
         checkManager = new CheckManager();
