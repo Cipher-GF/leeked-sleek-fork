@@ -20,8 +20,8 @@ public class AntiVoid extends Module {
     double prevY = 0;
     double prevZ = 0;
 
-    private NumberValue<Integer> fallDist = new NumberValue<Integer>("Fall Distance", this, 7, 0, 30, 1);
-    private NumberValue<Integer> compareBelow = new NumberValue<Integer>("Compared Y", this, 10, 0, 100, 1);
+    private final NumberValue<Integer> fallDist = new NumberValue<Integer>("Fall Distance", this, 7, 0, 30, 1);
+    private final NumberValue<Integer> compareBelow = new NumberValue<Integer>("Compared Y", this, 10, 0, 100, 1);
 
     public AntiVoid() {
         super("Anti Void", ModuleCategory.PLAYER);
