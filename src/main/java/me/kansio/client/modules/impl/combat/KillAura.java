@@ -256,7 +256,7 @@ public class KillAura extends Module {
 
             mc.playerController.attackEntity(mc.thePlayer, entity);
 
-            if (autoblockmode.getValue().equalsIgnoreCase("verus")) {
+            if (!isBlocking && autoblockmode.getValue().equalsIgnoreCase("verus")) {
                 PacketUtil.sendPacketNoEvent(new C08PacketPlayerBlockPlacement(mc.thePlayer.inventory.getCurrentItem()));
                 isBlocking = true;
             }

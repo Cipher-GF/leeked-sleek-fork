@@ -43,13 +43,14 @@ public class NoRotate extends Module {
                 if (event.getPacket() instanceof S08PacketPlayerPosLook) {
                     S08PacketPlayerPosLook packet = event.getPacket();
                     if (mc.thePlayer != null && mc.theWorld != null && mc.thePlayer.rotationYaw != -180 && mc.thePlayer.rotationPitch != 0) {
-                        event.setCancelled(true); //don't receive the packet
+                        packet.yaw = mc.thePlayer.rotationYaw;
+                        packet.pitch = mc.thePlayer.rotationPitch;
 
                         // send a c03 with the values of the packet,
                         // since the server is expecting you to send one,
                         // and some anticheats can use this to detect if you're using a norotate.
                         // :troll:
-                        PacketUtil.sendPacketNoEvent(new C03PacketPlayer.C06PacketPlayerPosLook(packet.getX(), packet.getY(), packet.getZ(), packet.getYaw(), packet.getPitch(), false));
+                        PacketUtil.sendPacketNoEvent(new C03PacketPlayer.C06PacketPlayerPosLook(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ, packet.getYaw(), packet.getPitch(), false));
                     }
                 }
                 break;
