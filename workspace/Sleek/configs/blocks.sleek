@@ -10,7 +10,7 @@
     "TargetHud Mode": "Sleek",
     "Swing Range": "6.0",
     "Block Range": "6.0",
-    "CPS": "9.0",
+    "CPS": "10.0",
     "Randomize CPS": "3.0",
     "TargetHud": "true",
     "GCD": "true",
@@ -95,6 +95,10 @@
     "enabled": true
   },
   {
+    "name": "Filter Bypass",
+    "enabled": true
+  },
+  {
     "name": "Speed",
     "enabled": false,
     "Mode": "VanillaHop",
@@ -132,8 +136,10 @@
     "Mode": "Packet"
   },
   {
-    "name": "AntiVoid",
-    "enabled": false
+    "name": "Anti Void",
+    "enabled": true,
+    "Fall Distance": "7.0",
+    "Compared Y": "10.0"
   },
   {
     "name": "Sprint",
@@ -198,20 +204,25 @@
     "enabled": true
   },
   {
+    "name": "Kill Sults",
+    "enabled": true,
+    "Mode": "BlocksMC"
+  },
+  {
     "name": "HUD",
     "enabled": true,
     "Mode": "Sleek",
     "Notifications": "true",
     "Font": "false",
     "Important Only": "true",
-    "Client Name": "bloxmc troll hack 420 v69",
+    "Client Name": "sussy among us sex hack impostor edition v69 (blocksmc hack)blocks",
     "Module Suffix": " [%s]"
   },
   {
     "name": "Animations",
     "enabled": true,
-    "Attack Animations": "false",
-    "Block Mode": "1.7",
+    "Attack Animations": "true",
+    "Block Mode": "Down",
     "Smooth Hit": "false",
     "Scale": "1.0",
     "Swing Speed": "8.0"
@@ -286,6 +297,10 @@
     "Green": "255.0",
     "Blue": "255.0",
     "Alpha": "255.0"
+  },
+  {
+    "name": "Anti Spammer",
+    "enabled": true
   },
   {
     "name": "Scaffold",

@@ -10,13 +10,13 @@ bobView:true
 anaglyph3d:false
 maxFps:260
 fboEnable:true
-difficulty:2
+difficulty:0
 fancyGraphics:false
 ao:2
 renderClouds:fast
 resourcePacks:["!         §dBom§6bies §8[§f80k§8] - §drose§6gold.zip"]
 incompatibleResourcePacks:[]
-lastServer:zerotwoclient.xyz
+lastServer:play.crystaldev.co
 lang:en_US
 chatVisibility:0
 chatColors:true

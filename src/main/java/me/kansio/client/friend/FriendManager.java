@@ -6,7 +6,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class FriendManager {
 
-    @Getter private CopyOnWriteArrayList<Friend> friends;
+    @Getter private final CopyOnWriteArrayList<Friend> friends;
 
     public FriendManager() {
         this.friends = new CopyOnWriteArrayList<>();

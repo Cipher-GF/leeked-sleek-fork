@@ -44,6 +44,7 @@ public class ModuleManager {
         modules.add(new Regen());
         modules.add(new Phase());
         modules.add(new FastUse());
+        modules.add(new FilterBypass());
 
         //Movement
         modules.add(new Speed());
@@ -64,6 +65,7 @@ public class ModuleManager {
         modules.add(new HackerDetect());
         modules.add(new AutoServer());
         modules.add(new MCF());
+        modules.add(new KillSults());
 
         //Visual
         modules.add(new HUD());
