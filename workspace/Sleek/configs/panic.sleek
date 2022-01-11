@@ -23,18 +23,18 @@
   },
   {
     "name": "Velocity",
-    "enabled": true,
+    "enabled": false,
     "Mode": "Packet",
     "Explosion": "true"
   },
   {
     "name": "Criticals",
-    "enabled": true,
+    "enabled": false,
     "Mode": "Verus"
   },
   {
     "name": "Target Strafe",
-    "enabled": true,
+    "enabled": false,
     "Auto F5": "false",
     "On Jump": "true",
     "Controllable": "true",
@@ -52,7 +52,7 @@
   },
   {
     "name": "Disabler",
-    "enabled": true,
+    "enabled": false,
     "Mode": "BlocksMC",
     "Cancel Transactions": "false",
     "Cancel Keep Alive": "false",
@@ -86,7 +86,7 @@
   },
   {
     "name": "Phase",
-    "enabled": true,
+    "enabled": false,
     "Mode": "2.0",
     "Sneak": "true"
   },
@@ -115,7 +115,7 @@
   },
   {
     "name": "InvMove",
-    "enabled": true,
+    "enabled": false,
     "Mode": "Vanilla",
     "No Close": "true"
   },
@@ -137,20 +137,20 @@
   },
   {
     "name": "Sprint",
-    "enabled": true,
+    "enabled": false,
     "Omni": "false",
     "Legit Sprint": "true",
     "Keep Sprint": "true"
   },
   {
     "name": "Chest Stealer",
-    "enabled": true,
+    "enabled": false,
     "Check Chest": "true",
     "Delay": "56.0"
   },
   {
     "name": "InvManager",
-    "enabled": true,
+    "enabled": false,
     "AutoSword": "true",
     "AutoSword Delay": "40.0",
     "AutoSword Only in Inv": "true",
@@ -168,7 +168,7 @@
   },
   {
     "name": "No Rotate",
-    "enabled": true,
+    "enabled": false,
     "Mode": "Packet"
   },
   {
@@ -189,17 +189,17 @@
   },
   {
     "name": "Auto Server",
-    "enabled": true,
+    "enabled": false,
     "Server": "BlocksMC",
     "Kit": "Knight"
   },
   {
     "name": "MCF",
-    "enabled": true
+    "enabled": false
   },
   {
     "name": "HUD",
-    "enabled": true,
+    "enabled": false,
     "Mode": "Sleek",
     "Notifications": "true",
     "Font": "false",
@@ -209,7 +209,7 @@
   },
   {
     "name": "Animations",
-    "enabled": true,
+    "enabled": false,
     "Attack Animations": "true",
     "Block Mode": "Exhi",
     "Smooth Hit": "false",
@@ -223,7 +223,7 @@
   },
   {
     "name": "ESP",
-    "enabled": true,
+    "enabled": false,
     "Outline": "true",
     "Box Type": "Box",
     "Name": "true",
@@ -240,7 +240,7 @@
   },
   {
     "name": "Radar",
-    "enabled": true,
+    "enabled": false,
     "Players": "true",
     "Monsters": "false",
     "Animals": "false",
@@ -248,17 +248,17 @@
   },
   {
     "name": "TimeChanger",
-    "enabled": true,
+    "enabled": false,
     "Mode": "Night"
   },
   {
     "name": "Brightness",
-    "enabled": true,
+    "enabled": false,
     "Mode": "Gamma"
   },
   {
     "name": "AttackEffect",
-    "enabled": true,
+    "enabled": false,
     "Partical Mode": "Blood",
     "Amount": "1.0",
     "Play Sound": "false",
@@ -268,7 +268,7 @@
   },
   {
     "name": "DeathEffect",
-    "enabled": true,
+    "enabled": false,
     "Effect Mode": "Blood",
     "Play Sound": "false",
     "Meme Sounds": "false",
