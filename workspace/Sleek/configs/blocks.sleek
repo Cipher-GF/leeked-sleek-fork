@@ -95,6 +95,10 @@
     "enabled": true
   },
   {
+    "name": "Filter Bypass",
+    "enabled": true
+  },
+  {
     "name": "Speed",
     "enabled": false,
     "Mode": "VanillaHop",
@@ -134,8 +138,8 @@
   {
     "name": "Anti Void",
     "enabled": true,
-    "Fall Distance": "7",
-    "Compared Y": "10"
+    "Fall Distance": "7.0",
+    "Compared Y": "10.0"
   },
   {
     "name": "Sprint",
@@ -200,13 +204,18 @@
     "enabled": true
   },
   {
+    "name": "Kill Sults",
+    "enabled": true,
+    "Mode": "BlocksMC"
+  },
+  {
     "name": "HUD",
     "enabled": true,
     "Mode": "Sleek",
     "Notifications": "true",
     "Font": "false",
     "Important Only": "true",
-    "Client Name": "bloxmc troll hack 420 v69",
+    "Client Name": "sussy among us sex hack impostor edition v69 (blocksmc hack)blocks",
     "Module Suffix": " [%s]"
   },
   {
@@ -291,7 +300,7 @@
   },
   {
     "name": "Anti Spammer",
-    "enabled": false
+    "enabled": true
   },
   {
     "name": "Scaffold",

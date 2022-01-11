@@ -11,7 +11,7 @@ import java.util.List;
 
 public class AntiSpam extends Module {
 
-    private List<String> spammers = Arrays.asList("FDPClient", "moonclient.xyz");
+    private List<String> spammers = Arrays.asList("FDPClient", "moonclient.xyz", "Go And play with tired-client.de");
 
     public AntiSpam() {
         super("Anti Spammer", ModuleCategory.VISUALS);
@@ -24,6 +24,12 @@ public class AntiSpam extends Module {
             S02PacketChat chatPacket = event.getPacket();
             //get the formatted text
             String formattedText = chatPacket.getChatComponent().getFormattedText();
+
+            //fdp spammer
+            if (formattedText.contains("Buy") && formattedText.contains("stop") && formattedText.contains("using")) {
+                event.setCancelled(true);
+                return;
+            }
 
             //go thru all the blocked strings
             for (String text : spammers) {
