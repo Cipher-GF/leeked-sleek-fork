@@ -77,6 +77,7 @@ public class ModuleManager {
         modules.add(new DeathEffect());
         modules.add(new PenisESP());
         modules.add(new Chams());
+        modules.add(new AntiSpam());
 
         //World
         modules.add(new Scaffold());

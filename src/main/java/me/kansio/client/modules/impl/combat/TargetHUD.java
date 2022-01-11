@@ -37,6 +37,7 @@ public class TargetHUD extends Util {
                     currentHealthWidth -= targetHealthWidth / 10;
                 }
 
+                //Draw the background with the hurttime animation
                 RenderUtils.drawBorderedRoundedRect(150, 350, 150, 60, 10, 2, 2, new Color(target.hurtTime * 6, 0, 0, 100).getRGB());
 
                 mc.fontRendererObj.drawStringWithShadow(target.getName(), 210, 370, -1);
@@ -44,7 +45,11 @@ public class TargetHUD extends Util {
                 if (target instanceof EntityPlayer) {
                     ResourceLocation skin = ((AbstractClientPlayer)target).getLocationSkin();
                     RenderUtils.drawFace(skin, 160, 360, 30, 30);
+                    //draw the animation on the head
+                    //RenderUtils.drawRect(160, 360, 30, 30, new Color(255, 0, 0, (float) (target.hurtTime * 1.2)).getRGB());
                 }
+
+
                 RenderUtils.drawBorderedRoundedRect(155, 400, (float) (20 * 6.9), 5, 5, 0.5f, new Color(40, 40, 40, 255).getRGB(), new Color(45, 45, 45, 255).getRGB());
                 RenderUtils.drawBorderedRoundedRect(155, 400, (float) (target.getHealth() > 0 ? targetHealthWidth : 6.9), 5, 5, 0.5f, new Color(189, 1, 1, 255).getRGB(), new Color(255, 0, 0, 255).getRGB());
                 break;

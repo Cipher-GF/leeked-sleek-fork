@@ -92,7 +92,7 @@
   },
   {
     "name": "Fast Use",
-    "enabled": false
+    "enabled": true
   },
   {
     "name": "Speed",
@@ -280,8 +280,8 @@
   },
   {
     "name": "Chams",
-    "enabled": false,
-    "Fill": "true",
+    "enabled": true,
+    "Fill": "false",
     "Red": "255.0",
     "Green": "255.0",
     "Blue": "255.0",

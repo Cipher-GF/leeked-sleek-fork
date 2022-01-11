@@ -16,7 +16,7 @@ public class Chams extends Module {
     public BooleanValue fill = new BooleanValue("Fill", this, true);
 
     public NumberValue<Integer> alpha = new NumberValue<Integer>("Alpha", this, 255, 0, 255, 1);
-    public NumberValue<Integer> r = new NumberValue<Integer>("Red", this, 255, 0, 255, 1);
+    public NumberValue<Integer> r = new NumberValue<>("Red", this, 255, 0, 255, 1);
     public NumberValue<Integer> g = new NumberValue<Integer>("Green", this, 255, 0, 255, 1);
     public NumberValue<Integer> b = new NumberValue<Integer>("Blue", this, 255, 0, 255, 1);
 

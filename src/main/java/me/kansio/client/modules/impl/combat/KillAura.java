@@ -18,6 +18,7 @@ import me.kansio.client.property.value.NumberValue;
 import me.kansio.client.property.value.SubSettings;
 import me.kansio.client.utils.math.Stopwatch;
 import me.kansio.client.utils.combat.FightUtil;
+import me.kansio.client.utils.network.PacketUtil;
 import me.kansio.client.utils.rotations.AimUtil;
 import me.kansio.client.utils.rotations.Rotation;
 import net.minecraft.entity.Entity;
@@ -126,6 +127,11 @@ public class KillAura extends Module {
 
         if (mc.currentScreen != null) return;
 
+        if (isBlocking && target == null) {
+            unblock();
+            mc.thePlayer.sendQueue.addToSendQueue(new C07PacketPlayerDigging(C07PacketPlayerDigging.Action.RELEASE_USE_ITEM, BlockPos.ORIGIN, EnumFacing.DOWN));
+        }
+
 
         if (mc.thePlayer.ticksExisted < 5) {
             if (isToggled()) {
@@ -164,12 +170,6 @@ public class KillAura extends Module {
                         }
                         break;
                     case "Fake": {
-                        isBlocking = true;
-                        break;
-                    }
-
-                    case "Verus": {
-                        mc.thePlayer.sendQueue.addToSendQueue(new C07PacketPlayerDigging(C07PacketPlayerDigging.Action.RELEASE_USE_ITEM, BlockPos.ORIGIN, EnumFacing.DOWN));
                         isBlocking = true;
                         break;
                     }
@@ -255,6 +255,12 @@ public class KillAura extends Module {
                 mc.getNetHandler().addToSendQueue(new C0APacketAnimation());
 
             mc.playerController.attackEntity(mc.thePlayer, entity);
+
+            if (autoblockmode.getValue().equalsIgnoreCase("verus")) {
+                PacketUtil.sendPacketNoEvent(new C08PacketPlayerBlockPlacement(mc.thePlayer.inventory.getCurrentItem()));
+                isBlocking = true;
+            }
+
             return true;
         } else {
             mc.thePlayer.swingItem();

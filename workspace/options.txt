@@ -1,19 +1,19 @@
 invertYMouse:false
 mouseSensitivity:0.2746479
 fov:0.0
-gamma:0.0
+gamma:2000.0
 saturation:0.0
-renderDistance:4
+renderDistance:8
 guiScale:2
-particles:1
+particles:0
 bobView:true
 anaglyph3d:false
 maxFps:260
 fboEnable:true
-difficulty:0
+difficulty:2
 fancyGraphics:false
-ao:0
-renderClouds:false
+ao:2
+renderClouds:fast
 resourcePacks:["!         §dBom§6bies §8[§f80k§8] - §drose§6gold.zip"]
 incompatibleResourcePacks:[]
 lastServer:zerotwoclient.xyz
@@ -24,7 +24,7 @@ chatLinks:true
 chatLinksPrompt:true
 chatOpacity:1.0
 snooperEnabled:true
-fullscreen:true
+fullscreen:false
 enableVsync:false
 useVbo:false
 hideServerAddress:false
@@ -33,7 +33,7 @@ pauseOnLostFocus:true
 touchscreen:false
 overrideWidth:0
 overrideHeight:0
-heldItemTooltips:false
+heldItemTooltips:true
 chatHeightFocused:1.0
 chatHeightUnfocused:0.44366196
 chatScale:1.0
@@ -44,7 +44,7 @@ forceUnicodeFont:false
 allowBlockAlternatives:true
 reducedDebugInfo:false
 useNativeTransport:true
-entityShadows:false
+entityShadows:true
 key_key.attack:-100
 key_key.use:-99
 key_key.forward:17
