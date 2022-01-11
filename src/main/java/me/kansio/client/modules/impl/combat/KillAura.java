@@ -105,7 +105,7 @@ public class KillAura extends Module {
         mc.gameSettings.keyBindUseItem.pressed = false;
         swinging = false;
         currentRotation = null;
-        target = null; 
+        target = null;
 
         if (!mc.thePlayer.isBlocking()) {
             isBlocking = false;
@@ -126,6 +126,11 @@ public class KillAura extends Module {
         List<EntityLivingBase> entities = FightUtil.getMultipleTargets(swingrage.getValue(), players.getValue(), friends.getValue(), animals.getValue(), walls.getValue(), monsters.getValue(), invisible.getValue());
 
         if (mc.currentScreen != null) return;
+
+        if (isBlocking && target == null) {
+            unblock();
+            mc.thePlayer.sendQueue.addToSendQueue(new C07PacketPlayerDigging(C07PacketPlayerDigging.Action.RELEASE_USE_ITEM, BlockPos.ORIGIN, EnumFacing.DOWN));
+        }
 
 
         if (mc.thePlayer.ticksExisted < 5) {
@@ -251,7 +256,7 @@ public class KillAura extends Module {
 
             mc.playerController.attackEntity(mc.thePlayer, entity);
 
-            if (canBlock && blockMode.equalsIgnoreCase("verus")) {
+            if (autoblockmode.getValue().equalsIgnoreCase("verus")) {
                 PacketUtil.sendPacketNoEvent(new C08PacketPlayerBlockPlacement(mc.thePlayer.inventory.getCurrentItem()));
                 isBlocking = true;
             }
