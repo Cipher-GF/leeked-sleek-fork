@@ -23,11 +23,10 @@ public class AntiVoid extends Module {
     double prevZ = 0;
 
     private final NumberValue fallDist = new NumberValue<>("Fall Distance", this, 7, 0, 30, 1);
-    private final NumberValue compareBelow = new NumberValue<>("Compared Y", this, 10, 0, 100, 1);
-
+    
     public AntiVoid() {
         super("Anti Void", ModuleCategory.PLAYER);
-        register(fallDist, compareBelow);
+        register(fallDist);
     }
 
     @Subscribe
