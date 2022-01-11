@@ -1,12 +1,16 @@
 package me.kansio.client.modules.impl.player;
 
 import dorkbox.messageBus.annotations.Subscribe;
+import me.kansio.client.Client;
+import me.kansio.client.event.impl.BlockCollisionEvent;
 import me.kansio.client.event.impl.PacketEvent;
 import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.impl.Module;
+import me.kansio.client.modules.impl.movement.Flight;
 import me.kansio.client.property.value.ModeValue;
 import net.minecraft.network.play.client.C03PacketPlayer;
+import net.minecraft.util.AxisAlignedBB;
 
 public class NoFall extends Module {
 
@@ -18,19 +22,27 @@ public class NoFall extends Module {
     }
 
     @Subscribe
+    public void onCollide(BlockCollisionEvent event) {
+        switch (mode.getValue()) {
+            case "Verus": {
+                Flight flight = (Flight) Client.getInstance().getModuleManager().getModuleByName("Flight");
+
+                if (flight.isToggled()) return;
+
+                if (mc.thePlayer.fallDistance > 2.5) {
+                    event.setAxisAlignedBB(new AxisAlignedBB(-2, -1, -2, 2, 1, 2).offset(event.getX(), event.getY(), event.getZ()));
+                }
+                break;
+            }
+        }
+    }
+
+    @Subscribe
     public void onUpdate(UpdateEvent event) {
         if (event.isPre() && mc.thePlayer.fallDistance > 2F) {
             switch (mode.getValueAsString()) {
                 case "Spoof": {
                     event.setOnGround(true);
-                    break;
-                }
-                case "Verus": {
-                    double y = Math.round(mc.thePlayer.posY / 0.015625) * 0.015625;
-                    mc.thePlayer.setPosition(mc.thePlayer.posX, y, mc.thePlayer.posZ);
-                    event.setOnGround(true);
-                    mc.thePlayer.motionY = 0;
-                    mc.thePlayer.fallDistance = 0;
                     break;
                 }
             }
