@@ -12,8 +12,8 @@ import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.ModeValue;
 import me.kansio.client.property.value.NumberValue;
 import me.kansio.client.utils.font.Fonts;
-import me.kansio.client.utils.math.Stopwatch;
 import me.kansio.client.utils.math.MathUtil;
+import me.kansio.client.utils.math.Stopwatch;
 import me.kansio.client.utils.render.ColorPalette;
 import me.kansio.client.utils.render.RenderUtils;
 import me.kansio.client.utils.rotations.RotationUtil;
@@ -37,7 +37,7 @@ import java.awt.*;
 
 public class Scaffold extends Module {
 
-    private ModeValue modeValue = new ModeValue("Mode", this, "Verus", "Normal", "Vulcan");
+    private ModeValue modeValue = new ModeValue("Mode", this, "Verus", "NEW", "NCP", "Vulcan");
     private BooleanValue swing = new BooleanValue("Swing", this, true);
     private BooleanValue sprint = new BooleanValue("Sprint", this, false);
     private BooleanValue tower = new BooleanValue("Tower", this, true);
@@ -82,6 +82,7 @@ public class Scaffold extends Module {
                 lastSlot = getSlotWithBlock();
                 break;
             }
+            case "NEW":
             case "NCP": {
                 this.startSlot = mc.thePlayer.inventory.currentItem;
 
@@ -111,6 +112,7 @@ public class Scaffold extends Module {
             case "Verus": {
                 break;
             }
+            case "NEW":
             case "NCP": {
                 mc.thePlayer.sendQueue.addToSendQueue(new C09PacketHeldItemChange(this.startSlot));
                 lastBlockEntry = null;
@@ -216,7 +218,7 @@ public class Scaffold extends Module {
 
                         if (this.towerTimer.timeElapsed(1500L)) {
                             this.towerTimer.resetTime();
-                            //mc.thePlayer.motionY = -1.28f;
+                            mc.thePlayer.motionY = -1.28f;
                         }
                     }
                 }
@@ -250,6 +252,7 @@ public class Scaffold extends Module {
                 }
                 break;
             }
+            case "NEW":
             case "NCP": {
                 if (this.lastBlockEntry != null) {
                     Vector2f rotation = RotationUtil.getRotations(getPositionByFace(this.lastBlockEntry.getPosition(),
@@ -259,8 +262,12 @@ public class Scaffold extends Module {
                         mc.thePlayer.forceSprinting(sprint.getValue());
                     }
 
-                    event.setRotationPitch(rotation.y);
-                    event.setRotationYaw(rotation.x);
+                    if (modeValue.getValue().equals("NCP")) {
+                        event.setRotationYaw(rotation.x);
+                        event.setRotationPitch(rotation.y);
+                    } else {
+                        event.setRotationPitch(80);
+                    }
 
 
                 }
