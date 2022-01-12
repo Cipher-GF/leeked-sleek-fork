@@ -15,7 +15,7 @@ import org.lwjgl.input.Keyboard;
 
 @ModuleData(
         name = "Inventory Move",
-        category = ModuleCategory.MOVEMENT,
+        category = ModuleCategory.PLAYER,
         description = "Move whilst having an inventory open"
 )
 public class InvMove extends Module {
