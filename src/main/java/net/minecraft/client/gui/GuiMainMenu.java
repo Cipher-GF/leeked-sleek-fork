@@ -69,6 +69,7 @@ public class GuiMainMenu extends GuiScreen
                             if (obj.get("uid").getAsString().equals(Client.getInstance().getUid())) {
                                 try {
                                     if (obj.get("hwid").getAsString().equals(NegroidFarm.guisdafghiusfgfsdhusdfghifsdhuidsfhuifdshuifsdhiudsfhiusfdhsdiuffsdhiudhsifusdfhiufsdhiufsdhiusdfhiufsdhiufsdhiu())) {
+                                        System.out.println("called XD");
                                         Client.getInstance().onStart();
                                         Client.getInstance().setUsername(obj.get("username").getAsString());
                                         Client.getInstance().setDiscordTag(obj.get("discordTag").getAsString());

@@ -1,23 +1,24 @@
 package me.kansio.client.modules;
 
 import lombok.Getter;
+import me.kansio.client.Client;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.modules.impl.combat.*;
 import me.kansio.client.modules.impl.exploit.*;
-import me.kansio.client.modules.impl.movement.Flight;
-import me.kansio.client.modules.impl.movement.InvMove;
-import me.kansio.client.modules.impl.movement.LongJump;
-import me.kansio.client.modules.impl.movement.Speed;
+import me.kansio.client.modules.impl.movement.*;
 import me.kansio.client.modules.impl.player.*;
 import me.kansio.client.modules.impl.player.hackerdetect.HackerDetect;
 import me.kansio.client.modules.impl.visuals.*;
 import me.kansio.client.modules.impl.world.Breaker;
 import me.kansio.client.modules.impl.world.Scaffold;
+import me.kansio.client.property.Value;
 import me.kansio.client.utils.font.MCFontRenderer;
 import net.minecraft.client.gui.FontRenderer;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ModuleManager {
@@ -47,6 +48,7 @@ public class ModuleManager {
         modules.add(new FilterBypass());
 
         //Movement
+        registerModule(new Test());
         modules.add(new Speed());
         modules.add(new Flight());
         modules.add(new InvMove());
@@ -93,6 +95,24 @@ public class ModuleManager {
         //Toggle modules
         HUD hud = (HUD) getModuleByName("HUD");
         hud.toggle();
+    }
+
+    public void registerModule(Module module) {
+        modules.add(module);
+
+        for (final Field field : module.getClass().getDeclaredFields()) {
+            try {
+                field.setAccessible(true);
+                final Object obj = field.get(module);
+
+                if (obj instanceof Value)
+                    Collections.addAll(Client.getInstance().getValueManager().getObjects(), (Value) obj);
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
+
+        //Collections.addAll(Client.getInstance().getValueManager().getObjects(), values);
     }
 
     public void reloadModules() {
