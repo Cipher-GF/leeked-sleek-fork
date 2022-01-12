@@ -447,11 +447,12 @@ public class PlayerUtil extends Util {
         final float forward = mc.thePlayer.moveForward;
         final float strafe = mc.thePlayer.moveStrafing;
         yaw += ((forward < 0.0f) ? 180 : 0);
+        int var1 = (forward < 0.0f) ? -45 : ((forward == 0.0f) ? 90 : 45);
         if (strafe < 0.0f) {
-            yaw += ((forward < 0.0f) ? -45 : ((forward == 0.0f) ? 90 : 45));
+            yaw += var1;
         }
         if (strafe > 0.0f) {
-            yaw -= ((forward < 0.0f) ? -45 : ((forward == 0.0f) ? 90 : 45));
+            yaw -= var1;
         }
         float direction =  yaw * 0.017453292f;
 
