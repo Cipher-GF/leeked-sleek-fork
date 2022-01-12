@@ -418,6 +418,30 @@ public class PlayerUtil extends Util {
         return base;
     }
 
+    public static void TPGROUND(MoveEvent event, double speed, double y) {
+        float yaw = mc.thePlayer.rotationYaw;
+        final float forward = mc.thePlayer.moveForward;
+        final float strafe = mc.thePlayer.moveStrafing;
+        yaw += ((forward < 0.0f) ? 180 : 0);
+        if (strafe < 0.0f) {
+            yaw += ((forward < 0.0f) ? -45 : ((forward == 0.0f) ? 90 : 45));
+        }
+        if (strafe > 0.0f) {
+            yaw -= ((forward < 0.0f) ? -45 : ((forward == 0.0f) ? 90 : 45));
+        }
+        float direction =  yaw * 0.017453292f;
+
+        final double posX = mc.thePlayer.posX;
+        final double posY = mc.thePlayer.posY;
+        final double posZ = mc.thePlayer.posZ;
+        final double raycastFirstX = -Math.sin(direction);
+        final double raycastFirstZ = Math.cos(direction);
+        final double raycastFinalX = raycastFirstX * speed;
+        final double raycastFinalZ = raycastFirstZ * speed;
+        mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(posX + raycastFinalX, posY + y, posZ + raycastFinalZ, true));
+        mc.thePlayer.setPosition(posX + raycastFinalX, posY + y, posZ + raycastFinalZ);
+    }
+
     public static void TP(MoveEvent event, double speed, double y) {
         float yaw = mc.thePlayer.rotationYaw;
         final float forward = mc.thePlayer.moveForward;
