@@ -39,7 +39,7 @@ public class AttackEffect extends Module {
 
     @Subscribe
     public void onUpdate(UpdateEvent event) {
-        if (KillAura.target != null && KillAura.target.hurtTime > 8 ){
+        if (KillAura.target != null && KillAura.target.hurtTime > 9 ){
 
                 doParticle(KillAura.target);
                 doCrack(KillAura.target);
