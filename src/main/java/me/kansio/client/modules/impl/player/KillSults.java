@@ -68,7 +68,9 @@ public class KillSults extends Module {
                 "mad? rage at me on discord: " + Client.getInstance().getDiscordTag(),
                 "got angry? rage at me on discord: " + Client.getInstance().getDiscordTag(),
                 "rage at me on discord: " + Client.getInstance().getDiscordTag(),
-                "mad? rage at me on discord: "+ Client.getInstance().getDiscordTag()  +" :troll:"
+                "mad? rage at me on discord: "+ Client.getInstance().getDiscordTag()  +" :troll:",
+                "like da hack? https://discord.gg/GUauVwtFKj",
+                "hack too good? get it here: https://discord.gg/GUauVwtFKj"
         );
         mc.thePlayer.sendChatMessage(messages.get(RandomUtils.nextInt(0, messages.size() - 1)));
     }
