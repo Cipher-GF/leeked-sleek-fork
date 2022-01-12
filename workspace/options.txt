@@ -16,7 +16,7 @@ ao:2
 renderClouds:fast
 resourcePacks:["!         §dBom§6bies §8[§f80k§8] - §drose§6gold.zip"]
 incompatibleResourcePacks:[]
-lastServer:play.crystaldev.co
+lastServer:shotbow.net
 lang:en_US
 chatVisibility:0
 chatColors:true

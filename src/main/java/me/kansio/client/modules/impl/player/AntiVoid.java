@@ -23,7 +23,7 @@ public class AntiVoid extends Module {
     double prevZ = 0;
 
     private final NumberValue fallDist = new NumberValue<>("Fall Distance", this, 7, 0, 30, 1);
-    
+
     public AntiVoid() {
         super("Anti Void", ModuleCategory.PLAYER);
         register(fallDist);
