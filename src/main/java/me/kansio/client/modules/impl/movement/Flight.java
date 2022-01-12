@@ -43,6 +43,7 @@ public class Flight extends Module {
     private FlightMode currentMode = modes.stream().anyMatch(speedMode -> speedMode.getName().equalsIgnoreCase(modeValue.getValue())) ? modes.stream().filter(speedMode -> speedMode.getName().equalsIgnoreCase(modeValue.getValue())).findAny().get() : null;
     /*new ModeValue("Mode", this, "Vanilla", "Verus", "VerusDamage", "Verus Jump", "Funcraft", "Collide", "Ghostly", "Mush", "VerusGlide");*/
     @Getter private NumberValue<Double> speed = new NumberValue<>("Speed", this, 1d, 0d, 10d, 0.1);
+    @Getter private BooleanValue sigmaFastFlyOmgXdSexMoonkeyNiggerBoyTrole = new BooleanValue("Fast fly omg :trole:", this, false);
     @Getter private BooleanValue viewbob = new BooleanValue("View Bobbing", this, true);
     @Getter private BooleanValue boost = new BooleanValue("Boost", this, true, modeValue, "Funcraft");
     @Getter private BooleanValue extraBoost = new BooleanValue("Extra Boost", this, true, modeValue, "Funcraft");
@@ -53,6 +54,7 @@ public class Flight extends Module {
     Stopwatch stopwatch = new Stopwatch();
 
     public float ticks = 0;
+    public float prevFOV = mc.gameSettings.fovSetting;
     private int level;
     private double moveSpeed, lastDist;
 
@@ -60,16 +62,19 @@ public class Flight extends Module {
 
     public Flight() {
         super("Flight", ModuleCategory.MOVEMENT);
-        register(modeValue, speed, viewbob, boost, extraBoost, boostMode, timer);
+        register(modeValue, speed, sigmaFastFlyOmgXdSexMoonkeyNiggerBoyTrole, viewbob, boost, extraBoost, boostMode, timer);
     }
 
 
     public void onEnable() {
+        prevFOV = mc.gameSettings.fovSetting;
+        mc.gameSettings.fovSetting = 120;
         this.currentMode = modes.stream().anyMatch(speedMode -> speedMode.getName().equalsIgnoreCase(modeValue.getValue())) ? modes.stream().filter(speedMode -> speedMode.getName().equalsIgnoreCase(modeValue.getValue())).findAny().get() : null;
         currentMode.onEnable();
     }
 
     public void onDisable() {
+        mc.gameSettings.fovSetting = prevFOV;
         mc.thePlayer.motionX = 0;
         mc.thePlayer.motionY = 0;
         mc.thePlayer.motionZ = 0;
@@ -80,7 +85,7 @@ public class Flight extends Module {
     @Subscribe
     public void onUpdate(UpdateEvent event) {
         if (viewbob.getValue() && mc.thePlayer.isMoving()) {
-            mc.thePlayer.cameraYaw = 0.035f;
+            mc.thePlayer.cameraYaw = 1;
             //mc.thePlayer.cameraYaw = 0.1f;
             //mc.thePlayer.cameraYaw = 1000f;
         } else {
