@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 public class ReflectUtils {
 
-    public static <T> List<Class<? extends T>> getRelects(String packagePath, Class<T> clazz) {
+    public static <T> List<Class<? extends T>> getRelects(String packagePath, Class<T> clazz) { //TODO: rename to getReflects
 
         return new Reflections(packagePath).getSubTypesOf(clazz).stream().filter(aClass -> aClass.getDeclaredAnnotation(NotUsable.class) == null).collect(Collectors.toList());
     }
