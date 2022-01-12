@@ -42,9 +42,7 @@ public class Flight extends Module {
 
     private final ModeValue modeValue = new ModeValue("Mode", this, modes.stream().map(FlightMode::getName).collect(Collectors.toList()).toArray(new String[]{}));
     private FlightMode currentMode = modes.stream().anyMatch(speedMode -> speedMode.getName().equalsIgnoreCase(modeValue.getValue())) ? modes.stream().filter(speedMode -> speedMode.getName().equalsIgnoreCase(modeValue.getValue())).findAny().get() : null;
-    /*new ModeValue("Mode", this, "Vanilla", "Verus", "VerusDamage", "Verus Jump", "Funcraft", "Collide", "Ghostly", "Mush", "VerusGlide");*/
     @Getter private NumberValue<Double> speed = new NumberValue<>("Speed", this, 1d, 0d, 10d, 0.1);
-    @Getter private BooleanValue sigmaFastFlyOmgXdSexMoonkeyNiggerBoyTrole = new BooleanValue("Fast fly omg :trole:", this, false);
     @Getter private BooleanValue viewbob = new BooleanValue("View Bobbing", this, true);
     @Getter private BooleanValue boost = new BooleanValue("Boost", this, true, modeValue, "Funcraft");
     @Getter private BooleanValue extraBoost = new BooleanValue("Extra Boost", this, true, modeValue, "Funcraft");
@@ -60,14 +58,11 @@ public class Flight extends Module {
     private double moveSpeed, lastDist;
 
     public void onEnable() {
-        prevFOV = mc.gameSettings.fovSetting;
-        mc.gameSettings.fovSetting = 120;
         this.currentMode = modes.stream().anyMatch(speedMode -> speedMode.getName().equalsIgnoreCase(modeValue.getValue())) ? modes.stream().filter(speedMode -> speedMode.getName().equalsIgnoreCase(modeValue.getValue())).findAny().get() : null;
         currentMode.onEnable();
     }
 
     public void onDisable() {
-        mc.gameSettings.fovSetting = prevFOV;
         mc.thePlayer.motionX = 0;
         mc.thePlayer.motionY = 0;
         mc.thePlayer.motionZ = 0;
