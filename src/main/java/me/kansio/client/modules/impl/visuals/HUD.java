@@ -49,11 +49,6 @@ public class HUD extends Module {
 
     public static boolean notifications;
 
-    public HUD() {
-        super("HUD", ModuleCategory.VISUALS);
-        register(mode, noti, font, importantOnly, clientName, listSuffix);
-    }
-
     @Override
     public void onEnable() {
         currentMode = modes.stream().anyMatch(hudMode -> hudMode.getName().equalsIgnoreCase(mode.getValue())) ? modes.stream().filter(hudMode -> hudMode.getName().equalsIgnoreCase(mode.getValue())).findAny().get() : null ;
