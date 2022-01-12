@@ -3,20 +3,20 @@ mouseSensitivity:0.2746479
 fov:0.425
 gamma:2000.0
 saturation:0.0
-renderDistance:16
+renderDistance:8
 guiScale:2
 particles:0
 bobView:true
 anaglyph3d:false
 maxFps:260
 fboEnable:true
-difficulty:1
+difficulty:2
 fancyGraphics:false
 ao:2
-renderClouds:false
+renderClouds:fast
 resourcePacks:["!         §dBom§6bies §8[§f80k§8] - §drose§6gold.zip"]
 incompatibleResourcePacks:[]
-lastServer:viperhcf.net
+lastServer:sagepvp.org
 lang:en_US
 chatVisibility:0
 chatColors:true
