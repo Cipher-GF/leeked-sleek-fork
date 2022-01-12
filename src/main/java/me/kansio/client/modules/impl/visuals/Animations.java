@@ -1,6 +1,7 @@
 package me.kansio.client.modules.impl.visuals;
 
 import me.kansio.client.modules.api.ModuleCategory;
+import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.ModeValue;
@@ -12,6 +13,11 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.util.MathHelper;
 import org.lwjgl.opengl.GL11;
 
+@ModuleData(
+        name = "Animations",
+        category = ModuleCategory.VISUALS,
+        description = "Custom client animations"
+)
 public class Animations extends Module {
 
     public BooleanValue attackanim = new BooleanValue("Attack Animations", this, false);
@@ -20,11 +26,6 @@ public class Animations extends Module {
     public NumberValue scale = new NumberValue("Scale", this, 1.0f, 0.0f, 2.0f, 0.1f, attackanim);
     public NumberValue<Double> slowdown = new NumberValue<>("Swing Speed", this, 1d, -4d, 12d, 1d, attackanim);
     private float rotate;
-
-    public Animations() {
-        super("Animations", ModuleCategory.VISUALS);
-        register(attackanim, modeblockanim, smoothhit, scale, slowdown);
-    }
 
     public void render(ItemStack itemToRender, float partialTicks) {
 

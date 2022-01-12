@@ -3,19 +3,21 @@ package me.kansio.client.modules.impl.visuals;
 import dorkbox.messageBus.annotations.Subscribe;
 import me.kansio.client.event.impl.PacketEvent;
 import me.kansio.client.modules.api.ModuleCategory;
+import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 import net.minecraft.network.play.server.S02PacketChat;
 
 import java.util.Arrays;
 import java.util.List;
 
+@ModuleData(
+        name = "Anti Spammer",
+        category = ModuleCategory.VISUALS,
+        description = "Hides known spammer messages"
+)
 public class AntiSpam extends Module {
 
     private List<String> spammers = Arrays.asList("FDPClient", "moonclient.xyz", "Go And play with tired-client.de");
-
-    public AntiSpam() {
-        super("Anti Spammer", ModuleCategory.VISUALS);
-    }
 
     @Subscribe
     public void onPacket(PacketEvent event) {

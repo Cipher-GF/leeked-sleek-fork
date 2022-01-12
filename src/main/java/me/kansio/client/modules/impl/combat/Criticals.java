@@ -4,6 +4,7 @@ import dorkbox.messageBus.annotations.Subscribe;
 import me.kansio.client.Client;
 import me.kansio.client.event.impl.PacketEvent;
 import me.kansio.client.modules.api.ModuleCategory;
+import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.modules.impl.movement.Flight;
 import me.kansio.client.property.value.BooleanValue;
@@ -13,17 +14,17 @@ import net.minecraft.entity.Entity;
 import net.minecraft.network.play.client.C02PacketUseEntity;
 import net.minecraft.network.play.client.C03PacketPlayer;
 
+@ModuleData(
+        name = "Criticals",
+        category = ModuleCategory.COMBAT,
+        description = "Automatically deals criticals"
+)
 public class Criticals extends Module {
 
     private ModeValue mode = new ModeValue("Mode", this, "Packet", "Verus", "MiniJump");
     private final BooleanValue c06 = new BooleanValue("C06", this, true);
 
     public final double[] packetValues = new double[]{0.0625D, 0.0D, 0.05D, 0.0D};
-
-    public Criticals() {
-        super("Criticals", ModuleCategory.COMBAT);
-        register(mode);
-    }
 
     @Subscribe
     public void onPacket(PacketEvent event) {

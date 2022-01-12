@@ -5,15 +5,17 @@ import me.kansio.client.Client;
 import me.kansio.client.event.impl.MouseEvent;
 import me.kansio.client.friend.Friend;
 import me.kansio.client.modules.api.ModuleCategory;
+import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.utils.chat.ChatUtil;
 import net.minecraft.entity.player.EntityPlayer;
 
+@ModuleData(
+        name = "MCF",
+        category = ModuleCategory.PLAYER,
+        description = "Middle click a player to add them as a friend"
+)
 public class MCF extends Module {
-
-    public MCF() {
-        super("MCF", ModuleCategory.PLAYER);
-    }
 
     @Subscribe
     public void onMouse(MouseEvent event) {

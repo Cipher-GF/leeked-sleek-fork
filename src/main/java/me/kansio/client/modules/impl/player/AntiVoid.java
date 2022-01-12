@@ -4,6 +4,7 @@ import dorkbox.messageBus.annotations.Subscribe;
 import me.kansio.client.Client;
 import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
+import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.modules.impl.movement.Flight;
 import me.kansio.client.property.value.ModeValue;
@@ -16,6 +17,11 @@ import net.minecraft.util.BlockPos;
 
 import java.text.MessageFormat;
 
+@ModuleData(
+        name = "Anti Void",
+        category = ModuleCategory.PLAYER,
+        description = "Prevents you from falling into the void"
+)
 public class AntiVoid extends Module {
 
     //values for storing the previous pos (when they weren't in the void)
@@ -25,11 +31,6 @@ public class AntiVoid extends Module {
 
     private final ModeValue modeValue = new ModeValue("Mode", this, "Basic", "Blink");
     private final NumberValue fallDist = new NumberValue<>("Fall Distance", this, 7, 0, 30, 1);
-
-    public AntiVoid() {
-        super("Anti Void", ModuleCategory.PLAYER);
-        register(fallDist);
-    }
 
     @Subscribe
     public void onUpdate(UpdateEvent event) {

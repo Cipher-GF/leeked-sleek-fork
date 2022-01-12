@@ -3,20 +3,21 @@ package me.kansio.client.modules.impl.player;
 import dorkbox.messageBus.annotations.Subscribe;
 import me.kansio.client.event.impl.PacketEvent;
 import me.kansio.client.modules.api.ModuleCategory;
+import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.property.value.ModeValue;
 import me.kansio.client.utils.network.PacketUtil;
 import net.minecraft.network.play.client.C03PacketPlayer;
 import net.minecraft.network.play.server.S08PacketPlayerPosLook;
 
+@ModuleData(
+        name = "No Rotate",
+        category = ModuleCategory.PLAYER,
+        description = "Prevents the server from setting your head pos"
+)
 public class NoRotate extends Module {
 
     private ModeValue mode = new ModeValue("Mode", this, "Cancel", "Packet", "Spoof");
-
-    public NoRotate() {
-        super("No Rotate", ModuleCategory.PLAYER);
-        register(mode);
-    }
 
     @Subscribe
     public void onSendPacket(PacketEvent event) {

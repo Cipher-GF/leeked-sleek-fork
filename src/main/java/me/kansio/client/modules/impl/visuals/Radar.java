@@ -4,6 +4,7 @@ import dorkbox.messageBus.annotations.Subscribe;
 import me.kansio.client.Client;
 import me.kansio.client.event.impl.RenderOverlayEvent;
 import me.kansio.client.modules.api.ModuleCategory;
+import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.utils.render.RenderUtils;
@@ -16,18 +17,17 @@ import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
 
+@ModuleData(
+        name = "Radar",
+        category = ModuleCategory.VISUALS,
+        description = "Shows player locations on the hud"
+)
 public class Radar extends Module {
 
     public BooleanValue players = new BooleanValue("Players", this, true);
     public BooleanValue monsters = new BooleanValue("Monsters", this, false);
     public BooleanValue animals = new BooleanValue("Animals", this, false);
     public BooleanValue invisible = new BooleanValue("Invisibles", this, false);
-
-
-    public Radar() {
-        super("Radar", ModuleCategory.VISUALS);
-        register(players, monsters, animals, invisible);
-    }
 
     @Subscribe
     public void onRenderOverlay(RenderOverlayEvent event) {

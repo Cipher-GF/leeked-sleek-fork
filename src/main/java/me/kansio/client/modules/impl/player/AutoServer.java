@@ -4,6 +4,7 @@ import dorkbox.messageBus.annotations.Subscribe;
 import me.kansio.client.event.impl.PacketEvent;
 import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
+import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.property.value.ModeValue;
 import me.kansio.client.utils.chat.ChatUtil;
@@ -21,17 +22,17 @@ import net.minecraft.network.play.server.S2FPacketSetSlot;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 
+@ModuleData(
+        name = "Auto Server",
+        category = ModuleCategory.PLAYER,
+        description = "Automatically does actions on certain servers"
+)
 public class AutoServer extends Module {
 
     private boolean hasClickedAutoPlay;
 
     private ModeValue modeValue = new ModeValue("Server", this, "BlocksMC");
     private ModeValue kitValue = new ModeValue("Kit", this, "Armorer", "Knight");
-
-    public AutoServer() {
-        super("Auto Server", ModuleCategory.PLAYER);
-        register(modeValue, kitValue);
-    }
 
     @Subscribe
     public void onPacket(PacketEvent event) {

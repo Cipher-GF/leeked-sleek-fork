@@ -3,6 +3,7 @@ package me.kansio.client.modules.impl.visuals;
 import dorkbox.messageBus.annotations.Subscribe;
 import me.kansio.client.event.impl.PacketEvent;
 import me.kansio.client.modules.api.ModuleCategory;
+import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.ModeValue;
@@ -10,6 +11,11 @@ import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.network.play.server.S02PacketChat;
 import net.minecraft.util.ResourceLocation;
 
+@ModuleData(
+        name = "Death Effect",
+        category = ModuleCategory.VISUALS,
+        description = "Custom death effects"
+)
 public class DeathEffect extends Module {
 
     public ModeValue mode = new ModeValue("Effect Mode", this, "Blood", "Lightning");

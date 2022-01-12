@@ -4,18 +4,19 @@ import dorkbox.messageBus.annotations.Subscribe;
 import me.kansio.client.event.impl.PacketEvent;
 import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
+import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.property.value.ModeValue;
 import net.minecraft.network.play.server.S03PacketTimeUpdate;
 
+@ModuleData(
+        name = "Time Changer",
+        category = ModuleCategory.VISUALS,
+        description = "Changes the world time"
+)
 public class TimeChanger extends Module {
 
     private ModeValue time = new ModeValue("Mode", this, "Day", "Noon", "Night", "Mid Night");
-
-    public TimeChanger() {
-        super("TimeChanger", ModuleCategory.VISUALS);
-        register(time);
-    }
 
     @Subscribe
     public void onUpdate(UpdateEvent event) {

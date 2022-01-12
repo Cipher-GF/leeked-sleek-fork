@@ -3,10 +3,16 @@ package me.kansio.client.modules.impl.player;
 import dorkbox.messageBus.annotations.Subscribe;
 import me.kansio.client.event.impl.NoSlowEvent;
 import me.kansio.client.modules.api.ModuleCategory;
+import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.ModeValue;
 
+@ModuleData(
+        name = "No Slow",
+        category = ModuleCategory.PLAYER,
+        description = "Stops you from getting slowed down"
+)
 public class NoSlow extends Module {
 
     public ModeValue mode = new ModeValue("Mode", this, "Vanilla", "IDk");
@@ -14,11 +20,6 @@ public class NoSlow extends Module {
     //public BooleanValue sneak = new BooleanValue("Sneak", this, false);
     public BooleanValue water = new BooleanValue("Water", this, false);
     public BooleanValue soulsand = new BooleanValue("SoulSand", this, false);
-
-    public NoSlow() {
-        super("No Slow", ModuleCategory.PLAYER);
-        register(mode, item, water, soulsand);
-    }
 
     @Subscribe
     public void NoSlowEvent(NoSlowEvent event) {

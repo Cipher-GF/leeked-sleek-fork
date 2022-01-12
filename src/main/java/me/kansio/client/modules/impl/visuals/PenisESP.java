@@ -4,6 +4,7 @@ import com.sun.javafx.geom.Vec3d;
 import dorkbox.messageBus.annotations.Subscribe;
 import me.kansio.client.event.impl.Render3DEvent;
 import me.kansio.client.modules.api.ModuleCategory;
+import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderHelper;
@@ -13,11 +14,12 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.glu.Cylinder;
 import org.lwjgl.util.glu.Sphere;
 
+@ModuleData(
+        name = "Penis ESP",
+        category = ModuleCategory.VISUALS,
+        description = "Shows a cock on players"
+)
 public class PenisESP extends Module {
-
-    public PenisESP() {
-        super("Penis ESP", ModuleCategory.VISUALS);
-    }
 
     private float pspin, pcumsize, pamount;
 

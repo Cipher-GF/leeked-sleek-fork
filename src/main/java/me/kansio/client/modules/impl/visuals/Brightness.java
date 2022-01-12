@@ -3,20 +3,21 @@ package me.kansio.client.modules.impl.visuals;
 import dorkbox.messageBus.annotations.Subscribe;
 import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
+import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.property.value.ModeValue;
 import net.minecraft.potion.PotionEffect;
 
+@ModuleData(
+        name = "Brightness",
+        category = ModuleCategory.VISUALS,
+        description = "Changes the game brightness"
+)
 public class Brightness extends Module {
 
     private float oldGamma;
 
     private ModeValue mode = new ModeValue("Mode", this, "Gamma", "Potion");
-
-    public Brightness() {
-        super("Brightness", ModuleCategory.VISUALS);
-        register(mode);
-    }
 
     public void onEnable() {
         this.oldGamma = mc.gameSettings.gammaSetting;

@@ -7,6 +7,7 @@ import me.kansio.client.event.impl.MoveEvent;
 import me.kansio.client.event.impl.PacketEvent;
 import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
+import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.modules.impl.movement.flight.FlightMode;
 import me.kansio.client.property.value.BooleanValue;
@@ -14,21 +15,20 @@ import me.kansio.client.property.value.ModeValue;
 import me.kansio.client.property.value.NumberValue;
 import me.kansio.client.utils.java.ReflectUtils;
 import me.kansio.client.utils.math.Stopwatch;
-import me.kansio.client.utils.chat.ChatUtil;
-import me.kansio.client.utils.math.MathUtil;
-import me.kansio.client.utils.player.PlayerUtil;
-import net.minecraft.block.BlockAir;
 import net.minecraft.potion.Potion;
-import net.minecraft.util.AxisAlignedBB;
 
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@ModuleData(
+        name = "Flight",
+        category = ModuleCategory.MOVEMENT,
+        description = "Allows you to fly"
+)
 public class Flight extends Module {
 
-
-    private final List<? extends FlightMode> modes = ReflectUtils.getRelects(this.getClass().getPackage().getName() + ".flight", FlightMode.class).stream()
+    private final List<? extends FlightMode> modes = ReflectUtils.getReflects(this.getClass().getPackage().getName() + ".flight", FlightMode.class).stream()
             .map(aClass -> {
                 try {
                     return aClass.getDeclaredConstructor().newInstance();
@@ -39,6 +39,7 @@ public class Flight extends Module {
             })
             .sorted(Comparator.comparing(speedMode -> speedMode != null ? speedMode.getName() : null))
             .collect(Collectors.toList());
+
     private final ModeValue modeValue = new ModeValue("Mode", this, modes.stream().map(FlightMode::getName).collect(Collectors.toList()).toArray(new String[]{}));
     private FlightMode currentMode = modes.stream().anyMatch(speedMode -> speedMode.getName().equalsIgnoreCase(modeValue.getValue())) ? modes.stream().filter(speedMode -> speedMode.getName().equalsIgnoreCase(modeValue.getValue())).findAny().get() : null;
     /*new ModeValue("Mode", this, "Vanilla", "Verus", "VerusDamage", "Verus Jump", "Funcraft", "Collide", "Ghostly", "Mush", "VerusGlide");*/
@@ -51,20 +52,12 @@ public class Flight extends Module {
     @Getter private ModeValue boostMode = new ModeValue("Boost Mode", this, modeValue, new String[]{"Funcraft"}, "Normal", "Damage", "WOWOMG");
     @Getter private NumberValue<Double> timer = new NumberValue<>("Timer", this, 1d, 1d, 5d, 0.1, modeValue, "Mush");
 
-    Stopwatch stopwatch = new Stopwatch();
+    private Stopwatch stopwatch = new Stopwatch();
 
     public float ticks = 0;
     public float prevFOV = mc.gameSettings.fovSetting;
     private int level;
     private double moveSpeed, lastDist;
-
-
-
-    public Flight() {
-        super("Flight", ModuleCategory.MOVEMENT);
-        register(modeValue, speed, sigmaFastFlyOmgXdSexMoonkeyNiggerBoyTrole, viewbob, boost, extraBoost, boostMode, timer);
-    }
-
 
     public void onEnable() {
         prevFOV = mc.gameSettings.fovSetting;

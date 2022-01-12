@@ -104,7 +104,7 @@ public abstract class Module {
     }
 
     public void register(Value... properties) {
-        Collections.addAll(Client.getInstance().getValueManager().getObjects(), properties);
+        //Collections.addAll(Client.getInstance().getValueManager().getObjects(), properties);
     }
 
     public void unRegister(Value... properties) {

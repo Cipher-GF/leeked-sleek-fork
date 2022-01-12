@@ -4,6 +4,7 @@ import dorkbox.messageBus.annotations.Subscribe;
 import me.kansio.client.Client;
 import me.kansio.client.event.impl.PacketEvent;
 import me.kansio.client.modules.api.ModuleCategory;
+import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.property.value.ModeValue;
 import net.minecraft.network.play.server.S02PacketChat;
@@ -12,6 +13,11 @@ import org.apache.commons.lang3.RandomUtils;
 import java.util.Arrays;
 import java.util.List;
 
+@ModuleData(
+        name = "Kill Insults",
+        category = ModuleCategory.PLAYER,
+        description = "Test Module..."
+)
 public class KillSults extends Module {
 
     private final List<String> messages = Arrays.asList(
@@ -31,11 +37,6 @@ public class KillSults extends Module {
     );
 
     private final ModeValue modeValue = new ModeValue("Mode", this, "BlocksMC");
-
-    public KillSults() {
-        super("Kill Sults", ModuleCategory.PLAYER);
-        register(modeValue);
-    }
 
     @Subscribe
     public void onPacket(PacketEvent event) {

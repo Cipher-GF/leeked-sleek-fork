@@ -2,27 +2,30 @@ package me.kansio.client.modules.impl.visuals;
 
 import dorkbox.messageBus.annotations.Subscribe;
 import lombok.Getter;
-import me.kansio.client.Client;
 import me.kansio.client.event.impl.RenderOverlayEvent;
 import me.kansio.client.modules.api.ModuleCategory;
+import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.modules.impl.visuals.hud.HudMode;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.ModeValue;
 import me.kansio.client.property.value.StringValue;
 import me.kansio.client.utils.java.ReflectUtils;
-import me.kansio.client.utils.network.UserUtil;
-import me.kansio.client.utils.render.RenderUtils;
-import net.minecraft.client.gui.ScaledResolution;
 
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
+@ModuleData(
+        name = "HUD",
+        category = ModuleCategory.VISUALS,
+        description = "The HUD... nothing special"
+)
 @Getter
 public class HUD extends Module {
 
-    private final List<? extends HudMode> modes = ReflectUtils.getRelects(this.getClass().getPackage().getName() + ".hud", HudMode.class).stream()
+    private final List<? extends HudMode> modes = ReflectUtils.getReflects(this.getClass().getPackage().getName() + ".hud", HudMode.class).stream()
             .map(aClass -> {
                 try {
                     return aClass.getDeclaredConstructor().newInstance();

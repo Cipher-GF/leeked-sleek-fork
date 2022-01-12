@@ -15,6 +15,8 @@ public @interface ModuleData {
     String name();
     ModuleCategory category();
 
+    String description();
+
     int bind() default Keyboard.KEY_NONE;
 
 

@@ -11,7 +11,8 @@ import me.kansio.client.utils.chat.ChatUtil;
 
 @ModuleData(
         name = "test",
-        category = ModuleCategory.MOVEMENT
+        category = ModuleCategory.MOVEMENT,
+        description = "Test Module..."
 )
 public class Test extends Module {
 
