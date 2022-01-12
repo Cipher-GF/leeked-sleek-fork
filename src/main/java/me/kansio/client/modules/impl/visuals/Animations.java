@@ -69,7 +69,7 @@ public class Animations extends Module {
 
                     mc.getItemRenderer().transformFirstPersonItem(0, 0.0f);
                     mc.getItemRenderer().func_178103_d();
-                    float var9 = MathHelper.sin(MathHelper.sqrt_float(f1) * 3.1415927f);
+                    var9 = MathHelper.sin(MathHelper.sqrt_float(f1) * 3.1415927f);
                     GlStateManager.translate(-0.05f, -0.0f, 0.35f);
                     GlStateManager.rotate(-var9 * (float) 60.0 / 2.0f, -15.0f, -0.0f, 9.0f);
                     GlStateManager.rotate(-var9 * (float) 70.0, 1.0f, -0.4f, -0.0f);
@@ -79,7 +79,7 @@ public class Animations extends Module {
 
                     mc.getItemRenderer().transformFirstPersonItem(0, 0.0f);
                     mc.getItemRenderer().func_178103_d();
-                    float var9 = MathHelper.sin(MathHelper.sqrt_float(f1) * 0.3215927f);
+                    var9 = MathHelper.sin(MathHelper.sqrt_float(f1) * 0.3215927f);
                     GlStateManager.translate(-0.05f, -0.0f, 0.3f);
                     GlStateManager.rotate(-var9 * (float) 60.0 / 2.0f, -15.0f, -0.0f, 9.0f);
                     GlStateManager.rotate(-var9 * (float) 70.0, 1.0f, -0.4f, -0.0f);
@@ -136,7 +136,7 @@ public class Animations extends Module {
                     break;
                 case "OHARE":
 
-                    float f6 = MathHelper.sin((MathHelper.sqrt_float(f1) * 3.1415927f));
+                    f6 = MathHelper.sin((MathHelper.sqrt_float(f1) * 3.1415927f));
                     GL11.glTranslated(-0.05D, 0.0D, -0.25);
                     mc.getItemRenderer().transformFirstPersonItem(f / 2, 0.0f);
                     GlStateManager.rotate(-f6 * 60.0F, 2.0F, -f6 * 2, -0.0f);
@@ -145,7 +145,7 @@ public class Animations extends Module {
                     break;
                 case "WIZZARD":
 
-                    float f6 = MathHelper.sin((float) (MathHelper.sqrt_float(f1) * 3.1));
+                     f6 = MathHelper.sin((float) (MathHelper.sqrt_float(f1) * 3.1));
                     mc.getItemRenderer().transformFirstPersonItem(f / 3, 0.0f);
                     GlStateManager.rotate(f6 * 30.0F / 1.0F, f6 / -1.0F, 1.0F, 0.0F);
                     GlStateManager.rotate(f6 * 10.0F / 10.0F, -f6 / -1.0F, 1.0F, 0.0F);
@@ -155,7 +155,7 @@ public class Animations extends Module {
                     break;
                 case "LENNOX":
 
-                    float f6 = MathHelper.sin((float) (MathHelper.sqrt_float(f1) * 3.1));
+                    f6 = MathHelper.sin((float) (MathHelper.sqrt_float(f1) * 3.1));
                     GL11.glTranslated(0.0D, 0.125D, -0.1D);
                     mc.getItemRenderer().transformFirstPersonItem(f / 3, 0.0F);
                     GlStateManager.rotate(-f6 * 75.0F / 4.5F, f6 / 3.0F, -2.4F, 5.0F);
@@ -168,7 +168,7 @@ public class Animations extends Module {
 
                     mc.getItemRenderer().transformFirstPersonItem(f, 0.0F);
                     mc.getItemRenderer().func_178103_d();
-                    final float var9 = MathHelper.sin(MathHelper.sqrt_float(f1) * 3.1415927f);
+                    var9 = MathHelper.sin(MathHelper.sqrt_float(f1) * 3.1415927f);
                     GlStateManager.translate(-0.05f, 0.6f, 0.3f);
                     GlStateManager.rotate(-var9 * (float) 80.0 / 2.0f, -4.0f, -0.0f, 18.0f);
                     GlStateManager.rotate(-var9 * (float) 70.0, 1.5f, -0.4f, -0.0f);
