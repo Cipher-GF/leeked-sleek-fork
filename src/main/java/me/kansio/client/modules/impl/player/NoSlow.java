@@ -22,7 +22,7 @@ public class NoSlow extends Module {
     public BooleanValue soulsand = new BooleanValue("SoulSand", this, false);
 
     @Subscribe
-    public void NoSlowEvent(NoSlowEvent event) {
+    public void onNoSlow(NoSlowEvent event) {
         switch (event.getType()) {
             case ITEM:
                 event.setCancelled(item.getValue());

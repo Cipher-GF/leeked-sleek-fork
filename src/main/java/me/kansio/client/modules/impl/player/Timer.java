@@ -19,17 +19,9 @@ public class Timer extends Module {
     private NumberValue<Double> speed = new NumberValue<>("Speed", this, 1.0, 0.05, 10.0, 0.1);
     private NumberValue<Integer> tickspeed = new NumberValue("Ticks", this,1.0, 1.0, 20.0, 1.0, tick);
 
-    @Subscribe
-    public void onUpdate(UpdateEvent event) {
-        if (this.tick.getValue()) {
-            if (mc.thePlayer.ticksExisted % tickspeed.getValue() == 0) {
-                mc.timer.timerSpeed = speed.getValue().floatValue();
-            } else {
-                mc.timer.timerSpeed = 1;
-            }
-        } else {
-            mc.timer.timerSpeed = speed.getValue().floatValue();
-        }
+    @Override
+    public void onEnable() {
+        mc.timer.timerSpeed = speed.getValue().floatValue();
     }
 
     @Override

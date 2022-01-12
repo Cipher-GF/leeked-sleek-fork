@@ -50,12 +50,12 @@
   {
     "name": "Inventory Manager",
     "enabled": true,
-    "AutoSword": "false",
-    "AutoSword Only in Inv": "false",
-    "AutoSword Delay": "25.0",
-    "Inventory Cleaner": "false",
+    "AutoSword": "true",
+    "AutoSword Only in Inv": "true",
+    "AutoSword Delay": "32.0",
+    "Inventory Cleaner": "true",
     "InvCleaner Delay": "25.0",
-    "Auto Armor": "false",
+    "Auto Armor": "true",
     "AutoArmor Delay": "25.0"
   },
   {
@@ -197,8 +197,10 @@
     "Notifications": "true",
     "BPS": "true",
     "Important Only": "true",
-    "Client Name": "sussy among us sex hack impostor edition v69 (blocksmc hack)blocks",
-    "Module Suffix": " [%s]"
+    "Client Name": "sussy among us sex hack impostor edition v69 (blocksmc hack)",
+    "Module Suffix": " [%s]",
+    "Scoreboard": "Right",
+    "Scoreboard Y": "0.0"
   },
   {
     "name": "Attack Effect",
@@ -263,7 +265,6 @@
     "enabled": false,
     "Mode": "Vanilla",
     "Speed": "2.2",
-    "Fast fly omg :trole:": "true",
     "View Bobbing": "false",
     "Boost": "true",
     "Extra Boost": "true",
@@ -311,8 +312,8 @@
     "Attack Animations": "true",
     "Block Mode": "Down",
     "Smooth Hit": "false",
-    "Scale": "1.0",
-    "Swing Speed": "8.0"
+    "Scale": "1.2000000178813934",
+    "Swing Speed": "1.0"
   },
   {
     "name": "Chams",
