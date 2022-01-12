@@ -9,6 +9,7 @@ import me.kansio.client.modules.impl.Module;
 import me.kansio.client.modules.impl.visuals.hud.HudMode;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.ModeValue;
+import me.kansio.client.property.value.NumberValue;
 import me.kansio.client.property.value.StringValue;
 import me.kansio.client.utils.java.ReflectUtils;
 
@@ -46,6 +47,9 @@ public class HUD extends Module {
     public BooleanValue importantOnly = new BooleanValue("Important Only", this, true);
     public StringValue clientName = new StringValue("Client Name", this, "Sleek");
     public StringValue listSuffix = new StringValue("Module Suffix", this, " [%s]");
+
+    private final ModeValue scoreboardLocation = new ModeValue("Scoreboard", this, "Right", "Left");
+    private final NumberValue<Double> scoreboardPos = new NumberValue<>("Scoreboard Y", this, 0.0, -500.0, 500.0, 1.0);
 
     public static boolean notifications;
 

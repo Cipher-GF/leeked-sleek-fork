@@ -5,6 +5,7 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import me.kansio.client.Client;
 import me.kansio.client.event.impl.RenderOverlayEvent;
+import me.kansio.client.modules.impl.visuals.HUD;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
@@ -482,6 +483,8 @@ public class GuiIngame extends Gui {
     }
 
     private void renderScoreboard(ScoreObjective p_180475_1_, ScaledResolution p_180475_2_) {
+        HUD hud = (HUD) Client.getInstance().getModuleManager().getModuleByName("HUD");
+
         Scoreboard scoreboard = p_180475_1_.getScoreboard();
         Collection collection = scoreboard.getSortedScores(p_180475_1_);
         ArrayList arraylist = Lists.newArrayList(Iterables.filter(collection, new Predicate() {
@@ -503,36 +506,53 @@ public class GuiIngame extends Gui {
             arraylist1 = arraylist;
         }
 
-        int i = this.getFontRenderer().getStringWidth(p_180475_1_.getDisplayName());
+        int var6 = this.getFontRenderer().getStringWidth(p_180475_1_.getDisplayName());
 
         for (Object score : arraylist1) {
             ScorePlayerTeam scoreplayerteam = scoreboard.getPlayersTeam(((Score) score).getPlayerName());
             String s = ScorePlayerTeam.formatPlayerName(scoreplayerteam, ((Score) score).getPlayerName()) + ": " + EnumChatFormatting.RED + ((Score) score).getScorePoints();
-            i = Math.max(i, this.getFontRenderer().getStringWidth(s));
+            var6 = Math.max(var6, this.getFontRenderer().getStringWidth(s));
         }
 
         int j1 = arraylist1.size() * this.getFontRenderer().FONT_HEIGHT;
         int k1 = p_180475_2_.getScaledHeight() / 2 + j1 / 3;
-        byte b0 = 3;
-        int j = p_180475_2_.getScaledWidth() - i - b0;
-        int k = 0;
+        byte var241 = 3;
+        int scaleWith = p_180475_2_.getScaledWidth() - var6 - var241;
+        int scoreY = 0;
 
         for (Object score1 : arraylist1) {
-            ++k;
-            ScorePlayerTeam scoreplayerteam1 = scoreboard.getPlayersTeam(((Score) score1).getPlayerName());
-            String s1 = ScorePlayerTeam.formatPlayerName(scoreplayerteam1, ((Score) score1).getPlayerName());
-            String s2 = EnumChatFormatting.RED + "" + ((Score) score1).getScorePoints();
-            int l = k1 - k * this.getFontRenderer().FONT_HEIGHT;
-            int i1 = p_180475_2_.getScaledWidth() - b0 + 2;
-            drawRect(j - 2, l, i1, l + this.getFontRenderer().FONT_HEIGHT, 1342177280);
-            this.getFontRenderer().drawString(s1, j, l, 553648127);
-            this.getFontRenderer().drawString(s2, i1 - this.getFontRenderer().getStringWidth(s2), l, 553648127);
+            ++scoreY;
+            ScorePlayerTeam team = scoreboard.getPlayersTeam(((Score) score1).getPlayerName());
+            String playerNameFormatted = ScorePlayerTeam.formatPlayerName(team, ((Score) score1).getPlayerName());
+            String points = EnumChatFormatting.RED + "" + ((Score) score1).getScorePoints();
 
-            if (k == arraylist1.size()) {
+            int y;
+            int x;
+
+            if ("Left".equals(hud.getScoreboardLocation().getValue())) { //nice job intellij :D
+                x = var241;
+                scaleWith = var6 - var241;
+            } else {
+                x = p_180475_2_.getScaledWidth() - var241 + 2;
+            }
+
+            y = (int) (k1 - scoreY * this.getFontRenderer().FONT_HEIGHT + hud.getScoreboardPos().getValue());
+
+            drawRect(scaleWith - 2, y, x, y + this.getFontRenderer().FONT_HEIGHT, 1342177280);
+            if (!hud.getScoreboardLocation().getValue().equalsIgnoreCase("left")) {
+                this.getFontRenderer().drawString(playerNameFormatted, scaleWith, y, 553648127);
+                this.getFontRenderer().drawString(points, x - this.getFontRenderer().getStringWidth(points), y, 553648127);
+            } else {
+                this.getFontRenderer().drawString(playerNameFormatted, 5, y, 553648127);}
+            if (scoreY == arraylist1.size()) {
                 String s3 = p_180475_1_.getDisplayName();
-                drawRect(j - 2, l - this.getFontRenderer().FONT_HEIGHT - 1, i1, l - 1, 1610612736);
-                drawRect(j - 2, l - 1, i1, l, 1342177280);
-                this.getFontRenderer().drawString(s3, j + i / 2 - this.getFontRenderer().getStringWidth(s3) / 2, l - this.getFontRenderer().FONT_HEIGHT, 553648127);
+                drawRect(scaleWith - 2, y - this.getFontRenderer().FONT_HEIGHT - 1, x, y - 1, 1610612736);
+                drawRect(scaleWith - 2, y - 1, x, y, 1342177280);
+                if (!hud.getScoreboardLocation().getValue().equalsIgnoreCase("left")) {
+                    this.getFontRenderer().drawString(s3, scaleWith + var6 / 2 - this.getFontRenderer().getStringWidth(s3) / 2, y - this.getFontRenderer().FONT_HEIGHT, 553648127);
+                } else {
+                    this.getFontRenderer().drawString(s3, var6 / 2 - this.getFontRenderer().getStringWidth(s3) / 2, y - this.getFontRenderer().FONT_HEIGHT, 553648127);
+                }
             }
         }
     }
