@@ -34,14 +34,11 @@ public class FastBow extends Module {
     public void onUpdate(UpdateEvent event) {
         if (mc.gameSettings.keyBindUseItem.isKeyDown()) {
 
-            System.out.println("using");
             //check if they have a bow
             if (!hasBow()) {
-                ChatUtil.log("§cYou do not have a bow in your inventory.");
                 return;
             }
 
-            System.out.println("y");
 
             int slotWithBow = getBowSlot();
 
@@ -50,16 +47,11 @@ public class FastBow extends Module {
                 return;
             }
 
-            System.out.println("y2");
-
             //if the server side slot isn't the slot with the bow, then set it to
             if (serverSideSlot != slotWithBow) {
                 PacketUtil.sendPacketNoEvent(new C09PacketHeldItemChange(slotWithBow));
-                System.out.println("set slot to " + slotWithBow);
             }
             serverSideSlot = slotWithBow;
-
-            System.out.println("y3");
 
             PacketUtil.sendPacketNoEvent(new C08PacketPlayerBlockPlacement(mc.thePlayer.getCurrentEquippedItem()));
 
@@ -71,7 +63,6 @@ public class FastBow extends Module {
             PacketUtil.sendPacketNoEvent(new C07PacketPlayerDigging(C07PacketPlayerDigging.Action.RELEASE_USE_ITEM, BlockPos.ORIGIN, EnumFacing.DOWN));
 
             wasShooting = true;
-
         } else if (wasShooting) { //revert to the last itemslot
             PacketUtil.sendPacketNoEvent(new C09PacketHeldItemChange(lastSlot));
             wasShooting = false;

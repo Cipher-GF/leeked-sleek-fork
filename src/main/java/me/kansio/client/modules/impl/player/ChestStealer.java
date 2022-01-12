@@ -25,7 +25,6 @@ import net.minecraft.potion.PotionEffect;
 public class ChestStealer extends Module {
 
     private BooleanValue checkChest = new BooleanValue("Check Chest", this, true);
-    private BooleanValue ignoreTreesh = new BooleanValue("dontwork", this, true);
     private NumberValue<Double> delay = new NumberValue<>("Delay", this, 25.0, 0.0, 1000.0, 1.0);
     private Stopwatch delayCounter = new Stopwatch();
 

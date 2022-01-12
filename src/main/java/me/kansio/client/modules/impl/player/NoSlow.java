@@ -17,7 +17,6 @@ public class NoSlow extends Module {
 
     public ModeValue mode = new ModeValue("Mode", this, "Vanilla", "IDk");
     public BooleanValue item = new BooleanValue("Item", this, true);
-    //public BooleanValue sneak = new BooleanValue("Sneak", this, false);
     public BooleanValue water = new BooleanValue("Water", this, false);
     public BooleanValue soulsand = new BooleanValue("SoulSand", this, false);
 
