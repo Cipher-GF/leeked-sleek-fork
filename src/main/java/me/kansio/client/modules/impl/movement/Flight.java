@@ -53,9 +53,6 @@ public class Flight extends Module {
     private Stopwatch stopwatch = new Stopwatch();
 
     public float ticks = 0;
-    public float prevFOV = mc.gameSettings.fovSetting;
-    private int level;
-    private double moveSpeed, lastDist;
 
     public void onEnable() {
         this.currentMode = modes.stream().anyMatch(speedMode -> speedMode.getName().equalsIgnoreCase(modeValue.getValue())) ? modes.stream().filter(speedMode -> speedMode.getName().equalsIgnoreCase(modeValue.getValue())).findAny().get() : null;
