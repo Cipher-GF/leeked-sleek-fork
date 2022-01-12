@@ -5,9 +5,10 @@ import me.kansio.client.modules.impl.movement.speed.SpeedMode;
 import me.kansio.client.utils.chat.ChatUtil;
 import me.kansio.client.utils.player.PlayerUtil;
 
-public class VanillaHop extends SpeedMode {
-    public VanillaHop() {
-        super("VanillaHop");
+public class Bhop extends SpeedMode {
+
+    public Bhop() {
+        super("Bhop");
     }
 
     @Override
