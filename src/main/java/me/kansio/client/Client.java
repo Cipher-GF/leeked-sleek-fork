@@ -37,7 +37,9 @@ public class Client {
     @Getter
     @Setter
     private String uid;
-
+    @Getter
+    @Setter
+    private String discordTag;
     @Getter
     private Map<String, String> users = new HashMap<>();
 

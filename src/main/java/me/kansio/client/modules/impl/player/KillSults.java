@@ -24,10 +24,10 @@ public class KillSults extends Module {
             "We do be doing slight amounts of trolling using Sleek",
             "me and da sleek bois destroying blocksmc",
             "sussy among us sleek hack???",/*/
-            "mad? rage at me on discord: Kansio#2996",
-            "got angry? rage at me on discord: Kansio#2996",
-            "rage at me on discord: Kansio#2996",
-            "mad? rage at me on discord: Kansio#2996 :troll:"
+            "mad? rage at me on discord: " + Client.getInstance().getDiscordTag(),
+            "got angry? rage at me on discord: " + Client.getInstance().getDiscordTag(),
+            "rage at me on discord: " + Client.getInstance().getDiscordTag(),
+            "mad? rage at me on discord: "+ Client.getInstance().getDiscordTag()  +" :troll:"
     );
 
     private final ModeValue modeValue = new ModeValue("Mode", this, "BlocksMC");
@@ -55,6 +55,21 @@ public class KillSults extends Module {
     }
 
     public void sendKillSult() {
+        final List<String> messages = Arrays.asList(
+            /*/"You got sleeked L",
+            "Sleek is just better...",
+            "Verus got killed by Sleek",
+            "You just got absolutely raped by Sleek :)",
+            "Sleek too op I guess",
+            "You got killed by " + Client.getInstance().getUsername() + "(uid: " + Client.getInstance().getUid() + ") using Sleek hake",
+            "We do be doing slight amounts of trolling using Sleek",
+            "me and da sleek bois destroying blocksmc",
+            "sussy among us sleek hack???",/*/
+                "mad? rage at me on discord: " + Client.getInstance().getDiscordTag(),
+                "got angry? rage at me on discord: " + Client.getInstance().getDiscordTag(),
+                "rage at me on discord: " + Client.getInstance().getDiscordTag(),
+                "mad? rage at me on discord: "+ Client.getInstance().getDiscordTag()  +" :troll:"
+        );
         mc.thePlayer.sendChatMessage(messages.get(RandomUtils.nextInt(0, messages.size() - 1)));
     }
 }

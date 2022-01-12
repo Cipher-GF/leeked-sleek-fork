@@ -35,7 +35,7 @@ public class InvManager extends Module {
     private BooleanValue autoArmor = new BooleanValue("Auto Armor", this, false);
     private BooleanValue autoArmorInInv = new BooleanValue("AutoArmor Only in Inv", false, true, autoArmor);
     private NumberValue<Double> autoArmorDelay = new NumberValue<>("AutoArmor Delay", this, 25.0, 0.0, 1000.0, 1.0, autoArmor);
-    
+
     private Stopwatch armorStop = new Stopwatch();
     private Stopwatch invStop = new Stopwatch();
     private Stopwatch swordStop = new Stopwatch();
@@ -186,7 +186,7 @@ public class InvManager extends Module {
 
     private boolean isTrash(ItemStack item) {
         return ((item.getItem().getUnlocalizedName().contains("tnt")) || item.getDisplayName().contains("frog") ||
-                (item.getItem().getUnlocalizedName().contains("stick"))||
+                (item.getItem().getUnlocalizedName().contains("stick")) ||
                 (item.getItem().getUnlocalizedName().contains("string")) || (item.getItem().getUnlocalizedName().contains("flint")) ||
                 (item.getItem().getUnlocalizedName().contains("feather")) || (item.getItem().getUnlocalizedName().contains("bucket")) ||
                 (item.getItem().getUnlocalizedName().contains("snow")) || (item.getItem().getUnlocalizedName().contains("enchant")) ||
@@ -313,7 +313,7 @@ public class InvManager extends Module {
         for (i = 0; i < 36; ++i) {
             ItemStack itemStack = mc.thePlayer.inventory.getStackInSlot(i);
             if (itemStack != null)
-                if (itemStack.getItem() != null && !(itemStack.getItem() instanceof ItemBook) && !(itemStack.getDisplayName().contains("Hype")) && !(itemStack.getDisplayName().contains("Jogadores")) && !(itemStack.getDisplayName().startsWith("\2476")) && !(itemStack.getDisplayName().contains("Compass")) && !(itemStack.getDisplayName().contains("Emerald")) && !(itemStack.getDisplayName().contains("Gadget")) && !isValidItem(itemStack)) {
+                if (itemStack.getItem() != null && !(itemStack.getItem() instanceof ItemBook) && !(itemStack.getDisplayName().contains("Hype")) && !(itemStack.getDisplayName().contains("Jogadores")) && !(itemStack.getDisplayName().startsWith("\2476")) && !(itemStack.getDisplayName().contains("Emerald")) && !(itemStack.getDisplayName().contains("Gadget")) && !isValidItem(itemStack)) {
                     trash.add(i);
                 }
         }

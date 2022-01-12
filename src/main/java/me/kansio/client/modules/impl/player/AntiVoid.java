@@ -6,6 +6,7 @@ import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.modules.impl.movement.Flight;
+import me.kansio.client.property.value.ModeValue;
 import me.kansio.client.property.value.NumberValue;
 import me.kansio.client.utils.block.BlockUtil;
 import me.kansio.client.utils.chat.ChatUtil;
@@ -22,6 +23,7 @@ public class AntiVoid extends Module {
     double prevY = 0;
     double prevZ = 0;
 
+    private final ModeValue modeValue = new ModeValue("Mode", this, "Basic", "Blink");
     private final NumberValue fallDist = new NumberValue<>("Fall Distance", this, 7, 0, 30, 1);
     private final NumberValue compareBelow = new NumberValue<>("Compared Y", this, 10, 0, 100, 1);
 

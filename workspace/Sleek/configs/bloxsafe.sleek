@@ -8,14 +8,14 @@
     "Autoblock Mode": "Fake",
     "Swing Mode": "Client",
     "TargetHud Mode": "Sleek",
-    "Swing Range": "4.0",
-    "Block Range": "6.0",
-    "CPS": "10.0",
+    "Swing Range": "7.6000000000000005",
+    "Block Range": "7.4",
+    "CPS": "8.0",
     "Randomize CPS": "3.0",
     "TargetHud": "true",
     "GCD": "true",
     "Players": "true",
-    "Friends": "true",
+    "Friends": "false",
     "Animals": "false",
     "Monsters": "false",
     "Invisibles": "false",
@@ -23,7 +23,7 @@
   },
   {
     "name": "Velocity",
-    "enabled": true,
+    "enabled": false,
     "Mode": "Packet",
     "Explosion": "true"
   },
@@ -95,6 +95,10 @@
     "enabled": false
   },
   {
+    "name": "Filter Bypass",
+    "enabled": true
+  },
+  {
     "name": "Speed",
     "enabled": false,
     "Mode": "Verus",
@@ -107,7 +111,7 @@
     "enabled": false,
     "Mode": "Verus Damage",
     "Speed": "10.0",
-    "View Bobbing": "false",
+    "View Bobbing": "true",
     "Boost": "true",
     "Extra Boost": "true",
     "Boost Mode": "Normal",
@@ -123,17 +127,19 @@
     "name": "Long Jump",
     "enabled": false,
     "Mode": "Verus",
-    "Vertical Boost": "0.8",
-    "Speed": "6.2"
+    "Vertical Boost": "4.0",
+    "Speed": "9.0"
   },
   {
     "name": "No Fall",
-    "enabled": false,
-    "Mode": "Packet"
+    "enabled": true,
+    "Mode": "Verus"
   },
   {
-    "name": "AntiVoid",
-    "enabled": false
+    "name": "Anti Void",
+    "enabled": false,
+    "Fall Distance": "7.0",
+    "Compared Y": "10.0"
   },
   {
     "name": "Sprint",
@@ -144,7 +150,7 @@
   },
   {
     "name": "Chest Stealer",
-    "enabled": false,
+    "enabled": true,
     "Check Chest": "true",
     "Delay": "0.0"
   },
@@ -181,7 +187,7 @@
   },
   {
     "name": "IRC",
-    "enabled": true
+    "enabled": false
   },
   {
     "name": "Hacker Detect",
@@ -198,6 +204,11 @@
     "enabled": true
   },
   {
+    "name": "Kill Sults",
+    "enabled": true,
+    "Mode": "BlocksMC"
+  },
+  {
     "name": "HUD",
     "enabled": true,
     "Mode": "Sleek",
@@ -210,7 +221,10 @@
   {
     "name": "Animations",
     "enabled": true,
-    "Mode": "Exhi",
+    "Attack Animations": "true",
+    "Block Mode": "Spin",
+    "Smooth Hit": "false",
+    "Scale": "1.0",
     "Swing Speed": "6.0"
   },
   {
@@ -256,7 +270,7 @@
   {
     "name": "AttackEffect",
     "enabled": true,
-    "Partical Mode": "Blood",
+    "Particle Mode": "Blood",
     "Amount": "1.0",
     "Play Sound": "false",
     "Sound Mode": "Blood",
@@ -283,6 +297,10 @@
     "Green": "255.0",
     "Blue": "255.0",
     "Alpha": "255.0"
+  },
+  {
+    "name": "Anti Spammer",
+    "enabled": true
   },
   {
     "name": "Scaffold",

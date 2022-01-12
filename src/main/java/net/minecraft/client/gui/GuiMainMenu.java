@@ -71,6 +71,7 @@ public class GuiMainMenu extends GuiScreen
                                     if (obj.get("hwid").getAsString().equals(NegroidFarm.guisdafghiusfgfsdhusdfghifsdhuidsfhuifdshuifsdhiudsfhiusfdhsdiuffsdhiudhsifusdfhiufsdhiufsdhiusdfhiufsdhiufsdhiu())) {
                                         Client.getInstance().onStart();
                                         Client.getInstance().setUsername(obj.get("username").getAsString());
+                                        Client.getInstance().setDiscordTag(obj.get("discordTag").getAsString());
                                         mc.displayGuiScreen(new MainMenu());
                                     }
                                 } catch (NoSuchAlgorithmException e) {
