@@ -25,7 +25,7 @@ public class AntiVoid extends Module {
 
     private final ModeValue modeValue = new ModeValue("Mode", this, "Basic", "Blink");
     private final NumberValue fallDist = new NumberValue<>("Fall Distance", this, 7, 0, 30, 1);
-    
+
     public AntiVoid() {
         super("Anti Void", ModuleCategory.PLAYER);
         register(fallDist);
