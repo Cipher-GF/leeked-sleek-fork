@@ -81,6 +81,8 @@ public class Flight extends Module {
     public void onUpdate(UpdateEvent event) {
         if (viewbob.getValue() && mc.thePlayer.isMoving()) {
             mc.thePlayer.cameraYaw = 0.035f;
+            //mc.thePlayer.cameraYaw = 0.1f;
+            //mc.thePlayer.cameraYaw = 1000f;
         } else {
             mc.thePlayer.cameraYaw = 0;
         }

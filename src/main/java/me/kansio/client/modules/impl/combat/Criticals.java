@@ -15,7 +15,7 @@ import net.minecraft.network.play.client.C03PacketPlayer;
 
 public class Criticals extends Module {
 
-    private ModeValue mode = new ModeValue("Mode", this, "Packet", "Verus");
+    private ModeValue mode = new ModeValue("Mode", this, "Packet", "Verus", "MiniJump");
     private final BooleanValue c06 = new BooleanValue("C06", this, true);
 
     public final double[] packetValues = new double[]{0.0625D, 0.0D, 0.05D, 0.0D};
@@ -55,6 +55,12 @@ public class Criticals extends Module {
                 sendPacket(0, 0.11, 0, false);
                 sendPacket(0, 0.1100013579, 0, false);
                 sendPacket(0, 0.0000013579, 0, false);
+                break;
+            }
+            case "MiniJump": {
+                if (mc.thePlayer.onGround) {
+                    mc.thePlayer.motionY = 0.22f;
+                }
                 break;
             }
         }
