@@ -5,6 +5,7 @@ import me.kansio.client.Client;
 import me.kansio.client.event.impl.Render3DEvent;
 import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
+import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.NumberValue;
@@ -12,6 +13,11 @@ import net.minecraft.entity.Entity;
 
 import static org.lwjgl.opengl.GL11.*;
 
+@ModuleData(
+        name = "Target Strafe",
+        category = ModuleCategory.COMBAT,
+        description = "Automatically strafes around the killaura target"
+)
 public class TargetStrafe extends Module {
 
     public static double dir = -1;
@@ -27,11 +33,6 @@ public class TargetStrafe extends Module {
     public NumberValue<Double> red = new NumberValue<>("Red", this, 100d, 0d, 255d, 1d, render);
     public NumberValue<Double> green = new NumberValue<>("Green", this, 100d, 0d, 255d, 1d, render);
     public NumberValue<Double> blue = new NumberValue<>("Blue", this, 100d, 0d, 255d, 1d, render);
-
-    public TargetStrafe() {
-        super("Target Strafe", ModuleCategory.COMBAT);
-        register(autoF5, jump, control, render, radius, width, red, green, blue);
-    }
 
     @Override
     public void onDisable() {

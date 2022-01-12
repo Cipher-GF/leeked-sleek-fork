@@ -3,11 +3,17 @@ package me.kansio.client.modules.impl.movement;
 import dorkbox.messageBus.annotations.Subscribe;
 import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
+import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.property.value.ModeValue;
 import me.kansio.client.property.value.NumberValue;
 import me.kansio.client.utils.player.PlayerUtil;
 
+@ModuleData(
+        name = "Long Jump",
+        category = ModuleCategory.MOVEMENT,
+        description = "Jump further than normal"
+)
 public class LongJump extends Module {
 
     private ModeValue mode = new ModeValue("Mode", this, "Verus");
@@ -15,11 +21,6 @@ public class LongJump extends Module {
     //verus boost stuff
     private NumberValue vertical = new NumberValue("Vertical Boost", this, 0.8, 0.05, 6.0, 0.1, mode, "Verus");
     private NumberValue boost = new NumberValue("Speed", this, 1.45, 0.05, 10.0, 0.1, mode, "Verus");
-
-    public LongJump() {
-        super("Long Jump", ModuleCategory.MOVEMENT);
-        register(mode, vertical, boost);
-    }
 
     //Verus Highjump Variables
     boolean launched = false;

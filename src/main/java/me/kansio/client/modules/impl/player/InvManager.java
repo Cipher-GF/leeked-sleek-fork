@@ -3,6 +3,7 @@ package me.kansio.client.modules.impl.player;
 import dorkbox.messageBus.annotations.Subscribe;
 import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
+import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.NumberValue;
@@ -22,6 +23,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@ModuleData(
+        name = "Inventory Manager",
+        category = ModuleCategory.PLAYER,
+        description = "Automatically manages your inventory"
+)
 public class InvManager extends Module {
 
     private BooleanValue autoSword = new BooleanValue("AutoSword", this, false);
@@ -47,20 +53,6 @@ public class InvManager extends Module {
     private boolean cleaning;
     private int[] bestArmorSlot;
     private int bestSwordSlot;
-
-    public InvManager() {
-        super("InvManager", ModuleCategory.PLAYER);
-        register(
-                // autosword vals
-                autoSword, aSwordDelay, aSwordInInv,
-
-                // invcleaner vals
-                invCleaner, invCleanerDelay, invCleanerInInv,
-
-                // autoarmor
-                autoArmor, autoArmorDelay, autoArmorInInv
-        );
-    }
 
     public void onEnable() {
 

@@ -7,23 +7,27 @@ import me.kansio.client.event.impl.MoveEvent;
 import me.kansio.client.event.impl.PacketEvent;
 import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
+import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.modules.impl.movement.speed.SpeedMode;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.ModeValue;
 import me.kansio.client.property.value.NumberValue;
-import me.kansio.client.utils.chat.ChatUtil;
 import me.kansio.client.utils.java.ReflectUtils;
 import me.kansio.client.utils.player.PlayerUtil;
-import net.minecraft.potion.Potion;
 
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@ModuleData(
+        name = "Speed",
+        category = ModuleCategory.MOVEMENT,
+        description = "Move faster than normal."
+)
 public class Speed extends Module {
 
-    private final List<? extends SpeedMode> modes = ReflectUtils.getRelects(this.getClass().getPackage().getName() + ".speed", SpeedMode.class).stream()
+    private final List<? extends SpeedMode> modes = ReflectUtils.getReflects(this.getClass().getPackage().getName() + ".speed", SpeedMode.class).stream()
             .map(aClass -> {
                 try {
                     return aClass.getDeclaredConstructor().newInstance();
@@ -42,12 +46,6 @@ public class Speed extends Module {
     @Getter private final BooleanValue forceFriction = new BooleanValue("Force Friction", this, true);
     @Getter private final ModeValue frictionMode = new ModeValue("Friction", this, forceFriction, "NCP", "NEW", "LEGIT", "SILENT");
     @Getter private final AtomicDouble hDist = new AtomicDouble();
-
-    public Speed() {
-        super("Speed", ModuleCategory.MOVEMENT);
-
-        register(mode, speed, forceFriction, frictionMode);
-    }
 
     @Override
     public void onEnable() {

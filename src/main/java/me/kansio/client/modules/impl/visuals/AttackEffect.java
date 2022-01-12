@@ -3,6 +3,7 @@ package me.kansio.client.modules.impl.visuals;
 import dorkbox.messageBus.annotations.Subscribe;
 import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
+import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.modules.impl.combat.KillAura;
 import me.kansio.client.property.value.BooleanValue;
@@ -15,6 +16,11 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
+@ModuleData(
+        name = "Attack Effect",
+        category = ModuleCategory.VISUALS,
+        description = "Custom attack effects"
+)
 public class AttackEffect extends Module {
 
     // Particals
@@ -31,11 +37,6 @@ public class AttackEffect extends Module {
     public NumberValue<Double> critnum = new NumberValue<>("Amount", this,1.0, 1.0, 2.0, 1.0, crit);
     public BooleanValue ench = new BooleanValue("Enchants", this, false);
     public NumberValue<Double> enchnum = new NumberValue<>("Amount", this,1.0, 1.0, 2.0, 1.0, ench);
-
-    public AttackEffect() {
-        super("AttackEffect", ModuleCategory.VISUALS);
-        register(mode, modenum, hitmarkersound, hitmarkermode, crit, critnum, ench, enchnum);
-    }
 
     @Subscribe
     public void onUpdate(UpdateEvent event) {

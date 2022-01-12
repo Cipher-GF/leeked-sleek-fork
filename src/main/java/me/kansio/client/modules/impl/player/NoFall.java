@@ -6,20 +6,21 @@ import me.kansio.client.event.impl.BlockCollisionEvent;
 import me.kansio.client.event.impl.PacketEvent;
 import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
+import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.modules.impl.movement.Flight;
 import me.kansio.client.property.value.ModeValue;
 import net.minecraft.network.play.client.C03PacketPlayer;
 import net.minecraft.util.AxisAlignedBB;
 
+@ModuleData(
+        name = "No Fall",
+        category = ModuleCategory.PLAYER,
+        description = "Disables fall damage"
+)
 public class NoFall extends Module {
 
     private ModeValue mode = new ModeValue("Mode", this, "Packet", "Spoof", "Verus");
-
-    public NoFall() {
-        super("No Fall", ModuleCategory.PLAYER);
-        register(mode);
-    }
 
     @Subscribe
     public void onCollide(BlockCollisionEvent event) {

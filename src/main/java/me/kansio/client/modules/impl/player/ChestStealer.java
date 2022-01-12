@@ -3,6 +3,7 @@ package me.kansio.client.modules.impl.player;
 import dorkbox.messageBus.annotations.Subscribe;
 import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
+import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.NumberValue;
@@ -16,17 +17,17 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 
+@ModuleData(
+        name = "Chest Stealer",
+        category = ModuleCategory.WORLD,
+        description = "Automatically steals stuff from chests"
+)
 public class ChestStealer extends Module {
 
     private BooleanValue checkChest = new BooleanValue("Check Chest", this, true);
     private BooleanValue ignoreTreesh = new BooleanValue("dontwork", this, true);
     private NumberValue<Double> delay = new NumberValue<>("Delay", this, 25.0, 0.0, 1000.0, 1.0);
     private Stopwatch delayCounter = new Stopwatch();
-
-    public ChestStealer() {
-        super("Chest Stealer", ModuleCategory.PLAYER);
-        register(checkChest, delay);
-    }
 
     public void onEnable() {
         delayCounter.resetTime();

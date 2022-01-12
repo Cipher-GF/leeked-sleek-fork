@@ -6,6 +6,7 @@ import me.kansio.client.event.impl.KeyboardEvent;
 import me.kansio.client.event.impl.RenderOverlayEvent;
 import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
+import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.modules.impl.visuals.HUD;
 import me.kansio.client.property.value.BooleanValue;
@@ -35,6 +36,11 @@ import net.minecraft.util.Vec3;
 import javax.vecmath.Vector2f;
 import java.awt.*;
 
+@ModuleData(
+        name = "Scaffold",
+        category = ModuleCategory.WORLD,
+        description = "Places blocks under you"
+)
 public class Scaffold extends Module {
 
     private ModeValue modeValue = new ModeValue("Mode", this, "Verus", "NEW", "NCP", "Vulcan");
@@ -54,11 +60,6 @@ public class Scaffold extends Module {
     private Scaffold.BlockEntry lastBlockEntry;
     private int startSlot, lastSlot;
     private boolean didPlaceBlock;
-
-    public Scaffold() {
-        super("Scaffold", ModuleCategory.WORLD);
-        register(modeValue, swing, sprint, tower, info, safewalk, keepY, delay, expansion);
-    }
 
 
     @Override

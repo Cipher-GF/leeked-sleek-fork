@@ -8,6 +8,7 @@ import me.kansio.client.event.impl.PacketEvent;
 import me.kansio.client.event.impl.RenderOverlayEvent;
 import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
+import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.modules.impl.player.Sprint;
 import me.kansio.client.notification.Notification;
@@ -36,22 +37,13 @@ import org.apache.commons.lang3.RandomUtils;
 import javax.vecmath.Vector2f;
 import java.util.*;
 
+@ModuleData(
+        name = "Killaura",
+        category = ModuleCategory.COMBAT,
+        description = "Automatically attacks nearby entities"
+)
 public class KillAura extends Module {
 
-    public KillAura() {
-        super("Killaura", ModuleCategory.COMBAT);
-        registerSubSettings(attackSettings, renderSettings, targetSettings);
-        register(
-                //enum values:
-                mode, rotatemode, targetPriority, autoblockmode, swingmode, targethudmode,
-
-                //sliders:
-                swingrage, autoblockRange, cps, cprandom,
-
-                //booleans
-                targethud, gcd, players, friends, animals, monsters, invisible, walls
-        );
-    }
     // Switch aura doesn't work rn
     public ModeValue mode = new ModeValue("Mode", this, /*"Switch",*/ "Smart");
 
@@ -64,11 +56,9 @@ public class KillAura extends Module {
     public ModeValue swingmode = new ModeValue("Swing Mode", this, "Client", "Server");
     public ModeValue autoblockmode = new ModeValue("Autoblock Mode", this, "None", "Real", "Verus", "Fake");
     public BooleanValue gcd = new BooleanValue("GCD", this, false);
-    private SubSettings attackSettings = new SubSettings("Attack Setting", targetPriority, rotatemode);
 
     public BooleanValue targethud = new BooleanValue("TargetHud", this, false);
     public ModeValue targethudmode = new ModeValue("TargetHud Mode", this, targethud, "Sleek", "Moon");
-    private SubSettings renderSettings = new SubSettings("Render Setting", targethudmode);
 
 
     public BooleanValue players = new BooleanValue("Players", this, true);
@@ -77,7 +67,6 @@ public class KillAura extends Module {
     public BooleanValue monsters = new BooleanValue("Monsters", this, true);
     public BooleanValue invisible = new BooleanValue("Invisibles", this, true);
     public BooleanValue walls = new BooleanValue("Walls", this, true);
-    private SubSettings targetSettings = new SubSettings("Target Setting", players, friends, animals, monsters, invisible, walls);
 
     public static EntityLivingBase target;
     public static boolean isBlocking, swinging;

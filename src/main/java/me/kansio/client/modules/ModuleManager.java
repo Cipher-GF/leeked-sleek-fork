@@ -7,6 +7,7 @@ import me.kansio.client.modules.impl.Module;
 import me.kansio.client.modules.impl.combat.*;
 import me.kansio.client.modules.impl.exploit.*;
 import me.kansio.client.modules.impl.movement.*;
+import me.kansio.client.modules.impl.movement.speed.SpeedMode;
 import me.kansio.client.modules.impl.player.*;
 import me.kansio.client.modules.impl.player.hackerdetect.HackerDetect;
 import me.kansio.client.modules.impl.visuals.*;
@@ -14,12 +15,15 @@ import me.kansio.client.modules.impl.world.Breaker;
 import me.kansio.client.modules.impl.world.Scaffold;
 import me.kansio.client.property.Value;
 import me.kansio.client.utils.font.MCFontRenderer;
+import me.kansio.client.utils.java.ReflectUtils;
 import net.minecraft.client.gui.FontRenderer;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ModuleManager {
 
@@ -27,74 +31,14 @@ public class ModuleManager {
     private final ArrayList<Module> modules = new ArrayList<>();
 
     public ModuleManager() {
-        registerModules();
-    }
-
-    public void registerModules() {
-        //Combat
-        modules.add(new KillAura());
-        modules.add(new Velocity());
-        modules.add(new Criticals());
-        modules.add(new TargetStrafe());
-        modules.add(new FastBow());
-
-        //Exploit
-        modules.add(new Disabler());
-        modules.add(new ACDetector());
-        modules.add(new Plugins());
-        modules.add(new Regen());
-        modules.add(new Phase());
-        modules.add(new FastUse());
-        modules.add(new FilterBypass());
-
-        //Movement
-        registerModule(new Test());
-        modules.add(new Speed());
-        modules.add(new Flight());
-        modules.add(new InvMove());
-        modules.add(new LongJump());
-
-        //Player
-        modules.add(new NoFall());
-        modules.add(new AntiVoid());
-        modules.add(new Sprint());
-        modules.add(new ChestStealer());
-        modules.add(new InvManager());
-        modules.add(new Timer());
-        modules.add(new NoRotate());
-        modules.add(new NoSlow());
-        modules.add(new IRC());
-        modules.add(new HackerDetect());
-        modules.add(new AutoServer());
-        modules.add(new MCF());
-        modules.add(new KillSults());
-
-        //Visual
-        modules.add(new HUD());
-        modules.add(new Animations());
-        modules.add(new ClickGUI());
-        modules.add(new ESP());
-        modules.add(new Radar());
-        modules.add(new TimeChanger());
-        modules.add(new Brightness());
-        modules.add(new AttackEffect());
-        modules.add(new DeathEffect());
-        modules.add(new PenisESP());
-        modules.add(new Chams());
-        modules.add(new AntiSpam());
-
-        //World
-        modules.add(new Scaffold());
-        modules.add(new Breaker());
-
-
-        //Hidden
-        modules.add(new Configs());
-
-
-        //Toggle modules
-        HUD hud = (HUD) getModuleByName("HUD");
-        hud.toggle();
+         for (Class<?> mod : ReflectUtils.getReflects(this.getClass().getPackage().getName() + ".impl", Module.class)) {
+             try {
+                 Module module = (Module) mod.getDeclaredConstructor().newInstance();
+                 registerModule(module);
+             } catch (Exception e) {
+                 e.printStackTrace();
+             }
+         }
     }
 
     public void registerModule(Module module) {
@@ -111,7 +55,6 @@ public class ModuleManager {
                 e.printStackTrace();
             }
         }
-
         //Collections.addAll(Client.getInstance().getValueManager().getObjects(), values);
     }
 
@@ -122,7 +65,16 @@ public class ModuleManager {
         }
 
         modules.clear();
-        registerModules();
+
+        //load them using reflections
+        for (Class<?> mod : ReflectUtils.getReflects(this.getClass().getPackage().getName() + ".impl", Module.class)) {
+            try {
+                Module module = (Module) mod.getDeclaredConstructor().newInstance();
+                registerModule(module);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public List<Module> getModulesSorted(FontRenderer customFontRenderer) {

@@ -4,6 +4,7 @@ import dorkbox.messageBus.annotations.Subscribe;
 import me.kansio.client.Client;
 import me.kansio.client.event.impl.RenderOverlayEvent;
 import me.kansio.client.modules.api.ModuleCategory;
+import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.ModeValue;
@@ -42,6 +43,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+@ModuleData(
+        name = "ESP",
+        category = ModuleCategory.VISUALS,
+        description = "Shows player locations"
+)
 public class ESP extends Module {
 
     public final BooleanValue outline = new BooleanValue("Outline", this, true);
@@ -67,7 +73,6 @@ public class ESP extends Module {
     private final int black;
 
     public ESP() {
-        super("ESP", ModuleCategory.VISUALS);
         this.collectedEntities = new ArrayList();
         this.viewport = GLAllocation.createDirectIntBuffer(16);
         this.modelview = GLAllocation.createDirectFloatBuffer(16);
@@ -76,7 +81,6 @@ public class ESP extends Module {
         this.color = Color.WHITE.getRGB();
         this.backgroundColor = (new Color(0, 0, 0, 120)).getRGB();
         this.black = Color.BLACK.getRGB();
-        register(this.outline, this.boxMode, this.tag, this.healthBar, this.armorBar, this.localPlayer, this.players, this.fillInside, this.invisibles, this.mobs, this.animals, this.chests, this.droppedItems);
     }
 
     @Subscribe

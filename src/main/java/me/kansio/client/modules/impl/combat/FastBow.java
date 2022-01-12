@@ -3,6 +3,7 @@ package me.kansio.client.modules.impl.combat;
 import dorkbox.messageBus.annotations.Subscribe;
 import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
+import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.property.value.NumberValue;
 import me.kansio.client.utils.chat.ChatUtil;
@@ -15,6 +16,11 @@ import net.minecraft.network.play.client.C09PacketHeldItemChange;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 
+@ModuleData(
+        name = "Fast Bow",
+        category = ModuleCategory.COMBAT,
+        description = "Shoots your bow faster"
+)
 public class FastBow extends Module {
 
     private boolean wasShooting = false;
@@ -23,11 +29,6 @@ public class FastBow extends Module {
     private int serverSideSlot;
 
     private NumberValue packets = new NumberValue("Packets", this, 20, 0, 1000, 1);
-
-    public FastBow() {
-        super("Fast Bow", ModuleCategory.COMBAT);
-        register(packets);
-    }
 
     @Subscribe
     public void onUpdate(UpdateEvent event) {

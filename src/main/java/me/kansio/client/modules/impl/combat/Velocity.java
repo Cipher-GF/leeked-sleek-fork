@@ -3,6 +3,7 @@ package me.kansio.client.modules.impl.combat;
 import dorkbox.messageBus.annotations.Subscribe;
 import me.kansio.client.event.impl.PacketEvent;
 import me.kansio.client.modules.api.ModuleCategory;
+import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.ModeValue;
@@ -10,17 +11,17 @@ import me.kansio.client.property.value.NumberValue;
 import net.minecraft.network.play.server.S12PacketEntityVelocity;
 import net.minecraft.network.play.server.S27PacketExplosion;
 
+@ModuleData(
+        name = "Velocity",
+        category = ModuleCategory.COMBAT,
+        description = "Allows you to modify your knockback"
+)
 public class Velocity extends Module {
 
     private NumberValue<Double> v = new NumberValue<>("Vertical", this, 100.0, 0.0, 100.0, 1.0);
     private NumberValue<Double> h = new NumberValue<>("Horizontal", this, 100.0, 0.0, 100.0, 1.0);
     private ModeValue modeValue = new ModeValue("Mode", this, "Packet");
     public BooleanValue explotion = new BooleanValue("Explosion", this, true);
-
-    public Velocity() {
-        super("Velocity", ModuleCategory.COMBAT);
-        register(modeValue, explotion);
-    }
 
     @Subscribe
     public void onPacket(PacketEvent event) {

@@ -3,6 +3,7 @@ package me.kansio.client.modules.impl.world;
 import dorkbox.messageBus.annotations.Subscribe;
 import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
+import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.modules.impl.combat.KillAura;
 import net.minecraft.block.Block;
@@ -11,11 +12,12 @@ import net.minecraft.network.play.client.C07PacketPlayerDigging;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 
+@ModuleData(
+        name = "Breaker",
+        category = ModuleCategory.WORLD,
+        description = "Shows player locations"
+)
 public class Breaker extends Module {
-
-    public Breaker() {
-        super("Breaker", ModuleCategory.WORLD);
-    }
 
     @Subscribe
     public void onUpdate(UpdateEvent event) {

@@ -5,11 +5,17 @@ import dorkbox.messageBus.annotations.Subscribe;
 import me.kansio.client.event.impl.ChatEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.irc.IRCClient;
+import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.utils.chat.ChatUtil;
 
 import java.net.URISyntaxException;
 
+@ModuleData(
+        name = "IRC",
+        category = ModuleCategory.PLAYER,
+        description = "Let's you chat with other client users"
+)
 public class IRC extends Module {
 
     public IRC() {
