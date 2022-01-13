@@ -51,6 +51,7 @@ public class FastBow extends Module {
             if (serverSideSlot != slotWithBow) {
                 PacketUtil.sendPacketNoEvent(new C09PacketHeldItemChange(slotWithBow));
             }
+
             serverSideSlot = slotWithBow;
 
             PacketUtil.sendPacketNoEvent(new C08PacketPlayerBlockPlacement(mc.thePlayer.getCurrentEquippedItem()));

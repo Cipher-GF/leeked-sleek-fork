@@ -35,18 +35,18 @@ public class Sleek extends HudMode {
         ArrayList<Module> sorted = (ArrayList<Module>) Client.getInstance().getModuleManager().getModulesSorted(mc.fontRendererObj);
 
         if (hud.font.getValue()) {
-            for (Module mod : Client.getInstance().getModuleManager().getModulesSorted(Fonts.Arial18)) {
+            for (Module mod : Client.getInstance().getModuleManager().getModulesSorted(Fonts.Verdana)) {
                 if (!mod.isToggled()) continue;
 
-                Color color = ColorUtils.getGradientOffset(new Color(0, 255, 128), new Color(212, 1, 1), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + y / Fonts.Arial18.getHeight() * 9.95);
+                Color color = ColorUtils.getGradientOffset(new Color(0, 255, 128), new Color(212, 1, 1), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + y / Fonts.Verdana.getHeight() * 9.95);
 
                 Fonts.HUD.drawStringWithShadow(ChatUtil.translateColorCodes(hud.clientName.getValueAsString()), 4, 4, ColorPalette.GREEN.getColor().getRGB());
 
                 String name = mod.getName() + "§7" + mod.getFormattedSuffix();
                 String userinfo = "§7" + UserUtil.getBuildType(Integer.parseInt(Client.getInstance().getUid())) + " - §f" + Client.getInstance().getUid();
-                float xPos = event.getSr().getScaledWidth() - Fonts.Arial18.getStringWidth(name) - 6;
-                Gui.drawRect(xPos - 1.5, y - 3, event.getSr().getScaledWidth(), Fonts.Arial18.getHeight() + y + 1, new Color(0, 0, 0, 80).getRGB());
-                Gui.drawRect(event.getSr().getScaledWidth() - 1, y - 3, event.getSr().getScaledWidth(), Fonts.Arial18.getHeight() + y + 1, color.getRGB());
+                float xPos = event.getSr().getScaledWidth() - Fonts.Verdana.getStringWidth(name) - 6;
+                Gui.drawRect(xPos - 1.5, y - 3, event.getSr().getScaledWidth(), Fonts.Verdana.getHeight() + y + 1, new Color(0, 0, 0, 80).getRGB());
+                Gui.drawRect(event.getSr().getScaledWidth() - 1, y - 3, event.getSr().getScaledWidth(), Fonts.Verdana.getHeight() + y + 1, color.getRGB());
                 Fonts.HUD.drawStringWithShadow(name, xPos, (float) (0.5 + y), color.getRGB());
                 y = y + 11;
 
