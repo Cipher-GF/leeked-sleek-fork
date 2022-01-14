@@ -1,6 +1,6 @@
 invertYMouse:false
 mouseSensitivity:0.2746479
-fov:0.5
+fov:0.25
 gamma:2000.0
 saturation:0.0
 renderDistance:8
@@ -10,13 +10,13 @@ bobView:true
 anaglyph3d:false
 maxFps:260
 fboEnable:true
-difficulty:2
+difficulty:1
 fancyGraphics:false
 ao:2
 renderClouds:fast
 resourcePacks:["ImSh4dows Pack [32x].zip"]
 incompatibleResourcePacks:[]
-lastServer:54.39.68.56:25602
+lastServer:viperhcf.com
 lang:en_US
 chatVisibility:0
 chatColors:true

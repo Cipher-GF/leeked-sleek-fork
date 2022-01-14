@@ -57,16 +57,11 @@ public class Flight extends Module {
     public float prevFOV;
 
     public void onEnable() {
-        prevFOV = mc.gameSettings.fovSetting;
-        if (superFastFlySigmaAMogUs3amNeverSurviveAtNightItsSoHardOMGNigger.getValue()) {
-            mc.gameSettings.fovSetting = 160;
-        }
         this.currentMode = modes.stream().anyMatch(speedMode -> speedMode.getName().equalsIgnoreCase(modeValue.getValue())) ? modes.stream().filter(speedMode -> speedMode.getName().equalsIgnoreCase(modeValue.getValue())).findAny().get() : null;
         currentMode.onEnable();
     }
 
     public void onDisable() {
-        mc.gameSettings.fovSetting = prevFOV;
         mc.thePlayer.motionX = 0;
         mc.thePlayer.motionY = 0;
         mc.thePlayer.motionZ = 0;
@@ -78,8 +73,6 @@ public class Flight extends Module {
     public void onUpdate(UpdateEvent event) {
         if (viewbob.getValue() && mc.thePlayer.isMoving()) {
             mc.thePlayer.cameraYaw = 0.05f;
-            //mc.thePlayer.cameraYaw = 0.1f;
-            //mc.thePlayer.cameraYaw = 1000f;
         } else {
             mc.thePlayer.cameraYaw = 0;
         }
