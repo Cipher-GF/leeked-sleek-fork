@@ -9,7 +9,6 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ResourceLocation;
 
-import java.awt.*;
 import java.io.IOException;
 
 public class MainMenu extends GuiScreen
@@ -58,7 +57,7 @@ public class MainMenu extends GuiScreen
         Fonts.Arial30.drawCenteredString(s, width / 2, height / 4 + 24, ColorPalette.GREEN.getColor().getRGB());
 
         String s1 = "Made with <3 by NotRzyy, Kansio, PC, Divine";
-        Fonts.Arial18.drawString(s1, (width - Fonts.Arial30.getStringWidth(s1)) + 134, height - 10, -1);
+        Fonts.Verdana.drawString(s1, (width - Fonts.Arial30.getStringWidth(s1)) + 134, height - 10, -1);
 
         super.drawScreen(mouseX, mouseY, partialTicks);
     }

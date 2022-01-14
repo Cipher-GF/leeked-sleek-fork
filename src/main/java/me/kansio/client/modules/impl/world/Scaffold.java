@@ -136,8 +136,8 @@ public class Scaffold extends Module {
             RenderUtils.drawRect(scaledResolution.getScaledWidth() / 2 - 30, scaledResolution.getScaledHeight() / 2 + 50 + animation, 20 + mc.fontRendererObj.getStringWidth(getBlockCount() + "") + 10, 30, new Color(0, 0, 0, 105).getRGB());
             RenderUtils.drawRect(scaledResolution.getScaledWidth() / 2 - 30, scaledResolution.getScaledHeight() / 2 + 50 + animation, 20 + mc.fontRendererObj.getStringWidth(getBlockCount() + "") + 10, 1, ColorPalette.GREEN.getColor().getRGB());
             if (hud.font.getValue()) {
-                Fonts.Arial18.drawString(getBlockCount() + "", scaledResolution.getScaledWidth() / 2 - 5, scaledResolution.getScaledHeight() / 2 + 61 + animation, -1);
-                Fonts.Arial18.drawString("Blocks", scaledResolution.getScaledWidth() / 2 - 15, scaledResolution.getScaledHeight() / 2 + 71 + animation, -1);
+                Fonts.Verdana.drawString(getBlockCount() + "", scaledResolution.getScaledWidth() / 2 - 5, scaledResolution.getScaledHeight() / 2 + 61 + animation, -1);
+                Fonts.Verdana.drawString("Blocks", scaledResolution.getScaledWidth() / 2 - 15, scaledResolution.getScaledHeight() / 2 + 71 + animation, -1);
             } else {
                 mc.fontRendererObj.drawString(getBlockCount() + "", scaledResolution.getScaledWidth() / 2 - 5, scaledResolution.getScaledHeight() / 2 + 61 + animation, -1);
                 mc.fontRendererObj.drawString("Blocks", scaledResolution.getScaledWidth() / 2 - 15, scaledResolution.getScaledHeight() / 2 + 71 + animation, -1);
