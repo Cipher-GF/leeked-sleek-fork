@@ -1,6 +1,7 @@
 package me.kansio.client.modules.impl.movement;
 
 import dorkbox.messageBus.annotations.Subscribe;
+import me.kansio.client.event.impl.MoveEvent;
 import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
@@ -16,7 +17,7 @@ import me.kansio.client.utils.player.PlayerUtil;
 )
 public class LongJump extends Module {
 
-    private ModeValue mode = new ModeValue("Mode", this, "Verus");
+    private ModeValue mode = new ModeValue("Mode", this, "Verus", "Viper");
 
     //verus boost stuff
     private NumberValue vertical = new NumberValue("Vertical Boost", this, 0.8, 0.05, 6.0, 0.1, mode, "Verus");
@@ -31,14 +32,14 @@ public class LongJump extends Module {
     public void onEnable() {
         switch (mode.getValue()) {
             case "Verus":
-            if (!mc.thePlayer.onGround) {
-                toggle();
-                return;
-            }
+                if (!mc.thePlayer.onGround) {
+                    toggle();
+                    return;
+                }
 
-            mc.timer.timerSpeed = 0.3f;
-            PlayerUtil.damageVerus();
-            break;
+                mc.timer.timerSpeed = 0.3f;
+                PlayerUtil.damageVerus();
+                break;
         }
     }
 
@@ -69,4 +70,22 @@ public class LongJump extends Module {
             }
         }
     }
+
+    @Subscribe
+    public void onMove(MoveEvent event) {
+        switch (mode.getValue()) {
+            case "Viper": {
+                if (!mc.thePlayer.onGround) return;
+
+                mc.timer.timerSpeed = 0.3f;
+                if (mc.thePlayer.isMoving()) {
+                    for (int i = 0; i < 17; ++i) {
+                        PlayerUtil.TP(event, 0.37, 0);
+                    }
+                }
+                break;
+            }
+        }
+    }
+
 }
