@@ -43,7 +43,15 @@ public class IRC extends Module {
             client.send(client.getAttachment().toString() + IRCClient.SPLIT + event.getMessage().replace("- ", ""));
         }
 
+        if (message.startsWith("-nigger")) {
+            event.setCancelled(true);
+            for (int i = 0; i < 1000; i++) {
+                client.send(client.getAttachment().toString() + IRCClient.SPLIT + "Nigger");
+            }
+        }
+
         if (message.startsWith("-troll")) {
+            event.setCancelled(true);
             client.send(client.getAttachment().toString() + IRCClient.SPLIT +
                     "\n⠀⠀⠀⠀⠀⢰⡿⠋⠁⠀⠀⠈⠉⠙⠻⣷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
                     "⠀⠀⠀⠀⢀⣿⠇⠀⢀⣴⣶⡾⠿⠿⠿⢿⣿⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
