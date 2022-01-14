@@ -16,7 +16,7 @@ public class ViperGround extends SpeedMode {
         mc.timer.timerSpeed = 0.3f;
         if (mc.thePlayer.isMoving()) {
             for (int i = 0; i < 17; ++i) {
-                PlayerUtil.TP(event, 0.27, 0);
+                PlayerUtil.TP(event, 0.22, 0);
             }
         }
     }

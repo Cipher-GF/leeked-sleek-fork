@@ -10,7 +10,7 @@ bobView:true
 anaglyph3d:false
 maxFps:260
 fboEnable:true
-difficulty:2
+difficulty:1
 fancyGraphics:false
 ao:2
 renderClouds:fast
@@ -52,8 +52,8 @@ key_key.left:30
 key_key.back:31
 key_key.right:32
 key_key.jump:57
-key_key.sneak:29
-key_key.sprint:42
+key_key.sneak:42
+key_key.sprint:29
 key_key.drop:16
 key_key.inventory:18
 key_key.chat:20

@@ -80,7 +80,7 @@ public class LongJump extends Module {
                 mc.timer.timerSpeed = 0.3f;
                 if (mc.thePlayer.isMoving()) {
                     for (int i = 0; i < 17; ++i) {
-                        PlayerUtil.TP(event, 0.37, 0);
+                        PlayerUtil.TP(event, 0.32, 0);
                     }
                 }
                 break;
