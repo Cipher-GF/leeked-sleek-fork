@@ -88,7 +88,7 @@ public class Sleek extends HudMode {
 
                     float pos = event.getSr().getScaledWidth() - mc.fontRendererObj.getStringWidth(lastName) - 6;
                     Gui.drawRect(pos - 2, mc.fontRendererObj.FONT_HEIGHT + y, event.getSr().getScaledWidth() + 6 + mc.fontRendererObj.getStringWidth(lastName), mc.fontRendererObj.FONT_HEIGHT + y + 1, color.getRGB());
-                }/*/
+                }/  */
 
                 mc.fontRendererObj.drawStringWithShadow(name, xPos, (float) (0.5 + y), color.getRGB());
                 y = y + 11;

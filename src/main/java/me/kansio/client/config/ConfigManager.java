@@ -60,7 +60,7 @@ public class ConfigManager {
 
     }
 
-    public void loadConfig(String configName) {
+    public void loadConfig(String configName, boolean loadKeys) {
         try {
             Reader reader = new FileReader(new File(dir, configName + ".sleek"));
             JsonElement node = new JsonParser().parse(reader);
@@ -75,7 +75,7 @@ public class ConfigManager {
                 String modName = obj.get("name").getAsString();
                 Module m = Client.getInstance().getModuleManager().getModuleByName(modName);
                 if (m != null) {
-                    m.load(obj);
+                    m.load(obj, loadKeys);
                 }
             });
         } catch (Exception throwable) {

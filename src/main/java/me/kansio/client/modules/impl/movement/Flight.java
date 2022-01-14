@@ -43,6 +43,7 @@ public class Flight extends Module {
     private final ModeValue modeValue = new ModeValue("Mode", this, modes.stream().map(FlightMode::getName).collect(Collectors.toList()).toArray(new String[]{}));
     private FlightMode currentMode = modes.stream().anyMatch(speedMode -> speedMode.getName().equalsIgnoreCase(modeValue.getValue())) ? modes.stream().filter(speedMode -> speedMode.getName().equalsIgnoreCase(modeValue.getValue())).findAny().get() : null;
     @Getter private NumberValue<Double> speed = new NumberValue<>("Speed", this, 1d, 0d, 10d, 0.1);
+    @Getter private BooleanValue superFastFlySigmaAMogUs3amNeverSurviveAtNightItsSoHardOMGNigger = new BooleanValue("Skidma Jellow fest floy", this, true);
     @Getter private BooleanValue viewbob = new BooleanValue("View Bobbing", this, true);
     @Getter private BooleanValue boost = new BooleanValue("Boost", this, true, modeValue, "Funcraft");
     @Getter private BooleanValue extraBoost = new BooleanValue("Extra Boost", this, true, modeValue, "Funcraft");
@@ -53,13 +54,19 @@ public class Flight extends Module {
     private Stopwatch stopwatch = new Stopwatch();
 
     public float ticks = 0;
+    public float prevFOV;
 
     public void onEnable() {
+        prevFOV = mc.gameSettings.fovSetting;
+        if (superFastFlySigmaAMogUs3amNeverSurviveAtNightItsSoHardOMGNigger.getValue()) {
+            mc.gameSettings.fovSetting = 160;
+        }
         this.currentMode = modes.stream().anyMatch(speedMode -> speedMode.getName().equalsIgnoreCase(modeValue.getValue())) ? modes.stream().filter(speedMode -> speedMode.getName().equalsIgnoreCase(modeValue.getValue())).findAny().get() : null;
         currentMode.onEnable();
     }
 
     public void onDisable() {
+        mc.gameSettings.fovSetting = prevFOV;
         mc.thePlayer.motionX = 0;
         mc.thePlayer.motionY = 0;
         mc.thePlayer.motionZ = 0;
@@ -70,7 +77,7 @@ public class Flight extends Module {
     @Subscribe
     public void onUpdate(UpdateEvent event) {
         if (viewbob.getValue() && mc.thePlayer.isMoving()) {
-            mc.thePlayer.cameraYaw = 1;
+            mc.thePlayer.cameraYaw = 0.05f;
             //mc.thePlayer.cameraYaw = 0.1f;
             //mc.thePlayer.cameraYaw = 1000f;
         } else {

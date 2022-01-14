@@ -95,13 +95,13 @@ public class RenameConfig extends ConfigComponent implements Priority {
             Client.getInstance().getConfigManager().saveConfig(currentTempConfig);
 
             //load the config they're trying to rename
-            Client.getInstance().getConfigManager().loadConfig(frame.config.getName());
+            Client.getInstance().getConfigManager().loadConfig(frame.config.getName(), false);
 
             //create a new config with the new name
             Client.getInstance().getConfigManager().saveConfig(tempName);
 
             //Load the previous config
-            Client.getInstance().getConfigManager().loadConfig(currentTempConfig);
+            Client.getInstance().getConfigManager().loadConfig(currentTempConfig, false);
 
             //Delete the temporary config and old config
             Client.getInstance().getConfigManager().removeConfig(frame.config.getName());

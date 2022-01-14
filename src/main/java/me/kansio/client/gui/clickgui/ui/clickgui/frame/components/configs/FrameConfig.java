@@ -90,7 +90,7 @@ public class FrameConfig implements Priority {
 
                     if (config.getName().equalsIgnoreCase("")) return true;
 
-                    Client.getInstance().getConfigManager().loadConfig(config.getName());
+                    Client.getInstance().getConfigManager().loadConfig(config.getName(), false);
                 }
             }
 

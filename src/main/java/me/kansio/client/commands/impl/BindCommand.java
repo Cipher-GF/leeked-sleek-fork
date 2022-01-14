@@ -14,7 +14,15 @@ public class BindCommand extends Command {
     @Override
     public void run(String[] args) {
         try {
-            if (args[0].equalsIgnoreCase("del")) {
+            if (args[0].equalsIgnoreCase("list")) {
+                ChatUtil.log("The Current Binds Are:");
+                for (Module module : Client.getInstance().getModuleManager().getModules()) {
+                    if (module.getKeyBind() != 0) {
+                        ChatUtil.log(module.getName() + " - " + Keyboard.getKeyName(module.getKeyBind()));
+                    }
+                }
+            }
+            else if (args[0].equalsIgnoreCase("del")) {
                 Module module = Client.getInstance().getModuleManager().getModuleByName(args[2]);
                 ChatUtil.log("Deleted the bind.");
                 module.setKeyBind(0);

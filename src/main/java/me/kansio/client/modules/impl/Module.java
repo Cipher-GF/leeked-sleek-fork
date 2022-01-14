@@ -116,10 +116,16 @@ public abstract class Module {
         return Client.getInstance().getValueManager().getValuesFromOwner(this);
     }
 
-    public void load(JsonObject obj) {
+    public void load(JsonObject obj, boolean loadKey) {
         obj.entrySet().forEach(ogzk -> {
             switch (ogzk.getKey()) {
                 case "name": {
+                    break;
+                }
+                case "keybind": {
+                    if (loadKey) {
+                        this.keyBind = ogzk.getValue().getAsInt();
+                    }
                     break;
                 }
                 case "enabled": {
@@ -158,6 +164,7 @@ public abstract class Module {
     public JsonObject save() {
         JsonObject json = new JsonObject();
         json.addProperty("name", this.name);
+        json.addProperty("keybind", this.keyBind);
         json.addProperty("enabled", this.toggled);
         getValues().forEach(value -> json.addProperty(value.getName(), value.getValue().toString()));
         return json;

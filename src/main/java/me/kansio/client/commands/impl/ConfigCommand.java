@@ -20,7 +20,12 @@ public class ConfigCommand extends Command {
                     break;
                 }
                 case "load": {
-                    Client.getInstance().getConfigManager().loadConfig(args[1]);
+                    if (args.length == 3) {
+                        Client.getInstance().getConfigManager().loadConfig(args[1], args[2].equals("keys"));
+                    } else {
+                        Client.getInstance().getConfigManager().loadConfig(args[1], false);
+                    }
+                    // .CONFIG BLOCKS ADESGOJHAOG
                     break;
                 }
                 case "reload": {
