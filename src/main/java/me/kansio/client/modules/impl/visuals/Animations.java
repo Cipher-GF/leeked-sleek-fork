@@ -21,30 +21,64 @@ import org.lwjgl.opengl.GL11;
 public class Animations extends Module {
 
     public BooleanValue attackanim = new BooleanValue("Attack Animations", this, false);
-    private ModeValue modeblockanim = new ModeValue("Block Mode", this, attackanim, "Normal", "1.7", "Hide", "Slide", "Lucky", "Remix", "Swang", "Down", "Knife", "Exhi", "oHare", "oHare2", "Wizzard", "Lennox", "ETB", "Spin", "Rotate");
+    private ModeValue modeblockanim = new ModeValue("Block Mode", this, attackanim, "Normal", "Hide", "1.7", "Ethereal", "Stella", "Interia", "Styles", "Slide", "Lucky", "Remix", "Swang", "Down", "Knife", "Exhi", "oHare", "oHare2", "Wizzard", "Lennox", "ETB", "Spin", "Rotate");
     public BooleanValue smoothhit = new BooleanValue("Smooth Hit", this, false, attackanim);
     public NumberValue scale = new NumberValue("Scale", this, 1.0f, 0.0f, 2.0f, 0.1f, attackanim);
     public NumberValue<Double> slowdown = new NumberValue<>("Swing Speed", this, 1d, -4d, 12d, 1d, attackanim);
     private float rotate;
 
-    public void render(ItemStack itemToRender, float partialTicks) {
+    private void func_178103_d(final float n) {
+        GlStateManager.translate(-0.5f, n, 0.0f);
+        GlStateManager.rotate(30.0f, 0.0f, 1.0f, 0.0f);
+        GlStateManager.rotate(-80.0f, 1.0f, 0.0f, 0.0f);
+        GlStateManager.rotate(60.0f, 0.0f, 1.0f, 0.0f);
+    }
 
+    public void render(ItemStack itemToRender, float partialTicks) {
+        rotate++;
         float f = 1.0F - (mc.getItemRenderer().prevEquippedProgress + (mc.getItemRenderer().equippedProgress - mc.getItemRenderer().prevEquippedProgress) * partialTicks);
         EntityPlayerSP entityplayersp = mc.thePlayer;
         float f1 = entityplayersp.getSwingProgress(partialTicks);
         float f2 = entityplayersp.prevRotationPitch + (entityplayersp.rotationPitch - entityplayersp.prevRotationPitch) * partialTicks;
         float f3 = entityplayersp.prevRotationYaw + (entityplayersp.rotationYaw - entityplayersp.prevRotationYaw) * partialTicks;
         final float var = MathHelper.sin((float) (MathHelper.sqrt_float(f1) * Math.PI));
+        final float sin = MathHelper.sin(MathHelper.sqrt_float(f1) * 3.1415927f);
         if (attackanim.getValue()) {
             switch (modeblockanim.getValue().toUpperCase()) {
+                case "Stella":
+                    mc.getItemRenderer().transformFirstPersonItem(f, 0.0f);
+                    func_178103_d(0.2f);
+                    GlStateManager.translate(0.1f, 0.2f, 0.3f);
+                    GlStateManager.rotate(-var * 30.0f, -5.0f, 0.0f, 9.0f);
+                    GlStateManager.rotate(-var * 10.0f, 1.0f, -0.4f, -0.5f);
+                    break;
                 case "1.7":
-
                     mc.getItemRenderer().transformFirstPersonItem(0, f1);
                     mc.getItemRenderer().func_178103_d();
-
+                    break;
+                case "INTERIA":
+                    mc.getItemRenderer().transformFirstPersonItem(0.05f, f1);
+                    GlStateManager.translate(-0.5f, 0.5f, 0.0f);
+                    GlStateManager.rotate(30.0f, 0.0f, 1.0f, 0.0f);
+                    GlStateManager.rotate(-80.0f, 1.0f, 0.0f, 0.0f);
+                    GlStateManager.rotate(60.0f, 0.0f, 1.0f, 0.0f);
+                    break;
+                case "ETHEREAL":
+                    mc.getItemRenderer().transformFirstPersonItem(f, 0.0f);
+                    this.func_178103_d(0.2f);
+                    GlStateManager.translate(-0.05f, 0.2f, 0.2f);
+                    GlStateManager.rotate(-sin * 70.0f / 2.0f, -8.0f, -0.0f, 9.0f);
+                    GlStateManager.rotate(-sin * 70.0f, 1.0f, -0.4f, -0.0f);
+                    break;
+                case "STYLES":
+                    mc.getItemRenderer().transformFirstPersonItem(f, 0.0f);
+                    this.func_178103_d(0.2f);
+                    final float sin2 = MathHelper.sin((float) (MathHelper.sqrt_float(f1) * 3.141592653589793));
+                    GlStateManager.translate(-0.05f, 0.2f, 0.0f);
+                    GlStateManager.rotate(-sin2 * 70.0f / 2.0f, -8.0f, -0.0f, 9.0f);
+                    GlStateManager.rotate(-sin2 * 70.0f, 1.0f, -0.4f, -0.0f);
                     break;
                 case "NORMAL":
-
                     mc.getItemRenderer().transformFirstPersonItem(0, 0.0f);
                     mc.getItemRenderer().func_178103_d();
                     float var8 = MathHelper.sin(f1 * f1 * 0.3215927f);
@@ -59,12 +93,11 @@ public class Animations extends Module {
 
                     break;
                 case "SWANG":
-                    GL11.glTranslated(-0.1F, 0.12F, 0.0F);
-                    mc.getItemRenderer().transformFirstPersonItem(var / 2.0F, f1);
-                    float var2 = MathHelper.sin(MathHelper.sqrt_float(f1) * 3.1415927F);
-                    GlStateManager.rotate(var2 * 30.0F / 2.0F, -var2, -0.0F, 9.0F);
-                    GlStateManager.rotate(var2 * 40.0F, 1.0F, -var2 / 2.0F, -0.0F);
-                    doBlockTransformations();
+                    mc.getItemRenderer().transformFirstPersonItem(f / 2.0f, f1);
+                    final float sin4 = MathHelper.sin((float) (MathHelper.sqrt_float(f1) * 3.141592653589793));
+                    GlStateManager.rotate(sin4 * 30.0f / 2.0f, -sin4, -0.0f, 9.0f);
+                    GlStateManager.rotate(sin4 * 40.0f, 1.0f, -sin4 / 2.0f, -0.0f);
+                    this.func_178103_d(0.4f);
                     break;
                 case "SLIDE":
 
@@ -186,14 +219,10 @@ public class Animations extends Module {
 
                     break;
                 case "ROTATE":
-
-                    mc.getItemRenderer().transformFirstPersonItem(f, 0.0f);
-                    mc.getItemRenderer().func_178103_d();
-                    GL11.glRotatef(rotate, rotate, 0, rotate);
-                    GL11.glScalef(0.5f, 0.5f, 0.5F);
-                    GL11.glTranslatef(0, 2, 0);
-                    rotate += slowdown.getValue();
-
+                    GL11.glTranslated(-0.04, 0.1, 0.0);
+                    mc.getItemRenderer().transformFirstPersonItem(f / 2.5f, 0.0f);
+                    GlStateManager.rotate(-90.0f, 1.0f, 0.0f, 0.2f);
+                    GlStateManager.rotate(rotate, 0.0f, -1.0f, 0.0f);
                     break;
             }
         }
