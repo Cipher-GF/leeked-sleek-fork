@@ -17,9 +17,11 @@ import me.kansio.client.manager.ValueManager;
 import me.kansio.client.modules.ModuleManager;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.modules.impl.player.hackerdetect.CheckManager;
+import me.kansio.client.modules.impl.visuals.ClickGUI;
 import me.kansio.client.targets.TargetManager;
 import me.kansio.client.utils.network.HttpUtil;
 import net.minecraft.client.Minecraft;
+import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 import viamcp.ViaMCP;
 
@@ -155,6 +157,12 @@ public class Client {
     @Subscribe
     public void onKeyboard(KeyboardEvent event) {
         int key = event.getKeyCode();
+
+        if (key == Keyboard.KEY_RSHIFT) {
+            ClickGUI clickGUI = (ClickGUI) Client.getInstance().getModuleManager().getModuleByName("Click GUI");
+            clickGUI.toggle();
+        }
+
         //This handles keybinds.
         for (Module module : moduleManager.getModules()) {
             //check if the keybind is -1, if it is, just continue.
