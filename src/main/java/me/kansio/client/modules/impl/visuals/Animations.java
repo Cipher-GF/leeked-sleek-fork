@@ -21,7 +21,7 @@ import org.lwjgl.opengl.GL11;
 public class Animations extends Module {
 
     public BooleanValue attackanim = new BooleanValue("Attack Animations", this, false);
-    private ModeValue modeblockanim = new ModeValue("Block Mode", this, attackanim, "1.7", "Hide", "Slide", "Lucky", "Remix", "Swang", "Down", "Knife", "Exhi", "oHare", "oHare2", "Wizzard", "Lennox", "ETB", "Spin", "Rotate");
+    private ModeValue modeblockanim = new ModeValue("Block Mode", this, attackanim, "Normal", "1.7", "Hide", "Slide", "Lucky", "Remix", "Swang", "Down", "Knife", "Exhi", "oHare", "oHare2", "Wizzard", "Lennox", "ETB", "Spin", "Rotate");
     public BooleanValue smoothhit = new BooleanValue("Smooth Hit", this, false, attackanim);
     public NumberValue scale = new NumberValue("Scale", this, 1.0f, 0.0f, 2.0f, 0.1f, attackanim);
     public NumberValue<Double> slowdown = new NumberValue<>("Swing Speed", this, 1d, -4d, 12d, 1d, attackanim);
@@ -191,7 +191,7 @@ public class Animations extends Module {
                     mc.getItemRenderer().func_178103_d();
                     GL11.glRotatef(rotate, rotate, 0, rotate);
                     GL11.glScalef(0.5f, 0.5f, 0.5F);
-                    GL11.glTranslatef(0, 0, 0);
+                    GL11.glTranslatef(0, 2, 0);
                     rotate += slowdown.getValue();
 
                     break;
