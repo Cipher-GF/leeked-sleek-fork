@@ -1,4 +1,4 @@
-package me.kansio.client.modules.impl.player;
+package me.kansio.client.modules.impl.world;
 
 import dorkbox.messageBus.annotations.Subscribe;
 import me.kansio.client.event.impl.UpdateEvent;

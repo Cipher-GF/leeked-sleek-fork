@@ -17,11 +17,11 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
 @ModuleData(
-        name = "Attack Effect",
+        name = "Hit Effect",
         category = ModuleCategory.VISUALS,
         description = "Custom attack effects"
 )
-public class AttackEffect extends Module {
+public class HitEffect extends Module {
 
     // Particals
     public ModeValue mode = new ModeValue("Particle Mode", this, "Blood", "None");
