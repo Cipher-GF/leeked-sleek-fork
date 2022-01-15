@@ -60,7 +60,6 @@ public class GuiMainMenu extends GuiScreen
             if (button.id == 0) {
                 Client.getInstance().setUid(username.getText());
                 String serv = HttpUtil.get("http://zerotwoclient.xyz:13337/api/v1/getusers");
-                System.out.println(serv);
                 JsonElement node = new JsonParser().parse(serv);
                 if (node.isJsonArray()) {
                     JsonArray arr = node.getAsJsonArray();
