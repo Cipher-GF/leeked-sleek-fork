@@ -35,11 +35,11 @@ public class InvManager extends Module {
     private NumberValue<Double> aSwordDelay = new NumberValue<>("AutoSword Delay", this, 25.0, 0.0, 1000.0, 1.0, autoSword);
 
     private BooleanValue invCleaner = new BooleanValue("Inventory Cleaner", this, false);
-    private BooleanValue invCleanerInInv = new BooleanValue("InvCleaner Only in Inv", false, true, invCleaner);
+    private BooleanValue invCleanerInInv = new BooleanValue("InvCleaner Only in Inv", false, false, invCleaner);
     private NumberValue<Double> invCleanerDelay = new NumberValue<>("InvCleaner Delay", this, 25.0, 0.0, 1000.0, 1.0, invCleaner);
 
     private BooleanValue autoArmor = new BooleanValue("Auto Armor", this, false);
-    private BooleanValue autoArmorInInv = new BooleanValue("AutoArmor Only in Inv", false, true, autoArmor);
+    private BooleanValue autoArmorInInv = new BooleanValue("AutoArmor Only in Inv", false, false, autoArmor);
     private NumberValue<Double> autoArmorDelay = new NumberValue<>("AutoArmor Delay", this, 25.0, 0.0, 1000.0, 1.0, autoArmor);
 
     private Stopwatch armorStop = new Stopwatch();
