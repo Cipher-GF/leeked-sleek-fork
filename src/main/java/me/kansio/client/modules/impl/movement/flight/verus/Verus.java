@@ -16,24 +16,19 @@ public class Verus extends FlightMode {
     @Override
     public void onMove(MoveEvent event) {
         if (!mc.thePlayer.isInLava() && !mc.thePlayer.isInWater() && !mc.thePlayer.isOnLadder() && mc.thePlayer.ridingEntity == null && mc.thePlayer.hurtTime < 1) {
-            if (mc.thePlayer.isMoving()) {
-                mc.gameSettings.keyBindJump.pressed = false;
-                if (mc.thePlayer.onGround) {
-                    mc.thePlayer.jump();
-                    mc.thePlayer.motionY = 0.0;
+
+            mc.gameSettings.keyBindJump.pressed = false;
+            if (mc.thePlayer.onGround) {
+                mc.thePlayer.jump();
+                mc.thePlayer.motionY = 0.0;
+                if (mc.thePlayer.isMoving()) {
                     PlayerUtil.strafe(0.61f);
-                    event.setMotionY(0.41999998688698);
                 }
-                PlayerUtil.strafe();
-            } else {
-                if (mc.thePlayer.onGround) {
-                    mc.thePlayer.jump();
-                    mc.thePlayer.motionY = 0.0;
-                    PlayerUtil.strafe(0.61f);
-                    event.setMotionY(0.41999998688698);
-                }
+                event.setMotionY(0.41999998688698);
             }
+            PlayerUtil.strafe();
         }
+
     }
 
     @Override
