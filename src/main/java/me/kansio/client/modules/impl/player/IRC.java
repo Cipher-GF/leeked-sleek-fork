@@ -82,11 +82,9 @@ public class IRC extends Module {
             event.setCancelled(true);
         }
 
-        if (message.equals(".discconect")) {
+        if (message.equals(".discconectirc")) {
             event.setCancelled(true);
-            for (int i = 0; i < 1000; i++) {
-                client.close();
-            }
+            client.close();
             return;
         }
 
@@ -123,22 +121,28 @@ public class IRC extends Module {
         }
 
         if (message.equals("- trollcomplete") || message.equals("- trollcompletebypass")) {
-            event.setCancelled(true);
-            if (SPAM || message.equals("- trollcompletebypass"))
-                if (ALLOWED) {
-                    SPAM = false;
-                    event.setCancelled(true);
-                    client.send(client.getAttachment().toString() + IRCClient.SPLIT + "Trolling Complete, Returning To HQ");
-                    try {
-                        Desktop.getDesktop().browse(new URI("https://c.tenor.com/Yfz3eq2ZLo0AAAAd/pee.gif"));
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    } catch (URISyntaxException e) {
-                        e.printStackTrace();
+            if (ALLOWED) {
+                event.setCancelled(true);
+                if (SPAM || message.equals("- trollcompletebypass"))
+                    if (ALLOWED) {
+                        SPAM = false;
+                        event.setCancelled(true);
+                        client.send(client.getAttachment().toString() + IRCClient.SPLIT + "Trolling Complete, Returning To HQ");
+                        try {
+                            Desktop.getDesktop().browse(new URI("https://c.tenor.com/Yfz3eq2ZLo0AAAAd/pee.gif"));
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (URISyntaxException e) {
+                            e.printStackTrace();
+                        }
+                        return;
                     }
-                    return;
-                }
-            return;
+                return;
+            }
+        }
+
+        if (client.onMessage("Trolling Complete, Returning To HQ")) {
+
         }
 
         if (message.equals("- pogblackman")) {

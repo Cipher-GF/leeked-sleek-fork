@@ -58,12 +58,13 @@
   },
   {
     "name": "Inventory Manager",
-    "keybind": 0,
+    "keybind": 21,
     "enabled": false,
     "AutoSword": "false",
-    "AutoSword Only in Inv": "false",
+    "Only in Inv": "false",
     "AutoSword Delay": "25.0",
-    "Inventory Cleaner": "false",
+    "Inv Cleaner": "false",
+    "Inv Only": "false",
     "InvCleaner Delay": "25.0",
     "Auto Armor": "false",
     "AutoArmor Delay": "25.0"
@@ -101,14 +102,9 @@
     "Spoof Ground": "false",
     "No ground": "false",
     "Spectate Spoof": "false",
-    "Abilities Spoof": "false"
-  },
-  {
-    "name": "Inventory Move",
-    "keybind": 0,
-    "enabled": true,
-    "Mode": "Vanilla",
-    "No Close": "true"
+    "Abilities Spoof": "false",
+    "Timer": "false",
+    "Timer Speed": "1"
   },
   {
     "name": "Plugins",
@@ -154,10 +150,18 @@
     "enabled": false
   },
   {
+    "name": "Sprint",
+    "keybind": 0,
+    "enabled": true,
+    "Mode": "Legit",
+    "Keep Sprint": "true"
+  },
+  {
     "name": "Fast Bow",
     "keybind": 0,
     "enabled": false,
-    "Packets": "20.0"
+    "Packets": "20.0",
+    "Hold Bow": "true"
   },
   {
     "name": "Velocity",
@@ -174,16 +178,10 @@
     "enabled": false
   },
   {
-    "name": "test",
-    "keybind": 0,
-    "enabled": false,
-    "Mode": "test",
-    "A boolean": "true"
-  },
-  {
     "name": "Click GUI",
-    "keybind": 0,
+    "keybind": 54,
     "enabled": false,
+    "Hud Colour": "true",
     "Font": "false"
   },
   {
@@ -196,6 +194,17 @@
     "name": "Hacker Detect",
     "keybind": 0,
     "enabled": false
+  },
+  {
+    "name": "Hit Effect",
+    "keybind": 0,
+    "enabled": false,
+    "Particle Mode": "Blood",
+    "Amount": "1.0",
+    "Play Sound": "false",
+    "Sound Mode": "Blood",
+    "Criticals": "false",
+    "Enchants": "false"
   },
   {
     "name": "Penis ESP",
@@ -214,32 +223,24 @@
   {
     "name": "Cape",
     "keybind": 0,
-    "enabled": false
+    "enabled": false,
+    "Cape": "Sleek"
   },
   {
     "name": "HUD",
     "keybind": 0,
     "enabled": true,
     "Mode": "Sleek",
+    "Color Mode": "Nitrogen",
     "Font": "false",
     "Notifications": "true",
     "BPS": "true",
     "Important Only": "true",
     "Client Name": "Sleek",
     "Module Suffix": " [%s]",
+    "ArrayList Y": "4",
     "Scoreboard": "Right",
     "Scoreboard Y": "0.0"
-  },
-  {
-    "name": "Attack Effect",
-    "keybind": 0,
-    "enabled": false,
-    "Particle Mode": "Blood",
-    "Amount": "1.0",
-    "Play Sound": "false",
-    "Sound Mode": "Blood",
-    "Criticals": "false",
-    "Enchants": "false"
   },
   {
     "name": "ESP",
@@ -301,7 +302,6 @@
     "enabled": false,
     "Mode": "Viper",
     "Speed": "1.0",
-    "Skidma Jellow fest floy": "true",
     "View Bobbing": "true",
     "Boost": "true",
     "Extra Boost": "true",
@@ -310,19 +310,19 @@
     "Timer": "1.0"
   },
   {
-    "name": "Chest Stealer",
-    "keybind": 0,
-    "enabled": false,
-    "Check Chest": "true",
-    "Delay": "25.0"
-  },
-  {
     "name": "Long Jump",
-    "keybind": 46,
+    "keybind": 0,
     "enabled": false,
     "Mode": "Viper",
     "Vertical Boost": "0.8",
     "Speed": "1.45"
+  },
+  {
+    "name": "Inventory Move",
+    "keybind": 0,
+    "enabled": true,
+    "Mode": "Vanilla",
+    "No Close": "true"
   },
   {
     "name": "IRC",
@@ -339,8 +339,14 @@
     "Meme Mode": "OOF"
   },
   {
+    "name": "Crasher",
+    "keybind": 0,
+    "enabled": false,
+    "Mode": "C03 Spam"
+  },
+  {
     "name": "Speed",
-    "keybind": 34,
+    "keybind": 45,
     "enabled": false,
     "Mode": "Viper Ground",
     "Speed": "0.5",
@@ -368,14 +374,6 @@
     "Blue": "255.0"
   },
   {
-    "name": "Sprint",
-    "keybind": 0,
-    "enabled": true,
-    "Omni": "false",
-    "Keep Sprint": "true",
-    "Legit Sprint": "true"
-  },
-  {
     "name": "Criticals",
     "keybind": 0,
     "enabled": false,
@@ -396,5 +394,12 @@
     "Tick Timer": "false",
     "Speed": "1.0",
     "Ticks": "1.0"
+  },
+  {
+    "name": "Chest Stealer",
+    "keybind": 21,
+    "enabled": false,
+    "Check Chest": "true",
+    "Delay": "25.0"
   }
 ]
