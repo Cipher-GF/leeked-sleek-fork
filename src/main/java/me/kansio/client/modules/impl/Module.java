@@ -129,9 +129,9 @@ public abstract class Module {
                     break;
                 }
                 case "enabled": {
-
-                    setToggled(ogzk.getValue().getAsBoolean());
-
+                    if (ogzk.getValue().getAsBoolean()) {
+                        toggle();
+                    }
                     break;
                 }
             }
