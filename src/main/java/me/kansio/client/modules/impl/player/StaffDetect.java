@@ -39,7 +39,7 @@ public class StaffDetect extends Module {
             for (String staff : knownStaff) {
                 if (player.getName().contains(staff)) {
                     staffInMatch.add(player.getName());
-                    ChatUtil.log("§4§l[Staff Detect]: §c" + staff + " §fis in your game!");
+                    ChatUtil.logNoPrefix("§4§l[Staff Detect]: §c" + staff + " §fis in your game!");
                 }
             }
         }
