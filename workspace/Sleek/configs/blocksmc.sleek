@@ -7,26 +7,26 @@
   {
     "name": "Time Changer",
     "keybind": 0,
-    "enabled": false,
+    "enabled": true,
     "Mode": "Night"
   },
   {
     "name": "No Fall",
-    "keybind": 0,
-    "enabled": false,
-    "Mode": "Packet"
+    "keybind": 49,
+    "enabled": true,
+    "Mode": "Verus"
   },
   {
     "name": "Anti Void",
-    "keybind": 0,
-    "enabled": false,
+    "keybind": 49,
+    "enabled": true,
     "Mode": "Basic",
     "Fall Distance": "7.0"
   },
   {
     "name": "No Slow",
     "keybind": 0,
-    "enabled": false,
+    "enabled": true,
     "Mode": "Vanilla",
     "Item": "true",
     "Water": "false",
@@ -34,7 +34,7 @@
   },
   {
     "name": "Auto Server",
-    "keybind": 0,
+    "keybind": 21,
     "enabled": true,
     "Server": "BlocksMC",
     "Kit": "Knight"
@@ -42,7 +42,7 @@
   {
     "name": "Teleport Aura",
     "keybind": 0,
-    "enabled": true
+    "enabled": false
   },
   {
     "name": "Brightness",
@@ -58,20 +58,20 @@
   },
   {
     "name": "Inventory Manager",
-    "keybind": 0,
-    "enabled": false,
+    "keybind": 21,
+    "enabled": true,
     "AutoSword": "true",
-    "Only in Inv": "false",
+    "Only in Inv": "true",
     "AutoSword Delay": "32.0",
-    "Inv Cleaner": "false",
-    "Inv Only": "false",
+    "Inv Cleaner": "true",
+    "Inv Only": "true",
     "InvCleaner Delay": "25.0",
     "Auto Armor": "true",
     "AutoArmor Delay": "25.0"
   },
   {
     "name": "Scaffold",
-    "keybind": 47,
+    "keybind": 37,
     "enabled": false,
     "Mode": "Verus",
     "Swing": "true",
@@ -113,9 +113,18 @@
     "/About": "false"
   },
   {
+    "name": "Radar",
+    "keybind": 0,
+    "enabled": true,
+    "Players": "true",
+    "Monsters": "false",
+    "Animals": "false",
+    "Invisibles": "false"
+  },
+  {
     "name": "Killaura",
     "keybind": 19,
-    "enabled": false,
+    "enabled": true,
     "Mode": "Smart",
     "Target Priority": "Health",
     "Rotation Mode": "Default",
@@ -136,18 +145,9 @@
     "Walls": "true"
   },
   {
-    "name": "Radar",
-    "keybind": 0,
-    "enabled": true,
-    "Players": "true",
-    "Monsters": "false",
-    "Animals": "false",
-    "Invisibles": "false"
-  },
-  {
     "name": "Breaker",
-    "keybind": 0,
-    "enabled": true
+    "keybind": 50,
+    "enabled": false
   },
   {
     "name": "Sprint",
@@ -159,16 +159,16 @@
   {
     "name": "Fast Bow",
     "keybind": 0,
-    "enabled": true,
+    "enabled": false,
     "Packets": "20.0",
     "Hold Bow": "true"
   },
   {
     "name": "Velocity",
     "keybind": 0,
-    "enabled": false,
-    "Vertical": "100.0",
-    "Horizontal": "100.0",
+    "enabled": true,
+    "Vertical": "0.0",
+    "Horizontal": "0.0",
     "Mode": "Packet",
     "Explosion": "true"
   },
@@ -179,14 +179,14 @@
   },
   {
     "name": "Click GUI",
-    "keybind": 0,
+    "keybind": 54,
     "enabled": false,
     "Font": "false"
   },
   {
     "name": "ACDetector",
     "keybind": 0,
-    "enabled": true,
+    "enabled": false,
     "Delay": "0.5"
   },
   {
@@ -236,7 +236,7 @@
     "BPS": "true",
     "Important Only": "true",
     "Client Name": "niggerware 420",
-    "Module Suffix": " [%s]",
+    "Module Suffix": " %s",
     "Scoreboard": "Right",
     "Scoreboard Y": "0.0"
   },
@@ -259,6 +259,11 @@
     "Dropped Items": "true"
   },
   {
+    "name": "Anti Spammer",
+    "keybind": 0,
+    "enabled": true
+  },
+  {
     "name": "Target Strafe",
     "keybind": 0,
     "enabled": true,
@@ -275,18 +280,13 @@
   {
     "name": "Kill Insults",
     "keybind": 0,
-    "enabled": false,
+    "enabled": true,
     "Mode": "BlocksMC"
-  },
-  {
-    "name": "Anti Spammer",
-    "keybind": 0,
-    "enabled": true
   },
   {
     "name": "Strafe",
     "keybind": 0,
-    "enabled": true
+    "enabled": false
   },
   {
     "name": "No Rotate",
@@ -296,7 +296,7 @@
   },
   {
     "name": "Flight",
-    "keybind": 33,
+    "keybind": 47,
     "enabled": false,
     "Mode": "Vanilla",
     "Speed": "3.0",
@@ -309,7 +309,7 @@
   },
   {
     "name": "Long Jump",
-    "keybind": 46,
+    "keybind": 45,
     "enabled": false,
     "Mode": "Verus",
     "Vertical Boost": "0.8",
@@ -318,14 +318,9 @@
   {
     "name": "Inventory Move",
     "keybind": 0,
-    "enabled": false,
+    "enabled": true,
     "Mode": "Vanilla",
     "No Close": "true"
-  },
-  {
-    "name": "IRC",
-    "keybind": 0,
-    "enabled": false
   },
   {
     "name": "DeathEffect",
@@ -333,43 +328,48 @@
     "enabled": true,
     "Effect Mode": "Blood",
     "Play Sound": "false",
-    "Meme Sounds": "false",
-    "Meme Mode": "OOF"
+    "Meme Sounds": "true",
+    "Meme Mode": "Win Error"
+  },
+  {
+    "name": "IRC",
+    "keybind": 0,
+    "enabled": true
   },
   {
     "name": "Crasher",
-    "keybind": 0,
+    "keybind": 40,
     "enabled": false,
     "Mode": "C03 Spam"
   },
   {
     "name": "Speed",
-    "keybind": 34,
+    "keybind": 48,
     "enabled": false,
     "Mode": "Bhop",
-    "Speed": "0.4",
+    "Speed": "0.8",
     "Force Friction": "true",
     "Friction": "NCP"
+  },
+  {
+    "name": "Chams",
+    "keybind": 0,
+    "enabled": true,
+    "Fill": "false",
+    "Alpha": "255.0",
+    "Red": "255.0",
+    "Green": "255.0",
+    "Blue": "255.0"
   },
   {
     "name": "Animations",
     "keybind": 0,
     "enabled": true,
     "Attack Animations": "true",
-    "Block Mode": "Exhi",
+    "Block Mode": "Interia",
     "Smooth Hit": "false",
     "Scale": "1.0",
     "Swing Speed": "8.0"
-  },
-  {
-    "name": "Chams",
-    "keybind": 0,
-    "enabled": false,
-    "Fill": "false",
-    "Alpha": "255.0",
-    "Red": "255.0",
-    "Green": "255.0",
-    "Blue": "255.0"
   },
   {
     "name": "Criticals",
@@ -380,14 +380,14 @@
   },
   {
     "name": "Phase",
-    "keybind": 0,
+    "keybind": 25,
     "enabled": false,
     "Mode": "2.0",
     "Sneak": "true"
   },
   {
     "name": "Timer",
-    "keybind": 77,
+    "keybind": 37,
     "enabled": false,
     "Tick Timer": "false",
     "Speed": "1.0",
@@ -395,7 +395,7 @@
   },
   {
     "name": "Chest Stealer",
-    "keybind": 0,
+    "keybind": 21,
     "enabled": true,
     "Check Chest": "true",
     "Delay": "56.0"

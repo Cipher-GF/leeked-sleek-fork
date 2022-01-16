@@ -1,11 +1,14 @@
 package me.kansio.client.utils.render;
 
+import me.kansio.client.Client;
+import me.kansio.client.modules.impl.visuals.HUD;
+import me.kansio.client.utils.Util;
 import net.minecraft.client.renderer.GlStateManager;
 import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
 
-public class ColorUtils {
+public class ColorUtils extends Util {
 
     public static void glColor(int hex) {
         float red = (hex >> 16 & 0xFF) / 255.0F;
@@ -44,7 +47,31 @@ public class ColorUtils {
         float hue = (System.currentTimeMillis() + offset) % speed;
         hue /= speed;
         return Color.getHSBColor(hue, 0.75f, 1f).getRGB();
+    }
 
+    public static Color getColorFromHud(int y) {
+        Color color = null;
+
+        switch (((HUD) Client.getInstance().getModuleManager().getModuleByName("HUD")).getColorMode().getValue()) {
+            case "Sleek": {
+                color = ColorUtils.getGradientOffset(new Color(0, 255, 128), new Color(212, 1, 1), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + y / mc.fontRendererObj.FONT_HEIGHT * 9.95);
+                break;
+            }
+            case "Nitrogen": {
+                color = ColorUtils.getGradientOffset(new Color(128, 171, 255), new Color(160, 72, 255), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + y / mc.fontRendererObj.FONT_HEIGHT * 9.95);
+                break;
+            }
+            case "Rainbow": {
+                color = new Color(ColorUtils.getRainbow(6000, y * 15));
+                break;
+            }
+            case "Astolfo": {
+                color = ColorUtils.getGradientOffset(new Color(255, 60, 234), new Color(27, 179, 255), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + y / mc.fontRendererObj.FONT_HEIGHT * 9.95);
+                break;
+            }
+        }
+
+        return color;
     }
 
     public static Color setAlpha(Color color, int alpha) {
