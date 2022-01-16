@@ -141,10 +141,6 @@ public class IRC extends Module {
             }
         }
 
-        if (client.onMessage("Trolling Complete, Returning To HQ")) {
-
-        }
-
         if (message.equals("- pogblackman")) {
             event.setCancelled(true);
             client.send(client.getAttachment().toString() + IRCClient.SPLIT +

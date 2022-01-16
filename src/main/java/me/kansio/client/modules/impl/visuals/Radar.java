@@ -7,6 +7,8 @@ import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.property.value.BooleanValue;
+import me.kansio.client.property.value.NumberValue;
+import me.kansio.client.utils.render.ColorUtils;
 import me.kansio.client.utils.render.RenderUtils;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.entity.Entity;
@@ -34,14 +36,11 @@ public class Radar extends Module {
         if (mc.theWorld == null || mc.thePlayer == null) {
             return;
         }
-        if (mc.gameSettings.showDebugInfo || mc.currentScreen != null) {
-            return;
-        }
         int miX = 5, miY = 70;
         int maX = miX + 100, maY = miY + 100;
         RenderUtils.drawRoundedRect(miX, miY, 100, maY - miY, 3, new Color(0, 0, 0, 100).getRGB());
         // drawing horizontal lines
-        RenderUtils.drawRect(miX, miY - 1, 100, 1, Color.GREEN.getRGB()); // top
+        RenderUtils.drawRect(miX, miY - 1, 100, 1, ColorUtils.getColorFromHud(3).getRGB()); // top
         // drawing vertical lines
         RenderUtils.draw2DPolygon(maX / 2 + 3, miY + 52, 5f, 3, -1); // self
         GL11.glPushMatrix();
