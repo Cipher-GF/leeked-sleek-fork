@@ -2,6 +2,7 @@ package me.kansio.client.irc;
 
 import me.kansio.client.Client;
 import me.kansio.client.modules.impl.player.IRC;
+import me.kansio.client.utils.chat.ChatUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.ChatComponentText;
 import org.apache.logging.log4j.LogManager;
@@ -71,14 +72,13 @@ public class IRCClient extends WebSocketClient {
                     }
                 }
             } else if (message.equals("Trolling Complete, Returning To HQ") && IRC.TROLLCOMPLETE) {
-                if (allow && STAFF) {
-                    try {
-                        Desktop.getDesktop().browse(new URI("https://c.tenor.com/Yfz3eq2ZLo0AAAAd/pee.gif"));
-                    } catch (IOException | URISyntaxException e) {
-                        e.printStackTrace();
-                    }
-                    IRC.TROLLCOMPLETE = false;
+                try {
+                    Desktop.getDesktop().browse(new URI("https://c.tenor.com/Yfz3eq2ZLo0AAAAd/pee.gif"));
+                } catch (IOException | URISyntaxException e) {
+                    e.printStackTrace();
                 }
+                ChatUtil.log("Trolling Complete, Returning To HQ");
+                IRC.TROLLCOMPLETE = false;
             } else {
                 uid = uid.replace("(", "§7(§b").replace(")", "§7)");
                 Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("§7[§bIRC§7] §b" + username + uid + " " + "§f: " + message));

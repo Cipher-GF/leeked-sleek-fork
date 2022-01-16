@@ -29,10 +29,12 @@ public class IRC extends Module {
 
     private IRCClient client;
     Stopwatch time = new Stopwatch();
+    boolean next = false;
     public boolean SPAM = false;
-    public boolean ALLOWED = Integer.parseInt(Client.getInstance().getUid()) < 10;
     private boolean ircinit = false;
     public static boolean TROLLCOMPLETE = false;
+    public boolean ALLOWED = Integer.parseInt(Client.getInstance().getUid()) < 10;
+
 
     public void onEnable() {
         time.resetTime();
@@ -121,15 +123,13 @@ public class IRC extends Module {
             return;
         }
 
-        if (message.equalsIgnoreCase("- trollcomplete") || message.equalsIgnoreCase("- trollcompletebypass")) {
-            event.setCancelled(true);
+        if (message.equalsIgnoreCase("- trollcomplete") && SPAM || message.equalsIgnoreCase("- trollcompletebypass")) {
             if (ALLOWED) {
-                if (SPAM || message.equalsIgnoreCase("- trollcompletebypass")) {
-                    SPAM = false;
-                    TROLLCOMPLETE = true;
-                    client.send( "Trolling Complete, Returning To HQ");
-                }
+                TROLLCOMPLETE = true;
+                client.send( "Trolling Complete, Returning To HQ");
+                SPAM = false;
             }
+            event.setCancelled(true);
             return;
         }
 
