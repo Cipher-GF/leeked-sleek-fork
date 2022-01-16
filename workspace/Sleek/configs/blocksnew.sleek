@@ -250,7 +250,7 @@
     "keybind": 21,
     "enabled": true,
     "AutoSword": "true",
-    "Only in Inv": "false",
+    "Only in Inv": "true",
     "AutoSword Delay": "32.0",
     "Inv Cleaner": "true",
     "Inv Only": "true",
@@ -294,7 +294,7 @@
     "name": "Click GUI",
     "keybind": 54,
     "enabled": false,
-    "Hud Colour": "false",
+    "Hud Colour": "true",
     "Font": "false"
   },
   {
@@ -328,7 +328,7 @@
     "keybind": 0,
     "enabled": true,
     "Mode": "Sleek",
-    "Color Mode": "Rainbow",
+    "Color Mode": "Nitrogen",
     "Font": "false",
     "Notifications": "true",
     "Hide Render": "true",

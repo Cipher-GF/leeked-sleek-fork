@@ -47,6 +47,7 @@ public class CommandManager {
         commands.add(new ToggleCommand());
         commands.add(new ReloadCommand());
         commands.add(new BindCommand());
+        commands.add(new UsersCommand());
         commands.add(new BindsCommand());
         commands.add(new ConfigCommand());
         commands.add(new VClipCommand());

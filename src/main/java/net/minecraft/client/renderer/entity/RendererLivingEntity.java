@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import me.kansio.client.Client;
 import me.kansio.client.event.impl.EntityLivingRenderEvent;
 import me.kansio.client.modules.impl.visuals.Chams;
+import me.kansio.client.modules.impl.visuals.ESP;
 import me.kansio.client.utils.render.ColorUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
@@ -506,6 +507,9 @@ public abstract class RendererLivingEntity<T extends EntityLivingBase> extends R
     }
 
     public void renderName(T entity, double x, double y, double z) {
+        if (((ESP)Client.getInstance().getModuleManager().getModuleByName("ESP")).tag.getValue()) {
+            return;
+        }
         if (!Reflector.RenderLivingEvent_Specials_Pre_Constructor.exists() || !Reflector.postForgeBusEvent(Reflector.RenderLivingEvent_Specials_Pre_Constructor, new Object[]{entity, this, Double.valueOf(x), Double.valueOf(y), Double.valueOf(z)})) {
             if (this.canRenderName(entity)) {
                 double d0 = entity.getDistanceSqToEntity(this.renderManager.livingPlayer);
