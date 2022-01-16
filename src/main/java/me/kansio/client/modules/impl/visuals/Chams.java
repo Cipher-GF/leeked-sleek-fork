@@ -1,6 +1,6 @@
 package me.kansio.client.modules.impl.visuals;
 
-import dorkbox.messageBus.annotations.Subscribe;
+import com.google.common.eventbus.Subscribe;
 import lombok.Getter;
 import me.kansio.client.event.impl.EntityLivingRenderEvent;
 import me.kansio.client.modules.api.ModuleCategory;

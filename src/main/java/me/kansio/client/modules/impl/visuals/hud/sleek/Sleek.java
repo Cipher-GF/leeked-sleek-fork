@@ -1,6 +1,6 @@
 package me.kansio.client.modules.impl.visuals.hud.sleek;
 
-import dorkbox.messageBus.annotations.Subscribe;
+import com.google.common.eventbus.Subscribe;
 import me.kansio.client.Client;
 import me.kansio.client.event.impl.RenderOverlayEvent;
 import me.kansio.client.modules.impl.Module;
@@ -12,8 +12,10 @@ import me.kansio.client.utils.math.BPSUtil;
 import me.kansio.client.utils.network.UserUtil;
 import me.kansio.client.utils.render.ColorPalette;
 import me.kansio.client.utils.render.ColorUtils;
+import me.kansio.client.utils.render.RenderUtils;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.util.EnumChatFormatting;
+
 import java.awt.*;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -40,6 +42,24 @@ public class Sleek extends HudMode {
 
                 Color color = ColorUtils.getGradientOffset(new Color(0, 255, 128), new Color(212, 1, 1), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + y / Fonts.Verdana.getHeight() * 9.95);
 
+                switch (((HUD) Client.getInstance().getModuleManager().getModuleByName("HUD")).getColorMode().getValue()) {
+                    case "Sleek": {
+                        color = ColorUtils.getGradientOffset(new Color(0, 255, 128), new Color(212, 1, 1), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + y / Fonts.Verdana.getHeight() * 9.95);
+                        break;
+                    }
+                    case "Nitrogen": {
+                        color = ColorUtils.getGradientOffset(new Color(128, 171, 255), new Color(160, 72, 255), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D));
+                        break;
+                    }
+                    case "Rainbow": {
+                        color = new Color(ColorUtils.getRainbow(6000, 0));
+                        break;
+                    }
+                    case "Astolfo": {
+                        color = ColorUtils.getGradientOffset(new Color(255, 60, 234), new Color(27, 179, 255), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D));
+                        break;
+                    }
+                }
                 Fonts.HUD.drawStringWithShadow(ChatUtil.translateColorCodes(hud.clientName.getValueAsString()), 4, 4, ColorPalette.GREEN.getColor().getRGB());
 
                 String name = mod.getName() + "§7" + mod.getFormattedSuffix();
@@ -67,7 +87,26 @@ public class Sleek extends HudMode {
 
                 Module lastModule = sorted.get(index - 1);
 
-                Color color = ColorUtils.getGradientOffset(new Color(0, 255, 128), new Color(212, 1, 1), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + y / mc.fontRendererObj.FONT_HEIGHT * 9.95);
+                Color color = null;
+
+                switch (((HUD) Client.getInstance().getModuleManager().getModuleByName("HUD")).getColorMode().getValue()) {
+                    case "Sleek": {
+                        color = ColorUtils.getGradientOffset(new Color(0, 255, 128), new Color(212, 1, 1), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + y / mc.fontRendererObj.FONT_HEIGHT * 9.95);
+                        break;
+                    }
+                    case "Nitrogen": {
+                        color = ColorUtils.getGradientOffset(new Color(128, 171, 255), new Color(160, 72, 255), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + y / mc.fontRendererObj.FONT_HEIGHT * 9.95);
+                        break;
+                    }
+                    case "Rainbow": {
+                        color = new Color(ColorUtils.getRainbow(6000, y * 15));
+                        break;
+                    }
+                    case "Astolfo": {
+                        color = ColorUtils.getGradientOffset(new Color(255, 60, 234), new Color(27, 179, 255), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + y / mc.fontRendererObj.FONT_HEIGHT * 9.95);
+                        break;
+                    }
+                }
 
                 mc.fontRendererObj.drawStringWithShadow(ChatUtil.translateColorCodes(hud.clientName.getValueAsString()), 4, 4, ColorPalette.GREEN.getColor().getRGB());
 

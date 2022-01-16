@@ -135,7 +135,7 @@ public class NetworkManager extends SimpleChannelInboundHandler<Packet> {
         if (this.channel.isOpen()) {
             try {
                 PacketEvent packetEvent = new PacketEvent(PacketDirection.OUTBOUND, p_channelRead0_2_);
-                Client.getInstance().getEventBus().publish(packetEvent);
+                Client.getInstance().getEventBus().post(packetEvent);
                 if (packetEvent.isCancelled())
                     return;
                 packetEvent.getPacket().processPacket(this.packetListener);

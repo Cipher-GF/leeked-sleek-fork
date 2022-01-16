@@ -1,10 +1,11 @@
 package me.kansio.client.modules.impl.combat;
 
-import dorkbox.messageBus.annotations.Subscribe;
+import com.google.common.eventbus.Subscribe;
 import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
+import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.NumberValue;
 import me.kansio.client.utils.chat.ChatUtil;
 import me.kansio.client.utils.network.PacketUtil;
@@ -29,41 +30,53 @@ public class FastBow extends Module {
     private int serverSideSlot;
 
     private NumberValue packets = new NumberValue("Packets", this, 20, 0, 1000, 1);
+    private BooleanValue value = new BooleanValue("Hold Bow", this, true);
 
     @Subscribe
     public void onUpdate(UpdateEvent event) {
         if (mc.gameSettings.keyBindUseItem.isKeyDown()) {
 
-            //check if they have a bow
-            if (!hasBow()) {
-                return;
+            if (value.getValue()) {
+                if (mc.thePlayer.getHeldItem() != null) {
+                    if (mc.thePlayer.getHeldItem().getItem() instanceof ItemBow) {
+                        for (int i = 0; i < packets.getValue().intValue(); i++) {
+                            PacketUtil.sendPacketNoEvent(new C03PacketPlayer());
+                        }
+                        mc.playerController.onStoppedUsingItem(mc.thePlayer);
+                    }
+                }
+            } else {
+                //check if they have a bow
+                if (!hasBow()) {
+                    return;
+                }
+
+
+                int slotWithBow = getBowSlot();
+
+                //this shouldn't happen
+                if (slotWithBow == -1) {
+                    return;
+                }
+
+                //if the server side slot isn't the slot with the bow, then set it to
+                if (serverSideSlot != slotWithBow) {
+                    PacketUtil.sendPacketNoEvent(new C09PacketHeldItemChange(slotWithBow));
+                }
+
+                serverSideSlot = slotWithBow;
+
+                PacketUtil.sendPacketNoEvent(new C08PacketPlayerBlockPlacement(mc.thePlayer.getCurrentEquippedItem()));
+
+                //send the funny packets
+                for (int i = 0; i < packets.getValue().intValue(); i++) {
+                    PacketUtil.sendPacketNoEvent(new C03PacketPlayer());
+                }
+
+                PacketUtil.sendPacketNoEvent(new C07PacketPlayerDigging(C07PacketPlayerDigging.Action.RELEASE_USE_ITEM, BlockPos.ORIGIN, EnumFacing.DOWN));
+
+                wasShooting = true;
             }
-
-
-            int slotWithBow = getBowSlot();
-
-            //this shouldn't happen
-            if (slotWithBow == -1) {
-                return;
-            }
-
-            //if the server side slot isn't the slot with the bow, then set it to
-            if (serverSideSlot != slotWithBow) {
-                PacketUtil.sendPacketNoEvent(new C09PacketHeldItemChange(slotWithBow));
-            }
-
-            serverSideSlot = slotWithBow;
-
-            PacketUtil.sendPacketNoEvent(new C08PacketPlayerBlockPlacement(mc.thePlayer.getCurrentEquippedItem()));
-
-            //send the funny packets
-            for (int i = 0; i < packets.getValue().intValue(); i++) {
-                PacketUtil.sendPacketNoEvent(new C03PacketPlayer());
-            }
-
-            PacketUtil.sendPacketNoEvent(new C07PacketPlayerDigging(C07PacketPlayerDigging.Action.RELEASE_USE_ITEM, BlockPos.ORIGIN, EnumFacing.DOWN));
-
-            wasShooting = true;
         } else if (wasShooting) { //revert to the last itemslot
             PacketUtil.sendPacketNoEvent(new C09PacketHeldItemChange(lastSlot));
             wasShooting = false;

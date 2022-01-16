@@ -1,6 +1,6 @@
 package me.kansio.client.commands;
 
-import dorkbox.messageBus.annotations.Subscribe;
+import com.google.common.eventbus.Subscribe;
 import me.kansio.client.Client;
 import me.kansio.client.commands.impl.*;
 import me.kansio.client.event.impl.ChatEvent;
@@ -14,7 +14,7 @@ public class CommandManager {
 
     public CommandManager() {
         registerCommands();
-        Client.getInstance().getEventBus().subscribe(this);
+        Client.getInstance().getEventBus().register(this);
     }
 
     @Subscribe

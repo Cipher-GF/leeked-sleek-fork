@@ -1,6 +1,6 @@
 package me.kansio.client.modules.impl.world;
 
-import dorkbox.messageBus.annotations.Subscribe;
+import com.google.common.eventbus.Subscribe;
 import me.kansio.client.Client;
 import me.kansio.client.event.impl.KeyboardEvent;
 import me.kansio.client.event.impl.RenderOverlayEvent;

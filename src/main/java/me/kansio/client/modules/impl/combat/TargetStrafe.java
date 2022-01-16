@@ -1,6 +1,6 @@
 package me.kansio.client.modules.impl.combat;
 
-import dorkbox.messageBus.annotations.Subscribe;
+import com.google.common.eventbus.Subscribe;
 import me.kansio.client.Client;
 import me.kansio.client.event.impl.Render3DEvent;
 import me.kansio.client.event.impl.UpdateEvent;

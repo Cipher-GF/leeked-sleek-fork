@@ -1,6 +1,6 @@
 package me.kansio.client.notification;
 
-import dorkbox.messageBus.annotations.Subscribe;
+import com.google.common.eventbus.Subscribe;
 import lombok.Getter;
 import me.kansio.client.Client;
 import me.kansio.client.event.impl.RenderOverlayEvent;
@@ -17,7 +17,7 @@ public class NotificationManager {
     @Getter private Notification currentNotification = null;
 
     public NotificationManager() {
-        Client.getInstance().getEventBus().subscribe(this);
+        Client.getInstance().getEventBus().register(this);
     }
 
     public void show(Notification notification) {

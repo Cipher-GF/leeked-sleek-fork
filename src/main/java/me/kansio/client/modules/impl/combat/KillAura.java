@@ -1,6 +1,6 @@
 package me.kansio.client.modules.impl.combat;
 
-import dorkbox.messageBus.annotations.Subscribe;
+import com.google.common.eventbus.Subscribe;
 import lombok.Getter;
 import lombok.Setter;
 import me.kansio.client.Client;

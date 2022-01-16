@@ -1,6 +1,6 @@
 package me.kansio.client.modules.impl.player;
 
-import dorkbox.messageBus.annotations.Subscribe;
+import com.google.common.eventbus.Subscribe;
 import me.kansio.client.Client;
 import me.kansio.client.event.impl.MouseEvent;
 import me.kansio.client.friend.Friend;

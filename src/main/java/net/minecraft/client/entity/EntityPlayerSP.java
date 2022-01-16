@@ -1,6 +1,6 @@
 package net.minecraft.client.entity;
 
-import dorkbox.messageBus.annotations.Subscribe;
+import com.google.common.eventbus.Subscribe;
 import me.kansio.client.Client;
 import me.kansio.client.event.impl.ChatEvent;
 import me.kansio.client.event.impl.MoveEvent;
@@ -140,7 +140,7 @@ public class EntityPlayerSP extends AbstractClientPlayer {
     @Override
     public void moveEntity(double x, double y, double z) {
         MoveEvent event = new MoveEvent(x, y, z);
-        Client.getInstance().getEventBus().publish(event);
+        Client.getInstance().getEventBus().post(event);
         if (event.isCancelled())
             super.moveEntity(0, 0, 0);
         else
@@ -206,7 +206,7 @@ public class EntityPlayerSP extends AbstractClientPlayer {
 
         if (this.isCurrentViewEntity()) {
             UpdateEvent event = new UpdateEvent(posX, getEntityBoundingBox().minY, posZ, rotationYaw, rotationPitch, onGround);
-            Client.getInstance().getEventBus().publish(event);
+            Client.getInstance().getEventBus().post(event);
             double d0 = this.posX - this.lastReportedPosX;
             double d1 = this.getEntityBoundingBox().minY - this.lastReportedPosY;
             double d2 = this.posZ - this.lastReportedPosZ;
@@ -244,7 +244,7 @@ public class EntityPlayerSP extends AbstractClientPlayer {
                 this.lastReportedPitch = event.getRotationPitch();
             }
         }
-        Client.getInstance().getEventBus().publish(new UpdateEvent(false));
+        Client.getInstance().getEventBus().post(new UpdateEvent(false));
     }
 
     /**
@@ -268,7 +268,7 @@ public class EntityPlayerSP extends AbstractClientPlayer {
     public void sendChatMessage(String message) {
         //This thing handles the chat commands
         ChatEvent event = new ChatEvent(message);
-        Client.getInstance().getEventBus().publish(event);
+        Client.getInstance().getEventBus().post(event);
         if (event.isCancelled()) {
             return;
         }
@@ -684,7 +684,7 @@ public class EntityPlayerSP extends AbstractClientPlayer {
         this.movementInput.updatePlayerMoveState();
 
         final NoSlowEvent event = new NoSlowEvent(NoSlowEvent.Type.ITEM);
-        Client.getInstance().getEventBus().publish(event);
+        Client.getInstance().getEventBus().post(event);
 
         if (this.isUsingItem() && !this.isRiding() && !event.isCancelled()) {
 

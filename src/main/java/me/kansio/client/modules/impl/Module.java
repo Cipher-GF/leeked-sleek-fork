@@ -73,10 +73,10 @@ public abstract class Module {
         toggled = !toggled;
 
         if (toggled) {
-            Client.getInstance().getEventBus().subscribe(this);
+            Client.getInstance().getEventBus().register(this);
             onEnable();
         } else {
-            Client.getInstance().getEventBus().unsubscribe(this);
+            Client.getInstance().getEventBus().unregister(this);
             onDisable();
         }
         if (!(this instanceof ClickGUI))
@@ -129,17 +129,9 @@ public abstract class Module {
                     break;
                 }
                 case "enabled": {
-                    toggled = ogzk.getValue().getAsBoolean();
 
-                    if (toggled) {
-                        Client.getInstance().getEventBus().subscribe(this);
-                        onEnable();
-                    } else {
-                        Client.getInstance().getEventBus().unsubscribe(this);
-                        onDisable();
-                    }
+                    setToggled(ogzk.getValue().getAsBoolean());
 
-                    onToggled();
                     break;
                 }
             }
@@ -159,6 +151,20 @@ public abstract class Module {
             }
 
         });
+    }
+
+    public void setToggled(boolean toggled) {
+        this.toggled = toggled;
+
+        if (this.toggled) {
+            Client.getInstance().getEventBus().register(this);
+            onEnable();
+        } else {
+            Client.getInstance().getEventBus().unregister(this);
+            onDisable();
+        }
+        if (!(this instanceof ClickGUI))
+            onToggled();
     }
 
     public JsonObject save() {
