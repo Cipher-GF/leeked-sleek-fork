@@ -124,7 +124,7 @@
   {
     "name": "Killaura",
     "keybind": 19,
-    "enabled": false,
+    "enabled": true,
     "Mode": "Smart",
     "Target Priority": "Health",
     "Rotation Mode": "Default",
@@ -236,7 +236,7 @@
     "BPS": "true",
     "Important Only": "true",
     "Client Name": "niggerware 420",
-    "Module Suffix": " [%s]",
+    "Module Suffix": " %s",
     "Scoreboard": "Right",
     "Scoreboard Y": "0.0"
   },
@@ -366,7 +366,7 @@
     "keybind": 0,
     "enabled": true,
     "Attack Animations": "true",
-    "Block Mode": "Exhi",
+    "Block Mode": "Interia",
     "Smooth Hit": "false",
     "Scale": "1.0",
     "Swing Speed": "8.0"
