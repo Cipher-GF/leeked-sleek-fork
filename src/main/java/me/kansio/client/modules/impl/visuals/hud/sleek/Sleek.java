@@ -44,26 +44,7 @@ public class Sleek extends HudMode {
 
             Module lastModule = sorted.get(index - 1);
 
-            Color color = null;
-
-            switch (((HUD) Client.getInstance().getModuleManager().getModuleByName("HUD")).getColorMode().getValue()) {
-                case "Sleek": {
-                    color = ColorUtils.getGradientOffset(new Color(0, 255, 128), new Color(212, 1, 1), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + y / mc.fontRendererObj.FONT_HEIGHT * 9.95);
-                    break;
-                }
-                case "Nitrogen": {
-                    color = ColorUtils.getGradientOffset(new Color(128, 171, 255), new Color(160, 72, 255), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + y / mc.fontRendererObj.FONT_HEIGHT * 9.95);
-                    break;
-                }
-                case "Rainbow": {
-                    color = new Color(ColorUtils.getRainbow(6000, y * 15));
-                    break;
-                }
-                case "Astolfo": {
-                    color = ColorUtils.getGradientOffset(new Color(255, 60, 234), new Color(27, 179, 255), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + y / mc.fontRendererObj.FONT_HEIGHT * 9.95);
-                    break;
-                }
-            }
+            Color color = ColorUtils.getColorFromHud(y);
 
             mc.fontRendererObj.drawStringWithShadow(ChatUtil.translateColorCodes(hud.clientName.getValueAsString()), 4, 4, color.getRGB());
 
