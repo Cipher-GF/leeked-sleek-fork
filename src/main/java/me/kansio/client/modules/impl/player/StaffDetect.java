@@ -5,6 +5,7 @@ import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
+import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.utils.chat.ChatUtil;
 import net.minecraft.entity.player.EntityPlayer;
 
@@ -18,6 +19,8 @@ import java.util.List;
         description = "Checks if there's a staff member in your game"
 )
 public class StaffDetect extends Module {
+
+    private BooleanValue autoHub = new BooleanValue("/hub", this, false);
 
     private ArrayList<String> staffInMatch = new ArrayList<>();
 
@@ -40,6 +43,10 @@ public class StaffDetect extends Module {
                 if (player.getName().contains(staff)) {
                     staffInMatch.add(player.getName());
                     ChatUtil.logNoPrefix("§4§l[Staff Detect]: §c" + staff + " §fis in your game!");
+                    if (autoHub.getValue()) {
+                        mc.thePlayer.sendChatMessage("/hub");
+                        break;
+                    }
                 }
             }
         }
