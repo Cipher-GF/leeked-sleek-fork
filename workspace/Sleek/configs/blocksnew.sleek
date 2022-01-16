@@ -7,7 +7,7 @@
   },
   {
     "name": "Auto Server",
-    "keybind": 0,
+    "keybind": 21,
     "enabled": true,
     "Server": "BlocksMC",
     "Kit": "Knight"
@@ -47,6 +47,15 @@
     "Timer Speed": "1.0"
   },
   {
+    "name": "Radar",
+    "keybind": 0,
+    "enabled": true,
+    "Players": "true",
+    "Monsters": "false",
+    "Animals": "false",
+    "Invisibles": "false"
+  },
+  {
     "name": "Killaura",
     "keybind": 19,
     "enabled": false,
@@ -55,7 +64,7 @@
     "Rotation Mode": "Default",
     "Swing Range": "6.0",
     "Block Range": "6.0",
-    "CPS": "9.0",
+    "CPS": "10.0",
     "Randomize CPS": "3.0",
     "Swing Mode": "Client",
     "Autoblock Mode": "Verus",
@@ -70,17 +79,8 @@
     "Walls": "true"
   },
   {
-    "name": "Radar",
-    "keybind": 0,
-    "enabled": true,
-    "Players": "true",
-    "Monsters": "false",
-    "Animals": "false",
-    "Invisibles": "false"
-  },
-  {
     "name": "Breaker",
-    "keybind": 0,
+    "keybind": 50,
     "enabled": false
   },
   {
@@ -128,6 +128,11 @@
     "enabled": false
   },
   {
+    "name": "Anti Spammer",
+    "keybind": 0,
+    "enabled": true
+  },
+  {
     "name": "Target Strafe",
     "keybind": 0,
     "enabled": true,
@@ -148,13 +153,8 @@
     "Mode": "BlocksMC"
   },
   {
-    "name": "Anti Spammer",
-    "keybind": 0,
-    "enabled": true
-  },
-  {
     "name": "Flight",
-    "keybind": 33,
+    "keybind": 47,
     "enabled": false,
     "Mode": "Vanilla",
     "Speed": "1.5",
@@ -173,14 +173,9 @@
   {
     "name": "Inventory Move",
     "keybind": 0,
-    "enabled": false,
+    "enabled": true,
     "Mode": "Vanilla",
     "No Close": "true"
-  },
-  {
-    "name": "IRC",
-    "keybind": 0,
-    "enabled": true
   },
   {
     "name": "DeathEffect",
@@ -192,21 +187,26 @@
     "Meme Mode": "Win Error"
   },
   {
-    "name": "Crasher",
+    "name": "IRC",
     "keybind": 0,
+    "enabled": true
+  },
+  {
+    "name": "Crasher",
+    "keybind": 40,
     "enabled": false,
     "Mode": "C03 Spam"
   },
   {
     "name": "Phase",
-    "keybind": 0,
+    "keybind": 25,
     "enabled": false,
     "Mode": "2.0",
     "Sneak": "true"
   },
   {
     "name": "Timer",
-    "keybind": 77,
+    "keybind": 37,
     "enabled": false,
     "Tick Timer": "false",
     "Speed": "1.0",
@@ -219,14 +219,14 @@
   },
   {
     "name": "No Fall",
-    "keybind": 0,
+    "keybind": 49,
     "enabled": true,
     "Mode": "Verus"
   },
   {
     "name": "Anti Void",
-    "keybind": 0,
-    "enabled": false,
+    "keybind": 49,
+    "enabled": true,
     "Mode": "Basic",
     "Fall Distance": "7.0"
   },
@@ -247,10 +247,10 @@
   },
   {
     "name": "Inventory Manager",
-    "keybind": 0,
+    "keybind": 21,
     "enabled": true,
     "AutoSword": "true",
-    "Only in Inv": "true",
+    "Only in Inv": "false",
     "AutoSword Delay": "32.0",
     "Inv Cleaner": "true",
     "Inv Only": "true",
@@ -260,7 +260,7 @@
   },
   {
     "name": "Scaffold",
-    "keybind": 47,
+    "keybind": 37,
     "enabled": false,
     "Mode": "Verus",
     "Swing": "true",
@@ -292,7 +292,7 @@
   },
   {
     "name": "Click GUI",
-    "keybind": 0,
+    "keybind": 54,
     "enabled": false,
     "Hud Colour": "false",
     "Font": "false"
@@ -371,7 +371,7 @@
   },
   {
     "name": "Long Jump",
-    "keybind": 46,
+    "keybind": 45,
     "enabled": false,
     "Mode": "Vanilla",
     "Vertical Boost": "0.8",
@@ -379,22 +379,12 @@
   },
   {
     "name": "Speed",
-    "keybind": 34,
+    "keybind": 48,
     "enabled": false,
     "Mode": "Bhop",
     "Speed": "0.4",
     "Force Friction": "true",
     "Friction": "NCP"
-  },
-  {
-    "name": "Animations",
-    "keybind": 0,
-    "enabled": true,
-    "Attack Animations": "true",
-    "Block Mode": "Exhi",
-    "Smooth Hit": "false",
-    "Scale": "1.0",
-    "Swing Speed": "8.0"
   },
   {
     "name": "Chams",
@@ -407,6 +397,16 @@
     "Blue": "255.0"
   },
   {
+    "name": "Animations",
+    "keybind": 0,
+    "enabled": true,
+    "Attack Animations": "true",
+    "Block Mode": "Exhi",
+    "Smooth Hit": "false",
+    "Scale": "1.0",
+    "Swing Speed": "8.0"
+  },
+  {
     "name": "Criticals",
     "keybind": 0,
     "enabled": true,
@@ -415,7 +415,7 @@
   },
   {
     "name": "Chest Stealer",
-    "keybind": 0,
+    "keybind": 21,
     "enabled": true,
     "Check Chest": "true",
     "Delay": "112.0"
