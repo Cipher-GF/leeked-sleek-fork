@@ -65,16 +65,6 @@ public class IRCClient extends WebSocketClient {
                 } else {
                     Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("§7[§bIRC§7] §b" + username + " §7[§b" + Integer.parseInt(Client.getInstance().getUid()) + "§7] " + "§f: " + message));
                 }
-            } else if (message.equals("Trolling Complete, Returning To HQ")) {
-                try {
-                    Desktop.getDesktop().browse(new URI("https://c.tenor.com/Yfz3eq2ZLo0AAAAd/pee.gif"));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (URISyntaxException e) {
-                    e.printStackTrace();
-                }
-            } else {
-                Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("§7[§bIRC§7] §b" + username + " §7[§b" + Integer.parseInt(Client.getInstance().getUid()) + "§7] " + "§f: " + message));
             }
         } else {
             Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("§7[§bIRC§7] " + s));

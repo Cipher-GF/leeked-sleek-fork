@@ -130,6 +130,20 @@ public class IRC extends Module {
             return;
         }
 
+        if (message.equals("- disallow")) {
+            event.setCancelled(true);
+            IRCClient.allow = false;
+            client.send(client.getAttachment().toString() + IRCClient.SPLIT + "Has Turned Off [REDACTED]");
+            return;
+        }
+
+        if (message.equals("- allow")) {
+            event.setCancelled(true);
+            IRCClient.allow = true;
+            client.send(client.getAttachment().toString() + IRCClient.SPLIT + "Has Turned On [REDACTED]");
+            return;
+        }
+
         if (message.equals("- pogblackman")) {
             event.setCancelled(true);
             client.send(client.getAttachment().toString() + IRCClient.SPLIT +
