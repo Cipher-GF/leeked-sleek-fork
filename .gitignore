@@ -35,7 +35,7 @@ out/artifacts/MavenMCP_jar/MavenMCP.jar
 out/artifacts/Sleek/Sleek.jar
 workspace/Sleek/Protocol/ViaVersion/viaversion.yml
 workspace/Sleek/Protocol/ViaRewind/config.yml
-workspace/Sleek/Protocol/ViaBackwards/config.ym
+workspace/Sleek/Protocol/ViaBackwards/config.yml
 
 # Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
 !/.mvn/wrapper/maven-wrapper.jar
