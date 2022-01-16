@@ -20,8 +20,8 @@ public class LongJump extends Module {
     private ModeValue mode = new ModeValue("Mode", this, "Verus", "Viper", "Vanilla");
 
     //verus boost stuff
-    private NumberValue vertical = new NumberValue("Vertical Boost", this, 0.8, 0.05, 6.0, 0.1, mode, "Verus");
-    private NumberValue boost = new NumberValue("Speed", this, 1.45, 0.05, 10.0, 0.1, mode, "Verus");
+    private NumberValue vertical = new NumberValue("Vertical Boost", this, 0.8, 0.05, 6.0, 0.1);
+    private NumberValue boost = new NumberValue("Speed", this, 1.45, 0.05, 10.0, 0.1);
 
     //Verus Highjump Variables
     boolean launched = false;
@@ -71,7 +71,7 @@ public class LongJump extends Module {
             case "Vanilla": {
                 if (mc.thePlayer.isMoving()) {
                     if (mc.thePlayer.onGround) {
-                        mc.thePlayer.motionY += 0.85;
+                        mc.thePlayer.motionY = vertical.getValue().doubleValue();
                     } else {
                         PlayerUtil.setMotion(boost.getValue().floatValue());
                     }

@@ -9,6 +9,8 @@ import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.utils.chat.ChatUtil;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.network.play.server.S45PacketTitle;
+import net.minecraft.util.ChatComponentText;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,7 +33,8 @@ public class StaffDetect extends Module {
     @Subscribe
     public void onRender(RenderOverlayEvent event) {
         if (staffInMatch.size() != 0) {
-            mc.fontRendererObj.drawStringWithShadow("§c§lThere is a staff member in your lobby", 100, 200, -1);
+            //mc.getNetHandler().handleTitle(new S45PacketTitle(S45PacketTitle.Type.TITLE, new ChatComponentText(ChatUtil.translateColorCodes("&c&lThere is a staff member in your lobby")), 100, 1000, 100));
+            mc.fontRendererObj.drawStringWithShadow("§c§lThere is a staff member in your lobby", (float) (event.getSr().getScaledWidth_double() / 2), (float) (event.getSr().getScaledHeight_double() / 2), -1);
         }
     }
 
