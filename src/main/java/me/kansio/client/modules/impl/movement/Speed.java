@@ -190,7 +190,7 @@ public class Speed extends Module {
             }
             return Math.max(atomicDouble.get(), PlayerUtil.getVerusBaseSpeed());
         }
-        return this.speed.getValue();
+        return atomicDouble.get();
     }
 
     @Override
