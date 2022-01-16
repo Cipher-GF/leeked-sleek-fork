@@ -46,7 +46,7 @@ public class IRCClient extends WebSocketClient {
                 Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("§7[§bIRC§7] §b" + username + "§f: " + message));
             }
         } else {
-            Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("§7[§bIRC§7] §cSERVER" + "§f: " + s));
+            Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("§7[§bIRC§7] " + s));
         }
     }
 
