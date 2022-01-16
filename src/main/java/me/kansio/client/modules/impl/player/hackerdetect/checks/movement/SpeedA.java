@@ -32,7 +32,6 @@ public class SpeedA extends Check {
                     HackerDetect.getInstance().getViolations().put(ent, HackerDetect.getInstance().getViolations().getOrDefault(ent, 1));
 
                     if (HackerDetect.getInstance().getViolations().get(ent) % 5 == 1) {
-                        ChatUtil.logCheater(ent.getName() + " §7might be using §aSpeed (Check 1)");
                         if (!Client.getInstance().getTargetManager().isTarget(ent)) {
                             ChatUtil.logCheater(ent.getName() + " §7might be using §aSpeed (Check 1) §4§l(Flagged as cheater!)");
                             Client.getInstance().getTargetManager().getTarget().add(ent.getName());
