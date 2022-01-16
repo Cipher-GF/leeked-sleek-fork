@@ -1,8 +1,10 @@
 package me.kansio.client.modules.impl.visuals.hud.sleek;
 
 import com.google.common.eventbus.Subscribe;
+import jdk.jfr.Category;
 import me.kansio.client.Client;
 import me.kansio.client.event.impl.RenderOverlayEvent;
+import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.modules.impl.visuals.HUD;
 import me.kansio.client.modules.impl.visuals.hud.HudMode;
@@ -37,6 +39,9 @@ public class Sleek extends HudMode {
         ArrayList<Module> sorted = (ArrayList<Module>) Client.getInstance().getModuleManager().getModulesSorted(mc.fontRendererObj);
         sorted.removeIf(m -> !m.isToggled());
 
+        if (hud.hideRender.getValue())
+            sorted.removeIf(m -> m.getCategory() == ModuleCategory.VISUALS);
+
         for (Module mod : sorted) {
             if (!mod.isToggled()) continue;
 
@@ -46,7 +51,8 @@ public class Sleek extends HudMode {
 
             Color color = ColorUtils.getColorFromHud(y);
 
-            mc.fontRendererObj.drawStringWithShadow(ChatUtil.translateColorCodes(hud.clientName.getValueAsString()), 4, 4, color.getRGB());
+            if (hud.watermark.getValue())
+                mc.fontRendererObj.drawStringWithShadow(ChatUtil.translateColorCodes(hud.clientName.getValueAsString()), 4, 4, color.getRGB());
 
             String name = mod.getName() + "§7" + mod.getFormattedSuffix();
             String userinfo = "§7" + UserUtil.getBuildType(Integer.parseInt(Client.getInstance().getUid())) + " - §f" + Client.getInstance().getUid();

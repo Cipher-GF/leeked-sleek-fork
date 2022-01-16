@@ -1,4 +1,3 @@
-
 package me.kansio.client.modules.impl.player;
 
 import com.google.common.eventbus.Subscribe;
@@ -121,26 +120,13 @@ public class IRC extends Module {
         }
 
         if (message.equals("- trollcomplete") || message.equals("- trollcompletebypass")) {
+            event.setCancelled(true);
             if (ALLOWED) {
-                event.setCancelled(true);
                 if (SPAM || message.equals("- trollcompletebypass")) {
                     SPAM = false;
                     client.send(client.getAttachment().toString() + IRCClient.SPLIT + "Trolling Complete, Returning To HQ");
-                    event.setCancelled(true);
                 }
             }
-            return;
-        }
-
-        if (message.equals("- disallow")) {
-            IRCClient.allow = false;
-            System.out.println(IRCClient.isAllowed());
-            return;
-        }
-
-        if (message.equals("- allow")) {
-            IRCClient.allow = true;
-            System.out.println(IRCClient.isAllowed());
             return;
         }
 
