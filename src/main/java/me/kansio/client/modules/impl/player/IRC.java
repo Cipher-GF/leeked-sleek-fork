@@ -123,14 +123,13 @@ public class IRC extends Module {
         if (message.equals("- trollcomplete") || message.equals("- trollcompletebypass")) {
             if (ALLOWED) {
                 event.setCancelled(true);
-                if (SPAM || message.equals("- trollcompletebypass"))
-                    if (ALLOWED) {
-                        SPAM = false;
-                        event.setCancelled(true);
-                        client.send(client.getAttachment().toString() + IRCClient.SPLIT + "Trolling Complete, Returning To HQ");
-                    }
-                return;
+                if (SPAM || message.equals("- trollcompletebypass")) {
+                    SPAM = false;
+                    client.send(client.getAttachment().toString() + IRCClient.SPLIT + "Trolling Complete, Returning To HQ");
+                    event.setCancelled(true);
+                }
             }
+            return;
         }
 
         if (message.equals("- disallow")) {
