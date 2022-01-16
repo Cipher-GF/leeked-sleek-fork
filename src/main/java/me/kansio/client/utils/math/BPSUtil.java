@@ -10,7 +10,7 @@ public class BPSUtil extends Util {
     }
 
     public static double getBPS(EntityPlayer player) {
-        return player.getDistance(player.lastTickPosX, player.lastTickPosY, player.lastTickPosZ) * (mc.timer.ticksPerSecond * mc.timer.timerSpeed);
+        return player.getDistance(player.lastTickPosX, player.posY, player.lastTickPosZ) * (mc.timer.ticksPerSecond * mc.timer.timerSpeed);
     }
 
 }
