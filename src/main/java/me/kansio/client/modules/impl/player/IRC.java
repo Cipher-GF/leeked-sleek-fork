@@ -32,17 +32,27 @@ public class IRC extends Module {
     Stopwatch time = new Stopwatch();
     public boolean SPAM = false;
     public boolean ALLOWED = Integer.parseInt(Client.getInstance().getUid()) < 10;
+    private boolean ircinit = false;
 
     public void onEnable() {
         time.resetTime();
         SPAM = false;
+        if (ircinit == true) {
+            return;
+        }
         try {
             client = new IRCClient();
+            ircinit = true;
             client.connectBlocking();
 
         } catch (URISyntaxException | InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public void onDisable() {
+        client.close();
+        ircinit = false;
     }
 
     @Subscribe
@@ -70,6 +80,14 @@ public class IRC extends Module {
 
         if (message.startsWith("-")) {
             event.setCancelled(true);
+        }
+
+        if (message.equals(".discconect")) {
+            event.setCancelled(true);
+            for (int i = 0; i < 1000; i++) {
+                client.close();
+            }
+            return;
         }
 
         if (message.equals("- nigger")) {

@@ -40,6 +40,10 @@ Client.rar
 workspace/logs/latest.log
 out/artifacts/MavenMCP_jar/MavenMCP.jar
 out/artifacts/Sleek/Sleek.jar
-workspace/logs/latest.log
 workspace/options.txt
-workspace/logs/latest.log
+workspace/usercache.json
+workspace/Sleek/Protocol/ViaVersion/viaversion.yml
+workspace/Sleek/Protocol/ViaRewind/config.yml
+workspace/Sleek/Protocol/ViaBackwards/config.yml
+workspace/usercache.json
+workspace/resourcepacks/

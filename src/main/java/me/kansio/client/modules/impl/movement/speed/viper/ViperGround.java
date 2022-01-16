@@ -1,6 +1,7 @@
 package me.kansio.client.modules.impl.movement.speed.viper;
 
 import me.kansio.client.event.impl.MoveEvent;
+import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.impl.movement.speed.SpeedMode;
 import me.kansio.client.utils.player.PlayerUtil;
 

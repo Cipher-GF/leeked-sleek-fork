@@ -25,6 +25,13 @@ public class Verus extends FlightMode {
                     event.setMotionY(0.41999998688698);
                 }
                 PlayerUtil.strafe();
+            } else {
+                if (mc.thePlayer.onGround) {
+                    mc.thePlayer.jump();
+                    mc.thePlayer.motionY = 0.0;
+                    PlayerUtil.strafe(0.61f);
+                    event.setMotionY(0.41999998688698);
+                }
             }
         }
     }

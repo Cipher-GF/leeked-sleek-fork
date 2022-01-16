@@ -2,6 +2,7 @@ package me.kansio.client.modules.impl.player;
 
 import com.google.common.eventbus.Subscribe;
 import me.kansio.client.event.impl.UpdateEvent;
+import me.kansio.client.gui.clickgui.ui.clickgui.frame.ClickGUI;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
@@ -31,15 +32,15 @@ import java.util.List;
 public class InvManager extends Module {
 
     private BooleanValue autoSword = new BooleanValue("AutoSword", this, false);
-    private BooleanValue aSwordInInv = new BooleanValue("AutoSword Only in Inv", this, false, autoSword);
+    private BooleanValue aSwordInInv = new BooleanValue("Only in Inv", this, false, autoSword);
     private NumberValue<Double> aSwordDelay = new NumberValue<>("AutoSword Delay", this, 25.0, 0.0, 1000.0, 1.0, autoSword);
 
-    private BooleanValue invCleaner = new BooleanValue("Inventory Cleaner", this, false);
-    private BooleanValue invCleanerInInv = new BooleanValue("InvCleaner Only in Inv", this, false, invCleaner);
+    private BooleanValue invCleaner = new BooleanValue("Inv Cleaner", this, false);
+    private BooleanValue invCleanerInInv = new BooleanValue("Inv Only", this, false, invCleaner);
     private NumberValue<Double> invCleanerDelay = new NumberValue<>("InvCleaner Delay", this, 25.0, 0.0, 1000.0, 1.0, invCleaner);
 
     private BooleanValue autoArmor = new BooleanValue("Auto Armor", this, false);
-    private BooleanValue autoArmorInInv = new BooleanValue("AutoArmor Only in Inv", this, false, autoArmor);
+    private BooleanValue autoArmorInInv = new BooleanValue("Only in Inv", this, false, autoArmor);
     private NumberValue<Double> autoArmorDelay = new NumberValue<>("AutoArmor Delay", this, 25.0, 0.0, 1000.0, 1.0, autoArmor);
 
     private Stopwatch armorStop = new Stopwatch();
@@ -154,7 +155,7 @@ public class InvManager extends Module {
     }
 
     private void invCleanerThing(Stopwatch stopwatch, int delay, List<Integer> trash, int windowId) {
-        if (!(mc.currentScreen instanceof GuiInventory)) {
+        if (!(mc.currentScreen instanceof GuiInventory) || !(mc.currentScreen instanceof ClickGUI)) {
             PacketUtil.sendPacketNoEvent(new C0BPacketEntityAction(mc.thePlayer, C0BPacketEntityAction.Action.OPEN_INVENTORY));
         }
 
@@ -369,5 +370,4 @@ public class InvManager extends Module {
             return 0.0F;
         }
     }
-
 }
