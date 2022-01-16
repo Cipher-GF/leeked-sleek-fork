@@ -466,6 +466,8 @@ public class Minecraft implements IThreadListener, IPlayerUsage {
                 this.displayCrashReport(crashreport1);
                 break;
             } finally {
+                //Call the exit method
+                Client.getInstance().onShutdown();
                 this.shutdownMinecraftApplet();
             }
 
@@ -1270,9 +1272,6 @@ public class Minecraft implements IThreadListener, IPlayerUsage {
      * Called when the window is closing. Sets 'running' to false which allows the game loop to exit cleanly.
      */
     public void shutdown() {
-        //Call the exit method
-        Client.getInstance().onShutdown();
-
         this.running = false;
     }
 
@@ -1583,7 +1582,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage {
 
                 if (Mouse.getEventButtonState()) {
                     final MouseEvent event = new MouseEvent(i);
-                    Client.getInstance().getEventBus().publish(event);
+                    Client.getInstance().getEventBus().post(event);
                     if (this.thePlayer.isSpectator() && i == 2) {
                         this.ingameGUI.getSpectatorGui().func_175261_b();
                     } else {
@@ -1634,7 +1633,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage {
                 if (Keyboard.getEventKeyState()) {
                     //Send the keyboard event
                     KeyboardEvent keyboardEvent = new KeyboardEvent(k);
-                    Client.getInstance().getEventBus().publish(keyboardEvent);
+                    Client.getInstance().getEventBus().post(keyboardEvent);
 
                     //Check if the event is cancelled
                     if (!keyboardEvent.isCancelled()) {

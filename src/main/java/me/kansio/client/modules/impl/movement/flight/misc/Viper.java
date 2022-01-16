@@ -16,8 +16,13 @@ public class Viper extends FlightMode {
 
     @Override
     public void onMove(MoveEvent event) {
-        mc.timer.timerSpeed = 0.3f;
+        if (!mc.thePlayer.isMovingOnGround()) {
+            mc.timer.timerSpeed = 1f;
+            return;
+        }
+
         if (mc.thePlayer.isMoving()) {
+            mc.timer.timerSpeed = 0.3f;
             for (int i = 0; i < 17; ++i) {
                 PlayerUtil.TPGROUND(event, 0.06, 0);
             }

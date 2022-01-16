@@ -1,6 +1,6 @@
 package me.kansio.client.modules.impl.combat;
 
-import dorkbox.messageBus.annotations.Subscribe;
+import com.google.common.eventbus.Subscribe;
 import lombok.Getter;
 import lombok.Setter;
 import me.kansio.client.Client;
@@ -10,13 +10,11 @@ import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
-import me.kansio.client.modules.impl.player.Sprint;
 import me.kansio.client.notification.Notification;
 import me.kansio.client.notification.NotificationManager;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.ModeValue;
 import me.kansio.client.property.value.NumberValue;
-import me.kansio.client.property.value.SubSettings;
 import me.kansio.client.utils.math.Stopwatch;
 import me.kansio.client.utils.combat.FightUtil;
 import me.kansio.client.utils.network.PacketUtil;
@@ -30,7 +28,6 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.client.*;
 import net.minecraft.util.BlockPos;
-import net.minecraft.util.Cartesian;
 import net.minecraft.util.EnumFacing;
 import org.apache.commons.lang3.RandomUtils;
 

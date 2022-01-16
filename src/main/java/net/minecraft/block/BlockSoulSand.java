@@ -31,7 +31,7 @@ public class BlockSoulSand extends Block
     public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entityIn)
     {
         final NoSlowEvent event = new NoSlowEvent(NoSlowEvent.Type.SOULSAND);
-        Client.getInstance().getEventBus().publish(event);
+        Client.getInstance().getEventBus().post(event);
         if (event.isCancelled()) return;
         entityIn.motionX *= 0.4D;
         entityIn.motionZ *= 0.4D;

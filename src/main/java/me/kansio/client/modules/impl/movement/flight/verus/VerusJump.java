@@ -5,6 +5,7 @@ import me.kansio.client.event.impl.MoveEvent;
 import me.kansio.client.event.impl.PacketEvent;
 import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.impl.movement.flight.FlightMode;
+import me.kansio.client.utils.player.PlayerUtil;
 import net.minecraft.block.BlockAir;
 import net.minecraft.util.AxisAlignedBB;
 
@@ -18,9 +19,7 @@ public class VerusJump extends FlightMode {
 
     @Override
     public void onUpdate(UpdateEvent event) {
-        if (mc.thePlayer.onGround && mc.thePlayer.isMoving()) {
-            mc.thePlayer.jump();
-        }
+
     }
 
 
@@ -36,7 +35,9 @@ public class VerusJump extends FlightMode {
 
     @Override
     public void onMove(MoveEvent event) {
-        super.onMove(event);
+        if (mc.thePlayer.onGround && mc.thePlayer.isMoving()) {
+            event.setMotionY(mc.thePlayer.motionY = PlayerUtil.getMotion(0.42f));
+        }
     }
 
     @Override

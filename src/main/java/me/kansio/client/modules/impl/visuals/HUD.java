@@ -1,6 +1,6 @@
 package me.kansio.client.modules.impl.visuals;
 
-import dorkbox.messageBus.annotations.Subscribe;
+import com.google.common.eventbus.Subscribe;
 import lombok.Getter;
 import me.kansio.client.event.impl.RenderOverlayEvent;
 import me.kansio.client.modules.api.ModuleCategory;
@@ -41,6 +41,7 @@ public class HUD extends Module {
     private final ModeValue mode = new ModeValue("Mode", this, modes.stream().map(HudMode::getName).collect(Collectors.toList()).toArray(new String[]{}));
     private HudMode currentMode = modes.stream().anyMatch(hudMode -> hudMode.getName().equalsIgnoreCase(mode.getValue())) ? modes.stream().filter(hudMode -> hudMode.getName().equalsIgnoreCase(mode.getValue())).findAny().get() : null ;
 
+    private final ModeValue colorMode = new ModeValue("Color Mode", this, "Sleek", "Rainbow", "Astolfo", "Nitrogen");
     public BooleanValue font = new BooleanValue("Font", this, false);
     public BooleanValue noti = new BooleanValue("Notifications", this, true);
     public BooleanValue bps = new BooleanValue("BPS", this, true);

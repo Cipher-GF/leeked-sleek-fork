@@ -25,7 +25,7 @@ public class VerusDamage extends FlightMode {
 
         if (mc.thePlayer.hurtTime > 8) {
             boosted = true;
-            veroos = getFlight().getSpeed().getValue() / 2;
+            veroos = getFlight().getSpeed().getValue();
         }
 
         if (mc.thePlayer.hurtResistantTime < 2) {

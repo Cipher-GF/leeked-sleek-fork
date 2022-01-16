@@ -1,6 +1,6 @@
 package me.kansio.client.modules.impl.visuals.hud.sleek;
 
-import dorkbox.messageBus.annotations.Subscribe;
+import com.google.common.eventbus.Subscribe;
 import me.kansio.client.Client;
 import me.kansio.client.event.impl.RenderOverlayEvent;
 import me.kansio.client.modules.impl.Module;
@@ -12,8 +12,10 @@ import me.kansio.client.utils.math.BPSUtil;
 import me.kansio.client.utils.network.UserUtil;
 import me.kansio.client.utils.render.ColorPalette;
 import me.kansio.client.utils.render.ColorUtils;
+import me.kansio.client.utils.render.RenderUtils;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.util.EnumChatFormatting;
+
 import java.awt.*;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -33,16 +35,32 @@ public class Sleek extends HudMode {
         int index = 0;
 
         ArrayList<Module> sorted = (ArrayList<Module>) Client.getInstance().getModuleManager().getModulesSorted(mc.fontRendererObj);
-        sorted.removeIf(module-> !module.toggle(); || module.isHidden());
-
 
         if (hud.font.getValue()) {
             for (Module mod : Client.getInstance().getModuleManager().getModulesSorted(Fonts.Verdana)) {
                 if (!mod.isToggled()) continue;
 
-                Color color = ColorUtils.getGradientOffset(hud.firstColor, hud.secondColor, (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + y / Fonts.Verdana.getHeight() * 9.95);
+                Color color = ColorUtils.getGradientOffset(new Color(0, 255, 128), new Color(212, 1, 1), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + y / Fonts.Verdana.getHeight() * 9.95);
 
-                Fonts.HUD.drawStringWithShadow(ChatUtil.translateColorCodes(hud.clientName.getValueAsString()), 4, 4, color.getRGB());
+                switch (((HUD) Client.getInstance().getModuleManager().getModuleByName("HUD")).getColorMode().getValue()) {
+                    case "Sleek": {
+                        color = ColorUtils.getGradientOffset(new Color(0, 255, 128), new Color(212, 1, 1), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + y / Fonts.Verdana.getHeight() * 9.95);
+                        break;
+                    }
+                    case "Nitrogen": {
+                        color = ColorUtils.getGradientOffset(new Color(128, 171, 255), new Color(160, 72, 255), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D));
+                        break;
+                    }
+                    case "Rainbow": {
+                        color = new Color(ColorUtils.getRainbow(6000, 0));
+                        break;
+                    }
+                    case "Astolfo": {
+                        color = ColorUtils.getGradientOffset(new Color(255, 60, 234), new Color(27, 179, 255), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D));
+                        break;
+                    }
+                }
+                Fonts.HUD.drawStringWithShadow(ChatUtil.translateColorCodes(hud.clientName.getValueAsString()), 4, 4, ColorPalette.GREEN.getColor().getRGB());
 
                 String name = mod.getName() + "§7" + mod.getFormattedSuffix();
                 String userinfo = "§7" + UserUtil.getBuildType(Integer.parseInt(Client.getInstance().getUid())) + " - §f" + Client.getInstance().getUid();
@@ -69,9 +87,28 @@ public class Sleek extends HudMode {
 
                 Module lastModule = sorted.get(index - 1);
 
-                Color color = ColorUtils.getGradientOffset(hud.firstColor, hud.secondColor, (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + y / mc.fontRendererObj.FONT_HEIGHT * 9.95);
+                Color color = null;
 
-                mc.fontRendererObj.drawStringWithShadow(ChatUtil.translateColorCodes(hud.clientName.getValueAsString()), 4, 4, color.getRGB());
+                switch (((HUD) Client.getInstance().getModuleManager().getModuleByName("HUD")).getColorMode().getValue()) {
+                    case "Sleek": {
+                        color = ColorUtils.getGradientOffset(new Color(0, 255, 128), new Color(212, 1, 1), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + y / mc.fontRendererObj.FONT_HEIGHT * 9.95);
+                        break;
+                    }
+                    case "Nitrogen": {
+                        color = ColorUtils.getGradientOffset(new Color(128, 171, 255), new Color(160, 72, 255), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + y / mc.fontRendererObj.FONT_HEIGHT * 9.95);
+                        break;
+                    }
+                    case "Rainbow": {
+                        color = new Color(ColorUtils.getRainbow(6000, y * 15));
+                        break;
+                    }
+                    case "Astolfo": {
+                        color = ColorUtils.getGradientOffset(new Color(255, 60, 234), new Color(27, 179, 255), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + y / mc.fontRendererObj.FONT_HEIGHT * 9.95);
+                        break;
+                    }
+                }
+
+                mc.fontRendererObj.drawStringWithShadow(ChatUtil.translateColorCodes(hud.clientName.getValueAsString()), 4, 4, ColorPalette.GREEN.getColor().getRGB());
 
                 String name = mod.getName() + "§7" + mod.getFormattedSuffix();
                 String userinfo = "§7" + UserUtil.getBuildType(Integer.parseInt(Client.getInstance().getUid())) + " - §f" + Client.getInstance().getUid();
@@ -84,15 +121,15 @@ public class Sleek extends HudMode {
 
                 Gui.drawRect(xPos - 2.5, y - 1, xPos - 1.5, mc.fontRendererObj.FONT_HEIGHT + y + 1, color.getRGB());
 
-                ChatUtil.log("sorted: " + sorted.size() + "-size   index: " + index + "-size");
 
-                Module next = sorted.get(index + 1);
+                /*/if (lastModule != null) {
+                    String lastName = lastModule.getName() + "§7" + lastModule.getFormattedSuffix();
 
-                float nextxPos = event.getSr().getScaledWidth() - mc.fontRendererObj.getStringWidth(name) - 6;
-                String nextName = next.getName() + "§7" + next.getFormattedSuffix();
+                    float pos = event.getSr().getScaledWidth() - mc.fontRendererObj.getStringWidth(lastName) - 6;
+                    Gui.drawRect(pos - 2, mc.fontRendererObj.FONT_HEIGHT + y, event.getSr().getScaledWidth() + 6 + mc.fontRendererObj.getStringWidth(lastName), mc.fontRendererObj.FONT_HEIGHT + y + 1, color.getRGB());
+                }/  */
 
                 mc.fontRendererObj.drawStringWithShadow(name, xPos, (float) (0.5 + y), color.getRGB());
-
                 y = y + 11;
 
                 mc.fontRendererObj.drawStringWithShadow(userinfo, event.getSr().getScaledWidth() - mc.fontRendererObj.getStringWidth(userinfo) - 2, event.getSr().getScaledHeight() - (mc.ingameGUI.getChatGUI().getChatOpen() ? 24 : 10), -1);

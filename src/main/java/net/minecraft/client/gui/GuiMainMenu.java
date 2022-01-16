@@ -57,35 +57,33 @@ public class GuiMainMenu extends GuiScreen
     @Override
     protected void actionPerformed(GuiButton button) {
         try {
-            switch (button.id) {
-                case 0:
-                    Client.getInstance().setUid(username.getText());
-                    JsonElement node = new JsonParser().parse(HttpUtil.get("http://zerotwoclient.xyz:13337/api/v1/getusers"));
-                    if (node.isJsonArray()) {
-                        JsonArray arr = node.getAsJsonArray();
+            if (button.id == 0) {
+                Client.getInstance().setUid(username.getText());
+                String serv = HttpUtil.get("http://zerotwoclient.xyz:13337/api/v1/getusers");
+                JsonElement node = new JsonParser().parse(serv);
+                if (node.isJsonArray()) {
+                    JsonArray arr = node.getAsJsonArray();
 
-                        arr.forEach(element -> {
-                            JsonObject obj = element.getAsJsonObject();
-                            if (obj.get("uid").getAsString().equals(Client.getInstance().getUid())) {
-                                try {
-                                    if (obj.get("hwid").getAsString().equals(NegroidFarm.guisdafghiusfgfsdhusdfghifsdhuidsfhuifdshuifsdhiudsfhiusfdhsdiuffsdhiudhsifusdfhiufsdhiufsdhiusdfhiufsdhiufsdhiu())) {
-                                        System.out.println("called XD");
-                                        Client.getInstance().onStart();
-                                        Client.getInstance().setUsername(obj.get("username").getAsString());
-                                        Client.getInstance().setDiscordTag(obj.get("discordTag").getAsString());
-                                        mc.displayGuiScreen(new MainMenu());
-                                    }
-                                } catch (NoSuchAlgorithmException e) {
-                                    e.printStackTrace();
+                    arr.forEach(element -> {
+                        JsonObject obj = element.getAsJsonObject();
+                        if (obj.get("uid").getAsString().equals(Client.getInstance().getUid())) {
+                            try {
+                                if (obj.get("hwid").getAsString().equals(NegroidFarm.guisdafghiusfgfsdhusdfghifsdhuidsfhuifdshuifsdhiudsfhiusfdhsdiuffsdhiudhsifusdfhiufsdhiufsdhiusdfhiufsdhiufsdhiu())) {
+                                    System.out.println("called XD");
+                                    Client.getInstance().onStart();
+                                    Client.getInstance().setUsername(obj.get("username").getAsString());
+                                    Client.getInstance().setDiscordTag(obj.get("discordTag").getAsString());
+                                    mc.displayGuiScreen(new MainMenu());
                                 }
+                            } catch (NoSuchAlgorithmException e) {
+                                e.printStackTrace();
                             }
-                        });
-                    }
-                    break;
-                default:
-                    break;
+                        }
+                    });
+                }
             }
         } catch (Throwable var11) {
+            var11.printStackTrace();
             //REMOVE ME LATER: throw new RuntimeException();
         }
     }

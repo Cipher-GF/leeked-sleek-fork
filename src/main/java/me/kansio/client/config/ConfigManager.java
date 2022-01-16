@@ -79,6 +79,7 @@ public class ConfigManager {
                 }
             });
         } catch (Exception throwable) {
+            throwable.printStackTrace();
             ChatUtil.log("Config not found...");
 
             return;

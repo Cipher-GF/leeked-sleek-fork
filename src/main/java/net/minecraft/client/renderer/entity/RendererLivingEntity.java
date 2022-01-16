@@ -91,7 +91,7 @@ public abstract class RendererLivingEntity<T extends EntityLivingBase> extends R
      */
     public void doRender(T entity, double x, double y, double z, float entityYaw, float partialTicks) {
         EntityLivingRenderEvent e = new EntityLivingRenderEvent(true, entity);
-        Client.getInstance().getEventBus().publish(e);
+        Client.getInstance().getEventBus().post(e);
         if (e.isCancelled()) return;
 
         if (!Reflector.RenderLivingEvent_Pre_Constructor.exists() || !Reflector.postForgeBusEvent(Reflector.RenderLivingEvent_Pre_Constructor, new Object[]{entity, this, Double.valueOf(x), Double.valueOf(y), Double.valueOf(z)})) {
@@ -228,7 +228,7 @@ public abstract class RendererLivingEntity<T extends EntityLivingBase> extends R
             }
 
             EntityLivingRenderEvent ePost = new EntityLivingRenderEvent(false, entity);
-            Client.getInstance().getEventBus().publish(ePost);
+            Client.getInstance().getEventBus().post(ePost);
 
             if (!Reflector.RenderLivingEvent_Post_Constructor.exists() || !Reflector.postForgeBusEvent(Reflector.RenderLivingEvent_Post_Constructor, new Object[]{entity, this, Double.valueOf(x), Double.valueOf(y), Double.valueOf(z)})) {
                 ;

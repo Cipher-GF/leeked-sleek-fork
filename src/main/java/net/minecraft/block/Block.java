@@ -436,7 +436,7 @@ public class Block {
      */
     public void addCollisionBoxesToList(World worldIn, BlockPos pos, IBlockState state, AxisAlignedBB mask, List<AxisAlignedBB> list, Entity collidingEntity) {
         BlockCollisionEvent event = new BlockCollisionEvent(this.getCollisionBoundingBox(worldIn, pos, state), state.getBlock(), pos.getX(), pos.getY(), pos.getZ());
-        Client.getInstance().getEventBus().publish(event);
+        Client.getInstance().getEventBus().post(event);
 
         if (event.isCancelled())
             return;

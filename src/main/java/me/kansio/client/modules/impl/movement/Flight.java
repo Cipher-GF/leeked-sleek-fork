@@ -1,6 +1,6 @@
 package me.kansio.client.modules.impl.movement;
 
-import dorkbox.messageBus.annotations.Subscribe;
+import com.google.common.eventbus.Subscribe;
 import lombok.Getter;
 import me.kansio.client.event.impl.BlockCollisionEvent;
 import me.kansio.client.event.impl.MoveEvent;
@@ -43,7 +43,6 @@ public class Flight extends Module {
     private final ModeValue modeValue = new ModeValue("Mode", this, modes.stream().map(FlightMode::getName).collect(Collectors.toList()).toArray(new String[]{}));
     private FlightMode currentMode = modes.stream().anyMatch(speedMode -> speedMode.getName().equalsIgnoreCase(modeValue.getValue())) ? modes.stream().filter(speedMode -> speedMode.getName().equalsIgnoreCase(modeValue.getValue())).findAny().get() : null;
     @Getter private NumberValue<Double> speed = new NumberValue<>("Speed", this, 1d, 0d, 10d, 0.1);
-    @Getter private BooleanValue superFastFlySigmaAMogUs3amNeverSurviveAtNightItsSoHardOMGNigger = new BooleanValue("Skidma Jellow fest floy", this, true);
     @Getter private BooleanValue viewbob = new BooleanValue("View Bobbing", this, true);
     @Getter private BooleanValue boost = new BooleanValue("Boost", this, true, modeValue, "Funcraft");
     @Getter private BooleanValue extraBoost = new BooleanValue("Extra Boost", this, true, modeValue, "Funcraft");

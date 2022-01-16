@@ -1,10 +1,11 @@
 package me.kansio.client;
 
+import com.google.common.eventbus.EventBus;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import dorkbox.messageBus.MessageBus;
-import dorkbox.messageBus.annotations.Subscribe;
+import com.google.common.eventbus.Subscribe;
 import lombok.Getter;
 import lombok.Setter;
 import me.kansio.client.commands.CommandManager;
@@ -52,7 +53,7 @@ public class Client {
     private static Client instance = new Client();
 
     @Getter
-    private MessageBus eventBus = new MessageBus();
+    private EventBus eventBus = new EventBus("Sleek");
 
     @Getter
     private ModuleManager moduleManager;
@@ -83,7 +84,7 @@ public class Client {
         dir = new File(Minecraft.getMinecraft().mcDataDir, "Sleek");
 
         //Subscribe to the event bus
-        eventBus.subscribe(this);
+        eventBus.register(this);
 
         //Set the value manager
         valueManager = new ValueManager();
@@ -127,9 +128,6 @@ public class Client {
     public void onShutdown() {
         //save keybinds
         keybindManager.save();
-
-        //shutdown the event bus
-        eventBus.shutdown();
     }
 
     @Subscribe

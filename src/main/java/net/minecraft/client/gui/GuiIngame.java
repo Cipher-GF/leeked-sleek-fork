@@ -323,7 +323,7 @@ public class GuiIngame extends Gui {
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         GlStateManager.disableLighting();
         GlStateManager.enableAlpha();
-        Client.getInstance().getEventBus().publish(new RenderOverlayEvent());
+        Client.getInstance().getEventBus().post(new RenderOverlayEvent());
     }
 
     protected void renderTooltip(ScaledResolution sr, float partialTicks) {

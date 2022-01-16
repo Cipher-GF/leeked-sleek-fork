@@ -1332,7 +1332,7 @@ public abstract class EntityPlayer extends EntityLivingBase
                         {
                             targetEntity.addVelocity((double)(-MathHelper.sin(this.rotationYaw * (float)Math.PI / 180.0F) * (float)i * 0.5F), 0.1D, (double)(MathHelper.cos(this.rotationYaw * (float)Math.PI / 180.0F) * (float)i * 0.5F));
                             final NoSlowEvent event = new NoSlowEvent(NoSlowEvent.Type.KEEPSPRINT);
-                            Client.getInstance().getEventBus().publish(event);
+                            Client.getInstance().getEventBus().post(event);
                             if (!event.isCancelled()) {
                                 this.motionX *= 0.6D;
                                 this.motionZ *= 0.6D;

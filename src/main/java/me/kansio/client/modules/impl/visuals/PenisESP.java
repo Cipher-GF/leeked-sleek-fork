@@ -1,7 +1,6 @@
 package me.kansio.client.modules.impl.visuals;
 
-import com.sun.javafx.geom.Vec3d;
-import dorkbox.messageBus.annotations.Subscribe;
+import com.google.common.eventbus.Subscribe;
 import me.kansio.client.event.impl.Render3DEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;

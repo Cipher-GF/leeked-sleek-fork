@@ -1,7 +1,7 @@
 package me.kansio.client.modules.impl.movement;
 
 import com.google.common.util.concurrent.AtomicDouble;
-import dorkbox.messageBus.annotations.Subscribe;
+import com.google.common.eventbus.Subscribe;
 import lombok.Getter;
 import me.kansio.client.event.impl.MoveEvent;
 import me.kansio.client.event.impl.PacketEvent;

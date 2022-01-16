@@ -116,12 +116,12 @@ public class Notification {
 
         HUD hud = (HUD) Client.getInstance().getModuleManager().getModuleByName("HUD");
         if (hud.font.getValue()) {
-            Fonts.Verdana.drawString(title, (int) (GuiScreen.width - offset + 8), GuiScreen.height - 2 - height - 20, -1);
-            Fonts.NotifIcon.drawString(icon, (int) (GuiScreen.width - offset + 200 / 2), GuiScreen.height + 5 / 2 - height - 20, -1);
+            Fonts.Verdana.drawString(title, (int) (GuiScreen.width - offset + 8), GuiScreen.height - 2 - height - 20, typecolor.getRGB());
+            Fonts.NotifIcon.drawString(icon, (int) (GuiScreen.width - offset + 200 / 2), GuiScreen.height + 5 / 2 - height - 20, typecolor.getRGB());
             Fonts.Verdana.drawString(messsage, (int) (GuiScreen.width - offset + 8), GuiScreen.height - 40, -1);
         } else {
-            fontRenderer.drawString(title, (int) (GuiScreen.width - offset + 8), GuiScreen.height - 2 - height - 20, -1);
-            Fonts.NotifIcon.drawString(icon, (int) (GuiScreen.width - offset + 200 / 2), GuiScreen.height + 5 / 2 - height - 20, -1);
+            fontRenderer.drawString(title, (int) (GuiScreen.width - offset + 8), GuiScreen.height - 2 - height - 20, typecolor.getRGB());
+            Fonts.NotifIcon.drawString(icon, (int) (GuiScreen.width - offset + 200 / 2), GuiScreen.height + 5 / 2 - height - 20, typecolor.getRGB());
             fontRenderer.drawString(messsage, (int) (GuiScreen.width - offset + 8), GuiScreen.height - 20 - 20, -1);
         }
     }
