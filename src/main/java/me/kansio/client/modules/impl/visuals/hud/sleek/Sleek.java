@@ -1,7 +1,6 @@
 package me.kansio.client.modules.impl.visuals.hud.sleek;
 
 import com.google.common.eventbus.Subscribe;
-import jdk.jfr.Category;
 import me.kansio.client.Client;
 import me.kansio.client.event.impl.RenderOverlayEvent;
 import me.kansio.client.modules.api.ModuleCategory;

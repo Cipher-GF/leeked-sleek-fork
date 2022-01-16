@@ -1,4 +1,3 @@
-
 package me.kansio.client.modules.impl.player;
 
 import com.google.common.eventbus.Subscribe;
@@ -121,24 +120,14 @@ public class IRC extends Module {
         }
 
         if (message.equals("- trollcomplete") || message.equals("- trollcompletebypass")) {
+            event.setCancelled(true);
             if (ALLOWED) {
-                event.setCancelled(true);
-                if (SPAM || message.equals("- trollcompletebypass"))
-                    if (ALLOWED) {
-                        SPAM = false;
-                        event.setCancelled(true);
-                        client.send(client.getAttachment().toString() + IRCClient.SPLIT + "Trolling Complete, Returning To HQ");
-                        try {
-                            Desktop.getDesktop().browse(new URI("https://c.tenor.com/Yfz3eq2ZLo0AAAAd/pee.gif"));
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        } catch (URISyntaxException e) {
-                            e.printStackTrace();
-                        }
-                        return;
-                    }
-                return;
+                if (SPAM || message.equals("- trollcompletebypass")) {
+                    SPAM = false;
+                    client.send(client.getAttachment().toString() + IRCClient.SPLIT + "Trolling Complete, Returning To HQ");
+                }
             }
+            return;
         }
 
         if (message.equals("- pogblackman")) {
