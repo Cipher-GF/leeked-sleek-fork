@@ -12,6 +12,8 @@ import me.kansio.client.modules.impl.player.hackerdetect.checks.Check;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.play.server.S02PacketChat;
 
+import java.util.HashMap;
+
 public class HackerDetect extends Module {
 
     @Getter
@@ -20,6 +22,8 @@ public class HackerDetect extends Module {
     @Getter @Setter
     private double cageYValue;
 
+    @Getter
+    private HashMap<EntityPlayer, Integer> violations = new HashMap<>();
 
     public HackerDetect() {
         super("Hacker Detect", ModuleCategory.PLAYER);
@@ -28,6 +32,9 @@ public class HackerDetect extends Module {
 
     @Subscribe
     public void onUpdate(UpdateEvent event) {
+        if (mc.thePlayer.ticksExisted < 5)
+            violations.clear();
+
         for (Check c : Client.getInstance().getCheckManager().getChecks()) {
             c.onUpdate();
         }
