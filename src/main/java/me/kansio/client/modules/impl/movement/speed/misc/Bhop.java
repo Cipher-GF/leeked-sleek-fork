@@ -13,9 +13,12 @@ public class Bhop extends SpeedMode {
 
     @Override
     public void onUpdate(UpdateEvent event) {
+        if (mc.thePlayer.onGround) {
+            getSpeed().getHDist().set(getSpeed().getSpeed().getValue());
+        }
         if (mc.thePlayer.isMovingOnGround()) {
             mc.thePlayer.motionY = PlayerUtil.getMotion(0.42f);
         }
-        PlayerUtil.setMotion(getSpeed().getSpeed().getValue().floatValue());
+        PlayerUtil.setMotion(getSpeed().handleFriction(getSpeed().getHDist()));
     }
 }
