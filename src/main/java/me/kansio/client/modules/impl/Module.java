@@ -117,36 +117,35 @@ public abstract class Module {
     }
 
     public void load(JsonObject obj, boolean loadKey) {
-        obj.entrySet().forEach(ogzk -> {
-            switch (ogzk.getKey()) {
+        obj.entrySet().forEach(data -> {
+            switch (data.getKey()) {
                 case "name": {
                     break;
                 }
                 case "keybind": {
                     if (loadKey) {
-                        this.keyBind = ogzk.getValue().getAsInt();
+                        this.keyBind = data.getValue().getAsInt();
                     }
                     break;
                 }
                 case "enabled": {
-                    if (ogzk.getValue().getAsBoolean()) {
-                        toggle();
-                    }
+                    if (!(isToggled() && data.getValue().getAsBoolean()) && !(!isToggled() && !data.getValue().getAsBoolean()))
+                        setToggled(data.getValue().getAsBoolean());
                     break;
                 }
             }
 
-            Value val = Client.getInstance().getValueManager().getValueFromOwner(this, ogzk.getKey());
+            Value val = Client.getInstance().getValueManager().getValueFromOwner(this, data.getKey());
 
             if (val != null) {
                 if (val instanceof BooleanValue) {
-                    val.setValue(ogzk.getValue().getAsBoolean());
+                    val.setValue(data.getValue().getAsBoolean());
                 } else if (val instanceof NumberValue) {
-                    val.setValue(ogzk.getValue().getAsDouble());
+                    val.setValue(data.getValue().getAsDouble());
                 } else if (val instanceof ModeValue) {
-                    val.setValue(ogzk.getValue().getAsString());
+                    val.setValue(data.getValue().getAsString());
                 } else if (val instanceof StringValue) {
-                    val.setValue(ogzk.getValue().getAsString());
+                    val.setValue(data.getValue().getAsString());
                 }
             }
 
@@ -156,7 +155,7 @@ public abstract class Module {
     public void setToggled(boolean toggled) {
         this.toggled = toggled;
 
-        if (this.toggled) {
+        if (toggled) {
             Client.getInstance().getEventBus().register(this);
             onEnable();
         } else {
