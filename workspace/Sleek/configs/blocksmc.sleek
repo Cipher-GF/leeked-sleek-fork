@@ -42,7 +42,7 @@
   {
     "name": "Teleport Aura",
     "keybind": 0,
-    "enabled": true
+    "enabled": false
   },
   {
     "name": "Brightness",
@@ -115,7 +115,7 @@
   {
     "name": "Killaura",
     "keybind": 19,
-    "enabled": false,
+    "enabled": true,
     "Mode": "Smart",
     "Target Priority": "Health",
     "Rotation Mode": "Default",
@@ -159,7 +159,7 @@
   {
     "name": "Fast Bow",
     "keybind": 0,
-    "enabled": true,
+    "enabled": false,
     "Packets": "20.0",
     "Hold Bow": "true"
   },
@@ -186,7 +186,7 @@
   {
     "name": "ACDetector",
     "keybind": 0,
-    "enabled": true,
+    "enabled": false,
     "Delay": "0.5"
   },
   {
@@ -236,7 +236,7 @@
     "BPS": "true",
     "Important Only": "true",
     "Client Name": "niggerware 420",
-    "Module Suffix": " [%s]",
+    "Module Suffix": " %s",
     "Scoreboard": "Right",
     "Scoreboard Y": "0.0"
   },
@@ -286,7 +286,7 @@
   {
     "name": "Strafe",
     "keybind": 0,
-    "enabled": true
+    "enabled": false
   },
   {
     "name": "No Rotate",
@@ -356,7 +356,7 @@
     "keybind": 0,
     "enabled": true,
     "Attack Animations": "true",
-    "Block Mode": "Exhi",
+    "Block Mode": "Interia",
     "Smooth Hit": "false",
     "Scale": "1.0",
     "Swing Speed": "8.0"
