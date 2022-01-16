@@ -22,7 +22,13 @@ public class SpeedA extends Check {
         if (Minecraft.getMinecraft().thePlayer.ticksExisted > 20) {
 
             for (EntityPlayer ent : Minecraft.getMinecraft().theWorld.playerEntities) {
-                if (BPSUtil.getBPS(ent) > 15) {
+
+                if (ent.ticksExisted < 20) continue;
+                if (ent.fallDistance > 20) continue;
+
+                if (ent.hurtTime != 0) continue;
+
+                if (BPSUtil.getBPS(ent) > 30) {
                     HackerDetect.getInstance().getViolations().put(ent, HackerDetect.getInstance().getViolations().getOrDefault(ent, 1));
 
                     if (HackerDetect.getInstance().getViolations().get(ent) % 5 == 1) {
