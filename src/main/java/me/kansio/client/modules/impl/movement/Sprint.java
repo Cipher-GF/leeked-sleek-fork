@@ -1,4 +1,4 @@
-package me.kansio.client.modules.impl.player;
+package me.kansio.client.modules.impl.movement;
 
 import dorkbox.messageBus.annotations.Subscribe;
 import lombok.Getter;
@@ -7,12 +7,13 @@ import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
+import me.kansio.client.modules.impl.player.NoSlow;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.ModeValue;
 
 @ModuleData(
         name = "Sprint",
-        category = ModuleCategory.PLAYER,
+        category = ModuleCategory.MOVEMENT,
         description = "Automatically sprints"
 )
 public class Sprint extends Module {
@@ -28,17 +29,19 @@ public class Sprint extends Module {
 
         switch (mode.getValue()) {
             case "Legit":
-                if (Client.getInstance().getModuleManager().getModuleByName("NoSlow").isToggled()) {
-                    if (mc.thePlayer.moveForward != 0 && !mc.thePlayer.isCollidedHorizontally) {
+                if (Client.getInstance().getModuleManager().getModuleByName("No Slow").isToggled()) {
+                    if (mc.thePlayer.moveForward > 0 && !mc.thePlayer.isCollidedHorizontally) {
                         mc.thePlayer.setSprinting(true);
                     }
                 } else {
-                    if (mc.thePlayer.moveForward != 0 && !mc.thePlayer.isUsingItem() && !mc.thePlayer.isCollidedHorizontally) {
+                    if (mc.thePlayer.moveForward > 0 && !mc.thePlayer.isUsingItem() && !mc.thePlayer.isCollidedHorizontally) {
                         mc.thePlayer.setSprinting(true);
                     }
                 }
+                break;
             case "Omni":
                 mc.thePlayer.setSprinting(true);
+                break;
         }
     }
 

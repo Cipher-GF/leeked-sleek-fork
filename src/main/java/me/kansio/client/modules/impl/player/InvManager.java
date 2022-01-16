@@ -31,15 +31,15 @@ import java.util.List;
 public class InvManager extends Module {
 
     private BooleanValue autoSword = new BooleanValue("AutoSword", this, false);
-    private BooleanValue aSwordInInv = new BooleanValue("AutoSword Only in Inv", this, false, autoSword);
+    private BooleanValue aSwordInInv = new BooleanValue("Only in Inv", this, false, autoSword);
     private NumberValue<Double> aSwordDelay = new NumberValue<>("AutoSword Delay", this, 25.0, 0.0, 1000.0, 1.0, autoSword);
 
-    private BooleanValue invCleaner = new BooleanValue("Inventory Cleaner", this, false);
-    private BooleanValue invCleanerInInv = new BooleanValue("InvCleaner Only in Inv", this, false, invCleaner);
+    private BooleanValue invCleaner = new BooleanValue("Inv Cleaner", this, false);
+    private BooleanValue invCleanerInInv = new BooleanValue("Inv Only", this, false, invCleaner);
     private NumberValue<Double> invCleanerDelay = new NumberValue<>("InvCleaner Delay", this, 25.0, 0.0, 1000.0, 1.0, invCleaner);
 
     private BooleanValue autoArmor = new BooleanValue("Auto Armor", this, false);
-    private BooleanValue autoArmorInInv = new BooleanValue("AutoArmor Only in Inv", this, false, autoArmor);
+    private BooleanValue autoArmorInInv = new BooleanValue("Only in Inv", this, false, autoArmor);
     private NumberValue<Double> autoArmorDelay = new NumberValue<>("AutoArmor Delay", this, 25.0, 0.0, 1000.0, 1.0, autoArmor);
 
     private Stopwatch armorStop = new Stopwatch();

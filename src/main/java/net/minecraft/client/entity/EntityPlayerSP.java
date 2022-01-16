@@ -1,12 +1,10 @@
 package net.minecraft.client.entity;
 
-import dorkbox.messageBus.annotations.Subscribe;
 import me.kansio.client.Client;
 import me.kansio.client.event.impl.ChatEvent;
 import me.kansio.client.event.impl.MoveEvent;
 import me.kansio.client.event.impl.NoSlowEvent;
 import me.kansio.client.event.impl.UpdateEvent;
-import me.kansio.client.modules.impl.player.Sprint;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.MovingSoundMinecartRiding;
 import net.minecraft.client.audio.PositionedSoundRecord;
