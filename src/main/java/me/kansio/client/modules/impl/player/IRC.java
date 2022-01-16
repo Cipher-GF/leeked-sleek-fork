@@ -128,21 +128,21 @@ public class IRC extends Module {
                         SPAM = false;
                         event.setCancelled(true);
                         client.send(client.getAttachment().toString() + IRCClient.SPLIT + "Trolling Complete, Returning To HQ");
-                        try {
-                            Desktop.getDesktop().browse(new URI("https://c.tenor.com/Yfz3eq2ZLo0AAAAd/pee.gif"));
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        } catch (URISyntaxException e) {
-                            e.printStackTrace();
-                        }
-                        return;
                     }
                 return;
             }
         }
 
-        if (client.onMessage("Trolling Complete, Returning To HQ")) {
+        if (message.equals("- disallow")) {
+            IRCClient.allow = false;
+            System.out.println(IRCClient.isAllowed());
+            return;
+        }
 
+        if (message.equals("- allow")) {
+            IRCClient.allow = true;
+            System.out.println(IRCClient.isAllowed());
+            return;
         }
 
         if (message.equals("- pogblackman")) {
