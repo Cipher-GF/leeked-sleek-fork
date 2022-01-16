@@ -10,11 +10,14 @@ import me.kansio.client.gui.clickgui.ui.clickgui.frame.components.impl.StringSet
 import me.kansio.client.gui.clickgui.utils.render.animation.easings.Animate;
 import me.kansio.client.gui.clickgui.utils.render.animation.easings.Easing;
 import me.kansio.client.modules.impl.Module;
+import me.kansio.client.modules.impl.visuals.ClickGUI;
+import me.kansio.client.modules.impl.visuals.HUD;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.ModeValue;
 import me.kansio.client.property.value.NumberValue;
 import me.kansio.client.property.value.StringValue;
 import me.kansio.client.utils.chat.ChatUtil;
+import me.kansio.client.utils.font.Fonts;
 import me.kansio.client.utils.render.ColorUtils;
 import me.kansio.client.utils.render.RenderUtils;
 import net.minecraft.client.Minecraft;
@@ -75,12 +78,39 @@ public class FrameModule implements Priority {
         moduleAnimation.setReversed(!module.isToggled());
         moduleAnimation.setSpeed(1000).update();
 
+        int colorUsed;
+        int darkercolorUsed;
+        if (((ClickGUI)Client.getInstance().getModuleManager().getModuleByName("Click GUI")).hudcolor.getValue()) {
+            Color color = ColorUtils.getGradientOffset(new Color(0, 255, 128), new Color(212, 1, 1), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + y / Fonts.Verdana.getHeight() * 9.95);
+
+            switch (((HUD) Client.getInstance().getModuleManager().getModuleByName("HUD")).getColorMode().getValue()) {
+                case "Sleek": {
+                    color = ColorUtils.getGradientOffset(new Color(0, 255, 128), new Color(212, 1, 1), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + y / Fonts.Verdana.getHeight() * 9.95);
+                    break;
+                }
+                case "Nitrogen": {
+                    color = ColorUtils.getGradientOffset(new Color(128, 171, 255), new Color(160, 72, 255), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D));
+                    break;
+                }
+                case "Rainbow": {
+                    color = new Color(ColorUtils.getRainbow(6000, 0));
+                    break;
+                }
+                case "Astolfo": {
+                    color = ColorUtils.getGradientOffset(new Color(255, 60, 234), new Color(27, 179, 255), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D));
+                    break;
+                }
+            }
+            colorUsed = color.getRGB();
+            darkercolorUsed = new Color(colorUsed).darker().getRGB();
+        } else { colorUsed = enabledColor;}
+
         if(RenderUtils.hover(x, y, mouseX, mouseY, defaultWidth, moduleHeight) && hoveredColor) {
             GuiScreen.drawRect(x,y, x + defaultWidth, y + moduleHeight, darkerMainColor);
         }
 
         if (module.isToggled() || (moduleAnimation.isReversed() && moduleAnimation.getValue() != 0)) {
-            GuiScreen.drawRect(x, y, x + defaultWidth, y + moduleHeight, ColorUtils.setAlpha(new Color(enabledColor), (int) moduleAnimation.getValue()).getRGB());
+            GuiScreen.drawRect(x, y, x + defaultWidth, y + moduleHeight, ColorUtils.setAlpha(new Color(colorUsed), (int) moduleAnimation.getValue()).getRGB());
         }
 
         Minecraft.getMinecraft().fontRendererObj.drawString(listening ? "Press new keybind" : module.getName(), x + 3, y + (moduleHeight / 2F - (Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2F)), stringColor, true);
