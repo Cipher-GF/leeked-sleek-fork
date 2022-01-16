@@ -35,6 +35,7 @@ public class Sleek extends HudMode {
         int index = 0;
 
         ArrayList<Module> sorted = (ArrayList<Module>) Client.getInstance().getModuleManager().getModulesSorted(mc.fontRendererObj);
+        sorted.removeIf(m -> !m.isToggled());
 
         if (hud.font.getValue()) {
             for (Module mod : Client.getInstance().getModuleManager().getModulesSorted(Fonts.Verdana)) {
@@ -60,6 +61,7 @@ public class Sleek extends HudMode {
                         break;
                     }
                 }
+
                 Fonts.HUD.drawStringWithShadow(ChatUtil.translateColorCodes(hud.clientName.getValueAsString()), 4, 4, color.getRGB());
 
                 String name = mod.getName() + "§7" + mod.getFormattedSuffix();
@@ -67,6 +69,9 @@ public class Sleek extends HudMode {
                 float xPos = event.getSr().getScaledWidth() - Fonts.Verdana.getStringWidth(name) - 6;
                 Gui.drawRect(xPos - 1.5, y - 3, event.getSr().getScaledWidth(), Fonts.Verdana.getHeight() + y + 1, new Color(0, 0, 0, 80).getRGB());
                 Gui.drawRect(event.getSr().getScaledWidth() - 1, y - 3, event.getSr().getScaledWidth(), Fonts.Verdana.getHeight() + y + 1, color.getRGB());
+
+
+
                 Fonts.HUD.drawStringWithShadow(name, xPos, (float) (0.5 + y), color.getRGB());
                 y = y + 11;
 
@@ -116,6 +121,17 @@ public class Sleek extends HudMode {
 
                 Gui.drawRect(xPos - 1.5, y - 1, event.getSr().getScaledWidth(), mc.fontRendererObj.FONT_HEIGHT + y + 1, new Color(0, 0, 0, 80).getRGB());
                 Gui.drawRect(xPos - 2.5, y - 1, xPos - 1.5, mc.fontRendererObj.FONT_HEIGHT + y + 1, color.getRGB());
+
+                if (sorted.size() > index) {
+                    Module nextMod = sorted.get(index);
+
+                    String nextName = nextMod.getName() + "§7" + nextMod.getFormattedSuffix();
+                    float nextxPos = (float) (event.getSr().getScaledWidth() - mc.fontRendererObj.getStringWidth(nextName) - 7.5);
+
+                    Gui.drawRect(xPos - 2.5, mc.fontRendererObj.FONT_HEIGHT + y + 1, nextxPos, mc.fontRendererObj.FONT_HEIGHT + y + 2, color.getRGB());
+                } else {
+                    Gui.drawRect(xPos - 2.5, mc.fontRendererObj.FONT_HEIGHT + y + 1, xPos + 100, mc.fontRendererObj.FONT_HEIGHT + y + 2, color.getRGB());
+                }
 
                 mc.fontRendererObj.drawStringWithShadow(name, xPos, (float) (0.5 + y), color.getRGB());
                 y = y + 11;
