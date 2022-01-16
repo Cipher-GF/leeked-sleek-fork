@@ -1,6 +1,8 @@
 package net.minecraft.client.entity;
 
 import com.mojang.authlib.GameProfile;
+import me.kansio.client.Client;
+import me.kansio.client.modules.impl.visuals.Cape;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.network.NetworkPlayerInfo;
 import net.minecraft.client.renderer.ImageBufferDownload;
@@ -88,21 +90,22 @@ public abstract class AbstractClientPlayer extends EntityPlayer
         NetworkPlayerInfo networkplayerinfo = this.getPlayerInfo();
         return networkplayerinfo == null ? DefaultPlayerSkin.getDefaultSkin(this.getUniqueID()) : networkplayerinfo.getLocationSkin();
     }
-
     public ResourceLocation getLocationCape()
     {
+        Cape capes = (Cape) Client.getInstance().getModuleManager().getModuleByName("Cape");
+
         if (!Config.isShowCapes())
         {
             return null;
         }
         else if (this.locationOfCape != null)
         {
-            return this.locationOfCape;
+            return capes.isToggled() && capes.canRender(this) ? capes.getCape() : locationOfCape;
         }
         else
         {
             NetworkPlayerInfo networkplayerinfo = this.getPlayerInfo();
-            return networkplayerinfo == null ? null : networkplayerinfo.getLocationCape();
+            return networkplayerinfo == null ? null : capes.isToggled() && capes.canRender(this) ? capes.getCape() : networkplayerinfo.getLocationCape();
         }
     }
 

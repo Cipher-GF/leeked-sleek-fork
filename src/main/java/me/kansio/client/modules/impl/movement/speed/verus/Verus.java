@@ -17,6 +17,7 @@ public class Verus extends SpeedMode {
 
             if (mc.thePlayer.onGround) {
                 event.setMotionY(mc.thePlayer.motionY = 0.42);
+                mc.thePlayer.jump();
             }
 
             float sped2 = (float) (mc.thePlayer.isPotionActive(Potion.moveSpeed) ? 0.365 : 0.355);

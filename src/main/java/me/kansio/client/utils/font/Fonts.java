@@ -10,8 +10,8 @@ public class Fonts extends Util {
     public static final MCFontRenderer Arial30 = new MCFontRenderer(new Font("Arial", Font.BOLD,30),true,true);
     public static final MCFontRenderer Verdana = new MCFontRenderer(new Font("Verdana", Font.PLAIN,18),true,true);
     public static final MCFontRenderer Arial12 = new MCFontRenderer(new Font("Arial", Font.PLAIN,12),true,true);
-    public static final MCFontRenderer HUD = new MCFontRenderer(new Font("Arial", Font.PLAIN,20),true,true);
-    public static final MCFontRenderer NotifIcon = new MCFontRenderer(new Font("Arial", Font.PLAIN,12),true,true);
+    public static final MCFontRenderer HUD = new MCFontRenderer(new Font("Arial", Font.PLAIN,18),true,true);
+    public static final MCFontRenderer NotifIcon = new MCFontRenderer(fontFromTTF(new ResourceLocation("sleek/fonts/notif-icon.ttf"),20,0), true, true);
 
 
     private static Font fontFromTTF(ResourceLocation fontLocation, float fontSize, int fontType) {

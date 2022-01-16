@@ -60,7 +60,7 @@ public final class GuiAltManager extends GuiScreen {
                     break;
 
                 case 5:
-                    mc.displayGuiScreen(new GuiAltManager2(this));
+                    mc.displayGuiScreen(new GuiMicrosoftAltManager(this));
                     break;
 
                 default:

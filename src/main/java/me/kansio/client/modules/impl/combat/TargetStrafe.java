@@ -28,8 +28,6 @@ public class TargetStrafe extends Module {
     public BooleanValue render = new BooleanValue("Render", this, false);
     public NumberValue<Double> radius = new NumberValue<>("Radius", this, 3d, 0.1d, 5d, 0.1);
     public NumberValue<Double> width = new NumberValue<>("Width", this, 1d, 0.1d, 5d, 0.1, render);
-    // kansio had autism doing that for sulfur
-    // maybe, lazu
     public NumberValue<Double> red = new NumberValue<>("Red", this, 100d, 0d, 255d, 1d, render);
     public NumberValue<Double> green = new NumberValue<>("Green", this, 100d, 0d, 255d, 1d, render);
     public NumberValue<Double> blue = new NumberValue<>("Blue", this, 100d, 0d, 255d, 1d, render);

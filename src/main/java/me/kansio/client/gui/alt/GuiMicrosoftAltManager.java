@@ -12,7 +12,7 @@ import org.lwjgl.input.Keyboard;
 import java.io.IOException;
 import java.text.MessageFormat;
 
-public final class GuiAltManager2 extends GuiScreen {
+public final class GuiMicrosoftAltManager extends GuiScreen {
     private GuiTextField password;
     private final GuiScreen previousScreen;
     private GuiTextField username;
@@ -21,7 +21,7 @@ public final class GuiAltManager2 extends GuiScreen {
 
 
 
-    public GuiAltManager2(GuiScreen previousScreen) {
+    public GuiMicrosoftAltManager(GuiScreen previousScreen) {
         this.previousScreen = previousScreen;
     }
 
@@ -62,10 +62,7 @@ public final class GuiAltManager2 extends GuiScreen {
         username.drawTextBox();
         password.drawTextBox();
         this.drawCenteredString(font, "Account Login", (int) (width / 2F), 20, -1);
-        this.drawCenteredString(font, thread == null ? (crackedStatus == null ? EnumChatFormatting.GRAY + "Idle" : EnumChatFormatting.GREEN + crackedStatus) : thread.getStatus(),
-                (int) (width / 2f),
-                29,
-                -1);
+        this.drawCenteredString(font, thread == null ? (crackedStatus == null ? EnumChatFormatting.GRAY + "Idle" : EnumChatFormatting.GREEN + crackedStatus) : thread.getStatus(), (int) (width / 2f), 29, -1);
         if (username.getText().isEmpty()) {
             font.drawStringWithShadow("Username", width / 2F - 96, 66, -7829368);
         }
