@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class S02PacketChat implements Packet<INetHandlerPlayClient>
 {
-    private IChatComponent chatComponent;
+    public IChatComponent chatComponent;
     private byte type;
 
     public S02PacketChat()

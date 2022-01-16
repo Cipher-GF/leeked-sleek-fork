@@ -25,6 +25,7 @@ public class Verus extends SpeedMode {
 
             if (mc.thePlayer.hurtTime >= 1) {
                 sped2 = getSpeed().getSpeed().getValue().floatValue();
+                getSpeed().getHDist().set(sped2);
             }
 
             PlayerUtil.setMotion(event, getSpeed().handleFriction(getSpeed().getHDist()));

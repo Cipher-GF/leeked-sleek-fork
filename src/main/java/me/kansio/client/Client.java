@@ -10,6 +10,7 @@ import lombok.Setter;
 import me.kansio.client.commands.CommandManager;
 import me.kansio.client.config.ConfigManager;
 import me.kansio.client.event.impl.KeyboardEvent;
+import me.kansio.client.event.impl.PacketEvent;
 import me.kansio.client.event.impl.ServerJoinEvent;
 import me.kansio.client.friend.FriendManager;
 import me.kansio.client.keybind.KeybindManager;
@@ -21,6 +22,8 @@ import me.kansio.client.modules.impl.visuals.ClickGUI;
 import me.kansio.client.targets.TargetManager;
 import me.kansio.client.utils.network.HttpUtil;
 import net.minecraft.client.Minecraft;
+import net.minecraft.network.play.server.S02PacketChat;
+import net.minecraft.util.ChatComponentText;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 import viamcp.ViaMCP;
@@ -127,6 +130,18 @@ public class Client {
     public void onShutdown() {
         //save keybinds
         keybindManager.save();
+    }
+
+    @Subscribe
+    public void onChat(PacketEvent event) {
+        if (event.getPacket() instanceof S02PacketChat) {
+            S02PacketChat packet = event.getPacket();
+            for (Map.Entry<String, String > user : users.entrySet()) {
+                if (packet.getChatComponent().getUnformattedText().contains(user.getKey())) {
+                    packet.chatComponent = new ChatComponentText(packet.getChatComponent().getFormattedText().replaceAll(user.getKey(), MessageFormat.format("\247b{0} \2477({1})", user.getValue(), user.getKey())));
+                }
+            }
+        }
     }
 
     @Subscribe

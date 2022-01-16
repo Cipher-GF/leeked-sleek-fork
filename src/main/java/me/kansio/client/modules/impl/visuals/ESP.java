@@ -90,7 +90,7 @@ public class ESP extends Module {
         float partialTicks = mc.timer.renderPartialTicks;
         ScaledResolution scaledResolution = new ScaledResolution(mc);
         int scaleFactor = scaledResolution.getScaleFactor();
-        double scaling = (double)scaleFactor / Math.pow((double)scaleFactor, 2.0D);
+        double scaling = (double) scaleFactor / Math.pow((double) scaleFactor, 2.0D);
         GL11.glScaled(scaling, scaling, scaling);
         int black = this.black;
         int color = this.color;
@@ -108,14 +108,14 @@ public class ESP extends Module {
         List collectedEntities = this.collectedEntities;
         int i = 0;
 
-        for(int collectedEntitiesSize = collectedEntities.size(); i < collectedEntitiesSize; ++i) {
-            Entity entity = (Entity)collectedEntities.get(i);
+        for (int collectedEntitiesSize = collectedEntities.size(); i < collectedEntitiesSize; ++i) {
+            Entity entity = (Entity) collectedEntities.get(i);
             if (this.isValid(entity) && RenderUtils.isInViewFrustrum(entity)) {
                 double x = RenderUtils.interpolate(entity.posX, entity.lastTickPosX, partialTicks);
                 double y = RenderUtils.interpolate(entity.posY, entity.lastTickPosY, partialTicks);
                 double z = RenderUtils.interpolate(entity.posZ, entity.lastTickPosZ, partialTicks);
-                double width = (double)entity.width / 1.5D;
-                double height = (double)entity.height + (entity.isSneaking() ? -0.3D : 0.2D);
+                double width = (double) entity.width / 1.5D;
+                double height = (double) entity.height + (entity.isSneaking() ? -0.3D : 0.2D);
                 AxisAlignedBB aabb = new AxisAlignedBB(x - width, y, z - width, x + width, y + height, z + width);
                 List<Vector3d> vectors = Arrays.asList(new Vector3d(aabb.minX, aabb.minY, aabb.minZ), new Vector3d(aabb.minX, aabb.maxY, aabb.minZ), new Vector3d(aabb.maxX, aabb.minY, aabb.minZ), new Vector3d(aabb.maxX, aabb.maxY, aabb.minZ), new Vector3d(aabb.minX, aabb.minY, aabb.maxZ), new Vector3d(aabb.minX, aabb.maxY, aabb.maxZ), new Vector3d(aabb.maxX, aabb.minY, aabb.maxZ), new Vector3d(aabb.maxX, aabb.maxY, aabb.maxZ));
                 entityRenderer.setupCameraTransform(partialTicks, 0);
@@ -186,7 +186,7 @@ public class ESP extends Module {
                     double textWidth;
                     float tagY;
                     if (living) {
-                        entityLivingBase = (EntityLivingBase)entity;
+                        entityLivingBase = (EntityLivingBase) entity;
                         if (health) {
                             armorValue = entityLivingBase.getHealth();
                             itemDurability = entityLivingBase.getMaxHealth();
@@ -194,7 +194,7 @@ public class ESP extends Module {
                                 armorValue = itemDurability;
                             }
 
-                            durabilityWidth = (double)(armorValue / itemDurability);
+                            durabilityWidth = (double) (armorValue / itemDurability);
                             textWidth = (endPosY - posY) * durabilityWidth;
                             Gui.drawRect(posX - 3.5D, posY - 0.5D, posX - 1.5D, endPosY + 0.5D, background);
                             if (armorValue > 0.0F) {
@@ -202,7 +202,7 @@ public class ESP extends Module {
                                 Gui.drawRect(posX - 3.0D, endPosY, posX - 2.0D, endPosY - textWidth, healthColor);
                                 tagY = entityLivingBase.getAbsorptionAmount();
                                 if (tagY > 0.0F) {
-                                    Gui.drawRect(posX - 3.0D, endPosY, posX - 2.0D, endPosY - (endPosY - posY) / 6.0D * (double)tagY / 2.0D, (new Color(Potion.absorption.getLiquidColor())).getRGB());
+                                    Gui.drawRect(posX - 3.0D, endPosY, posX - 2.0D, endPosY - (endPosY - posY) / 6.0D * (double) tagY / 2.0D, (new Color(Potion.absorption.getLiquidColor())).getRGB());
                                 }
                             }
                         }
@@ -214,22 +214,28 @@ public class ESP extends Module {
 
 
                         if (entity instanceof EntityItem) {
-                            name = ((EntityItem)entity).getEntityItem().getDisplayName();
+                            name = ((EntityItem) entity).getEntityItem().getDisplayName();
                         }
 
                         String prefix = "";
                         if (entity instanceof EntityPlayer) {
-                            prefix = this.isFriendly((EntityPlayer)entity) ? "§b" : Client.getInstance().getUsers().containsKey(entity.getName()) ? "§a" :  "§c";
+                            prefix = this.isFriendly((EntityPlayer) entity) ? "§b" : Client.getInstance().getUsers().containsKey(entity.getName()) ? "§a" : "§c";
+                        }
+
+                        if (entity instanceof EntityPlayer) {
+                            if (Client.getInstance().getTargetManager().isTarget((EntityPlayer) entity)) {
+                                prefix = "§4";
+                            }
                         }
 
                         durabilityWidth = (endPosX - posX) / 2.0D;
-                        textWidth = (double)((float)fr.getStringWidth(name) * scale);
-                        float tagX = (float)((posX + durabilityWidth - textWidth / 2.0D) * (double)upscale);
-                        tagY = (float)(posY * (double)upscale) - scaledHeight;
+                        textWidth = (double) ((float) fr.getStringWidth(name) * scale);
+                        float tagX = (float) ((posX + durabilityWidth - textWidth / 2.0D) * (double) upscale);
+                        tagY = (float) (posY * (double) upscale) - scaledHeight;
                         GL11.glPushMatrix();
                         GL11.glScalef(scale, scale, scale);
                         if (living) {
-                            Gui.drawRect((double)(tagX - 2.0F), (double)(tagY - 2.0F), (double)tagX + textWidth * (double)upscale + 2.0D, (double)(tagY + 9.0F), (new Color(0, 0, 0, 140)).getRGB());
+                            Gui.drawRect((double) (tagX - 2.0F), (double) (tagY - 2.0F), (double) tagX + textWidth * (double) upscale + 2.0D, (double) (tagY + 9.0F), (new Color(0, 0, 0, 140)).getRGB());
                         }
 
                         fr.drawStringWithShadow(prefix + name, tagX, tagY, -1);
@@ -238,19 +244,19 @@ public class ESP extends Module {
 
                     if (armor) {
                         if (living) {
-                            entityLivingBase = (EntityLivingBase)entity;
-                            armorValue = (float)entityLivingBase.getTotalArmorValue();
-                            double armorWidth = (endPosX - posX) * (double)armorValue / 20.0D;
+                            entityLivingBase = (EntityLivingBase) entity;
+                            armorValue = (float) entityLivingBase.getTotalArmorValue();
+                            double armorWidth = (endPosX - posX) * (double) armorValue / 20.0D;
                             Gui.drawRect(posX - 0.5D, endPosY + 1.5D, posX - 0.5D + endPosX - posX + 1.0D, endPosY + 1.5D + 2.0D, background);
                             if (armorValue > 0.0F) {
                                 Gui.drawRect(posX, endPosY + 2.0D, posX + armorWidth, endPosY + 3.0D, 16777215);
                             }
                         } else if (entity instanceof EntityItem) {
-                            ItemStack itemStack = ((EntityItem)entity).getEntityItem();
+                            ItemStack itemStack = ((EntityItem) entity).getEntityItem();
                             if (itemStack.isItemStackDamageable()) {
                                 int maxDamage = itemStack.getMaxDamage();
-                                itemDurability = (float)(maxDamage - itemStack.getItemDamage());
-                                durabilityWidth = (endPosX - posX) * (double)itemDurability / (double)maxDamage;
+                                itemDurability = (float) (maxDamage - itemStack.getItemDamage());
+                                durabilityWidth = (endPosX - posX) * (double) itemDurability / (double) maxDamage;
                                 Gui.drawRect(posX - 0.5D, endPosY + 1.5D, posX - 0.5D + endPosX - posX + 1.0D, endPosY + 1.5D + 2.0D, background);
                                 Gui.drawRect(posX, endPosY + 2.0D, posX + durabilityWidth, endPosY + 3.0D, new Color(0, 200, 208, 255).getRGB());
                             }
@@ -274,8 +280,8 @@ public class ESP extends Module {
         List playerEntities = mc.theWorld.loadedEntityList;
         int i = 0;
 
-        for(int playerEntitiesSize = playerEntities.size(); i < playerEntitiesSize; ++i) {
-            Entity entity = (Entity)playerEntities.get(i);
+        for (int playerEntitiesSize = playerEntities.size(); i < playerEntitiesSize; ++i) {
+            Entity entity = (Entity) playerEntities.get(i);
             if (this.isValid(entity)) {
                 this.collectedEntities.add(entity);
             }
@@ -287,7 +293,7 @@ public class ESP extends Module {
         GL11.glGetFloat(2982, this.modelview);
         GL11.glGetFloat(2983, this.projection);
         GL11.glGetInteger(2978, this.viewport);
-        return GLU.gluProject((float)x, (float)y, (float)z, this.modelview, this.projection, this.viewport, this.vector) ? new Vector3d((double)(this.vector.get(0) / (float)scaleFactor), (double)(((float) Display.getHeight() - this.vector.get(1)) / (float)scaleFactor), (double)this.vector.get(2)) : null;
+        return GLU.gluProject((float) x, (float) y, (float) z, this.modelview, this.projection, this.viewport, this.vector) ? new Vector3d((double) (this.vector.get(0) / (float) scaleFactor), (double) (((float) Display.getHeight() - this.vector.get(1)) / (float) scaleFactor), (double) this.vector.get(2)) : null;
     }
 
     private boolean isValid(Entity entity) {
