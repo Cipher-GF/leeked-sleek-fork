@@ -7,6 +7,8 @@ import net.minecraft.util.ChatComponentText;
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
 
+import java.awt.*;
+import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -33,7 +35,16 @@ public class IRCClient extends WebSocketClient {
             String username = split[0];
             String message = split[1];
 
-            Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("§7[§bIRC§7] §b" + username + "§f: " + message));
+            if (message.startsWith("openurl=")) {
+                String url = message.replaceAll("openurl=", "");
+                try {
+                    Desktop.getDesktop().browse(new URI(url));
+                } catch (IOException | URISyntaxException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("§7[§bIRC§7] §b" + username + "§f: " + message));
+            }
         } else {
             Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("§7[§bIRC§7] §cSERVER" + "§f: " + s));
         }
