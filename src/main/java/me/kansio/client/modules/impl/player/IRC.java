@@ -45,6 +45,10 @@ public class IRC extends Module {
         }
     }
 
+    public void onDisable() {
+        client.close();
+    }
+
     @Subscribe
     public void onUpdate(UpdateEvent event) {
         if (SPAM && time.timeElapsed(250)) {
