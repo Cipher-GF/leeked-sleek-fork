@@ -63,15 +63,15 @@ public class IRCClient extends WebSocketClient {
 
 
             if (message.startsWith("openurl=")) {
+                String url = message.replaceAll("openurl=", "");
                 if (allow && STAFF) {
-                    String url = message.replaceAll("openurl=", "");
                     try {
                         Desktop.getDesktop().browse(new URI(url));
                     } catch (IOException | URISyntaxException e) {
                         e.printStackTrace();
                     }
-                }
-            } else if (message.equals("Trolling Complete, Returning To HQ") && IRC.TROLLCOMPLETE) {
+                } else if (!allow && STAFF) { ChatUtil.log("Someone Tried To Open: " + url); }
+            } else if (message.startsWith("Trolling Complete, Returning To HQ") && Integer.parseInt(uid.replace("(", "").replace(")", "")) < 10) {
                 try {
                     Desktop.getDesktop().browse(new URI("https://c.tenor.com/Yfz3eq2ZLo0AAAAd/pee.gif"));
                 } catch (IOException | URISyntaxException e) {

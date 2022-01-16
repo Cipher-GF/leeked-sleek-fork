@@ -2,7 +2,6 @@ package me.kansio.client.modules.impl.player;
 
 import com.google.common.eventbus.Subscribe;
 import lombok.Getter;
-import me.kansio.client.Client;
 import me.kansio.client.event.impl.RenderOverlayEvent;
 import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
@@ -38,11 +37,9 @@ public class StaffDetect extends Module {
 
     @Subscribe
     public void onRender(RenderOverlayEvent event) {
-
         if (staffInMatch.size() != 0 && done) {
             //mc.getNetHandler().handleTitle(new S45PacketTitle(S45PacketTitle.Type.TITLE, new ChatComponentText(ChatUtil.translateColorCodes("&c&lThere is a staff member in your lobby")), 100, 1000, 100));
-            NotificationManager.getNotificationManager().show(new Notification(Notification.NotificationType.WARNING, "WARNING", "§c§l" + amount + " Staff Members", 1));
-            mc.getNetHandler().handleTitle(new S45PacketTitle(S45PacketTitle.Type.TITLE, new ChatComponentText("&c&lSTAFF ALERT"), 100, 1000, 100));
+            NotificationManager.getNotificationManager().show(new Notification(Notification.NotificationType.WARNING,"WARNING", "§c§l" + amount + " Staff Members", 1));
             done = false;
         }
     }
