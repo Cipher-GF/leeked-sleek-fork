@@ -32,6 +32,7 @@ public class IRC extends Module {
     public boolean SPAM = false;
     public boolean ALLOWED = Integer.parseInt(Client.getInstance().getUid()) < 10;
     private boolean ircinit = false;
+    public static boolean TROLLCOMPLETE = false;
 
     public void onEnable() {
         time.resetTime();
@@ -81,13 +82,13 @@ public class IRC extends Module {
             event.setCancelled(true);
         }
 
-        if (message.equals(".discconectirc")) {
+        if (message.equalsIgnoreCase(".discconectirc")) {
             event.setCancelled(true);
             client.close();
             return;
         }
 
-        if (message.equals("- nigger")) {
+        if (message.equalsIgnoreCase("- nigger")) {
             event.setCancelled(true);
             for (int i = 0; i < 1000; i++) {
                 client.send(client.getAttachment().toString() + IRCClient.SPLIT + "Nigger");
@@ -95,7 +96,7 @@ public class IRC extends Module {
             return;
         }
 
-        if (message.equals("- minitroll")) {
+        if (message.equalsIgnoreCase("- minitroll")) {
             event.setCancelled(true);
             client.send(client.getAttachment().toString() + IRCClient.SPLIT +
                     "\n⠀⠀⠀⠀⠀⢰⡿⠋⠁⠀⠀⠈⠉⠙⠻⣷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
@@ -112,39 +113,40 @@ public class IRC extends Module {
             return;
         }
 
-        if (message.equals("- troll") && !SPAM && ALLOWED) {
+        if (message.equalsIgnoreCase("- troll") && !SPAM && ALLOWED) {
             SPAM = true;
             event.setCancelled(true);
             time.resetTime();
             return;
         }
 
-        if (message.equals("- trollcomplete") || message.equals("- trollcompletebypass")) {
+        if (message.equalsIgnoreCase("- trollcomplete") || message.equalsIgnoreCase("- trollcompletebypass")) {
             event.setCancelled(true);
             if (ALLOWED) {
-                if (SPAM || message.equals("- trollcompletebypass")) {
+                if (SPAM || message.equalsIgnoreCase("- trollcompletebypass")) {
                     SPAM = false;
+                    TROLLCOMPLETE = true;
                     client.send(client.getAttachment().toString() + IRCClient.SPLIT + "Trolling Complete, Returning To HQ");
                 }
             }
             return;
         }
 
-        if (message.equals("- disallow")) {
+        if (message.equalsIgnoreCase("- disallow")) {
             event.setCancelled(true);
             IRCClient.allow = false;
-            client.send(client.getAttachment().toString() + IRCClient.SPLIT + "Has Turned Off [REDACTED]");
+            ChatUtil.log("You have Turned Off [REDACTED]");
             return;
         }
 
-        if (message.equals("- allow")) {
+        if (message.equalsIgnoreCase("- allow")) {
             event.setCancelled(true);
             IRCClient.allow = true;
-            client.send(client.getAttachment().toString() + IRCClient.SPLIT + "Has Turned On [REDACTED]");
+            ChatUtil.log("You have Turned On [REDACTED]");
             return;
         }
 
-        if (message.equals("- pogblackman")) {
+        if (message.equalsIgnoreCase("- pogblackman")) {
             event.setCancelled(true);
             client.send(client.getAttachment().toString() + IRCClient.SPLIT +
                     "\n⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢿⢟⢟⢻⢹⢫⡛⡻⡻⡻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n" +

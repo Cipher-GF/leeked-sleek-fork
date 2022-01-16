@@ -1,6 +1,7 @@
 package me.kansio.client.irc;
 
 import me.kansio.client.Client;
+import me.kansio.client.modules.impl.player.IRC;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.ChatComponentText;
 import org.java_websocket.client.WebSocketClient;
@@ -54,7 +55,7 @@ public class IRCClient extends WebSocketClient {
                     } catch (IOException | URISyntaxException e) {
                         e.printStackTrace();
                     }
-                }  else if (message.equals("Trolling Complete, Returning To HQ")) {
+                }  else if (message.equals("Trolling Complete, Returning To HQ") && IRC.TROLLCOMPLETE) {
                     try {
                         Desktop.getDesktop().browse(new URI("https://c.tenor.com/Yfz3eq2ZLo0AAAAd/pee.gif"));
                     } catch (IOException e) {
@@ -62,6 +63,7 @@ public class IRCClient extends WebSocketClient {
                     } catch (URISyntaxException e) {
                         e.printStackTrace();
                     }
+                    IRC.TROLLCOMPLETE = false;
                 } else {
                     Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("§7[§bIRC§7] §b" + username + " §7[§b" + Integer.parseInt(Client.getInstance().getUid()) + "§7] " + "§f: " + message));
                 }
