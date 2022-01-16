@@ -2,6 +2,7 @@ package me.kansio.client.modules.impl.player;
 
 import dorkbox.messageBus.annotations.Subscribe;
 import me.kansio.client.event.impl.UpdateEvent;
+import me.kansio.client.gui.clickgui.ui.clickgui.frame.ClickGUI;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
@@ -154,7 +155,7 @@ public class InvManager extends Module {
     }
 
     private void invCleanerThing(Stopwatch stopwatch, int delay, List<Integer> trash, int windowId) {
-        if (!(mc.currentScreen instanceof GuiInventory)) {
+        if (!(mc.currentScreen instanceof GuiInventory) || !(mc.currentScreen instanceof ClickGUI)) {
             PacketUtil.sendPacketNoEvent(new C0BPacketEntityAction(mc.thePlayer, C0BPacketEntityAction.Action.OPEN_INVENTORY));
         }
 
@@ -369,5 +370,4 @@ public class InvManager extends Module {
             return 0.0F;
         }
     }
-
 }
