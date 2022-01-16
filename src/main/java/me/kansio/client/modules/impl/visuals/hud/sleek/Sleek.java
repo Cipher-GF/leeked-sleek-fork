@@ -31,7 +31,7 @@ public class Sleek extends HudMode {
         HUD hud = (HUD) Client.getInstance().getModuleManager().getModuleByName("HUD");
         HUD.notifications = hud.noti.getValue() && hud.isToggled();
 
-        int y = 4;
+        int y = hud.arrayListY.getValue().intValue();
         int index = 0;
 
         ArrayList<Module> sorted = (ArrayList<Module>) Client.getInstance().getModuleManager().getModulesSorted(mc.fontRendererObj);
