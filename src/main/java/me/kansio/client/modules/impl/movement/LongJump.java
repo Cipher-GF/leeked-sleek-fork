@@ -17,7 +17,7 @@ import me.kansio.client.utils.player.PlayerUtil;
 )
 public class LongJump extends Module {
 
-    private ModeValue mode = new ModeValue("Mode", this, "Verus", "Viper");
+    private ModeValue mode = new ModeValue("Mode", this, "Verus", "Viper", "Vanilla");
 
     //verus boost stuff
     private NumberValue vertical = new NumberValue("Vertical Boost", this, 0.8, 0.05, 6.0, 0.1, mode, "Verus");
@@ -65,6 +65,16 @@ public class LongJump extends Module {
                     launched = false;
                     wasLaunched = true;
                     toggle();
+                }
+                break;
+            }
+            case "Vanilla": {
+                if (mc.thePlayer.isMoving()) {
+                    if (mc.thePlayer.onGround) {
+                        mc.thePlayer.motionY += 0.85;
+                    } else {
+                        PlayerUtil.setMotion(boost.getValue().floatValue());
+                    }
                 }
                 break;
             }
