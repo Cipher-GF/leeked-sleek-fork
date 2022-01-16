@@ -6,6 +6,7 @@ import me.kansio.client.modules.impl.movement.speed.SpeedMode;
 import me.kansio.client.utils.player.PlayerUtil;
 
 public class Friction extends SpeedMode {
+
     public Friction() {
         super("Friction Abuse");
     }

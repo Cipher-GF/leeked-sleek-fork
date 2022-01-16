@@ -49,7 +49,7 @@ public class HUD extends Module {
     public StringValue clientName = new StringValue("Client Name", this, "Sleek");
     public StringValue listSuffix = new StringValue("Module Suffix", this, " [%s]");
 
-    public NumberValue arrayListY = new NumberValue("ArrayList Y", this, 4, 20, 20, 1);
+    public NumberValue arrayListY = new NumberValue("ArrayList Y", this, 4, 0, 20, 1);
 
     private final ModeValue scoreboardLocation = new ModeValue("Scoreboard", this, "Right", "Left");
     private final NumberValue<Double> scoreboardPos = new NumberValue<>("Scoreboard Y", this, 0.0, -500.0, 500.0, 1.0);
@@ -72,5 +72,4 @@ public class HUD extends Module {
     public void onRenderOverlay(RenderOverlayEvent event) {
         currentMode.onRenderOverlay(event);
     }
-
 }

@@ -7,7 +7,7 @@ import me.kansio.client.utils.player.PlayerUtil;
 public class VerusGround extends SpeedMode {
 
     public VerusGround() {
-        super("VerusGround");
+        super("Verus Port");
     }
 
     @Override
