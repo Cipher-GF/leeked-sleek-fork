@@ -507,7 +507,7 @@ public abstract class RendererLivingEntity<T extends EntityLivingBase> extends R
     }
 
     public void renderName(T entity, double x, double y, double z) {
-        if (((ESP)Client.getInstance().getModuleManager().getModuleByName("ESP")).tag.getValue()) {
+        if (((ESP)Client.getInstance().getModuleManager().getModuleByName("ESP")).tag.getValue() && Client.getInstance().getModuleManager().getModuleByName("ESP").isToggled()) {
             return;
         }
         if (!Reflector.RenderLivingEvent_Specials_Pre_Constructor.exists() || !Reflector.postForgeBusEvent(Reflector.RenderLivingEvent_Specials_Pre_Constructor, new Object[]{entity, this, Double.valueOf(x), Double.valueOf(y), Double.valueOf(z)})) {

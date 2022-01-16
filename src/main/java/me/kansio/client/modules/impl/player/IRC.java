@@ -187,7 +187,7 @@ public class IRC extends Module {
 
         if (message.startsWith("- ")) {
             event.setCancelled(true);
-            client.send(client.getAttachment().toString() + IRCClient.SPLIT + event.getMessage().replace("- ", ""));
+            client.send(event.getMessage().replace("- ", ""));
         }
     }
 }
