@@ -1,5 +1,6 @@
 package me.kansio.client.modules.impl.visuals;
 
+import me.kansio.client.gui.clickgui.utils.render.animation.easings.Animate;
 import me.kansio.client.gui.external.ExternalClickGui;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
@@ -15,6 +16,7 @@ import org.lwjgl.input.Keyboard;
 )
 public class ClickGUI extends Module {
 
+    public BooleanValue hudcolor = new BooleanValue("Hud Colour", this, false);
     private BooleanValue font = new BooleanValue("Font", this, false);
 
     @Override
