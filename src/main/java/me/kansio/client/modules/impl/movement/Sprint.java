@@ -1,6 +1,7 @@
 package me.kansio.client.modules.impl.movement;
 
-import dorkbox.messageBus.annotations.Subscribe;
+
+import com.google.common.eventbus.Subscribe;
 import lombok.Getter;
 import me.kansio.client.Client;
 import me.kansio.client.event.impl.UpdateEvent;
