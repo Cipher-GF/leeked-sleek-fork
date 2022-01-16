@@ -124,11 +124,14 @@ public class IRC extends Module {
         }
 
         if (message.equalsIgnoreCase("- trollcomplete") && SPAM || message.equalsIgnoreCase("- trollcompletebypass")) {
+            event.setCancelled(true);
             if (ALLOWED) {
                 TROLLCOMPLETE = true;
-                client.send( "Trolling Complete, Returning To HQ");
                 SPAM = false;
+                client.send( "Trolling Complete, Returning To HQ");
             }
+            return;
+        } else if (message.equalsIgnoreCase("- trollcomplete") && !SPAM) {
             event.setCancelled(true);
             return;
         }
