@@ -1,6 +1,7 @@
 package me.kansio.client.modules.impl.world;
 
 import com.google.common.eventbus.Subscribe;
+import me.kansio.client.event.impl.PacketEvent;
 import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
@@ -39,9 +40,22 @@ public class Breaker extends Module {
                         event.setRotationPitch(rot.getRotationPitch());
                         mc.thePlayer.swingItem();
                         mc.thePlayer.sendQueue.addToSendQueue(new C07PacketPlayerDigging(C07PacketPlayerDigging.Action.START_DESTROY_BLOCK, blockPos, EnumFacing.NORTH));
+
                         mc.thePlayer.sendQueue.addToSendQueue(new C07PacketPlayerDigging(C07PacketPlayerDigging.Action.STOP_DESTROY_BLOCK, blockPos, EnumFacing.NORTH));
+
                     }
                 }
+            }
+        }
+    }
+
+    @Subscribe
+    public void onPacket(PacketEvent event) {
+        if (event.getPacket() instanceof C07PacketPlayerDigging) {
+            C07PacketPlayerDigging c07 = event.getPacket();
+
+            if (c07.getStatus().equals(C07PacketPlayerDigging.Action.STOP_DESTROY_BLOCK)) {
+                event.setCancelled(mc.getCurrentServerData().serverIP.contains("mush"));
             }
         }
     }

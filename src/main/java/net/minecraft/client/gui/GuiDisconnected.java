@@ -35,6 +35,8 @@ public class GuiDisconnected extends GuiScreen
      */
     public void initGui()
     {
+        System.out.println(reason);
+        System.out.println(message.getUnformattedText());
         this.buttonList.clear();
         this.multilineMessage = this.fontRendererObj.listFormattedStringToWidth(this.message.getFormattedText(), this.width - 50);
         this.field_175353_i = this.multilineMessage.size() * this.fontRendererObj.FONT_HEIGHT;

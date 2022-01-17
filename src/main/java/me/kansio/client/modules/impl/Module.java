@@ -184,7 +184,7 @@ public abstract class Module {
         return json;
     }
 
-    public void setKeyBind(int keyBind) {
+    public void setKeyBind(int keyBind, boolean save) {
         System.out.println("Saved KeyBinds " + this.name);
         this.keyBind = keyBind;
         Client.getInstance().getKeybindManager().save();
