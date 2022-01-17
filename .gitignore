@@ -41,3 +41,4 @@ workspace/Sleek/Protocol/ViaBackwards/config.yml
 !/.mvn/wrapper/maven-wrapper.jar
 
 MavenMCP.iml
+workspace/servers.dat
