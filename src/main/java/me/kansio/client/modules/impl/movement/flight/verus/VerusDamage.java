@@ -12,7 +12,6 @@ import net.minecraft.util.AxisAlignedBB;
 public class VerusDamage extends FlightMode {
 
     private double veroos = 2.5;
-    private boolean boosted = false;
 
     public VerusDamage() {
         super("Verus Damage");
@@ -24,7 +23,6 @@ public class VerusDamage extends FlightMode {
 
 
         if (mc.thePlayer.hurtTime > 8) {
-            boosted = true;
             veroos = getFlight().getSpeed().getValue();
         }
 
@@ -67,7 +65,6 @@ public class VerusDamage extends FlightMode {
             getFlight().toggle();
             return;
         }
-        boosted = false;
         veroos = 0.22;
         mc.timer.timerSpeed = 0.8f;
         PlayerUtil.damageVerus();
