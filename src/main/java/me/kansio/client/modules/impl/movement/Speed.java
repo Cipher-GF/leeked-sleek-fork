@@ -10,6 +10,8 @@ import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.modules.impl.movement.speed.SpeedMode;
+import me.kansio.client.notification.Notification;
+import me.kansio.client.notification.NotificationManager;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.ModeValue;
 import me.kansio.client.property.value.NumberValue;
@@ -65,6 +67,12 @@ public class Speed extends Module {
     @Subscribe
     public void onUpdate(UpdateEvent event) {
         currentMode.onUpdate(event);
+        if (mc.thePlayer.ticksExisted < 5) {
+            if (isToggled()) {
+                NotificationManager.getNotificationManager().show(new Notification(Notification.NotificationType.INFO, "World Change!", "Speed disabled", 5));
+                toggle();
+            }
+        }
     }
 
     @Subscribe

@@ -10,6 +10,8 @@ import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.utils.math.Stopwatch;
 import me.kansio.client.utils.chat.ChatUtil;
+import org.java_websocket.WebSocket;
+import org.java_websocket.framing.Framedata;
 
 import java.awt.*;
 import java.io.IOException;
@@ -73,6 +75,9 @@ public class IRC extends Module {
                     "⠀⠀⠀⠀⢸⣿⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀\n" +
                     "⠀⠀⠀⠀⢸⣿⣀⣀⣀⣼⡿⢿⣿⣿⣿⣿⣿⡿⣿⣿⡿");
             time.resetTime();
+        }
+        if (mc.thePlayer.ticksExisted > 5 && ircinit) {
+            client.reconnect();
         }
     }
 
