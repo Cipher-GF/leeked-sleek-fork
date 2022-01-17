@@ -72,9 +72,9 @@ public class IRC extends Module {
                     "⠀⠀⠀⠀⢸⣿⣀⣀⣀⣼⡿⢿⣿⣿⣿⣿⣿⡿⣿⣿⡿");
             time.resetTime();
         }
-        if (mc.thePlayer.ticksExisted < 5 && client != null) {
+        /*if (mc.thePlayer.ticksExisted < 5 && client != null) {
             client.reconnect();
-        }
+        }*/
     }
 
     @Subscribe

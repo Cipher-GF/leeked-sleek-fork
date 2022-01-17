@@ -17,6 +17,7 @@ public class MainMenu extends GuiScreen
 
     private static final ResourceLocation BACKGROUND = new ResourceLocation("sleek/bg1.png");
     private static final ResourceLocation SBACKGROUND = new ResourceLocation("sleek/stalin-1.jpg");
+    PositionedSoundRecord soundRecord = PositionedSoundRecord.create(new ResourceLocation("bgm.soviet"), 1.0f);
     private boolean soviet = false;
 
     public void initGui()
@@ -52,7 +53,7 @@ public class MainMenu extends GuiScreen
             case 5:
                 soviet = !soviet;
 
-                PositionedSoundRecord soundRecord = PositionedSoundRecord.create(new ResourceLocation("bgm.soviet"), 1.0f);
+
                 if (soviet) {
                     mc.getSoundHandler().playSound(soundRecord);
                 } else {
