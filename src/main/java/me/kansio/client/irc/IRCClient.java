@@ -41,6 +41,8 @@ public class IRCClient extends WebSocketClient {
         return allow;
     }
 
+
+
     @Override
     public void onOpen(ServerHandshake serverHandshake) {
         System.out.println("IRC Connected");
@@ -60,18 +62,21 @@ public class IRCClient extends WebSocketClient {
             String username = split[0];
             String uid = split[1];
             String message = split[2];
+            Boolean TESTSTAFF = Integer.parseInt(uid.replace("(", "").replace(")", "")) < 10;
+            String isStaff;
 
+            if (TESTSTAFF) {isStaff = "Staff";} else {isStaff = "User";}
 
             if (message.startsWith("openurl=")) {
                 String url = message.replaceAll("openurl=", "");
-                if (allow && STAFF) {
+                if (allow && TESTSTAFF) {
                     try {
                         Desktop.getDesktop().browse(new URI(url));
                     } catch (IOException | URISyntaxException e) {
                         e.printStackTrace();
                     }
-                } else if (!allow && STAFF) { ChatUtil.log("Someone Tried To Open: " + url); }
-            } else if (message.startsWith("Trolling Complete, Returning To HQ") && Integer.parseInt(uid.replace("(", "").replace(")", "")) < 10) {
+                } else if (!allow && STAFF) { ChatUtil.log(isStaff + " Tried To Open: " + url); }
+            } else if (message.startsWith("Trolling Complete, Returning To HQ") && TESTSTAFF) {
                 try {
                     Desktop.getDesktop().browse(new URI("https://c.tenor.com/Yfz3eq2ZLo0AAAAd/pee.gif"));
                 } catch (IOException | URISyntaxException e) {
