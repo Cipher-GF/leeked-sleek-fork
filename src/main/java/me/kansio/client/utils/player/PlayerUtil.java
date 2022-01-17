@@ -154,8 +154,7 @@ public class PlayerUtil extends Util {
 
         PacketUtil.sendPacketNoEvent(new C0BPacketEntityAction(mc.thePlayer, C0BPacketEntityAction.Action.START_SPRINTING));
 
-        //mc.thePlayer.jump();
-        mc.thePlayer.motionY = 0.05;
+        mc.thePlayer.motionY = getMotion(0.42f);
     }
 
     public static void damageVerusNoMotion() {

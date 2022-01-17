@@ -128,6 +128,12 @@ public class Client {
     }
 
     public void onShutdown() {
+        //leave
+        try {
+            System.out.println(HttpUtil.delete(MessageFormat.format("http://zerotwoclient.xyz:13337/api/v1/leaveserver?clientname={0}", username)));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         //save keybinds
         keybindManager.save();
     }

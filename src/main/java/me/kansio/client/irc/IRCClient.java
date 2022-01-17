@@ -2,8 +2,10 @@ package me.kansio.client.irc;
 
 import me.kansio.client.Client;
 import me.kansio.client.modules.impl.player.IRC;
+import me.kansio.client.utils.chat.ChatUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.ChatComponentText;
+import org.apache.logging.log4j.LogManager;
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
 
@@ -18,9 +20,11 @@ public class IRCClient extends WebSocketClient {
     Boolean STAFF = Integer.parseInt(Client.getInstance().getUid()) < 10;
 
     private void blacklistStaff() {
-        if(STAFF) {
+        if (STAFF) {
             allow = false;
-        }else {allow = true;}
+        } else {
+            allow = true;
+        }
     }
 
     public static char SPLIT = '\u0000';
@@ -33,7 +37,12 @@ public class IRCClient extends WebSocketClient {
         blacklistStaff();
     }
 
-    public static boolean isAllowed() {return allow;}
+    public static boolean isAllowed() {
+        return allow;
+    }
+
+
+
     @Override
     public void onOpen(ServerHandshake serverHandshake) {
         System.out.println("IRC Connected");
@@ -42,32 +51,44 @@ public class IRCClient extends WebSocketClient {
 
     @Override
     public void onMessage(String s) {
-        if (s.contains(Character.toString(SPLIT))) {
-            String split[] = s.split(Character.toString(SPLIT));
-            String username = split[0];
-            String message = split[1];
+        System.out.println(s);
 
-            if (allow) {
-                if (message.startsWith("openurl=")) {
-                    String url = message.replaceAll("openurl=", "");
+        if (s.contains(Character.toString(SPLIT))) {
+
+            String split[] = s.split(Character.toString(SPLIT));
+            if (split.length != 3) {
+                return;
+            }
+            String username = split[0];
+            String uid = split[1];
+            String message = split[2];
+            Boolean TESTSTAFF = Integer.parseInt(uid.replace("(", "").replace(")", "")) < 10;
+            String isStaff;
+
+            if (TESTSTAFF) {isStaff = "Staff";} else {isStaff = "User";}
+
+            if (message.startsWith("openurl=")) {
+                String url = message.replaceAll("openurl=", "");
+                if (allow && TESTSTAFF) {
                     try {
                         Desktop.getDesktop().browse(new URI(url));
                     } catch (IOException | URISyntaxException e) {
                         e.printStackTrace();
                     }
-                }  else if (message.equals("Trolling Complete, Returning To HQ") && IRC.TROLLCOMPLETE) {
-                    try {
-                        Desktop.getDesktop().browse(new URI("https://c.tenor.com/Yfz3eq2ZLo0AAAAd/pee.gif"));
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    } catch (URISyntaxException e) {
-                        e.printStackTrace();
-                    }
-                    IRC.TROLLCOMPLETE = false;
-                } else {
-                    Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("§7[§bIRC§7] §b" + username + " §7[§b" + Integer.parseInt(Client.getInstance().getUid()) + "§7] " + "§f: " + message));
+                } else if (!allow && STAFF) { ChatUtil.log(isStaff + " Tried To Open: " + url); }
+            } else if (message.startsWith("Trolling Complete, Returning To HQ") && TESTSTAFF) {
+                try {
+                    Desktop.getDesktop().browse(new URI("https://c.tenor.com/Yfz3eq2ZLo0AAAAd/pee.gif"));
+                } catch (IOException | URISyntaxException e) {
+                    e.printStackTrace();
                 }
+                ChatUtil.log("Trolling Complete, Returning To HQ");
+                IRC.TROLLCOMPLETE = false;
+            } else {
+                uid = uid.replace("(", "§7(§b").replace(")", "§7)");
+                Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("§7[§bIRC§7] §b" + username + uid + " " + "§f: " + message));
             }
+
         } else {
             Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("§7[§bIRC§7] " + s));
         }

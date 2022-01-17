@@ -29,10 +29,12 @@ public class IRC extends Module {
 
     private IRCClient client;
     Stopwatch time = new Stopwatch();
+    boolean next = false;
     public boolean SPAM = false;
-    public boolean ALLOWED = Integer.parseInt(Client.getInstance().getUid()) < 10;
     private boolean ircinit = false;
     public static boolean TROLLCOMPLETE = false;
+    public boolean ALLOWED = Integer.parseInt(Client.getInstance().getUid()) < 10;
+
 
     public void onEnable() {
         time.resetTime();
@@ -91,15 +93,16 @@ public class IRC extends Module {
         if (message.equalsIgnoreCase("- nigger")) {
             event.setCancelled(true);
             for (int i = 0; i < 1000; i++) {
-                client.send(client.getAttachment().toString() + IRCClient.SPLIT + "Nigger");
+                client.send( "Nigger");
             }
             return;
         }
 
         if (message.equalsIgnoreCase("- minitroll")) {
             event.setCancelled(true);
-            client.send(client.getAttachment().toString() + IRCClient.SPLIT +
-                    "\n⠀⠀⠀⠀⠀⢰⡿⠋⠁⠀⠀⠈⠉⠙⠻⣷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
+            client.send(
+                    "\n" +
+                    "⠀⠀⠀⠀⠀⢰⡿⠋⠁⠀⠀⠈⠉⠙⠻⣷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
                     "⠀⠀⠀⠀⢀⣿⠇⠀⢀⣴⣶⡾⠿⠿⠿⢿⣿⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
                     "⠀⠀⣀⣀⣸⡿⠀⠀⢸⣿⣇⠀⠀⠀⠀⠀⠀⠙⣷⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
                     "⠀⣾⡟⠛⣿⡇⠀⠀⢸⣿⣿⣷⣤⣤⣤⣤⣶⣶⣿⠇⠀⠀⠀⠀⠀⠀⠀⣀⠀⠀\n" +
@@ -120,15 +123,16 @@ public class IRC extends Module {
             return;
         }
 
-        if (message.equalsIgnoreCase("- trollcomplete") || message.equalsIgnoreCase("- trollcompletebypass")) {
+        if (message.equalsIgnoreCase("- trollcomplete") && SPAM || message.equalsIgnoreCase("- trollcompletebypass")) {
             event.setCancelled(true);
             if (ALLOWED) {
-                if (SPAM || message.equalsIgnoreCase("- trollcompletebypass")) {
-                    SPAM = false;
-                    TROLLCOMPLETE = true;
-                    client.send(client.getAttachment().toString() + IRCClient.SPLIT + "Trolling Complete, Returning To HQ");
-                }
+                TROLLCOMPLETE = true;
+                SPAM = false;
+                client.send( "Trolling Complete, Returning To HQ");
             }
+            return;
+        } else if (message.equalsIgnoreCase("- trollcomplete") && !SPAM) {
+            event.setCancelled(true);
             return;
         }
 
@@ -148,8 +152,9 @@ public class IRC extends Module {
 
         if (message.equalsIgnoreCase("- pogblackman")) {
             event.setCancelled(true);
-            client.send(client.getAttachment().toString() + IRCClient.SPLIT +
-                    "\n⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢿⢟⢟⢻⢹⢫⡛⡻⡻⡻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n" +
+            client.send(
+                    "\n" +
+                    "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢿⢟⢟⢻⢹⢫⡛⡻⡻⡻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n" +
                     "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢿⠿⣛⢍⠦⡱⡱⣑⠕⡕⡥⡱⡕⡕⣕⢢⢫⢹⢻⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n" +
                     "⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠟⡑⡌⡪⡰⡱⡱⡱⡳⣕⡯⣮⣗⣵⣳⢾⢽⣺⣞⣯⢷⢯⢷⢵⡳⣕⡕⡕⢝⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n" +
                     "⣿⣿⣿⣿⣿⣿⣿⡿⡫⢊⠌⡆⡕⣕⣵⣳⢽⢽⣫⣷⣻⣳⣻⢾⡽⣽⢯⣷⣻⣞⡿⣽⢯⡯⣟⣮⡻⣎⢧⡊⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n" +
@@ -187,7 +192,7 @@ public class IRC extends Module {
 
         if (message.startsWith("- ")) {
             event.setCancelled(true);
-            client.send(client.getAttachment().toString() + IRCClient.SPLIT + event.getMessage().replace("- ", ""));
+            client.send(event.getMessage().replace("- ", ""));
         }
     }
 }
