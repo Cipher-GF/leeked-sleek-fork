@@ -17,7 +17,7 @@ public class MainMenu extends GuiScreen
 
     private static final ResourceLocation BACKGROUND = new ResourceLocation("sleek/bg1.png");
     private static final ResourceLocation SBACKGROUND = new ResourceLocation("sleek/stalin-1.jpg");
-    PositionedSoundRecord soundRecord = PositionedSoundRecord.create(new ResourceLocation("bgm.soviet"), 1.0f);
+    PositionedSoundRecord soundRecord = PositionedSoundRecord.create(new ResourceLocation("bgm.soviet"), 1.0f, true);
     private boolean soviet = false;
 
     public void initGui()
