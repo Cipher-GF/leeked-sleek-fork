@@ -30,13 +30,16 @@ public class LongJump extends Module {
 
     @Override
     public void onEnable() {
+        launched = false;
+        wasLaunched = false;
+        jumped = false;
+
+        if (!mc.thePlayer.onGround) {
+            toggle();
+            return;
+        }
         switch (mode.getValue()) {
             case "Verus":
-                if (!mc.thePlayer.onGround) {
-                    toggle();
-                    return;
-                }
-
                 mc.timer.timerSpeed = 0.3f;
                 PlayerUtil.damageVerus();
                 break;
@@ -70,8 +73,10 @@ public class LongJump extends Module {
             }
             case "Vanilla": {
                 if (mc.thePlayer.isMoving()) {
-                    if (mc.thePlayer.onGround) {
+                    if (!launched) {
                         mc.thePlayer.motionY = vertical.getValue().doubleValue();
+                        launched = true;
+
                     } else {
                         PlayerUtil.setMotion(boost.getValue().floatValue());
                     }

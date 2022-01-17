@@ -10,10 +10,13 @@ import me.kansio.client.modules.impl.Module;
 import me.kansio.client.notification.Notification;
 import me.kansio.client.notification.NotificationManager;
 import me.kansio.client.utils.chat.ChatUtil;
+import me.kansio.client.utils.render.RenderUtils;
+import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.play.server.S45PacketTitle;
 import net.minecraft.util.ChatComponentText;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -39,14 +42,14 @@ public class StaffDetect extends Module {
     private int amount;
     private int done;
 
-    @Subscribe
+    /*/@Subscribe
     public void onRender(RenderOverlayEvent event) {
         if (staffInMatch.size() != 0 && amount > done) {
             //mc.getNetHandler().handleTitle(new S45PacketTitle(S45PacketTitle.Type.TITLE, new ChatComponentText(ChatUtil.translateColorCodes("&c&lThere is a staff member in your lobby")), 100, 1000, 100));
             NotificationManager.getNotificationManager().show(new Notification(Notification.NotificationType.WARNING,"WARNING", "§c§l" + amount + " Staff Members", 3));
             done = amount;
         }
-    }
+    }/*/
 
     @Subscribe
     public void onUpdate(UpdateEvent event) {
@@ -68,6 +71,19 @@ public class StaffDetect extends Module {
                     ChatUtil.logNoPrefix("§4§l[Staff Detect]: §c" + staff + " §fis in your game!");
                 }
             }
+        }
+    }
+
+    @Subscribe
+    public void onRender(RenderOverlayEvent event) {
+        ScaledResolution sr = RenderUtils.getResolution();
+
+        if (staffInMatch.size() != 0) {
+            RenderUtils.drawRect(sr.getScaledWidth() / 2 - 60, sr.getScaledHeight() / 2 - 21, 120, 1, new Color(255, 0, 0).getRGB());
+            RenderUtils.drawRect(sr.getScaledWidth() / 2 - 60, sr.getScaledHeight() / 2 - 20, 120, 40, new Color(0, 0,0 , 100).getRGB());
+
+            mc.fontRendererObj.drawStringWithShadow("§4§lWarning:", sr.getScaledWidth() / 2 - 56, sr.getScaledHeight() / 2 - 14, -1);
+            mc.fontRendererObj.drawStringWithShadow(" §cStaff §fwere detected!", sr.getScaledWidth() / 2 - 56, sr.getScaledHeight() / 2, -1);
         }
     }
 }
