@@ -33,7 +33,6 @@ public class IRC extends Module {
     Stopwatch time = new Stopwatch();
     boolean next = false;
     public boolean SPAM = false;
-    private boolean ircinit = false;
     public static boolean TROLLCOMPLETE = false;
     public boolean ALLOWED = Integer.parseInt(Client.getInstance().getUid()) < 10;
 
@@ -41,12 +40,9 @@ public class IRC extends Module {
     public void onEnable() {
         time.resetTime();
         SPAM = false;
-        if (ircinit == true) {
-            return;
-        }
+
         try {
             client = new IRCClient();
-            ircinit = true;
             client.connectBlocking();
 
         } catch (URISyntaxException | InterruptedException e) {
@@ -56,7 +52,7 @@ public class IRC extends Module {
 
     public void onDisable() {
         client.close();
-        ircinit = false;
+        client = null;
     }
 
     @Subscribe
@@ -76,7 +72,7 @@ public class IRC extends Module {
                     "⠀⠀⠀⠀⢸⣿⣀⣀⣀⣼⡿⢿⣿⣿⣿⣿⣿⡿⣿⣿⡿");
             time.resetTime();
         }
-        if (mc.thePlayer.ticksExisted > 5 && ircinit) {
+        if (mc.thePlayer.ticksExisted < 5 && client != null) {
             client.reconnect();
         }
     }
