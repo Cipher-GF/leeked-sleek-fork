@@ -34,6 +34,7 @@ public class Sleek extends HudMode {
 
         int y = hud.arrayListY.getValue().intValue();
         int index = 0;
+        Color color = ColorUtils.getColorFromHud(y);
 
         ArrayList<Module> sorted = (ArrayList<Module>) Client.getInstance().getModuleManager().getModulesSorted(mc.fontRendererObj);
         sorted.removeIf(m -> !m.isToggled());
@@ -41,6 +42,14 @@ public class Sleek extends HudMode {
         if (hud.hideRender.getValue())
             sorted.removeIf(m -> m.getCategory() == ModuleCategory.VISUALS);
 
+        if (hud.watermark.getValue())
+            mc.fontRendererObj.drawStringWithShadow(ChatUtil.translateColorCodes(hud.clientName.getValueAsString()), 4, 4, color.getRGB());
+        String userinfo = "§7" + UserUtil.getBuildType(Integer.parseInt(Client.getInstance().getUid())) + " - §f" + Client.getInstance().getUid();
+        mc.fontRendererObj.drawStringWithShadow(userinfo, event.getSr().getScaledWidth() - mc.fontRendererObj.getStringWidth(userinfo) - 2, event.getSr().getScaledHeight() - (mc.ingameGUI.getChatGUI().getChatOpen() ? 24 : 10), -1);
+        if (hud.bps.getValue()) {
+            double bps = BPSUtil.getBPS();
+            mc.fontRendererObj.drawStringWithShadow("BPS: " + EnumChatFormatting.GRAY + new DecimalFormat("0.##").format(bps), 3, event.getSr().getScaledHeight() - (mc.ingameGUI.getChatGUI().getChatOpen() ? 24 : 10), ColorPalette.GREEN.getColor().getRGB());
+        }
         for (Module mod : sorted) {
             if (!mod.isToggled()) continue;
 
@@ -48,13 +57,9 @@ public class Sleek extends HudMode {
 
             Module lastModule = sorted.get(index - 1);
 
-            Color color = ColorUtils.getColorFromHud(y);
-
-            if (hud.watermark.getValue())
-                mc.fontRendererObj.drawStringWithShadow(ChatUtil.translateColorCodes(hud.clientName.getValueAsString()), 4, 4, color.getRGB());
 
             String name = mod.getName() + "§7" + mod.getFormattedSuffix();
-            String userinfo = "§7" + UserUtil.getBuildType(Integer.parseInt(Client.getInstance().getUid())) + " - §f" + Client.getInstance().getUid();
+
             float xPos = event.getSr().getScaledWidth() - mc.fontRendererObj.getStringWidth(name) - 6;
 
             Gui.drawRect(xPos - 1.5, y - 1, event.getSr().getScaledWidth(), mc.fontRendererObj.FONT_HEIGHT + y + 1, new Color(0, 0, 0, 80).getRGB());
@@ -74,12 +79,6 @@ public class Sleek extends HudMode {
             mc.fontRendererObj.drawStringWithShadow(name, (float) (xPos + 1.5), (float) (0.5 + y), color.getRGB());
             y = y + 11;
 
-            mc.fontRendererObj.drawStringWithShadow(userinfo, event.getSr().getScaledWidth() - mc.fontRendererObj.getStringWidth(userinfo) - 2, event.getSr().getScaledHeight() - (mc.ingameGUI.getChatGUI().getChatOpen() ? 24 : 10), -1);
-
-            if (hud.bps.getValue()) {
-                double bps = BPSUtil.getBPS();
-                mc.fontRendererObj.drawStringWithShadow("BPS: " + EnumChatFormatting.GRAY + new DecimalFormat("0.##").format(bps), 3, event.getSr().getScaledHeight() - (mc.ingameGUI.getChatGUI().getChatOpen() ? 24 : 10), ColorPalette.GREEN.getColor().getRGB());
-            }
 
         }
     }

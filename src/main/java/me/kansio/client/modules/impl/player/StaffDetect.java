@@ -33,14 +33,14 @@ public class StaffDetect extends Module {
     );
 
     private int amount;
-    boolean done = false;
+    private int done;
 
     @Subscribe
     public void onRender(RenderOverlayEvent event) {
-        if (staffInMatch.size() != 0 && done) {
+        if (staffInMatch.size() != 0 && amount > done) {
             //mc.getNetHandler().handleTitle(new S45PacketTitle(S45PacketTitle.Type.TITLE, new ChatComponentText(ChatUtil.translateColorCodes("&c&lThere is a staff member in your lobby")), 100, 1000, 100));
-            NotificationManager.getNotificationManager().show(new Notification(Notification.NotificationType.WARNING,"WARNING", "§c§l" + amount + " Staff Members", 1));
-            done = false;
+            NotificationManager.getNotificationManager().show(new Notification(Notification.NotificationType.WARNING,"WARNING", "§c§l" + amount + " Staff Members", 3));
+            done = amount;
         }
     }
 
@@ -48,7 +48,7 @@ public class StaffDetect extends Module {
     public void onUpdate(UpdateEvent event) {
         if (mc.thePlayer.ticksExisted < 5) {
             amount = 0;
-            done = false;
+            done = 0;
             staffInMatch.clear();
         }
 
@@ -58,11 +58,10 @@ public class StaffDetect extends Module {
             }
 
             for (String staff : verusKnownStaff) {
-                if (player.getName().contains(staff)) {
+                if (player.getName().contains(staff) && mc.thePlayer.ticksExisted > 5) {
                     amount++;
                     staffInMatch.add(player.getName());
                     ChatUtil.logNoPrefix("§4§l[Staff Detect]: §c" + staff + " §fis in your game!");
-                    done = true;
                 }
             }
         }

@@ -4,6 +4,7 @@ import me.kansio.client.gui.alt.GuiAltManager;
 import me.kansio.client.utils.font.Fonts;
 import me.kansio.client.utils.render.ColorPalette;
 import me.kansio.client.utils.render.RenderUtils;
+import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.gui.*;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
@@ -15,16 +16,19 @@ public class MainMenu extends GuiScreen
 {
 
     private static final ResourceLocation BACKGROUND = new ResourceLocation("sleek/bg1.png");
+    private static final ResourceLocation SBACKGROUND = new ResourceLocation("sleek/stalin-1.jpg");
+    private boolean soviet = false;
 
     public void initGui()
     {
         int j = height / 4 + 48;
         int i = 24;
         this.buttonList.add(new GuiButton(0, width / 2 - 100, j, I18n.format("menu.singleplayer")));
-        this.buttonList.add(new GuiButton(1, width / 2 - 100, j + i * 1, I18n.format("menu.multiplayer")));
+        this.buttonList.add(new GuiButton(1, width / 2 - 100, j + i, I18n.format("menu.multiplayer")));
         this.buttonList.add(new GuiButton(2, width / 2 - 100, j + i * 2, "Alt Manager"));
-        this.buttonList.add(new GuiButton(3, width / 2 - 100, j + 72 + 12, 98, 20, I18n.format("menu.options")));
-        this.buttonList.add(new GuiButton(4, width / 2 + 2, j + 72 + 12, 98, 20, I18n.format("menu.quit")));
+        this.buttonList.add(new GuiButton(3, width / 2 - 100, j + 84, 98, 20, I18n.format("menu.options")));
+        this.buttonList.add(new GuiButton(4, width / 2 + 2, j + 84, 98, 20, I18n.format("menu.quit")));
+        this.buttonList.add(new GuiButton(5, 0, 0, 98, 20, "Soviet"));
     }
 
     protected void actionPerformed(GuiButton button) throws IOException
@@ -45,13 +49,23 @@ public class MainMenu extends GuiScreen
             case 4:
                 this.mc.shutdown();
                 break;
+            case 5:
+                soviet = !soviet;
+
+                PositionedSoundRecord soundRecord = PositionedSoundRecord.create(new ResourceLocation("bgm.soviet"), 1.0f);
+                if (soviet) {
+                    mc.getSoundHandler().playSound(soundRecord);
+                } else {
+                    mc.getSoundHandler().stopSound(soundRecord);
+                }
+                break;
         }
     }
 
     public void drawScreen(int mouseX, int mouseY, float partialTicks)
     {
         GlStateManager.color(1.0F,1.0F,1.0F,1.0F);
-        RenderUtils.drawImage(BACKGROUND, 0, 0, width, height);
+        RenderUtils.drawImage(soviet ? SBACKGROUND : BACKGROUND, 0, 0, width, height);
 
         String s = "§lS§fleek";
         Fonts.Arial30.drawCenteredString(s, width / 2, height / 4 + 24, ColorPalette.GREEN.getColor().getRGB());

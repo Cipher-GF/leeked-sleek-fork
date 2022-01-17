@@ -3,6 +3,7 @@ package net.minecraft.client.renderer;
 import com.google.common.base.Predicates;
 import com.google.gson.JsonSyntaxException;
 import me.kansio.client.Client;
+import me.kansio.client.event.impl.RenderEvent2;
 import me.kansio.client.event.impl.Render3DEvent;
 import me.kansio.client.gui.MainMenu;
 import net.minecraft.block.Block;
@@ -50,8 +51,6 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.WorldSettings;
 import net.minecraft.world.biome.BiomeGenBase;
-
-import optifine.*;
 
 import optifine.Config;
 import optifine.CustomColors;
@@ -1856,6 +1855,8 @@ public class EntityRenderer implements IResourceManagerReloadListener
             this.mc.mcProfiler.endStartSection("aboveClouds");
             this.renderCloudsCheck(renderglobal, partialTicks, pass);
         }
+
+        Client.getInstance().getEventBus().post(new RenderEvent2(partialTicks));
 
         if (Reflector.ForgeHooksClient_dispatchRenderLast.exists())
         {

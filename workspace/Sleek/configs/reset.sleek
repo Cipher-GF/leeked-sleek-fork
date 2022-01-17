@@ -44,7 +44,8 @@
     "Spectate Spoof": "false",
     "Abilities Spoof": "false",
     "Timer": "false",
-    "Timer Speed": "1.0"
+    "Timer Speed": "1.0",
+    "Hub Disable": "true"
   },
   {
     "name": "Killaura",
