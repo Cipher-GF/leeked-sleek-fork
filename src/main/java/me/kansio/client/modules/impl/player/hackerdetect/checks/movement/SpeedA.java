@@ -28,10 +28,14 @@ public class SpeedA extends Check {
 
                 if (ent.hurtTime != 0) continue;
 
+<<<<<<< Updated upstream
                 if (BPSUtil.getBPS(ent) > 20 && BPSUtil.getBPS(ent) < 30) {
+=======
+                if (BPSUtil.getBPS(ent) > 16 && BPSUtil.getBPS(ent) < 200) {
+>>>>>>> Stashed changes
                     HackerDetect.getInstance().getViolations().put(ent, HackerDetect.getInstance().getViolations().getOrDefault(ent, 1));
 
-                    if (HackerDetect.getInstance().getViolations().get(ent) % 5 == 1) {
+                    if (HackerDetect.getInstance().getViolations().get(ent) > 60) {
                         if (!Client.getInstance().getTargetManager().isTarget(ent)) {
                             ChatUtil.logCheater(ent.getName() + " §7might be using §aSpeed (Check 1) §4§l(Flagged as cheater!) " + BPSUtil.getBPS(ent));
                             Client.getInstance().getTargetManager().getTarget().add(ent.getName());
