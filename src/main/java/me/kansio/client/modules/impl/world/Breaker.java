@@ -6,6 +6,8 @@ import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.modules.impl.combat.KillAura;
+import me.kansio.client.utils.rotations.AimUtil;
+import me.kansio.client.utils.rotations.Rotation;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.network.play.client.C07PacketPlayerDigging;
@@ -31,6 +33,11 @@ public class Breaker extends Module {
                     final BlockPos blockPos = new BlockPos(xPos, yPos, zPos);
                     final Block block = mc.theWorld.getBlockState(blockPos).getBlock();
                     if ((block.getBlockState().getBlock() == Block.getBlockById(92) || block.getBlockState().getBlock() == Blocks.bed) && mc.thePlayer.ticksExisted % 3 == 0) {
+
+                        Rotation rot = AimUtil.attemptFacePosition(blockPos.getX(), blockPos.getY(), blockPos.getZ());
+                        event.setRotationYaw(rot.getRotationYaw());
+                        event.setRotationPitch(rot.getRotationPitch());
+                        mc.thePlayer.swingItem();
                         mc.thePlayer.sendQueue.addToSendQueue(new C07PacketPlayerDigging(C07PacketPlayerDigging.Action.START_DESTROY_BLOCK, blockPos, EnumFacing.NORTH));
                         mc.thePlayer.sendQueue.addToSendQueue(new C07PacketPlayerDigging(C07PacketPlayerDigging.Action.STOP_DESTROY_BLOCK, blockPos, EnumFacing.NORTH));
                     }

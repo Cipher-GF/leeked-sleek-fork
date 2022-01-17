@@ -64,11 +64,7 @@
     "Rotation Mode": "Default",
     "Swing Range": "6.0",
     "Block Range": "6.0",
-<<<<<<< Updated upstream
     "CPS": "10.0",
-=======
-    "CPS": "8.0",
->>>>>>> Stashed changes
     "Randomize CPS": "3.0",
     "Swing Mode": "Client",
     "Autoblock Mode": "Verus",

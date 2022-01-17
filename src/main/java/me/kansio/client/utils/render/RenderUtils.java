@@ -348,4 +348,7 @@ public class RenderUtils extends Util {
         return isInViewFrustrum(entity.getEntityBoundingBox()) || entity.ignoreFrustumCheck;
     }
 
+    public static double interp(final double newPos, final double oldPos) {
+        return oldPos + (newPos - oldPos) * Minecraft.getMinecraft().timer.renderPartialTicks;
+    }
 }
