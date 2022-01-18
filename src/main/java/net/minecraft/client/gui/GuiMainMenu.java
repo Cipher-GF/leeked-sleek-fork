@@ -48,10 +48,8 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class GuiMainMenu extends GuiScreen
-{
+public class GuiMainMenu extends GuiScreen {
     private GuiTextField username;
-
 
 
     @Override
@@ -66,22 +64,20 @@ public class GuiMainMenu extends GuiScreen
                         Client.getInstance().onStart();
                         Client.getInstance().setUsername(json.get("username").getAsString());
                         Client.getInstance().setDiscordTag(json.get("discordTag").getAsString());
+                        Client.getInstance().setRank(json.get("rank").getAsString());
                         mc.displayGuiScreen(new MainMenu());
                     }
                 }
             }
-        } catch (Throwable var11) {
-            var11.printStackTrace();
-            //REMOVE ME LATER: throw new RuntimeException();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
     @Override
     public void drawScreen(int x, int y2, float z) {
         final FontRenderer font = mc.fontRendererObj;
-        ScaledResolution scaledResolution = new ScaledResolution(mc);
 
-        //Gui.drawRect(0, 0, scaledResolution.getScaledWidth(), scaledResolution.getScaledHeight(), new Color(50, 50, 50).getRGB());
         drawDefaultBackground();
         username.drawTextBox();
         drawString(mc.fontRendererObj, "Client has been skidded by vncat", mc.fontRendererObj.getStringWidth("Client has been skidded by vncat") / 2, height - 120, ColorPalette.AMBER.getColor().getRGB());
