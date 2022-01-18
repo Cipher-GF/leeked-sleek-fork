@@ -9,6 +9,11 @@ public class PositionedSoundRecord extends PositionedSound
         return new PositionedSoundRecord(soundResource, 0.25F, pitch, false, 0, ISound.AttenuationType.NONE, 0.0F, 0.0F, 0.0F);
     }
 
+    public static PositionedSoundRecord create(ResourceLocation soundResource, float pitch, boolean repeat)
+    {
+        return new PositionedSoundRecord(soundResource, 0.25F, pitch, repeat, 0, ISound.AttenuationType.NONE, 0.0F, 0.0F, 0.0F);
+    }
+
     public static PositionedSoundRecord create(ResourceLocation soundResource)
     {
         return new PositionedSoundRecord(soundResource, 1.0F, 1.0F, false, 0, ISound.AttenuationType.NONE, 0.0F, 0.0F, 0.0F);

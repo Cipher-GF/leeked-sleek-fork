@@ -4,8 +4,8 @@
     "keybind": 21,
     "enabled": true,
     "AutoSword": "true",
-    "Only in Inv": "false",
-    "AutoSword Delay": "32.0",
+    "Only in Inv": "true",
+    "AutoSword Delay": "25.0",
     "Inv Cleaner": "true",
     "Inv Only": "true",
     "InvCleaner Delay": "25.0",
@@ -22,7 +22,7 @@
   {
     "name": "Staff Detector",
     "keybind": 0,
-    "enabled": true
+    "enabled": false
   },
   {
     "name": "Teleport Aura",
@@ -32,7 +32,7 @@
   {
     "name": "Hacker Detect",
     "keybind": 0,
-    "enabled": true
+    "enabled": false
   },
   {
     "name": "Target Strafe",
@@ -43,74 +43,74 @@
     "Controllable": "true",
     "Render": "true",
     "Radius": "4.0",
-    "Width": "1.0",
-    "Red": "100.0",
-    "Green": "100.0",
-    "Blue": "100.0"
+    "Width": "4.0",
+    "Red": "255.0",
+    "Green": "0.0",
+    "Blue": "0.0"
   },
   {
     "name": "Chest Stealer",
     "keybind": 21,
     "enabled": true,
     "Check Chest": "true",
-    "Delay": "112.0"
+    "Delay": "32.0"
   },
   {
     "name": "Time Changer",
     "keybind": 0,
-    "enabled": true,
-    "Mode": "Night"
+    "enabled": false,
+    "Mode": "Day"
   },
   {
     "name": "Anti Spammer",
     "keybind": 0,
-    "enabled": true
+    "enabled": false
   },
   {
     "name": "Auto Server",
     "keybind": 21,
-    "enabled": true,
+    "enabled": false,
     "Server": "BlocksMC",
     "Kit": "Knight"
   },
   {
     "name": "Chat Bypass",
     "keybind": 0,
-    "enabled": true
+    "enabled": false
   },
   {
     "name": "DeathEffect",
     "keybind": 0,
-    "enabled": true,
+    "enabled": false,
     "Effect Mode": "Blood",
     "Play Sound": "false",
-    "Meme Sounds": "true",
-    "Meme Mode": "Win Error"
+    "Meme Sounds": "false",
+    "Meme Mode": "OOF"
   },
   {
     "name": "ACDetector",
     "keybind": 0,
     "enabled": false,
-    "Delay": "0.5"
+    "Delay": "1.0"
   },
   {
     "name": "Brightness",
     "keybind": 0,
-    "enabled": true,
+    "enabled": false,
     "Mode": "Gamma"
   },
   {
     "name": "Kill Insults",
     "keybind": 0,
-    "enabled": true,
+    "enabled": false,
     "Mode": "BlocksMC"
   },
   {
     "name": "Enemy List",
     "keybind": 0,
     "enabled": false,
-    "X-Pos": "5.0",
-    "Y-Pos": "200.0"
+    "X-Pos": "5",
+    "Y-Pos": "200"
   },
   {
     "name": "Long Jump",
@@ -118,17 +118,17 @@
     "enabled": false,
     "Mode": "Vanilla",
     "Vertical Boost": "0.8",
-    "Speed": "0.7000000000000001"
+    "Speed": "1.45"
   },
   {
     "name": "Animations",
     "keybind": 0,
     "enabled": true,
     "Attack Animations": "true",
-    "Block Mode": "Exhi",
+    "Block Mode": "Spin",
     "Smooth Hit": "false",
     "Scale": "1.0",
-    "Swing Speed": "8.0"
+    "Swing Speed": "1.0"
   },
   {
     "name": "Image ESP",
@@ -144,7 +144,7 @@
   {
     "name": "Hit Effect",
     "keybind": 0,
-    "enabled": true,
+    "enabled": false,
     "Particle Mode": "Blood",
     "Amount": "1.0",
     "Play Sound": "false",
@@ -170,7 +170,7 @@
     "enabled": false,
     "Mode": "Verus",
     "Swing": "true",
-    "Sprint": "true",
+    "Sprint": "false",
     "Tower": "true",
     "Show Info": "true",
     "Safewalk": "true",
@@ -194,14 +194,14 @@
   {
     "name": "Disabler",
     "keybind": 0,
-    "enabled": true,
+    "enabled": false,
     "Mode": "BlocksMC",
     "Cancel Transactions": "false",
     "Cancel Keep Alive": "false",
     "Delay Transactions": "false",
-    "Transaction Delay": "6240.0",
-    "Delay Keep Alive": "true",
-    "Delay Alive Amount": "28800.0",
+    "Transaction Delay": "1000.0",
+    "Delay Keep Alive": "false",
+    "Delay Alive Amount": "1000.0",
     "Send C0C": "false",
     "Max Value C0C": "false",
     "Void Teleport": "false",
@@ -212,7 +212,7 @@
     "Spectate Spoof": "false",
     "Abilities Spoof": "false",
     "Timer": "false",
-    "Timer Speed": "1.0",
+    "Timer Speed": "1",
     "Hub Disable": "false"
   },
   {
@@ -225,28 +225,28 @@
     "keybind": 49,
     "enabled": true,
     "Mode": "Basic",
-    "Fall Distance": "7.0"
+    "Fall Distance": "7"
   },
   {
     "name": "Click GUI",
     "keybind": 54,
     "enabled": false,
-    "Hud Colour": "true",
+    "Hud Colour": "false",
     "Font": "false"
   },
   {
     "name": "Criticals",
     "keybind": 0,
-    "enabled": true,
-    "Mode": "Verus",
+    "enabled": false,
+    "Mode": "Packet",
     "C06": "true"
   },
   {
     "name": "Velocity",
     "keybind": 0,
     "enabled": true,
-    "Vertical": "0.0",
-    "Horizontal": "0.0",
+    "Vertical": "100.0",
+    "Horizontal": "100.0",
     "Mode": "Packet",
     "Explosion": "true"
   },
@@ -256,20 +256,20 @@
     "enabled": false,
     "Mode": "Smart",
     "Target Priority": "Health",
-    "Rotation Mode": "Default",
-    "Swing Range": "6.0",
-    "Block Range": "6.0",
+    "Rotation Mode": "NCP",
+    "Swing Range": "3.0",
+    "Block Range": "3.0",
     "CPS": "9.0",
     "Randomize CPS": "3.0",
     "Swing Mode": "Client",
-    "Autoblock Mode": "Verus",
+    "Autoblock Mode": "Fake",
     "GCD": "true",
     "TargetHud": "true",
     "TargetHud Mode": "Sleek",
     "Players": "true",
-    "Friends": "false",
-    "Animals": "false",
-    "Monsters": "false",
+    "Friends": "true",
+    "Animals": "true",
+    "Monsters": "true",
     "Invisibles": "false",
     "Walls": "true"
   },
@@ -281,7 +281,7 @@
   {
     "name": "No Slow",
     "keybind": 0,
-    "enabled": true,
+    "enabled": false,
     "Mode": "Vanilla",
     "Item": "true",
     "Water": "false",
@@ -296,8 +296,8 @@
   {
     "name": "No Fall",
     "keybind": 49,
-    "enabled": true,
-    "Mode": "Verus"
+    "enabled": false,
+    "Mode": "Spoof"
   },
   {
     "name": "Strafe",
@@ -318,7 +318,7 @@
     "keybind": 0,
     "enabled": true,
     "Mode": "Legit",
-    "Keep Sprint": "true"
+    "Keep Sprint": "false"
   },
   {
     "name": "Phase",
@@ -342,14 +342,14 @@
     "enabled": false,
     "Mode": "Bhop",
     "Speed": "0.4",
-    "Force Friction": "true",
-    "Friction": "NCP"
+    "Force Friction": "false",
+    "Friction": "LEGIT"
   },
   {
     "name": "Chams",
     "keybind": 0,
-    "enabled": true,
-    "Fill": "false",
+    "enabled": false,
+    "Fill": "true",
     "Alpha": "255.0",
     "Red": "255.0",
     "Green": "255.0",
@@ -359,14 +359,14 @@
     "name": "Flight",
     "keybind": 47,
     "enabled": false,
-    "Mode": "Vanilla",
-    "Speed": "1.5",
+    "Mode": "Mush",
+    "Speed": "10.0",
     "View Bobbing": "false",
     "Boost": "true",
     "Extra Boost": "true",
     "Glide": "true",
     "Boost Mode": "Normal",
-    "Timer": "5.0"
+    "Timer": "1.0"
   },
   {
     "name": "Timer",
@@ -379,28 +379,28 @@
   {
     "name": "Cape",
     "keybind": 0,
-    "enabled": true,
+    "enabled": false,
     "Cape": "Sleek"
   },
   {
     "name": "MCF",
     "keybind": 0,
-    "enabled": true
+    "enabled": false
   },
   {
     "name": "HUD",
     "keybind": 0,
     "enabled": true,
     "Mode": "Sleek",
-    "Color Mode": "Nitrogen",
+    "Color Mode": "Sleek",
     "Font": "false",
     "Notifications": "true",
     "Hide Render": "true",
     "BPS": "true",
     "Watermark": "true",
-    "Client Name": "\u0026lS\u0026fleek \u00267[Antiban Edition??]",
-    "Module Suffix": " %s",
-    "ArrayList Y": "4.0",
+    "Client Name": ":japanese_goblin:",
+    "Module Suffix": " [%s]",
+    "ArrayList Y": "4",
     "Scoreboard": "Right",
     "Scoreboard Y": "0.0"
   },
@@ -416,8 +416,8 @@
     "Armor Bar": "true",
     "Local": "true",
     "Players": "true",
-    "Invisibles": "false",
-    "Monsters": "false",
+    "Invisibles": "true",
+    "Monsters": "true",
     "Animals": "true",
     "Chests": "false",
     "Dropped Items": "true"
