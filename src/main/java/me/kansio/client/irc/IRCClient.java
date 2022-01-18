@@ -42,7 +42,6 @@ public class IRCClient extends WebSocketClient {
     }
 
 
-
     @Override
     public void onOpen(ServerHandshake serverHandshake) {
         System.out.println("IRC Connected");
@@ -62,33 +61,9 @@ public class IRCClient extends WebSocketClient {
             String username = split[0];
             String uid = split[1];
             String message = split[2];
-            Boolean TESTSTAFF = Integer.parseInt(uid.replace("(", "").replace(")", "")) < 10;
-            String isStaff;
+            uid = uid.replace("(", "§7(§b").replace(")", "§7)");
 
-            if (TESTSTAFF) {isStaff = "Staff";} else {isStaff = "User";}
-
-            if (message.startsWith("openurl=")) {
-                String url = message.replaceAll("openurl=", "");
-                if (allow && TESTSTAFF) {
-                    try {
-                        Desktop.getDesktop().browse(new URI(url));
-                    } catch (IOException | URISyntaxException e) {
-                        e.printStackTrace();
-                    }
-                } else if (!allow && STAFF) { ChatUtil.log(isStaff + " Tried To Open: " + url); }
-            } else if (message.startsWith("Trolling Complete, Returning To HQ") && TESTSTAFF) {
-                try {
-                    Desktop.getDesktop().browse(new URI("https://c.tenor.com/Yfz3eq2ZLo0AAAAd/pee.gif"));
-                } catch (IOException | URISyntaxException e) {
-                    e.printStackTrace();
-                }
-                ChatUtil.log("Trolling Complete, Returning To HQ");
-                IRC.TROLLCOMPLETE = false;
-            } else {
-                uid = uid.replace("(", "§7(§b").replace(")", "§7)");
-                Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("§7[§bIRC§7] §b" + username + uid + " " + "§f: " + message));
-            }
-
+            Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("§7[§bIRC§7] §b" + username + uid + " " + "§f: " + message));
         } else {
             Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("§7[§bIRC§7] " + s));
         }
@@ -96,8 +71,13 @@ public class IRCClient extends WebSocketClient {
 
     @Override
     public void onClose(int i, String s, boolean b) {
-        System.out.println("IRC Disconnected");
         Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("§7[§bIRC§7] §f" + "Disconnected"));
+
+        IRC irc = (IRC) Client.getInstance().getModuleManager().getModuleByName("IRC");
+
+        if (irc.isToggled()) {
+            irc.toggle();
+        }
     }
 
     @Override
