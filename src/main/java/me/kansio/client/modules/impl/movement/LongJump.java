@@ -17,16 +17,14 @@ import me.kansio.client.utils.player.PlayerUtil;
 )
 public class LongJump extends Module {
 
-    private ModeValue mode = new ModeValue("Mode", this, "Verus", "Viper", "Vanilla");
-
-    //verus boost stuff
-    private NumberValue vertical = new NumberValue("Vertical Boost", this, 0.8, 0.05, 6.0, 0.1);
-    private NumberValue boost = new NumberValue("Speed", this, 1.45, 0.05, 10.0, 0.1);
-
     //Verus Highjump Variables
     boolean launched = false;
     boolean wasLaunched = false;
     boolean jumped = false;
+    private ModeValue mode = new ModeValue("Mode", this, "Verus", "Viper", "Vanilla");
+    //verus boost stuff
+    private NumberValue vertical = new NumberValue("Vertical Boost", this, 0.8, 0.05, 6.0, 0.1);
+    private NumberValue boost = new NumberValue("Speed", this, 1.45, 0.05, 10.0, 0.1);
 
     @Override
     public void onEnable() {
@@ -73,13 +71,12 @@ public class LongJump extends Module {
             }
             case "Vanilla": {
                 if (mc.thePlayer.isMoving()) {
-                    if (!launched) {
+                    if (mc.thePlayer.onGround) {
                         mc.thePlayer.motionY = vertical.getValue().doubleValue();
-                        launched = true;
 
-                    } else {
-                        PlayerUtil.setMotion(boost.getValue().floatValue());
                     }
+                    PlayerUtil.setMotion(boost.getValue().floatValue());
+
                 }
                 break;
             }
