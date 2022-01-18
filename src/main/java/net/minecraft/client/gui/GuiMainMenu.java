@@ -60,11 +60,11 @@ public class GuiMainMenu extends GuiScreen {
                 String serv = HttpUtil.get("http://zerotwoclient.xyz:13337/api/v1/getuser?uid=" + Client.getInstance().getUid());
                 JsonObject json = new JsonParser().parse(serv).getAsJsonObject();
                 if (json.get("uid").getAsString().equals(Client.getInstance().getUid())) {
-                    if (json.get("hwid").getAsString().equals(NegroidFarm.guisdafghiusfgfsdhusdfghifsdhuidsfhuifdshuifsdhiudsfhiusfdhsdiuffsdhiudhsifusdfhiufsdhiufsdhiusdfhiufsdhiufsdhiu())) {
-                        System.out.println("called XD");
+                    if (json.get("hwid").getAsString().equals(NegroidFarm.guisdafghiusfgfsdhusdfghifsdhuidsfhuifdshuifsdhiudsfhiusfdhsdiuffsdhiudhsifusdfhiufsdhiufsdhiusdfhiufsdhiufsdhiu())) {;
                         Client.getInstance().onStart();
                         Client.getInstance().setUsername(json.get("username").getAsString());
                         Client.getInstance().setDiscordTag(json.get("discordTag").getAsString());
+                        Client.getInstance().setRank(json.get("rank").getAsString());
                         mc.displayGuiScreen(new MainMenu());
                     }
                 }
@@ -77,9 +77,7 @@ public class GuiMainMenu extends GuiScreen {
     @Override
     public void drawScreen(int x, int y2, float z) {
         final FontRenderer font = mc.fontRendererObj;
-        ScaledResolution scaledResolution = new ScaledResolution(mc);
 
-        //Gui.drawRect(0, 0, scaledResolution.getScaledWidth(), scaledResolution.getScaledHeight(), new Color(50, 50, 50).getRGB());
         drawDefaultBackground();
         username.drawTextBox();
         drawString(mc.fontRendererObj, "Client has been skidded by vncat", mc.fontRendererObj.getStringWidth("Client has been skidded by vncat") / 2, height - 120, ColorPalette.AMBER.getColor().getRGB());

@@ -16,36 +16,19 @@ import java.net.URISyntaxException;
 
 public class IRCClient extends WebSocketClient {
 
-    public static boolean allow = true;
-    Boolean STAFF = Integer.parseInt(Client.getInstance().getUid()) < 10;
-
-    private void blacklistStaff() {
-        if (STAFF) {
-            allow = false;
-        } else {
-            allow = true;
-        }
-    }
 
     public static char SPLIT = '\u0000';
 
     public IRCClient() throws URISyntaxException {
         super(new URI("ws://zerotwoclient.xyz:1337"));
-        this.setAttachment(Client.getInstance().getUsername());
+        this.setAttachment(Client.getInstance().getRank().getColor().toString().replace("§", "&") + Client.getInstance().getUsername());
         this.addHeader("name", this.getAttachment());
         this.addHeader("uid", Client.getInstance().getUid());
-        blacklistStaff();
     }
-
-    public static boolean isAllowed() {
-        return allow;
-    }
-
 
     @Override
     public void onOpen(ServerHandshake serverHandshake) {
         System.out.println("IRC Connected");
-        Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("§7[§bIRC§7] §f" + "Connected"));
     }
 
     @Override
@@ -63,7 +46,7 @@ public class IRCClient extends WebSocketClient {
             String message = split[2];
             uid = uid.replace("(", "§7(§b").replace(")", "§7)");
 
-            Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("§7[§bIRC§7] §b" + username + uid + " " + "§f: " + message));
+            Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText(ChatUtil.translateColorCodes("§7[§bIRC§7] §b" + username + uid + " " + "§f: " + message)));
         } else {
             Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("§7[§bIRC§7] " + s));
         }

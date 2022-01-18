@@ -19,6 +19,7 @@ import me.kansio.client.modules.ModuleManager;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.modules.impl.player.hackerdetect.CheckManager;
 import me.kansio.client.modules.impl.visuals.ClickGUI;
+import me.kansio.client.rank.UserRank;
 import me.kansio.client.targets.TargetManager;
 import me.kansio.client.utils.network.HttpUtil;
 import net.minecraft.client.Minecraft;
@@ -45,6 +46,10 @@ public class Client {
     @Getter
     @Setter
     private String discordTag;
+
+    @Getter
+    private UserRank rank;
+
     @Getter
     private Map<String, String> users = new HashMap<>();
 
@@ -169,6 +174,23 @@ public class Client {
             }
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void setRank(String rank) {
+        switch (rank) {
+            case "Developer": {
+                this.rank = UserRank.DEVELOPER;
+                break;
+            }
+            case "Beta": {
+                this.rank = UserRank.BETA;
+                break;
+            }
+            default: {
+                this.rank = UserRank.USER;
+                break;
+            }
         }
     }
 
