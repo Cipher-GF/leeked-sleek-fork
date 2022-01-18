@@ -68,7 +68,7 @@ public class StaffDetect extends Module {
             }
         } else {
             staffInMatch.clear();
-            amount = staffInMatch.size();
+            amount = 0;
         }
     }
 

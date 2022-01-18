@@ -38,7 +38,7 @@ public class VerusDamage2 extends FlightMode {
             veroos = getFlight().getSpeed().getValue();
         }
 
-        if (mc.thePlayer.hurtResistantTime < 2) {
+        if (mc.thePlayer.hurtResistantTime < 3) {
             veroos = 0.22f;
         }
 
