@@ -85,7 +85,8 @@ public class StaffDetect extends Module {
                 mc.fontRendererObj.drawStringWithShadow("§f" + amount + " §cStaff members §fwere detected!", sr.getScaledWidth() / 2 - 76, sr.getScaledHeight() / 2, -1);
             } else {
                 mc.fontRendererObj.drawStringWithShadow("§4§lWarning:", sr.getScaledWidth() / 2 - 70, sr.getScaledHeight() / 2 - 14, -1);
-                mc.fontRendererObj.drawStringWithShadow("§fA §cStaff member §fwas detected!", sr.getScaledWidth() / 2 - 70, sr.getScaledHeight() / 2, -1); }
+                mc.fontRendererObj.drawStringWithShadow("§fA §cStaff member §fwas detected!", sr.getScaledWidth() / 2 - 70, sr.getScaledHeight() / 2, -1);
+            }
         }
     }
 }
