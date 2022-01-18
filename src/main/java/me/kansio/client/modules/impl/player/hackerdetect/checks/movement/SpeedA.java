@@ -20,7 +20,6 @@ public class SpeedA extends Check {
     @Override
     public void onUpdate() {
         if (Minecraft.getMinecraft().thePlayer.ticksExisted > 20) {
-
            for (EntityPlayer ent : Minecraft.getMinecraft().theWorld.playerEntities) {
 
                 if (ent.ticksExisted < 20) continue;

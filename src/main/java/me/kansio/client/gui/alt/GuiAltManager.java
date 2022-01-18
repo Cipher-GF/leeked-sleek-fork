@@ -2,6 +2,7 @@ package me.kansio.client.gui.alt;
 
 import lombok.Getter;
 import lombok.Setter;
+import me.kansio.client.utils.chat.NameUtil;
 import net.minecraft.client.gui.*;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.EnumChatFormatting;
@@ -62,6 +63,11 @@ public final class GuiAltManager extends GuiScreen {
                 case 5:
                     mc.displayGuiScreen(new GuiMicrosoftAltManager(this));
                     break;
+                case 6:
+                    thread = null;
+                    thread = new AltLoginThread(NameUtil.generateName(), "");
+                    thread.start();
+                    break;
 
                 default:
                     break;
@@ -103,6 +109,8 @@ public final class GuiAltManager extends GuiScreen {
         buttonList.add(new GuiButton(3, width / 2 - 100, var3 + 72 + 12 + 48 + 24, "Generate Cracked Account"));
         buttonList.add(new GuiButton(5, width / 2 - 100, var3 + 72 + 12 + 48 + 24 + 24, "Microsoft Login"));
         buttonList.add(new GuiButton(4, width / 2 - 100, var3 + 72 + 12 + 48 + 24 * 3, "DrilledAlts (Good)"));
+        buttonList.add(new GuiButton(6, width / 2 - 100, var3 + 72 + 12 + 48 + 24 + 24 * 3, "Generate Real Looking Name"));
+
         username = new GuiTextField(var3, mc.fontRendererObj, width / 2 - 100, 60, 200, 20);
         password = new GuiTextField(var3, mc.fontRendererObj, width / 2 - 100, 100, 200, 20);
         username.setFocused(true);
