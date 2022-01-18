@@ -40,7 +40,6 @@ public class StaffDetect extends Module {
     );
 
     private int amount;
-    private int done;
 
     /*/@Subscribe
     public void onRender(RenderOverlayEvent event) {
@@ -52,25 +51,24 @@ public class StaffDetect extends Module {
     }/*/
 
     @Subscribe
-    public void onUpdate(UpdateEvent event) {
-        if (mc.thePlayer.ticksExisted < 5) {
-            amount = 0;
-            done = 0;
-            staffInMatch.clear();
-        }
+    public void onTick(UpdateEvent event) {
+        if (mc.thePlayer.ticksExisted > 5) {
+            for (EntityPlayer player : mc.theWorld.playerEntities) {
+                if (staffInMatch.contains(player.getName())) {
+                    continue;
+                }
 
-        for (EntityPlayer player : mc.theWorld.playerEntities) {
-            if (staffInMatch.contains(player.getName())) {
-                continue;
-            }
-
-            for (String staff : verusKnownStaff) {
-                if (player.getName().contains(staff) && mc.thePlayer.ticksExisted > 5) {
-                    amount++;
-                    staffInMatch.add(player.getName());
-                    ChatUtil.logNoPrefix("§4§l[Staff Detect]: §c" + staff + " §fis in your game!");
+                for (String staff : verusKnownStaff) {
+                    if (player.getName().contains(staff)) {
+                        staffInMatch.add(player.getName());
+                        amount = staffInMatch.size();
+                        ChatUtil.logNoPrefix("§4§l[Staff Detect]: §c" + staff + " §fis in your game!");
+                    }
                 }
             }
+        } else {
+            staffInMatch.clear();
+            amount = staffInMatch.size();
         }
     }
 
@@ -78,12 +76,16 @@ public class StaffDetect extends Module {
     public void onRender(RenderOverlayEvent event) {
         ScaledResolution sr = RenderUtils.getResolution();
 
-        if (staffInMatch.size() != 0) {
-            RenderUtils.drawRect(sr.getScaledWidth() / 2 - 60, sr.getScaledHeight() / 2 - 21, 120, 1, new Color(255, 0, 0).getRGB());
-            RenderUtils.drawRect(sr.getScaledWidth() / 2 - 60, sr.getScaledHeight() / 2 - 20, 120, 40, new Color(0, 0,0 , 100).getRGB());
+        if (staffInMatch.size() != 0 && amount != 0) {
+            RenderUtils.drawRect(sr.getScaledWidth() / 2 - 80, sr.getScaledHeight() / 2 - 21, 167, 1, new Color(255, 0, 0).getRGB());
+            RenderUtils.drawRect(sr.getScaledWidth() / 2 - 80, sr.getScaledHeight() / 2 - 20, 167, 40, new Color(0, 0,0 , 100).getRGB());
 
-            mc.fontRendererObj.drawStringWithShadow("§4§lWarning:", sr.getScaledWidth() / 2 - 56, sr.getScaledHeight() / 2 - 14, -1);
-            mc.fontRendererObj.drawStringWithShadow(" §cStaff §fwere detected!", sr.getScaledWidth() / 2 - 56, sr.getScaledHeight() / 2, -1);
+            if (amount > 1) {
+                mc.fontRendererObj.drawStringWithShadow("§4§lWarning:", sr.getScaledWidth() / 2 - 76, sr.getScaledHeight() / 2 - 14, -1);
+                mc.fontRendererObj.drawStringWithShadow("§f" + amount + " §cStaff members §fwere detected!", sr.getScaledWidth() / 2 - 76, sr.getScaledHeight() / 2, -1);
+            } else {
+                mc.fontRendererObj.drawStringWithShadow("§4§lWarning:", sr.getScaledWidth() / 2 - 70, sr.getScaledHeight() / 2 - 14, -1);
+                mc.fontRendererObj.drawStringWithShadow("§fA §cStaff member §fwas detected!", sr.getScaledWidth() / 2 - 70, sr.getScaledHeight() / 2, -1); }
         }
     }
 }
