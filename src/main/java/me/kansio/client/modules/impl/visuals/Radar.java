@@ -38,12 +38,13 @@ public class Radar extends Module {
         }
         int miX = 5, miY = 70;
         int maX = miX + 100, maY = miY + 100;
+        GL11.glPushMatrix();
         RenderUtils.drawRoundedRect(miX, miY, 100, maY - miY, 3, new Color(0, 0, 0, 100).getRGB());
         // drawing horizontal lines
         RenderUtils.drawRect(miX, miY - 1, 100, 1, ColorUtils.getColorFromHud(3).getRGB()); // top
         // drawing vertical lines
         RenderUtils.draw2DPolygon(maX / 2 + 3, miY + 52, 5f, 3, -1); // self
-        GL11.glPushMatrix();
+
         GL11.glEnable(GL11.GL_SCISSOR_TEST);
         int scale = new ScaledResolution(mc).getScaleFactor();
         GL11.glScissor(miX * scale, mc.displayHeight - scale * 170, maX * scale - (scale * 5), scale * 100);

@@ -1,5 +1,6 @@
 package me.kansio.client.modules.impl.player.hackerdetect.checks.phase;
 
+import me.kansio.client.Client;
 import me.kansio.client.modules.impl.player.hackerdetect.HackerDetect;
 import me.kansio.client.modules.impl.player.hackerdetect.checks.Check;
 import net.minecraft.client.Minecraft;
@@ -21,8 +22,10 @@ public class CagePhaseCheck extends Check {
                 return;
             }
 
-            if (ent.posY < detect.getCageYValue()) {
-                flag((EntityPlayer) ent);
+            if (ent.posY < Minecraft.getMinecraft().thePlayer.posY - 2) {
+                if (Client.getInstance().getTargetManager().isTarget((EntityPlayer) ent)) {
+                    Client.getInstance().getTargetManager().getTarget().add(ent.getName());
+                }
             }
         }
     }
