@@ -110,7 +110,7 @@ public class RenameConfig extends ConfigComponent implements Priority {
             //Reload the configs
             Client.getInstance().getConfigManager().loadConfigs();
 
-            NotificationManager.getNotificationManager().show(new Notification(Notification.NotificationType.INFO, "Configs", "Successfully renamed config", 3));
+            NotificationManager.getNotificationManager().show(new Notification(Notification.NotificationType.INFO, "Configs", "Successfully renamed config", 1));
 
             //close the click gui
             Minecraft.getMinecraft().thePlayer.closeScreen();

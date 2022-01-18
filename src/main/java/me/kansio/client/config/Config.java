@@ -14,6 +14,8 @@ import java.nio.file.Paths;
 public class Config {
 
     @Getter @Setter private String name;
+    @Getter @Setter private String author;
+    @Getter @Setter private String lastUpdated;
     @Getter @Setter private File file;
 
     public Config(String name, File file) {
@@ -28,7 +30,7 @@ public class Config {
 
             Files.move(original, to);
         } catch (Exception e) {
-            NotificationManager.getNotificationManager().show(new Notification(Notification.NotificationType.ERROR, "Error!", "Couldn't rename config!", 5));
+            NotificationManager.getNotificationManager().show(new Notification(Notification.NotificationType.ERROR, "Error!", "Couldn't rename config!", 1));
             e.printStackTrace();
         }
     }
