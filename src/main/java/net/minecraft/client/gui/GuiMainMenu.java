@@ -59,27 +59,15 @@ public class GuiMainMenu extends GuiScreen
         try {
             if (button.id == 0) {
                 Client.getInstance().setUid(username.getText());
-                String serv = HttpUtil.get("http://zerotwoclient.xyz:13337/api/v1/getusers");
-                JsonElement node = new JsonParser().parse(serv);
-                if (node.isJsonArray()) {
-                    JsonArray arr = node.getAsJsonArray();
-
-                    arr.forEach(element -> {
-                        JsonObject obj = element.getAsJsonObject();
-                        if (obj.get("uid").getAsString().equals(Client.getInstance().getUid())) {
-                            try {
-                                if (obj.get("hwid").getAsString().equals(NegroidFarm.guisdafghiusfgfsdhusdfghifsdhuidsfhuifdshuifsdhiudsfhiusfdhsdiuffsdhiudhsifusdfhiufsdhiufsdhiusdfhiufsdhiufsdhiu())) {
-                                    System.out.println("called XD");
-                                    Client.getInstance().onStart();
-                                    Client.getInstance().setUsername(obj.get("username").getAsString());
-                                    Client.getInstance().setDiscordTag(obj.get("discordTag").getAsString());
-                                    mc.displayGuiScreen(new MainMenu());
-                                }
-                            } catch (NoSuchAlgorithmException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    });
+                String serv = HttpUtil.get("http://zerotwoclient.xyz:13337/api/v1/getuser?uid=" + Client.getInstance().getUid());
+                JsonObject json = new JsonParser().parse(serv).getAsJsonObject();
+                if (json.get("uid").getAsString().equals(Client.getInstance().getUid())) {
+                    if (json.get("hwid").getAsString().equals(NegroidFarm.guisdafghiusfgfsdhusdfghifsdhuidsfhuifdshuifsdhiudsfhiusfdhsdiuffsdhiudhsifusdfhiufsdhiufsdhiusdfhiufsdhiufsdhiu())) {;
+                        Client.getInstance().onStart();
+                        Client.getInstance().setUsername(json.get("username").getAsString());
+                        Client.getInstance().setDiscordTag(json.get("discordTag").getAsString());
+                        mc.displayGuiScreen(new MainMenu());
+                    }
                 }
             }
         } catch (Throwable var11) {

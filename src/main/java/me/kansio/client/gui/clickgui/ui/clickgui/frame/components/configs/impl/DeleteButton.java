@@ -63,7 +63,7 @@ public class DeleteButton extends ConfigComponent implements Priority {
         if(RenderUtils.hover(x, y, mouseX, mouseY, defaultWidth, getOffset())) {
             //remove the config
             Client.getInstance().getConfigManager().removeConfig(config.getName());
-            NotificationManager.getNotificationManager().show(new Notification(Notification.NotificationType.INFO, "Deleted config", "Successfully deleted", 5));
+            NotificationManager.getNotificationManager().show(new Notification(Notification.NotificationType.INFO, "Deleted config", "Successfully deleted", 1));
 
             //close the click gui
             Minecraft.getMinecraft().thePlayer.closeScreen();

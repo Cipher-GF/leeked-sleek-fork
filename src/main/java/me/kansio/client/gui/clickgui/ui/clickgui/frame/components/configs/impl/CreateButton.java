@@ -89,7 +89,7 @@ public class CreateButton extends ConfigComponent implements Priority {
 
             //create config
             Client.getInstance().getConfigManager().saveConfig(tempName);
-            NotificationManager.getNotificationManager().show(new Notification(Notification.NotificationType.INFO, "Configs", "Successfully created config", 3));
+            NotificationManager.getNotificationManager().show(new Notification(Notification.NotificationType.INFO, "Configs", "Successfully created config", 1));
 
             ClickGUI clickGUI = (ClickGUI) Client.getInstance().getModuleManager().getModuleByName("Click GUI");
 
