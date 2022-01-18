@@ -1,4 +1,10 @@
-[
+{
+"data": {
+    "author": "Divine",
+    "name": "panic",
+    "lastUpdated": "Date 2022/1/18 Time 10:22:26"
+  },
+"modules": [
   {
     "name": "Inventory Manager",
     "keybind": 21,
@@ -428,3 +434,4 @@
     "enabled": true
   }
 ]
+}
