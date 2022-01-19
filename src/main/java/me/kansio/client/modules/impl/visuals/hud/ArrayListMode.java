@@ -5,11 +5,11 @@ import me.kansio.client.event.impl.RenderOverlayEvent;
 import me.kansio.client.modules.impl.visuals.HUD;
 import me.kansio.client.utils.Util;
 
-public abstract class HudMode extends Util {
+public abstract class ArrayListMode extends Util {
 
     private final String name;
 
-    public HudMode(String name) {
+    public ArrayListMode(String name) {
         this.name = name;
     }
 
@@ -21,7 +21,7 @@ public abstract class HudMode extends Util {
         return name;
     }
 
-    public HUD getHud() {
+    public HUD getArrayList() {
         return (HUD) Client.getInstance().getModuleManager().getModuleByName("Hud");
     }
 

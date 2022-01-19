@@ -1,7 +1,7 @@
-package me.kansio.client.modules.impl.visuals.hud.vital;
+package me.kansio.client.modules.impl.visuals.hud.watermark;
 
 import me.kansio.client.event.impl.RenderOverlayEvent;
-import me.kansio.client.modules.impl.visuals.hud.HudMode;
+import me.kansio.client.modules.impl.visuals.hud.WaterMarkMode;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import org.lwjgl.opengl.GL11;
@@ -10,7 +10,8 @@ import oshi.hardware.Processor;
 
 import java.awt.*;
 
-public class Vital extends HudMode {
+public class Vital extends WaterMarkMode {
+
     public Vital() {
         super("Vital");
     }

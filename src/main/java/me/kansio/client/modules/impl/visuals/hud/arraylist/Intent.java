@@ -1,22 +1,19 @@
-package me.kansio.client.modules.impl.visuals.hud.intent;
+package me.kansio.client.modules.impl.visuals.hud.arraylist;
 
 import me.kansio.client.Client;
 import me.kansio.client.event.impl.RenderOverlayEvent;
 import me.kansio.client.modules.impl.Module;
-import me.kansio.client.modules.impl.visuals.hud.HudMode;
-import me.kansio.client.utils.chat.ChatUtil;
+import me.kansio.client.modules.impl.visuals.hud.ArrayListMode;
 import me.kansio.client.utils.render.ColorUtils;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.client.renderer.GlStateManager;
 
 import java.util.Comparator;
 
-public class IntentBase extends HudMode {
+public class Intent extends ArrayListMode {
 
-    public IntentBase() {
+    public Intent() {
         super("Intent");
     }
 
@@ -29,13 +26,6 @@ public class IntentBase extends HudMode {
                         mc.fontRendererObj.getStringWidth(((Module) m).getName()))
                 .reversed()
         );
-
-        GlStateManager.pushMatrix();
-        GlStateManager.translate(4, 4, 0);
-        GlStateManager.scale(2, 2, 1);
-        GlStateManager.translate(-4, -4, 0);
-        fr.drawString(ChatUtil.translateColorCodes(getHud().clientName.getValue()), 4, 4, ColorUtils.getColorFromHud(1).getRGB());
-        GlStateManager.popMatrix();
 
         int count = 0;
 

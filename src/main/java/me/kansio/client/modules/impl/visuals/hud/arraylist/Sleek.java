@@ -1,33 +1,24 @@
-package me.kansio.client.modules.impl.visuals.hud.sleek;
+package me.kansio.client.modules.impl.visuals.hud.arraylist;
 
-import com.google.common.eventbus.Subscribe;
 import me.kansio.client.Client;
 import me.kansio.client.event.impl.RenderOverlayEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.modules.impl.visuals.HUD;
-import me.kansio.client.modules.impl.visuals.hud.HudMode;
-import me.kansio.client.utils.chat.ChatUtil;
-import me.kansio.client.utils.font.Fonts;
-import me.kansio.client.utils.math.BPSUtil;
-import me.kansio.client.utils.network.UserUtil;
-import me.kansio.client.utils.render.ColorPalette;
+import me.kansio.client.modules.impl.visuals.hud.ArrayListMode;
 import me.kansio.client.utils.render.ColorUtils;
-import me.kansio.client.utils.render.RenderUtils;
 import net.minecraft.client.gui.Gui;
-import net.minecraft.util.EnumChatFormatting;
 
 import java.awt.*;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-public class Sleek extends HudMode {
+public class Sleek extends ArrayListMode {
 
     public Sleek() {
         super("Sleek");
     }
 
-    @Subscribe
+    @Override
     public void onRenderOverlay(RenderOverlayEvent event) {
         HUD hud = (HUD) Client.getInstance().getModuleManager().getModuleByName("HUD");
         HUD.notifications = hud.noti.getValue() && hud.isToggled();
@@ -41,15 +32,6 @@ public class Sleek extends HudMode {
 
         if (hud.hideRender.getValue())
             sorted.removeIf(m -> m.getCategory() == ModuleCategory.VISUALS);
-
-        if (hud.watermark.getValue())
-            mc.fontRendererObj.drawStringWithShadow(ChatUtil.translateColorCodes(hud.clientName.getValueAsString()), 4, 4, color.getRGB());
-        String userinfo = "§7" + UserUtil.getBuildType(Integer.parseInt(Client.getInstance().getUid())) + " - §f" + Client.getInstance().getUid();
-        mc.fontRendererObj.drawStringWithShadow(userinfo, event.getSr().getScaledWidth() - mc.fontRendererObj.getStringWidth(userinfo) - 2, event.getSr().getScaledHeight() - (mc.ingameGUI.getChatGUI().getChatOpen() ? 24 : 10), -1);
-        if (hud.bps.getValue()) {
-            double bps = BPSUtil.getBPS();
-            mc.fontRendererObj.drawStringWithShadow("BPS: " + EnumChatFormatting.GRAY + new DecimalFormat("0.##").format(bps), 3, event.getSr().getScaledHeight() - (mc.ingameGUI.getChatGUI().getChatOpen() ? 24 : 10), ColorPalette.GREEN.getColor().getRGB());
-        }
         for (Module mod : sorted) {
             if (!mod.isToggled()) continue;
 
