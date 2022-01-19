@@ -80,7 +80,7 @@ public class GuiMainMenu extends GuiScreen {
 
         drawDefaultBackground();
         username.drawTextBox();
-        drawString(mc.fontRendererObj, "Client has been skidded by vncat", mc.fontRendererObj.getStringWidth("Client has been skidded by vncat") / 2, height - 120, ColorPalette.AMBER.getColor().getRGB());
+        //drawString(mc.fontRendererObj, "Client has been skidded by vncat", mc.fontRendererObj.getStringWidth("Client has been skidded by vncat") / 2, height - 60, ColorPalette.AMBER.getColor().getRGB());
         this.drawCenteredString(font, "Login", (int) (width / 2F), 20 + 60, -1);
 
         if (username.getText().isEmpty()) {
