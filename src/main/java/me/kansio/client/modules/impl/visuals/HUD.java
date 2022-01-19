@@ -6,7 +6,9 @@ import me.kansio.client.event.impl.RenderOverlayEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
-import me.kansio.client.modules.impl.visuals.hud.HudMode;
+import me.kansio.client.modules.impl.visuals.hud.ArrayListMode;
+import me.kansio.client.modules.impl.visuals.hud.InfoMode;
+import me.kansio.client.modules.impl.visuals.hud.WaterMarkMode;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.ModeValue;
 import me.kansio.client.property.value.NumberValue;
@@ -26,7 +28,8 @@ import java.util.stream.Collectors;
 @Getter
 public class HUD extends Module {
 
-    private final List<? extends HudMode> modes = ReflectUtils.getReflects(this.getClass().getPackage().getName() + ".hud", HudMode.class).stream()
+    // WaterMark Mode
+    private final List<? extends WaterMarkMode> watermarkmodes = ReflectUtils.getReflects(this.getClass().getPackage().getName() + ".hud", WaterMarkMode.class).stream()
             .map(aClass -> {
                 try {
                     return aClass.getDeclaredConstructor().newInstance();
@@ -35,11 +38,43 @@ public class HUD extends Module {
                 }
                 return null;
             })
-            .sorted(Comparator.comparing(hudMode -> hudMode != null ? hudMode.getName() : null))
+            .sorted(Comparator.comparing(watermarkMode -> watermarkMode != null ? watermarkMode.getName() : null))
             .collect(Collectors.toList());
 
-    private final ModeValue mode = new ModeValue("Mode", this, modes.stream().map(HudMode::getName).collect(Collectors.toList()).toArray(new String[]{}));
-    private HudMode currentMode = modes.stream().anyMatch(hudMode -> hudMode.getName().equalsIgnoreCase(mode.getValue())) ? modes.stream().filter(hudMode -> hudMode.getName().equalsIgnoreCase(mode.getValue())).findAny().get() : null ;
+    private final ModeValue watermarkmode = new ModeValue("WaterMark", this, watermarkmodes.stream().map(WaterMarkMode::getName).collect(Collectors.toList()).toArray(new String[]{}));
+    private WaterMarkMode currentwatermarkmode = watermarkmodes.stream().anyMatch(watermarkMode -> watermarkMode.getName().equalsIgnoreCase(watermarkmode.getValue())) ? watermarkmodes.stream().filter(watermarkMode -> watermarkMode.getName().equalsIgnoreCase(watermarkmode.getValue())).findAny().get() : null ;
+
+    // ArrayList Mode
+    private final List<? extends ArrayListMode> arraylistmodes = ReflectUtils.getReflects(this.getClass().getPackage().getName() + ".hud", ArrayListMode.class).stream()
+            .map(aClass -> {
+                try {
+                    return aClass.getDeclaredConstructor().newInstance();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                return null;
+            })
+            .sorted(Comparator.comparing(arraylistMode -> arraylistMode != null ? arraylistMode.getName() : null))
+            .collect(Collectors.toList());
+
+    private final ModeValue arraylistmode = new ModeValue("ArrayList", this, arraylistmodes.stream().map(ArrayListMode::getName).collect(Collectors.toList()).toArray(new String[]{}));
+    private ArrayListMode currentarraylistmode = arraylistmodes.stream().anyMatch(arraylistMode -> arraylistMode.getName().equalsIgnoreCase(arraylistmode.getValue())) ? arraylistmodes.stream().filter(arraylistMode -> arraylistMode.getName().equalsIgnoreCase(arraylistmode.getValue())).findAny().get() : null ;
+
+    // Info Mode
+    private final List<? extends InfoMode> infomodes = ReflectUtils.getReflects(this.getClass().getPackage().getName() + ".hud", InfoMode.class).stream()
+            .map(aClass -> {
+                try {
+                    return aClass.getDeclaredConstructor().newInstance();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                return null;
+            })
+            .sorted(Comparator.comparing(infoMode -> infoMode != null ? infoMode.getName() : null))
+            .collect(Collectors.toList());
+
+    private final ModeValue infomode = new ModeValue("InfoMode", this, infomodes.stream().map(InfoMode::getName).collect(Collectors.toList()).toArray(new String[]{}));
+    private InfoMode currentinfomode = infomodes.stream().anyMatch(infoMode -> infoMode.getName().equalsIgnoreCase(infomode.getValue())) ? infomodes.stream().filter(infoMode -> infoMode.getName().equalsIgnoreCase(infomode.getValue())).findAny().get() : null ;
 
     private final ModeValue colorMode = new ModeValue("Color Mode", this, "Sleek", "Rainbow", "Astolfo", "Nitrogen");
     public BooleanValue font = new BooleanValue("Font", this, false);
@@ -61,18 +96,25 @@ public class HUD extends Module {
 
     @Override
     public void onEnable() {
-        currentMode = modes.stream().anyMatch(hudMode -> hudMode.getName().equalsIgnoreCase(mode.getValue())) ? modes.stream().filter(hudMode -> hudMode.getName().equalsIgnoreCase(mode.getValue())).findAny().get() : null ;
-        assert currentMode != null;
-        currentMode.onEnable();
+        currentwatermarkmode = watermarkmodes.stream().anyMatch(watermarkMode -> watermarkMode.getName().equalsIgnoreCase(watermarkmode.getValue())) ? watermarkmodes.stream().filter(watermarkMode -> watermarkMode.getName().equalsIgnoreCase(watermarkmode.getValue())).findAny().get() : null ;
+        currentarraylistmode = arraylistmodes.stream().anyMatch(arraylistMode -> arraylistMode.getName().equalsIgnoreCase(arraylistmode.getValue())) ? arraylistmodes.stream().filter(arraylistMode -> arraylistMode.getName().equalsIgnoreCase(arraylistmode.getValue())).findAny().get() : null ;
+        currentinfomode = infomodes.stream().anyMatch(arraylistMode -> arraylistMode.getName().equalsIgnoreCase(infomode.getValue())) ? infomodes.stream().filter(infoMode -> infoMode.getName().equalsIgnoreCase(infomode.getValue())).findAny().get() : null ;
+        currentwatermarkmode.onEnable();
+        currentarraylistmode.onEnable();
+        currentinfomode.onEnable();
     }
 
     @Override
     public void onDisable() {
-        currentMode.onDisable();
+        currentwatermarkmode.onDisable();
+        currentarraylistmode.onDisable();
+        currentinfomode.onDisable();
     }
 
     @Subscribe
     public void onRenderOverlay(RenderOverlayEvent event) {
-        currentMode.onRenderOverlay(event);
+        currentwatermarkmode.onRenderOverlay(event);
+        currentarraylistmode.onRenderOverlay(event);
+        currentinfomode.onRenderOverlay(event);
     }
 }
