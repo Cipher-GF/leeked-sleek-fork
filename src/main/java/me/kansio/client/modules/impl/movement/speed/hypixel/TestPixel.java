@@ -22,8 +22,6 @@ public class TestPixel extends SpeedMode {
         if (mc.thePlayer.onGround) {
             getSpeed().getHDist().set(mc.thePlayer.isPotionActive(Potion.moveSpeed) ? 0.42 : 0.35);
         }
-
-
     }
 
     @Override
