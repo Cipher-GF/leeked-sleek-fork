@@ -11,7 +11,7 @@ public class VClipCommand extends Command{
     @Override
     public void run(String[] args) {
         if (args.length > 0) {
-            ChatUtil.log("Vclipped " + Integer.parseInt(args[0]) + " blocks");
+            ChatUtil.log("Vclipped " + Integer.parseInt(args[0]) + " Blocks");
             mc.thePlayer.setPosition(mc.thePlayer.posX, mc.thePlayer.posY + Integer.parseInt(args[0]), mc.thePlayer.posZ);
         } else {
             ChatUtil.log(".vclip <amount>");

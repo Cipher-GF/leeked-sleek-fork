@@ -53,5 +53,6 @@ public class CommandManager {
         commands.add(new VClipCommand());
         commands.add(new FriendCommand());
         commands.add(new FocusCommand());
+        commands.add(new NameCommand());
     }
 }
