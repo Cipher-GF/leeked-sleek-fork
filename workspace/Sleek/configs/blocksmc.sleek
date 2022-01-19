@@ -2,7 +2,7 @@
   "data": {
     "author": "Kansio",
     "name": "blocksmc",
-    "lastUpdated": "Date 2022/1/19 Time 20:42:3"
+    "lastUpdated": "Date 2022/1/19 Time 22:13:4"
   },
   "modules": [
     {
@@ -10,7 +10,7 @@
       "keybind": 0,
       "enabled": true,
       "AutoSword": "true",
-      "Sword Only in Inv": "true",
+      "Sword Only in Inv": "false",
       "AutoSword Delay": "32.0",
       "Inv Cleaner": "true",
       "Clean Only in Inv": "true",
@@ -109,7 +109,7 @@
     {
       "name": "Kill Insults",
       "keybind": 0,
-      "enabled": true,
+      "enabled": false,
       "Mode": "BlocksMC"
     },
     {
@@ -201,7 +201,7 @@
     {
       "name": "Anti Void",
       "keybind": 0,
-      "enabled": true,
+      "enabled": false,
       "Mode": "Basic",
       "Fall Distance": "7.0"
     },
@@ -234,7 +234,7 @@
       "Abilities Spoof": "false",
       "Timer": "false",
       "Timer Speed": "1.0",
-      "Hub Disable": "false"
+      "Hub Disable": "true"
     },
     {
       "name": "Breaker",
@@ -260,13 +260,13 @@
     {
       "name": "Killaura",
       "keybind": 19,
-      "enabled": true,
+      "enabled": false,
       "Mode": "Smart",
       "Target Priority": "Health",
       "Rotation Mode": "Default",
       "Swing Range": "6.0",
       "Block Range": "6.0",
-      "CPS": "9.0",
+      "CPS": "10.0",
       "Randomize CPS": "3.0",
       "Swing Mode": "Client",
       "Autoblock Mode": "Verus",
