@@ -2,7 +2,7 @@
   "data": {
     "author": "Kansio",
     "name": "blocksmc",
-    "lastUpdated": "Date 2022/1/19 Time 22:28:15"
+    "lastUpdated": "Date 2022/1/19 Time 22:37:20"
   },
   "modules": [
     {
@@ -246,7 +246,7 @@
       "keybind": 0,
       "enabled": true,
       "Mode": "Verus",
-      "C06": "false"
+      "C06": "true"
     },
     {
       "name": "Velocity",
@@ -266,7 +266,7 @@
       "Rotation Mode": "Default",
       "Swing Range": "6.0",
       "Block Range": "6.0",
-      "CPS": "10.0",
+      "CPS": "9.0",
       "Randomize CPS": "2.0",
       "Swing Mode": "Client",
       "Autoblock Mode": "Verus",
