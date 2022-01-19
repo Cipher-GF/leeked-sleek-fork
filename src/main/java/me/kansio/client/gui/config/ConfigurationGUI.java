@@ -28,6 +28,8 @@ public class ConfigurationGUI extends GuiScreen {
     private String name = "";
     private boolean typing = false;
 
+    private int page = 0;
+
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         ScaledResolution sr = RenderUtils.getResolution();
@@ -79,6 +81,14 @@ public class ConfigurationGUI extends GuiScreen {
 
         //draw background for config loading box
         RenderUtils.drawRoundedRect(sr.getScaledWidth() / 2 + 5, sr.getScaledHeight() / 2 + 35, 135, 75, 3, new Color(45, 45, 45, 255).getRGB());
+
+        //page <-
+        RenderUtils.drawRoundedRect(sr.getScaledWidth() / 2 + 10, sr.getScaledHeight() / 2 + 38, 14, 13, 3, new Color(215, 103, 194, 255).getRGB());
+        Fonts.Arial12.drawString("<-", sr.getScaledWidth() / 2 + 14, sr.getScaledHeight() / 2 + 44, -1);
+
+        //page ->
+        RenderUtils.drawRoundedRect(sr.getScaledWidth() / 2 + 30, sr.getScaledHeight() / 2 + 38, 14, 13, 3, new Color(215, 103, 194, 255).getRGB());
+        Fonts.Arial12.drawString("->", sr.getScaledWidth() / 2 + 34, sr.getScaledHeight() / 2 + 44, -1);
 
         //Load
         RenderUtils.drawRoundedRect(sr.getScaledWidth() / 2 + 10, sr.getScaledHeight() / 2 + 88, 50, 13, 3, new Color(215, 103, 194, 255).getRGB());
@@ -163,6 +173,23 @@ public class ConfigurationGUI extends GuiScreen {
         super.initGui();
     }
 
+    public void loadConfigs(int page) {
+        listedConfigs.clear();
+
+        int i = 0;
+        for (int y = 0; y < page; y++) {
+            i += 7;
+        }
+
+        for (int s = i; s < i + 7; s++) {
+            try {
+                listedConfigs.add(Client.getInstance().getConfigManager().getConfigs().get(s));
+            } catch (ArrayIndexOutOfBoundsException e) {
+                return;
+            }
+        }
+    }
+
     @Override
     protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
         ScaledResolution sr = RenderUtils.getResolution();
@@ -173,16 +200,36 @@ public class ConfigurationGUI extends GuiScreen {
             return;
         }
 
+        //<-
+        if (RenderUtils.hover(sr.getScaledWidth() / 2 + 10, sr.getScaledHeight() / 2 + 38, mouseX, mouseY, 14, 13)) {
+            if (page != 0) {
+                page--;
+            }
+            loadConfigs(page);
+            return;
+        }
+
+        //->
+        if (RenderUtils.hover(sr.getScaledWidth() / 2 + 30, sr.getScaledHeight() / 2 + 38, mouseX, mouseY, 14, 13)) {
+            page++;
+            loadConfigs(page);
+            return;
+        }
+
         if (selectedConfig != null) {
             //Load the config
             if (RenderUtils.hover(sr.getScaledWidth() / 2 + 10, sr.getScaledHeight() / 2 + 88, mouseX, mouseY, 50, 13)) {
                 Client.getInstance().getConfigManager().loadConfig(selectedConfig.getName(), false);
+                NotificationManager.getNotificationManager().show(new Notification(Notification.NotificationType.INFO, "Success!", "Loaded the config", 5));
+                loadConfigs(page);
                 return;
             }
 
             //Delete the config
             if (RenderUtils.hover(sr.getScaledWidth() / 2 + 80, sr.getScaledHeight() / 2 + 88, mouseX, mouseY, 50, 13)) {
                 Client.getInstance().getConfigManager().removeConfig(selectedConfig.getName());
+                NotificationManager.getNotificationManager().show(new Notification(Notification.NotificationType.INFO, "Success!", "Removed the config", 5));
+                loadConfigs(page);
                 return;
             }
         }
@@ -200,9 +247,9 @@ public class ConfigurationGUI extends GuiScreen {
             }
 
             typing = false;
-            name = "";
             Client.getInstance().getConfigManager().saveConfig(name);
             NotificationManager.getNotificationManager().show(new Notification(Notification.NotificationType.INFO, "Success!", "Created the config", 5));
+            name = "";
             return;
         }
 

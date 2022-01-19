@@ -1,8 +1,8 @@
 {
   "data": {
     "author": "Kansio",
-    "name": "blocksnew",
-    "lastUpdated": "Date 2022/1/19 Time 17:31:43"
+    "name": "blocksmc",
+    "lastUpdated": "Date 2022/1/19 Time 20:42:3"
   },
   "modules": [
     {
@@ -115,7 +115,7 @@
     {
       "name": "Enemy List",
       "keybind": 0,
-      "enabled": false,
+      "enabled": true,
       "X-Pos": "5.0",
       "Y-Pos": "200.0"
     },
@@ -123,9 +123,9 @@
       "name": "Long Jump",
       "keybind": 46,
       "enabled": false,
-      "Mode": "Vanilla",
+      "Mode": "Verus",
       "Vertical Boost": "0.8",
-      "Speed": "0.7000000000000001"
+      "Speed": "1.5"
     },
     {
       "name": "Image ESP",
@@ -215,7 +215,7 @@
     {
       "name": "Disabler",
       "keybind": 0,
-      "enabled": false,
+      "enabled": true,
       "Mode": "BlocksMC",
       "Cancel Transactions": "false",
       "Cancel Keep Alive": "false",
@@ -260,7 +260,7 @@
     {
       "name": "Killaura",
       "keybind": 19,
-      "enabled": false,
+      "enabled": true,
       "Mode": "Smart",
       "Target Priority": "Health",
       "Rotation Mode": "Default",
@@ -331,7 +331,7 @@
       "name": "Phase",
       "keybind": 0,
       "enabled": false,
-      "Mode": "2.0",
+      "Mode": "BlocksMC (VClip)",
       "Distance": "2.0",
       "Sneak": "true"
     },
@@ -350,7 +350,7 @@
       "enabled": false,
       "Mode": "Bhop",
       "Speed": "0.4",
-      "Force Friction": "true",
+      "Force Friction": "false",
       "Friction": "NCP"
     },
     {
@@ -399,7 +399,9 @@
       "name": "HUD",
       "keybind": 0,
       "enabled": true,
-      "Mode": "Sleek",
+      "Watermark Mode": "Sleek",
+      "Arraylist Mode": "Sleek",
+      "Info Mode": "Sleek",
       "Color Mode": "Nitrogen",
       "Font": "false",
       "Notifications": "true",
