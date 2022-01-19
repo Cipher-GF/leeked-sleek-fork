@@ -13,6 +13,7 @@ import me.kansio.client.event.impl.KeyboardEvent;
 import me.kansio.client.event.impl.PacketEvent;
 import me.kansio.client.event.impl.ServerJoinEvent;
 import me.kansio.client.friend.FriendManager;
+import me.kansio.client.gui.config.ConfigurationGUI;
 import me.kansio.client.keybind.KeybindManager;
 import me.kansio.client.manager.ValueManager;
 import me.kansio.client.modules.ModuleManager;
@@ -201,6 +202,10 @@ public class Client {
         if (key == Keyboard.KEY_RSHIFT) {
             ClickGUI clickGUI = (ClickGUI) Client.getInstance().getModuleManager().getModuleByName("Click GUI");
             clickGUI.toggle();
+        }
+
+        if (key == Keyboard.KEY_INSERT) {
+            Minecraft.getMinecraft().displayGuiScreen(new ConfigurationGUI());
         }
 
         //This handles keybinds.
