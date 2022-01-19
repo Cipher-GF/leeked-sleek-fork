@@ -42,3 +42,4 @@ workspace/Sleek/Protocol/ViaBackwards/config.yml
 
 MavenMCP.iml
 workspace/servers.dat
+out/artifacts/test_jar/MavenMCP.jar
