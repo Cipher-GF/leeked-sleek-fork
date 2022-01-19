@@ -255,10 +255,6 @@ public class InvManager extends Module {
             ItemStack itemStack = mc.thePlayer.inventory.getStackInSlot(i);
             if (itemStack != null && itemStack.getItem() != null) {
                 if (itemStack.getItem() instanceof ItemSword) {
-                    //garbage sword
-                    if (itemStack.getItemDamage() < 50) {
-                        continue;
-                    }
 
                     float damageLevel = getDamageLevel(itemStack);
                     allSwords.add(i);

@@ -47,10 +47,10 @@ public class ConfigurationGUI extends GuiScreen {
         for (Config cfg : listedConfigs) {
             RenderUtils.drawRoundedRect(sr.getScaledWidth() / 2 - 140, sr.getScaledHeight() / 2 - 92 + y, 135, 25, 3, (selectedConfig != null && selectedConfig == cfg) ? new Color(198, 96, 234).getRGB() : new Color(57, 57, 57, 255).getRGB());
 
-            Fonts.Verdana.drawString(cfg.getName(), sr.getScaledWidth() / 2 - 138, sr.getScaledHeight() / 2 - 90 + y, -1);
+            mc.fontRendererObj.drawString(cfg.getName().replace("(Verified)", "§a§l✔ §f"), sr.getScaledWidth() / 2 - 138, sr.getScaledHeight() / 2 - 90 + y, -1);
 
-            Fonts.Arial12.drawString("Created by: " + cfg.getAuthor(), sr.getScaledWidth() / 2 - 138, sr.getScaledHeight() / 2 - 78 + y, -1);
-            Fonts.Arial12.drawString("Updated: " + cfg.getLastUpdated(), sr.getScaledWidth() / 2 - 138, sr.getScaledHeight() / 2 - 72 + y, -1);
+            Fonts.UbuntuLight.drawString("Created by: " + cfg.getAuthor(), sr.getScaledWidth() / 2 - 138, sr.getScaledHeight() / 2 - 78 + y, -1);
+            Fonts.UbuntuLight.drawString("Updated: " + cfg.getLastUpdated(), sr.getScaledWidth() / 2 - 138, sr.getScaledHeight() / 2 - 72 + y, -1);
             y += 28;
         }
 
@@ -71,11 +71,6 @@ public class ConfigurationGUI extends GuiScreen {
         //"Create" Button
         RenderUtils.drawRoundedRect(sr.getScaledWidth() / 2 + 10, sr.getScaledHeight() / 2 - 38, 50, 13, 3, new Color(215, 103, 194, 255).getRGB());
         Fonts.Arial12.drawString("Create config", sr.getScaledWidth() / 2 + 14, sr.getScaledHeight() / 2 - 33, -1);
-
-        //"Upload" Button
-        RenderUtils.drawRoundedRect(sr.getScaledWidth() / 2 + 80, sr.getScaledHeight() / 2 - 38, 50, 13, 3, new Color(215, 103, 194, 255).getRGB());
-        Fonts.Arial12.drawString("Upload config", sr.getScaledWidth() / 2 + 84, sr.getScaledHeight() / 2 - 33, -1);
-
 
         //end config creation box
 
@@ -257,7 +252,11 @@ public class ConfigurationGUI extends GuiScreen {
         int y = 4;
         for (int i = 0; i < 7; i++) {
             if (RenderUtils.hover(sr.getScaledWidth() / 2 - 140, sr.getScaledHeight() / 2 - 92 + y, mouseX, mouseY, 135, 25)) {
-                selectedConfig = listedConfigs.get(i);
+                try {
+                    selectedConfig = listedConfigs.get(i);
+                } catch (Exception e) {
+
+                }
                 return;
             }
             y += 28;

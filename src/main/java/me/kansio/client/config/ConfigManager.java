@@ -9,11 +9,13 @@ import me.kansio.client.modules.impl.visuals.ClickGUI;
 import me.kansio.client.notification.Notification;
 import me.kansio.client.notification.NotificationManager;
 import me.kansio.client.utils.chat.ChatUtil;
+import me.kansio.client.utils.network.HttpUtil;
 import net.minecraft.client.Minecraft;
 import org.apache.commons.io.FilenameUtils;
 
 import java.io.*;
 import java.nio.file.Files;
+import java.text.MessageFormat;
 import java.util.Calendar;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicReference;
@@ -44,7 +46,23 @@ public class ConfigManager {
 
     public void loadConfigs() {
         configs.clear();
+
         try {
+            JsonElement element = null;
+            try {
+                element = new JsonParser().parse(HttpUtil.get("http://zerotwoclient.xyz:13337/api/v1/verifiedConfigs"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            if (element.isJsonArray()) {
+                JsonArray rr = element.getAsJsonArray();
+                rr.forEach(ele -> {
+                    JsonObject obj = ele.getAsJsonObject();
+                    configs.add(new Config("(Verified) " + obj.get("name").getAsString(), obj.get("author").getAsString(), obj.get("lastUpdate").getAsString().split(" ")[1], true, null));
+                });
+            }
+
             if (!dir.exists()) {
                 dir.mkdirs();
             }
@@ -83,6 +101,35 @@ public class ConfigManager {
     }
 
     public void loadConfig(String configName, boolean loadKeys) {
+        if (configName.startsWith("(Verified) ")) {
+            String p = configName.replace("(Verified) ", "");
+
+            try {
+                JsonElement ar2 = new JsonParser().parse(HttpUtil.get("http://zerotwoclient.xyz:13337/api/v1/verifiedConfigs"));
+
+                if (!ar2.isJsonArray()) {
+                    return;
+                }
+
+                ar2.getAsJsonArray().forEach(fig -> {
+                    if (fig.getAsJsonObject().get("name").getAsString().equalsIgnoreCase(p)) {
+                        JsonArray arr = new JsonParser().parse(fig.getAsJsonObject().get("data").getAsString()).getAsJsonArray();
+                        arr.forEach(element -> {
+                            JsonObject obj = element.getAsJsonObject();
+                            String modName = obj.get("name").getAsString();
+                            Module m = Client.getInstance().getModuleManager().getModuleByName(modName);
+                            if (m != null) {
+                                m.load(obj, false);
+                            }
+                        });
+                    }
+                });
+            } catch (Exception e) {
+                ChatUtil.log("Error: Couldn't load online config. (" + e.toString() + ")");
+            }
+            return;
+        }
+
         try {
             Reader reader = new FileReader(new File(dir, configName + ".sleek"));
             JsonElement node = new JsonParser().parse(reader);
@@ -103,7 +150,6 @@ public class ConfigManager {
         } catch (Exception throwable) {
             throwable.printStackTrace();
             ChatUtil.log("Config not found...");
-
             return;
         }
     }

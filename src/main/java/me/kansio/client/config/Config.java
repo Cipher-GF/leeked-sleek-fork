@@ -17,10 +17,19 @@ public class Config {
     @Getter @Setter private String author;
     @Getter @Setter private String lastUpdated;
     @Getter @Setter private File file;
+    @Getter @Setter private boolean isOnline;
 
     public Config(String name, File file) {
         this.name = name;
         this.file = file;
+    }
+
+    public Config(String name, String author, String lastUpdated, boolean online, File file) {
+        this.author = author;
+        this.lastUpdated = lastUpdated;
+        this.name = name;
+        this.file = file;
+        this.isOnline = online;
     }
 
     public void rename(String newName) {
