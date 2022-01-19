@@ -32,12 +32,13 @@ public class LongJump extends Module {
         wasLaunched = false;
         jumped = false;
 
-        if (!mc.thePlayer.onGround) {
-            toggle();
-            return;
-        }
+
         switch (mode.getValue()) {
             case "Verus":
+                if (!mc.thePlayer.onGround) {
+                    toggle();
+                    return;
+                }
                 mc.timer.timerSpeed = 0.3f;
                 PlayerUtil.damageVerus();
                 break;

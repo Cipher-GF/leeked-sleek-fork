@@ -10,6 +10,7 @@ import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.NumberValue;
 import me.kansio.client.utils.math.Stopwatch;
 import me.kansio.client.utils.network.PacketUtil;
+import net.minecraft.client.gui.inventory.GuiChest;
 import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -62,6 +63,7 @@ public class InvManager extends Module {
     @Subscribe
     public void onUpdate(UpdateEvent event) {
         if (!event.isPre()) return;
+        if (mc.currentScreen instanceof GuiChest) return;
 
         if (mc.thePlayer.isMoving() || !mc.thePlayer.onGround) {
             return;

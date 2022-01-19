@@ -25,14 +25,14 @@ public class BindCommand extends Command {
             else if (args[0].equalsIgnoreCase("del")) {
                 Module module = Client.getInstance().getModuleManager().getModuleByName(args[2]);
                 ChatUtil.log("Deleted the bind.");
-                module.setKeyBind(0);
+                module.setKeyBind(0, true);
             } else {
                 Module module = Client.getInstance().getModuleManager().getModuleByName(args[0]);
                 if (module != null) {
                     int key = Keyboard.getKeyIndex(args[1].toUpperCase());
                     if (key != -1) {
                         ChatUtil.log("You've set the bind to " + Keyboard.getKeyName(key) + ".");
-                        module.setKeyBind(key);
+                        module.setKeyBind(key, true);
                     }
                 }
             }
