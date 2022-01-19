@@ -26,7 +26,7 @@ public abstract class Module {
 
     protected static final Minecraft mc = Minecraft.getMinecraft();
 
-    private String name; //;
+    private String name;
     private boolean toggled;
     private int keyBind;
     private String suffix = "";
