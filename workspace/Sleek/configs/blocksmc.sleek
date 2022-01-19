@@ -2,7 +2,7 @@
   "data": {
     "author": "Kansio",
     "name": "blocksmc",
-    "lastUpdated": "Date 2022/1/19 Time 22:13:4"
+    "lastUpdated": "Date 2022/1/19 Time 22:28:15"
   },
   "modules": [
     {
@@ -10,7 +10,7 @@
       "keybind": 0,
       "enabled": true,
       "AutoSword": "true",
-      "Sword Only in Inv": "false",
+      "Sword Only in Inv": "true",
       "AutoSword Delay": "32.0",
       "Inv Cleaner": "true",
       "Clean Only in Inv": "true",
@@ -123,9 +123,9 @@
       "name": "Long Jump",
       "keybind": 46,
       "enabled": false,
-      "Mode": "Verus",
-      "Vertical Boost": "0.8",
-      "Speed": "1.5"
+      "Mode": "Vanilla",
+      "Vertical Boost": "1.0",
+      "Speed": "0.7000000000000001"
     },
     {
       "name": "Image ESP",
@@ -246,7 +246,7 @@
       "keybind": 0,
       "enabled": true,
       "Mode": "Verus",
-      "C06": "true"
+      "C06": "false"
     },
     {
       "name": "Velocity",
@@ -262,15 +262,15 @@
       "keybind": 19,
       "enabled": false,
       "Mode": "Smart",
-      "Target Priority": "Health",
+      "Target Priority": "Distance",
       "Rotation Mode": "Default",
       "Swing Range": "6.0",
       "Block Range": "6.0",
       "CPS": "10.0",
-      "Randomize CPS": "3.0",
+      "Randomize CPS": "2.0",
       "Swing Mode": "Client",
       "Autoblock Mode": "Verus",
-      "GCD": "true",
+      "GCD": "false",
       "TargetHud": "true",
       "TargetHud Mode": "Sleek",
       "Players": "true",
@@ -278,7 +278,7 @@
       "Animals": "false",
       "Monsters": "false",
       "Invisibles": "false",
-      "Walls": "true"
+      "Walls": "false"
     },
     {
       "name": "AutoPot",
@@ -324,7 +324,7 @@
       "name": "Sprint",
       "keybind": 0,
       "enabled": true,
-      "Mode": "Legit",
+      "Mode": "Omni",
       "Keep Sprint": "true"
     },
     {
