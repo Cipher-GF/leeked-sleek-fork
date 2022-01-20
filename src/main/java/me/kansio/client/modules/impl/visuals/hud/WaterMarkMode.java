@@ -21,7 +21,7 @@ public abstract class WaterMarkMode extends Util {
         return name;
     }
 
-    public HUD getWaterMark() {
+    public HUD getHud() {
         return (HUD) Client.getInstance().getModuleManager().getModuleByName("Hud");
     }
 

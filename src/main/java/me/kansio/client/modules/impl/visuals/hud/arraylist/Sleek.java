@@ -21,7 +21,7 @@ public class Sleek extends ArrayListMode {
 
     @Override
     public void onRenderOverlay(RenderOverlayEvent event) {
-        HUD hud = getArrayList();
+        HUD hud = getHud();
         HUD.notifications = hud.noti.getValue() && hud.isToggled();
         int y = hud.arrayListY.getValue().intValue();
         int index = 0;

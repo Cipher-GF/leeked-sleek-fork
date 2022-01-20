@@ -21,6 +21,6 @@ public class Sleek extends WaterMarkMode {
 
         int y = hud.arrayListY.getValue().intValue();
         Color color = ColorUtils.getColorFromHud(y);
-        mc.fontRendererObj.drawStringWithShadow(ChatUtil.translateColorCodes(getWaterMark().clientName.getValueAsString()), 4, 4, color.getRGB());
+        mc.fontRendererObj.drawStringWithShadow(ChatUtil.translateColorCodes(getHud().clientName.getValueAsString()), 4, 4, color.getRGB());
     }
 }
