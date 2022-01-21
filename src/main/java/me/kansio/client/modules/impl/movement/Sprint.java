@@ -13,6 +13,7 @@ import me.kansio.client.modules.impl.player.NoSlow;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.ModeValue;
 import me.kansio.client.utils.network.PacketUtil;
+import net.minecraft.network.play.client.C02PacketUseEntity;
 import net.minecraft.network.play.client.C0BPacketEntityAction;
 
 @ModuleData(
@@ -52,7 +53,7 @@ public class Sprint extends Module {
 
     @Subscribe
     public void onPacket(PacketEvent event) {
-        if (keepSprint.getValue()) {
+        if (keepSprint.getValue() && event.getPacket() instanceof C02PacketUseEntity && ((C02PacketUseEntity) event.getPacket()).getAction().equals(C02PacketUseEntity.Action.ATTACK)) {
             event.setCancelled(true);
             PacketUtil.sendPacketNoEvent(new C0BPacketEntityAction(mc.thePlayer, C0BPacketEntityAction.Action.STOP_SPRINTING));
             PacketUtil.sendPacketNoEvent(event.getPacket());
