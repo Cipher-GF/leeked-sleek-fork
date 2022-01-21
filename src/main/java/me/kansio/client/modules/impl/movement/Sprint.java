@@ -4,6 +4,7 @@ package me.kansio.client.modules.impl.movement;
 import com.google.common.eventbus.Subscribe;
 import lombok.Getter;
 import me.kansio.client.Client;
+import me.kansio.client.event.impl.PacketEvent;
 import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
@@ -11,6 +12,8 @@ import me.kansio.client.modules.impl.Module;
 import me.kansio.client.modules.impl.player.NoSlow;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.ModeValue;
+import me.kansio.client.utils.network.PacketUtil;
+import net.minecraft.network.play.client.C0BPacketEntityAction;
 
 @ModuleData(
         name = "Sprint",
@@ -44,6 +47,16 @@ public class Sprint extends Module {
                 if (mc.thePlayer.isMoving())
                     mc.thePlayer.setSprinting(true);
                 break;
+        }
+    }
+
+    @Subscribe
+    public void onPacket(PacketEvent event) {
+        if (keepSprint.getValue()) {
+            event.setCancelled(true);
+            PacketUtil.sendPacketNoEvent(new C0BPacketEntityAction(mc.thePlayer, C0BPacketEntityAction.Action.STOP_SPRINTING));
+            PacketUtil.sendPacketNoEvent(event.getPacket());
+            PacketUtil.sendPacketNoEvent(new C0BPacketEntityAction(mc.thePlayer, C0BPacketEntityAction.Action.START_SPRINTING));
         }
     }
 
