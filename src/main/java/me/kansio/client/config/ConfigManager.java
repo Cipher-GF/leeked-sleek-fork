@@ -124,6 +124,7 @@ public class ConfigManager {
                         });
                     }
                 });
+                NotificationManager.getNotificationManager().show(new Notification(Notification.NotificationType.INFO, "Config", "Loaded " + configName, 1));
             } catch (Exception e) {
                 ChatUtil.log("Error: Couldn't load online config. (" + e.toString() + ")");
             }

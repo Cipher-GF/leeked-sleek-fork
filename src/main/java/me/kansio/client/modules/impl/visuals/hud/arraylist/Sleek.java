@@ -25,7 +25,7 @@ public class Sleek extends ArrayListMode {
         HUD.notifications = hud.noti.getValue() && hud.isToggled();
         int y = hud.arrayListY.getValue().intValue();
         int index = 0;
-        Color color = ColorUtils.getColorFromHud(y);
+
         if (hud.font.getValue()) {
             ArrayList<Module> sorted = (ArrayList<Module>) Client.getInstance().getModuleManager().getModulesSorted(Fonts.HUD);
             sorted.removeIf(m -> !m.isToggled());
@@ -40,7 +40,7 @@ public class Sleek extends ArrayListMode {
 
 
                 String name = mod.getName() + "§7" + mod.getFormattedSuffix();
-
+                Color color = ColorUtils.getColorFromHud(y);
                 float xPos = event.getSr().getScaledWidth() - Fonts.HUD.getStringWidth(name) - 6;
 
                 Gui.drawRect(xPos - 1.5, y - 1, event.getSr().getScaledWidth(), Fonts.HUD.getHeight() + y + 1, new Color(0, 0, 0, 80).getRGB());
@@ -78,7 +78,7 @@ public class Sleek extends ArrayListMode {
 
 
                 String name = mod.getName() + "§7" + mod.getFormattedSuffix();
-
+                Color color = ColorUtils.getColorFromHud(y);
                 float xPos = event.getSr().getScaledWidth() - mc.fontRendererObj.getStringWidth(name) - 6;
 
                 Gui.drawRect(xPos - 1.5, y - 1, event.getSr().getScaledWidth(), mc.fontRendererObj.FONT_HEIGHT + y + 1, new Color(0, 0, 0, 80).getRGB());
