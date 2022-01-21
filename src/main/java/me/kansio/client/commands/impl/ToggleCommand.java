@@ -1,15 +1,17 @@
 package me.kansio.client.commands.impl;
 
 import me.kansio.client.Client;
+import me.kansio.client.commands.Command;
+import me.kansio.client.commands.CommandData;
 import me.kansio.client.modules.ModuleManager;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.utils.chat.ChatUtil;
-
+@CommandData(
+        name = "toggle",
+        description = "Binds a module",
+        aliases = {"t"}
+)
 public class ToggleCommand extends Command {
-
-    public ToggleCommand() {
-        super("toggle");
-    }
 
     @Override
     public void run(String[] args) {

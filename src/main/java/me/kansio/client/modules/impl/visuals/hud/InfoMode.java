@@ -21,7 +21,7 @@ public abstract class InfoMode extends Util {
         return name;
     }
 
-    public HUD getInfo() {
+    public HUD getHud() {
         return (HUD) Client.getInstance().getModuleManager().getModuleByName("Hud");
     }
 

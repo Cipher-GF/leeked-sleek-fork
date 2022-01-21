@@ -1,16 +1,18 @@
 package me.kansio.client.commands.impl;
 
+import me.kansio.client.commands.Command;
+import me.kansio.client.commands.CommandData;
 import me.kansio.client.utils.chat.ChatUtil;
 
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 
-
+@CommandData(
+        name = "name",
+        description = "Copies the current account name"
+)
 public class NameCommand extends Command {
-    public NameCommand() {
-        super("name");
-    }
 
     @Override
     public void run(String[] args) {

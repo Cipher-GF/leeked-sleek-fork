@@ -76,7 +76,7 @@ public class Funcraft extends FlightMode {
             } else {
                 mc.timer.timerSpeed = 1f;
             }
-            if (mc.thePlayer.hurtResistantTime == 19 && level < 20) {
+            if (level < 20) {
                 //mc.timer.timerSpeed = 3.6f;
                 timer.resetTime();
             }
@@ -95,7 +95,7 @@ public class Funcraft extends FlightMode {
                                 //Printer.print("2: "+moveSpeed);
                             } else if (level == 3) {
                                 ++level;
-                                double difference = (getFlight().getBoostMode().getValue().equals("Damage") ? 0.01 : 0.1D) * (lastDist - getBaseMoveSpeed());
+                                double difference = 0.1 * (lastDist - getBaseMoveSpeed());
                                 moveSpeed = lastDist - difference;
                             } else {
                                 level++;

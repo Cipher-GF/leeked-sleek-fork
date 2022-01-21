@@ -21,7 +21,7 @@ public abstract class ArrayListMode extends Util {
         return name;
     }
 
-    public HUD getArrayList() {
+    public HUD getHud() {
         return (HUD) Client.getInstance().getModuleManager().getModuleByName("Hud");
     }
 

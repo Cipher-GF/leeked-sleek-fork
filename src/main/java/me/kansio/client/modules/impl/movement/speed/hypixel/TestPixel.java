@@ -4,6 +4,7 @@ import me.kansio.client.event.impl.MoveEvent;
 import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.impl.movement.speed.SpeedMode;
 import me.kansio.client.utils.chat.ChatUtil;
+import me.kansio.client.utils.math.MathUtil;
 import me.kansio.client.utils.player.PlayerUtil;
 import net.minecraft.potion.Potion;
 
@@ -20,16 +21,15 @@ public class TestPixel extends SpeedMode {
     @Override
     public void onUpdate(UpdateEvent event) {
         if (mc.thePlayer.onGround) {
-            getSpeed().getHDist().set(mc.thePlayer.isPotionActive(Potion.moveSpeed) ? 0.42 : 0.35);
+            mc.timer.timerSpeed = 1.3F;
+            double var1 = PlayerUtil.getBaseSpeed() * 1.0524;
+            getSpeed().getHDist().set(var1);
         }
+
     }
 
     @Override
     public void onMove(MoveEvent event) {
-        if (mc.thePlayer.moveStrafing != 0) {
-            mc.thePlayer.moveStrafing = 0;
-            return;
-        }
         if (mc.thePlayer.isMovingOnGround()) {
             event.setMotionY(mc.thePlayer.motionY = PlayerUtil.getMotion(0.42f));
         }

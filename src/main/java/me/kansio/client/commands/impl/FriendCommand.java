@@ -1,16 +1,17 @@
 package me.kansio.client.commands.impl;
 
 import me.kansio.client.Client;
+import me.kansio.client.commands.Command;
+import me.kansio.client.commands.CommandData;
 import me.kansio.client.friend.Friend;
 import me.kansio.client.utils.chat.ChatUtil;
 
 import java.text.MessageFormat;
-
+@CommandData(
+        name = "friend",
+        description = "Handles friends"
+)
 public class FriendCommand extends Command {
-    public FriendCommand() {
-        super("friend");
-    }
-
 
     public void run(String[] args) {
         if (args.length > 1) {

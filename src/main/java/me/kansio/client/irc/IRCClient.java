@@ -29,6 +29,7 @@ public class IRCClient extends WebSocketClient {
     @Override
     public void onOpen(ServerHandshake serverHandshake) {
         System.out.println("IRC Connected");
+        Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("§7[§bIRC§7] §f" + "Connected"));
     }
 
     @Override

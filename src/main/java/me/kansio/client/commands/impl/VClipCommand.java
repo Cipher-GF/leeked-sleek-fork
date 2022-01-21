@@ -1,12 +1,14 @@
 package me.kansio.client.commands.impl;
 
+import me.kansio.client.commands.Command;
+import me.kansio.client.commands.CommandData;
 import me.kansio.client.utils.chat.ChatUtil;
 
-public class VClipCommand extends Command{
-
-    public VClipCommand() {
-        super("vclip");
-    }
+@CommandData(
+        name = "vclip",
+        description = "Vertically clips you a certain amount"
+)
+public class VClipCommand extends Command {
 
     @Override
     public void run(String[] args) {

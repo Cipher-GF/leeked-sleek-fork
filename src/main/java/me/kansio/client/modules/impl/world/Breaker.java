@@ -49,15 +49,5 @@ public class Breaker extends Module {
         }
     }
 
-    @Subscribe
-    public void onPacket(PacketEvent event) {
-        if (event.getPacket() instanceof C07PacketPlayerDigging) {
-            C07PacketPlayerDigging c07 = event.getPacket();
-
-            if (c07.getStatus().equals(C07PacketPlayerDigging.Action.STOP_DESTROY_BLOCK)) {
-                event.setCancelled(mc.getCurrentServerData().serverIP.contains("mush"));
-            }
-        }
-    }
 
 }

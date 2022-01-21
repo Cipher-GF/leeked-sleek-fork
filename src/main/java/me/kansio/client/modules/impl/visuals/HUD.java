@@ -98,7 +98,7 @@ public class HUD extends Module {
     public void onEnable() {
         currentwatermarkmode = watermarkmodes.stream().anyMatch(watermarkMode -> watermarkMode.getName().equalsIgnoreCase(watermarkmode.getValue())) ? watermarkmodes.stream().filter(watermarkMode -> watermarkMode.getName().equalsIgnoreCase(watermarkmode.getValue())).findAny().get() : null ;
         currentarraylistmode = arraylistmodes.stream().anyMatch(arraylistMode -> arraylistMode.getName().equalsIgnoreCase(arraylistmode.getValue())) ? arraylistmodes.stream().filter(arraylistMode -> arraylistMode.getName().equalsIgnoreCase(arraylistmode.getValue())).findAny().get() : null ;
-        currentinfomode = infomodes.stream().anyMatch(arraylistMode -> arraylistMode.getName().equalsIgnoreCase(infomode.getValue())) ? infomodes.stream().filter(infoMode -> infoMode.getName().equalsIgnoreCase(infomode.getValue())).findAny().get() : null ;
+        currentinfomode = infomodes.stream().anyMatch(infoMode -> infoMode.getName().equalsIgnoreCase(infomode.getValue())) ? infomodes.stream().filter(infoMode -> infoMode.getName().equalsIgnoreCase(infomode.getValue())).findAny().get() : null ;
         currentwatermarkmode.onEnable();
         currentarraylistmode.onEnable();
         currentinfomode.onEnable();
@@ -115,7 +115,7 @@ public class HUD extends Module {
     public void onRenderOverlay(RenderOverlayEvent event) {
         currentwatermarkmode = watermarkmodes.stream().anyMatch(watermarkMode -> watermarkMode.getName().equalsIgnoreCase(watermarkmode.getValue())) ? watermarkmodes.stream().filter(watermarkMode -> watermarkMode.getName().equalsIgnoreCase(watermarkmode.getValue())).findAny().get() : null ;
         currentarraylistmode = arraylistmodes.stream().anyMatch(arraylistMode -> arraylistMode.getName().equalsIgnoreCase(arraylistmode.getValue())) ? arraylistmodes.stream().filter(arraylistMode -> arraylistMode.getName().equalsIgnoreCase(arraylistmode.getValue())).findAny().get() : null ;
-        currentinfomode = infomodes.stream().anyMatch(arraylistMode -> arraylistMode.getName().equalsIgnoreCase(infomode.getValue())) ? infomodes.stream().filter(infoMode -> infoMode.getName().equalsIgnoreCase(infomode.getValue())).findAny().get() : null ;
+        currentinfomode = infomodes.stream().anyMatch(infoMode -> infoMode.getName().equalsIgnoreCase(infomode.getValue())) ? infomodes.stream().filter(infoMode -> infoMode.getName().equalsIgnoreCase(infomode.getValue())).findAny().get() : null ;
         currentwatermarkmode.onRenderOverlay(event);
         currentarraylistmode.onRenderOverlay(event);
         currentinfomode.onRenderOverlay(event);

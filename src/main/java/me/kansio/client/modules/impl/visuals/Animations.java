@@ -23,8 +23,8 @@ public class Animations extends Module {
     public BooleanValue attackanim = new BooleanValue("Attack Animations", this, false);
     private ModeValue modeblockanim = new ModeValue("Block Mode", this, attackanim, "Normal", "Hide", "1.7", "Ethereal", "Stella", "Interia", "Styles", "Slide", "Lucky", "Remix", "Swang", "Down", "Knife", "Exhi", "oHare", "oHare2", "Wizzard", "Lennox", "ETB", "Spin", "Rotate");
     public BooleanValue smoothhit = new BooleanValue("Smooth Hit", this, false, attackanim);
-    public NumberValue scale = new NumberValue("Scale", this, 1.0f, 0.0f, 2.0f, 0.1f, attackanim);
-    public NumberValue<Double> slowdown = new NumberValue<>("Swing Speed", this, 1d, -4d, 12d, 1d, attackanim);
+    public NumberValue<Float> scale = new NumberValue<>("Scale", this, 1.0f, 0.0f, 2.0f, 0.1f, attackanim);
+    public NumberValue<Integer> slowdown = new NumberValue<>("Swing Speed", this, 1, -4, 12, 1, attackanim);
     private float rotate;
 
     private void func_178103_d(final float n) {

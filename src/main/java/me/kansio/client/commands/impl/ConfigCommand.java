@@ -5,6 +5,8 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import me.kansio.client.Client;
+import me.kansio.client.commands.Command;
+import me.kansio.client.commands.CommandData;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.utils.chat.ChatUtil;
 import me.kansio.client.utils.network.HttpUtil;
@@ -12,10 +14,11 @@ import me.kansio.client.utils.network.HttpUtil;
 import java.io.File;
 import java.text.MessageFormat;
 
+@CommandData(
+        name = "config",
+        description = "Handles configs"
+)
 public class ConfigCommand extends Command {
-    public ConfigCommand() {
-        super("config");
-    }
 
     @Override
     public void run(String[] args) {

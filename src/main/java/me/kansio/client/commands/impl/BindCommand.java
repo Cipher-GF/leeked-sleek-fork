@@ -1,15 +1,17 @@
 package me.kansio.client.commands.impl;
 
 import me.kansio.client.Client;
+import me.kansio.client.commands.Command;
+import me.kansio.client.commands.CommandData;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.utils.chat.ChatUtil;
 import org.lwjgl.input.Keyboard;
 
+@CommandData(
+        name = "bind",
+        description = "Binds a module"
+)
 public class BindCommand extends Command {
-
-    public BindCommand() {
-        super("bind");
-    }
 
     @Override
     public void run(String[] args) {

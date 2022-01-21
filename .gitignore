@@ -44,3 +44,4 @@ MavenMCP.iml
 workspace/servers.dat
 out/artifacts/test_jar/MavenMCP.jar
 /out/
+out/artifacts/test_jar/MavenMCP.jar

@@ -29,6 +29,7 @@ public class NoFall extends Module {
                 Flight flight = (Flight) Client.getInstance().getModuleManager().getModuleByName("Flight");
 
                 if (flight.isToggled()) return;
+                if (mc.gameSettings.keyBindSneak.pressed) return;
 
                 if (mc.thePlayer.fallDistance > 2.5) {
                     event.setAxisAlignedBB(new AxisAlignedBB(-2, -1, -2, 2, 1, 2).offset(event.getX(), event.getY(), event.getZ()));

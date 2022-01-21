@@ -53,7 +53,7 @@ public class Criticals extends Module {
                 break;
             }
             case "Verus": {
-                if (mc.thePlayer.onGround) {
+                if (!mc.thePlayer.onGround) {
                     return;
                 }
 
