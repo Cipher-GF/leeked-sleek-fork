@@ -72,7 +72,7 @@ public class MainMenu extends GuiScreen
         Fonts.Arial30.drawCenteredString(s, width / 2, height / 4 + 24, ColorPalette.GREEN.getColor().getRGB());
 
         String s1 = "Made with <3 by Reset, Kansio, PC, Divine";
-        Fonts.Verdana.drawString(s1, (width - Fonts.Arial30.getStringWidth(s1)) + 132, height - 10, -1);
+        Fonts.Verdana.drawString(s1, (width - Fonts.Arial30.getStringWidth(s1)) + 100, height - 10, -1);
 
         super.drawScreen(mouseX, mouseY, partialTicks);
     }

@@ -2,7 +2,7 @@
   "data": {
     "author": "Kansio",
     "name": "blocksmc",
-    "lastUpdated": "Date 2022/1/19 Time 20:42:3"
+    "lastUpdated": "Date 2022/1/19 Time 22:37:20"
   },
   "modules": [
     {
@@ -109,7 +109,7 @@
     {
       "name": "Kill Insults",
       "keybind": 0,
-      "enabled": true,
+      "enabled": false,
       "Mode": "BlocksMC"
     },
     {
@@ -123,9 +123,9 @@
       "name": "Long Jump",
       "keybind": 46,
       "enabled": false,
-      "Mode": "Verus",
-      "Vertical Boost": "0.8",
-      "Speed": "1.5"
+      "Mode": "Vanilla",
+      "Vertical Boost": "1.0",
+      "Speed": "0.7000000000000001"
     },
     {
       "name": "Image ESP",
@@ -201,7 +201,7 @@
     {
       "name": "Anti Void",
       "keybind": 0,
-      "enabled": true,
+      "enabled": false,
       "Mode": "Basic",
       "Fall Distance": "7.0"
     },
@@ -234,7 +234,7 @@
       "Abilities Spoof": "false",
       "Timer": "false",
       "Timer Speed": "1.0",
-      "Hub Disable": "false"
+      "Hub Disable": "true"
     },
     {
       "name": "Breaker",
@@ -260,17 +260,17 @@
     {
       "name": "Killaura",
       "keybind": 19,
-      "enabled": true,
+      "enabled": false,
       "Mode": "Smart",
-      "Target Priority": "Health",
+      "Target Priority": "Distance",
       "Rotation Mode": "Default",
       "Swing Range": "6.0",
       "Block Range": "6.0",
       "CPS": "9.0",
-      "Randomize CPS": "3.0",
+      "Randomize CPS": "2.0",
       "Swing Mode": "Client",
       "Autoblock Mode": "Verus",
-      "GCD": "true",
+      "GCD": "false",
       "TargetHud": "true",
       "TargetHud Mode": "Sleek",
       "Players": "true",
@@ -278,7 +278,7 @@
       "Animals": "false",
       "Monsters": "false",
       "Invisibles": "false",
-      "Walls": "true"
+      "Walls": "false"
     },
     {
       "name": "AutoPot",
@@ -324,7 +324,7 @@
       "name": "Sprint",
       "keybind": 0,
       "enabled": true,
-      "Mode": "Legit",
+      "Mode": "Omni",
       "Keep Sprint": "true"
     },
     {

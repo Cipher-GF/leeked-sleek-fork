@@ -53,6 +53,10 @@ public class Criticals extends Module {
                 break;
             }
             case "Verus": {
+                if (mc.thePlayer.onGround) {
+                    return;
+                }
+
                 sendPacket(0, 0.11, 0, false);
                 sendPacket(0, 0.1100013579, 0, false);
                 sendPacket(0, 0.0000013579, 0, false);

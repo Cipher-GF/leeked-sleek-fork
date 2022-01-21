@@ -41,7 +41,8 @@ public class Sprint extends Module {
                 }
                 break;
             case "Omni":
-                mc.thePlayer.setSprinting(true);
+                if (mc.thePlayer.isMoving())
+                    mc.thePlayer.setSprinting(true);
                 break;
         }
     }
