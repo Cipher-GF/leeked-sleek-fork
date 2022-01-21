@@ -8,9 +8,9 @@ import me.kansio.client.utils.math.MathUtil;
 import me.kansio.client.utils.player.PlayerUtil;
 import net.minecraft.potion.Potion;
 
-public class TestPixel extends SpeedMode {
-    public TestPixel() {
-        super("Test");
+public class Bhop extends SpeedMode {
+    public Bhop() {
+        super("Watchdog");
     }
 
     @Override
