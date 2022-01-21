@@ -101,4 +101,9 @@ public class LongJump extends Module {
         }
     }
 
+    @Override
+    public String getSuffix() {
+        return " " + mode.getValueAsString();
+    }
+
 }

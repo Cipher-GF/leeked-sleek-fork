@@ -15,7 +15,7 @@ public class VerusDamage2 extends FlightMode {
     private double veroos = 2.5;
 
     public VerusDamage2() {
-        super("Verus Damage 2");
+        super("Verus Longjump");
     }
 
     public void onEnable() {

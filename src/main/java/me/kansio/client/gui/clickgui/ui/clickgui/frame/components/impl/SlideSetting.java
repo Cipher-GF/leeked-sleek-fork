@@ -75,7 +75,18 @@ public class SlideSetting extends Component implements Priority {
 
     private void setValue(Number value) {
         final NumberValue set = (NumberValue) getSetting();
-        set.setValue(MathHelper.clamp_double(snapToStep(value.doubleValue(), set.getIncrement().doubleValue()), set.getMin().doubleValue(), set.getMax().doubleValue())); //change value step?
+        if (set.getIncrement() instanceof Double) {
+            set.setValue(MathHelper.clamp_double(snapToStep(value.doubleValue(), set.getIncrement().doubleValue()), set.getMin().doubleValue(), set.getMax().doubleValue()));//change value step?
+        }
+        if (set.getIncrement() instanceof Integer) {
+            set.setValue(MathHelper.clamp_int((int) snapToStep(value.doubleValue(), set.getIncrement().doubleValue()), set.getMin().intValue(), set.getMax().intValue()));//change value step?
+        }
+        if (set.getIncrement() instanceof Float) {
+            set.setValue(MathHelper.clamp_float((float) snapToStep(value.doubleValue(), set.getIncrement().doubleValue()), set.getMin().floatValue(), set.getMax().floatValue()));//change value step?
+        }
+        if (set.getIncrement() instanceof Long) {
+            set.setValue(MathHelper.clamp_int((int) snapToStep(value.doubleValue(), set.getIncrement().doubleValue()), set.getMin().intValue(), set.getMax().intValue()));//change value step?
+        }
     }
 
     @Override

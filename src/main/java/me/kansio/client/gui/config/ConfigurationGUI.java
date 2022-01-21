@@ -22,7 +22,7 @@ import java.util.List;
 
 public class ConfigurationGUI extends GuiScreen {
 
-    private ArrayList<Config> listedConfigs = new ArrayList<>();
+    private final ArrayList<Config> listedConfigs = new ArrayList<>();
     private Config selectedConfig = null;
 
     private String name = "";

@@ -141,7 +141,18 @@ public abstract class Module {
                 if (val instanceof BooleanValue) {
                     val.setValue(data.getValue().getAsBoolean());
                 } else if (val instanceof NumberValue) {
-                    val.setValue(data.getValue().getAsDouble());
+                    if (((NumberValue<?>) val).getIncrement() instanceof Double) {
+                        val.setValue(data.getValue().getAsDouble());
+                    }
+                    if (((NumberValue<?>) val).getIncrement() instanceof Float) {
+                        val.setValue((float) data.getValue().getAsDouble());
+                    }
+                    if (((NumberValue<?>) val).getIncrement() instanceof Long) {
+                        val.setValue((long) data.getValue().getAsDouble());
+                    }
+                    if (((NumberValue<?>) val).getIncrement() instanceof Integer) {
+                        val.setValue((int) data.getValue().getAsDouble());
+                    }
                 } else if (val instanceof ModeValue) {
                     val.setValue(data.getValue().getAsString());
                 } else if (val instanceof StringValue) {

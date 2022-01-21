@@ -50,7 +50,7 @@ public class Scaffold extends Module {
     private BooleanValue info = new BooleanValue("Show Info", this, true);
     public BooleanValue safewalk = new BooleanValue("Safewalk", this, true);
     public BooleanValue keepY = new BooleanValue("Keep Y", this, false);
-    private NumberValue<Double> delay = new NumberValue<>("Delay", this, 0d, 0d, 9000d, 1d);
+    private NumberValue<Integer> delay = new NumberValue<>("Delay", this, 0, 0, 9000, 1);
     private NumberValue<Integer> expansion = new NumberValue<>("Expansion", this, 4, 1, 6, 1);
     private int animation = 0;
     private final Stopwatch delayTimer = new Stopwatch();

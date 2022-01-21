@@ -25,7 +25,7 @@ public class HitEffect extends Module {
 
     // Particals
     public ModeValue mode = new ModeValue("Particle Mode", this, "Blood", "None");
-    public NumberValue<Double> modenum = new NumberValue<>("Amount", this,1.0, 1.0, 20.0, 1.0);
+    public NumberValue<Integer> modenum = new NumberValue<>("Amount", this,1, 1, 20, 1);
     public BooleanValue modesound = new BooleanValue("Play Sound", this, false);
 
     // HitMarker Sound
@@ -34,9 +34,9 @@ public class HitEffect extends Module {
 
     // Crack Particals
     public BooleanValue crit = new BooleanValue("Criticals", this, false);
-    public NumberValue<Double> critnum = new NumberValue<>("Amount", this,1.0, 1.0, 2.0, 1.0, crit);
+    public NumberValue<Integer> critnum = new NumberValue<>("Amount", this,1, 1, 2, 1, crit);
     public BooleanValue ench = new BooleanValue("Enchants", this, false);
-    public NumberValue<Double> enchnum = new NumberValue<>("Amount", this,1.0, 1.0, 2.0, 1.0, ench);
+    public NumberValue<Integer> enchnum = new NumberValue<>("Amount", this,1, 1, 2, 1, ench);
 
     @Subscribe
     public void onUpdate(UpdateEvent event) {
