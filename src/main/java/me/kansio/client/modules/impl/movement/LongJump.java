@@ -77,7 +77,6 @@ public class LongJump extends Module {
 
                     }
                     PlayerUtil.setMotion(boost.getValue().floatValue());
-
                 }
                 break;
             }
