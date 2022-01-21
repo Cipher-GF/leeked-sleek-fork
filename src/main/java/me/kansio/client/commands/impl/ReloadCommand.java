@@ -1,13 +1,14 @@
 package me.kansio.client.commands.impl;
 
 import me.kansio.client.Client;
+import me.kansio.client.commands.Command;
+import me.kansio.client.commands.CommandData;
 import me.kansio.client.utils.chat.ChatUtil;
-
+@CommandData(
+        name = "reload",
+        description = "Used for reloading some of the client. used for debugging"
+)
 public class ReloadCommand extends Command {
-
-    public ReloadCommand() {
-        super("reload");
-    }
 
     @Override
     public void run(String[] args) {

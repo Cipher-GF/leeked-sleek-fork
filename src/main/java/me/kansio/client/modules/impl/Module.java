@@ -8,8 +8,6 @@ import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.visuals.ClickGUI;
 import me.kansio.client.modules.impl.visuals.HUD;
-import me.kansio.client.notification.Notification;
-import me.kansio.client.notification.NotificationManager;
 import me.kansio.client.property.Value;
 import me.kansio.client.property.value.*;
 import net.minecraft.client.Minecraft;
@@ -65,7 +63,6 @@ public abstract class Module {
         String formatted = hud.getListSuffix().getValue().replaceAll("%s", suffix);
 
 
-
         return formatted;
     }
 
@@ -80,7 +77,7 @@ public abstract class Module {
             onDisable();
         }
         if (!(this instanceof ClickGUI))
-        onToggled();
+            onToggled();
     }
 
     public String getSuffix() {

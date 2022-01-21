@@ -4,17 +4,19 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import me.kansio.client.Client;
+import me.kansio.client.commands.Command;
+import me.kansio.client.commands.CommandData;
 import me.kansio.client.utils.chat.ChatUtil;
 import me.kansio.client.utils.network.HttpUtil;
 
 import java.io.IOException;
 import java.text.MessageFormat;
-import java.util.Map;
 
+@CommandData(
+        name = "users",
+        description = "Lists the current online users"
+)
 public class UsersCommand extends Command {
-    public UsersCommand() {
-        super("users");
-    }
 
     @Override
     public void run(String[] args) {

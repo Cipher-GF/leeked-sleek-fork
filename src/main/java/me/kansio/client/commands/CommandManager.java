@@ -1,6 +1,7 @@
 package me.kansio.client.commands;
 
 import com.google.common.eventbus.Subscribe;
+import lombok.Getter;
 import me.kansio.client.Client;
 import me.kansio.client.commands.impl.*;
 import me.kansio.client.event.impl.ChatEvent;
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 
 public class CommandManager {
 
-    private ArrayList<Command> commands = new ArrayList<>();
+    @Getter private ArrayList<Command> commands = new ArrayList<>();
 
     public CommandManager() {
         registerCommands();
@@ -26,7 +27,7 @@ public class CommandManager {
         String command = split[0];
         String args = cmd.substring(command.length()).trim();
         for (Command command1 : commands) {
-            String cmdName = "." + command1.getName();
+            String cmdName = "." + command1.getClass().getAnnotation(CommandData.class).name();
             if (cmdName.equalsIgnoreCase(command)) {
                 try {
                     command1.run(args.split(" "));
@@ -34,6 +35,18 @@ public class CommandManager {
                     ChatUtil.log("Invalid command usage.");
                 }
                 break;
+            } else {
+                for (String alias : command1.getClass().getAnnotation(CommandData.class).aliases()) {
+                    String aliasName = "." + alias;
+                    if (aliasName.equalsIgnoreCase(command)) {
+                        try {
+                            command1.run(args.split(" "));
+                        } catch (Exception e) {
+                            ChatUtil.log("Invalid command usage.");
+                        }
+                        break;
+                    }
+                }
             }
         }
 
@@ -54,5 +67,7 @@ public class CommandManager {
         commands.add(new FriendCommand());
         commands.add(new FocusCommand());
         commands.add(new NameCommand());
+        commands.add(new HelpCommand());
+        commands.add(new HClipCommand());
     }
 }
