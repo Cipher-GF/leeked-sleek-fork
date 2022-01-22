@@ -21,7 +21,6 @@ public class Bhop extends SpeedMode {
     @Override
     public void onUpdate(UpdateEvent event) {
         if (mc.thePlayer.onGround) {
-            mc.timer.timerSpeed = 1.3F;
             double var1 = PlayerUtil.getBaseSpeed() * 1.0524;
             getSpeed().getHDist().set(var1);
         }
