@@ -44,12 +44,10 @@ public class FlightA extends Check {
             int ticks = airTicks.getOrDefault(p, 0);
             airTicks.put(p, ticks + 1);
 
-            if (ticks > 50) {
-                if (ticks % 5 == 1) {
-                    if (!Client.getInstance().getTargetManager().isTarget(p)) {
-                        ChatUtil.logCheater(p + " §7might be using §aFlight (Check 1) §4§l(Flagged as cheater!)");
-                        Client.getInstance().getTargetManager().getTarget().add(p.getName());
-                    }
+            if (ticks > 35) {
+                if (!Client.getInstance().getTargetManager().isTarget(p)) {
+                    ChatUtil.logCheater(p + " §7might be using §aFlight (Check 1) §4§l(Flagged as cheater!)");
+                    Client.getInstance().getTargetManager().getTarget().add(p.getName());
                 }
             }
         }
