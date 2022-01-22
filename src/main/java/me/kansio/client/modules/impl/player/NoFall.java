@@ -68,6 +68,4 @@ public class NoFall extends Module {
     public String getSuffix() {
         return " " + mode.getValueAsString();
     }
-
-
 }

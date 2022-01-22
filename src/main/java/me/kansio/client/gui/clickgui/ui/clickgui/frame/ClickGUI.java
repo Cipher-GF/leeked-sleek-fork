@@ -15,7 +15,7 @@ import java.util.List;
 
 public class ClickGUI extends GuiScreen {
     private final List<FrameCategory> categories;
-    private final ConfigCategory configCategory = new ConfigCategory(10 + ((ModuleCategory.values().length - 1) * (Priority.defaultWidth + 10)), 10);
+    //private final ConfigCategory configCategory = new ConfigCategory(10 + ((ModuleCategory.values().length - 1) * (Priority.defaultWidth + 10)), 10);
 
     public ClickGUI()
     {
@@ -31,14 +31,14 @@ public class ClickGUI extends GuiScreen {
         }
 
         //Reload the configs
-        Client.getInstance().getConfigManager().loadConfigs();
+        //Client.getInstance().getConfigManager().loadConfigs();
     }
 
     @Override
     public void initGui()
     {
         categories.forEach(FrameCategory::initGui);
-        configCategory.initGui();
+        //configCategory.initGui();
         super.initGui();
     }
 
@@ -46,14 +46,14 @@ public class ClickGUI extends GuiScreen {
     public void drawScreen(int mouseX, int mouseY, float partialTicks)
     {
         categories.forEach(frameCategory -> frameCategory.drawScreen(mouseX, mouseY));
-        configCategory.drawScreen(mouseX, mouseY);
+        //configCategory.drawScreen(mouseX, mouseY);
         super.drawScreen(mouseX, mouseY, partialTicks);
     }
 
     @Override
     protected void keyTyped(char typedChar, int keyCode) throws IOException {
         categories.forEach(frameCategory -> frameCategory.keyTyped(typedChar, keyCode));
-        configCategory.keyTyped(typedChar, keyCode);
+        //configCategory.keyTyped(typedChar, keyCode);
         super.keyTyped(typedChar, keyCode);
     }
 
@@ -61,7 +61,7 @@ public class ClickGUI extends GuiScreen {
     protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException
     {
         categories.forEach(frameCategory -> frameCategory.mouseClicked(mouseX, mouseY, mouseButton));
-        configCategory.mouseClicked(mouseX, mouseY, mouseButton);
+        //configCategory.mouseClicked(mouseX, mouseY, mouseButton);
         super.mouseClicked(mouseX, mouseY, mouseButton);
     }
 
@@ -69,7 +69,7 @@ public class ClickGUI extends GuiScreen {
     protected void mouseReleased(int mouseX, int mouseY, int state)
     {
         categories.forEach(frameCategory -> frameCategory.mouseReleased(mouseX, mouseY, state));
-        configCategory.mouseReleased(mouseX, mouseY, state);
+        //configCategory.mouseReleased(mouseX, mouseY, state);
         super.mouseReleased(mouseX, mouseY, state);
     }
 

@@ -90,7 +90,7 @@ public class StringSetting extends Component implements Priority {
         }
 
         List<Character> whitelistedChars = Arrays.asList(
-                '&', ' ', '[', ']', '(', ')',
+                '&', ' ', '#', '[', ']', '(', ')',
                 '.', ',', '<', '>', '-', '$',
                 '!', '"', '\'', '\\', '/', '=',
                 '+', ',', '|', '^', '?', '`', ';', ':',
