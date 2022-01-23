@@ -1,8 +1,6 @@
 package me.kansio.client.modules.impl.combat;
 
 import com.google.common.eventbus.Subscribe;
-import lombok.Getter;
-import lombok.Setter;
 import me.kansio.client.Client;
 import me.kansio.client.event.impl.PacketEvent;
 import me.kansio.client.event.impl.RenderOverlayEvent;
@@ -10,8 +8,8 @@ import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
-import me.kansio.client.notification.Notification;
-import me.kansio.client.notification.NotificationManager;
+import me.kansio.client.gui.notification.Notification;
+import me.kansio.client.gui.notification.NotificationManager;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.ModeValue;
 import me.kansio.client.property.value.NumberValue;

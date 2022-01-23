@@ -3,7 +3,6 @@ package net.minecraft.client.renderer;
 import com.google.common.base.Predicates;
 import com.google.gson.JsonSyntaxException;
 import me.kansio.client.Client;
-import me.kansio.client.event.impl.RenderEvent2;
 import me.kansio.client.event.impl.Render3DEvent;
 import me.kansio.client.gui.MainMenu;
 import net.minecraft.block.Block;
@@ -1856,7 +1855,7 @@ public class EntityRenderer implements IResourceManagerReloadListener
             this.renderCloudsCheck(renderglobal, partialTicks, pass);
         }
 
-        Client.getInstance().getEventBus().post(new RenderEvent2(partialTicks));
+        Client.getInstance().getEventBus().post(new Render3DEvent(partialTicks));
 
         if (Reflector.ForgeHooksClient_dispatchRenderLast.exists())
         {
@@ -1866,7 +1865,6 @@ public class EntityRenderer implements IResourceManagerReloadListener
 
         this.mc.mcProfiler.endStartSection("hand");
         boolean flag2 = ReflectorForge.renderFirstPersonHand(this.mc.renderGlobal, partialTicks, pass);
-        Client.getInstance().getEventBus().post(new Render3DEvent(partialTicks));
         if (!flag2 && this.renderHand && !Shaders.isShadowPass)
         {
             if (flag)

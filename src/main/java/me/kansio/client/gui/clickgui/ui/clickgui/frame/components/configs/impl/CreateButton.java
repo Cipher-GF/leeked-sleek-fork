@@ -5,13 +5,12 @@ import me.kansio.client.gui.clickgui.ui.clickgui.frame.Priority;
 import me.kansio.client.gui.clickgui.ui.clickgui.frame.components.configs.ConfigComponent;
 import me.kansio.client.gui.clickgui.ui.clickgui.frame.components.configs.FrameConfig;
 import me.kansio.client.modules.impl.visuals.ClickGUI;
-import me.kansio.client.notification.Notification;
-import me.kansio.client.notification.NotificationManager;
+import me.kansio.client.gui.notification.Notification;
+import me.kansio.client.gui.notification.NotificationManager;
 import me.kansio.client.utils.render.RenderUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.lwjgl.input.Keyboard;
 
 import java.math.BigDecimal;

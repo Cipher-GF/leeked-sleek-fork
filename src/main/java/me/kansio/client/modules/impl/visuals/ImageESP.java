@@ -1,7 +1,7 @@
 package me.kansio.client.modules.impl.visuals;
 
 import com.google.common.eventbus.Subscribe;
-import me.kansio.client.event.impl.RenderEvent2;
+import me.kansio.client.event.impl.Render3DEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
@@ -12,20 +12,23 @@ import net.minecraft.client.gui.Gui;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.MathHelper;
+import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 @ModuleData(
         name = "Image ESP",
-        description = "Displays images",
+        description = "Displays images On Players",
         category = ModuleCategory.VISUALS
 )
-public class MemeESP extends Module {
+public class ImageESP extends Module {
 
-    private ModeValue modeValue = new ModeValue("Mode", this, "Zuiy", "Zuiy2", "Floyd");
-
+    private ModeValue modeValue = new ModeValue("Mode", this, "Zuiy", "Zuiy2", "Floyed");
+    private static final ResourceLocation ZUIY = new ResourceLocation("sleek/bg1.png");
+    private static final ResourceLocation ZUIY2 = new ResourceLocation("sleek/bg1.png");
+    private static final ResourceLocation FLOYED = new ResourceLocation("sleek/bg1.png");
 
     @Subscribe
-    public void onEntityRender(RenderEvent2 event) {
+    public void onEntityRender(Render3DEvent event) {
 
         for (final EntityPlayer p : mc.thePlayer.getEntityWorld().playerEntities) {
             if (RenderUtils.isInViewFrustrum(p) && !p.isInvisible() && p.isEntityAlive()) {
@@ -47,7 +50,13 @@ public class MemeESP extends Module {
             GlStateManager.scale(-0.1, -0.1, 0.0);
             switch (modeValue.getValue()) {
                 case "Zuiy":
-                    //Minecraft.getMinecraft().getTextureManager().bindTexture(this.roblox);
+                    Minecraft.getMinecraft().getTextureManager().bindTexture(ZUIY);
+                    break;
+                case "Zuiy2":
+                    Minecraft.getMinecraft().getTextureManager().bindTexture(ZUIY2);
+                    break;
+                case "Floyed":
+                    Minecraft.getMinecraft().getTextureManager().bindTexture(FLOYED);
                     break;
             }
 

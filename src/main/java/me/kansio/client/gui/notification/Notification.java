@@ -1,4 +1,4 @@
-package me.kansio.client.notification;
+package me.kansio.client.gui.notification;
 
 import me.kansio.client.Client;
 import me.kansio.client.modules.impl.visuals.HUD;

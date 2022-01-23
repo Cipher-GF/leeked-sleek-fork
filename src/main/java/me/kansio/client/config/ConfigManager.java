@@ -5,20 +5,16 @@ import lombok.Getter;
 import lombok.Setter;
 import me.kansio.client.Client;
 import me.kansio.client.modules.impl.Module;
-import me.kansio.client.modules.impl.visuals.ClickGUI;
-import me.kansio.client.notification.Notification;
-import me.kansio.client.notification.NotificationManager;
+import me.kansio.client.gui.notification.Notification;
+import me.kansio.client.gui.notification.NotificationManager;
 import me.kansio.client.utils.chat.ChatUtil;
 import me.kansio.client.utils.network.HttpUtil;
-import net.minecraft.client.Minecraft;
 import org.apache.commons.io.FilenameUtils;
 
 import java.io.*;
 import java.nio.file.Files;
-import java.text.MessageFormat;
 import java.util.Calendar;
 import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class ConfigManager {
 

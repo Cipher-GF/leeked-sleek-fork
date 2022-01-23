@@ -1,8 +1,8 @@
 {
   "data": {
     "author": "PC",
-    "name": "hypixel",
-    "lastUpdated": "Date 2022/1/22 Time 22:44:17"
+    "name": "hypixelslime",
+    "lastUpdated": "Date 2022/1/22 Time 22:48:45"
   },
   "modules": [
     {
@@ -33,7 +33,7 @@
       "name": "Disabler",
       "keybind": 48,
       "enabled": true,
-      "Mode": "WatchDog Semi",
+      "Mode": "WatchDogSlime",
       "Cancel Transactions": "false",
       "Cancel Keep Alive": "false",
       "Delay Transactions": "false",
@@ -175,8 +175,8 @@
       "name": "Flight",
       "keybind": 47,
       "enabled": false,
-      "Mode": "Collide",
-      "Speed": "0.0",
+      "Mode": "Vanilla",
+      "Speed": "1.8",
       "View Bobbing": "false",
       "Boost": "false",
       "Extra Boost": "false",
@@ -410,8 +410,8 @@
       "keybind": 44,
       "enabled": false,
       "Mode": "Vanilla",
-      "Vertical Boost": "0.05",
-      "Speed": "0.05"
+      "Vertical Boost": "0.5",
+      "Speed": "1.2000000000000002"
     },
     {
       "name": "Spammer",
@@ -429,8 +429,8 @@
       "name": "Speed",
       "keybind": 42,
       "enabled": false,
-      "Mode": "Watchdog",
-      "Speed": "0.4",
+      "Mode": "Bhop",
+      "Speed": "0.6000000000000001",
       "Force Friction": "true",
       "Friction": "NCP"
     },

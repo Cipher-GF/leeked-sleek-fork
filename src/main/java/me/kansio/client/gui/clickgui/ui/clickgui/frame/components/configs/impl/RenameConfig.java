@@ -1,18 +1,12 @@
 package me.kansio.client.gui.clickgui.ui.clickgui.frame.components.configs.impl;
 
 import me.kansio.client.Client;
-import me.kansio.client.config.Config;
 import me.kansio.client.gui.clickgui.ui.clickgui.frame.Priority;
-import me.kansio.client.gui.clickgui.ui.clickgui.frame.components.Component;
-import me.kansio.client.gui.clickgui.ui.clickgui.frame.components.FrameModule;
 import me.kansio.client.gui.clickgui.ui.clickgui.frame.components.configs.ConfigComponent;
 import me.kansio.client.gui.clickgui.ui.clickgui.frame.components.configs.FrameConfig;
 import me.kansio.client.modules.impl.visuals.ClickGUI;
-import me.kansio.client.notification.Notification;
-import me.kansio.client.notification.NotificationManager;
-import me.kansio.client.property.Value;
-import me.kansio.client.property.value.StringValue;
-import me.kansio.client.utils.chat.ChatUtil;
+import me.kansio.client.gui.notification.Notification;
+import me.kansio.client.gui.notification.NotificationManager;
 import me.kansio.client.utils.render.RenderUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;

@@ -7,8 +7,8 @@ import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
-import me.kansio.client.notification.Notification;
-import me.kansio.client.notification.NotificationManager;
+import me.kansio.client.gui.notification.Notification;
+import me.kansio.client.gui.notification.NotificationManager;
 import me.kansio.client.utils.math.Stopwatch;
 import me.kansio.client.utils.network.HttpUtil;
 

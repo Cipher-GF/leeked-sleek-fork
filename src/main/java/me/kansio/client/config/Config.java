@@ -2,11 +2,10 @@ package me.kansio.client.config;
 
 import lombok.Getter;
 import lombok.Setter;
-import me.kansio.client.notification.Notification;
-import me.kansio.client.notification.NotificationManager;
+import me.kansio.client.gui.notification.Notification;
+import me.kansio.client.gui.notification.NotificationManager;
 
 import java.io.File;
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;

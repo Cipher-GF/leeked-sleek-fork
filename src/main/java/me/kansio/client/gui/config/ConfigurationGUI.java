@@ -2,17 +2,13 @@ package me.kansio.client.gui.config;
 
 import me.kansio.client.Client;
 import me.kansio.client.config.Config;
-import me.kansio.client.notification.Notification;
-import me.kansio.client.notification.NotificationManager;
-import me.kansio.client.utils.chat.ChatUtil;
+import me.kansio.client.gui.notification.Notification;
+import me.kansio.client.gui.notification.NotificationManager;
 import me.kansio.client.utils.font.Fonts;
-import me.kansio.client.utils.render.ColorUtils;
 import me.kansio.client.utils.render.RenderUtils;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.client.renderer.entity.Render;
 import org.lwjgl.input.Keyboard;
-import org.lwjgl.input.Mouse;
 
 import java.awt.*;
 import java.io.IOException;
