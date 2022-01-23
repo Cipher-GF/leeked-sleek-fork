@@ -67,6 +67,7 @@ public class Speed extends Module {
 
     @Subscribe
     public void onUpdate(UpdateEvent event) {
+        currentMode = modes.stream().anyMatch(speedMode -> speedMode.getName().equalsIgnoreCase(mode.getValue())) ? modes.stream().filter(speedMode -> speedMode.getName().equalsIgnoreCase(mode.getValue())).findAny().get() : null ;
         currentMode.onUpdate(event);
         if (mc.thePlayer.ticksExisted < 5) {
             if (isToggled()) {
@@ -78,11 +79,13 @@ public class Speed extends Module {
 
     @Subscribe
     public void onMove(MoveEvent event) {
+        currentMode = modes.stream().anyMatch(speedMode -> speedMode.getName().equalsIgnoreCase(mode.getValue())) ? modes.stream().filter(speedMode -> speedMode.getName().equalsIgnoreCase(mode.getValue())).findAny().get() : null ;
         currentMode.onMove(event);
     }
 
     @Subscribe
     public void onPacket(PacketEvent event) {
+        currentMode = modes.stream().anyMatch(speedMode -> speedMode.getName().equalsIgnoreCase(mode.getValue())) ? modes.stream().filter(speedMode -> speedMode.getName().equalsIgnoreCase(mode.getValue())).findAny().get() : null ;
         currentMode.onPacket(event);
     }
 /*

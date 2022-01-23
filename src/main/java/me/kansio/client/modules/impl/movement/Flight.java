@@ -40,19 +40,19 @@ public class Flight extends Module {
                 }
                 return null;
             })
-            .sorted(Comparator.comparing(speedMode -> speedMode != null ? speedMode.getName() : null))
+            .sorted(Comparator.comparing(flyMode -> flyMode != null ? flyMode.getName() : null))
             .collect(Collectors.toList());
 
-    private final ModeValue modeValue = new ModeValue("Mode", this, modes.stream().map(FlightMode::getName).collect(Collectors.toList()).toArray(new String[]{}));
-    private FlightMode currentMode = modes.stream().anyMatch(speedMode -> speedMode.getName().equalsIgnoreCase(modeValue.getValue())) ? modes.stream().filter(speedMode -> speedMode.getName().equalsIgnoreCase(modeValue.getValue())).findAny().get() : null;
+    private final ModeValue mode = new ModeValue("Mode", this, modes.stream().map(FlightMode::getName).collect(Collectors.toList()).toArray(new String[]{}));
+    private FlightMode currentMode = modes.stream().anyMatch(flyMode -> flyMode.getName().equalsIgnoreCase(mode.getValue())) ? modes.stream().filter(flyMode -> flyMode.getName().equalsIgnoreCase(mode.getValue())).findAny().get() : null;
     private NumberValue<Double> speed = new NumberValue<>("Speed", this, 1d, 0d, 10d, 0.1);
 
-    private BooleanValue boost = new BooleanValue("Boost", this, true, modeValue, "Funcraft");
-    private BooleanValue extraBoost = new BooleanValue("Extra Boost", this, true, modeValue, "Funcraft");
-    private BooleanValue glide = new BooleanValue("Glide", this, true, modeValue, "Funcraft");
-    private ModeValue boostMode = new ModeValue("Boost Mode", this, modeValue, new String[]{"Funcraft"}, "Normal", "Damage", "WOWOMG");
-    private NumberValue<Double> timer = new NumberValue<>("Timer", this, 1d, 1d, 5d, 0.1, modeValue, "Mush");
-    private BooleanValue blink = new BooleanValue("Blink", this, true, modeValue, "Mush");
+    private BooleanValue boost = new BooleanValue("Boost", this, true, mode, "Funcraft");
+    private BooleanValue extraBoost = new BooleanValue("Extra Boost", this, true, mode, "Funcraft");
+    private BooleanValue glide = new BooleanValue("Glide", this, true, mode, "Funcraft");
+    private ModeValue boostMode = new ModeValue("Boost Mode", this, mode, new String[]{"Funcraft"}, "Normal", "Damage", "WOWOMG");
+    private NumberValue<Double> timer = new NumberValue<>("Timer", this, 1d, 1d, 5d, 0.1, mode, "Mush");
+    private BooleanValue blink = new BooleanValue("Blink", this, true, mode, "Mush");
     private BooleanValue viewbob = new BooleanValue("View Bobbing", this, true);
 
     private Stopwatch stopwatch = new Stopwatch();
@@ -61,7 +61,7 @@ public class Flight extends Module {
     public float prevFOV;
 
     public void onEnable() {
-        this.currentMode = modes.stream().anyMatch(speedMode -> speedMode.getName().equalsIgnoreCase(modeValue.getValue())) ? modes.stream().filter(speedMode -> speedMode.getName().equalsIgnoreCase(modeValue.getValue())).findAny().get() : null;
+        currentMode = modes.stream().anyMatch(flyMode -> flyMode.getName().equalsIgnoreCase(mode.getValue())) ? modes.stream().filter(flyMode -> flyMode.getName().equalsIgnoreCase(mode.getValue())).findAny().get() : null;
         currentMode.onEnable();
     }
 
@@ -75,6 +75,7 @@ public class Flight extends Module {
 
     @Subscribe
     public void onUpdate(UpdateEvent event) {
+        currentMode = modes.stream().anyMatch(flyMode -> flyMode.getName().equalsIgnoreCase(mode.getValue())) ? modes.stream().filter(flyMode -> flyMode.getName().equalsIgnoreCase(mode.getValue())).findAny().get() : null;
         if (viewbob.getValue() && mc.thePlayer.isMoving()) {
             mc.thePlayer.cameraYaw = 0.05f;
         } else {
@@ -91,16 +92,19 @@ public class Flight extends Module {
 
     @Subscribe
     public void onMove(MoveEvent event) {
+        currentMode = modes.stream().anyMatch(flyMode -> flyMode.getName().equalsIgnoreCase(mode.getValue())) ? modes.stream().filter(flyMode -> flyMode.getName().equalsIgnoreCase(mode.getValue())).findAny().get() : null;
         currentMode.onMove(event);
     }
 
     @Subscribe
     public void onPacket(PacketEvent event) {
+        currentMode = modes.stream().anyMatch(flyMode -> flyMode.getName().equalsIgnoreCase(mode.getValue())) ? modes.stream().filter(flyMode -> flyMode.getName().equalsIgnoreCase(mode.getValue())).findAny().get() : null;
         currentMode.onPacket(event);
     }
 
     @Subscribe
     public void onCollide(BlockCollisionEvent event) {
+        currentMode = modes.stream().anyMatch(flyMode -> flyMode.getName().equalsIgnoreCase(mode.getValue())) ? modes.stream().filter(flyMode -> flyMode.getName().equalsIgnoreCase(mode.getValue())).findAny().get() : null;
         currentMode.onCollide(event);
     }
 
@@ -114,6 +118,6 @@ public class Flight extends Module {
 
     @Override
     public String getSuffix() {
-        return " " + modeValue.getValueAsString();
+        return " " + mode.getValueAsString();
     }
 }
