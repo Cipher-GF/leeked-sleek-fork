@@ -24,9 +24,8 @@ import net.minecraft.world.World;
 public class HitEffect extends Module {
 
     // Particals
-    public ModeValue mode = new ModeValue("Particle Mode", this, "Blood", "None");
+    public ModeValue mode = new ModeValue("HitMarker Mode", this, "Blood", "None");
     public NumberValue<Integer> modenum = new NumberValue<>("Amount", this,1, 1, 20, 1);
-    public BooleanValue modesound = new BooleanValue("Play Sound", this, false);
 
     // HitMarker Sound
     public BooleanValue hitmarkersound = new BooleanValue("Play Sound", this, false);

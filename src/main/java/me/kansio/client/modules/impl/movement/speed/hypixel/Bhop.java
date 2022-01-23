@@ -43,7 +43,7 @@ public class Bhop extends SpeedMode {
         }
         double speed = doFriction(hDist);
         setMotion(speed);
-        mc.timer.timerSpeed = 1.2f;
+        mc.timer.timerSpeed = getSpeed().getTimer().getValue();
     }
 
     public double doFriction(AtomicDouble hdist) {
