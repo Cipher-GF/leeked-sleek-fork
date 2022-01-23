@@ -8,7 +8,6 @@ import me.kansio.client.modules.impl.movement.flight.FlightMode;
 import me.kansio.client.utils.math.MathUtil;
 import me.kansio.client.utils.math.Stopwatch;
 import me.kansio.client.utils.player.PlayerUtil;
-import me.kansio.client.utils.player.TimerUtil;
 import net.minecraft.potion.Potion;
 
 public class Funcraft extends FlightMode {
@@ -73,9 +72,9 @@ public class Funcraft extends FlightMode {
     public void onMove(MoveEvent event) {
         if (getFlight().getExtraBoost().getValue() && getFlight().getBoost().getValue()) {
             if (!timer.timeElapsed(135) && timer.timeElapsed(20)) {
-                TimerUtil.Timer(3.5f);
+                mc.timer.timerSpeed = 3.5f;
             } else {
-                TimerUtil.Timer(1.0f);
+                mc.timer.timerSpeed = 1.0f;
             }
             if (level < 20) {
                 //TimerUtil.Timer(3.6f);

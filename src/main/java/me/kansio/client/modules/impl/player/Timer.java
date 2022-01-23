@@ -4,7 +4,7 @@ import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.NumberValue;
-import me.kansio.client.utils.player.TimerUtil;
+
 
 @ModuleData(
         name = "Timer",
@@ -19,11 +19,11 @@ public class Timer extends Module {
 
     @Override
     public void onEnable() {
-        TimerUtil.Timer(speed.getValue().floatValue());
+        mc.timer.timerSpeed = speed.getValue().floatValue();
     }
 
     @Override
     public void onDisable() {
-        TimerUtil.Timer(1.0F);
+        mc.timer.timerSpeed = 1.0F;
     }
 }
