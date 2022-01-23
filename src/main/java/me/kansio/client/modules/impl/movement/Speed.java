@@ -57,7 +57,6 @@ public class Speed extends Module {
 
     @Override
     public void onDisable() {
-
         mc.timer.timerSpeed = 1.0f;
         PlayerUtil.setMotion(0);
         hDist.set(0);
@@ -67,7 +66,6 @@ public class Speed extends Module {
 
     @Subscribe
     public void onUpdate(UpdateEvent event) {
-        currentMode = modes.stream().anyMatch(speedMode -> speedMode.getName().equalsIgnoreCase(mode.getValue())) ? modes.stream().filter(speedMode -> speedMode.getName().equalsIgnoreCase(mode.getValue())).findAny().get() : null ;
         currentMode.onUpdate(event);
         if (mc.thePlayer.ticksExisted < 5) {
             if (isToggled()) {

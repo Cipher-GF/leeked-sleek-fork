@@ -6,7 +6,7 @@ import me.kansio.client.utils.chat.ChatUtil;
 public class TimerUtil extends Util {
 
     public static void Timer(Float timer) {
-        if (thePlayer.isServerWorld() && thePlayer.isEntityAlive()) {
+        if (mc.thePlayer.isServerWorld() && mc.thePlayer.isEntityAlive()) {
             mc.timer.timerSpeed = timer.byteValue();
         } else {
             ChatUtil.log("tESt");
@@ -14,17 +14,17 @@ public class TimerUtil extends Util {
     }
 
     public static void Timer(Float timer, Float ticks) {
-        if (thePlayer.isServerWorld() && thePlayer.isEntityAlive()) {
-            if (thePlayer.ticksExisted % ticks == 0) {
+        if (mc.thePlayer.isServerWorld() && mc.thePlayer.isEntityAlive()) {
+            if (mc.thePlayer.ticksExisted % ticks == 0) {
                 mc.timer.timerSpeed = timer.byteValue();
             }
         } 
     }
 
     public static void Timer(Float timer, Float ticks, Boolean onGround) {
-        if (thePlayer.isServerWorld() && thePlayer.isEntityAlive()) {
-            if (thePlayer.onGround == onGround) {
-                if (thePlayer.ticksExisted % ticks == 0) {
+        if (mc.thePlayer.isServerWorld() && mc.thePlayer.isEntityAlive()) {
+            if (mc.thePlayer.onGround == onGround) {
+                if (mc.thePlayer.ticksExisted % ticks == 0) {
                     mc.timer.timerSpeed = timer.byteValue();
                 }
             }
