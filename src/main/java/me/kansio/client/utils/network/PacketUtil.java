@@ -19,15 +19,15 @@ public class PacketUtil extends Util {
         }
     }
 
-    public static void sendPacketNoEvent(Packet packet, int sendTimes) {
-        for (int i = 0; i < sendTimes; i++) {
-            mc.getNetHandler().addToSendQueueNoEvent(packet);
-        }
-    }
-    
     public static void sendPacket(int sendTimes, Packet packet) {
         for (int i = 0; i < sendTimes; i++) {
             mc.getNetHandler().addToSendQueue(packet);
+        }
+    }
+
+    public static void sendPacketNoEvent(Packet packet, int sendTimes) {
+        for (int i = 0; i < sendTimes; i++) {
+            mc.getNetHandler().addToSendQueueNoEvent(packet);
         }
     }
 

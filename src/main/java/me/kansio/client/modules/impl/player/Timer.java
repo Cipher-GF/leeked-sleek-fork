@@ -1,12 +1,10 @@
 package me.kansio.client.modules.impl.player;
-
-import com.google.common.eventbus.Subscribe;
-import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.NumberValue;
+
 
 @ModuleData(
         name = "Timer",
@@ -26,6 +24,6 @@ public class Timer extends Module {
 
     @Override
     public void onDisable() {
-        mc.timer.timerSpeed = 1;
+        mc.timer.timerSpeed = 1.0F;
     }
 }

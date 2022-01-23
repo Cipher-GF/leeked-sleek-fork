@@ -2,7 +2,6 @@ package me.kansio.client.modules.impl.movement.flight.misc;
 
 import me.kansio.client.event.impl.BlockCollisionEvent;
 import me.kansio.client.event.impl.MoveEvent;
-import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.impl.movement.flight.FlightMode;
 import me.kansio.client.utils.player.PlayerUtil;
 import net.minecraft.block.BlockAir;
@@ -17,12 +16,12 @@ public class Viper extends FlightMode {
     @Override
     public void onMove(MoveEvent event) {
         if (!mc.thePlayer.isMovingOnGround()) {
-            mc.timer.timerSpeed = 1f;
+            mc.timer.timerSpeed = 1.0F;
             return;
         }
 
         if (mc.thePlayer.isMoving()) {
-            mc.timer.timerSpeed = 0.3f;
+            mc.timer.timerSpeed = 0.3F;
             for (int i = 0; i < 17; ++i) {
                 PlayerUtil.TPGROUND(event, 0.06, 0);
             }

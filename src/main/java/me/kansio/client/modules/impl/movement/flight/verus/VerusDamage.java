@@ -4,7 +4,6 @@ import me.kansio.client.event.impl.BlockCollisionEvent;
 import me.kansio.client.event.impl.MoveEvent;
 import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.impl.movement.flight.FlightMode;
-import me.kansio.client.utils.chat.ChatUtil;
 import me.kansio.client.utils.player.PlayerUtil;
 import net.minecraft.block.BlockAir;
 import net.minecraft.util.AxisAlignedBB;

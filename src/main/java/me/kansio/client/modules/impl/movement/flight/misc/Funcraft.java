@@ -74,10 +74,10 @@ public class Funcraft extends FlightMode {
             if (!timer.timeElapsed(135) && timer.timeElapsed(20)) {
                 mc.timer.timerSpeed = 3.5f;
             } else {
-                mc.timer.timerSpeed = 1f;
+                mc.timer.timerSpeed = 1.0f;
             }
             if (level < 20) {
-                //mc.timer.timerSpeed = 3.6f;
+                //TimerUtil.Timer(3.6f);
                 timer.resetTime();
             }
         }
@@ -153,7 +153,7 @@ public class Funcraft extends FlightMode {
             }
         } else {
             PlayerUtil.setMotion(event, getBaseMoveSpeed());
-            //  mc.timer.timerSpeed = 0.5f;
+            //TimerUtil.Timer(0.5f);
             //MoveUtil.TP(event, 0.28, 0);
         }
     }

@@ -54,7 +54,7 @@ public class LongJump extends Module {
 
     @Override
     public void onDisable() {
-        mc.timer.timerSpeed = 1f;
+        mc.timer.timerSpeed = 1.0f;
         jumped = false;
     }
 

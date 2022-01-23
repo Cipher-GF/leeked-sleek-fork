@@ -10,6 +10,7 @@ import me.kansio.client.modules.impl.movement.speed.SpeedMode;
 import me.kansio.client.utils.chat.ChatUtil;
 import me.kansio.client.utils.math.MathUtil;
 import me.kansio.client.utils.player.PlayerUtil;
+
 import me.kansio.client.utils.rotations.AimUtil;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.potion.Potion;

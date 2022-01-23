@@ -17,6 +17,7 @@ import me.kansio.client.property.value.ModeValue;
 import me.kansio.client.property.value.NumberValue;
 import me.kansio.client.utils.java.ReflectUtils;
 import me.kansio.client.utils.math.Stopwatch;
+
 import net.minecraft.potion.Potion;
 
 import java.util.Comparator;
@@ -69,13 +70,12 @@ public class Flight extends Module {
         mc.thePlayer.motionX = 0;
         mc.thePlayer.motionY = 0;
         mc.thePlayer.motionZ = 0;
-        mc.timer.timerSpeed = 1f;
+        mc.timer.timerSpeed = 1.0f;
         currentMode.onDisable();
     }
 
     @Subscribe
     public void onUpdate(UpdateEvent event) {
-        currentMode = modes.stream().anyMatch(flyMode -> flyMode.getName().equalsIgnoreCase(mode.getValue())) ? modes.stream().filter(flyMode -> flyMode.getName().equalsIgnoreCase(mode.getValue())).findAny().get() : null;
         if (viewbob.getValue() && mc.thePlayer.isMoving()) {
             mc.thePlayer.cameraYaw = 0.05f;
         } else {
@@ -92,19 +92,16 @@ public class Flight extends Module {
 
     @Subscribe
     public void onMove(MoveEvent event) {
-        currentMode = modes.stream().anyMatch(flyMode -> flyMode.getName().equalsIgnoreCase(mode.getValue())) ? modes.stream().filter(flyMode -> flyMode.getName().equalsIgnoreCase(mode.getValue())).findAny().get() : null;
         currentMode.onMove(event);
     }
 
     @Subscribe
     public void onPacket(PacketEvent event) {
-        currentMode = modes.stream().anyMatch(flyMode -> flyMode.getName().equalsIgnoreCase(mode.getValue())) ? modes.stream().filter(flyMode -> flyMode.getName().equalsIgnoreCase(mode.getValue())).findAny().get() : null;
         currentMode.onPacket(event);
     }
 
     @Subscribe
     public void onCollide(BlockCollisionEvent event) {
-        currentMode = modes.stream().anyMatch(flyMode -> flyMode.getName().equalsIgnoreCase(mode.getValue())) ? modes.stream().filter(flyMode -> flyMode.getName().equalsIgnoreCase(mode.getValue())).findAny().get() : null;
         currentMode.onCollide(event);
     }
 

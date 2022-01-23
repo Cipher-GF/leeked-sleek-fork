@@ -17,7 +17,6 @@ import me.kansio.client.property.value.ModeValue;
 import me.kansio.client.property.value.NumberValue;
 import me.kansio.client.utils.java.ReflectUtils;
 import me.kansio.client.utils.player.PlayerUtil;
-
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -58,7 +57,8 @@ public class Speed extends Module {
 
     @Override
     public void onDisable() {
-        mc.timer.timerSpeed = 1f;
+
+        mc.timer.timerSpeed = 1.0f;
         PlayerUtil.setMotion(0);
         hDist.set(0);
 
@@ -79,13 +79,11 @@ public class Speed extends Module {
 
     @Subscribe
     public void onMove(MoveEvent event) {
-        currentMode = modes.stream().anyMatch(speedMode -> speedMode.getName().equalsIgnoreCase(mode.getValue())) ? modes.stream().filter(speedMode -> speedMode.getName().equalsIgnoreCase(mode.getValue())).findAny().get() : null ;
         currentMode.onMove(event);
     }
 
     @Subscribe
     public void onPacket(PacketEvent event) {
-        currentMode = modes.stream().anyMatch(speedMode -> speedMode.getName().equalsIgnoreCase(mode.getValue())) ? modes.stream().filter(speedMode -> speedMode.getName().equalsIgnoreCase(mode.getValue())).findAny().get() : null ;
         currentMode.onPacket(event);
     }
 /*
