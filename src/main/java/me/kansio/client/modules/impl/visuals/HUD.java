@@ -77,6 +77,8 @@ public class HUD extends Module {
     private InfoMode currentinfomode = infomodes.stream().anyMatch(infoMode -> infoMode.getName().equalsIgnoreCase(infomode.getValue())) ? infomodes.stream().filter(infoMode -> infoMode.getName().equalsIgnoreCase(infomode.getValue())).findAny().get() : null ;
 
     private final ModeValue colorMode = new ModeValue("Color Mode", this, "Sleek", "Rainbow", "Astolfo", "Nitrogen");
+    private final ModeValue line = new ModeValue("Line", this, "Wrapped");
+    //private final ModeValue colorMode = new ModeValue("Color Mode", this, "Sleek", "Rainbow", "Astolfo", "Nitrogen");
     public BooleanValue font = new BooleanValue("Font", this, false);
     public BooleanValue noti = new BooleanValue("Notifications", this, true);
     public BooleanValue hideRender = new BooleanValue("Hide Render", this, true);

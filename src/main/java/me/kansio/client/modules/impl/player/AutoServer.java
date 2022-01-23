@@ -32,7 +32,7 @@ public class AutoServer extends Module {
     private boolean hasClickedAutoPlay;
 
     private ModeValue modeValue = new ModeValue("Server", this, "BlocksMC");
-    private ModeValue kitValue = new ModeValue("Kit", this, "Armorer", "Knight");
+    private ModeValue kitValue = new ModeValue("Kit", this, modeValue, new String[]{"BlocksMC"},"Armorer", "Knight");
 
     @Subscribe
     public void onPacket(PacketEvent event) {
@@ -101,6 +101,9 @@ public class AutoServer extends Module {
                         }
                     }
                 }
+                break;
+            }
+            case "Hypixel": {
                 break;
             }
         }

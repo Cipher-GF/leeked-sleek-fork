@@ -56,7 +56,7 @@ public class PlayerUtil extends Util {
         if(mc.thePlayer.moveStrafing < 0F)
             rotationYaw += 90F * forward;
 
-        return Math.toRadians(rotationYaw);
+        return rotationYaw;
     }
 
     public static void strafe(final float speed) {

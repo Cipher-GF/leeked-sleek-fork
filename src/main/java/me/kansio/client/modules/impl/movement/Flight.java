@@ -23,6 +23,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Getter
 @ModuleData(
         name = "Flight",
         category = ModuleCategory.MOVEMENT,
@@ -44,13 +45,15 @@ public class Flight extends Module {
 
     private final ModeValue modeValue = new ModeValue("Mode", this, modes.stream().map(FlightMode::getName).collect(Collectors.toList()).toArray(new String[]{}));
     private FlightMode currentMode = modes.stream().anyMatch(speedMode -> speedMode.getName().equalsIgnoreCase(modeValue.getValue())) ? modes.stream().filter(speedMode -> speedMode.getName().equalsIgnoreCase(modeValue.getValue())).findAny().get() : null;
-    @Getter private NumberValue<Double> speed = new NumberValue<>("Speed", this, 1d, 0d, 10d, 0.1);
-    @Getter private BooleanValue viewbob = new BooleanValue("View Bobbing", this, true);
-    @Getter private BooleanValue boost = new BooleanValue("Boost", this, true, modeValue, "Funcraft");
-    @Getter private BooleanValue extraBoost = new BooleanValue("Extra Boost", this, true, modeValue, "Funcraft");
-    @Getter private BooleanValue glide = new BooleanValue("Glide", this, true, modeValue, "Funcraft");
-    @Getter private ModeValue boostMode = new ModeValue("Boost Mode", this, modeValue, new String[]{"Funcraft"}, "Normal", "Damage", "WOWOMG");
-    @Getter private NumberValue<Double> timer = new NumberValue<>("Timer", this, 1d, 1d, 5d, 0.1, modeValue, "Mush");
+    private NumberValue<Double> speed = new NumberValue<>("Speed", this, 1d, 0d, 10d, 0.1);
+
+    private BooleanValue boost = new BooleanValue("Boost", this, true, modeValue, "Funcraft");
+    private BooleanValue extraBoost = new BooleanValue("Extra Boost", this, true, modeValue, "Funcraft");
+    private BooleanValue glide = new BooleanValue("Glide", this, true, modeValue, "Funcraft");
+    private ModeValue boostMode = new ModeValue("Boost Mode", this, modeValue, new String[]{"Funcraft"}, "Normal", "Damage", "WOWOMG");
+    private NumberValue<Double> timer = new NumberValue<>("Timer", this, 1d, 1d, 5d, 0.1, modeValue, "Mush");
+    private BooleanValue blink = new BooleanValue("Blink", this, true, modeValue, "Mush");
+    private BooleanValue viewbob = new BooleanValue("View Bobbing", this, true);
 
     private Stopwatch stopwatch = new Stopwatch();
 

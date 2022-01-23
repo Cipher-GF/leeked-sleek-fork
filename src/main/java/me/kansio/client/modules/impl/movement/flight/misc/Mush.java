@@ -8,7 +8,6 @@ import me.kansio.client.modules.impl.movement.flight.FlightMode;
 import me.kansio.client.utils.network.PacketUtil;
 import me.kansio.client.utils.player.PlayerUtil;
 import net.minecraft.block.BlockAir;
-import net.minecraft.network.Packet;
 import net.minecraft.network.play.client.C03PacketPlayer;
 import net.minecraft.util.AxisAlignedBB;
 
@@ -18,6 +17,7 @@ public class Mush extends FlightMode {
     double speedy = 2.5;
     boolean blinking = false;
     private ArrayList<? extends C03PacketPlayer> c03Packets = new ArrayList<>();
+
     public Mush() {
         super("Mush");
     }
@@ -39,7 +39,12 @@ public class Mush extends FlightMode {
 
     @Override
     public void onMove(MoveEvent event) {
-        PlayerUtil.setMotion(speedy);
+        if (mc.gameSettings.keyBindJump.isKeyDown()) {
+            mc.thePlayer.motionY = 0.15;
+        } else if (mc.gameSettings.keyBindSneak.isKeyDown()) {
+            mc.thePlayer.motionY = -0.15;
+        }
+        PlayerUtil.setMotion(Math.max(speedy, PlayerUtil.getVerusBaseSpeed()));
     }
 
     @Override
@@ -55,7 +60,7 @@ public class Mush extends FlightMode {
     public void onEnable() {
         speedy = getFlight().getSpeed().getValue();
         mc.timer.timerSpeed = getFlight().getTimer().getValue().floatValue();
-        blinking = true;
+        blinking = getFlight().getBlink().getValue();
     }
 
     public void stopBlink() {
