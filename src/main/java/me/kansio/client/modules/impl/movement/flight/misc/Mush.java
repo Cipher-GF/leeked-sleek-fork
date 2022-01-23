@@ -28,21 +28,26 @@ public class Mush extends FlightMode {
             stopBlink();
         }
 
-        if (mc.timer.timerSpeed > 1) {
-            mc.timer.timerSpeed -= 0.01;
-        }
+        if (mc.thePlayer.isMoving()) {
+            if (mc.timer.timerSpeed > 1) {
+                mc.timer.timerSpeed -= 0.01;
+            }
 
-        if (speedy > 0.22) {
-            speedy -= 0.01;
+            if (speedy > 0.22) {
+                speedy -= 0.01;
+            }
+        } else {
+            mc.timer.timerSpeed = 1.0F;
+            speedy = 0;
         }
     }
 
     @Override
     public void onMove(MoveEvent event) {
         if (mc.gameSettings.keyBindJump.isKeyDown()) {
-            mc.thePlayer.motionY = 0.15;
+            mc.thePlayer.motionY = 1;
         } else if (mc.gameSettings.keyBindSneak.isKeyDown()) {
-            mc.thePlayer.motionY = -0.15;
+            mc.thePlayer.motionY = -1;
         }
         PlayerUtil.setMotion(Math.max(speedy, PlayerUtil.getVerusBaseSpeed()));
     }

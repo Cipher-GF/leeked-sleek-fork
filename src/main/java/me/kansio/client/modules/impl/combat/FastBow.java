@@ -9,6 +9,7 @@ import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.NumberValue;
 import me.kansio.client.utils.chat.ChatUtil;
 import me.kansio.client.utils.network.PacketUtil;
+import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemBow;
 import net.minecraft.network.play.client.C03PacketPlayer;
 import net.minecraft.network.play.client.C07PacketPlayerDigging;
@@ -37,12 +38,18 @@ public class FastBow extends Module {
         if (mc.gameSettings.keyBindUseItem.isKeyDown()) {
 
             if (value.getValue()) {
-                if (mc.thePlayer.getHeldItem() != null) {
-                    if (mc.thePlayer.getHeldItem().getItem() instanceof ItemBow) {
-                        for (int i = 0; i < packets.getValue().intValue(); i++) {
-                            PacketUtil.sendPacketNoEvent(new C03PacketPlayer());
+                if (mc.thePlayer.onGround && mc.thePlayer.getCurrentEquippedItem() != null && mc.thePlayer.getCurrentEquippedItem().getItem() instanceof ItemBow && mc.gameSettings.keyBindUseItem.pressed) {
+                    if (mc.thePlayer.ticksExisted % 4 == 0) {
+                        double d = mc.thePlayer.posX;
+                        double d2 = mc.thePlayer.posY + 1.0E-9;
+                        double d3 = mc.thePlayer.posZ;
+                        mc.playerController.sendUseItem(mc.thePlayer, mc.theWorld, mc.thePlayer.inventory.getCurrentItem());
+
+                        for (int i = 0; i < 20; i++) {
+                            mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C06PacketPlayerPosLook(d, d2, d3, mc.thePlayer.rotationYaw, mc.thePlayer.rotationPitch, true));
                         }
-                        mc.playerController.onStoppedUsingItem(mc.thePlayer);
+                        Minecraft.getMinecraft().getNetHandler().addToSendQueue(new C07PacketPlayerDigging(C07PacketPlayerDigging.Action.RELEASE_USE_ITEM, new BlockPos(0, 0, 0), EnumFacing.DOWN));
+                        mc.thePlayer.inventory.getCurrentItem().getItem().onPlayerStoppedUsing(mc.thePlayer.inventory.getCurrentItem(), Minecraft.getMinecraft().theWorld, mc.thePlayer, 10);
                     }
                 }
             } else {
