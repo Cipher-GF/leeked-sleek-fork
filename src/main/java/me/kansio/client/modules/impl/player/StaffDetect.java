@@ -9,6 +9,7 @@ import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.notification.Notification;
 import me.kansio.client.notification.NotificationManager;
+import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.utils.chat.ChatUtil;
 import me.kansio.client.utils.render.RenderUtils;
 import net.minecraft.client.gui.ScaledResolution;
@@ -28,9 +29,8 @@ import java.util.List;
 )
 public class StaffDetect extends Module {
 
-    public StaffDetect() {
 
-    }
+    private BooleanValue announce = new BooleanValue("Announce", this, true);
 
     @Getter
     private ArrayList<String> staffInMatch = new ArrayList<>();
@@ -63,6 +63,7 @@ public class StaffDetect extends Module {
                         staffInMatch.add(player.getName());
                         amount = staffInMatch.size();
                         ChatUtil.logNoPrefix("§4§l[Staff Detect]: §c" + staff + " §fis in your game!");
+                        mc.thePlayer.sendChatMessage("[Sleek Staff Detector] Found a staff member in the lobby: " + staff);
                     }
                 }
             }

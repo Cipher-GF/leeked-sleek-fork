@@ -18,7 +18,7 @@ import net.minecraft.entity.player.EntityPlayer;
 )
 public class AutoReport extends Module {
 
-    private NumberValue delay = new NumberValue("Delay (ms)", this, 100, 0, 10000, 1);
+    private NumberValue delay = new NumberValue("Delay (ms)", this, 100, 0, 100000, 1);
 
     private Stopwatch timer = new Stopwatch();
 
@@ -26,13 +26,14 @@ public class AutoReport extends Module {
     public void onUpdate(UpdateEvent event) {
         if (timer.timeElapsed(delay.getValue().longValue())) {
             reportPlayer();
+            timer.resetTime();
         }
     }
 
     private void reportPlayer() {
         EntityPlayer toReport = mc.theWorld.playerEntities.get(MathUtil.getRandomInRange(0, mc.theWorld.playerEntities.size() - 1));
 
-        mc.thePlayer.sendChatMessage("/wdr " + toReport.getName() + " bhop ka");
+        mc.thePlayer.sendChatMessage("/report " + toReport.getName() + " bhop ka");
     }
 
 }
