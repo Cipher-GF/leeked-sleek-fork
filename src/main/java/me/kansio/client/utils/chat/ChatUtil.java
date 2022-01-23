@@ -13,8 +13,12 @@ public class ChatUtil extends Util {
         mc.thePlayer.addChatMessage(new ChatComponentText("§f" + message));
     }
 
-    public static void logCheater(String message) {
-        mc.thePlayer.addChatMessage(new ChatComponentText("§7[§b§lAC§7] §f" + message));
+    public static void logSleekCheater(String message) {
+        mc.thePlayer.addChatMessage(new ChatComponentText("§7[§b§lSleekAC§7] §f" + message));
+    }
+
+    public static void logSleekCheater(String message) {
+        mc.thePlayer.addChatMessage(new ChatComponentText("§7[§b§Verus§7] §f" + message));
     }
 
     public static String translateColorCodes(String toTranslate) {

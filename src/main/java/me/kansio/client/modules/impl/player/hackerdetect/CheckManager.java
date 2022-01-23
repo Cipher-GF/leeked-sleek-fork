@@ -14,8 +14,14 @@ public class CheckManager {
     private ArrayList<Check> checks = new ArrayList<>();
 
     public CheckManager() {
-        checks.add(new CagePhaseCheck());
+        // Combat
         checks.add(new SpeedA());
         checks.add(new FlightA());
+
+        // Movement
+
+        //Exploit
+        checks.add(new CagePhaseCheck());
+
     }
 }

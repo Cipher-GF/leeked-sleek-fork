@@ -1,20 +1,18 @@
 package me.kansio.client.modules.impl.player.hackerdetect.checks.movement;
 
 import me.kansio.client.Client;
-import me.kansio.client.modules.impl.player.hackerdetect.HackerDetect;
+import me.kansio.client.modules.impl.player.HackerDetect;
 import me.kansio.client.modules.impl.player.hackerdetect.checks.Check;
-import me.kansio.client.utils.Util;
 import me.kansio.client.utils.chat.ChatUtil;
 import me.kansio.client.utils.math.BPSUtil;
 import net.minecraft.client.Minecraft;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 
 public class SpeedA extends Check {
 
     @Override
     public String name() {
-        return "Speed A";
+        return "SpeedA";
     }
 
     @Override
@@ -32,7 +30,7 @@ public class SpeedA extends Check {
 
                     if (HackerDetect.getInstance().getViolations().get(ent) > 60) {
                         if (!Client.getInstance().getTargetManager().isTarget(ent)) {
-                            ChatUtil.logCheater(ent.getName() + " §7might be using §aSpeed (Check 1) §4§l(Flagged as cheater!) " + BPSUtil.getBPS(ent));
+                            ChatUtil.logSleekCheater(ent.getName() + " §7might be using §aSpeedA §4§l(Flagged as cheater!) " + BPSUtil.getBPS(ent));
                             Client.getInstance().getTargetManager().getTarget().add(ent.getName());
                         }
                     }
