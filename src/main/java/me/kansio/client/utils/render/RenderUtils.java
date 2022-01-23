@@ -39,8 +39,8 @@ public class RenderUtils extends Util {
 
     public static void enable3D() {
         glEnable(GL_BLEND);
-        glDisable(GL_TEXTURE_2D);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        glDisable(GL_TEXTURE_2D);
         glEnable(GL_LINE_SMOOTH);
         glDisable(GL_DEPTH_TEST);
         glDepthMask(false);

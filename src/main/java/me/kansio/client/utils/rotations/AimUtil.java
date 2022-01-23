@@ -23,8 +23,8 @@ public final class AimUtil extends Util {
      * @param destinationRotations - The rotations to use.
      */
     public static void turnToEntityClient(Rotation destinationRotations) {
-        thePlayer.rotationYaw = destinationRotations.getRotationYaw();
-        thePlayer.rotationPitch = destinationRotations.getRotationPitch();
+        mc.thePlayer.rotationYaw = destinationRotations.getRotationYaw();
+        mc.thePlayer.rotationPitch = destinationRotations.getRotationPitch();
     }
 
     /**
@@ -76,15 +76,15 @@ public final class AimUtil extends Util {
     public static Rotation getBowAngles(Entity entity) {
         double xDelta = entity.posX - entity.lastTickPosX;
         double zDelta = entity.posZ - entity.lastTickPosZ;
-        double distance = thePlayer.getDistanceToEntity(entity) % .8;
+        double distance = mc.thePlayer.getDistanceToEntity(entity) % .8;
         boolean sprint = entity.isSprinting();
         double xMulti = distance / .8 * xDelta * (sprint ? 1.45 : 1.3);
         double zMulti = distance / .8 * zDelta * (sprint ? 1.45 : 1.3);
-        double x = entity.posX + xMulti - thePlayer.posX;
-        double y = thePlayer.posY + thePlayer.getEyeHeight()
+        double x = entity.posX + xMulti - mc.thePlayer.posX;
+        double y = mc.thePlayer.posY + mc.thePlayer.getEyeHeight()
                 - (entity.posY + entity.getEyeHeight());
-        double z = entity.posZ + zMulti - thePlayer.posZ;
-        double distanceToEntity = thePlayer.getDistanceToEntity(entity);
+        double z = entity.posZ + zMulti - mc.thePlayer.posZ;
+        double distanceToEntity = mc.thePlayer.getDistanceToEntity(entity);
         float yaw = (float) Math.toDegrees(Math.atan2(z, x)) - 90;
         float pitch = (float) Math.toDegrees(Math.atan2(y, distanceToEntity));
         return new Rotation(yaw, pitch);
@@ -99,9 +99,9 @@ public final class AimUtil extends Util {
      * @return The rotations for the specified coordinates
      */
     public static Rotation attemptFacePosition(double x, double y, double z) {
-        double xDiff = x - thePlayer.posX;
-        double yDiff = y - thePlayer.posY - 1.2;
-        double zDiff = z - thePlayer.posZ;
+        double xDiff = x - mc.thePlayer.posX;
+        double yDiff = y - mc.thePlayer.posY - 1.2;
+        double zDiff = z - mc.thePlayer.posZ;
 
         double dist = Math.hypot(xDiff, zDiff);
         float yaw = (float) (Math.atan2(zDiff, xDiff) * 180 / Math.PI) - 90;
@@ -114,30 +114,30 @@ public final class AimUtil extends Util {
         double posX = -Math.sin(direction) * 0.5F;
         double posZ = Math.cos(direction) * 0.5F;
 
-        double x = position.getX() - thePlayer.posX - posX;
-        double y = position.getY() - thePlayer.prevPosY - thePlayer.getEyeHeight();
-        double z = position.getZ() - thePlayer.posZ - posZ;
+        double x = position.getX() - mc.thePlayer.posX - posX;
+        double y = position.getY() - mc.thePlayer.prevPosY - mc.thePlayer.getEyeHeight();
+        double z = position.getZ() - mc.thePlayer.posZ - posZ;
 
         double distance = Math.hypot(x, z);
 
         float yaw = (float) (Math.atan2(z, x) * 180.0D / Math.PI - 90.0F);
         float pitch = (float) -(Math.atan2(y, distance) * 180.0D / Math.PI);
 
-        return new Rotation(thePlayer.rotationYaw + MathHelper.wrapAngleTo180_float(yaw - thePlayer.rotationYaw), thePlayer.rotationPitch + MathHelper.wrapAngleTo180_float(pitch - thePlayer.rotationPitch));
+        return new Rotation(mc.thePlayer.rotationYaw + MathHelper.wrapAngleTo180_float(yaw - mc.thePlayer.rotationYaw), mc.thePlayer.rotationPitch + MathHelper.wrapAngleTo180_float(pitch - mc.thePlayer.rotationPitch));
     }
 
     private static double direction() { // Credits: Hideri
-        float rotationYaw = thePlayer.rotationYaw;
-        if (thePlayer.movementInput.moveForward < 0.0F)
+        float rotationYaw = mc.thePlayer.rotationYaw;
+        if (mc.thePlayer.movementInput.moveForward < 0.0F)
             rotationYaw += 180.0F;
         float forward = 1.0F;
-        if (thePlayer.movementInput.moveForward < 0.0F)
+        if (mc.thePlayer.movementInput.moveForward < 0.0F)
             forward = -0.5F;
-        else if (thePlayer.movementInput.moveForward > 0.0F)
+        else if (mc.thePlayer.movementInput.moveForward > 0.0F)
             forward = 0.5F;
-        if (thePlayer.movementInput.moveStrafe > 0.0F)
+        if (mc.thePlayer.movementInput.moveStrafe > 0.0F)
             rotationYaw -= 90.0F * forward;
-        if (thePlayer.movementInput.moveStrafe < 0.0F)
+        if (mc.thePlayer.movementInput.moveStrafe < 0.0F)
             rotationYaw += 90.0F * forward;
         return Math.toRadians(rotationYaw);
     }

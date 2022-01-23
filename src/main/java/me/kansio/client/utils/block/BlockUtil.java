@@ -7,7 +7,7 @@ import net.minecraft.util.BlockPos;
 public class BlockUtil extends Util {
 
     public static Block getBlockAt(BlockPos bpos) {
-        return theWorld.getBlockState(bpos).getBlock();
+        return mc.theWorld.getBlockState(bpos).getBlock();
     }
 
 }

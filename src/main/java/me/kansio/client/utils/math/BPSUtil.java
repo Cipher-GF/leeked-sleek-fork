@@ -6,7 +6,7 @@ import net.minecraft.entity.player.EntityPlayer;
 public class BPSUtil extends Util {
 
     public static double getBPS() {
-        return thePlayer.getDistance(thePlayer.lastTickPosX, thePlayer.lastTickPosY, thePlayer.lastTickPosZ) * (mc.timer.ticksPerSecond * mc.timer.timerSpeed);
+        return mc.thePlayer.getDistance(mc.thePlayer.lastTickPosX, mc.thePlayer.lastTickPosY, mc.thePlayer.lastTickPosZ) * (mc.timer.ticksPerSecond * mc.timer.timerSpeed);
     }
 
     public static double getBPS(EntityPlayer player) {

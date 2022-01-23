@@ -24,13 +24,13 @@ public class FightUtil extends Util {
 
     public static List<EntityLivingBase> getMultipleTargets(double range, boolean players, boolean friends, boolean animals, boolean walls, boolean mobs, boolean invis) {
         List<EntityLivingBase> list = new ArrayList<>();
-        for (Entity entity : theWorld.loadedEntityList) {
+        for (Entity entity : mc.theWorld.loadedEntityList) {
             if (!(entity instanceof EntityLivingBase))
                 continue;
             EntityLivingBase entityLivingBase = (EntityLivingBase) entity;
-            if (entityLivingBase == thePlayer ||
-                    thePlayer.getDistanceToEntity(entityLivingBase) > range
-                    || !entityLivingBase.canEntityBeSeen(thePlayer) && !walls
+            if (entityLivingBase == mc.thePlayer ||
+                    mc.thePlayer.getDistanceToEntity(entityLivingBase) > range
+                    || !entityLivingBase.canEntityBeSeen(mc.thePlayer) && !walls
                     || entityLivingBase.isDead
                     || entityLivingBase instanceof EntityArmorStand
                     || entityLivingBase instanceof EntityVillager
@@ -49,7 +49,7 @@ public class FightUtil extends Util {
     }
 
     public static boolean isValid(EntityLivingBase entityLivingBase, double range, boolean invis, boolean players, boolean animals, boolean mobs) {
-        return !(thePlayer.getDistanceToEntity(entityLivingBase) > range
+        return !(mc.thePlayer.getDistanceToEntity(entityLivingBase) > range
                 || entityLivingBase.isDead
                 || entityLivingBase instanceof EntityArmorStand
                 || entityLivingBase instanceof EntityVillager
@@ -57,13 +57,13 @@ public class FightUtil extends Util {
                 || entityLivingBase instanceof EntityAnimal && !animals
                 || entityLivingBase instanceof EntityMob && !mobs
                 || entityLivingBase.isInvisible() && !invis
-                || entityLivingBase == thePlayer);
+                || entityLivingBase == mc.thePlayer);
     }
 
     public static boolean isOnSameTeam(EntityLivingBase entity) {
-        if (entity.getTeam() != null && thePlayer.getTeam() != null) {
+        if (entity.getTeam() != null && mc.thePlayer.getTeam() != null) {
             Team team1 = entity.getTeam();
-            Team team2 = thePlayer.getTeam();
+            Team team2 = mc.thePlayer.getTeam();
 
             if (entity.getName().contains("UPGRADES")) {
                 return false;
