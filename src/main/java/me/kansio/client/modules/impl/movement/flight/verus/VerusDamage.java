@@ -6,6 +6,7 @@ import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.impl.movement.flight.FlightMode;
 import me.kansio.client.utils.chat.ChatUtil;
 import me.kansio.client.utils.player.PlayerUtil;
+import me.kansio.client.utils.player.TimerUtil;
 import net.minecraft.block.BlockAir;
 import net.minecraft.util.AxisAlignedBB;
 
@@ -66,7 +67,7 @@ public class VerusDamage extends FlightMode {
             return;
         }
         veroos = 0.22;
-        mc.timer.timerSpeed = 0.8f;
+        TimerUtil.Timer(0.8f);
         PlayerUtil.damageVerus();
     }
 }

@@ -4,6 +4,7 @@ import me.kansio.client.event.impl.MoveEvent;
 import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.impl.movement.speed.SpeedMode;
 import me.kansio.client.utils.player.PlayerUtil;
+import me.kansio.client.utils.player.TimerUtil;
 
 public class ViperGround extends SpeedMode {
     public ViperGround() {
@@ -13,14 +14,14 @@ public class ViperGround extends SpeedMode {
     @Override
     public void onMove(MoveEvent event) {
         if (!mc.thePlayer.isMovingOnGround()) {
-            mc.timer.timerSpeed = 1f;
+            TimerUtil.Timer(1f);
             mc.thePlayer.motionY = - 5f;
             return;
         }
 
 
         if (mc.thePlayer.isMoving()) {
-            mc.timer.timerSpeed = 0.3f;
+            TimerUtil.Timer(0.3f);
             for (int i = 0; i < 17; ++i) {
                 PlayerUtil.TP(event, 0.22, 0);
             }

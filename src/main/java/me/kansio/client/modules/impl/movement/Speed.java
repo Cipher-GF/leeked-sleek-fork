@@ -17,6 +17,7 @@ import me.kansio.client.property.value.ModeValue;
 import me.kansio.client.property.value.NumberValue;
 import me.kansio.client.utils.java.ReflectUtils;
 import me.kansio.client.utils.player.PlayerUtil;
+import me.kansio.client.utils.player.TimerUtil;
 
 import java.util.Comparator;
 import java.util.List;
@@ -58,7 +59,7 @@ public class Speed extends Module {
 
     @Override
     public void onDisable() {
-        mc.timer.timerSpeed = 1f;
+        TimerUtil.Timer(1.0f);
         PlayerUtil.setMotion(0);
         hDist.set(0);
 

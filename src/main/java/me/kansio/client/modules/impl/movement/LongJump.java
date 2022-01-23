@@ -9,6 +9,7 @@ import me.kansio.client.modules.impl.Module;
 import me.kansio.client.property.value.ModeValue;
 import me.kansio.client.property.value.NumberValue;
 import me.kansio.client.utils.player.PlayerUtil;
+import me.kansio.client.utils.player.TimerUtil;
 
 @ModuleData(
         name = "Long Jump",
@@ -39,7 +40,7 @@ public class LongJump extends Module {
                     toggle();
                     return;
                 }
-                mc.timer.timerSpeed = 0.3f;
+                TimerUtil.Timer(0.3f);
                 PlayerUtil.damageVerus();
                 break;
         }
@@ -47,7 +48,7 @@ public class LongJump extends Module {
 
     @Override
     public void onDisable() {
-        mc.timer.timerSpeed = 1f;
+        TimerUtil.Timer(1.0f);
         jumped = false;
     }
 
@@ -89,7 +90,7 @@ public class LongJump extends Module {
             case "Viper": {
                 if (!mc.thePlayer.onGround) return;
 
-                mc.timer.timerSpeed = 0.3f;
+                TimerUtil.Timer(0.3f);
                 if (mc.thePlayer.isMoving()) {
                     for (int i = 0; i < 17; ++i) {
                         PlayerUtil.TP(event, 0.32, 0);

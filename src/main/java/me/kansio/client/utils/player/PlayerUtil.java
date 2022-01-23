@@ -23,15 +23,15 @@ public class PlayerUtil extends Util {
 
     public static float getBaseSpeed() {
         float baseSpeed = 0.2873F;
-        if (mc.thePlayer.isPotionActive(Potion.moveSpeed)) {
-            int amp = mc.thePlayer.getActivePotionEffect(Potion.moveSpeed).getAmplifier();
+        if (thePlayer.isPotionActive(Potion.moveSpeed)) {
+            int amp = thePlayer.getActivePotionEffect(Potion.moveSpeed).getAmplifier();
             baseSpeed *= 1.0F + 0.2F * (amp + 1);
         }
         return baseSpeed;
     }
 
     public static float getSpeed1() {
-        return (float) Math.sqrt(mc.thePlayer.motionX * mc.thePlayer.motionX + mc.thePlayer.motionZ * mc.thePlayer.motionZ);
+        return (float) Math.sqrt(thePlayer.motionX * thePlayer.motionX + thePlayer.motionZ * thePlayer.motionZ);
     }
 
     public static void strafe() {
@@ -39,50 +39,50 @@ public class PlayerUtil extends Util {
     }
 
     public static double getDirection() {
-        float rotationYaw = mc.thePlayer.rotationYaw;
+        float rotationYaw = thePlayer.rotationYaw;
 
-        if(mc.thePlayer.moveForward < 0F)
+        if(thePlayer.moveForward < 0F)
             rotationYaw += 180F;
 
         float forward = 1F;
-        if(mc.thePlayer.moveForward < 0F)
+        if(thePlayer.moveForward < 0F)
             forward = -0.5F;
-        else if(mc.thePlayer.moveForward > 0F)
+        else if(thePlayer.moveForward > 0F)
             forward = 0.5F;
 
-        if(mc.thePlayer.moveStrafing > 0F)
+        if(thePlayer.moveStrafing > 0F)
             rotationYaw -= 90F * forward;
 
-        if(mc.thePlayer.moveStrafing < 0F)
+        if(thePlayer.moveStrafing < 0F)
             rotationYaw += 90F * forward;
 
         return rotationYaw;
     }
 
     public static void strafe(final float speed) {
-        if(!mc.thePlayer.isMoving())
+        if(!thePlayer.isMoving())
             return;
 
         final double yaw = getDirection();
-        mc.thePlayer.motionX = -Math.sin(yaw) * speed;
-        mc.thePlayer.motionZ = Math.cos(yaw) * speed;
+        thePlayer.motionX = -Math.sin(yaw) * speed;
+        thePlayer.motionZ = Math.cos(yaw) * speed;
     }
 
     public static void damagePlayer() {
-        if (!mc.thePlayer.onGround) return;
+        if (!thePlayer.onGround) return;
         double[] normalValue = new double[]{0.062, 0.0};
         double[] hypixelValue = new double[]{0.422993999998688697815, 0.002140803780930446};
         if (mc.getCurrentServerData() != null && mc.getCurrentServerData().serverIP != null && (mc.getCurrentServerData().serverIP.toLowerCase().contains("funcraft") || mc.getCurrentServerData().serverIP.toLowerCase().contains("cubecraft"))) {
-            for (int i = 0; i < (mc.thePlayer.isPotionActive(Potion.jump) ? 15 : 8); ++i) {
+            for (int i = 0; i < (thePlayer.isPotionActive(Potion.jump) ? 15 : 8); ++i) {
                 for (int length = hypixelValue.length, j = 0; j < length; ++j) {
-                    mc.getNetHandler().getNetworkManager().sendPacket(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + hypixelValue[j], mc.thePlayer.posZ, false));
+                    mc.getNetHandler().getNetworkManager().sendPacket(new C03PacketPlayer.C04PacketPlayerPosition(thePlayer.posX, thePlayer.posY + hypixelValue[j], thePlayer.posZ, false));
                 }
             }
         }
         else {
-            for (int i = 0; i < (mc.thePlayer.isPotionActive(Potion.jump) ? 122 : 49); ++i) {
+            for (int i = 0; i < (thePlayer.isPotionActive(Potion.jump) ? 122 : 49); ++i) {
                 for (int length = normalValue.length, j = 0; j < length; ++j) {
-                    mc.getNetHandler().getNetworkManager().sendPacket(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + normalValue[j], mc.thePlayer.posZ, false));
+                    mc.getNetHandler().getNetworkManager().sendPacket(new C03PacketPlayer.C04PacketPlayerPosition(thePlayer.posX, thePlayer.posY + normalValue[j], thePlayer.posZ, false));
                 }
             }
         }
@@ -97,15 +97,15 @@ public class PlayerUtil extends Util {
      * @param groundCheck - if true, you will need to be on the ground for this method to complete successfully
      */
     public static void damagePlayer(final boolean groundCheck) {
-        if (!groundCheck || mc.thePlayer.onGround) {
-            final double x = mc.thePlayer.posX;
-            final double y = mc.thePlayer.posY;
-            final double z = mc.thePlayer.posZ;
+        if (!groundCheck || thePlayer.onGround) {
+            final double x = thePlayer.posX;
+            final double y = thePlayer.posY;
+            final double z = thePlayer.posZ;
 
             double fallDistanceReq = 3;
 
-            if (mc.thePlayer.isPotionActive(Potion.jump)) {
-                int amplifier = mc.thePlayer.getActivePotionEffect(Potion.jump).getAmplifier();
+            if (thePlayer.isPotionActive(Potion.jump)) {
+                int amplifier = thePlayer.getActivePotionEffect(Potion.jump).getAmplifier();
                 fallDistanceReq += (float) (amplifier + 1);
             }
 
@@ -120,17 +120,17 @@ public class PlayerUtil extends Util {
 
     public static void damageVerus() {
         PacketUtil.sendPacketNoEvent(
-                new C0BPacketEntityAction(mc.thePlayer, C0BPacketEntityAction.Action.STOP_SPRINTING));
+                new C0BPacketEntityAction(thePlayer, C0BPacketEntityAction.Action.STOP_SPRINTING));
 
         double val1 = 0;
 
         for (int i = 0; i <= 6; i++) {
             val1 += 0.5;
-            mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX,
-                    mc.thePlayer.posY + val1, mc.thePlayer.posZ, true));
+            thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(thePlayer.posX,
+                    thePlayer.posY + val1, thePlayer.posZ, true));
         }
 
-        double val2 = mc.thePlayer.posY + val1;
+        double val2 = thePlayer.posY + val1;
 
         ArrayList<Float> vals = new ArrayList<>();
 
@@ -148,28 +148,28 @@ public class PlayerUtil extends Util {
         for (float value : vals) {
             val2 -= value;
         }
-        mc.thePlayer.sendQueue.addToSendQueue(
-                new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, val2, mc.thePlayer.posZ, false));
-        mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer(true));
+        thePlayer.sendQueue.addToSendQueue(
+                new C03PacketPlayer.C04PacketPlayerPosition(thePlayer.posX, val2, thePlayer.posZ, false));
+        thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer(true));
 
-        PacketUtil.sendPacketNoEvent(new C0BPacketEntityAction(mc.thePlayer, C0BPacketEntityAction.Action.START_SPRINTING));
+        PacketUtil.sendPacketNoEvent(new C0BPacketEntityAction(thePlayer, C0BPacketEntityAction.Action.START_SPRINTING));
 
-        mc.thePlayer.motionY = getMotion(0.42f);
+        thePlayer.motionY = getMotion(0.42f);
     }
 
     public static void damageVerusNoMotion() {
         PacketUtil.sendPacketNoEvent(
-                new C0BPacketEntityAction(mc.thePlayer, C0BPacketEntityAction.Action.STOP_SPRINTING));
+                new C0BPacketEntityAction(thePlayer, C0BPacketEntityAction.Action.STOP_SPRINTING));
 
         double val1 = 0;
 
         for (int i = 0; i <= 6; i++) {
             val1 += 0.5;
-            mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX,
-                    mc.thePlayer.posY + val1, mc.thePlayer.posZ, true));
+            thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(thePlayer.posX,
+                    thePlayer.posY + val1, thePlayer.posZ, true));
         }
 
-        double val2 = mc.thePlayer.posY + val1;
+        double val2 = thePlayer.posY + val1;
 
         ArrayList<Float> vals = new ArrayList<>();
 
@@ -187,31 +187,31 @@ public class PlayerUtil extends Util {
         for (float value : vals) {
             val2 -= value;
         }
-        mc.thePlayer.sendQueue.addToSendQueue(
-                new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, val2, mc.thePlayer.posZ, false));
-        mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer(true));
+        thePlayer.sendQueue.addToSendQueue(
+                new C03PacketPlayer.C04PacketPlayerPosition(thePlayer.posX, val2, thePlayer.posZ, false));
+        thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer(true));
 
-        PacketUtil.sendPacketNoEvent(new C0BPacketEntityAction(mc.thePlayer, C0BPacketEntityAction.Action.START_SPRINTING));
+        PacketUtil.sendPacketNoEvent(new C0BPacketEntityAction(thePlayer, C0BPacketEntityAction.Action.START_SPRINTING));
     }
 
     /*/public static void damageVerus() {
-        if (mc.thePlayer.onGround) {
-            PacketUtil.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + 4.1001, mc.thePlayer.posZ, false));
-            PacketUtil.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ, false));
+        if (thePlayer.onGround) {
+            PacketUtil.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(thePlayer.posX, thePlayer.posY + 4.1001, thePlayer.posZ, false));
+            PacketUtil.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(thePlayer.posX, thePlayer.posY, thePlayer.posZ, false));
             PacketUtil.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ, true));
             mc.thePlayer.jump();
         }
     }/*/
 
     public static boolean isOnWater() {
-        return mc.thePlayer.isCollidedVertically && mc.theWorld.getBlockState(new BlockPos(mc.thePlayer)).getBlock() instanceof BlockLiquid;
+        return mc.thePlayer.isCollidedVertically && theWorld.getBlockState(new BlockPos(mc.thePlayer)).getBlock() instanceof BlockLiquid;
     }
 
     public static boolean isBlockUnder() {
         for (int offset = 0; offset < mc.thePlayer.posY + mc.thePlayer.getEyeHeight(); offset += 2) {
             final AxisAlignedBB boundingBox = mc.thePlayer.getEntityBoundingBox().offset(0, -offset, 0);
 
-            if (!mc.theWorld.getCollidingBoundingBoxes(mc.thePlayer, boundingBox).isEmpty())
+            if (!theWorld.getCollidingBoundingBoxes(mc.thePlayer, boundingBox).isEmpty())
                 return true;
         }
         return false;
@@ -406,7 +406,7 @@ public class PlayerUtil extends Util {
 
     // From old base
     public static boolean isOnGround(double height) {
-        return !mc.theWorld.getCollidingBoundingBoxes(mc.thePlayer, mc.thePlayer.getEntityBoundingBox().offset(0.0D, -height, 0.0D)).isEmpty();
+        return !theWorld.getCollidingBoundingBoxes(mc.thePlayer, mc.thePlayer.getEntityBoundingBox().offset(0.0D, -height, 0.0D)).isEmpty();
     }
 
     public static double getVerusBaseSpeed() {

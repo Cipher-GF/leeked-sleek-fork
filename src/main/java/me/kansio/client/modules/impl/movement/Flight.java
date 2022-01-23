@@ -17,6 +17,7 @@ import me.kansio.client.property.value.ModeValue;
 import me.kansio.client.property.value.NumberValue;
 import me.kansio.client.utils.java.ReflectUtils;
 import me.kansio.client.utils.math.Stopwatch;
+import me.kansio.client.utils.player.TimerUtil;
 import net.minecraft.potion.Potion;
 
 import java.util.Comparator;
@@ -69,7 +70,7 @@ public class Flight extends Module {
         mc.thePlayer.motionX = 0;
         mc.thePlayer.motionY = 0;
         mc.thePlayer.motionZ = 0;
-        mc.timer.timerSpeed = 1f;
+        TimerUtil.Timer(1.0f);
         currentMode.onDisable();
     }
 

@@ -7,6 +7,7 @@ import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.impl.movement.flight.FlightMode;
 import me.kansio.client.utils.network.PacketUtil;
 import me.kansio.client.utils.player.PlayerUtil;
+import me.kansio.client.utils.player.TimerUtil;
 import net.minecraft.block.BlockAir;
 import net.minecraft.network.play.client.C03PacketPlayer;
 import net.minecraft.util.AxisAlignedBB;
@@ -59,7 +60,7 @@ public class Mush extends FlightMode {
     @Override
     public void onEnable() {
         speedy = getFlight().getSpeed().getValue();
-        mc.timer.timerSpeed = getFlight().getTimer().getValue().floatValue();
+        TimerUtil.Timer(getFlight().getTimer().getValue().floatValue());
         blinking = getFlight().getBlink().getValue();
     }
 
