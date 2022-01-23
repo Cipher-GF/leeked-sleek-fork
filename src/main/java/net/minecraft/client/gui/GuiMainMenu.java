@@ -1,52 +1,13 @@
 package net.minecraft.client.gui;
 
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import me.kansio.client.Client;
 import me.kansio.client.gui.MainMenu;
 import me.kansio.client.utils.network.HttpUtil;
-import me.kansio.client.utils.render.ColorPalette;
 import negroidslayer.NegroidFarm;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.OpenGlHelper;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.WorldRenderer;
-import net.minecraft.client.renderer.texture.DynamicTexture;
-import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.MathHelper;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.Session;
-import net.minecraft.world.demo.DemoWorldServer;
-import net.minecraft.world.storage.ISaveFormat;
-import net.minecraft.world.storage.WorldInfo;
-import org.apache.commons.io.Charsets;
-import org.apache.commons.lang3.RandomStringUtils;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.lwjgl.Sys;
-
 import org.lwjgl.input.Keyboard;
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GLContext;
-import org.lwjgl.util.glu.Project;
-
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.URI;
-import java.security.NoSuchAlgorithmException;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class GuiMainMenu extends GuiScreen {
     private GuiTextField username;
