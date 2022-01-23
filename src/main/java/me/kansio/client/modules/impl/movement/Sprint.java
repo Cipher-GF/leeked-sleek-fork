@@ -53,12 +53,7 @@ public class Sprint extends Module {
 
     @Subscribe
     public void onPacket(PacketEvent event) {
-        if (keepSprint.getValue() && event.getPacket() instanceof C02PacketUseEntity && ((C02PacketUseEntity) event.getPacket()).getAction().equals(C02PacketUseEntity.Action.ATTACK)) {
-            event.setCancelled(true);
-            PacketUtil.sendPacketNoEvent(new C0BPacketEntityAction(mc.thePlayer, C0BPacketEntityAction.Action.STOP_SPRINTING));
-            PacketUtil.sendPacketNoEvent(event.getPacket());
-            PacketUtil.sendPacketNoEvent(new C0BPacketEntityAction(mc.thePlayer, C0BPacketEntityAction.Action.START_SPRINTING));
-        }
+
     }
 
     @Override
