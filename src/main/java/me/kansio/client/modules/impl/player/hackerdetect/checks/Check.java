@@ -1,6 +1,6 @@
 package me.kansio.client.modules.impl.player.hackerdetect.checks;
 
-import me.kansio.client.modules.impl.player.hackerdetect.HackerDetect;
+import me.kansio.client.modules.impl.player.HackerDetect;
 import me.kansio.client.utils.chat.ChatUtil;
 import net.minecraft.entity.player.EntityPlayer;
 
@@ -23,7 +23,7 @@ public abstract class Check {
     }
 
     public void flag(EntityPlayer player) {
-        ChatUtil.logCheater("§f" + player.getName() + " §7might be using §b" + name() + "§7.");
+        ChatUtil.logSleekCheater("§f" + player.getName() + " §7might be using §b" + name() + "§7.");
     }
 
 }

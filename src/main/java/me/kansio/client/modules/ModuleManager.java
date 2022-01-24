@@ -4,15 +4,6 @@ import lombok.Getter;
 import me.kansio.client.Client;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.impl.Module;
-import me.kansio.client.modules.impl.combat.*;
-import me.kansio.client.modules.impl.exploit.*;
-import me.kansio.client.modules.impl.movement.*;
-import me.kansio.client.modules.impl.movement.speed.SpeedMode;
-import me.kansio.client.modules.impl.player.*;
-import me.kansio.client.modules.impl.player.hackerdetect.HackerDetect;
-import me.kansio.client.modules.impl.visuals.*;
-import me.kansio.client.modules.impl.world.Breaker;
-import me.kansio.client.modules.impl.world.Scaffold;
 import me.kansio.client.property.Value;
 import me.kansio.client.utils.font.MCFontRenderer;
 import me.kansio.client.utils.java.ReflectUtils;
@@ -21,9 +12,7 @@ import net.minecraft.client.gui.FontRenderer;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ModuleManager {
 

@@ -19,7 +19,7 @@ public class FlightA extends Check {
 
     @Override
     public String name() {
-        return "Flight (Check 1)";
+        return "FlightA";
     }
 
     @Override
@@ -46,7 +46,7 @@ public class FlightA extends Check {
 
             if (ticks > 35) {
                 if (!Client.getInstance().getTargetManager().isTarget(p)) {
-                    ChatUtil.logCheater(p + " §7might be using §aFlight (Check 1) §4§l(Flagged as cheater!)");
+                    ChatUtil.logSleekCheater(p + " §7might be using §aFlightA §4§l(Flagged as cheater!)");
                     Client.getInstance().getTargetManager().getTarget().add(p.getName());
                 }
             }
