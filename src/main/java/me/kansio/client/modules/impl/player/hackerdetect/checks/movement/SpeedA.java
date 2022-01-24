@@ -30,7 +30,7 @@ public class SpeedA extends Check {
 
                     if (HackerDetect.getInstance().getViolations().get(ent) > 60) {
                         if (!Client.getInstance().getTargetManager().isTarget(ent)) {
-                            ChatUtil.logSleekCheater(ent.getName() + " §7might be using §aSpeedA §4§l(Flagged as cheater!) " + BPSUtil.getBPS(ent));
+                            flag(ent);
                             Client.getInstance().getTargetManager().getTarget().add(ent.getName());
                         }
                     }
