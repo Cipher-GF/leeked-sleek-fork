@@ -4,7 +4,7 @@ import lombok.Getter;
 import me.kansio.client.modules.impl.player.hackerdetect.checks.Check;
 import me.kansio.client.modules.impl.player.hackerdetect.checks.movement.FlightA;
 import me.kansio.client.modules.impl.player.hackerdetect.checks.movement.SpeedA;
-import me.kansio.client.modules.impl.player.hackerdetect.checks.phase.CagePhaseCheck;
+import me.kansio.client.modules.impl.player.hackerdetect.checks.exploit.CagePhaseCheck;
 
 import java.util.ArrayList;
 
@@ -15,11 +15,10 @@ public class CheckManager {
 
     public CheckManager() {
         // Combat
-        checks.add(new SpeedA());
-        checks.add(new FlightA());
 
         // Movement
-
+        checks.add(new SpeedA());
+        checks.add(new FlightA());
         //Exploit
         checks.add(new CagePhaseCheck());
 

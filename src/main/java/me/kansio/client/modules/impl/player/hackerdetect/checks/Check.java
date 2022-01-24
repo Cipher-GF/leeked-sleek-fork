@@ -23,7 +23,7 @@ public abstract class Check {
     }
 
     public void flag(EntityPlayer player) {
-        ChatUtil.logSleekCheater("§f" + player.getName() + " §7might be using §b" + name() + "§7.");
+        ChatUtil.logSleekCheater(player.getName(), name());
     }
 
 }

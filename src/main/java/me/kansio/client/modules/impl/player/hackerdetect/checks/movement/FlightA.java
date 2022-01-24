@@ -19,35 +19,35 @@ public class FlightA extends Check {
 
     @Override
     public String name() {
-        return "FlightA";
+        return "Flight A";
     }
 
     @Override
     public void onUpdate() {
-        for (EntityPlayer p : mc.theWorld.playerEntities) {
-            if (p == mc.thePlayer) {
+        for (EntityPlayer ent : mc.theWorld.playerEntities) {
+            if (ent == mc.thePlayer) {
                 return;
             }
 
-            double yDiff = p.posY - p.prevPosY;
+            double yDiff = ent.posY - ent.prevPosY;
 
-            if (p.onGround) {
-                airTicks.put(p, 0);
+            if (ent.onGround) {
+                airTicks.put(ent, 0);
                 return;
             }
 
             if (yDiff < -0.45) {
-                airTicks.put(p, 0);
+                airTicks.put(ent, 0);
                 return;
             }
 
-            int ticks = airTicks.getOrDefault(p, 0);
-            airTicks.put(p, ticks + 1);
+            int ticks = airTicks.getOrDefault(ent, 0);
+            airTicks.put(ent, ticks + 1);
 
             if (ticks > 35) {
-                if (!Client.getInstance().getTargetManager().isTarget(p)) {
-                    ChatUtil.logSleekCheater(p + " §7might be using §aFlightA §4§l(Flagged as cheater!)");
-                    Client.getInstance().getTargetManager().getTarget().add(p.getName());
+                if (!Client.getInstance().getTargetManager().isTarget(ent)) {
+                    flag(ent);
+                    Client.getInstance().getTargetManager().getTarget().add(ent.getName());
                 }
             }
         }
