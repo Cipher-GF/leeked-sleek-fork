@@ -1,7 +1,9 @@
 package me.kansio.client.modules.impl.movement.speed.misc;
 
+import me.kansio.client.event.impl.MoveEvent;
 import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.impl.movement.speed.SpeedMode;
+import me.kansio.client.utils.player.PlayerUtil;
 
 public class GhostlyTP extends SpeedMode {
     public GhostlyTP() {
@@ -9,7 +11,9 @@ public class GhostlyTP extends SpeedMode {
     }
 
     @Override
-    public void onUpdate(UpdateEvent event) {
+    public void onMove(MoveEvent event) {
+
+
         double yaw = Math.toRadians(mc.thePlayer.rotationYaw);
         double x = -Math.sin(yaw) * getSpeed().getSpeed().getValue();
         double z = Math.cos(yaw) * getSpeed().getSpeed().getValue();
@@ -19,5 +23,7 @@ public class GhostlyTP extends SpeedMode {
         if (mc.thePlayer.ticksExisted % 5 == 0) {
             mc.thePlayer.setPosition(mc.thePlayer.posX + x, mc.thePlayer.posY, mc.thePlayer.posZ + z);
         }
+
+
     }
 }

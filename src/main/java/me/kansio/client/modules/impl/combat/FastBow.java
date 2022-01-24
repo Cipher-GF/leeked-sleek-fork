@@ -39,41 +39,26 @@ public class FastBow extends Module {
 
     private int serverSideSlot;
 
-    private NumberValue packets = new NumberValue("Packets", this, 20, 0, 1000, 1);
+    private NumberValue<Integer> packets = new NumberValue<>("Packets", this, 20, 0, 1000, 1);
     private BooleanValue value = new BooleanValue("Hold Bow", this, true);
 
     @Subscribe
     public void onUpdate(UpdateEvent event) {
         if (mc.gameSettings.keyBindUseItem.isKeyDown()) {
 
-            if (value.getValue() && mc.thePlayer.getHeldItem().getItem() instanceof ItemBow) {
-                List<EntityLivingBase> targets = FightUtil.getMultipleTargets(20, true, false, false, false, false, true);
-                targets.removeIf(e -> e.getName().contains("[NPC]"));
-                targets.removeIf(e -> !(e instanceof EntityPlayer));
-                targets.sort(Comparator.comparingInt(e -> (int) -e.getDistanceToEntity(mc.thePlayer)));
-                Collections.reverse(targets);
-                EntityLivingBase target = targets.get(0);
-                if (target != null) {
-                    ChatUtil.log(String.format("%s %s", target.getName(), mc.thePlayer.getDistanceToEntity(target)));
-                    if (mc.thePlayer.onGround && mc.thePlayer.getCurrentEquippedItem() != null && mc.thePlayer.getCurrentEquippedItem().getItem() instanceof ItemBow && mc.gameSettings.keyBindUseItem.pressed) {
-                        if (mc.thePlayer.ticksExisted % 5 == 0) {
-                            double d = mc.thePlayer.posX;
-                            double d2 = mc.thePlayer.posY + 1.0E-9;
-                            double d3 = mc.thePlayer.posZ;
+            if (value.getValue() && event.isPre()) {
+                if (mc.thePlayer.onGround && mc.thePlayer.getCurrentEquippedItem() != null && mc.thePlayer.getCurrentEquippedItem().getItem() instanceof ItemBow && mc.gameSettings.keyBindUseItem.pressed) {
+                    if (mc.thePlayer.ticksExisted % 7 == 0) {
+                        double d = mc.thePlayer.posX;
+                        double d2 = mc.thePlayer.posY + 1.0E-9;
+                        double d3 = mc.thePlayer.posZ;
+                        mc.playerController.sendUseItem(mc.thePlayer, mc.theWorld, mc.thePlayer.inventory.getCurrentItem());
 
-                            Rotation rot = AimUtil.getBowAngles(target);
-                            float f1 = rot.getRotationYaw();
-                            float f2 = rot.getRotationPitch();
-                            mc.playerController.sendUseItem(mc.thePlayer, mc.theWorld, mc.thePlayer.inventory.getCurrentItem());
-
-                            for (int i = 0; i < 20; i++) {
-                                event.setRotationYaw(f1);
-                                event.setRotationPitch(f2);
-                                mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C06PacketPlayerPosLook(d, d2, d3, f1, f2, true));
-                            }
-                            Minecraft.getMinecraft().getNetHandler().addToSendQueue(new C07PacketPlayerDigging(C07PacketPlayerDigging.Action.RELEASE_USE_ITEM, new BlockPos(0, 0, 0), EnumFacing.DOWN));
-                            mc.thePlayer.inventory.getCurrentItem().getItem().onPlayerStoppedUsing(mc.thePlayer.inventory.getCurrentItem(), Minecraft.getMinecraft().theWorld, mc.thePlayer, 10);
+                        for (int i = 0; i < packets.getValue(); i++) {
+                            mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C06PacketPlayerPosLook(d, d2, d3, mc.thePlayer.rotationYaw, mc.thePlayer.rotationPitch, true));
                         }
+                        Minecraft.getMinecraft().getNetHandler().addToSendQueue(new C07PacketPlayerDigging(C07PacketPlayerDigging.Action.RELEASE_USE_ITEM, new BlockPos(0, 0, 0), EnumFacing.DOWN));
+                        mc.thePlayer.inventory.getCurrentItem().getItem().onPlayerStoppedUsing(mc.thePlayer.inventory.getCurrentItem(), Minecraft.getMinecraft().theWorld, mc.thePlayer, 10);
                     }
                 }
             } else {

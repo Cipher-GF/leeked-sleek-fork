@@ -84,6 +84,7 @@ public class Scaffold extends Module {
             }
             case "NEW":
             case "NCP": {
+                blockEntry = null;
                 this.startSlot = mc.thePlayer.inventory.currentItem;
 
                 if (getSlotWithBlock() > -1) {
@@ -199,15 +200,9 @@ public class Scaffold extends Module {
                         lastSlot = slot;
                     }
 
-                    if (keepY.getValue()) {
-                        if (mc.thePlayer.isMoving() && (mc.gameSettings.keyBindJump.pressed || mc.thePlayer.motionY > 0)) {
-                            placeBlockVerus(this.blockEntry.getPosition().add(0, -1, 0), this.blockEntry.getFacing(), slot, swing.getValue());
-                        } else {
-                            placeBlockVerus(this.blockEntry.getPosition().add(0, 0, 0), this.blockEntry.getFacing(), slot, swing.getValue());
-                        }
-                    } else {
-                        placeBlockVerus(this.blockEntry.getPosition().add(0, 0, 0), this.blockEntry.getFacing(), slot, swing.getValue());
-                    }
+
+                    placeBlockVerus(this.blockEntry.getPosition().add(0, 0, 0), this.blockEntry.getFacing(), slot, swing.getValue());
+
 
                     if (tower.getValue() && !mc.thePlayer.isPotionActive(Potion.jump) && !mc.thePlayer.isMoving() && mc.gameSettings.keyBindJump.pressed) {
                         mc.thePlayer.motionY = .52f;
@@ -250,7 +245,8 @@ public class Scaffold extends Module {
             }
             case "NEW":
             case "NCP": {
-                if (this.lastBlockEntry != null) {
+
+                if (this.lastBlockEntry != null && this.blockEntry != null) {
                     Vector2f rotation = RotationUtil.getRotations(getPositionByFace(this.lastBlockEntry.getPosition(), this.lastBlockEntry.getFacing()));
 
                     if (mc.thePlayer.isMoving()) {
@@ -264,6 +260,12 @@ public class Scaffold extends Module {
                         event.setRotationYaw(RotationUtil.getRotations(getPositionByFace(blockEntry.getPosition(), blockEntry.getFacing())).x);
                         event.setRotationPitch(80);
                     }
+
+                    Scaffold.BlockEntry blockEntry = (find(new Vec3(0, 0, 0)));
+
+                    if (blockEntry == null) return;
+
+                    this.blockEntry = blockEntry;
 
 
                 }
