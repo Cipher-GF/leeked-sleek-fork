@@ -26,7 +26,17 @@ public class Ghostly extends FlightMode {
             motionY = -(getFlight().getSpeed().getValue() / 2);
         }
 
-        mc.thePlayer.motionY = motionY;
-        PlayerUtil.setMotion(getFlight().getSpeed().getValue().floatValue());
+        mc.thePlayer.motionY = -0.000000000121;
+
+
+        double yaw = Math.toRadians(mc.thePlayer.rotationYaw);
+        double x = -Math.sin(yaw) * getFlight().getSpeed().getValue();
+        double z = Math.cos(yaw) * getFlight().getSpeed().getValue();
+
+        if (!mc.thePlayer.isMoving()) return;
+
+        if (mc.thePlayer.ticksExisted % 5 == 0) {
+            mc.thePlayer.setPosition(mc.thePlayer.posX + x, mc.thePlayer.posY, mc.thePlayer.posZ + z);
+        }
     }
 }
