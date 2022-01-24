@@ -11,8 +11,8 @@ public class GhostlyTP extends SpeedMode {
     @Override
     public void onUpdate(UpdateEvent event) {
         double yaw = Math.toRadians(mc.thePlayer.rotationYaw);
-        double x = -Math.sin(yaw) * 1.8;
-        double z = Math.cos(yaw) * 1.8;
+        double x = -Math.sin(yaw) * getSpeed().getSpeed().getValue();
+        double z = Math.cos(yaw) * getSpeed().getSpeed().getValue();
 
         if (!mc.thePlayer.isMoving()) return;
 

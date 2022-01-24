@@ -37,25 +37,24 @@ import javax.vecmath.Vector2f;
 import java.awt.*;
 
 @ModuleData(
-        name = "Scaffold",
-        category = ModuleCategory.WORLD,
+        name = "Scaffold", category = ModuleCategory.WORLD,
         description = "Places blocks under you"
 )
 public class Scaffold extends Module {
 
+    private final Stopwatch delayTimer = new Stopwatch();
+    private final Stopwatch towerTimer = new Stopwatch();
+    private final Stopwatch sneakTimer = new Stopwatch();
+    public BooleanValue safewalk = new BooleanValue("Safewalk", this, true);
+    public BooleanValue keepY = new BooleanValue("Keep Y", this, false);
     private ModeValue modeValue = new ModeValue("Mode", this, "Verus", "NEW", "NCP", "Vulcan");
     private BooleanValue swing = new BooleanValue("Swing", this, true);
     private BooleanValue sprint = new BooleanValue("Sprint", this, false);
     private BooleanValue tower = new BooleanValue("Tower", this, true);
     private BooleanValue info = new BooleanValue("Show Info", this, true);
-    public BooleanValue safewalk = new BooleanValue("Safewalk", this, true);
-    public BooleanValue keepY = new BooleanValue("Keep Y", this, false);
     private NumberValue<Integer> delay = new NumberValue<>("Delay", this, 0, 0, 9000, 1);
     private NumberValue<Integer> expansion = new NumberValue<>("Expansion", this, 4, 1, 6, 1);
     private int animation = 0;
-    private final Stopwatch delayTimer = new Stopwatch();
-    private final Stopwatch towerTimer = new Stopwatch();
-    private final Stopwatch sneakTimer = new Stopwatch();
     private BlockEntry blockEntry;
     private Scaffold.BlockEntry lastBlockEntry;
     private int startSlot, lastSlot;
@@ -159,9 +158,7 @@ public class Scaffold extends Module {
                 }
 
                 if (this.blockEntry != null) {
-                    vec2f = RotationUtil.getRotations(
-                            getPositionByFace(blockEntry.getPosition(),
-                                    blockEntry.getFacing()));
+                    vec2f = RotationUtil.getRotations(getPositionByFace(blockEntry.getPosition(), blockEntry.getFacing()));
 
                     vec2f.setY(90);
                 }
@@ -212,8 +209,7 @@ public class Scaffold extends Module {
                         placeBlockVerus(this.blockEntry.getPosition().add(0, 0, 0), this.blockEntry.getFacing(), slot, swing.getValue());
                     }
 
-                    if (tower.getValue() && !mc.thePlayer.isPotionActive(Potion.jump) && !mc.thePlayer.isMoving()
-                            && mc.gameSettings.keyBindJump.pressed) {
+                    if (tower.getValue() && !mc.thePlayer.isPotionActive(Potion.jump) && !mc.thePlayer.isMoving() && mc.gameSettings.keyBindJump.pressed) {
                         mc.thePlayer.motionY = .52f;
                         mc.thePlayer.motionZ = mc.thePlayer.motionX = 0;
 
@@ -243,8 +239,7 @@ public class Scaffold extends Module {
                     int expand = expansion.getValue().intValue() * 5;
 
                     for (int i = 0; i < expand; i++) {
-                        Scaffold.BlockEntry blockEntry = findExpand(new Vec3(mc.thePlayer.motionX * i,
-                                0, mc.thePlayer.motionZ * i), i);
+                        Scaffold.BlockEntry blockEntry = findExpand(new Vec3(mc.thePlayer.motionX * i, 0, mc.thePlayer.motionZ * i), i);
 
                         if (blockEntry != null) {
 
@@ -256,8 +251,7 @@ public class Scaffold extends Module {
             case "NEW":
             case "NCP": {
                 if (this.lastBlockEntry != null) {
-                    Vector2f rotation = RotationUtil.getRotations(getPositionByFace(this.lastBlockEntry.getPosition(),
-                            this.lastBlockEntry.getFacing()));
+                    Vector2f rotation = RotationUtil.getRotations(getPositionByFace(this.lastBlockEntry.getPosition(), this.lastBlockEntry.getFacing()));
 
                     if (mc.thePlayer.isMoving()) {
                         mc.thePlayer.forceSprinting(sprint.getValue());
@@ -267,6 +261,7 @@ public class Scaffold extends Module {
                         event.setRotationYaw(rotation.x);
                         event.setRotationPitch(rotation.y);
                     } else {
+                        event.setRotationYaw(RotationUtil.getRotations(getPositionByFace(blockEntry.getPosition(), blockEntry.getFacing())).x);
                         event.setRotationPitch(80);
                     }
 
@@ -286,11 +281,9 @@ public class Scaffold extends Module {
                             this.lastSlot = slot;
                         }
 
-                        if (placeBlock(blockEntry.getPosition().add(0, 0, 0), blockEntry.getFacing(),
-                                slot, swing.getValue())) {
+                        if (placeBlock(blockEntry.getPosition().add(0, 0, 0), blockEntry.getFacing(), slot, swing.getValue())) {
 
-                            if (tower.getValue() && !mc.thePlayer.isPotionActive(Potion.jump) && !mc.thePlayer.isMoving()
-                                    && mc.gameSettings.keyBindJump.pressed) {
+                            if (tower.getValue() && !mc.thePlayer.isPotionActive(Potion.jump) && !mc.thePlayer.isMoving() && mc.gameSettings.keyBindJump.pressed) {
                                 mc.thePlayer.motionY = .42f;
                                 mc.thePlayer.motionZ = mc.thePlayer.motionX = 0;
 
@@ -315,31 +308,23 @@ public class Scaffold extends Module {
     }
 
     public BlockEntry findExpand(Vec3 offset3, int expand) {
-        EnumFacing[] invert = new EnumFacing[]{EnumFacing.UP, EnumFacing.DOWN, EnumFacing.SOUTH,
-                EnumFacing.NORTH, EnumFacing.EAST, EnumFacing.WEST};
-        BlockPos position = new BlockPos(mc.thePlayer.getPositionVector().add(offset3))
-                .offset(EnumFacing.DOWN);
-        if (!(mc.theWorld.getBlockState(position).getBlock() instanceof BlockAir))
-            return null;
+        EnumFacing[] invert = new EnumFacing[]{EnumFacing.UP, EnumFacing.DOWN, EnumFacing.SOUTH, EnumFacing.NORTH, EnumFacing.EAST, EnumFacing.WEST};
+        BlockPos position = new BlockPos(mc.thePlayer.getPositionVector().add(offset3)).offset(EnumFacing.DOWN);
+        if (!(mc.theWorld.getBlockState(position).getBlock() instanceof BlockAir)) return null;
         for (EnumFacing facing : EnumFacing.values()) {
             BlockPos offset = position.offset(facing);
-            if (mc.theWorld.getBlockState(offset).getBlock() instanceof BlockAir ||
-                    !rayTrace(mc.thePlayer.getLook(0.0f),
-                            this.getPositionByFace(offset, invert[facing.ordinal()])))
+            if (mc.theWorld.getBlockState(offset).getBlock() instanceof BlockAir || !rayTrace(mc.thePlayer.getLook(0.0f), this.getPositionByFace(offset, invert[facing.ordinal()])))
                 continue;
             return new BlockEntry(offset, invert[facing.ordinal()]);
         }
         for (int i = 0; i < expand; i++) {
-            BlockPos[] offsets = new BlockPos[]{new BlockPos(-i, 0, 0), new BlockPos(i, 0, 0),
-                    new BlockPos(0, 0, -i), new BlockPos(0, 0, i)};
+            BlockPos[] offsets = new BlockPos[]{new BlockPos(-i, 0, 0), new BlockPos(i, 0, 0), new BlockPos(0, 0, -i), new BlockPos(0, 0, i)};
             for (BlockPos offset : offsets) {
                 BlockPos offsetPos = position.add(offset.getX(), 0, offset.getZ());
                 if (!(mc.theWorld.getBlockState(offsetPos).getBlock() instanceof BlockAir)) continue;
                 for (EnumFacing facing : EnumFacing.values()) {
                     BlockPos offset2 = offsetPos.offset(facing);
-                    if (mc.theWorld.getBlockState(offset2).getBlock() instanceof BlockAir ||
-                            !rayTrace(mc.thePlayer.getLook(0.0f),
-                                    this.getPositionByFace(offset, invert[facing.ordinal()])))
+                    if (mc.theWorld.getBlockState(offset2).getBlock() instanceof BlockAir || !rayTrace(mc.thePlayer.getLook(0.0f), this.getPositionByFace(offset, invert[facing.ordinal()])))
                         continue;
                     return new BlockEntry(offset2, invert[facing.ordinal()]);
                 }
@@ -353,15 +338,11 @@ public class Scaffold extends Module {
             this.delayTimer.resetTime();
 
             BlockPos offset = blockPos.offset(facing);
-            EnumFacing[] invert = new EnumFacing[]{EnumFacing.UP, EnumFacing.DOWN, EnumFacing.SOUTH,
-                    EnumFacing.NORTH, EnumFacing.EAST, EnumFacing.WEST};
-            if (rayTrace(mc.thePlayer.getLook(0.0f), this.getPositionByFace(offset,
-                    invert[facing.ordinal()]))) {
+            EnumFacing[] invert = new EnumFacing[]{EnumFacing.UP, EnumFacing.DOWN, EnumFacing.SOUTH, EnumFacing.NORTH, EnumFacing.EAST, EnumFacing.WEST};
+            if (rayTrace(mc.thePlayer.getLook(0.0f), this.getPositionByFace(offset, invert[facing.ordinal()]))) {
                 ItemStack stack = mc.thePlayer.inventory.getStackInSlot(slot);
-                Vec3 hitVec = (new Vec3(blockPos)).add(new Vec3(0.5f, 0.5f, 0.5f))
-                        .add((new Vec3(facing.getDirectionVec())).scale(0.5f));
-                if (mc.playerController.onPlayerRightClick(mc.thePlayer, mc.theWorld, stack,
-                        blockPos, facing, new Vec3(hitVec.xCoord, hitVec.yCoord, hitVec.zCoord))) {
+                Vec3 hitVec = (new Vec3(blockPos)).add(new Vec3(0.5f, 0.5f, 0.5f)).add((new Vec3(facing.getDirectionVec())).scale(0.5f));
+                if (mc.playerController.onPlayerRightClick(mc.thePlayer, mc.theWorld, stack, blockPos, facing, new Vec3(hitVec.xCoord, hitVec.yCoord, hitVec.zCoord))) {
                     if (swing) {
                         mc.thePlayer.swingItem();
                     } else {
@@ -377,11 +358,7 @@ public class Scaffold extends Module {
     private boolean isPlaceable(ItemStack itemStack) {
         if (itemStack != null && itemStack.getItem() instanceof ItemBlock) {
             Block block = (((ItemBlock) itemStack.getItem()).getBlock());
-            return !(block instanceof BlockNote) && !(block instanceof BlockFurnace)
-                    && !block.getLocalizedName().equalsIgnoreCase("Crafting Table")
-                    && !(block instanceof BlockWeb) && !(block instanceof BlockFence)
-                    && !(block instanceof BlockFenceGate)
-                    && !(block instanceof BlockSlab) && !(block instanceof BlockStairs);
+            return !(block instanceof BlockNote) && !(block instanceof BlockFurnace) && !block.getLocalizedName().equalsIgnoreCase("Crafting Table") && !(block instanceof BlockWeb) && !(block instanceof BlockFence) && !(block instanceof BlockFenceGate) && !(block instanceof BlockSlab) && !(block instanceof BlockStairs);
         }
         return true;
     }
@@ -390,14 +367,10 @@ public class Scaffold extends Module {
         for (int i = 0; i < 9; ++i) {
             ItemStack itemStack = mc.thePlayer.inventory.mainInventory[i];
             if (!isPlaceable(itemStack)) continue;
-            if (itemStack != null && (itemStack.getItem() instanceof ItemAnvilBlock
-                    || (itemStack.getItem() instanceof ItemBlock
-                    && ((ItemBlock) itemStack.getItem()).getBlock() instanceof BlockSand))) {
+            if (itemStack != null && (itemStack.getItem() instanceof ItemAnvilBlock || (itemStack.getItem() instanceof ItemBlock && ((ItemBlock) itemStack.getItem()).getBlock() instanceof BlockSand))) {
                 continue;
             }
-            if (itemStack == null || !(itemStack.getItem() instanceof ItemBlock)
-                    || (((ItemBlock) itemStack.getItem()).getBlock().maxY -
-                    ((ItemBlock) itemStack.getItem()).getBlock().minY != 1) && !(itemStack.getItem() instanceof ItemAnvilBlock)) {
+            if (itemStack == null || !(itemStack.getItem() instanceof ItemBlock) || (((ItemBlock) itemStack.getItem()).getBlock().maxY - ((ItemBlock) itemStack.getItem()).getBlock().minY != 1) && !(itemStack.getItem() instanceof ItemAnvilBlock)) {
                 continue;
             }
             return i;
@@ -429,18 +402,14 @@ public class Scaffold extends Module {
             this.delayTimer.resetTime();
 
             BlockPos offset = blockPos.offset(facing);
-            EnumFacing[] invert = new EnumFacing[]{EnumFacing.UP, EnumFacing.DOWN, EnumFacing.SOUTH,
-                    EnumFacing.NORTH, EnumFacing.EAST, EnumFacing.WEST};
-            if (rayTrace(mc.thePlayer.getLook(0.0f), this.getPositionByFace(offset,
-                    invert[facing.ordinal()]))) {
+            EnumFacing[] invert = new EnumFacing[]{EnumFacing.UP, EnumFacing.DOWN, EnumFacing.SOUTH, EnumFacing.NORTH, EnumFacing.EAST, EnumFacing.WEST};
+            if (rayTrace(mc.thePlayer.getLook(0.0f), this.getPositionByFace(offset, invert[facing.ordinal()]))) {
                 ItemStack stack = mc.thePlayer.inventory.getStackInSlot(slot);
 
                 float f = MathUtil.getRandomInRange(.3f, .5f);
 
-                Vec3 hitVec = (new Vec3(blockPos)).add(f, f, f)
-                        .add((new Vec3(facing.getDirectionVec())).scale(f));
-                if (mc.playerController.onPlayerRightClick(mc.thePlayer, mc.theWorld,
-                        stack, blockPos, facing, new Vec3(hitVec.xCoord, hitVec.yCoord, hitVec.zCoord))) {
+                Vec3 hitVec = (new Vec3(blockPos)).add(f, f, f).add((new Vec3(facing.getDirectionVec())).scale(f));
+                if (mc.playerController.onPlayerRightClick(mc.thePlayer, mc.theWorld, stack, blockPos, facing, new Vec3(hitVec.xCoord, hitVec.yCoord, hitVec.zCoord))) {
                     if (swing) {
                         mc.thePlayer.swingItem();
                     } else {
@@ -460,35 +429,27 @@ public class Scaffold extends Module {
     }
 
     public Vec3 getPositionByFace(BlockPos position, EnumFacing facing) {
-        Vec3 offset = new Vec3((double) facing.getDirectionVec().getX() / 2.0, (double)
-                facing.getDirectionVec().getY() / 2.0, (double) facing.getDirectionVec().getZ() / 2.0);
-        Vec3 point = new Vec3((double) position.getX() + 0.5, (double) position.getY() + 0.75,
-                (double) position.getZ() + 0.5);
+        Vec3 offset = new Vec3((double) facing.getDirectionVec().getX() / 2.0, (double) facing.getDirectionVec().getY() / 2.0, (double) facing.getDirectionVec().getZ() / 2.0);
+        Vec3 point = new Vec3((double) position.getX() + 0.5, (double) position.getY() + 0.75, (double) position.getZ() + 0.5);
         return point.add(offset);
     }
 
     public BlockEntry find(Vec3 offset3) {
-        EnumFacing[] invert = new EnumFacing[]{EnumFacing.UP, EnumFacing.DOWN, EnumFacing.SOUTH, EnumFacing.NORTH,
-                EnumFacing.EAST, EnumFacing.WEST};
+        EnumFacing[] invert = new EnumFacing[]{EnumFacing.UP, EnumFacing.DOWN, EnumFacing.SOUTH, EnumFacing.NORTH, EnumFacing.EAST, EnumFacing.WEST};
         BlockPos position = new BlockPos(mc.thePlayer.getPositionVector().add(offset3)).offset(EnumFacing.DOWN);
         for (EnumFacing facing : EnumFacing.values()) {
             BlockPos offset = position.offset(facing);
-            if (mc.theWorld.getBlockState(offset).getBlock() instanceof BlockAir
-                    || !rayTrace(mc.thePlayer.getLook(0.0f),
-                    getPositionByFace(offset, invert[facing.ordinal()])))
+            if (mc.theWorld.getBlockState(offset).getBlock() instanceof BlockAir || !rayTrace(mc.thePlayer.getLook(0.0f), getPositionByFace(offset, invert[facing.ordinal()])))
                 continue;
             return new BlockEntry(offset, invert[facing.ordinal()]);
         }
-        BlockPos[] offsets = new BlockPos[]{new BlockPos(-1, 0, 0), new BlockPos(1, 0, 0),
-                new BlockPos(0, 0, -1), new BlockPos(0, 0, 1)};
+        BlockPos[] offsets = new BlockPos[]{new BlockPos(-1, 0, 0), new BlockPos(1, 0, 0), new BlockPos(0, 0, -1), new BlockPos(0, 0, 1)};
         for (BlockPos offset : offsets) {
             BlockPos offsetPos = position.add(offset.getX(), 0, offset.getZ());
             if (!(mc.theWorld.getBlockState(offsetPos).getBlock() instanceof BlockAir)) continue;
             for (EnumFacing facing : EnumFacing.values()) {
                 BlockPos offset2 = offsetPos.offset(facing);
-                if (mc.theWorld.getBlockState(offset2).getBlock() instanceof BlockAir
-                        || !rayTrace(mc.thePlayer.getLook(0.0f),
-                        getPositionByFace(offset, invert[facing.ordinal()])))
+                if (mc.theWorld.getBlockState(offset2).getBlock() instanceof BlockAir || !rayTrace(mc.thePlayer.getLook(0.0f), getPositionByFace(offset, invert[facing.ordinal()])))
                     continue;
                 return new BlockEntry(offset2, invert[facing.ordinal()]);
             }

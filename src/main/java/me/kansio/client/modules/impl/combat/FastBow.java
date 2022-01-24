@@ -8,8 +8,13 @@ import me.kansio.client.modules.impl.Module;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.NumberValue;
 import me.kansio.client.utils.chat.ChatUtil;
+import me.kansio.client.utils.combat.FightUtil;
 import me.kansio.client.utils.network.PacketUtil;
+import me.kansio.client.utils.rotations.AimUtil;
+import me.kansio.client.utils.rotations.Rotation;
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBow;
 import net.minecraft.network.play.client.C03PacketPlayer;
 import net.minecraft.network.play.client.C07PacketPlayerDigging;
@@ -17,6 +22,10 @@ import net.minecraft.network.play.client.C08PacketPlayerBlockPlacement;
 import net.minecraft.network.play.client.C09PacketHeldItemChange;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
+
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 @ModuleData(
         name = "Fast Bow",
@@ -37,19 +46,34 @@ public class FastBow extends Module {
     public void onUpdate(UpdateEvent event) {
         if (mc.gameSettings.keyBindUseItem.isKeyDown()) {
 
-            if (value.getValue()) {
-                if (mc.thePlayer.onGround && mc.thePlayer.getCurrentEquippedItem() != null && mc.thePlayer.getCurrentEquippedItem().getItem() instanceof ItemBow && mc.gameSettings.keyBindUseItem.pressed) {
-                    if (mc.thePlayer.ticksExisted % 4 == 0) {
-                        double d = mc.thePlayer.posX;
-                        double d2 = mc.thePlayer.posY + 1.0E-9;
-                        double d3 = mc.thePlayer.posZ;
-                        mc.playerController.sendUseItem(mc.thePlayer, mc.theWorld, mc.thePlayer.inventory.getCurrentItem());
+            if (value.getValue() && mc.thePlayer.getHeldItem().getItem() instanceof ItemBow) {
+                List<EntityLivingBase> targets = FightUtil.getMultipleTargets(20, true, false, false, false, false, true);
+                targets.removeIf(e -> e.getName().contains("[NPC]"));
+                targets.removeIf(e -> !(e instanceof EntityPlayer));
+                targets.sort(Comparator.comparingInt(e -> (int) -e.getDistanceToEntity(mc.thePlayer)));
+                Collections.reverse(targets);
+                EntityLivingBase target = targets.get(0);
+                if (target != null) {
+                    ChatUtil.log(String.format("%s %s", target.getName(), mc.thePlayer.getDistanceToEntity(target)));
+                    if (mc.thePlayer.onGround && mc.thePlayer.getCurrentEquippedItem() != null && mc.thePlayer.getCurrentEquippedItem().getItem() instanceof ItemBow && mc.gameSettings.keyBindUseItem.pressed) {
+                        if (mc.thePlayer.ticksExisted % 5 == 0) {
+                            double d = mc.thePlayer.posX;
+                            double d2 = mc.thePlayer.posY + 1.0E-9;
+                            double d3 = mc.thePlayer.posZ;
 
-                        for (int i = 0; i < 20; i++) {
-                            mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C06PacketPlayerPosLook(d, d2, d3, mc.thePlayer.rotationYaw, mc.thePlayer.rotationPitch, true));
+                            Rotation rot = AimUtil.getBowAngles(target);
+                            float f1 = rot.getRotationYaw();
+                            float f2 = rot.getRotationPitch();
+                            mc.playerController.sendUseItem(mc.thePlayer, mc.theWorld, mc.thePlayer.inventory.getCurrentItem());
+
+                            for (int i = 0; i < 20; i++) {
+                                event.setRotationYaw(f1);
+                                event.setRotationPitch(f2);
+                                mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C06PacketPlayerPosLook(d, d2, d3, f1, f2, true));
+                            }
+                            Minecraft.getMinecraft().getNetHandler().addToSendQueue(new C07PacketPlayerDigging(C07PacketPlayerDigging.Action.RELEASE_USE_ITEM, new BlockPos(0, 0, 0), EnumFacing.DOWN));
+                            mc.thePlayer.inventory.getCurrentItem().getItem().onPlayerStoppedUsing(mc.thePlayer.inventory.getCurrentItem(), Minecraft.getMinecraft().theWorld, mc.thePlayer, 10);
                         }
-                        Minecraft.getMinecraft().getNetHandler().addToSendQueue(new C07PacketPlayerDigging(C07PacketPlayerDigging.Action.RELEASE_USE_ITEM, new BlockPos(0, 0, 0), EnumFacing.DOWN));
-                        mc.thePlayer.inventory.getCurrentItem().getItem().onPlayerStoppedUsing(mc.thePlayer.inventory.getCurrentItem(), Minecraft.getMinecraft().theWorld, mc.thePlayer, 10);
                     }
                 }
             } else {
