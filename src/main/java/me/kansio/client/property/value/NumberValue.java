@@ -1,6 +1,7 @@
 package me.kansio.client.property.value;
 
 import lombok.Getter;
+import me.kansio.client.modules.impl.Module;
 import me.kansio.client.property.Value;
 
 @Getter
@@ -8,7 +9,7 @@ public final class NumberValue<T extends Number> extends Value<T> {
 
     private final T min, max, increment;
 
-    public NumberValue(String name, Object owner, T value, T min, T max, T increment) {
+    public NumberValue(String name, Module owner, T value, T min, T max, T increment) {
         super(name, owner, value);
         //checkRetardMoment(value);
         this.value = value;
@@ -17,7 +18,7 @@ public final class NumberValue<T extends Number> extends Value<T> {
         this.increment = increment;
     }
 
-    public NumberValue(String name, Object owner, T value, T min, T max, T increment, BooleanValue parent) {
+    public NumberValue(String name, Module owner, T value, T min, T max, T increment, BooleanValue parent) {
         super(name, owner, value, parent);
         //checkRetardMoment(value);
         this.value = value;
@@ -26,7 +27,7 @@ public final class NumberValue<T extends Number> extends Value<T> {
         this.increment = increment;
     }
 
-    public NumberValue(String name, Object owner, T value, T min, T max, T increment, ModeValue parent, String... parentmode) {
+    public NumberValue(String name, Module owner, T value, T min, T max, T increment, ModeValue parent, String... parentmode) {
         super(name, owner, value, parent, parentmode);
         //checkRetardMoment(value);
         this.value = value;

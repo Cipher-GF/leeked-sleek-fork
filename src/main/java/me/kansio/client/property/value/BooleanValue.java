@@ -1,19 +1,20 @@
 package me.kansio.client.property.value;
 
+import me.kansio.client.modules.impl.Module;
 import me.kansio.client.property.Value;
 
 public final class BooleanValue extends Value<Boolean> {
 
-    public BooleanValue(String name, Object owner, Boolean value) {
+    public BooleanValue(String name, Module owner, Boolean value) {
         super(name, owner, value);
     }
 
-    public BooleanValue(String name, Object owner, Boolean value, Value parent) {
+    public BooleanValue(String name, Module owner, Boolean value, Value parent) {
         super(name, owner, value);
         this.parent = parent;
     }
 
-    public BooleanValue(String name, Object owner, Boolean value, ModeValue modeValue, String... mode) {
+    public BooleanValue(String name, Module owner, Boolean value, ModeValue modeValue, String... mode) {
         super(name, owner, value, modeValue, mode);
     }
 

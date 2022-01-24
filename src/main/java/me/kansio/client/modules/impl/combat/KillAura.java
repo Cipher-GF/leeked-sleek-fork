@@ -5,16 +5,16 @@ import me.kansio.client.Client;
 import me.kansio.client.event.impl.PacketEvent;
 import me.kansio.client.event.impl.RenderOverlayEvent;
 import me.kansio.client.event.impl.UpdateEvent;
+import me.kansio.client.gui.notification.Notification;
+import me.kansio.client.gui.notification.NotificationManager;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
-import me.kansio.client.gui.notification.Notification;
-import me.kansio.client.gui.notification.NotificationManager;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.ModeValue;
 import me.kansio.client.property.value.NumberValue;
-import me.kansio.client.utils.math.Stopwatch;
 import me.kansio.client.utils.combat.FightUtil;
+import me.kansio.client.utils.math.Stopwatch;
 import me.kansio.client.utils.network.PacketUtil;
 import me.kansio.client.utils.rotations.AimUtil;
 import me.kansio.client.utils.rotations.Rotation;
@@ -30,7 +30,9 @@ import net.minecraft.util.EnumFacing;
 import org.apache.commons.lang3.RandomUtils;
 
 import javax.vecmath.Vector2f;
-import java.util.*;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 @ModuleData(
         name = "Killaura",
@@ -39,9 +41,11 @@ import java.util.*;
 )
 public class KillAura extends Module {
 
+    public static EntityLivingBase target;
+    public static boolean isBlocking, swinging;
+    public final Stopwatch attackTimer = new Stopwatch();
     // Switch aura doesn't work rn
     public ModeValue mode = new ModeValue("Mode", this, /*"Switch",*/ "Smart");
-
     public ModeValue targetPriority = new ModeValue("Target Priority", this, "None", "Distance", "Armor", "HurtTime", "Health");
     public ModeValue rotatemode = new ModeValue("Rotation Mode", this, "None", "Default", "Down", "NCP", "AAC", "GWEN");
     public NumberValue<Double> swingrage = new NumberValue<>("Swing Range", this, 3.0, 1.0, 9.0, 0.1);
@@ -51,25 +55,22 @@ public class KillAura extends Module {
     public ModeValue swingmode = new ModeValue("Swing Mode", this, "Client", "Server");
     public ModeValue autoblockmode = new ModeValue("Autoblock Mode", this, "None", "Real", "Verus", "Fake");
     public BooleanValue gcd = new BooleanValue("GCD", this, false);
-
     public BooleanValue targethud = new BooleanValue("TargetHud", this, false);
     public ModeValue targethudmode = new ModeValue("TargetHud Mode", this, targethud, "Sleek", "Moon");
-
-
     public BooleanValue players = new BooleanValue("Players", this, true);
     public BooleanValue friends = new BooleanValue("Friends", this, true);
     public BooleanValue animals = new BooleanValue("Animals", this, true);
     public BooleanValue monsters = new BooleanValue("Monsters", this, true);
     public BooleanValue invisible = new BooleanValue("Invisibles", this, true);
     public BooleanValue walls = new BooleanValue("Walls", this, true);
-
-    public static EntityLivingBase target;
-    public static boolean isBlocking, swinging;
-    private int index;
-    public final Stopwatch attackTimer = new Stopwatch();
     public Vector2f currentRotation = null;
+    private int index;
     private boolean canBlock;
     private Rotation lastRotation;
+
+    public static boolean isSwinging() {
+        return swinging;
+    }
 
     @Override
     public void onEnable() {
@@ -100,7 +101,6 @@ public class KillAura extends Module {
             mc.gameSettings.keyBindUseItem.pressed = KillAura.target != null;
         }
     }
-
 
     @Subscribe
     public void onMotion(UpdateEvent event) {
@@ -290,7 +290,6 @@ public class KillAura extends Module {
         lastRotation = temp;
     }
 
-
     @Subscribe
     public void onPacket(PacketEvent event) {
         Packet packet = event.getPacket();
@@ -323,10 +322,6 @@ public class KillAura extends Module {
 
     private void unblock() {
         isBlocking = false;
-    }
-
-    public static boolean isSwinging() {
-        return swinging;
     }
 
     @Override

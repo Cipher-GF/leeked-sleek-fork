@@ -13,6 +13,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class ModuleManager {
 
@@ -104,6 +105,10 @@ public class ModuleManager {
             int second = fontRenderer.getStringWidth(b.getName() + dataB);
             return second - first;
         });
+    }
+
+    public <T extends Module> T getModuleByClass(Class<? extends T> clazz) {
+        return (T) modules.stream().filter(element -> element.getClass().equals(clazz)).findFirst().orElseThrow((() -> new NoSuchElementException("RETARD ALERT: Element belonging to class '" + clazz.getName() + "' not found")));
     }
 
     public Module getModuleByName(String name) {

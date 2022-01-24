@@ -1,6 +1,7 @@
 package me.kansio.client.property;
 
 import lombok.Getter;
+import me.kansio.client.modules.impl.Module;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.ModeValue;
 
@@ -13,23 +14,23 @@ public abstract class Value<Type> {
     private final String name;
     @Getter
     protected List<String> modes = new ArrayList<>();
-    private final Object owner;
+    private final Module owner;
     protected Value<?> parent;
     protected Type value;
 
-    public Value(String name, Object owner, Type value) {
+    public Value(String name, Module owner, Type value) {
         this.name = name;
         this.owner = owner;
         this.value = value;
     }
 
-    public Value(String name, Object owner, Type value, ModeValue parent, String... modes) {
+    public Value(String name, Module owner, Type value, ModeValue parent, String... modes) {
         this(name, owner, value);
         this.parent = parent;
         Collections.addAll(this.modes, modes);
     }
 
-    public Value(String name, Object owner, Type value, BooleanValue parent) {
+    public Value(String name, Module owner, Type value, BooleanValue parent) {
         this(name, owner, value);
         this.parent = parent;
     }
@@ -38,7 +39,7 @@ public abstract class Value<Type> {
         return name;
     }
 
-    public Object getOwner() {
+    public Module getOwner() {
         return owner;
     }
 

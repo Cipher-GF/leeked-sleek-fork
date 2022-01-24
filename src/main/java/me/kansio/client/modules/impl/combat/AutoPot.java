@@ -2,13 +2,22 @@ package me.kansio.client.modules.impl.combat;
 
 import com.google.common.eventbus.Subscribe;
 import javafx.scene.paint.Stop;
+import me.kansio.client.Client;
 import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
+import me.kansio.client.modules.impl.movement.Speed;
+import me.kansio.client.property.value.BooleanValue;
+import me.kansio.client.property.value.ModeValue;
+import me.kansio.client.property.value.NumberValue;
 import me.kansio.client.utils.math.MathUtil;
 import me.kansio.client.utils.math.Stopwatch;
+import me.kansio.client.utils.network.PacketUtil;
+import me.kansio.client.utils.player.PlayerUtil;
+import net.minecraft.block.BlockGlass;
 import net.minecraft.client.gui.inventory.GuiChest;
+import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemPotion;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.play.client.C03PacketPlayer;
@@ -18,119 +27,197 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.BlockPos;
 
+import java.util.List;
+
 @ModuleData(
         name = "AutoPot",
         category = ModuleCategory.COMBAT,
         description = "Pots for you"
 )
 public class AutoPot extends Module {
-
     private static boolean isPotting;
     private final Object[] badPotionArray = {false};
+    private final Stopwatch timer = new Stopwatch();
 
-    Stopwatch stopwatch;
+    private final ModeValue enumValue = new ModeValue("Mode", this, "Down", "Up", "Jump", "Instant Jump");
+    private final BooleanValue skywars = new BooleanValue("Skywars", this, false);
+    private final NumberValue<Integer> minHealth = new NumberValue<>("Min Health", this, 12, 5, 20, 1);
+    private final NumberValue<Integer> delay = new NumberValue<>("Delay", this, 150, 50, 1000, 25);
 
 
-    public AutoPot() {
-        stopwatch = new Stopwatch();
+
+    public static boolean isPotting() {
+        return isPotting;
     }
 
-    @Subscribe
-    public void onPlayerUpdate(UpdateEvent playerUpdateEvent) {
-
-        if (KillAura.target != null || mc.thePlayer.fallDistance < 2 || updateCounter() == 0 || mc.thePlayer == null || mc.theWorld == null) {
-            return;
-        }
-        if (playerUpdateEvent.isPre()) {
-            if (mc.thePlayer.getHealth() <= 7 && stopwatch.timeElapsed(MathUtil.getRandomInRange(150, 300))) {
-                if (doesHotbarHavePots()) {
-                    float pitch = playerUpdateEvent.getRotationPitch();
-                    playerUpdateEvent.setRotationPitch(90);
-                    for (int index = 36; index < 45; index++) {
-                        final ItemStack stack = mc.thePlayer.inventoryContainer.getSlot(index).getStack();
-                        if (stack == null) {
-                            continue;
-                        }
-
-                        if (isStackSplashHealthPot(stack)) {
-                            final int oldslot = mc.thePlayer.inventory.currentItem;
-                            mc.getNetHandler().addToSendQueue(new C09PacketHeldItemChange(index - 36));
-                            mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C06PacketPlayerPosLook(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ, playerUpdateEvent.getRotationYaw(), 87, mc.thePlayer.onGround));
-                            mc.getNetHandler().addToSendQueue(
-                                    new C08PacketPlayerBlockPlacement(new BlockPos(-1, -1, -1), 255, stack, 0, 0, 0));
-                            mc.getNetHandler().addToSendQueue(new C09PacketHeldItemChange(oldslot));
-                            mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C06PacketPlayerPosLook(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ, playerUpdateEvent.getRotationYaw(), playerUpdateEvent.getRotationPitch(), mc.thePlayer.onGround));
-                            break;
-                        }
-                    }
-                    stopwatch.resetTime();
-                    playerUpdateEvent.setRotationPitch(90);
-                } else {
-                    getPotsFromInventory();
-                }
-            }
-        }
+    public static void setPotting(boolean isPotting) {
+        AutoPot.isPotting = isPotting;
     }
 
-    private int updateCounter() {
-        int counter = 0;
-        for (int index = 9; index < 45; index++) {
-            final ItemStack stack = mc.thePlayer.inventoryContainer.getSlot(index).getStack();
-            if (stack == null) {
+    private boolean invCheck() {
+        for (int i = 0; i < 45; ++i) {
+            if (!mc.thePlayer.inventoryContainer.getSlot(i).getHasStack()
+                    || getPotionData(mc.thePlayer.inventoryContainer.getSlot(i).getStack()) == badPotionArray)
                 continue;
-            }
-            if (isStackSplashHealthPot(stack)) {
-                counter += stack.stackSize;
-            }
-        }
-        return counter;
-    }
-
-    private boolean doesHotbarHavePots() {
-        for (int index = 36; index < 45; index++) {
-            final ItemStack stack = mc.thePlayer.inventoryContainer.getSlot(index).getStack();
-            if (stack == null) {
-                continue;
-            }
-            if (isStackSplashHealthPot(stack)) {
+            Object[] dataArray = getPotionData(mc.thePlayer.inventoryContainer.getSlot(i).getStack());
+            int data = (int) dataArray[1];
+            if (data == Potion.regeneration.id || data == Potion.heal.id) {
                 return true;
             }
         }
         return false;
     }
 
-    private void getPotsFromInventory() {
-        if (mc.currentScreen instanceof GuiChest) {
-            return;
-        }
-        for (int index = 9; index < 36; index++) {
-            final ItemStack stack = mc.thePlayer.inventoryContainer.getSlot(index).getStack();
-            if (stack == null) {
-                continue;
-            }
-            if (isStackSplashHealthPot(stack)) {
-                mc.playerController.windowClick(0, index, 0, 1, mc.thePlayer);
-                break;
-            }
-        }
+    private void swap(int slot) {
+        mc.playerController.windowClick(mc.thePlayer.inventoryContainer.windowId, slot, 1, 2, mc.thePlayer);
     }
 
-    private boolean isStackSplashHealthPot(ItemStack stack) {
-        if (stack == null) {
-            return false;
-        }
-        if (stack.getItem() instanceof ItemPotion) {
-            final ItemPotion potion = (ItemPotion) stack.getItem();
-            if (ItemPotion.isSplash(stack.getItemDamage())) {
-                for (final Object o : potion.getEffects(stack)) {
-                    final PotionEffect effect = (PotionEffect) o;
-                    if (effect.getPotionID() == Potion.heal.id) {
-                        return true;
-                    }
-                }
+    private boolean invCheckMisc() {
+        for (int i = 0; i < 45; ++i) {
+            if (!mc.thePlayer.inventoryContainer.getSlot(i).getHasStack()
+                    || getPotionDataMisc(mc.thePlayer.inventoryContainer.getSlot(i).getStack()) == badPotionArray)
+                continue;
+            Object[] dataArray = getPotionDataMisc(mc.thePlayer.inventoryContainer.getSlot(i).getStack());
+            int data = (int) dataArray[1];
+            if (data == 1) {
+                return true;
             }
         }
         return false;
     }
 
+    private Object[] getPotionDataMisc(ItemStack stack) {
+        if (stack == null || !(stack.getItem() instanceof ItemPotion) || !ItemPotion.isSplash(stack.getMetadata())) {
+            return badPotionArray;
+        }
+        ItemPotion itemPotion = (ItemPotion) stack.getItem();
+        List<PotionEffect> potionEffectList = itemPotion.getEffects(stack);
+        for (PotionEffect potionEffect : potionEffectList) {
+            if (potionEffect.getPotionID() == Potion.moveSpeed.id) {
+                return new Object[]{true, potionEffect.getPotionID(), stack};
+            }
+        }
+        return badPotionArray;
+    }
+
+    private Object[] getPotionData(ItemStack stack) {
+        if (stack == null || !(stack.getItem() instanceof ItemPotion) || !ItemPotion.isSplash(stack.getMetadata())) {
+            return badPotionArray;
+        }
+        ItemPotion itemPotion = (ItemPotion) stack.getItem();
+        List<PotionEffect> potionEffectList = itemPotion.getEffects(stack);
+        for (PotionEffect potionEffect : potionEffectList) {
+            if (potionEffect.getPotionID() == Potion.heal.id || potionEffect.getPotionID() == Potion.regeneration.id) {
+                return new Object[]{true, potionEffect.getPotionID(), stack};
+            }
+        }
+        return badPotionArray;
+    }
+
+    @Subscribe
+    public void onUpdate(UpdateEvent event) {
+        if (!mc.thePlayer.onGround)
+            return;
+
+        if (skywars.getValue() && mc.theWorld.getBlockState(new BlockPos(mc.thePlayer).down()).getBlock() instanceof BlockGlass) {
+            return;
+        }
+
+        if (!event.isPre()) {
+            if (isPotting()) {
+                PacketUtil.sendPacketNoEvent(new C09PacketHeldItemChange(1));
+                PacketUtil.sendPacketNoEvent(new C08PacketPlayerBlockPlacement(mc.thePlayer.getHeldItem()));
+                PacketUtil.sendPacketNoEvent(new C09PacketHeldItemChange(mc.thePlayer.inventory.currentItem));
+                setPotting(false);
+            }
+            return;
+        }
+
+        if (mc.thePlayer.getHealth() <= minHealth.getValue().floatValue() && invCheck()) {
+            if (timer.timeElapsed(1000L + delay.getValue().longValue())) {
+                useMode(event);
+                refillPotions();
+                setPotting(true);
+                timer.resetTime();
+            }
+        } else {
+            if (mc.thePlayer.isPotionActive(Potion.moveSpeed) || !invCheckMisc()) {
+                return;
+            }
+
+            if (timer.timeElapsed(1000L + delay.getValue().longValue())) {
+                useMode(event);
+                refillPotionsMisc();
+                setPotting(true);
+                timer.resetTime();
+            }
+        }
+    }
+
+    private void useMode(UpdateEvent event) {
+        switch (enumValue.getValue()) {
+            case "Down":
+                event.setRotationPitch(90F);
+                break;
+
+            case "Up":
+                event.setRotationPitch(-90F);
+                break;
+
+            case "Jump":
+                PlayerUtil MotionUtils;
+                if (!Client.getInstance().getModuleManager().getModuleByClass(Speed.class).isToggled() && mc.thePlayer.onGround && !mc.thePlayer.isMoving()) {
+                    mc.thePlayer.motionY = PlayerUtil.getMotion(0.42F);
+                }
+
+                event.setRotationPitch(-90F);
+                break;
+
+            case "Instant Jump":
+                if (!Client.getInstance().getModuleManager().getModuleByClass(Speed.class).isToggled() && mc.thePlayer.onGround && !mc.thePlayer.isMoving()) {
+                    mc.thePlayer.setPosition(mc.thePlayer.posX, mc.thePlayer.posY + PlayerUtil.getMotion(0.42F), mc.thePlayer.posZ);
+                }
+
+                event.setRotationPitch(-90F);
+                break;
+        }
+    }
+
+    private void refillPotions() {
+        if (invCheck()) {
+            for (int i = 0; i < 45; ++i) {
+                Slot slot = mc.thePlayer.inventoryContainer.getSlot(i);
+                if (!slot.getHasStack())
+                    continue;
+                if (i == 37)
+                    continue;
+                if (getPotionData(slot.getStack()) != badPotionArray) {
+                    swap(i);
+                    break;
+                }
+            }
+        }
+    }
+
+    private void refillPotionsMisc() {
+        if (invCheckMisc()) {
+            for (int i = 0; i < 45; ++i) {
+                Slot slot = mc.thePlayer.inventoryContainer.getSlot(i);
+                if (!slot.getHasStack())
+                    continue;
+                if (i == 37)
+                    continue;
+                if (getPotionDataMisc(slot.getStack()) != badPotionArray) {
+                    swap(i);
+                    break;
+                }
+            }
+        }
+    }
+
+    @Override
+    public String getSuffix() {
+        return " \2477" + enumValue.getValue();
+//        return " \2477" + delay.getValue().intValue();
+    }
 }
