@@ -19,7 +19,7 @@ public class Matrix extends SpeedMode {
 
     @Override
     public void onEnable() {
-        if (ViaMCP.PROTOCOL_VERSION != 755) {
+        if (ViaMCP.getInstance().getVersion() != 755) {
             ChatUtil.log("§cYou must use 1.17 with viaversion to use this mode.");
             getSpeed().toggle();
         }
