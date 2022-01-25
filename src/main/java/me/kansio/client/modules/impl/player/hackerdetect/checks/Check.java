@@ -15,7 +15,7 @@ public abstract class Check {
     protected static Minecraft mc = Minecraft.getMinecraft();
 
     public void onUpdate() {
-        
+
     }
 
     public void onBlocksMCGameStartTick() {

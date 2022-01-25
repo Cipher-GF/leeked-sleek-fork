@@ -11,6 +11,7 @@ import me.kansio.client.property.value.ModeValue;
 import me.kansio.client.property.value.NumberValue;
 import me.kansio.client.utils.math.Stopwatch;
 import me.kansio.client.utils.player.PlayerUtil;
+import me.kansio.client.utils.player.TimerUtil;
 import net.minecraft.network.play.client.C03PacketPlayer;
 
 import java.text.DecimalFormat;
@@ -46,7 +47,7 @@ public class LongJump extends Module {
                     toggle();
                     return;
                 }
-                mc.timer.timerSpeed = 0.3f;
+                TimerUtil.setTimer(0.3f);
                 PlayerUtil.damageVerus();
                 break;
         }
@@ -54,7 +55,7 @@ public class LongJump extends Module {
 
     @Override
     public void onDisable() {
-        mc.timer.timerSpeed = 1.0f;
+        TimerUtil.Reset();
         jumped = false;
     }
 
@@ -117,11 +118,10 @@ public class LongJump extends Module {
         switch (mode.getValue()) {
             case "Viper": {
                 if (!mc.thePlayer.onGround) return;
-
-                mc.timer.timerSpeed = 0.3f;
+                TimerUtil.setTimer(0.3f);
                 if (mc.thePlayer.isMoving()) {
                     for (int i = 0; i < 17; ++i) {
-                        PlayerUtil.TP(event, 0.32, 0);
+                        PlayerUtil.TPGROUND(event, 0.32, 0);
                     }
                 }
                 break;

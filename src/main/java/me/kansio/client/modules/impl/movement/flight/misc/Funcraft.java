@@ -8,12 +8,13 @@ import me.kansio.client.modules.impl.movement.flight.FlightMode;
 import me.kansio.client.utils.math.MathUtil;
 import me.kansio.client.utils.math.Stopwatch;
 import me.kansio.client.utils.player.PlayerUtil;
+import me.kansio.client.utils.player.TimerUtil;
 import net.minecraft.potion.Potion;
 
 public class Funcraft extends FlightMode {
 
-    private double moveSpeed, lastDist, ascension;
-    private int level, wait, xd, xdnewtest;
+    private double moveSpeed, lastDist;
+    private int level, xd;
     private Stopwatch timer = new Stopwatch();
 
     public Funcraft() {
@@ -36,7 +37,7 @@ public class Funcraft extends FlightMode {
                 mc.thePlayer.setPosition(mc.thePlayer.posX, mc.thePlayer.posY - 0.15, mc.thePlayer.posZ);
                 mc.thePlayer.motionY = -0.15;
             } else mc.thePlayer.motionY = 0;
-            if (mc.getCurrentServerData() != null && mc.getCurrentServerData().serverIP != null && mc.getCurrentServerData().serverIP.toLowerCase().contains("hypixel")) {
+            if (mc.getCurrentServerData() != null && mc.getCurrentServerData().serverIP != null && mc.getCurrentServerData().serverIP.toLowerCase().contains("funcraft")) {
                 event.setOnGround(true);
             }
             double result = 0.00000000334947 + MathUtil.getRandomInRange(0.00000000014947, 0.00000000064947);
@@ -44,20 +45,9 @@ public class Funcraft extends FlightMode {
                 event.setPosY(mc.thePlayer.posY + result);
                 event.setOnGround(false);
             }
-                        /*if (mc.thePlayer.ticksExisted % 3 == 0) {
-                            ascension += value;
-                        }
-                        if (ascension > value * 7) {
-                            event.setOnGround(false);
-                            event.setY(mc.thePlayer.posY + ascension);
-                            ascension /= 1.125F;
-                        }*/
-            // Printer.print(""+event.getY());
             if ((mc.thePlayer.moveForward != 0.0F || mc.thePlayer.moveStrafing != 0.0F) && mc.thePlayer.onGround) {
                 if (!getFlight().getBoost().getValue()) {
                     final float motionY = 0.42f + (mc.thePlayer.isPotionActive(Potion.jump) ? ((mc.thePlayer.getActivePotionEffect(Potion.jump).getAmplifier() + 1) * 0.1F) : 0);
-                    //mc.thePlayer.motionY = motionY;
-                    //   mc.thePlayer.setPosition(mc.thePlayer.posX, mc.thePlayer.posY + motionY, mc.thePlayer.posZ);
                 }
                 if ((getFlight().getBoostMode().getValue().equals("Damage") || getFlight().getBoostMode().getValue().equals("WOWOMG")) && getFlight().getBoost().getValue())
                     if (xd == 0) {
@@ -72,12 +62,11 @@ public class Funcraft extends FlightMode {
     public void onMove(MoveEvent event) {
         if (getFlight().getExtraBoost().getValue() && getFlight().getBoost().getValue()) {
             if (!timer.timeElapsed(135) && timer.timeElapsed(20)) {
-                mc.timer.timerSpeed = 3.5f;
+                TimerUtil.setTimer(3.5f);
             } else {
-                mc.timer.timerSpeed = 1.0f;
+                TimerUtil.Reset();
             }
             if (level < 20) {
-                //TimerUtil.Timer(3.6f);
                 timer.resetTime();
             }
         }
@@ -89,10 +78,8 @@ public class Funcraft extends FlightMode {
                     if (mc.thePlayer.isMoving()) {
                         if (level != 1) {
                             if (level == 2) {
-                                //mc.timer.timerSpeed = Math.max(1, 3.5F);
                                 ++level;
                                 moveSpeed *= mc.thePlayer.isPotionActive(Potion.moveSpeed) ? getFlight().getSpeed().getValue() - 0.3 : getFlight().getSpeed().getValue();
-                                //Printer.print("2: "+moveSpeed);
                             } else if (level == 3) {
                                 ++level;
                                 double difference = 0.1 * (lastDist - getBaseMoveSpeed());
@@ -113,7 +100,6 @@ public class Funcraft extends FlightMode {
                     } else {
                         moveSpeed = 0;
                     }
-                    //Printer.print("f: "+moveSpeed + " " + level);
                     moveSpeed = Math.max(moveSpeed, getBaseMoveSpeed());
                     if (level == 1 && mc.thePlayer.hurtResistantTime != 19 && !getFlight().getBoostMode().getValue().equals("Normal")) moveSpeed = 0.011;
                     PlayerUtil.setMotion(event, moveSpeed);
@@ -122,10 +108,8 @@ public class Funcraft extends FlightMode {
                     if (mc.thePlayer.isMoving()) {
                         if (level != 1) {
                             if (level == 2) {
-                                //mc.timer.timerSpeed = Math.max(1, 3.5F);
                                 ++level;
-                                moveSpeed *= mc.thePlayer.isPotionActive(Potion.moveSpeed) ? getFlight().getSpeed().getValue() - 0.3 : getFlight().getSpeed().getValue();
-                                //Printer.print("2: "+moveSpeed);
+                                moveSpeed *= mc.thePlayer.isPotionActive(Potion.moveSpeed) ? getFlight().getSpeed().getValue() - 0.3 : getFlight().getSpeed().getValue();;
                             } else if (level == 3) {
                                 ++level;
                                 double difference = 0.01 * (lastDist - getBaseMoveSpeed());
@@ -146,15 +130,12 @@ public class Funcraft extends FlightMode {
                     } else {
                         moveSpeed = 0;
                     }
-                    //  Printer.print("f: "+moveSpeed + " " + level);
                     moveSpeed = Math.max(moveSpeed, getBaseMoveSpeed());
                     PlayerUtil.setMotion(event, moveSpeed);
                     break;
             }
         } else {
             PlayerUtil.setMotion(event, getBaseMoveSpeed());
-            //TimerUtil.Timer(0.5f);
-            //MoveUtil.TP(event, 0.28, 0);
         }
     }
 
@@ -184,8 +165,6 @@ public class Funcraft extends FlightMode {
     @Override
     public void onDisable() {
         lastDist = 0.0D;
-        xdnewtest = 0;
-        ascension = 0;
         xd = 0;
     }
 }
