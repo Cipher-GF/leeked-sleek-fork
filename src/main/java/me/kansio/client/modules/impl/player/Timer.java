@@ -20,11 +20,7 @@ public class Timer extends Module {
 
     @Override
     public void onEnable() {
-        if (tick.getValue()) {
-            TimerUtil.setTimer(speed.getValue(), tickspeed.getValue());
-        } else {
-            TimerUtil.setTimer(speed.getValue());
-        }
+        TimerUtil.setTimer(speed.getValue());
     }
 
     @Override

@@ -465,4 +465,8 @@ public class PlayerUtil extends Util {
         mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(posX + raycastFinalX, posY + y, posZ + raycastFinalZ, mc.thePlayer.onGround));
         mc.thePlayer.setPosition(posX + raycastFinalX, posY + y, posZ + raycastFinalZ);
     }
+
+    public static double getPlayerSpeed() {
+        return Math.sqrt(mc.thePlayer.motionX * mc.thePlayer.motionY * mc.thePlayer.motionZ);
+    }
 }
