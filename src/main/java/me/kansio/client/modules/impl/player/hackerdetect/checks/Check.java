@@ -1,7 +1,9 @@
 package me.kansio.client.modules.impl.player.hackerdetect.checks;
 
+import me.kansio.client.Client;
 import me.kansio.client.modules.impl.player.HackerDetect;
 import me.kansio.client.utils.chat.ChatUtil;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 
 public abstract class Check {
@@ -10,8 +12,10 @@ public abstract class Check {
 
     protected HackerDetect detect = HackerDetect.getInstance();
 
-    public void onUpdate() {
+    protected static Minecraft mc = Minecraft.getMinecraft();
 
+    public void onUpdate() {
+        
     }
 
     public void onBlocksMCGameStartTick() {
@@ -23,7 +27,21 @@ public abstract class Check {
     }
 
     public void flag(EntityPlayer player) {
-        ChatUtil.logSleekCheater(player.getName(), name());
+        HackerDetect hack = (HackerDetect) Client.getInstance().getModuleManager().getModuleByName("HackerDetect");
+        switch (hack.theme.getValue()) {
+            case "Sleek":
+                ChatUtil.logSleekCheater(player.getName(), name());
+                break;
+            case "Verus":
+                ChatUtil.logVerusCheater(player.getName(), name(), "2" );
+                break;
+            case "AGC":
+                ChatUtil.logNoPrefix("§9You are no longer viewing alerts");
+                break;
+            case "Ghostly":
+                ChatUtil.logNoPrefix("§9You are no longer viewing alerts");
+                break;
+        }
     }
 
 }
