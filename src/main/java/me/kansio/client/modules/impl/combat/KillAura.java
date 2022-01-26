@@ -106,11 +106,6 @@ public class KillAura extends Module {
     public void onMotion(UpdateEvent event) {
         List<EntityLivingBase> entities = FightUtil.getMultipleTargets(swingrage.getValue(), players.getValue(), friends.getValue(), animals.getValue(), walls.getValue(), monsters.getValue(), invisible.getValue());
 
-        if (!event.isPre()) {
-            if (autoblockmode.getValue().equalsIgnoreCase("Verus"))
-                PacketUtil.sendPacket(new C08PacketPlayerBlockPlacement(mc.thePlayer.inventory.getCurrentItem()));
-        }
-
         if (mc.currentScreen != null) return;
 
         if (isBlocking && target == null) {
@@ -237,10 +232,19 @@ public class KillAura extends Module {
 
     private boolean attack(EntityLivingBase entity, double chance, String blockMode) {
         if (FightUtil.canHit(chance / 100)) {
-            if (swingmode.getValue().equalsIgnoreCase("client"))
+            
+            if (!isBlocking && autoblockmode.getValue().equalsIgnoreCase("verus")) {
+                PacketUtil.sendPacket(new C08PacketPlayerBlockPlacement(mc.thePlayer.inventory.getCurrentItem()));
+                isBlocking = true;
+            }
+
+            if (swingmode.getValue().equalsIgnoreCase("client")) {
                 mc.thePlayer.swingItem();
-            else if (swingmode.getValue().equalsIgnoreCase("server"))
+            }
+            else if (swingmode.getValue().equalsIgnoreCase("server")) {
                 mc.getNetHandler().addToSendQueue(new C0APacketAnimation());
+            }
+
 
             mc.playerController.attackEntity(mc.thePlayer, entity);
 
