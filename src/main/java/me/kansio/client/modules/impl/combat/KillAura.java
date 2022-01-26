@@ -18,6 +18,7 @@ import me.kansio.client.utils.math.Stopwatch;
 import me.kansio.client.utils.network.PacketUtil;
 import me.kansio.client.utils.rotations.AimUtil;
 import me.kansio.client.utils.rotations.Rotation;
+import net.minecraft.block.BlockAir;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -231,17 +232,21 @@ public class KillAura extends Module {
 
     private boolean attack(EntityLivingBase entity, double chance, String blockMode) {
         if (FightUtil.canHit(chance / 100)) {
-            if (swingmode.getValue().equalsIgnoreCase("client"))
-                mc.thePlayer.swingItem();
-            else if (swingmode.getValue().equalsIgnoreCase("server"))
-                mc.getNetHandler().addToSendQueue(new C0APacketAnimation());
-
-            mc.playerController.attackEntity(mc.thePlayer, entity);
-
+            
             if (!isBlocking && autoblockmode.getValue().equalsIgnoreCase("verus")) {
-                PacketUtil.sendPacketNoEvent(new C08PacketPlayerBlockPlacement(mc.thePlayer.inventory.getCurrentItem()));
+                PacketUtil.sendPacket(new C08PacketPlayerBlockPlacement(mc.thePlayer.inventory.getCurrentItem()));
                 isBlocking = true;
             }
+
+            if (swingmode.getValue().equalsIgnoreCase("client")) {
+                mc.thePlayer.swingItem();
+            }
+            else if (swingmode.getValue().equalsIgnoreCase("server")) {
+                mc.getNetHandler().addToSendQueue(new C0APacketAnimation());
+            }
+
+
+            mc.playerController.attackEntity(mc.thePlayer, entity);
 
             return true;
         } else {

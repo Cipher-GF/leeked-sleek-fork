@@ -25,7 +25,13 @@ public class Bhop extends SpeedMode {
 
     @Override
     public void onEnable() {
+        mc.timer.timerSpeed = getSpeed().getTimer().getValue();
         hDist.set(0);
+    }
+
+    @Override
+    public void onDisable() {
+        mc.timer.timerSpeed = 1.0f;
     }
 
     @Override
@@ -44,7 +50,6 @@ public class Bhop extends SpeedMode {
         }
         double speed = doFriction(hDist);
         PlayerUtil.setMotion(speed);
-        mc.timer.timerSpeed = getSpeed().getTimer().getValue();
     }
 
     public double doFriction(AtomicDouble hdist) {
