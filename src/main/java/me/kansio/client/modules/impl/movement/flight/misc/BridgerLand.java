@@ -15,16 +15,22 @@ public class BridgerLand extends FlightMode {
         double motionY = 0;
 
         if (mc.gameSettings.keyBindJump.isKeyDown()) {
-            motionY = getFlight().getSpeed().getValue() / 2;
+            motionY = 2;
         }
 
         if (mc.gameSettings.keyBindSneak.isKeyDown()) {
-            motionY = -(getFlight().getSpeed().getValue() / 2);
+            motionY = -2;
         }
 
         mc.thePlayer.motionY = motionY;
-        PlayerUtil.setMotion(getFlight().getSpeed().getValue().floatValue());
-        TimerUtil.setTimer(0.1f, 3);
+        TimerUtil.setTimer(0.1f, 4);
+        //works on german bw just got to value patch tmr
+        if (mc.thePlayer.ticksExisted % 4 == 0 ) {
+            PlayerUtil.setMotion(4);
+        } else {
+            PlayerUtil.setMotion(0);;
+            mc.thePlayer.motionY = 0;
+        }
     }
 
 }

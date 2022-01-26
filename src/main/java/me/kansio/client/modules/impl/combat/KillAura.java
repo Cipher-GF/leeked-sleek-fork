@@ -45,7 +45,6 @@ public class KillAura extends Module {
     public static EntityLivingBase target;
     public static boolean isBlocking, swinging;
     public final Stopwatch attackTimer = new Stopwatch();
-    // Switch aura doesn't work rn
     public ModeValue mode = new ModeValue("Mode", this, /*"Switch",*/ "Smart");
     public ModeValue targetPriority = new ModeValue("Target Priority", this, "None", "Distance", "Armor", "HurtTime", "Health");
     public ModeValue rotatemode = new ModeValue("Rotation Mode", this, "None", "Default", "Down", "NCP", "AAC", "GWEN");
