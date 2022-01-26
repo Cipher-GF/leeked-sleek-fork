@@ -467,6 +467,12 @@ public class PlayerUtil extends Util {
     }
 
     public static double getPlayerSpeed() {
-        return Math.sqrt(mc.thePlayer.motionX * mc.thePlayer.motionY * mc.thePlayer.motionZ);
+        double val = Math.sqrt(mc.thePlayer.motionX * mc.thePlayer.motionY * mc.thePlayer.motionZ);
+
+        if (Double.isNaN(val)) {
+            return 0;
+        }
+
+        return val;
     }
 }

@@ -15,6 +15,7 @@ import me.kansio.client.gui.notification.NotificationManager;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.ModeValue;
 import me.kansio.client.property.value.NumberValue;
+import me.kansio.client.utils.chat.ChatUtil;
 import me.kansio.client.utils.java.ReflectUtils;
 import me.kansio.client.utils.player.PlayerUtil;
 import me.kansio.client.utils.player.TimerUtil;
@@ -54,6 +55,14 @@ public class Speed extends Module {
     @Override
     public void onEnable() {
         currentMode = modes.stream().anyMatch(speedMode -> speedMode.getName().equalsIgnoreCase(mode.getValue())) ? modes.stream().filter(speedMode -> speedMode.getName().equalsIgnoreCase(mode.getValue())).findAny().get() : null ;
+
+        if (currentMode == null) {
+            ChatUtil.log("§c§lError! §fIt looks like this mode doesn't exist anymore, setting it to a mode that exists.");
+            currentMode = modes.get(0);
+            toggle();
+            return;
+        }
+
         currentMode.onEnable();
     }
 
