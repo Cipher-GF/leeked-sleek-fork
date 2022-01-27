@@ -69,10 +69,10 @@ public class MainMenu extends GuiScreen
         RenderUtils.drawImage(soviet ? SBACKGROUND : BACKGROUND, 0, 0, width, height);
 
         String s = "§lS§fleek";
-        Fonts.Arial30.drawCenteredString(s, width / 2, height / 4 + 24, ColorPalette.GREEN.getColor().getRGB());
+        Fonts.Arial30.drawCenteredString(s, width / 2, height / 4 + 24, ColorPalette.BLUE.getColor().getRGB());
 
-        String s1 = "Made with <3 by Reset, Kansio, PC, Divine";
-        Fonts.Verdana.drawString(s1, (width - Fonts.Arial30.getStringWidth(s1)) + 100, height - 10, -1);
+        String s1 = "Made with <3 by Reset, Kansio, PC and Divine";
+        Fonts.Verdana.drawString(s1, (width - Fonts.Arial30.getStringWidth(s1)) + 115, height - 10, -1);
 
         super.drawScreen(mouseX, mouseY, partialTicks);
     }

@@ -1,8 +1,8 @@
 {
   "data": {
     "author": "Kansio",
-    "name": "blocks",
-    "lastUpdated": "Date 2022/1/27 Time 22:1:18"
+    "name": "blocksnew",
+    "lastUpdated": "Date 2022/1/27 Time 22:15:14"
   },
   "modules": [
     {
@@ -14,7 +14,7 @@
     {
       "name": "Auto Server",
       "keybind": 0,
-      "enabled": true,
+      "enabled": false,
       "Server": "BlocksMC",
       "Kit": "Knight"
     },
@@ -69,7 +69,7 @@
       "Rotation Mode": "Default",
       "Swing Range": "6.0",
       "Block Range": "6.0",
-      "CPS": "10.0",
+      "CPS": "9.0",
       "Randomize CPS": "2.0",
       "Swing Mode": "Client",
       "Autoblock Mode": "Verus",
