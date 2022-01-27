@@ -30,6 +30,7 @@ import net.minecraft.util.EnumFacing;
 public class AutoServer extends Module {
 
     private boolean hasClickedAutoPlay;
+    private boolean hasSelectedKit;
 
     private ModeValue modeValue = new ModeValue("Server", this, "BlocksMC");
     private ModeValue kitValue = new ModeValue("Kit", this, modeValue, new String[]{"BlocksMC"},"Armorer", "Knight");

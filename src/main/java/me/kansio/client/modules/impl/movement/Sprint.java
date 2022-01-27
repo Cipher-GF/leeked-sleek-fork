@@ -12,9 +12,12 @@ import me.kansio.client.modules.impl.Module;
 import me.kansio.client.modules.impl.player.NoSlow;
 import me.kansio.client.property.value.BooleanValue;
 import me.kansio.client.property.value.ModeValue;
+import me.kansio.client.utils.chat.ChatUtil;
 import me.kansio.client.utils.network.PacketUtil;
 import net.minecraft.network.play.client.C02PacketUseEntity;
+import net.minecraft.network.play.client.C03PacketPlayer;
 import net.minecraft.network.play.client.C0BPacketEntityAction;
+import net.minecraft.network.play.server.S08PacketPlayerPosLook;
 
 @ModuleData(
         name = "Sprint",
@@ -45,7 +48,7 @@ public class Sprint extends Module {
                 }
                 break;
             case "Omni":
-                if (mc.thePlayer.isMoving())
+                if (mc.thePlayer.isMoving() && !mc.thePlayer.isSprinting())
                     mc.thePlayer.setSprinting(true);
                 break;
         }
@@ -53,7 +56,13 @@ public class Sprint extends Module {
 
     @Subscribe
     public void onPacket(PacketEvent event) {
-
+        if (event.getPacketDirection().name().equalsIgnoreCase("INBOUND") && !(event.getPacket() instanceof C03PacketPlayer))
+        if (keepSprint.getValue() && event.getPacket() instanceof C0BPacketEntityAction) {
+            C0BPacketEntityAction packet = event.getPacket();
+            if (((C0BPacketEntityAction) event.getPacket()).getAction() == C0BPacketEntityAction.Action.STOP_SPRINTING) {
+                event.setCancelled(true);
+            }
+        }
     }
 
     @Override

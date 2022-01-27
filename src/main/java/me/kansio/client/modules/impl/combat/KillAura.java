@@ -233,12 +233,6 @@ public class KillAura extends Module {
 
     private boolean attack(EntityLivingBase entity, double chance, String blockMode) {
         if (FightUtil.canHit(chance / 100)) {
-
-            if (!isBlocking && autoblockmode.getValue().equalsIgnoreCase("verus")) {
-                PacketUtil.sendPacket(new C08PacketPlayerBlockPlacement(mc.thePlayer.inventory.getCurrentItem()));
-                isBlocking = true;
-            }
-
             if (swingmode.getValue().equalsIgnoreCase("client")) {
                 mc.thePlayer.swingItem();
             }
@@ -248,6 +242,11 @@ public class KillAura extends Module {
 
 
             mc.playerController.attackEntity(mc.thePlayer, entity);
+
+            if (!isBlocking && autoblockmode.getValue().equalsIgnoreCase("verus")) {
+                PacketUtil.sendPacket(new C08PacketPlayerBlockPlacement(mc.thePlayer.inventory.getCurrentItem()));
+                isBlocking = true;
+            }
 
             return true;
         } else {
