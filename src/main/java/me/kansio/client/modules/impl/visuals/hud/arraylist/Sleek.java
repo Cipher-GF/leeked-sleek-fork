@@ -41,10 +41,10 @@ public class Sleek extends ArrayListMode {
 
                 String name = mod.getName() + "§7" + mod.getFormattedSuffix();
                 Color color = ColorUtils.getColorFromHud(y);
-                float xPos = event.getSr().getScaledWidth() - Fonts.HUD.getStringWidth(name) - 6;
+                float xPos = event.getSr().getScaledWidth() - Fonts.YantramanavThin.getStringWidth(name) - 6;
 
-                Gui.drawRect(xPos - 1.5, y - 1, event.getSr().getScaledWidth(), Fonts.HUD.getHeight() + y + 1, new Color(0, 0, 0, 80).getRGB());
-                Gui.drawRect(xPos - 2.5, y - 1, xPos - 1.5, Fonts.HUD.getHeight() + y + 1, color.getRGB());
+                Gui.drawRect(xPos - 1.5, y - 1, event.getSr().getScaledWidth(), Fonts.YantramanavThin.getHeight() + y + 1, new Color(0, 0, 0, 80).getRGB());
+                Gui.drawRect(xPos - 2.5, y - 1, xPos - 1.5, Fonts.YantramanavThin.getHeight() + y + 1, color.getRGB());
 
                 if (sorted.size() > index) {
                     Module nextMod = sorted.get(index);
@@ -52,12 +52,12 @@ public class Sleek extends ArrayListMode {
                     String nextName = nextMod.getName() + "§7" + nextMod.getFormattedSuffix();
                     float nextxPos = (float) (event.getSr().getScaledWidth() - Fonts.HUD.getStringWidth(nextName) - 7.5);
 
-                    Gui.drawRect(xPos - 2.5, Fonts.HUD.getHeight() + y + 1, nextxPos, Fonts.HUD.getHeight() + y + 2, color.getRGB());
+                    Gui.drawRect(xPos - 2.5, Fonts.YantramanavThin.getHeight() + y + 1, nextxPos, Fonts.YantramanavThin.getHeight() + y + 2, color.getRGB());
                 } else {
-                    Gui.drawRect(xPos - 2.5, Fonts.HUD.getHeight() + y + 1, xPos + 100, Fonts.HUD.getHeight() + y + 2, color.getRGB());
+                    Gui.drawRect(xPos - 2.5, Fonts.YantramanavThin.getHeight() + y + 1, xPos + 100, Fonts.YantramanavThin.getHeight() + y + 2, color.getRGB());
                 }
 
-                Fonts.HUD.drawStringWithShadow(name, (float) (xPos + 1.5), (float) (0.5 + y), color.getRGB());
+                Fonts.YantramanavThin.drawStringWithShadow(name, (float) (xPos + 1.5), (float) (0.5 + y), color.getRGB());
                 y = y + 9;
 
 

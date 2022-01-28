@@ -34,7 +34,7 @@ public class MMC extends FlightMode {
 
             mc.thePlayer.motionY = motionY;
             TimerUtil.setTimer(0.1f);
-            PlayerUtil.setMotion(5.0f);
+            PlayerUtil.setMotion(8.0f);
         } else  {
             TimerUtil.Reset();
         }
