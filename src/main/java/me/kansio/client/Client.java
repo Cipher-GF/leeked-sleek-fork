@@ -140,8 +140,11 @@ public class Client {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         //save keybinds
-        keybindManager.save();
+        if (keybindManager != null) {
+            keybindManager.save();
+        }
     }
 
     @Subscribe
