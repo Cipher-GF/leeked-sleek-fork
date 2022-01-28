@@ -1,13 +1,13 @@
-package me.kansio.client.modules.impl.movement.flight.misc;
+package me.kansio.client.modules.impl.movement.flight.bridgerland;
 
 import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.impl.movement.flight.FlightMode;
 import me.kansio.client.utils.player.PlayerUtil;
 import me.kansio.client.utils.player.TimerUtil;
 
-public class BridgerLandTimer extends FlightMode {
-    public BridgerLandTimer() {
-        super("BridgerLand Timer");
+public class Timer extends FlightMode {
+    public Timer() {
+        super("BridgerLand (Timer)");
     }
 
     @Override
