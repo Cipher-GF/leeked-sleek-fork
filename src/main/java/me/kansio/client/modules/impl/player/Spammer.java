@@ -19,7 +19,7 @@ import org.apache.commons.lang3.RandomUtils;
 )
 public class Spammer extends Module {
 
-    private final NumberValue delay = new NumberValue<>("Speed", this, 3000, 0, 600000, 0.1);
+    private final NumberValue delay = new NumberValue<>("Delay", this, 3000, 0, 600000, 0.1);
 
     private final StringValue message = new StringValue("Text", this, "sex");
 

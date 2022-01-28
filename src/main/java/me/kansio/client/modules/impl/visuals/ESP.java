@@ -43,7 +43,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-@ModuleData(name = "ESP", category = ModuleCategory.VISUALS, description = "Shows player locations")
+@ModuleData(
+        name = "ESP",
+        category = ModuleCategory.VISUALS,
+        description = "Shows player locations"
+)
 public class ESP extends Module {
 
     public final BooleanValue outline = new BooleanValue("Outline", this, true);

@@ -20,12 +20,12 @@ import net.minecraft.util.AxisAlignedBB;
 )
 public class NoFall extends Module {
 
-    private ModeValue mode = new ModeValue("Mode", this, "Packet", "Spoof", "Verus");
+    private ModeValue mode = new ModeValue("Mode", this, "Packet", "Spoof", "Collide");
 
     @Subscribe
     public void onCollide(BlockCollisionEvent event) {
         switch (mode.getValue()) {
-            case "Verus": {
+            case "Collide": {
                 Flight flight = (Flight) Client.getInstance().getModuleManager().getModuleByName("Flight");
 
                 if (flight.isToggled()) return;
