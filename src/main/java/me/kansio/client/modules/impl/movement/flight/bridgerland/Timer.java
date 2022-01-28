@@ -25,12 +25,11 @@ public class Timer extends FlightMode {
         mc.thePlayer.motionY = motionY;
         TimerUtil.setTimer(0.1f, 5);
         //works on german bw just got to value patch tmr
-        if (mc.thePlayer.ticksExisted % 4 == 0 ) {
+        if (mc.thePlayer.ticksExisted % 4 == 0) {
             PlayerUtil.setMotion(4);
         } else {
             PlayerUtil.setMotion(0);
             mc.thePlayer.motionY = 0;
         }
     }
-
 }
