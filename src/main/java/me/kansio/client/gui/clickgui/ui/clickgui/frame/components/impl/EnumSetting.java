@@ -28,29 +28,38 @@ public class EnumSetting extends Component implements Priority {
 
     @Override
     public boolean mouseClicked(int mouseX, int mouseY, int mouseButton) {
-        if(RenderUtils.hover(x, y, mouseX, mouseY, defaultWidth, getOffset()))
-        {
+        if (RenderUtils.hover(x, y, mouseX, mouseY, defaultWidth, getOffset())) {
             ModeValue enumValue = (ModeValue) getSetting();
 
             int enumIndex = 0;
-            for(String _enum : enumValue.getChoices()) {
-                if(_enum == enumValue.getValue()) break;
+            for (String _enum : enumValue.getChoices()) {
+                if (_enum.equals(enumValue.getValue())) break;
                 ++enumIndex;
             }
 
-            if(mouseButton == 1) {
-                if(enumIndex - 1 >= 0) {
+            if (mouseButton == 1) {
+                if (enumIndex - 1 >= 0) {
                     enumValue.setValue(enumValue.getChoices().get(enumIndex - 1));
                 } else {
                     enumValue.setValue(enumValue.getChoices().get(enumValue.getChoices().size() - 1));
                 }
+
+                if (enumValue.getOwner().isToggled()) {
+                    enumValue.getOwner().toggle();
+                    enumValue.getOwner().toggle();
+                }
             }
 
-            if(mouseButton == 0) {
-                if(enumIndex + 1 < enumValue.getChoices().size()) {
+            if (mouseButton == 0) {
+                if (enumIndex + 1 < enumValue.getChoices().size()) {
                     enumValue.setValue(enumValue.getChoices().get(enumIndex + 1));
                 } else {
                     enumValue.setValue(enumValue.getChoices().get(0));
+                }
+
+                if (enumValue.getOwner().isToggled()) {
+                    enumValue.getOwner().toggle();
+                    enumValue.getOwner().toggle();
                 }
             }
             return true;

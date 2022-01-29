@@ -1,7 +1,7 @@
 {
   "data": {
     "author": "Kansio",
-    "name": "blockers59",
+    "name": "blocksmc",
     "lastUpdated": "Date 2022/1/29 Time 14:47:26"
   },
   "modules": [
@@ -357,7 +357,7 @@
       "name": "No Fall",
       "keybind": 0,
       "enabled": true,
-      "Mode": "Verus"
+      "Mode": "Collide"
     },
     {
       "name": "Strafe",
@@ -422,7 +422,7 @@
       "enabled": false,
       "Mode": "Vanilla",
       "Speed": "1.2000000000000002",
-      "AntiKick": "true",
+      "AntiKick": "false",
       "Boost": "true",
       "Extra Boost": "true",
       "Glide": "true",
@@ -464,7 +464,7 @@
       "Hide Render": "true",
       "BPS": "true",
       "Watermark": "true",
-      "Client Name": "\u0026lS\u0026fleek ",
+      "Client Name": "\u0026lS\u0026fleek",
       "Module Suffix": "",
       "ArrayList Y": "3",
       "Scoreboard": "Right",

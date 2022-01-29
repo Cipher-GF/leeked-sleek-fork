@@ -23,7 +23,7 @@ import net.minecraft.world.World;
 )
 public class HitEffect extends Module {
 
-    // Particals
+    // Particles
     public ModeValue mode = new ModeValue("HitMarker Mode", this, "Blood", "None");
     public NumberValue<Integer> modenum = new NumberValue<>("Amount", this,1, 1, 20, 1);
 
@@ -33,9 +33,9 @@ public class HitEffect extends Module {
 
     // Crack Particals
     public BooleanValue crit = new BooleanValue("Criticals", this, false);
-    public NumberValue<Integer> critnum = new NumberValue<>("Amount", this,1, 1, 2, 1, crit);
+    public NumberValue<Integer> critnum = new NumberValue<>("Amount", this,1, 1, 10, 1, crit);
     public BooleanValue ench = new BooleanValue("Enchants", this, false);
-    public NumberValue<Integer> enchnum = new NumberValue<>("Amount", this,1, 1, 2, 1, ench);
+    public NumberValue<Integer> enchnum = new NumberValue<>("Amount", this,1, 1, 10, 1, ench);
 
     @Subscribe
     public void onUpdate(UpdateEvent event) {
