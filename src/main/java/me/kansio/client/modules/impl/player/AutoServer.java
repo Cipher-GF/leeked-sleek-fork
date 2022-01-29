@@ -29,8 +29,10 @@ import net.minecraft.util.EnumFacing;
 )
 public class AutoServer extends Module {
 
-    private boolean hasClickedAutoPlay;
-    private boolean hasSelectedKit;
+    private boolean hasClickedAutoPlay = false;
+    private boolean hasSelectedKit = false;
+
+    private boolean hasWorldChanged = false;
 
     private ModeValue modeValue = new ModeValue("Server", this, "BlocksMC");
     private ModeValue kitValue = new ModeValue("Kit", this, modeValue, new String[]{"BlocksMC"},"Armorer", "Knight");
@@ -45,9 +47,9 @@ public class AutoServer extends Module {
                     ItemStack item = ((S2FPacketSetSlot) event.getPacket()).func_149174_e();
                     int slot = ((S2FPacketSetSlot) event.getPacket()).func_149173_d();
 
-                    //Auto play
-                    if (item == null) return;
-
+                    //Make sure the item isn't null to prevent npe
+                    if (item == null)
+                        return;
 
                     if (item.getDisplayName() != null && item.getDisplayName().contains("Play Again")) {
 
@@ -59,26 +61,30 @@ public class AutoServer extends Module {
                             mc.getNetHandler().addToSendQueue(new C08PacketPlayerBlockPlacement(item));
                         }
 
+                        hasWorldChanged = true;
+
                         //change the slot back to what it was.
                         mc.getNetHandler().addToSendQueue(new C09PacketHeldItemChange(mc.thePlayer.inventory.currentItem));
                     }
 
                     //Auto Kit Select
-                    if (item.getDisplayName() != null && item.getDisplayName().contains("Kit Selector")) {
+                    if (!hasSelectedKit) {
+                        if (item.getDisplayName() != null && item.getDisplayName().contains("Kit Selector")) {
 
-                        //if an inventory is open, just return
-                        if (mc.currentScreen != null) return;
+                            //if an inventory is open, just return
+                            if (mc.currentScreen != null) return;
 
-                        //set the slot to the bow
-                        mc.getNetHandler().addToSendQueue(new C09PacketHeldItemChange(0));
+                            //set the slot to the bow
+                            mc.getNetHandler().addToSendQueue(new C09PacketHeldItemChange(0));
 
-                        //right click on it
-                        for (int i = 0; i < 2; i++) {
-                            mc.getNetHandler().addToSendQueue(new C08PacketPlayerBlockPlacement(item));
+                            //right click on it
+                            for (int i = 0; i < 2; i++) {
+                                mc.getNetHandler().addToSendQueue(new C08PacketPlayerBlockPlacement(item));
+                            }
+
+                            //change the slot back to what it was.
+                            mc.getNetHandler().addToSendQueue(new C09PacketHeldItemChange(mc.thePlayer.inventory.currentItem));
                         }
-
-                        //change the slot back to what it was.
-                        mc.getNetHandler().addToSendQueue(new C09PacketHeldItemChange(mc.thePlayer.inventory.currentItem));
                     }
                 }
 
@@ -87,8 +93,6 @@ public class AutoServer extends Module {
 
                     //automatic kit selector
                     if (packetData.getWindowTitle().getFormattedText().contains("Kits")) {
-
-
 
                         switch (kitValue.getValue()) {
                             case "Armorer": {
@@ -100,6 +104,9 @@ public class AutoServer extends Module {
                                 break;
                             }
                         }
+
+                        //set selected kit to true
+                        hasSelectedKit = true;
                     }
                 }
                 break;
@@ -113,21 +120,10 @@ public class AutoServer extends Module {
     @Subscribe
     public void onUpdate(UpdateEvent event) {
         //set autoplay click to false since the world changed.
-        if (mc.thePlayer.ticksExisted < 5) {
+        if (mc.thePlayer.ticksExisted < 5 && hasWorldChanged) {
             hasClickedAutoPlay = false;
-        }
-
-        switch (modeValue.getValueAsString()) {
-            case "BlocksMC": {
-                /*/if (mc.thePlayer.capabilities.isFlying) {
-
-                    if (!hasClickedAutoPlay) {
-                        mc.getNetHandler().addToSendQueue(new C08PacketPlayerBlockPlacement(mc.thePlayer.getCurrentEquippedItem()));
-                        hasClickedAutoPlay = true;
-                    }
-                }/*/
-                break;
-            }
+            hasSelectedKit = false;
+            hasWorldChanged = false;
         }
     }
 }

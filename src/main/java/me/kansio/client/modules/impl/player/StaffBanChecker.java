@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 @ModuleData(
-        name = "Ban Chacker",
+        name = "Ban Checker",
         description = "Checks how many people got staff banned recently",
         category = ModuleCategory.PLAYER
 )
