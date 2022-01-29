@@ -120,6 +120,15 @@ public class ModuleManager {
         return null;
     }
 
+    public Module getModuleByNameIgnoreSpace(String name) {
+        for (Module module : modules) {
+            if (module.getName().replaceAll(" ", "").equalsIgnoreCase(name)) {
+                return module;
+            }
+        }
+        return null;
+    }
+
     public List<Module> getModulesFromCategory(ModuleCategory category) {
         ArrayList<Module> mods = new ArrayList<>();
         for (Module module : modules) {

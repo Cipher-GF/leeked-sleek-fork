@@ -18,7 +18,7 @@ public class VerusGround extends SpeedMode {
                 if (mc.thePlayer.onGround) {
                     mc.thePlayer.jump();
                     mc.thePlayer.motionY = 0.0;
-                    PlayerUtil.strafe(0.61F);
+                    PlayerUtil.setMotion(0.61F);
                     event.setMotionY(0.41999998688698);
                 }
                 PlayerUtil.strafe();

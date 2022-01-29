@@ -14,6 +14,7 @@ import net.minecraft.client.gui.inventory.GuiChest;
 import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.init.Items;
 import net.minecraft.item.*;
 import net.minecraft.network.play.client.C0BPacketEntityAction;
 import net.minecraft.network.play.client.C0DPacketCloseWindow;
@@ -44,6 +45,8 @@ public class InvManager extends Module {
     private BooleanValue autoArmorInInv = new BooleanValue("Armor Only in Inv", this, false, autoArmor);
     private NumberValue<Double> autoArmorDelay = new NumberValue<>("AutoArmor Delay", this, 25.0, 0.0, 1000.0, 1.0, autoArmor);
 
+    private BooleanValue disableIfSlimeBall = new BooleanValue("Disable if compass", this, true);
+
     private Stopwatch armorStop = new Stopwatch();
     private Stopwatch invStop = new Stopwatch();
     private Stopwatch swordStop = new Stopwatch();
@@ -66,6 +69,10 @@ public class InvManager extends Module {
         if (mc.currentScreen instanceof GuiChest) return;
 
         if (mc.thePlayer.isMoving() || !mc.thePlayer.onGround) {
+            return;
+        }
+
+        if (disableIfSlimeBall.getValue() && (mc.thePlayer.inventory.hasItem(Items.compass) || mc.thePlayer.inventory.hasItem(Items.slime_ball))) {
             return;
         }
 

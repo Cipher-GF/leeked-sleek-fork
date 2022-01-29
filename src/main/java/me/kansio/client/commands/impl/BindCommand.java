@@ -25,11 +25,11 @@ public class BindCommand extends Command {
                 }
             }
             else if (args[0].equalsIgnoreCase("del")) {
-                Module module = Client.getInstance().getModuleManager().getModuleByName(args[2]);
+                Module module = Client.getInstance().getModuleManager().getModuleByNameIgnoreSpace(args[2]);
                 ChatUtil.log("Deleted the bind.");
                 module.setKeyBind(0, true);
             } else {
-                Module module = Client.getInstance().getModuleManager().getModuleByName(args[0]);
+                Module module = Client.getInstance().getModuleManager().getModuleByNameIgnoreSpace(args[0]);
                 if (module != null) {
                     int key = Keyboard.getKeyIndex(args[1].toUpperCase());
                     if (key != -1) {

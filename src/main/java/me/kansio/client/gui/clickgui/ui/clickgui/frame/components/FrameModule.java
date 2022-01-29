@@ -157,7 +157,12 @@ public class FrameModule implements Priority {
                     module.toggle();
                     break;
                 case 1:
-                    opened = !opened;
+                    if (opened) {
+                        opened = false;
+                        offset = 200;
+                    } else {
+                        opened = true;
+                    }
                     break;
                 case 2:
                     listening = true;

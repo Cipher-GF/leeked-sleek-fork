@@ -23,7 +23,7 @@ public class ToggleCommand extends Command {
         String moduleName = args[0];
         ModuleManager moduleManager = Client.getInstance().getModuleManager();
 
-        Module mod = moduleManager.getModuleByName(moduleName);
+        Module mod = moduleManager.getModuleByNameIgnoreSpace(moduleName);
 
         if (mod == null) {
             ChatUtil.log("That module doesn't exist.");

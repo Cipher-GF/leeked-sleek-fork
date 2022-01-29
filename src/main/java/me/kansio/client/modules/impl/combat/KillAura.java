@@ -51,6 +51,7 @@ public class KillAura extends Module {
     public NumberValue<Double> autoblockRange = new NumberValue<>("Block Range", this, 3.0, 1.0, 12.0, 0.1);
     public NumberValue<Double> cps = new NumberValue<>("CPS", this, 12.0, 1.0, 20.0, 1.0);
     public NumberValue<Double> cprandom = new NumberValue<>("Randomize CPS", this, 3.0, 0.0, 10.0, 1.0);
+    public NumberValue chance = new NumberValue<>("Hit Chance", this, 100, 0, 100, 1);
     public ModeValue swingmode = new ModeValue("Swing Mode", this, "Client", "Server");
     public ModeValue autoblockmode = new ModeValue("Autoblock Mode", this, "None", "Real", "Verus", "Fake");
     public BooleanValue gcd = new BooleanValue("GCD", this, false);
@@ -212,14 +213,14 @@ public class KillAura extends Module {
                     }
                     switch (mode.getValue()) {
                         case "Switch": {
-                            if (canIAttack && attack(target, RandomUtils.nextInt(90, 100), autoblockmode.getValue())) {
+                            if (canIAttack && attack(target, chance.getValue().intValue(), autoblockmode.getValue())) {
                                 index++;
                                 attackTimer.resetTime();
                             }
                             break;
                         }
                         case "Smart": {
-                            if (canIAttack && attack(target, RandomUtils.nextInt(90, 100), autoblockmode.getValue())) {
+                            if (canIAttack && attack(target, chance.getValue().intValue(), autoblockmode.getValue())) {
                                 attackTimer.resetTime();
                             }
                         }

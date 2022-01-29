@@ -37,7 +37,7 @@ public class NameUtil {
         }
         final int capitalMode = (int)Math.round(Math.random() * 2.0);
         if (capitalMode == 1) {
-            name = String.valueOf(name.substring(0, 1).toUpperCase()) + name.substring(1);
+            name = name.substring(0, 1).toUpperCase() + name.substring(1);
         }
         else if (capitalMode == 2) {
             for (int j = 0; j < nameLength; ++j) {

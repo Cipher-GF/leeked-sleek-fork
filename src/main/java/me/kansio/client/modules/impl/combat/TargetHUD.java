@@ -46,10 +46,7 @@ public class TargetHUD extends Util {
                 if (target instanceof EntityPlayer) {
                     ResourceLocation skin = ((AbstractClientPlayer)target).getLocationSkin();
                     RenderUtils.drawFace(skin, 160, 360, 30, 30);
-                    //draw the animation on the head
-                    //RenderUtils.drawRect(160, 360, 30, 30, new Color(255, 0, 0, (float) (target.hurtTime * 1.2)).getRGB());
                 }
-
 
                 RenderUtils.drawBorderedRoundedRect(155, 400, (float) (20 * 6.9), 5, 5, 0.5f, new Color(40, 40, 40, 255).getRGB(), new Color(45, 45, 45, 255).getRGB());
                 RenderUtils.drawBorderedRoundedRect(155, 400, (float) (target.getHealth() > 0 ? targetHealthWidth : 6.9), 5, 5, 0.5f, ColorUtils.getColorFromHud(1).getRGB(), ColorUtils.getColorFromHud(1).getRGB());

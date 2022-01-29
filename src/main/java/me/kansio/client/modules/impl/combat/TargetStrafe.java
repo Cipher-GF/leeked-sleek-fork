@@ -41,6 +41,8 @@ public class TargetStrafe extends Module {
     public void onMotion(UpdateEvent event) {
         if (canStrafe() && autoF5.getValue()) {
             mc.gameSettings.thirdPersonView = 1;
+        } else if (!canStrafe() && autoF5.getValue()) {
+            mc.gameSettings.thirdPersonView = 0;
         }
 
         if (event.isPre()) {
