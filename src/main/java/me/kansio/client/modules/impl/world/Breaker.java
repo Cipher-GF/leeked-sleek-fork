@@ -18,7 +18,7 @@ import net.minecraft.util.EnumFacing;
 @ModuleData(
         name = "Breaker",
         category = ModuleCategory.WORLD,
-        description = "Shows player locations"
+        description = "Breaks beds and cakes"
 )
 public class Breaker extends Module {
 

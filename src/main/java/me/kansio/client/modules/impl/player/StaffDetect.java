@@ -59,7 +59,9 @@ public class StaffDetect extends Module {
                         staffInMatch.add(player.getName());
                         amount = staffInMatch.size();
                         ChatUtil.logNoPrefix("§4§l[Staff Detect]: §c" + staff + " §fis in your game!");
-                        mc.thePlayer.sendChatMessage("[Sleek Staff Detector] Found a staff member in the lobby: " + staff);
+
+                        if (announce.getValue())
+                            mc.thePlayer.sendChatMessage("[Sleek Staff Detector] Found a staff member in the lobby: " + staff);
                     }
                 }
             }

@@ -7,6 +7,7 @@ import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.value.value.ModeValue;
+import net.minecraft.item.ItemSkull;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.client.C08PacketPlayerBlockPlacement;
@@ -25,6 +26,8 @@ public class AutoServer extends Module {
     private boolean hasSelectedKit = false;
 
     private boolean hasWorldChanged = false;
+
+    private boolean hasClickedKitSelector = false;
 
     private ModeValue modeValue = new ModeValue("Server", this, "BlocksMC");
     private ModeValue kitValue = new ModeValue("Kit", this, modeValue, new String[]{"BlocksMC"},"Armorer", "Knight");
@@ -112,10 +115,50 @@ public class AutoServer extends Module {
     @Subscribe
     public void onUpdate(UpdateEvent event) {
         //set autoplay click to false since the world changed.
-        if (mc.thePlayer.ticksExisted < 5 && hasWorldChanged) {
+        if (mc.thePlayer.ticksExisted < 5) {
             hasClickedAutoPlay = false;
             hasSelectedKit = false;
             hasWorldChanged = false;
+            hasClickedKitSelector = false;
+        }
+
+        switch (modeValue.getValue()) {
+            case "BlocksMC": {
+
+                //auto select kit
+                if (!hasSelectedKit && !hasClickedKitSelector && mc.thePlayer.ticksExisted > 5) {
+
+                    for (int slot = 0; slot < mc.thePlayer.inventory.mainInventory.length; slot++) {
+                        ItemStack currentItem = mc.thePlayer.inventory.getStackInSlot(slot);
+
+                        if (currentItem == null) {
+                            continue;
+                        }
+
+                        if (currentItem.getDisplayName().contains("Kit Selector")) {
+                            //if an inventory is open, just return
+                            if (mc.currentScreen != null) return;
+
+                            //set the slot to the bow
+                            //BlocksMC skywars teams has a skull in the first slot for picking your teammate,
+                            //so check if it's a skull, if it is then click the second item in your hotbar
+                            if (!(mc.thePlayer.inventory.getStackInSlot(0).getItem() instanceof ItemSkull)) {
+                                mc.getNetHandler().addToSendQueue(new C09PacketHeldItemChange(0));
+                            } else {
+                                mc.getNetHandler().addToSendQueue(new C09PacketHeldItemChange(1));
+                            }
+
+                            //right click on it
+                            mc.getNetHandler().addToSendQueue(new C08PacketPlayerBlockPlacement(currentItem));
+
+                            //change the slot back to what it was.
+                            mc.getNetHandler().addToSendQueue(new C09PacketHeldItemChange(mc.thePlayer.inventory.currentItem));
+                        }
+                    }
+                }
+
+                break;
+            }
         }
     }
 }

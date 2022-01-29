@@ -86,7 +86,7 @@ public class HackerDetect extends Module {
     @Subscribe
     public void onPacket(PacketEvent event) {
         for (Check c : Client.getInstance().getCheckManager().getChecks()) {
-            c.onPacket();
+            c.onPacket(event);
         }
 
         if (event.getPacket() instanceof S02PacketChat) {

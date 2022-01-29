@@ -6,7 +6,7 @@ import me.kansio.client.event.impl.PacketEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
-import me.kansio.client.property.value.ModeValue;
+import me.kansio.client.value.value.ModeValue;
 import net.minecraft.network.play.server.S02PacketChat;
 import org.apache.commons.lang3.RandomUtils;
 
@@ -31,7 +31,7 @@ public class KillSults extends Module {
             switch (modeValue.getValue()) {
                 case "BlocksMC": {
                     if (msg.contains("for killing")) {
-                        sendKillSult();
+                        sendKillSult(msg.split(" ")[11]);
                     }
                     break;
                 }
@@ -39,7 +39,7 @@ public class KillSults extends Module {
         }
     }
 
-    public void sendKillSult() {
+    public void sendKillSult(String name) {
         final List<String> messages = Arrays.asList(
                 "You got sleeked L",
                 "Sleek is just better...",
@@ -57,6 +57,6 @@ public class KillSults extends Module {
                 "like da hack? https://discord.gg/GUauVwtFKj",
                 "hack too good? get it here: https://discord.gg/GUauVwtFKj"
         );
-        mc.thePlayer.sendChatMessage(messages.get(RandomUtils.nextInt(0, messages.size() - 1)));
+        mc.thePlayer.sendChatMessage(messages.get(RandomUtils.nextInt(0, messages.size() - 1)).replaceAll("%name%", name));
     }
 }

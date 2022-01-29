@@ -3,7 +3,7 @@ package me.kansio.client.gui.clickgui.ui.clickgui.frame.components;
 
 import lombok.Getter;
 import lombok.Setter;
-import me.kansio.client.property.Value;
+import me.kansio.client.value.Value;
 
 public abstract class Component
 {

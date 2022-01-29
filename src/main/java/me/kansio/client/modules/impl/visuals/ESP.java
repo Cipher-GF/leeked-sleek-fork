@@ -50,18 +50,18 @@ import java.util.Objects;
 public class ESP extends Module {
 
     public final BooleanValue outline = new BooleanValue("Outline", this, true);
-    public final ModeValue boxMode = new ModeValue("Box Type", this, "Box", "Corners");
-    public final BooleanValue fillInside = new BooleanValue("Fill", this, true);
+    public final ModeValue boxMode = new ModeValue("Box Type", this, "Corners", "Box");
+    public final BooleanValue fillInside = new BooleanValue("Fill Box", this, false);
     public final BooleanValue tag = new BooleanValue("Name", this, true);
     public final BooleanValue healthBar = new BooleanValue("Health Bar", this, true);
     public final BooleanValue armorBar = new BooleanValue("Armor Bar", this, true);
     public final BooleanValue localPlayer = new BooleanValue("Local", this, true);
     public final BooleanValue players = new BooleanValue("Players", this, true);
-    public final BooleanValue invisibles = new BooleanValue("Invisibles", this, true);
+    public final BooleanValue invisibles = new BooleanValue("Invisibles", this, false);
     public final BooleanValue mobs = new BooleanValue("Monsters", this, true);
-    public final BooleanValue animals = new BooleanValue("Animals", this, true);
+    public final BooleanValue animals = new BooleanValue("Animals", this, false);
     public final BooleanValue chests = new BooleanValue("Chests", this, false);
-    public final BooleanValue droppedItems = new BooleanValue("Dropped Items", this, true);
+    public final BooleanValue droppedItems = new BooleanValue("Dropped Items", this, false);
     public final List collectedEntities;
     private final IntBuffer viewport;
     private final FloatBuffer modelview;

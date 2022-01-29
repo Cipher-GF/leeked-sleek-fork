@@ -1,6 +1,7 @@
 package me.kansio.client.modules.impl.player.hackerdetect.checks;
 
 import me.kansio.client.Client;
+import me.kansio.client.event.impl.PacketEvent;
 import me.kansio.client.modules.impl.player.HackerDetect;
 import me.kansio.client.utils.chat.ChatUtil;
 import net.minecraft.client.Minecraft;
@@ -22,7 +23,7 @@ public abstract class Check {
 
 
     }
-    public void onPacket() {
+    public void onPacket(PacketEvent event) {
 
     }
 
@@ -34,12 +35,6 @@ public abstract class Check {
                 break;
             case "Verus":
                 ChatUtil.logVerusCheater(player.getName(), name(), "2" );
-                break;
-            case "AGC":
-                ChatUtil.logNoPrefix("§9You are no longer viewing alerts");
-                break;
-            case "Ghostly":
-                ChatUtil.logNoPrefix("§9You are no longer viewing alerts");
                 break;
         }
     }

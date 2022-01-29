@@ -15,4 +15,8 @@ public class TargetManager {
         return target.contains(ent.getName());
     }
 
+    public boolean isTarget(String ent) {
+        return target.contains(ent);
+    }
+
 }

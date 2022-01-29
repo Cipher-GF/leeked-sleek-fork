@@ -17,12 +17,13 @@ import org.lwjgl.opengl.GL11;
 
 @ModuleData(
         name = "Image ESP",
-        description = "Displays images On Players",
+        description = "Displays images on players",
         category = ModuleCategory.VISUALS
 )
 public class ImageESP extends Module {
 
     private ModeValue modeValue = new ModeValue("Mode", this, "Zuiy", "Zuiy2", "Floyed");
+
     private static final ResourceLocation ZUIY = new ResourceLocation("sleek/bg1.png");
     private static final ResourceLocation ZUIY2 = new ResourceLocation("sleek/bg1.png");
     private static final ResourceLocation FLOYED = new ResourceLocation("sleek/floyed.png");

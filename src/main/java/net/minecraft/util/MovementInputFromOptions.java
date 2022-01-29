@@ -1,5 +1,6 @@
 package net.minecraft.util;
 
+import me.kansio.client.utils.chat.ChatUtil;
 import net.minecraft.client.settings.GameSettings;
 
 public class MovementInputFromOptions extends MovementInput

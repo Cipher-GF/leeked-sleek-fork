@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit;
         description = "Checks how many people got staff banned recently",
         category = ModuleCategory.PLAYER
 )
-public class StaffBanChecker extends Module {
+public class BanChecker extends Module {
 
     private int lastStaffBans = 0;
     private int currentStaffBans = 0;
