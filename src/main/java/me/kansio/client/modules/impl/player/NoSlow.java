@@ -15,7 +15,7 @@ import me.kansio.client.property.value.ModeValue;
 )
 public class NoSlow extends Module {
 
-    public ModeValue mode = new ModeValue("Mode", this, "Vanilla", "IDk");
+    public ModeValue mode = new ModeValue("Mode", this, "Vanilla");
     public BooleanValue item = new BooleanValue("Item", this, true);
     public BooleanValue water = new BooleanValue("Water", this, false);
     public BooleanValue soulsand = new BooleanValue("SoulSand", this, false);
