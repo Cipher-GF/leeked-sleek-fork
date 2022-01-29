@@ -77,19 +77,16 @@ public class HUD extends Module {
     private InfoMode currentinfomode = infomodes.stream().anyMatch(infoMode -> infoMode.getName().equalsIgnoreCase(infomode.getValue())) ? infomodes.stream().filter(infoMode -> infoMode.getName().equalsIgnoreCase(infomode.getValue())).findAny().get() : null ;
 
     private final ModeValue colorMode = new ModeValue("Color Mode", this, "Sleek", "Rainbow", "Astolfo", "Nitrogen");
-    private final ModeValue line = new ModeValue("Line", this, "Wrapped");
-    //private final ModeValue colorMode = new ModeValue("Color Mode", this, "Sleek", "Rainbow", "Astolfo", "Nitrogen");
+    public ModeValue line = new ModeValue("Line", this, "None", "Top", "Wrapped");
+    public final NumberValue<Integer> bgalpha = new NumberValue<>("Alpha", this, 80, 0, 200, 1);
     public BooleanValue font = new BooleanValue("Font", this, false);
     public BooleanValue noti = new BooleanValue("Notifications", this, true);
     public BooleanValue hideRender = new BooleanValue("Hide Render", this, true);
-    public BooleanValue bps = new BooleanValue("BPS", this, true);
-
-    public BooleanValue watermark = new BooleanValue("Watermark", this, true);
 
     public StringValue clientName = new StringValue("Client Name", this, "Sleek");
     public StringValue listSuffix = new StringValue("Module Suffix", this, " [%s]");
 
-    public NumberValue arrayListY = new NumberValue("ArrayList Y", this, 4, 0, 20, 1);
+    public NumberValue arrayListY = new NumberValue("ArrayList Y", this, 4, 1, 20, 1);
 
     private final ModeValue scoreboardLocation = new ModeValue("Scoreboard", this, "Right", "Left");
     private final NumberValue<Double> scoreboardPos = new NumberValue<>("Scoreboard Y", this, 0.0, -500.0, 500.0, 1.0);
