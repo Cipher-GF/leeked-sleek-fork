@@ -27,6 +27,7 @@ public class Sleek extends ArrayListMode {
         int index = 0;
         Color color = ColorUtils.getColorFromHud(y);
 
+
         if (hud.font.getValue()) {
             ArrayList<Module> sorted = (ArrayList<Module>) Client.getInstance().getModuleManager().getModulesSorted(Fonts.YantramanavThin);
             sorted.removeIf(m -> !m.isToggled());
@@ -43,7 +44,7 @@ public class Sleek extends ArrayListMode {
                 String name = mod.getName() + "§7" + mod.getFormattedSuffix();
                 float xPos = event.getSr().getScaledWidth() - Fonts.YantramanavThin.getStringWidth(name) - 6;
 
-                Gui.drawRect(xPos - 1.5, y - 1, event.getSr().getScaledWidth(), Fonts.YantramanavThin.getHeight() + y, new Color(0, 0, 0, 80).getRGB());
+                Gui.drawRect(xPos - 1.5, y - 1, event.getSr().getScaledWidth(), Fonts.YantramanavThin.getHeight() + y, new Color(0, 0, 0, hud.bgalpha.getValue()).getRGB());
                 switch (getHud().line.getValue()) {
                     case "None":
                         break;
@@ -97,7 +98,7 @@ public class Sleek extends ArrayListMode {
                 String name = mod.getName() + "§7" + mod.getFormattedSuffix();
                 float xPos = event.getSr().getScaledWidth() - mc.fontRendererObj.getStringWidth(name) - 6;
 
-                Gui.drawRect(xPos - 1.5, y - 1, event.getSr().getScaledWidth(), mc.fontRendererObj.FONT_HEIGHT + y + 1, new Color(0, 0, 0, 80).getRGB());
+                Gui.drawRect(xPos - 1.5, y - 1, event.getSr().getScaledWidth(), mc.fontRendererObj.FONT_HEIGHT + y + 1, new Color(0, 0, 0, hud.bgalpha.getValue()).getRGB());
                 switch (getHud().line.getValue()) {
                     case "None":
                         break;

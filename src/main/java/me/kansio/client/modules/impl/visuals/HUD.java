@@ -78,13 +78,10 @@ public class HUD extends Module {
 
     private final ModeValue colorMode = new ModeValue("Color Mode", this, "Sleek", "Rainbow", "Astolfo", "Nitrogen");
     public ModeValue line = new ModeValue("Line", this, "None", "Top", "Wrapped");
-    private final NumberValue bgalpha = new NumberValue("Alpha", this, 80F, 0F, 100F, 1F);
+    public final NumberValue<Integer> bgalpha = new NumberValue<>("Alpha", this, 80, 0, 200, 1);
     public BooleanValue font = new BooleanValue("Font", this, false);
     public BooleanValue noti = new BooleanValue("Notifications", this, true);
     public BooleanValue hideRender = new BooleanValue("Hide Render", this, true);
-    public BooleanValue bps = new BooleanValue("BPS", this, true);
-
-    public BooleanValue watermark = new BooleanValue("Watermark", this, true);
 
     public StringValue clientName = new StringValue("Client Name", this, "Sleek");
     public StringValue listSuffix = new StringValue("Module Suffix", this, " [%s]");
