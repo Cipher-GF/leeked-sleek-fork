@@ -8,8 +8,8 @@ import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.visuals.ClickGUI;
 import me.kansio.client.modules.impl.visuals.HUD;
-import me.kansio.client.property.Value;
-import me.kansio.client.property.value.*;
+import me.kansio.client.value.Value;
+import me.kansio.client.value.value.*;
 import net.minecraft.client.Minecraft;
 import org.lwjgl.input.Keyboard;
 

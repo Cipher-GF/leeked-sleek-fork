@@ -1,7 +1,7 @@
 package me.kansio.client.manager;
 
 
-import me.kansio.client.property.Value;
+import me.kansio.client.value.Value;
 
 import java.util.ArrayList;
 import java.util.List;

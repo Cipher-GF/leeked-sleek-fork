@@ -1,13 +1,12 @@
 package me.kansio.client.modules.impl.visuals;
 
 import com.google.common.eventbus.Subscribe;
-import com.viaversion.viaversion.libs.fastutil.Hash;
 import me.kansio.client.Client;
 import me.kansio.client.event.impl.RenderOverlayEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
-import me.kansio.client.property.value.NumberValue;
+import me.kansio.client.value.value.NumberValue;
 import me.kansio.client.utils.render.ColorUtils;
 import me.kansio.client.utils.render.RenderUtils;
 import net.minecraft.entity.Entity;

@@ -1,11 +1,9 @@
 package me.kansio.client.modules.impl.visuals;
 
-import me.kansio.client.gui.clickgui.utils.render.animation.easings.Animate;
-import me.kansio.client.gui.external.ExternalClickGui;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
-import me.kansio.client.property.value.BooleanValue;
+import me.kansio.client.value.value.BooleanValue;
 import org.lwjgl.input.Keyboard;
 
 @ModuleData(

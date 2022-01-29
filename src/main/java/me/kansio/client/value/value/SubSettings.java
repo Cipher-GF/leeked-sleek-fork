@@ -1,8 +1,8 @@
-package me.kansio.client.property.value;
+package me.kansio.client.value.value;
 
 import lombok.Getter;
 import lombok.Setter;
-import me.kansio.client.property.Value;
+import me.kansio.client.value.Value;
 
 import java.util.ArrayList;
 import java.util.Collections;

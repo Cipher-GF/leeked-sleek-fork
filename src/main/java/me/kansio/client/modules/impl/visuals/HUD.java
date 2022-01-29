@@ -9,10 +9,10 @@ import me.kansio.client.modules.impl.Module;
 import me.kansio.client.modules.impl.visuals.hud.ArrayListMode;
 import me.kansio.client.modules.impl.visuals.hud.InfoMode;
 import me.kansio.client.modules.impl.visuals.hud.WaterMarkMode;
-import me.kansio.client.property.value.BooleanValue;
-import me.kansio.client.property.value.ModeValue;
-import me.kansio.client.property.value.NumberValue;
-import me.kansio.client.property.value.StringValue;
+import me.kansio.client.value.value.BooleanValue;
+import me.kansio.client.value.value.ModeValue;
+import me.kansio.client.value.value.NumberValue;
+import me.kansio.client.value.value.StringValue;
 import me.kansio.client.utils.java.ReflectUtils;
 
 import java.util.Comparator;

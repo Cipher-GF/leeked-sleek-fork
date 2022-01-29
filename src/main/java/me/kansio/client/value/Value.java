@@ -1,9 +1,9 @@
-package me.kansio.client.property;
+package me.kansio.client.value;
 
 import lombok.Getter;
 import me.kansio.client.modules.impl.Module;
-import me.kansio.client.property.value.BooleanValue;
-import me.kansio.client.property.value.ModeValue;
+import me.kansio.client.value.value.BooleanValue;
+import me.kansio.client.value.value.ModeValue;
 
 import java.util.ArrayList;
 import java.util.Collections;
