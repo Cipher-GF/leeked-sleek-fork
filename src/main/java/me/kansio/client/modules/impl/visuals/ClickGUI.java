@@ -9,7 +9,7 @@ import org.lwjgl.input.Keyboard;
 @ModuleData(
         name = "Click GUI",
         category = ModuleCategory.VISUALS,
-        description = "The click gui... nothing special",
+        description = "The click gui... nothing special (Credit: Wykt)",
         bind = Keyboard.KEY_RSHIFT
 )
 public class ClickGUI extends Module {

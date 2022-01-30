@@ -1,11 +1,13 @@
 package me.kansio.client.modules.impl.visuals;
 
 import com.google.common.eventbus.Subscribe;
+import me.kansio.client.event.impl.PacketEvent;
 import me.kansio.client.event.impl.RenderOverlayEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.utils.render.RenderUtils;
+import net.minecraft.network.handshake.client.C00Handshake;
 
 @ModuleData(
         name = "Playtime",
@@ -14,12 +16,18 @@ import me.kansio.client.utils.render.RenderUtils;
 )
 public class Playtime extends Module {
 
-    public long joinTime = 0;
-    public long currentTime = System.currentTimeMillis();
+    public long currentTime;
 
     @Override
     public void onEnable() {
         currentTime = System.currentTimeMillis();
+    }
+
+    @Subscribe
+    public void onPacket(PacketEvent event) {
+        if (event.getPacket() instanceof C00Handshake) {
+            currentTime = System.currentTimeMillis();
+        }
     }
 
     @Subscribe

@@ -48,7 +48,7 @@ public class Flight extends Module {
     private final ModeValue mode = new ModeValue("Mode", this, modes.stream().map(FlightMode::getName).collect(Collectors.toList()).toArray(new String[]{}));
     private FlightMode currentMode = modes.stream().anyMatch(flyMode -> flyMode.getName().equalsIgnoreCase(mode.getValue())) ? modes.stream().filter(flyMode -> flyMode.getName().equalsIgnoreCase(mode.getValue())).findAny().get() : null;
     private NumberValue<Double> speed = new NumberValue<>("Speed", this, 1d, 0d, 10d, 0.1);
-    private BooleanValue antikick = new BooleanValue("AntiKick", this, true);
+    private BooleanValue antikick = new BooleanValue("AntiKick", this, true, mode, "BridgerLand (TP)");
 
     private BooleanValue boost = new BooleanValue("Boost", this, true, mode, "Funcraft");
     private BooleanValue extraBoost = new BooleanValue("Extra Boost", this, true, mode, "Funcraft");

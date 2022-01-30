@@ -55,9 +55,11 @@ public class NoFall extends Module {
     public void onPacket(PacketEvent event) {
         switch (mode.getValueAsString()) {
             case "Packet": {
-                if (event.getPacket() instanceof C03PacketPlayer) {
-                    C03PacketPlayer c03 = event.getPacket();
-                    c03.onGround = true;
+                if (mc.thePlayer.fallDistance > 2f) {
+                    if (event.getPacket() instanceof C03PacketPlayer) {
+                        C03PacketPlayer c03 = event.getPacket();
+                        c03.onGround = true;
+                    }
                 }
                 break;
             }

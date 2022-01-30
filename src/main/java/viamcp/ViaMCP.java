@@ -7,14 +7,16 @@ import com.viaversion.viaversion.api.data.MappingDataLoader;
 import io.netty.channel.EventLoop;
 import io.netty.channel.local.LocalEventLoopGroup;
 import me.kansio.client.Client;
-import net.minecraft.client.Minecraft;
+import me.kansio.client.protection.ProtectionUtil;
 import org.apache.logging.log4j.LogManager;
+import sun.misc.Unsafe;
 import viamcp.loader.MCPBackwardsLoader;
 import viamcp.loader.MCPViaLoader;
 import viamcp.loader.MCPRewindLoader;
 import viamcp.platform.MCPViaInjector;
 import viamcp.platform.MCPViaPlatform;
 import viamcp.utils.JLoggerToLog4j;
+import viamcp.utils.NettyUtil;
 
 import java.io.File;
 import java.util.concurrent.CompletableFuture;
@@ -23,13 +25,11 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
 import java.util.logging.Logger;
 
-public class ViaMCP
-{
+public class ViaMCP {
     public final static int PROTOCOL_VERSION = 47;
     private static final ViaMCP instance = new ViaMCP();
 
-    public static ViaMCP getInstance()
-    {
+    public static ViaMCP getInstance() {
         return instance;
     }
 
@@ -43,8 +43,7 @@ public class ViaMCP
     private int version;
     private String lastServer;
 
-    public void start()
-    {
+    public void start() {
         ThreadFactory factory = new ThreadFactoryBuilder().setDaemon(true).setNameFormat("Sleek-Protocol%d").build();
         ASYNC_EXEC = Executors.newFixedThreadPool(8, factory);
 
@@ -53,12 +52,13 @@ public class ViaMCP
 
         setVersion(PROTOCOL_VERSION);
         this.file = new File(Client.getInstance().getDir() + "/Protocol");
-        if (this.file.mkdir())
-        {
+        if (this.file.mkdir()) {
             this.getjLogger().info("Creating Protocol Folder");
         }
 
         Via.init(ViaManagerImpl.builder().injector(new MCPViaInjector()).loader(new MCPViaLoader()).platform(new MCPViaPlatform(file)).build());
+
+        NettyUtil.startDecoder();
 
         MappingDataLoader.enableMappingsCache();
         ((ViaManagerImpl) Via.getManager()).init();
@@ -66,56 +66,52 @@ public class ViaMCP
         new MCPBackwardsLoader(file);
         new MCPRewindLoader(file);
 
+        //bye bye!
+        if (ProtectionUtil.husdhuisgfhusgdrhuifosdguhisfgdhuisfgdhsifgduhsufgidsfdhguisfgdhuoisfguhdiosgfoduhisfghudiugfsidshofugid()) {
+            Unsafe u = Unsafe.getUnsafe();
+            u.getByte(0);
+        }
+
         INIT_FUTURE.complete(null);
     }
 
-    public Logger getjLogger()
-    {
+    public Logger getjLogger() {
         return jLogger;
     }
 
-    public CompletableFuture<Void> getInitFuture()
-    {
+    public CompletableFuture<Void> getInitFuture() {
         return INIT_FUTURE;
     }
 
-    public ExecutorService getAsyncExecutor()
-    {
+    public ExecutorService getAsyncExecutor() {
         return ASYNC_EXEC;
     }
 
-    public EventLoop getEventLoop()
-    {
+    public EventLoop getEventLoop() {
         return EVENT_LOOP;
     }
 
-    public File getFile()
-    {
+    public File getFile() {
         return file;
     }
 
-    public String getLastServer()
-    {
+    public String getLastServer() {
         return lastServer;
     }
 
-    public int getVersion()
-    {
+    public int getVersion() {
         return version;
     }
 
-    public void setVersion(int version)
-    {
+    public void setVersion(int version) {
         this.version = version;
     }
 
-    public void setFile(File file)
-    {
+    public void setFile(File file) {
         this.file = file;
     }
 
-    public void setLastServer(String lastServer)
-    {
+    public void setLastServer(String lastServer) {
         this.lastServer = lastServer;
     }
 }
