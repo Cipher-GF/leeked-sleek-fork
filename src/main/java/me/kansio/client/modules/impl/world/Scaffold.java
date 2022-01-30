@@ -9,6 +9,7 @@ import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.modules.impl.visuals.HUD;
+import me.kansio.client.utils.player.PlayerUtil;
 import me.kansio.client.value.value.BooleanValue;
 import me.kansio.client.value.value.ModeValue;
 import me.kansio.client.value.value.NumberValue;
@@ -47,7 +48,7 @@ public class Scaffold extends Module {
     private final Stopwatch sneakTimer = new Stopwatch();
     public BooleanValue safewalk = new BooleanValue("Safewalk", this, true);
     public BooleanValue keepY = new BooleanValue("Keep Y", this, false);
-    private ModeValue modeValue = new ModeValue("Mode", this, "Verus", "NEW", "NCP", "Vulcan");
+    private ModeValue modeValue = new ModeValue("Mode", this, "Verus", "New", "NCP", "Vulcan", "Dev");
     private BooleanValue swing = new BooleanValue("Swing", this, true);
     private BooleanValue sprint = new BooleanValue("Sprint", this, false);
     private BooleanValue tower = new BooleanValue("Tower", this, true);
@@ -82,6 +83,7 @@ public class Scaffold extends Module {
                 lastSlot = getSlotWithBlock();
                 break;
             }
+            case "Dev":
             case "NEW":
             case "NCP": {
                 blockEntry = null;
@@ -114,6 +116,7 @@ public class Scaffold extends Module {
                 break;
             }
             case "NEW":
+            case "Dev":
             case "NCP": {
                 mc.thePlayer.sendQueue.addToSendQueue(new C09PacketHeldItemChange(this.startSlot));
                 lastBlockEntry = null;
@@ -173,7 +176,6 @@ public class Scaffold extends Module {
                 if (vec2f != null) {
                     event.setRotationYaw(vec2f.x);
                     event.setRotationPitch(vec2f.y);
-
                 }
 
                 int slot = getSlotWithBlock();
@@ -245,7 +247,6 @@ public class Scaffold extends Module {
             }
             case "NEW":
             case "NCP": {
-
                 if (this.lastBlockEntry != null && this.blockEntry != null) {
                     Vector2f rotation = RotationUtil.getRotations(getPositionByFace(this.lastBlockEntry.getPosition(), this.lastBlockEntry.getFacing()));
 
@@ -253,9 +254,12 @@ public class Scaffold extends Module {
                         mc.thePlayer.forceSprinting(sprint.getValue());
                     }
 
-                    if (modeValue.getValue().equals("NCP")) {
+                    if (modeValue.getValue().equals("NCP") || modeValue.getValue().equals("New")) {
                         event.setRotationYaw(rotation.x);
                         event.setRotationPitch(rotation.y);
+
+                        mc.thePlayer.rotationYawHead = rotation.x;
+                        mc.thePlayer.renderPitchHead = rotation.y;
                     } else {
                         event.setRotationYaw(RotationUtil.getRotations(getPositionByFace(blockEntry.getPosition(), blockEntry.getFacing())).x);
                         event.setRotationPitch(80);
@@ -266,14 +270,12 @@ public class Scaffold extends Module {
                     if (blockEntry == null) return;
 
                     this.blockEntry = blockEntry;
-
-
                 }
 
                 Scaffold.BlockEntry blockEntry = find(new Vec3(0, 0, 0));
                 this.lastBlockEntry = blockEntry;
 
-                if (!event.isPre() && blockEntry != null) {
+                if (event.isPre() && blockEntry != null) {
                     int slot = getSlotWithBlock();
 
                     if (slot > -1) {
@@ -297,8 +299,50 @@ public class Scaffold extends Module {
                         }
                     }
                 }
+                break;
             }
-            break;
+            case "Dev": {
+                Vector2f vec2f = null;
+
+                mc.thePlayer.forceSprinting(false);
+                PlayerUtil.setMotion(0.005);
+
+                if (this.blockEntry != null) {
+                    vec2f = RotationUtil.getRotations(getPositionByFace(blockEntry.getPosition(), blockEntry.getFacing()));
+
+                    vec2f.setY(90);
+                }
+
+                Scaffold.BlockEntry blockEntry = (find(new Vec3(0, 0, 0)));
+
+                if (blockEntry == null) return;
+
+                this.blockEntry = blockEntry;
+
+                if (vec2f != null) {
+                    event.setRotationYaw(vec2f.x);
+                    event.setRotationPitch(vec2f.y);
+                }
+
+                int slot = getSlotWithBlock();
+
+                if (getBlockCount() < 1 && this.didPlaceBlock) {
+                    mc.thePlayer.motionY -= 20;
+                    this.didPlaceBlock = false;
+                    return;
+                }
+
+                if (this.blockEntry != null && vec2f != null && slot > -1 && event.isPre()) {
+                    if (lastSlot != slot) {
+                        mc.thePlayer.inventory.currentItem = slot;
+                        lastSlot = slot;
+                    }
+
+
+                    placeBlockVerus(this.blockEntry.getPosition().add(0, 0, 0), this.blockEntry.getFacing(), slot, swing.getValue());
+                }
+                break;
+            }
         }
     }
 
