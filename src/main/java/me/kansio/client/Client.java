@@ -139,28 +139,6 @@ public class Client {
             e.printStackTrace();
         }
 
-        Thread configRefresher = new Thread(() -> {
-            while (true) {
-                String configs = null;
-                try {
-                    configs = HttpUtil.getConfigUrl();
-                } catch (IOException e) {
-
-                }
-                JsonObject json = new JsonParser().parse(configs).getAsJsonObject();
-                if (json.get("uid").getAsString().equals(Client.getInstance().getUid())) {
-                    try {
-                        if (!json.get("hwid").getAsString().equals(HttpUtil.getConfigAsJson())) {
-                            getConfigManager().retry();
-                        }
-                    } catch (Exception e) {
-                    }
-                }
-            }
-        });
-
-        configRefresher.start();
-
         try {
             IPCClient client = new IPCClient(937350566886137886L);
             client.setListener(new IPCListener() {
