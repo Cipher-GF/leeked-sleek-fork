@@ -56,7 +56,7 @@ public class IRC extends Module {
 
         if (message.startsWith("-") || message.startsWith("- ")) {
             event.setCancelled(true);
-            client.send(event.getMessage().replace("- ", ""));
+            client.send(event.getMessage().replace("-", ""));
         }
     }
 }
