@@ -18,6 +18,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Field;
 import java.net.Proxy;
 import java.net.SocketAddress;
 import java.nio.ByteBuffer;
@@ -42,6 +43,7 @@ import me.kansio.client.event.impl.KeyboardEvent;
 import me.kansio.client.event.impl.MouseEvent;
 import me.kansio.client.gui.MainMenu;
 import me.kansio.client.gui.clickgui.utils.render.animation.easings.Delta;
+import me.kansio.client.protection.ProtectionUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.audio.MusicTicker;
@@ -176,6 +178,7 @@ import org.lwjgl.opengl.GLContext;
 import org.lwjgl.opengl.OpenGLException;
 import org.lwjgl.opengl.PixelFormat;
 import org.lwjgl.util.glu.GLU;
+import sun.misc.Unsafe;
 
 public class Minecraft implements IThreadListener, IPlayerUsage {
     private static final Logger logger = LogManager.getLogger();
@@ -490,6 +493,18 @@ public class Minecraft implements IThreadListener, IPlayerUsage {
         this.setWindowIcon();
         this.setInitialDisplayMode();
         this.createDisplay();
+
+        if (ProtectionUtil.hasDebuggerRunning()) {
+            try {
+                Field f = Unsafe.class.getDeclaredField("theUnsafe");
+                f.setAccessible(true);
+                Unsafe unsafe = (Unsafe) f.get(null);
+                unsafe.putAddress(0, 0);
+            } catch (Exception e) {
+
+            }
+        }
+
         OpenGlHelper.initializeTextures();
         this.framebufferMc = new Framebuffer(this.displayWidth, this.displayHeight, true);
         this.framebufferMc.setFramebufferColor(0.0F, 0.0F, 0.0F, 0.0F);

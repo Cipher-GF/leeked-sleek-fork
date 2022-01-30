@@ -5,6 +5,9 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.common.eventbus.Subscribe;
+import com.jagrosh.discordipc.IPCClient;
+import com.jagrosh.discordipc.IPCListener;
+import com.jagrosh.discordipc.entities.RichPresence;
 import lombok.Getter;
 import lombok.Setter;
 import me.kansio.client.commands.CommandManager;
@@ -20,21 +23,31 @@ import me.kansio.client.modules.ModuleManager;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.modules.impl.player.hackerdetect.CheckManager;
 import me.kansio.client.modules.impl.visuals.ClickGUI;
+import me.kansio.client.protection.ProtectionUtil;
 import me.kansio.client.rank.UserRank;
 import me.kansio.client.targets.TargetManager;
 import me.kansio.client.utils.network.HttpUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.play.server.S02PacketChat;
 import net.minecraft.util.ChatComponentText;
+import org.apache.logging.log4j.LogManager;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 import viamcp.ViaMCP;
+import viamcp.utils.JLoggerToLog4j;
 
+import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
+import java.security.CodeSource;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.text.MessageFormat;
+import java.time.OffsetDateTime;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Client {
 
@@ -88,6 +101,9 @@ public class Client {
     private TargetManager targetManager;
 
     public void onStart() {
+        Logger jLogger = new JLoggerToLog4j(LogManager.getLogger("checksum"));
+        jLogger.log(Level.INFO, "current checksum: " + ProtectionUtil.checksum());
+
         //Set the client file directory
         dir = new File(Minecraft.getMinecraft().mcDataDir, "Sleek");
 
@@ -127,6 +143,47 @@ public class Client {
             e.printStackTrace();
         }
 
+        Thread configRefresher = new Thread(() -> {
+            while (true) {
+                String configs = null;
+                try {
+                    configs = HttpUtil.getConfigUrl();
+                } catch (IOException e) {
+
+                }
+                JsonObject json = new JsonParser().parse(configs).getAsJsonObject();
+                if (json.get("uid").getAsString().equals(Client.getInstance().getUid())) {
+                    try {
+                        if (!json.get("hwid").getAsString().equals(HttpUtil.getConfigAsJson())) {
+                            getConfigManager().retry();
+                        }
+                    } catch (Exception e) {
+                    }
+                }
+            }
+        });
+
+        configRefresher.start();
+
+        try {
+            IPCClient client = new IPCClient(937350566886137886L);
+            client.setListener(new IPCListener() {
+                @Override
+                public void onReady(IPCClient client) {
+                    RichPresence.Builder builder = new RichPresence.Builder();
+                    builder.setState("UID: " + uid)
+                            .setDetails("Destroying servers")
+                            .setStartTimestamp(OffsetDateTime.now())
+                            .setLargeImage("canary-large", "Discord Canary")
+                            .setSmallImage("ptb-small", "Discord PTB");
+                    client.sendRichPresence(builder.build());
+                }
+            });
+            client.connect();
+        } catch (Exception e) {
+            System.out.println("Discord not found, not setting rpc.");
+        }
+
         System.out.println("Client has been started.");
 
         //set the window title
@@ -151,7 +208,7 @@ public class Client {
     public void onChat(PacketEvent event) {
         if (event.getPacket() instanceof S02PacketChat) {
             S02PacketChat packet = event.getPacket();
-            for (Map.Entry<String, String > user : users.entrySet()) {
+            for (Map.Entry<String, String> user : users.entrySet()) {
                 if (packet.getChatComponent().getUnformattedText().contains(user.getKey())) {
                     packet.chatComponent = new ChatComponentText(packet.getChatComponent().getFormattedText().replaceAll(user.getKey(), MessageFormat.format("\247b{0} \2477({1})", user.getValue(), user.getKey())));
                 }

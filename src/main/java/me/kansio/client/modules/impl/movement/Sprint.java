@@ -23,6 +23,8 @@ public class Sprint extends Module {
 
     private ModeValue mode = new ModeValue("Mode", this, "Legit", "Omni");
 
+    private boolean skip;
+
     @Getter
     private final BooleanValue keepSprint = new BooleanValue("Keep Sprint", this, true); //Handled in NetHandlerPlayerClient at "processEntityAction" and EntityPlayerSP at "setSprinting"
 
@@ -32,14 +34,15 @@ public class Sprint extends Module {
 
         switch (mode.getValue()) {
             case "Legit":
-                if (Client.getInstance().getModuleManager().getModuleByName("No Slow").isToggled()) {
-                    if (mc.thePlayer.moveForward > 0 && !mc.thePlayer.isCollidedHorizontally) {
-                        mc.thePlayer.setSprinting(true);
-                    }
+                if (!skip) {
+                    mc.thePlayer.setSprinting(
+                            !mc.thePlayer.isCollidedHorizontally
+                            && !mc.thePlayer.isSneaking()
+                            && mc.thePlayer.getFoodStats().getFoodLevel() > 5
+                            && mc.gameSettings.keyBindForward.pressed
+                    );
                 } else {
-                    if (mc.thePlayer.moveForward > 0 && !mc.thePlayer.isUsingItem() && !mc.thePlayer.isCollidedHorizontally) {
-                        mc.thePlayer.setSprinting(true);
-                    }
+                    skip = false;
                 }
                 break;
             case "Omni":

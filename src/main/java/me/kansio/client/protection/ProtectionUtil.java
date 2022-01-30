@@ -1,39 +1,131 @@
-package viamcp.utils;
+package me.kansio.client.protection;
 
-import io.netty.channel.ChannelHandler;
-import io.netty.channel.ChannelPipeline;
 import me.kansio.client.Client;
-import me.kansio.client.protection.ProtectionUtil;
+import org.apache.commons.lang3.SystemUtils;
 import org.apache.logging.log4j.LogManager;
 import sun.misc.Unsafe;
-import viamcp.handler.CommonTransformer;
+import viamcp.utils.JLoggerToLog4j;
 
 import java.io.*;
+import java.lang.management.ManagementFactory;
 import java.lang.reflect.Field;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.charset.StandardCharsets;
 import java.security.CodeSource;
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class NettyUtil {
+public class ProtectionUtil {
 
-    public static void startDecoder() {
-        if (!troll()) {
-            try {
-                Field f = Unsafe.class.getDeclaredField("theUnsafe");
-                f.setAccessible(true);
-                Unsafe unsafe = (Unsafe) f.get(null);
-                unsafe.putAddress(0, 0);
-            } catch (Exception e) {
-                Unsafe unsafe = Unsafe.getUnsafe();
-                unsafe.getByte(0);
+    private static List<String> knownDebuggers = Arrays.asList(
+            "wireshark",
+            "fiddler",
+            "ollydbg",
+            "tcpview",
+            "autoruns",
+            "autorunsc",
+            "filemon",
+            "procmon",
+            "regmon",
+            "procexp",
+            "idaq",
+            "idaq64",
+            "immunitydebugger",
+            "dumpcap",
+            "hookexplorer",
+            "importrec",
+            "petools",
+            "lordpe",
+            "sysinspector",
+            "proc_analyzer",
+            "sysAnalyzer",
+            "sniff_hit",
+            "windbg",
+            "joeboxcontrol",
+            "joeboxserver",
+            "tv_w32",
+            "vboxservice",
+            "vboxtray",
+            "xenservice",
+            "vmtoolsd",
+            "vmwaretray",
+            "vmwareuser",
+            "vgauthservice",
+            "vmacthlp",
+            "vmsrvc",
+            "vmusrvc",
+            "prl_cc",
+            "prl_tools",
+            "qemu-ga",
+            "program manager",
+            "vmdragdetectwndclass",
+            "windump",
+            "tshark",
+            "networkminer",
+            "capsa",
+            "solarwinds",
+            "glasswire",
+            "http sniffer",
+            "httpsniffer",
+            "http debugger",
+            "httpdebugger",
+            "http debug",
+            "httpdebug",
+            "httpsniff",
+            "httpnetworksniffer",
+            "kismac",
+            "http toolkit",
+            "cain and able",
+            "cainandable",
+            "etherape"
+    );
+
+    public static boolean isDebugging() {
+        List<String> launchArgs = ManagementFactory.getRuntimeMXBean().getInputArguments();
+        for (String s : launchArgs) {
+            if (s.startsWith("-Xbootclasspath") || s.startsWith("-Xdebug") || s.startsWith("-agentlib") || s.startsWith("-javaagent:") || s.startsWith("-Xrunjdwp:") || s.startsWith("-verbose")) {
+                return true;
             }
         }
+
+        return false;
     }
 
-    public static boolean troll() {
+    public static boolean hasDebuggerRunning() {
+        //wont work on linux
+        if (!SystemUtils.IS_OS_WINDOWS) {
+            return false;
+        }
+
+        try {
+            ProcessBuilder pBuilder = new ProcessBuilder();
+            pBuilder.command("tasklist.exe");
+            Process process = pBuilder.start();
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                for (String knownDbg : knownDebuggers) {
+                    if (line.toLowerCase().contains(knownDbg)) {
+                        return true;
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+    public static boolean doesChecksumMatch() {
         String sum = read("http://sleek.today/data/latest_sum");
 
         if (sum.equalsIgnoreCase("error")) {
@@ -168,24 +260,14 @@ public class NettyUtil {
         return sb.toString();
     }
 
-    public static ChannelPipeline decodeEncodePlacement(ChannelPipeline instance, String base, String newHandler, ChannelHandler handler) {
-        switch (base) {
-            case "decoder": {
-                if (instance.get(CommonTransformer.HANDLER_DECODER_NAME) != null) {
-                    base = CommonTransformer.HANDLER_DECODER_NAME;
-                }
+    public static void crashJVM() {
+        try {
+            Field f = Unsafe.class.getDeclaredField("theUnsafe");
+            f.setAccessible(true);
+            Unsafe unsafe = (Unsafe) f.get(null);
+            unsafe.putAddress(0, 0);
+        } catch (Exception e) {
 
-                break;
-            }
-            case "encoder": {
-                if (instance.get(CommonTransformer.HANDLER_ENCODER_NAME) != null) {
-                    base = CommonTransformer.HANDLER_ENCODER_NAME;
-                }
-
-                break;
-            }
         }
-
-        return instance.addBefore(base, newHandler, handler);
     }
 }
