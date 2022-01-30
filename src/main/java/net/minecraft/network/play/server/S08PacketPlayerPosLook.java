@@ -10,9 +10,9 @@ import java.util.Set;
 
 public class S08PacketPlayerPosLook implements Packet<INetHandlerPlayClient>
 {
-    private double x;
-    private double y;
-    private double z;
+    public double x;
+    public double y;
+    public double z;
     public float yaw;
     public float pitch;
     private Set<S08PacketPlayerPosLook.EnumFlags> field_179835_f;
