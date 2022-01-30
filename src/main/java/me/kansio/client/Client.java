@@ -36,12 +36,8 @@ import org.lwjgl.opengl.Display;
 import viamcp.ViaMCP;
 import viamcp.utils.JLoggerToLog4j;
 
-import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
-import java.security.CodeSource;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.text.MessageFormat;
 import java.time.OffsetDateTime;
 import java.util.HashMap;
@@ -102,7 +98,7 @@ public class Client {
 
     public void onStart() {
         Logger jLogger = new JLoggerToLog4j(LogManager.getLogger("checksum"));
-        jLogger.log(Level.INFO, "current checksum: " + ProtectionUtil.checksum());
+        jLogger.log(Level.INFO, "current checksum: " + ProtectionUtil.huisdfhufisdhfiusdhifsudfsihdusdiuhsfdiusfdhuisdfiuhsdfhisfdhiufsdhui());
 
         //Set the client file directory
         dir = new File(Minecraft.getMinecraft().mcDataDir, "Sleek");

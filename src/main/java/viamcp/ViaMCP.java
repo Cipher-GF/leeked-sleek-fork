@@ -19,7 +19,6 @@ import viamcp.utils.JLoggerToLog4j;
 import viamcp.utils.NettyUtil;
 
 import java.io.File;
-import java.lang.reflect.Field;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -68,7 +67,7 @@ public class ViaMCP {
         new MCPRewindLoader(file);
 
         //bye bye!
-        if (ProtectionUtil.hasDebuggerRunning()) {
+        if (ProtectionUtil.husdhuisgfhusgdrhuifosdguhisfgdhuisfgdhsifgduhsufgidsfdhguisfgdhuoisfguhdiosgfoduhisfghudiugfsidshofugid()) {
             Unsafe u = Unsafe.getUnsafe();
             u.getByte(0);
         }

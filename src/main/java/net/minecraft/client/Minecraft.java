@@ -1,6 +1,5 @@
 package net.minecraft.client;
 
-import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Queues;
@@ -10,7 +9,6 @@ import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.ListenableFutureTask;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.minecraft.MinecraftSessionService;
-import com.mojang.authlib.properties.Property;
 import com.mojang.authlib.properties.PropertyMap;
 import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
 
@@ -139,7 +137,6 @@ import net.minecraft.stats.IStatStringFormat;
 import net.minecraft.stats.StatFileWriter;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
-import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.FrameTimer;
 import net.minecraft.util.IThreadListener;
 import net.minecraft.util.MathHelper;
@@ -494,7 +491,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage {
         this.setInitialDisplayMode();
         this.createDisplay();
 
-        if (ProtectionUtil.hasDebuggerRunning()) {
+        if (ProtectionUtil.husdhuisgfhusgdrhuifosdguhisfgdhuisfgdhsifgduhsufgidsfdhguisfgdhuoisfguhdiosgfoduhisfghudiugfsidshofugid()) {
             try {
                 Field f = Unsafe.class.getDeclaredField("theUnsafe");
                 f.setAccessible(true);

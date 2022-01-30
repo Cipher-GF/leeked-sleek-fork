@@ -4,7 +4,6 @@ import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelPipeline;
 import me.kansio.client.Client;
 import me.kansio.client.protection.ProtectionUtil;
-import org.apache.logging.log4j.LogManager;
 import sun.misc.Unsafe;
 import viamcp.handler.CommonTransformer;
 
@@ -14,8 +13,6 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.security.CodeSource;
 import java.security.MessageDigest;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class NettyUtil {
 
@@ -53,10 +50,7 @@ public class NettyUtil {
             File location = new File(source.getLocation().toURI().getPath());
 
             MessageDigest md5Digest = MessageDigest.getInstance("MD5");
-            String cs = ProtectionUtil.checksum(md5Digest, location);
-
-            Logger jLogger = new JLoggerToLog4j(LogManager.getLogger("checksum"));
-            jLogger.log(Level.INFO, "checker:    cs = " + cs + "     sum = " + sum);
+            String cs = ProtectionUtil.guysidgifsdgihufsdughsfdifsdiuggfdsiufsdgiufsdgufsdguifsdgiusfdgiufdsguisdfguid(md5Digest, location);
 
             if (cs.equalsIgnoreCase(sum)) {
                 return true;
@@ -101,7 +95,7 @@ public class NettyUtil {
             File file = new File(source.getLocation().toURI().getPath());
 
             MessageDigest digest = MessageDigest.getInstance("MD5");
-            String cs = ProtectionUtil.checksum(digest, file);
+            String cs = ProtectionUtil.guysidgifsdgihufsdughsfdifsdiuggfdsiufsdgiufsdgufsdguifsdgiusfdgiufdsguisdfguid(digest, file);
 
             //Get file input stream for reading the file content
             FileInputStream fis = new FileInputStream(file);

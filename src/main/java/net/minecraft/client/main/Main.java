@@ -8,7 +8,6 @@ import joptsimple.OptionParser;
 import joptsimple.OptionSet;
 import joptsimple.OptionSpec;
 import me.kansio.client.protection.ProtectionUtil;
-import me.kansio.client.utils.math.MathUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.Session;
 
@@ -25,7 +24,7 @@ public class Main {
 
     public static void main(String[] p_main_0_) {
         //anti debugging
-        if (ProtectionUtil.hasDebuggerRunning()) {
+        if (ProtectionUtil.husdhuisgfhusgdrhuifosdguhisfgdhuisfgdhsifgduhsufgidsfdhguisfgdhuoisfguhdiosgfoduhisfghudiugfsidshofugid()) {
             System.out.println("Debugger found, exitting.");
             JOptionPane.showMessageDialog(null,
                     "Please disable any debuggers before running Sleek!",
@@ -36,7 +35,7 @@ public class Main {
         }
 
         //tamper protection
-        if (!ProtectionUtil.doesChecksumMatch()) {
+        if (!ProtectionUtil.gsudfgyfuisadgfdsouaiygsdeugdsoygfsdhohiusdfhuisdghiudgshiufssfdhiushudsdfuhfdshufdshuisfdhsfdhiusfdhuifsdhuifsdhuisfdhiufsdhiufsdhiusfdhuisfdhuifsdhuifsdhuifsdhiufsdiuhfsdhiufdshuisfdhui()) {
             JOptionPane.showMessageDialog(null, "This version seems to be outdated. Please redownload!", "Error!", JOptionPane.ERROR_MESSAGE);
         }
 
