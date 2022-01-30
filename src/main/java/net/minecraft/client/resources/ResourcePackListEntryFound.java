@@ -14,7 +14,7 @@ public class ResourcePackListEntryFound extends ResourcePackListEntry
 
     protected void func_148313_c()
     {
-        //this.field_148319_c.bindTexturePackIcon(this.mc.getTextureManager());
+        this.field_148319_c.bindTexturePackIcon(this.mc.getTextureManager());
     }
 
     protected int func_183019_a()
