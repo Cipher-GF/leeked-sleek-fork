@@ -50,6 +50,10 @@ public class GuiConnecting extends GuiScreen {
     }
 
     private void connect(final String ip, final int port) {
+        //set playtime
+        Playtime playtime = (Playtime) Client.getInstance().getModuleManager().getModuleByName("Playtime");
+        playtime.joinTime = System.currentTimeMillis();
+
         logger.info("Connecting to " + ip + ", " + port);
         (new Thread("Server Connector #" + CONNECTION_ID.incrementAndGet()) {
             public void run() {
@@ -65,10 +69,6 @@ public class GuiConnecting extends GuiScreen {
                     GuiConnecting.this.networkManager.setNetHandler(new NetHandlerLoginClient(GuiConnecting.this.networkManager, GuiConnecting.this.mc, GuiConnecting.this.previousGuiScreen));
                     GuiConnecting.this.networkManager.sendPacket(new C00Handshake(47, ip, port, EnumConnectionState.LOGIN));
                     GuiConnecting.this.networkManager.sendPacket(new C00PacketLoginStart(GuiConnecting.this.mc.getSession().getProfile()));
-
-                    //set playtime
-                    Playtime playtime = Client.getInstance().getModuleManager().getModuleByClass(Playtime.class);
-                    playtime.joinTime = System.currentTimeMillis();
                 } catch (UnknownHostException unknownhostexception) {
                     if (GuiConnecting.this.cancel) {
                         return;
