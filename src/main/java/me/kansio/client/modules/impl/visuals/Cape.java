@@ -15,7 +15,7 @@ import net.minecraft.util.ResourceLocation;
 )
 public class Cape extends Module {
 
-    private ModeValue capemode = new ModeValue("Cape", this,"Sleek", "None");
+    private ModeValue capemode = new ModeValue("Cape", this,"Sleek");
 
     public ResourceLocation getCape() {
         switch (capemode.getValue()) {

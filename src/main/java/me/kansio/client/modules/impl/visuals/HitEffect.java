@@ -40,13 +40,11 @@ public class HitEffect extends Module {
     @Subscribe
     public void onUpdate(UpdateEvent event) {
         if (KillAura.target != null && KillAura.target.hurtTime > 9 ){
-
                 doParticle(KillAura.target);
                 doCrack(KillAura.target);
                 if (hitmarkersound.getValue()) {
                     doSound(KillAura.target);
                 }
-
         }
     }
 
@@ -80,11 +78,9 @@ public class HitEffect extends Module {
             case "None":
                 break;
         }
-
     }
 
     public void doSound(EntityLivingBase target) {
-
         double x, y, z;
         x = target.posX;
         y = target.posY;
