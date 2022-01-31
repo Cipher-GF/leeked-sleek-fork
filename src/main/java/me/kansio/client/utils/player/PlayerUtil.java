@@ -63,7 +63,7 @@ public class PlayerUtil extends Util {
         if(!mc.thePlayer.isMoving())
             return;
 
-        final double yaw = getDirection();
+        final double yaw = getDirection() / 180 * Math.PI;
         mc.thePlayer.motionX = -Math.sin(yaw) * speed;
         mc.thePlayer.motionZ = Math.cos(yaw) * speed;
     }

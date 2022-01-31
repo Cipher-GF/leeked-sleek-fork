@@ -5,10 +5,7 @@ import me.kansio.client.utils.network.TimedPacket;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.client.*;
-import net.minecraft.network.play.server.S07PacketRespawn;
-import net.minecraft.network.play.server.S08PacketPlayerPosLook;
-import net.minecraft.network.play.server.S2DPacketOpenWindow;
-import net.minecraft.network.play.server.S2EPacketCloseWindow;
+import net.minecraft.network.play.server.*;
 
 import java.util.function.Consumer;
 
@@ -128,6 +125,12 @@ public interface IPacketUtils {
     default void onSPosLook(PacketEvent e, Consumer<S08PacketPlayerPosLook> consumer) {
         if (e.getPacket() instanceof S08PacketPlayerPosLook) {
             consumer.accept((S08PacketPlayerPosLook) e.getPacket());
+        }
+    }
+
+    default void onSVelocity(PacketEvent e, Consumer<S12PacketEntityVelocity> consumer) {
+        if (e.getPacket() instanceof S12PacketEntityVelocity) {
+            consumer.accept((S12PacketEntityVelocity) e.getPacket());
         }
     }
 
