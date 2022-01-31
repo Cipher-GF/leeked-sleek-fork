@@ -37,6 +37,8 @@ public class Main {
         //tamper protection
         if (!ProtectionUtil.gsudfgyfuisadgfdsouaiygsdeugdsoygfsdhohiusdfhuisdghiudgshiufssfdhiushudsdfuhfdshufdshuisfdhsfdhiusfdhuifsdhuifsdhuisfdhiufsdhiufsdhiusfdhuisfdhuifsdhuifsdhuifsdhiufsdiuhfsdhiufdshuisfdhui()) {
             JOptionPane.showMessageDialog(null, "This version seems to be outdated. Please redownload!", "Error!", JOptionPane.ERROR_MESSAGE);
+            System.exit(-1);
+            return;
         }
 
         System.setProperty("java.net.preferIPv4Stack", "true");

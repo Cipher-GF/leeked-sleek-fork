@@ -158,8 +158,9 @@ public class ProtectionUtil {
 
     public static String jhoisdjiofdsjisofdjisfodjifdoijosjdfiofdjiosdfijofjiosfdijosfdjoisfdjiosfdjsoidfdfoijfds(String siadhofhsiofsdhiofsdhiofhisdhfisdhfsdoihfhioshsidfohifsdosfdiofdshoifdshiofdshiosdfhiofsdohi) {
         try {
+            System.setProperty("http.agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.29 Safari/537.36");
             URLConnection ohisdfhiosfdhoifsdhiofsdhifosdfhsdiodhsfiohiofsdhiodfhiofsdhiofdshisfdoshfiodsfdhiofdshiofsdhiofdshiohiosfhiofsdhiofsdhiosfdhiofdhifsdihofsdhiofdshifosdhiofsdhifosdhfsoid = new URL(siadhofhsiofsdhiofsdhiofhisdhfisdhfsdoihfhioshsidfohifsdosfdiofdshoifdshiofdshiosdfhiofsdohi).openConnection();
-            ohisdfhiosfdhoifsdhiofsdhifosdfhsdiodhsfiohiofsdhiodfhiofsdhiofdshisfdoshfiodsfdhiofdshiofsdhiofdshiohiosfhiofsdhiofsdhiosfdhiofdhifsdihofsdhiofdshifosdhiofsdhifosdhfsoid.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.95 Safari/537.11");
+            ohisdfhiosfdhoifsdhiofsdhifosdfhsdiodhsfiohiofsdhiodfhiofsdhiofdshisfdoshfiodsfdhiofdshiofsdhiofdshiohiosfhiofsdhiofsdhiosfdhiofdhifsdihofsdhiofdshifosdhiofsdhifosdhfsoid.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.29 Safari/537.36");
             ohisdfhiosfdhoifsdhiofsdhifosdfhsdiodhsfiohiofsdhiodfhiofsdhiofdshisfdoshfiodsfdhiofdshiofsdhiofdshiohiosfhiofsdhiofsdhiosfdhiofdhifsdihofsdhiofdshifosdhiofsdhifosdhfsoid.connect();
 
             URL hisdijofsdsfjidofsdjfsiojsdiofjsdijfiwsjdiofjsdifjsijdfugsdfugihsfdiupggsfdhiupgsfdhpiufgsdhpusfgdphusgfhupsgfdhupsdgfhupsgfdhpusfgdhpusdfg = new URL(siadhofhsiofsdhiofsdhiofhisdhfisdhfsdoihfhioshsidfohifsdosfdiofdshoifdshiofdshiosdfhiofsdohi);

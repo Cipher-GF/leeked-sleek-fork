@@ -17,7 +17,7 @@ import me.kansio.client.utils.player.TimerUtil;
 public class Timer extends Module {
 
     private final BooleanValue tick = new BooleanValue("Tick Timer", this, false);
-    private NumberValue<Float> speed = new NumberValue<>("Speed", this, 1.0F, 0.05F, 10.0F, 0.1F);
+    private NumberValue<Float> speed = new NumberValue<>("Speed", this, 1.0F, 1.0F, 10.0F, 0.1F);
     private NumberValue<Integer> tickspeed = new NumberValue("Ticks", this,1.0, 1.0, 20.0, 1.0, tick);
 
     @Subscribe

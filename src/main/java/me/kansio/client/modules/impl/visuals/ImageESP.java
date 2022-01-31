@@ -22,11 +22,11 @@ import org.lwjgl.opengl.GL11;
 )
 public class ImageESP extends Module {
 
-    private ModeValue modeValue = new ModeValue("Mode", this, "Zuiy", "Zuiy2", "Floyed");
+    private ModeValue modeValue = new ModeValue("Mode", this, "Zuiy", "Edp", "Floyed");
 
-    private static final ResourceLocation ZUIY = new ResourceLocation("sleek/bg1.png");
-    private static final ResourceLocation ZUIY2 = new ResourceLocation("sleek/bg1.png");
-    private static final ResourceLocation FLOYED = new ResourceLocation("sleek/floyed.png");
+    private static final ResourceLocation ZUIY = new ResourceLocation("sleek/Zuiy.png");
+    private static final ResourceLocation EdP = new ResourceLocation("sleek/Edp.png");
+    private static final ResourceLocation FLOYED = new ResourceLocation("sleek/floyd.png");
 
     @Subscribe
     public void onEntityRender(Render3DEvent event) {
@@ -53,8 +53,8 @@ public class ImageESP extends Module {
                 case "Zuiy":
                     Minecraft.getMinecraft().getTextureManager().bindTexture(ZUIY);
                     break;
-                case "Zuiy2":
-                    Minecraft.getMinecraft().getTextureManager().bindTexture(ZUIY2);
+                case "Edp":
+                    Minecraft.getMinecraft().getTextureManager().bindTexture(EdP);
                     break;
                 case "Floyed":
                     Minecraft.getMinecraft().getTextureManager().bindTexture(FLOYED);
