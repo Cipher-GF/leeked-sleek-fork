@@ -32,6 +32,9 @@ public class AutoReport extends Module {
     private void reportPlayer() {
         EntityPlayer toReport = mc.theWorld.playerEntities.get(MathUtil.getRandomInRange(0, mc.theWorld.playerEntities.size() - 1));
 
+        if (toReport.getName().contains("§"))
+            return;
+
         mc.thePlayer.sendChatMessage("/report " + toReport.getName() + " bhop ka");
     }
 

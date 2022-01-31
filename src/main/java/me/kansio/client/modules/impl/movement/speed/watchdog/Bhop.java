@@ -25,7 +25,7 @@ public class Bhop extends SpeedMode {
 
         if (mc.thePlayer.isMoving()) {
             if (mc.thePlayer.fallDistance < 0.1) {
-                TimerUtil.setTimer(1.75f);
+                TimerUtil.setTimer(1.60f);
             }
             if (mc.thePlayer.fallDistance > 0.2) {
                 TimerUtil.setTimer(0.42f);

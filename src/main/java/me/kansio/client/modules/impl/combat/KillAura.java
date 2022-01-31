@@ -53,6 +53,7 @@ public class KillAura extends Module {
     public NumberValue<Double> cprandom = new NumberValue<>("Randomize CPS", this, 3.0, 0.0, 10.0, 1.0);
     public NumberValue chance = new NumberValue<>("Hit Chance", this, 100, 0, 100, 1);
     public ModeValue swingmode = new ModeValue("Swing Mode", this, "Client", "Server");
+    public ModeValue attackMethod = new ModeValue("Attack Method", this, "Packet", "Legit");
     public ModeValue autoblockmode = new ModeValue("Autoblock Mode", this, "None", "Real", "Verus", "Fake");
     public BooleanValue gcd = new BooleanValue("GCD", this, false);
     public BooleanValue targethud = new BooleanValue("TargetHud", this, false);
@@ -239,8 +240,11 @@ public class KillAura extends Module {
                 mc.getNetHandler().addToSendQueue(new C0APacketAnimation());
             }
 
-
-            mc.playerController.attackEntity(mc.thePlayer, entity);
+            //sending the attack directly through a packet prevents you from getting slowed down when hitting
+            if (attackMethod.getValue().equalsIgnoreCase("Packet"))
+                PacketUtil.sendPacket(new C02PacketUseEntity(target, C02PacketUseEntity.Action.ATTACK));
+            else
+                mc.playerController.attackEntity(mc.thePlayer, entity);
 
             if (!isBlocking && autoblockmode.getValue().equalsIgnoreCase("verus")) {
                 PacketUtil.sendPacket(new C08PacketPlayerBlockPlacement(mc.thePlayer.inventory.getCurrentItem()));
