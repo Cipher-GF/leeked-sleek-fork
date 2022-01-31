@@ -115,5 +115,4 @@ public class TargetStrafe extends Module {
         glEnable(GL_TEXTURE_2D);
         glPopMatrix();
     }
-
 }
