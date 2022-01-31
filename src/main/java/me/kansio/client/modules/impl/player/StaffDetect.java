@@ -27,6 +27,8 @@ public class StaffDetect extends Module {
 
 
     private BooleanValue announce = new BooleanValue("Announce", this, true);
+    private BooleanValue automaticallyLeave = new BooleanValue("Automatically Leave", this, true);
+    private BooleanValue notifyWhenLeave = new BooleanValue("Notify When Leave", this, true);
 
     @Getter
     private ArrayList<String> staffInMatch = new ArrayList<>();
@@ -36,15 +38,6 @@ public class StaffDetect extends Module {
     );
 
     private int amount;
-
-    /*/@Subscribe
-    public void onRender(RenderOverlayEvent event) {
-        if (staffInMatch.size() != 0 && amount > done) {
-            //mc.getNetHandler().handleTitle(new S45PacketTitle(S45PacketTitle.Type.TITLE, new ChatComponentText(ChatUtil.translateColorCodes("&c&lThere is a staff member in your lobby")), 100, 1000, 100));
-            NotificationManager.getNotificationManager().show(new Notification(Notification.NotificationType.WARNING,"WARNING", "§c§l" + amount + " Staff Members", 3));
-            done = amount;
-        }
-    }/*/
 
     @Subscribe
     public void onTick(UpdateEvent event) {
@@ -62,6 +55,16 @@ public class StaffDetect extends Module {
 
                         if (announce.getValue())
                             mc.thePlayer.sendChatMessage("[Sleek Staff Detector] Found a staff member in the lobby: " + staff);
+
+                        if (automaticallyLeave.getValue()) {
+                            mc.thePlayer.sendChatMessage("/lobby");
+
+                            if (notifyWhenLeave.getValue()) {
+                                ChatUtil.log("   ");
+                                ChatUtil.log("§4§l[Staff Detect] §fAutomatically left the game.");
+                                ChatUtil.log("   ");
+                            }
+                        }
                     }
                 }
             }
