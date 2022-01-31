@@ -10,9 +10,9 @@ import java.io.IOException;
 public class S12PacketEntityVelocity implements Packet<INetHandlerPlayClient>
 {
     private int entityID;
-    private int motionX;
-    private int motionY;
-    private int motionZ;
+    public int motionX;
+    public int motionY;
+    public int motionZ;
 
     public S12PacketEntityVelocity()
     {
@@ -97,6 +97,8 @@ public class S12PacketEntityVelocity implements Packet<INetHandlerPlayClient>
     {
         return this.entityID;
     }
+
+
 
     public int getMotionX()
     {
