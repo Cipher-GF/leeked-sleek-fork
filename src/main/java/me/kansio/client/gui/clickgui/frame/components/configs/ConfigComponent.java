@@ -1,4 +1,4 @@
-package me.kansio.client.gui.clickgui.ui.clickgui.frame.components.configs;
+package me.kansio.client.gui.clickgui.frame.components.configs;
 
 
 import lombok.Getter;

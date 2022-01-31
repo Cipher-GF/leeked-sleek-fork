@@ -1,8 +1,8 @@
-package me.kansio.client.gui.clickgui.ui.clickgui.frame.components.impl;
+package me.kansio.client.gui.clickgui.frame.components.impl;
 
-import me.kansio.client.gui.clickgui.ui.clickgui.frame.Priority;
-import me.kansio.client.gui.clickgui.ui.clickgui.frame.components.Component;
-import me.kansio.client.gui.clickgui.ui.clickgui.frame.components.FrameModule;
+import me.kansio.client.gui.clickgui.frame.Values;
+import me.kansio.client.gui.clickgui.frame.components.Component;
+import me.kansio.client.gui.clickgui.frame.components.FrameModule;
 import me.kansio.client.gui.clickgui.utils.render.animation.easings.Animate;
 import me.kansio.client.gui.clickgui.utils.render.animation.easings.Easing;
 import me.kansio.client.value.Value;
@@ -15,7 +15,7 @@ import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
 
-public class BoolSetting extends Component implements Priority {
+public class BoolSetting extends Component implements Values {
     private final Animate animation;
 
     public BoolSetting(int x, int y, FrameModule owner, Value setting)
@@ -34,7 +34,7 @@ public class BoolSetting extends Component implements Priority {
     public void drawScreen(int mouseX, int mouseY) {
         animation.update();
         FontRenderer fontRenderer = Minecraft.getMinecraft().fontRendererObj;
-        fontRenderer.drawString(getSetting().getName(), x + 5, y + (getOffset() / 2F - (fontRenderer.FONT_HEIGHT / 2F)), -1, true);
+        fontRenderer.drawString("§7" + getSetting().getName(), x + 5, y + (getOffset() / 2F - (fontRenderer.FONT_HEIGHT / 2F)), -1, true);
         //Gui.drawRect(x + defaultWidth - 15, y, x + defaultWidth - 5, y + 10, darkerMainColor);
         RenderUtils.drawFilledCircle(x + defaultWidth - 10, (int) (y + (getOffset() / 2F - (fontRenderer.FONT_HEIGHT / 2F)) + 6.75f), 5, new Color(darkerMainColor));
 

@@ -2,7 +2,7 @@ package me.kansio.client.modules.impl.player;
 
 import com.google.common.eventbus.Subscribe;
 import me.kansio.client.event.impl.UpdateEvent;
-import me.kansio.client.gui.clickgui.ui.clickgui.frame.ClickGUI;
+import me.kansio.client.gui.clickgui.frame.ClickGUI;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;

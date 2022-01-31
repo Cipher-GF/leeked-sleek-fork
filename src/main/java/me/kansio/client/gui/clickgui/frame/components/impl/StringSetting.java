@@ -1,12 +1,10 @@
-package me.kansio.client.gui.clickgui.ui.clickgui.frame.components.configs.impl;
+package me.kansio.client.gui.clickgui.frame.components.impl;
 
-import me.kansio.client.Client;
-import me.kansio.client.gui.clickgui.ui.clickgui.frame.Priority;
-import me.kansio.client.gui.clickgui.ui.clickgui.frame.components.configs.ConfigComponent;
-import me.kansio.client.gui.clickgui.ui.clickgui.frame.components.configs.FrameConfig;
-import me.kansio.client.modules.impl.visuals.ClickGUI;
-import me.kansio.client.gui.notification.Notification;
-import me.kansio.client.gui.notification.NotificationManager;
+import me.kansio.client.gui.clickgui.frame.Values;
+import me.kansio.client.gui.clickgui.frame.components.Component;
+import me.kansio.client.gui.clickgui.frame.components.FrameModule;
+import me.kansio.client.value.Value;
+import me.kansio.client.value.value.StringValue;
 import me.kansio.client.utils.render.RenderUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
@@ -18,16 +16,10 @@ import java.math.RoundingMode;
 import java.util.Arrays;
 import java.util.List;
 
-public class CreateButton extends ConfigComponent implements Priority {
+public class StringSetting extends Component implements Values {
 
-    private FrameConfig frame;
-    private String tempName;
-
-    public CreateButton(int x, int y, FrameConfig owner) {
-        super(x, y, owner);
-
-        this.frame = owner;
-        tempName = "";
+    public StringSetting(int x, int y, FrameModule owner, Value setting) {
+        super(x, y, owner, setting);
     }
 
     private boolean typing;
@@ -39,9 +31,11 @@ public class CreateButton extends ConfigComponent implements Priority {
 
     @Override
     public void drawScreen(int mouseX, int mouseY) {
+        StringValue slide = (StringValue) getSetting();
+
         FontRenderer fontRenderer = Minecraft.getMinecraft().fontRendererObj;
 
-        fontRenderer.drawString("» Create: " + tempName, x + 5, y + (getOffset() / 2F - (fontRenderer.FONT_HEIGHT / 2F)), stringColor, true);
+        fontRenderer.drawString("§7" + slide.getName() + ": §f" + slide.getValue(), x + 5, y + (getOffset() / 2F - (fontRenderer.FONT_HEIGHT / 2F)), stringColor, true);
 
         if (typing) {
             Gui.drawRect(x + 125, y + (getOffset() / 2F - (fontRenderer.FONT_HEIGHT / 2F)) + 9, defaultWidth - 8, y + (getOffset() / 2F - (fontRenderer.FONT_HEIGHT / 2F)) + 7 + 4, -1);
@@ -73,45 +67,30 @@ public class CreateButton extends ConfigComponent implements Priority {
 
     @Override
     public void keyTyped(char typedChar, int keyCode) {
+        StringValue slide = (StringValue) getSetting();
         if (keyCode == Keyboard.KEY_RSHIFT
                 || keyCode == Keyboard.KEY_LSHIFT
                 || keyCode == Keyboard.KEY_CAPITAL)
             return;
 
-
         //enter
         if (keyCode == 28) {
             typing = false;
-
-            //Don't allow empty config names...
-            if (tempName.equalsIgnoreCase("")) return;
-
-            //create config
-            Client.getInstance().getConfigManager().saveConfig(tempName);
-            NotificationManager.getNotificationManager().show(new Notification(Notification.NotificationType.INFO, "Configs", "Successfully created config", 1));
-
-            ClickGUI clickGUI = (ClickGUI) Client.getInstance().getModuleManager().getModuleByName("Click GUI");
-
-            if (Minecraft.getMinecraft().currentScreen != null) {
-                Minecraft.getMinecraft().thePlayer.closeScreen();
-
-                clickGUI.toggle();
-            }
             return;
         }
 
 
         //backspace
         if (keyCode == 14 && typing) {
-            if (tempName.toCharArray().length == 0) {
+            if (slide.getValue().toCharArray().length == 0) {
                 return;
             }
-            tempName = removeLastChar(tempName);
+            slide.setValue(removeLastChar(slide.getValue()));
             return;
         }
 
         List<Character> whitelistedChars = Arrays.asList(
-                '&', ' ', '[', ']', '(', ')',
+                '&', ' ', '#', '[', ']', '(', ')',
                 '.', ',', '<', '>', '-', '$',
                 '!', '"', '\'', '\\', '/', '=',
                 '+', ',', '|', '^', '?', '`', ';', ':',
@@ -120,7 +99,7 @@ public class CreateButton extends ConfigComponent implements Priority {
 
         for (char whitelistedChar : whitelistedChars) {
             if (typedChar == whitelistedChar && typing) {
-                tempName = tempName + typedChar;
+                slide.setValue(slide.getValue() + typedChar);
                 return;
             }
         }
@@ -131,7 +110,7 @@ public class CreateButton extends ConfigComponent implements Priority {
 
 
         if (typing) {
-            tempName = tempName + typedChar;
+            slide.setValue(slide.getValue() + typedChar);
         }
     }
 
@@ -143,4 +122,5 @@ public class CreateButton extends ConfigComponent implements Priority {
     public int getOffset() {
         return 15;
     }
+
 }

@@ -1,17 +1,18 @@
-package me.kansio.client.gui.clickgui.ui.clickgui.frame.components;
+package me.kansio.client.gui.clickgui.frame.components;
 
 
 import me.kansio.client.Client;
-import me.kansio.client.gui.clickgui.ui.clickgui.frame.Priority;
-import me.kansio.client.gui.clickgui.ui.clickgui.frame.components.impl.BoolSetting;
-import me.kansio.client.gui.clickgui.ui.clickgui.frame.components.impl.EnumSetting;
-import me.kansio.client.gui.clickgui.ui.clickgui.frame.components.impl.SlideSetting;
-import me.kansio.client.gui.clickgui.ui.clickgui.frame.components.impl.StringSetting;
+import me.kansio.client.gui.clickgui.frame.components.impl.BoolSetting;
+import me.kansio.client.gui.clickgui.frame.components.impl.EnumSetting;
+import me.kansio.client.gui.clickgui.frame.components.impl.SlideSetting;
+import me.kansio.client.gui.clickgui.frame.components.impl.StringSetting;
+import me.kansio.client.gui.clickgui.frame.Values;
 import me.kansio.client.gui.clickgui.utils.render.animation.easings.Animate;
 import me.kansio.client.gui.clickgui.utils.render.animation.easings.Easing;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.modules.impl.visuals.ClickGUI;
 import me.kansio.client.modules.impl.visuals.HUD;
+import me.kansio.client.utils.render.ColorPalette;
 import me.kansio.client.value.value.BooleanValue;
 import me.kansio.client.value.value.ModeValue;
 import me.kansio.client.value.value.NumberValue;
@@ -27,7 +28,7 @@ import org.lwjgl.input.Keyboard;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class FrameModule implements Priority {
+public class FrameModule implements Values {
     private final Module module;
     private final ArrayList<Component> components;
 
@@ -78,42 +79,17 @@ public class FrameModule implements Priority {
         moduleAnimation.setReversed(!module.isToggled());
         moduleAnimation.setSpeed(1000).update();
 
-        int colorUsed;
-        int darkercolorUsed;
-        if (((ClickGUI)Client.getInstance().getModuleManager().getModuleByName("Click GUI")).hudcolor.getValue()) {
-            Color color = ColorUtils.getGradientOffset(new Color(0, 255, 128), new Color(212, 1, 1), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + y / Fonts.Verdana.getHeight() * 9.95);
+        int colorUsed = ColorPalette.LIGHT_BLUE.getColor().getRGB();
 
-            switch (((HUD) Client.getInstance().getModuleManager().getModuleByName("HUD")).getColorMode().getValue()) {
-                case "Sleek": {
-                    color = ColorUtils.getGradientOffset(new Color(0, 255, 128), new Color(212, 1, 1), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + y / Fonts.Verdana.getHeight() * 9.95);
-                    break;
-                }
-                case "Nitrogen": {
-                    color = ColorUtils.getGradientOffset(new Color(128, 171, 255), new Color(160, 72, 255), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D));
-                    break;
-                }
-                case "Rainbow": {
-                    color = new Color(ColorUtils.getRainbow(6000, 0));
-                    break;
-                }
-                case "Astolfo": {
-                    color = ColorUtils.getGradientOffset(new Color(255, 60, 234), new Color(27, 179, 255), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D));
-                    break;
-                }
-            }
-            colorUsed = color.getRGB();
-            darkercolorUsed = new Color(colorUsed).darker().getRGB();
-        } else { colorUsed = enabledColor;}
-
-        if(RenderUtils.hover(x, y, mouseX, mouseY, defaultWidth, moduleHeight) && hoveredColor) {
-            GuiScreen.drawRect(x,y, x + defaultWidth, y + moduleHeight, darkerMainColor);
+        if(RenderUtils.hover(x, y, mouseX, mouseY, defaultWidth, moduleHeight)) {
+            GuiScreen.drawRect(x,y, x + defaultWidth, y + moduleHeight, new Color(ColorPalette.LIGHT_BLUE.getColor().getRed(), ColorPalette.LIGHT_BLUE.getColor().getGreen(), ColorPalette.LIGHT_BLUE.getColor().getBlue(), 120).getRGB());
         }
 
         if (module.isToggled() || (moduleAnimation.isReversed() && moduleAnimation.getValue() != 0)) {
-            GuiScreen.drawRect(x, y, x + defaultWidth, y + moduleHeight, ColorUtils.setAlpha(new Color(colorUsed), (int) moduleAnimation.getValue()).getRGB());
+            //GuiScreen.drawRect(x, y, x + defaultWidth, y + moduleHeight, ColorUtils.setAlpha(new Color(colorUsed), (int) moduleAnimation.getValue()).darker().getRGB());
         }
 
-        Minecraft.getMinecraft().fontRendererObj.drawString(listening ? "Press new keybind" : module.getName(), x + 3, y + (moduleHeight / 2F - (Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2F)), stringColor, true);
+        Minecraft.getMinecraft().fontRendererObj.drawString(listening ? "Press new keybind" : module.getName(), x + 3, y + (moduleHeight / 2F - (Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2F)), module.isToggled() ? ColorPalette.LIGHT_BLUE.getColor().darker().getRGB() : stringColor, true);
         if (!module.getValues().isEmpty())
             Minecraft.getMinecraft().fontRendererObj.drawString(opened ? "-" : "+", (x + owner.getWidth()) - 9, y + (moduleHeight / 2F - (Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2F)), stringColor, true);
 

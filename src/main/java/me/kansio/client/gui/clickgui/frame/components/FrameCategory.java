@@ -1,9 +1,7 @@
-package me.kansio.client.gui.clickgui.ui.clickgui.frame.components.configs;
+package me.kansio.client.gui.clickgui.frame.components;
 
 import me.kansio.client.Client;
-import me.kansio.client.config.Config;
-import me.kansio.client.gui.clickgui.ui.clickgui.frame.Priority;
-import me.kansio.client.gui.clickgui.ui.clickgui.frame.components.FrameModule;
+import me.kansio.client.gui.clickgui.frame.Values;
 import me.kansio.client.gui.clickgui.utils.render.animation.easings.Animate;
 import me.kansio.client.gui.clickgui.utils.render.animation.easings.Easing;
 import me.kansio.client.modules.api.ModuleCategory;
@@ -16,7 +14,7 @@ import org.lwjgl.opengl.GL11;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class ConfigCategory implements Priority {
+public class FrameCategory implements Values {
 
     // Stuff
     private int x, y, xDrag, yDrag;
@@ -26,13 +24,16 @@ public class ConfigCategory implements Priority {
 
     private boolean drag;
 
-    private final ArrayList<FrameConfig> modules;
+    private final ModuleCategory category;
+
+    private final ArrayList<FrameModule> modules;
 
     // Smooth animation
     private final Animate animation;
 
     // Asking x and y so categories are not on themself
-    public ConfigCategory(int x, int y) {
+    public FrameCategory(ModuleCategory category, int x, int y) {
+        this.category = category;
         this.modules = new ArrayList<>();
         this.animation = new Animate().setEase(Easing.CUBIC_OUT).setSpeed(250).setMin(0).setMax(defaultWidth / 2F);
 
@@ -47,18 +48,11 @@ public class ConfigCategory implements Priority {
         this.width = defaultWidth;
         this.height = defaultHeight;
 
-        //create config
-        modules.add(new FrameConfig(null, this, 0, 0));
-
-        //empty spacer
-        modules.add(new FrameConfig(new Config("", null), this, 0, 0));
-
-        Client.getInstance().getConfigManager().getConfigs().forEach(config -> this.modules.add(new FrameConfig(config, this, 0, 0)));
-
+        Client.getInstance().getModuleManager().getModulesFromCategory(category).forEach(module -> this.modules.add(new FrameModule(module, this, 0, 0)));
     }
 
     public void initGui() {
-        this.animation.setSpeed(100).reset();
+        this.animation.setSpeed(200).reset();
     }
 
     public void drawScreen(int mouseX, int mouseY) {
@@ -82,7 +76,7 @@ public class ConfigCategory implements Priority {
         Gui.drawRect(getX(), getY(), getX() + width, getY() + getHeight(), mainColor);
 
         // Drawing category name section
-        Gui.drawRect(getX(), getY(), getX() + width, getY() + categoryNameHeight, darkerMainColor);
+        Gui.drawRect(getX(), getY(), getX() + width, getY() + categoryNameHeight, headerColor);
 
         // Outline category base
         {
@@ -98,7 +92,7 @@ public class ConfigCategory implements Priority {
         }
 
         // Drawing category name
-        Minecraft.getMinecraft().fontRendererObj.drawString("Configs", x + 3, (int) (y + ((categoryNameHeight / 2F) - Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2F)), stringColor);
+        Minecraft.getMinecraft().fontRendererObj.drawStringWithShadow(category.getName(), x + 3, (int) (y + ((categoryNameHeight / 2F) - Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2F)), stringColor);
 
         GL11.glPushMatrix();
         GL11.glEnable(3089);
@@ -107,7 +101,7 @@ public class ConfigCategory implements Priority {
 
         // Drawing modules
         int i = 0;
-        for (FrameConfig module : this.modules) {
+        for (FrameModule module : this.modules) {
             module.setX(x);
             module.setY(y + categoryNameHeight + i - offset);
             module.drawScreen(mouseX, mouseY);
@@ -120,7 +114,7 @@ public class ConfigCategory implements Priority {
 
     public void mouseClicked(int mouseX, int mouseY, int mouseButton) {
         // I really need to explain?
-        for (FrameConfig module : this.modules) {
+        for (FrameModule module : this.modules) {
             if (module.mouseClicked(mouseX, mouseY, mouseButton)) {
                 setDrag(false);
                 return;

@@ -1,15 +1,15 @@
-package me.kansio.client.gui.clickgui.ui.clickgui.frame.components.impl;
+package me.kansio.client.gui.clickgui.frame.components.impl;
 
-import me.kansio.client.gui.clickgui.ui.clickgui.frame.Priority;
-import me.kansio.client.gui.clickgui.ui.clickgui.frame.components.Component;
-import me.kansio.client.gui.clickgui.ui.clickgui.frame.components.FrameModule;
+import me.kansio.client.gui.clickgui.frame.Values;
+import me.kansio.client.gui.clickgui.frame.components.Component;
+import me.kansio.client.gui.clickgui.frame.components.FrameModule;
 import me.kansio.client.value.Value;
 import me.kansio.client.value.value.ModeValue;
 import me.kansio.client.utils.render.RenderUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 
-public class EnumSetting extends Component implements Priority {
+public class EnumSetting extends Component implements Values {
     public EnumSetting(int x, int y, FrameModule owner, Value setting) {
         super(x, y, owner, setting);
     }
@@ -22,7 +22,7 @@ public class EnumSetting extends Component implements Priority {
     @Override
     public void drawScreen(int mouseX, int mouseY) {
         FontRenderer fontRenderer = Minecraft.getMinecraft().fontRendererObj;
-        fontRenderer.drawString(getSetting().getName(), x + 5, y + (getOffset() / 2F - (fontRenderer.FONT_HEIGHT / 2F)), -1, true);
+        fontRenderer.drawString("§7" + getSetting().getName(), x + 5, y + (getOffset() / 2F - (fontRenderer.FONT_HEIGHT / 2F)), -1, true);
         fontRenderer.drawString(((ModeValue) getSetting()).getValue().toUpperCase(), x + defaultWidth - fontRenderer.getStringWidth(((ModeValue) getSetting()).getValue().toUpperCase()) - 5, y + (getOffset() / 2F - (fontRenderer.FONT_HEIGHT / 2F)), -1, true);
     }
 

@@ -1,12 +1,12 @@
-package me.kansio.client.gui.clickgui.ui.clickgui.frame.components.configs;
+package me.kansio.client.gui.clickgui.frame.components.configs;
 
 
 import me.kansio.client.Client;
 import me.kansio.client.config.Config;
-import me.kansio.client.gui.clickgui.ui.clickgui.frame.Priority;
-import me.kansio.client.gui.clickgui.ui.clickgui.frame.components.configs.impl.CreateButton;
-import me.kansio.client.gui.clickgui.ui.clickgui.frame.components.configs.impl.DeleteButton;
-import me.kansio.client.gui.clickgui.ui.clickgui.frame.components.configs.impl.RenameConfig;
+import me.kansio.client.gui.clickgui.frame.components.configs.impl.CreateButton;
+import me.kansio.client.gui.clickgui.frame.components.configs.impl.DeleteButton;
+import me.kansio.client.gui.clickgui.frame.components.configs.impl.RenameConfig;
+import me.kansio.client.gui.clickgui.frame.Values;
 import me.kansio.client.gui.clickgui.utils.render.animation.easings.Animate;
 import me.kansio.client.gui.clickgui.utils.render.animation.easings.Easing;
 import me.kansio.client.utils.render.RenderUtils;
@@ -15,7 +15,7 @@ import net.minecraft.client.gui.GuiScreen;
 
 import java.util.ArrayList;
 
-public class FrameConfig implements Priority {
+public class FrameConfig implements Values {
     public final Config config;
     private final ArrayList<ConfigComponent> components;
 

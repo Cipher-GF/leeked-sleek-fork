@@ -1,8 +1,8 @@
-package me.kansio.client.gui.clickgui.ui.clickgui.frame.components.impl;
+package me.kansio.client.gui.clickgui.frame.components.impl;
 
-import me.kansio.client.gui.clickgui.ui.clickgui.frame.Priority;
-import me.kansio.client.gui.clickgui.ui.clickgui.frame.components.Component;
-import me.kansio.client.gui.clickgui.ui.clickgui.frame.components.FrameModule;
+import me.kansio.client.gui.clickgui.frame.Values;
+import me.kansio.client.gui.clickgui.frame.components.Component;
+import me.kansio.client.gui.clickgui.frame.components.FrameModule;
 import me.kansio.client.value.Value;
 import me.kansio.client.value.value.NumberValue;
 import me.kansio.client.utils.render.RenderUtils;
@@ -15,7 +15,7 @@ import org.lwjgl.input.Mouse;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-public class SlideSetting extends Component implements Priority {
+public class SlideSetting extends Component implements Values {
     public SlideSetting(int x, int y, FrameModule owner, Value setting) {
         super(x, y, owner, setting);
     }
@@ -37,7 +37,7 @@ public class SlideSetting extends Component implements Priority {
         double max = slide.getMax().doubleValue();
         double diff = Math.min(defaultWidth + 5, Math.max(0, mouseX - (this.x)));
         double renderWidth = defaultWidth * (slide.getValue().doubleValue() - min) / (max - min);
-        Gui.drawRect(x, y, x + (int) renderWidth, y + getOffset(), darkerMainColor);
+        Gui.drawRect(x, y, x + (int) renderWidth, y + getOffset(), headerColor);
 
         FontRenderer fontRenderer = Minecraft.getMinecraft().fontRendererObj;
 
@@ -51,7 +51,7 @@ public class SlideSetting extends Component implements Priority {
             }
         }
 
-        fontRenderer.drawString(getSetting().getName() + ": " + roundToPlace(((NumberValue) getSetting()).getValue().doubleValue(), 2), x + 5, y + (getOffset() / 2F - (fontRenderer.FONT_HEIGHT / 2F)), stringColor, true);
+        fontRenderer.drawString("§7" + getSetting().getName() + ": §f" + roundToPlace(((NumberValue) getSetting()).getValue().doubleValue(), 2), x + 5, y + (getOffset() / 2F - (fontRenderer.FONT_HEIGHT / 2F)), stringColor, true);
     }
 
 

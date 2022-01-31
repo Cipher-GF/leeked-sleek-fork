@@ -1,10 +1,10 @@
-package me.kansio.client.gui.clickgui.ui.clickgui.frame.components.configs.impl;
+package me.kansio.client.gui.clickgui.frame.components.configs.impl;
 
 import me.kansio.client.Client;
 import me.kansio.client.config.Config;
-import me.kansio.client.gui.clickgui.ui.clickgui.frame.Priority;
-import me.kansio.client.gui.clickgui.ui.clickgui.frame.components.configs.ConfigComponent;
-import me.kansio.client.gui.clickgui.ui.clickgui.frame.components.configs.FrameConfig;
+import me.kansio.client.gui.clickgui.frame.Values;
+import me.kansio.client.gui.clickgui.frame.components.configs.ConfigComponent;
+import me.kansio.client.gui.clickgui.frame.components.configs.FrameConfig;
 import me.kansio.client.gui.clickgui.utils.render.animation.easings.Animate;
 import me.kansio.client.gui.clickgui.utils.render.animation.easings.Easing;
 import me.kansio.client.modules.impl.visuals.ClickGUI;
@@ -18,7 +18,7 @@ import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
 
-public class DeleteButton extends ConfigComponent implements Priority {
+public class DeleteButton extends ConfigComponent implements Values {
     private final Animate animation;
     private Config config;
 
