@@ -24,16 +24,16 @@ public class Vital extends WaterMarkMode {
         GlStateManager.pushMatrix();
         GlStateManager.scale(2.5D, 2.5D, 2.5D);
         if (getHud().font.getValue()) {
-            Fonts.YantramanavThin.drawStringWithShadow("S", 1.0F, 0.F, color);
+            Fonts.SFRegular.drawStringWithShadow("S", 1.0F, 0.F, color);
         } else {
             mc.fontRendererObj.drawStringWithShadow("S", 1.0F, 0.F, color);
         }
         GlStateManager.popMatrix();
         if (getHud().font.getValue()) {
-            Fonts.YantramanavThin.drawStringWithShadow("leek", 18.0F, 12.0F, color);
-            Fonts.YantramanavThin.drawStringWithShadow("fps: " + Minecraft.getDebugFPS(), 1.0F, 22.0F, color);
-            Fonts.YantramanavThin.drawStringWithShadow("gpu: " + GL11.glGetString(7937), 1.0F, 32.0F, color);
-            Fonts.YantramanavThin.drawStringWithShadow("cpu: " + aprocessor[0].toString(), 1.0F, 42.0F, color);
+            Fonts.SFRegular.drawStringWithShadow("leek", 18.0F, 12.0F, color);
+            Fonts.SFRegular.drawStringWithShadow("fps: " + Minecraft.getDebugFPS(), 1.0F, 22.0F, color);
+            Fonts.SFRegular.drawStringWithShadow("gpu: " + GL11.glGetString(7937), 1.0F, 32.0F, color);
+            Fonts.SFRegular.drawStringWithShadow("cpu: " + aprocessor[0].toString(), 1.0F, 42.0F, color);
         } else {
             mc.fontRendererObj.drawStringWithShadow("leek", 18.0F, 12.0F, color);
             mc.fontRendererObj.drawStringWithShadow("fps: " + Minecraft.getDebugFPS(), 1.0F, 22.0F, color);

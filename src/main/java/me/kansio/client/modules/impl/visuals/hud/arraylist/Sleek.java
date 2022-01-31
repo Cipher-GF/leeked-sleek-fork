@@ -25,11 +25,11 @@ public class Sleek extends ArrayListMode {
         HUD.notifications = hud.noti.getValue() && hud.isToggled();
         int y = hud.arrayListY.getValue().intValue();
         int index = 0;
-        Color color = ColorUtils.getColorFromHud(y);
+        Color color;
 
 
         if (hud.font.getValue()) {
-            ArrayList<Module> sorted = (ArrayList<Module>) Client.getInstance().getModuleManager().getModulesSorted(Fonts.YantramanavThin);
+            ArrayList<Module> sorted = (ArrayList<Module>) Client.getInstance().getModuleManager().getModulesSorted(Fonts.SFRegular);
             sorted.removeIf(m -> !m.isToggled());
 
             if (hud.hideRender.getValue()) sorted.removeIf(m -> m.getCategory() == ModuleCategory.VISUALS);
@@ -38,31 +38,33 @@ public class Sleek extends ArrayListMode {
 
                 index++;
 
+                color = ColorUtils.getColorFromHud(y);
+
                 Module lastModule = sorted.get(index - 1);
 
 
                 String name = mod.getName() + "§7" + mod.getFormattedSuffix();
-                float xPos = event.getSr().getScaledWidth() - Fonts.YantramanavThin.getStringWidth(name) - 6;
+                float xPos = event.getSr().getScaledWidth() - Fonts.SFRegular.getStringWidth(name) - 6;
 
-                Gui.drawRect(xPos - 1.5, y - 1, event.getSr().getScaledWidth(), Fonts.YantramanavThin.getHeight() + y, new Color(0, 0, 0, hud.bgalpha.getValue()).getRGB());
+                Gui.drawRect(xPos - 1.5, y - 2, event.getSr().getScaledWidth(), Fonts.SFRegular.getHeight() + y + 1, new Color(0, 0, 0, hud.bgalpha.getValue()).getRGB());
                 switch (getHud().line.getValue()) {
                     case "None":
                         break;
                     case "Wrapped":
-                        Gui.drawRect(xPos - 2.5, y - 1, xPos - 1.5, Fonts.YantramanavThin.getHeight() + y + 1, color.getRGB());
+                        Gui.drawRect(xPos - 2.5, y - 1, xPos - 1.5, Fonts.SFRegular.getHeight() + y + 1, color.getRGB());
                         break;
                 }
                 if (sorted.size() > index) {
                     Module nextMod = sorted.get(index);
 
                     String nextName = nextMod.getName() + "§7" + nextMod.getFormattedSuffix();
-                    float nextxPos = (float) (event.getSr().getScaledWidth() - Fonts.YantramanavThin.getStringWidth(nextName) - 7.5);
+                    float nextxPos = (float) (event.getSr().getScaledWidth() - Fonts.SFRegular.getStringWidth(nextName) - 7.5);
 
                     switch (getHud().line.getValue()) {
                         case "None":
                             break;
                         case "Wrapped":
-                            Gui.drawRect(xPos - 2.5, Fonts.YantramanavThin.getHeight() + y + 1, nextxPos, Fonts.YantramanavThin.getHeight() + y + 2, color.getRGB());
+                            Gui.drawRect(xPos - 2.5, Fonts.SFRegular.getHeight() + y + 1, nextxPos, Fonts.SFRegular.getHeight() + y + 2, color.getRGB());
                             break;
                     }
                 } else {
@@ -70,13 +72,13 @@ public class Sleek extends ArrayListMode {
                         case "None":
                             break;
                         case "Wrapped":
-                            Gui.drawRect(xPos - 2.5, Fonts.YantramanavThin.getHeight() + y + 1, xPos + 100, Fonts.YantramanavThin.getHeight() + y + 2, color.getRGB());
+                            Gui.drawRect(xPos - 2.5, Fonts.SFRegular.getHeight() + y + 1, xPos + 100, Fonts.SFRegular.getHeight() + y + 2, color.getRGB());
                             break;
                     }
                 }
 
-                Fonts.YantramanavThin.drawStringWithShadow(name, (float) (xPos + 1.5), (float) (0.5 + y), color.getRGB());
-                y = y + 9;
+                Fonts.SFRegular.drawStringWithShadow(name, (float) (xPos + 1.5), (float) (0.5 + y), color.getRGB());
+                y = y + 10;
 
 
             }
@@ -94,6 +96,7 @@ public class Sleek extends ArrayListMode {
 
                 Module lastModule = sorted.get(index - 1);
 
+                color = ColorUtils.getColorFromHud(y);
 
                 String name = mod.getName() + "§7" + mod.getFormattedSuffix();
                 float xPos = event.getSr().getScaledWidth() - mc.fontRendererObj.getStringWidth(name) - 6;

@@ -20,7 +20,7 @@ public class Intent extends WaterMarkMode {
         GlStateManager.scale(2, 2, 1);
         GlStateManager.translate(-4, -4, 0);
         if (getHud().font.getValue()) {
-            Fonts.YantramanavThin.drawString(ChatUtil.translateColorCodes(getHud().clientName.getValue()), 4, 4, ColorUtils.getColorFromHud(1).getRGB());
+            Fonts.SFRegular.drawString(ChatUtil.translateColorCodes(getHud().clientName.getValue()), 4, 4, ColorUtils.getColorFromHud(1).getRGB());
         } else {
             mc.fontRendererObj.drawString(ChatUtil.translateColorCodes(getHud().clientName.getValue()), 4, 4, ColorUtils.getColorFromHud(1).getRGB());
         }

@@ -76,7 +76,21 @@ public class HUD extends Module {
     private final ModeValue infomode = new ModeValue("Info Mode", this, infomodes.stream().map(InfoMode::getName).collect(Collectors.toList()).toArray(new String[]{}));
     private InfoMode currentinfomode = infomodes.stream().anyMatch(infoMode -> infoMode.getName().equalsIgnoreCase(infomode.getValue())) ? infomodes.stream().filter(infoMode -> infoMode.getName().equalsIgnoreCase(infomode.getValue())).findAny().get() : null ;
 
-    private final ModeValue colorMode = new ModeValue("Color Mode", this, "Sleek", "Rainbow", "Astolfo", "Nitrogen");
+    private final ModeValue colorMode = new ModeValue("Color Mode", this, "Sleek", "Rainbow", "Astolfo", "Nitrogen", "Gradient", "Wave", "Static");
+    
+    //wave
+    private final NumberValue topRed = new NumberValue("Top Red", this, 255, 0, 255, 1, colorMode, "Gradient");
+    private final NumberValue topGreen = new NumberValue("Top Green", this, 255, 0, 255, 1, colorMode, "Gradient");
+    private final NumberValue topBlue = new NumberValue("Top Blue", this, 255, 0, 255, 1, colorMode, "Gradient");
+    private final NumberValue bottomRed = new NumberValue("Bottom Red", this, 255, 0, 255, 1, colorMode, "Gradient");
+    private final NumberValue bottomGreen = new NumberValue("Bottom Green", this, 255, 0, 255, 1, colorMode, "Gradient");
+    private final NumberValue bottomBlue = new NumberValue("Bottom Blue", this, 255, 0, 255, 1, colorMode, "Gradient");
+    
+    //wave and static
+    private final NumberValue staticRed = new NumberValue("Red", this, 255, 0, 255, 1, colorMode, "Wave", "Static");
+    private final NumberValue staticGreen = new NumberValue("Green", this, 255, 0, 255, 1, colorMode, "Wave", "Static");
+    private final NumberValue staticBlue = new NumberValue("Blue", this, 255, 0, 255, 1, colorMode, "Wave", "Static");
+    
     public ModeValue line = new ModeValue("Line", this, "None", "Top", "Wrapped");
     public final NumberValue<Integer> bgalpha = new NumberValue<>("Alpha", this, 80, 0, 200, 1);
     public BooleanValue font = new BooleanValue("Font", this, false);

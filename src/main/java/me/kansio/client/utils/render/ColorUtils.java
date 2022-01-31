@@ -51,6 +51,7 @@ public class ColorUtils extends Util {
 
     public static Color getColorFromHud(int y) {
         Color color = null;
+        HUD hud = Client.getInstance().getModuleManager().getModuleByClass(HUD.class);
 
         switch (((HUD) Client.getInstance().getModuleManager().getModuleByName("HUD")).getColorMode().getValue()) {
             case "Sleek": {
@@ -67,6 +68,18 @@ public class ColorUtils extends Util {
             }
             case "Astolfo": {
                 color = ColorUtils.getGradientOffset(new Color(255, 60, 234), new Color(27, 179, 255), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + y / mc.fontRendererObj.FONT_HEIGHT * 9.95);
+                break;
+            }
+            case "Gradient": {
+                color = ColorUtils.getGradientOffset(new Color(hud.getTopRed().getValue().intValue(), hud.getTopGreen().getValue().intValue(), hud.getTopBlue().getValue().intValue()), new Color(hud.getBottomRed().getValue().intValue(), hud.getBottomGreen().getValue().intValue(), hud.getBottomBlue().getValue().intValue()), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + y / mc.fontRendererObj.FONT_HEIGHT * 9.95);
+                break;
+            }
+            case "Wave": {
+                color = ColorUtils.getGradientOffset(new Color(hud.getStaticRed().getValue().intValue(), hud.getStaticGreen().getValue().intValue(), hud.getStaticBlue().getValue().intValue()), new Color(hud.getStaticRed().getValue().intValue(), hud.getStaticGreen().getValue().intValue(), hud.getStaticBlue().getValue().intValue()).darker(), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + y / mc.fontRendererObj.FONT_HEIGHT * 9.95);
+                break;
+            }
+            case "Static": {
+                color = new Color(hud.getStaticRed().getValue().intValue(), hud.getStaticGreen().getValue().intValue(), hud.getStaticBlue().getValue().intValue());
                 break;
             }
         }

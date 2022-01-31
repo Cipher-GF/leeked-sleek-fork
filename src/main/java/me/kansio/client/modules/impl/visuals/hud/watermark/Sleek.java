@@ -22,7 +22,7 @@ public class Sleek extends WaterMarkMode {
         int y = hud.arrayListY.getValue().intValue();
         Color color = ColorUtils.getColorFromHud(y);
         if (hud.font.getValue()) {
-            Fonts.YantramanavThin.drawStringWithShadow(ChatUtil.translateColorCodes(getHud().clientName.getValue()), 4, 4, color.getRGB());
+            Fonts.SFRegular.drawStringWithShadow(ChatUtil.translateColorCodes(getHud().clientName.getValue()), 6, 6, color.getRGB());
         } else {
             mc.fontRendererObj.drawStringWithShadow(ChatUtil.translateColorCodes(getHud().clientName.getValue()), 4, 4, color.getRGB());
         }

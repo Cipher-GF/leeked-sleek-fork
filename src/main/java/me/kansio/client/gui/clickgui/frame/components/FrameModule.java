@@ -135,7 +135,8 @@ public class FrameModule implements Values {
                 case 1:
                     if (opened) {
                         opened = false;
-                        offset = 200;
+                        Client.getInstance().getModuleManager().getModuleByName("Click GUI").toggle();
+                        Client.getInstance().getModuleManager().getModuleByName("Click GUI").toggle();
                     } else {
                         opened = true;
                     }

@@ -5,6 +5,7 @@ import me.kansio.client.gui.clickgui.frame.Values;
 import me.kansio.client.gui.clickgui.utils.render.animation.easings.Animate;
 import me.kansio.client.gui.clickgui.utils.render.animation.easings.Easing;
 import me.kansio.client.modules.api.ModuleCategory;
+import me.kansio.client.utils.chat.ChatUtil;
 import me.kansio.client.utils.render.RenderUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
@@ -52,7 +53,7 @@ public class FrameCategory implements Values {
     }
 
     public void initGui() {
-        this.animation.setSpeed(200).reset();
+        this.animation.setSpeed(20000000).reset();
     }
 
     public void drawScreen(int mouseX, int mouseY) {

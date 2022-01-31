@@ -37,9 +37,9 @@ public class Intent extends ArrayListMode {
             double offset = count * (mc.fontRendererObj.FONT_HEIGHT + 6);
 
             if (getHud().font.getValue()) {
-                Gui.drawRect(sr.getScaledWidth() - Fonts.YantramanavThin.getStringWidth(m.getName()) - 10, offset, sr.getScaledWidth() - Fonts.YantramanavThin.getStringWidth(m.getName()) - 8, 6 + mc.fontRendererObj.FONT_HEIGHT + offset, ColorUtils.getColorFromHud(count).getRGB());
-                Gui.drawRect(sr.getScaledWidth() - Fonts.YantramanavThin.getStringWidth(m.getName()) - 8, offset, sr.getScaledWidth(), 6 + mc.fontRendererObj.FONT_HEIGHT + offset, 0x90000000);
-                Fonts.YantramanavThin.drawStringWithShadow(m.getName(), sr.getScaledWidth() - Fonts.YantramanavThin.getStringWidth(m.getName()) - 4, (float) (4 + offset), ColorUtils.getColorFromHud(count).getRGB());
+                Gui.drawRect(sr.getScaledWidth() - Fonts.SFRegular.getStringWidth(m.getName()) - 10, offset, sr.getScaledWidth() - Fonts.SFRegular.getStringWidth(m.getName()) - 8, 6 + mc.fontRendererObj.FONT_HEIGHT + offset, ColorUtils.getColorFromHud(count).getRGB());
+                Gui.drawRect(sr.getScaledWidth() - Fonts.SFRegular.getStringWidth(m.getName()) - 8, offset, sr.getScaledWidth(), 6 + mc.fontRendererObj.FONT_HEIGHT + offset, 0x90000000);
+                Fonts.SFRegular.drawStringWithShadow(m.getName(), sr.getScaledWidth() - Fonts.SFRegular.getStringWidth(m.getName()) - 4, (float) (4 + offset), ColorUtils.getColorFromHud(count).getRGB());
             } else {
                 Gui.drawRect(sr.getScaledWidth() - mc.fontRendererObj.getStringWidth(m.getName()) - 10, offset, sr.getScaledWidth() - mc.fontRendererObj.getStringWidth(m.getName()) - 8, 6 + mc.fontRendererObj.FONT_HEIGHT + offset, ColorUtils.getColorFromHud(count).getRGB());
                 Gui.drawRect(sr.getScaledWidth() - mc.fontRendererObj.getStringWidth(m.getName()) - 8, offset, sr.getScaledWidth(), 6 + mc.fontRendererObj.FONT_HEIGHT + offset, 0x90000000);
