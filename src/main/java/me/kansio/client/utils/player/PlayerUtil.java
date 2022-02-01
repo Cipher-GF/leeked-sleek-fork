@@ -21,6 +21,8 @@ import java.util.ArrayList;
 
 public class PlayerUtil extends Util {
 
+
+
     public static float getBaseSpeed() {
         float baseSpeed = 0.2873F;
         if (mc.thePlayer.isPotionActive(Potion.moveSpeed)) {

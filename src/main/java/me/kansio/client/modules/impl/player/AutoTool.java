@@ -24,14 +24,14 @@ import net.minecraft.util.BlockPos;
         description = "Automatically Switches To The Tool Required"
 )
 
-public class AutoTool extends Module{
+public class AutoTool extends Module {
 
     @Subscribe
-    public void onPacket(PacketEvent event){
+    public void onPacket(PacketEvent event) {
 
         if (event.getPacketDirection() == PacketDirection.OUTBOUND && event.getPacket() instanceof C02PacketUseEntity) {
-            final C02PacketUseEntity packetUseEntity = (C02PacketUseEntity)event.getPacket();
-            final EntityLivingBase ent = (EntityLivingBase)packetUseEntity.getEntityFromWorld(mc.theWorld);
+            final C02PacketUseEntity packetUseEntity = event.getPacket();
+            final EntityLivingBase ent = (EntityLivingBase) packetUseEntity.getEntityFromWorld(mc.theWorld);
             if (packetUseEntity.getAction() == C02PacketUseEntity.Action.ATTACK) {
                 mc.thePlayer.inventory.currentItem = getBestSword(ent);
                 mc.playerController.updateController();
@@ -39,7 +39,7 @@ public class AutoTool extends Module{
         }
 
 
-        if(mc.gameSettings.keyBindAttack.pressed) {
+        if (mc.gameSettings.keyBindAttack.pressed) {
             if (mc.objectMouseOver != null) {
                 BlockPos pos = mc.objectMouseOver.getBlockPos();
                 if (pos != null) {
@@ -54,7 +54,7 @@ public class AutoTool extends Module{
         float strength = 1.0F;
         int bestItemIndex = -1;
 
-        for(int i = 0; i < 9; ++i) {
+        for (int i = 0; i < 9; ++i) {
             ItemStack itemStack = mc.thePlayer.inventory.mainInventory[i];
             if (itemStack != null && itemStack.getStrVsBlock(block) > strength) {
                 strength = itemStack.getStrVsBlock(block);
@@ -67,6 +67,7 @@ public class AutoTool extends Module{
         }
 
     }
+
     public static int getBestSword(final Entity target) {
         final int originalSlot = Minecraft.getMinecraft().thePlayer.inventory.currentItem;
         int weaponSlot = -1;
@@ -90,14 +91,14 @@ public class AutoTool extends Module{
 
     public static float getItemDamage(final ItemStack itemStack) {
         if (itemStack.getItem() instanceof ItemSword) {
-            double damage = 4.0 + ((ItemSword)itemStack.getItem()).getDamageVsEntity();
+            double damage = 4.0 + ((ItemSword) itemStack.getItem()).getDamageVsEntity();
             damage += EnchantmentHelper.getEnchantmentLevel(Enchantment.sharpness.effectId, itemStack) * 1.25;
-            return (float)damage;
+            return (float) damage;
         }
         if (itemStack.getItem() instanceof ItemTool) {
-            double damage = 1.0 + ((ItemTool)itemStack.getItem()).getToolMaterial().getDamageVsEntity();
+            double damage = 1.0 + ((ItemTool) itemStack.getItem()).getToolMaterial().getDamageVsEntity();
             damage += EnchantmentHelper.getEnchantmentLevel(Enchantment.sharpness.effectId, itemStack) * 1.25f;
-            return (float)damage;
+            return (float) damage;
         }
         return 1.0f;
     }
