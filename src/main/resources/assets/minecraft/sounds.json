@@ -2069,11 +2069,5 @@
     "sounds": [
       "hitmarker/callofduty"
     ]
-  },
-  "bgm.soviet": {
-    "category": "master",
-    "sounds": [
-      "bgm/soviet"
-    ]
   }
 }

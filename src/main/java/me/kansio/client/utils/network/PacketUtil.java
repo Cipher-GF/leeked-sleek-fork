@@ -24,5 +24,4 @@ public class PacketUtil extends Util {
             mc.getNetHandler().addToSendQueueNoEvent(packet);
         }
     }
-
 }

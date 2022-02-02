@@ -19,7 +19,7 @@ public class MCF extends Module {
 
     @Subscribe
     public void onMouse(MouseEvent event) {
-        if (event.getButton() == 2 && mc.objectMouseOver != null && mc.objectMouseOver.entityHit instanceof EntityPlayer) {
+        if (event.getButton() == 2 && mc.objectMouseOver.entityHit instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) mc.objectMouseOver.entityHit;
             String name = player.getName();
             if (Client.getInstance().getFriendManager().isFriend(name)) {
@@ -31,6 +31,4 @@ public class MCF extends Module {
             }
         }
     }
-
-
 }

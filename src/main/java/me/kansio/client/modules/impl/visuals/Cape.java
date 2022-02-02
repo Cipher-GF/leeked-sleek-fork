@@ -20,7 +20,7 @@ public class Cape extends Module {
     public ResourceLocation getCape() {
         switch (capemode.getValue()) {
             case "Sleek": {
-                return new ResourceLocation("sleek/capes/sleekcape.png");
+                return new ResourceLocation("sleek/images/capes/sleekcape.png");
             }
 
             default: {
