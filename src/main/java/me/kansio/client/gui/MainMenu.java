@@ -64,6 +64,7 @@ public class MainMenu extends GuiScreen
     public void drawScreen(int mouseX, int mouseY, float partialTicks)
     {
         GlStateManager.color(1.0F,1.0F,1.0F,1.0F);
+        RenderUtils.drawImage(BACKGROUND, 0, 0, width, height);
         /*
         GlStateManager.enableAlpha();
         backgroundShader.useShader(width, height, mouseX, mouseY, (System.currentTimeMillis() - initTime) / 1000f);
