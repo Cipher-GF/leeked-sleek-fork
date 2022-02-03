@@ -124,6 +124,8 @@ public class Config
         minecraftThread = Thread.currentThread();
         updateThreadPriorities();
         Shaders.startup(Minecraft.getMinecraft());
+
+
     }
 
     public static void checkInitialized()

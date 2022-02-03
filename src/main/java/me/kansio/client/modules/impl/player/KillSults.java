@@ -6,10 +6,12 @@ import me.kansio.client.event.impl.PacketEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
+import me.kansio.client.utils.chat.ChatUtil;
 import me.kansio.client.value.value.ModeValue;
 import net.minecraft.network.play.server.S02PacketChat;
 import org.apache.commons.lang3.RandomUtils;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -39,24 +41,20 @@ public class KillSults extends Module {
         }
     }
 
+
     public void sendKillSult(String name) {
-        final List<String> messages = Arrays.asList(
-                "You got sleeked L",
-                "Sleek is just better...",
-                "Verus got killed by Sleek",
-                "You just got absolutely raped by Sleek :)",
-                "Sleek too op I guess",
-                "You got killed by " + Client.getInstance().getUsername() + "(uid: " + Client.getInstance().getUid() + ") using Sleek hake",
-                "We do be doing slight amounts of trolling using Sleek",
-                "me and da sleek bois destroying blocksmc",
-                "sussy among us sleek hack???",
-                "mad? rage at me on discord: " + Client.getInstance().getDiscordTag(),
-                "got angry? rage at me on discord: " + Client.getInstance().getDiscordTag(),
-                "rage at me on discord: " + Client.getInstance().getDiscordTag(),
-                "mad? rage at me on discord: "+ Client.getInstance().getDiscordTag()  +" :troll:",
-                "like da hack? https://discord.gg/GUauVwtFKj",
-                "hack too good? get it here: https://discord.gg/GUauVwtFKj"
-        );
-        mc.thePlayer.sendChatMessage(messages.get(RandomUtils.nextInt(0, messages.size() - 1)).replaceAll("%name%", name));
+        ArrayList<String> msgs = Client.getInstance().getKillsultManager().getKillSults();
+
+        if (msgs.isEmpty()) {
+            ChatUtil.log("§c§lError! §fFailed to send killsult due to you having none set up...");
+            return;
+        }
+
+        String toSend = msgs.get(RandomUtils.nextInt(0, msgs.size() - 1))
+                        .replaceAll("%killed%", name)
+                        .replaceAll("%discord%", Client.getInstance().getDiscordTag())
+                        .replaceAll("%username%", Client.getInstance().getUsername())
+                        .replaceAll("%uid%", Client.getInstance().getUid());
+        mc.thePlayer.sendChatMessage(toSend);
     }
 }

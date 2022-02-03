@@ -18,6 +18,7 @@ import me.kansio.client.event.impl.ServerJoinEvent;
 import me.kansio.client.friend.FriendManager;
 import me.kansio.client.gui.config.ConfigurationGUI;
 import me.kansio.client.keybind.KeybindManager;
+import me.kansio.client.manager.KillsultManager;
 import me.kansio.client.manager.ValueManager;
 import me.kansio.client.modules.ModuleManager;
 import me.kansio.client.modules.impl.Module;
@@ -82,6 +83,9 @@ public class Client {
     private ConfigManager configManager;
 
     @Getter
+    private KillsultManager killsultManager;
+
+    @Getter
     private ValueManager valueManager;
 
     @Getter
@@ -114,6 +118,12 @@ public class Client {
 
         //Set the command manager
         commandManager = new CommandManager();
+
+        //Set the killsult manager
+        killsultManager = new KillsultManager();
+
+        //load the killsults
+        killsultManager.readKillSults();
 
         //Set the config manager
         configManager = new ConfigManager(new File(dir, "configs"));
@@ -196,7 +206,7 @@ public class Client {
             System.out.println(HttpUtil.delete(MessageFormat.format("http://zerotwoclient.xyz:13337/api/v1/leaveserver?clientname={0}", username)));
 
             System.out.println(HttpUtil.post("http://zerotwoclient.xyz:13337/api/v1/joinserver?name=" + this.username + "&uid=1" + "&ign=" + event.getIgn() + "&serverIP=" + event.getServerIP(), ""));
-            JsonElement node = new JsonParser().parse(HttpUtil.get("http://zerotwoclient.xyz:13337/api/v1/getclientplayers"));
+            JsonElement node = new JsonParser().parse(HttpUtil.get("http://zerotwoclient.xyz:13337/api/v1/getlegitclientplayers"));
 
             if (node.isJsonArray()) {
                 users.clear();

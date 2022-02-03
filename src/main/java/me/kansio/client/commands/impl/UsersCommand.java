@@ -22,7 +22,7 @@ public class UsersCommand extends Command {
     public void run(String[] args) {
 
         try {
-            JsonElement node = new JsonParser().parse(HttpUtil.get("http://zerotwoclient.xyz:13337/api/v1/getclientplayers"));
+            JsonElement node = new JsonParser().parse(HttpUtil.get("http://zerotwoclient.xyz:13337/api/v1/getlegitclientplayers"));
 
 
             if (node.isJsonArray()) {

@@ -112,9 +112,7 @@ public class ChestStealer extends Module {
                 (item.getItem().getUnlocalizedName().contains("slime")) || (item.getItem().getUnlocalizedName().contains("web")) ||
                 ((item.getItem() instanceof ItemGlassBottle)) || (item.getItem().getUnlocalizedName().contains("piston")) ||
                 (item.getItem().getUnlocalizedName().contains("potion") && (isBadPotion(item))) ||
-                //   ((item.getItem() instanceof ItemArmor) && isBestArmor(item)) ||
                 (item.getItem() instanceof ItemEgg || (item.getItem().getUnlocalizedName().contains("bow")) && !item.getDisplayName().contains("Kit")) ||
-                //   ((item.getItem() instanceof ItemSword) && !isBestSword(item)) ||
                 (item.getItem().getUnlocalizedName().contains("Raw")));
     }
 
