@@ -24,9 +24,9 @@ public class ImageESP extends Module {
 
     private ModeValue modeValue = new ModeValue("Mode", this, "Zuiy", "Edp", "Floyed");
 
-    private static final ResourceLocation ZUIY = new ResourceLocation("sleek/Zuiy.png");
-    private static final ResourceLocation EdP = new ResourceLocation("sleek/Edp.png");
-    private static final ResourceLocation FLOYED = new ResourceLocation("sleek/floyd.png");
+    private static final ResourceLocation ZUIY = new ResourceLocation("sleek/image/imageesp/Zuiy.png");
+    private static final ResourceLocation EdP = new ResourceLocation("sleek/image/imageesp/Edp.png");
+    private static final ResourceLocation FLOYED = new ResourceLocation("sleek/image/imageesp/floyd.png");
 
     @Subscribe
     public void onEntityRender(Render3DEvent event) {

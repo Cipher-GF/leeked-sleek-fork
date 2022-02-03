@@ -83,8 +83,6 @@ public class Sleek extends ArrayListMode {
 
             }
         } else {
-
-
             ArrayList<Module> sorted = (ArrayList<Module>) Client.getInstance().getModuleManager().getModulesSorted(mc.fontRendererObj);
             sorted.removeIf(m -> !m.isToggled());
 
