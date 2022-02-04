@@ -1,3 +1,4 @@
+# fuck pc
 
 # so good hack
 ## Info
