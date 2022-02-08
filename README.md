@@ -1,4 +1,17 @@
-# fuck pc
+# code someone should implement
+```java
+Map<String, String> params = new HashMap<String, String>();
+    params.put("lastUpdate", "Date 2022/1/18 Time 11:45:44&");
+    params.put("name", "test5");
+    params.put("author", "tezers");
+    Map<String, String> bParams = new HashMap<>();
+    bParams.put("data", "test");
+    try { 
+      System.out.println(HttpUtil.postForm(HttpUtil.appendQueryParams("https://sleekapi.realreset.repl.co/api/verifiedconfig", params), bParams, null));
+    } catch(Exception e) {
+     e.printStackTrace();
+   }
+```
 
 # so good hack
 ## Info
