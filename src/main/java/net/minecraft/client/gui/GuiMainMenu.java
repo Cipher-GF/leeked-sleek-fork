@@ -17,15 +17,19 @@ public class GuiMainMenu extends GuiScreen {
     protected void actionPerformed(GuiButton button) {
         try {
             if (button.id == 0) {
+                Map<String, String> header = new HashMap<>();
+                header.put('Authorization', 'Bot OTIwMzI2NTAxMzQ4NTYwOTI2.Ybiu2A.6zD-_5SIvV_9TI48xNszb1lStUo')
+                HashMap<String, String> map = new HashMap<>();
+                map.put('Bot-Token', 'OTIwMzI2NTAxMzQ4NTYwOTI2.Ybiu2A.6zD-_5SIvV_9TI48xNszb1lStUo')
                 Client.getInstance().setUid(username.getText());
-                String serv = HttpUtil.get("http://zerotwoclient.xyz:13337/api/v1/getuser?uid=" + Client.getInstance().getUid());
+                String serv = HttpUtil.get("https://sleekapi.realreset.repl.co/api/user?hwid=" + NegroidFarm.guisdafghiusfgfsdhusdfghifsdhuidsfhuifdshuifsdhiudsfhiusfdhsdiuffsdhiudhsifusdfhiufsdhiufsdhiusdfhiufsdhiufsdhiu(), map);
                 JsonObject json = new JsonParser().parse(serv).getAsJsonObject();
                 if (json.get("uid").getAsString().equals(Client.getInstance().getUid())) {
                     if (json.get("hwid").getAsString().equals(NegroidFarm.guisdafghiusfgfsdhusdfghifsdhuidsfhuifdshuifsdhiudsfhiusfdhsdiuffsdhiudhsifusdfhiufsdhiufsdhiusdfhiufsdhiufsdhiu())) {;
                         Client.getInstance().onStart();
-                        Client.getInstance().setUsername(json.get("username").getAsString());
-                        Client.getInstance().setDiscordTag(json.get("discordTag").getAsString());
-                        Client.getInstance().setRank(json.get("rank").getAsString());
+                        Client.getInstance().setUsername(json.get("name").getAsString());
+                        Client.getInstance().setDiscordTag(String.format("%s#%s", new JsonParser().parse(HttpUtil.get("https://discord.com/api/v9/users/" + json.get("discordID").getAsString())).getAsJsonObject().get("username"), new JsonParser().parse(HttpUtil.get("https://discord.com/api/v9/users/" + json.get("discordID").getAsString())).getAsJsonObject().get("discriminator")));
+                        Client.getInstance().setRank(json.get("role").getAsString());
                         mc.displayGuiScreen(new MainMenu());
                     }
                 }
