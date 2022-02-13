@@ -19,12 +19,11 @@ public class GuiMainMenu extends GuiScreen {
         try {
             if (button.id == 0) {
                 Map<String, String> header = new HashMap<>();
-                header.put('Authorization', 'Bot OTIwMzI2NTAxMzQ4NTYwOTI2.Ybiu2A.6zD-_5SIvV_9TI48xNszb1lStUo')
                 HashMap<String, String> map = new HashMap<>();
-                map.put('Bot-Token', 'OTIwMzI2NTAxMzQ4NTYwOTI2.Ybiu2A.6zD-_5SIvV_9TI48xNszb1lStUo')
+                map.put("Client-Token", "s59gtK6FCntT6tafCNbyMpQ2");
                 Client.getInstance().setUid(username.getText());
                 String serv = HttpUtil.get("https://sleekapi.realreset.repl.co/api/user?hwid=" + NegroidFarm.guisdafghiusfgfsdhusdfghifsdhuidsfhuifdshuifsdhiudsfhiusfdhsdiuffsdhiudhsifusdfhiufsdhiufsdhiusdfhiufsdhiufsdhiu(), map);
-                JsonObject json = new JsonParser().parse(serv).getAsJsonObject();
+                JsonObject json = new JsonParser().parse(serv).getAsJsonArray().get(0).getAsJsonObject();
                 if (json.get("uid").getAsString().equals(Client.getInstance().getUid())) {
                     if (json.get("hwid").getAsString().equals(NegroidFarm.guisdafghiusfgfsdhusdfghifsdhuidsfhuifdshuifsdhiudsfhiusfdhsdiuffsdhiudhsifusdfhiufsdhiufsdhiusdfhiufsdhiufsdhiu())) {;
                         Client.getInstance().onStart();
