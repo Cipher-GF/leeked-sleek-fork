@@ -146,9 +146,9 @@ public class Client {
         try {
             ViaMCP.getInstance().start();
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("[Sleek] Failed to start ViaMCP");
         }
-
+        /*
         try {
             IPCClient client = new IPCClient(937350566886137886L);
             client.setListener(new IPCListener() {
@@ -167,6 +167,7 @@ public class Client {
         } catch (Exception e) {
             System.out.println("Discord not found, not setting rpc.");
         }
+        */
 
         System.out.println("Client has been started.");
 

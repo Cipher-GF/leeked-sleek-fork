@@ -2,6 +2,7 @@ package me.kansio.client.gui;
 
 import me.kansio.client.gui.alt.GuiAltManager;
 import me.kansio.client.utils.font.Fonts;
+import me.kansio.client.utils.glsl.GLSLSandboxShader;
 import me.kansio.client.utils.render.ColorPalette;
 import me.kansio.client.utils.render.RenderUtils;
 import net.minecraft.client.audio.PositionedSoundRecord;
@@ -9,6 +10,7 @@ import net.minecraft.client.gui.*;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ResourceLocation;
+import org.lwjgl.Sys;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL20;
 
@@ -19,13 +21,13 @@ public class MainMenu extends GuiScreen
 
     private static final ResourceLocation BACKGROUND = new ResourceLocation("sleek/images/background.png");
     private GLSLSandboxShader backgroundShader;
-    private final long initTime = System.currentTimeMillis();
+    private long initTime = System.currentTimeMillis();
 
     public MainMenu() {
         try {
             this.backgroundShader = new GLSLSandboxShader("/noise.fsh");
-        } catch (IOException e) {
-            throw new IllegalStateException("Failed to load backgound shader", e);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -71,7 +73,7 @@ public class MainMenu extends GuiScreen
 
     public void drawScreen(int mouseX, int mouseY, float partialTicks)
     {
-        
+
         GlStateManager.enableAlpha();
         GlStateManager.disableCull();
         this.backgroundShader.useShader(this.width, this.height, mouseX, mouseY, (System.currentTimeMillis() - initTime) / 1000f);
