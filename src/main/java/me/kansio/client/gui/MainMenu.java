@@ -18,8 +18,16 @@ public class MainMenu extends GuiScreen
 {
 
     private static final ResourceLocation BACKGROUND = new ResourceLocation("sleek/images/background.png");
-    //private GLSLSandboxShader backgroundShader;
-    //private final long initTime = System.currentTimeMillis();
+    private GLSLSandboxShader backgroundShader;
+    private final long initTime = System.currentTimeMillis();
+
+    public MainMenu() {
+        try {
+            this.backgroundShader = new GLSLSandboxShader("/noise.fsh");
+        } catch (IOException e) {
+            throw new IllegalStateException("Failed to load backgound shader", e);
+        }
+    }
 
     public void initGui()
     {
@@ -37,7 +45,7 @@ public class MainMenu extends GuiScreen
         this.buttonList.add(new GuiButton(2, width / 2 - 100, j + i * 2, "Alt Manager"));
         this.buttonList.add(new GuiButton(3, width / 2 - 100, j + 84, 98, 20, I18n.format("menu.options")));
         this.buttonList.add(new GuiButton(4, width / 2 + 2, j + 84, 98, 20, I18n.format("menu.quit")));
-        //initTime = System.currentTimeMillis();
+        initTime = System.currentTimeMillis();
     }
 
     protected void actionPerformed(GuiButton button) throws IOException
@@ -63,11 +71,10 @@ public class MainMenu extends GuiScreen
 
     public void drawScreen(int mouseX, int mouseY, float partialTicks)
     {
-        GlStateManager.color(1.0F,1.0F,1.0F,1.0F);
-        RenderUtils.drawImage(BACKGROUND, 0, 0, width, height);
-        /*
+        
         GlStateManager.enableAlpha();
-        backgroundShader.useShader(width, height, mouseX, mouseY, (System.currentTimeMillis() - initTime) / 1000f);
+        GlStateManager.disableCull();
+        this.backgroundShader.useShader(this.width, this.height, mouseX, mouseY, (System.currentTimeMillis() - initTime) / 1000f);
 
         GL11.glBegin(GL11.GL_QUADS);
 
@@ -78,14 +85,13 @@ public class MainMenu extends GuiScreen
 
         GL11.glEnd();
 
+        // Unbind shader
         GL20.glUseProgram(0);
-         */
-
         Fonts.Arial30.drawCenteredString("§lS§fleek", width / 2, height / 4 + 24, ColorPalette.BLUE.getColor().getRGB());
 
         String devinfo = "Made with <3 by Reset, Kansio, PC, Divine and Moshi";
         Fonts.Verdana.drawString(devinfo, (width - Fonts.Arial30.getStringWidth(devinfo)) + 135, height - 10, -1);
-
+        GlStateManager.color(1.0F,1.0F,1.0F,1.0F);
         super.drawScreen(mouseX, mouseY, partialTicks);
     }
 
