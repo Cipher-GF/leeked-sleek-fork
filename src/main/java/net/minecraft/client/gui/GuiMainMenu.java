@@ -38,6 +38,7 @@ public class GuiMainMenu extends GuiScreen {
                 }
             }
         } catch (Exception e) {
+            e.printStackTrace();
 //            print ERROR
             System.out.println("Error: " + e.getMessage());
         }
