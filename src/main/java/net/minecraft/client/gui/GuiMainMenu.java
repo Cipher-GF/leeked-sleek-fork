@@ -5,6 +5,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import me.kansio.client.Client;
 import me.kansio.client.gui.MainMenu;
+import me.kansio.client.utils.font.Fonts;
+import me.kansio.client.utils.font.MCFontRenderer;
 import me.kansio.client.utils.network.HttpUtil;
 import negroidslayer.NegroidFarm;
 import org.lwjgl.input.Keyboard;
@@ -43,12 +45,11 @@ public class GuiMainMenu extends GuiScreen {
 
     @Override
     public void drawScreen(int x, int y2, float z) {
-        final FontRenderer font = mc.fontRendererObj;
-
+        final MCFontRenderer font = Fonts.SEGOE18;
         drawDefaultBackground();
         username.drawTextBox();
-        //drawString(mc.fontRendererObj, "Client has been skidded by vncat", mc.fontRendererObj.getStringWidth("Client has been skidded by vncat") / 2, height - 60, ColorPalette.AMBER.getColor().getRGB());
-        this.drawCenteredString(font, "Login", (int) (width / 2F), 20 + 60, -1);
+//        drawString(mc.fontRendererObj, "Client has been skidded by vncat", mc.fontRendererObj.getStringWidth("Client has been skidded by vncat") / 2, height - 60, ColorPalette.AMBER.getColor().getRGB());
+        font.drawCenteredString("Login", (int) (width / 2F), 20 + 60, -1);
         if (username.getText().isEmpty()) {
             font.drawStringWithShadow("UID", width / 2F - 96, 66 + 60, -7829368);
         }
@@ -58,7 +59,7 @@ public class GuiMainMenu extends GuiScreen {
     @Override
     public void initGui() {
         int var3 = height / 4 + 24;
-        buttonList.add(new GuiButton(0, width / 2 - 100, 84 + 60, "Login"));
+        buttonList.add(new GuiButton(0, width / 2 - 100, 84 + 60, "Login to Sleek"));
         username = new GuiTextField(var3, mc.fontRendererObj, width / 2 - 100, 60 + 60, 200, 20);
         username.setFocused(true);
         Keyboard.enableRepeatEvents(true);
