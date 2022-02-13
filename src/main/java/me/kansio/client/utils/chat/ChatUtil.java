@@ -6,7 +6,11 @@ import net.minecraft.util.ChatComponentText;
 public class ChatUtil extends Util {
 
     public static void log(String message) {
-        mc.thePlayer.addChatMessage(new ChatComponentText("§bSleek §7» §f" + message));
+        if (mc.thePlayer == null) {
+            System.out.println(message)
+        } else {
+            mc.thePlayer.addChatMessage(new ChatComponentText("§bSleek §7» §f" + message));
+        }
     }
 
     public static void logNoPrefix(String message) {
