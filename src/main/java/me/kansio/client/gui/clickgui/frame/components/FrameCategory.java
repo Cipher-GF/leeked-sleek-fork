@@ -12,6 +12,7 @@ import net.minecraft.client.gui.Gui;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -75,7 +76,6 @@ public class FrameCategory implements Values {
 
         // Drawing category base
         Gui.drawRect(getX(), getY(), getX() + width, getY() + getHeight(), mainColor);
-
         // Drawing category name section
         Gui.drawRect(getX(), getY(), getX() + width, getY() + categoryNameHeight, headerColor);
 
@@ -104,8 +104,10 @@ public class FrameCategory implements Values {
         int i = 0;
         for (FrameModule module : this.modules) {
             module.setX(x);
-            module.setY(y + categoryNameHeight + i - offset);
+            int thing = y + categoryNameHeight + i - offset;
+            module.setY(thing);
             module.drawScreen(mouseX, mouseY);
+            Gui.drawRect(x, thing, x + width, y + categoryNameHeight + i - offset + 0.5, darkerMainColor2);
             i += module.getOffset();
         }
 

@@ -7,6 +7,7 @@ import net.minecraft.util.ResourceLocation;
 import java.awt.*;
 
 public class Fonts extends Util {
+    public static final MCFontRenderer Arial50 = new MCFontRenderer(new Font("Arial", Font.BOLD,50),true,true);
     public static final MCFontRenderer Arial30 = new MCFontRenderer(new Font("Arial", Font.BOLD,30),true,true);
     public static final MCFontRenderer Verdana = new MCFontRenderer(new Font("Verdana", Font.PLAIN,18),true,true);
     public static final MCFontRenderer Arial12 = new MCFontRenderer(new Font("Arial", Font.PLAIN,12),true,true);

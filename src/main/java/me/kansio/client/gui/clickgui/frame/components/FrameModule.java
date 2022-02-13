@@ -22,6 +22,7 @@ import me.kansio.client.utils.font.Fonts;
 import me.kansio.client.utils.render.ColorUtils;
 import me.kansio.client.utils.render.RenderUtils;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiScreen;
 import org.lwjgl.input.Keyboard;
 
@@ -52,6 +53,7 @@ public class FrameModule implements Values {
         this.listening = false;
         this.x = x;
         this.y = y;
+
 
         /*/if(module.())
         {/*/
@@ -118,7 +120,8 @@ public class FrameModule implements Values {
                 component.setY(y + moduleHeight + offset);
 
                 component.drawScreen(mouseX, mouseY);
-
+                // Draw a line between the components
+                Gui.drawRect(x, y + moduleHeight + offset, x + defaultWidth, y + moduleHeight + offset, ColorPalette.LIGHT_BLUE.getColor().getRGB());
                 offset += component.getOffset();
             }
         }

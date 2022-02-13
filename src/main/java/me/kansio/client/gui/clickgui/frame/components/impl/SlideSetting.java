@@ -54,8 +54,6 @@ public class SlideSetting extends Component implements Values {
         fontRenderer.drawString("§7" + getSetting().getName() + ": §f" + roundToPlace(((NumberValue) getSetting()).getValue().doubleValue(), 2), x + 5, y + (getOffset() / 2F - (fontRenderer.FONT_HEIGHT / 2F)), stringColor, true);
     }
 
-
-
     private double roundToPlace(double value, int places) {
         if (places < 0) {
             throw new IllegalArgumentException();

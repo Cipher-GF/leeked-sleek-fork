@@ -172,7 +172,7 @@ public class Client {
         System.out.println("Client has been started.");
 
         //set the window title
-        Display.setTitle("Sleek v0.1");
+        Display.setTitle("Sleek v0.2");
     }
 
     public void onShutdown() {

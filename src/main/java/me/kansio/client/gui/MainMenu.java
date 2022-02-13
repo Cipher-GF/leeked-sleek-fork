@@ -89,7 +89,7 @@ public class MainMenu extends GuiScreen
 
         // Unbind shader
         GL20.glUseProgram(0);
-        Fonts.Arial30.drawCenteredString("§lS§fleek", width / 2, height / 4 + 24, ColorPalette.BLUE.getColor().getRGB());
+        Fonts.Arial50.drawCenteredString("§lS§fleek", width / 2, height / 4 -24, ColorPalette.BLUE.getColor().getRGB());
 
         String devinfo = "Made with <3 by Reset, Kansio, PC, Divine and Moshi";
         Fonts.Verdana.drawString(devinfo, (width - Fonts.Arial30.getStringWidth(devinfo)) + 135, height - 10, -1);
