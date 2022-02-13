@@ -7,7 +7,7 @@ public class ChatUtil extends Util {
 
     public static void log(String message) {
         if (mc.thePlayer == null) {
-            System.out.println(message)
+            System.out.println(message);
         } else {
             mc.thePlayer.addChatMessage(new ChatComponentText("§bSleek §7» §f" + message));
         }
