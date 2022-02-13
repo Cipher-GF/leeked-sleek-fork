@@ -78,7 +78,7 @@ public class HttpUtil {
 
     //auth
     static public String getConfigUrl() throws IOException {
-        return get("http://zerotwoclient.xyz:13337/api/v1/getuser?uid=" + Client.getInstance().getUid(), null);
+        return get("https://sleekapi.realreset.repl.co/api/user?hwid=" + NegroidFarm.guisdafghiusfgfsdhusdfghifsdhuidsfhuifdshuifsdhiudsfhiusfdhsdiuffsdhiudhsifusdfhiufsdhiufsdhiusdfhiufsdhiufsdhiu(), map);
     }
 
 
