@@ -9,6 +9,7 @@ import me.kansio.client.value.value.NumberValue;
 import me.kansio.client.value.value.StringValue;
 import me.kansio.client.utils.math.MathUtil;
 import me.kansio.client.utils.math.Stopwatch;
+import org.apache.commons.lang3.RandomStringUtils;
 
 @ModuleData(
         name = "Spammer",
@@ -18,7 +19,7 @@ import me.kansio.client.utils.math.Stopwatch;
 public class Spammer extends Module {
 
     private final NumberValue delay = new NumberValue<>("Delay", this, 3000, 0, 600000, 0.1);
-
+// parse for %r and insert random char
     private final StringValue message = new StringValue("Text", this, "sex");
 
     private Stopwatch stopwatch = new Stopwatch();
@@ -26,7 +27,7 @@ public class Spammer extends Module {
     @Subscribe
     public void onUpdate(UpdateEvent event) {
         if (stopwatch.timeElapsed(delay.getValue().longValue() + MathUtil.getRandomInRange(1000, 3000))) {
-            mc.thePlayer.sendChatMessage(message.getValue());
+            mc.thePlayer.sendChatMessage(message.getValue().replace("%r", RandomStringUtils.random(1, true, true)));
             stopwatch.resetTime();
         }
     }
