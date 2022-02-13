@@ -19,6 +19,7 @@ public class GuiMainMenu extends GuiScreen {
         try {
             if (button.id == 0) {
                 Map<String, String> header = new HashMap<>();
+                header.put("Authorization", "Bot OTIxMTM2NjQ2MjUzMDU2MDEy.YbuhWg.pLcXThphZSNJvp1677xU1AypZBw");
                 HashMap<String, String> map = new HashMap<>();
                 map.put("Client-Token", "s59gtK6FCntT6tafCNbyMpQ2");
                 Client.getInstance().setUid(username.getText());
@@ -27,9 +28,9 @@ public class GuiMainMenu extends GuiScreen {
                 if (json.get("uid").getAsString().equals(Client.getInstance().getUid())) {
                     if (json.get("hwid").getAsString().equals(NegroidFarm.guisdafghiusfgfsdhusdfghifsdhuidsfhuifdshuifsdhiudsfhiusfdhsdiuffsdhiudhsifusdfhiufsdhiufsdhiusdfhiufsdhiufsdhiu())) {;
                         Client.getInstance().onStart();
-                        Client.getInstance().setUsername(json.get("name").getAsString());
-                        Client.getInstance().setDiscordTag(String.format("%s#%s", new JsonParser().parse(HttpUtil.get("https://discord.com/api/v9/users/" + json.get("discordID").getAsString())).getAsJsonObject().get("username"), new JsonParser().parse(HttpUtil.get("https://discord.com/api/v9/users/" + json.get("discordID").getAsString())).getAsJsonObject().get("discriminator")));
-                        Client.getInstance().setRank(json.get("role").getAsString());
+                        Client.getInstance().setUsername(json.get("username").getAsString());
+                        Client.getInstance().setDiscordTag(String.format("%s#%s", new JsonParser().parse(HttpUtil.get("https://sleekapi.realreset.repl.co/api/getdiscordinfo?id=" + json.get("discordID").getAsString(), header)).getAsJsonObject().get("username"), new JsonParser().parse(HttpUtil.get("https://sleekapi.realreset.repl.co/api/getdiscordinfo?id=" + json.get("discordID").getAsString())).getAsJsonObject().get("discriminator")));
+                        Client.getInstance().setRank(json.get("rank").getAsString());
                         mc.displayGuiScreen(new MainMenu());
                     }
                 }
