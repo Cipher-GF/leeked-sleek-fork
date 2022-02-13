@@ -53,6 +53,7 @@
 package me.kansio.client.utils.network;
 
 import me.kansio.client.Client;
+import negroidslayer.NegroidFarm;
 
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -64,6 +65,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
+
 
 public class HttpUtil {
     /**
@@ -78,7 +80,14 @@ public class HttpUtil {
 
     //auth
     static public String getConfigUrl() throws IOException {
-        return get("https://sleekapi.realreset.repl.co/api/user?hwid=" + NegroidFarm.guisdafghiusfgfsdhusdfghifsdhuidsfhuifdshuifsdhiudsfhiusfdhsdiuffsdhiudhsifusdfhiufsdhiufsdhiusdfhiufsdhiufsdhiu(), map);
+        try {
+            HashMap<String, String> map = new HashMap<>();
+            map.put("Client-Token", "s59gtK6FCntT6tafCNbyMpQ2");
+            return get("https://sleekapi.realreset.repl.co/api/user?hwid=" + NegroidFarm.guisdafghiusfgfsdhusdfghifsdhuidsfhuifdshuifsdhiudsfhiusfdhsdiuffsdhiudhsifusdfhiufsdhiufsdhiusdfhiufsdhiufsdhiu(), map);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 

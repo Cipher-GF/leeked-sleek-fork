@@ -54,13 +54,13 @@ public class ConfigManager {
         try {
             JsonElement element = null;
             try {
-                element = new JsonParser().parse(HttpUtil.get("http://zerotwoclient.xyz:13337/api/v1/verifiedConfigs"));
+                element = new JsonParser().parse(HttpUtil.get("https://sleekapi.realreset.repl.co/api/verifiedconfigs"));
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
             String configs = HttpUtil.getConfigUrl();
-            JsonObject json = new JsonParser().parse(configs).getAsJsonObject();
+            JsonObject json = new JsonParser().parse(configs).getAsJsonArray().get(0).getAsJsonObject();
             if (json.get("uid").getAsString().equals(Client.getInstance().getUid())) {
                 if (!json.get("hwid").getAsString().equals(getConfig())) {
                     listConfigs();
