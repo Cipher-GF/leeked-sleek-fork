@@ -45,7 +45,7 @@ public class GuiMainMenu extends GuiScreen {
 
     @Override
     public void drawScreen(int x, int y2, float z) {
-        final MCFontRenderer font = Fonts.SEGOE18;
+        final MCFontRenderer font = Fonts.Verdana;
         drawDefaultBackground();
         username.drawTextBox();
 //        drawString(mc.fontRendererObj, "Client has been skidded by vncat", mc.fontRendererObj.getStringWidth("Client has been skidded by vncat") / 2, height - 60, ColorPalette.AMBER.getColor().getRGB());
