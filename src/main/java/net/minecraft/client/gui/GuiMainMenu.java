@@ -18,6 +18,14 @@ public class GuiMainMenu extends GuiScreen {
     private GLSLSandboxShader backgroundShader;
     private long initTime = System.currentTimeMillis();
 
+    public GuiMainMenu() {
+        try {
+            this.backgroundShader = new GLSLSandboxShader("/background.fsh");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     protected void actionPerformed(GuiButton button) {
         try {
