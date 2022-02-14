@@ -41,15 +41,13 @@ public class LongJump extends Module {
         damageWaiterThing.resetTime();
 
 
-        switch (mode.getValue()) {
-            case "Verus":
-                if (!mc.thePlayer.onGround) {
-                    toggle();
-                    return;
-                }
-                TimerUtil.setTimer(0.3f);
-                PlayerUtil.damageVerus();
-                break;
+        if ("Verus".equals(mode.getValue())) {
+            if (!mc.thePlayer.onGround) {
+                toggle();
+                return;
+            }
+            TimerUtil.setTimer(0.3f);
+            PlayerUtil.damageVerus();
         }
     }
 

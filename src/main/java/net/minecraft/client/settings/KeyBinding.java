@@ -16,6 +16,7 @@ public class KeyBinding implements Comparable<KeyBinding>
     private final String keyDescription;
     private final int keyCodeDefault;
     private final String keyCategory;
+    public boolean isKeyDown;
     private int keyCode;
 
     /** Is the key held down? */

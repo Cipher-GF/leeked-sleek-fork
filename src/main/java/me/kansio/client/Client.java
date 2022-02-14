@@ -39,6 +39,9 @@ import viamcp.utils.JLoggerToLog4j;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.text.MessageFormat;
 import java.time.OffsetDateTime;
 import java.util.HashMap;
@@ -188,6 +191,7 @@ public class Client {
             keybindManager.save();
         }
     }
+
 
     @Subscribe
     public void onChat(PacketEvent event) {
