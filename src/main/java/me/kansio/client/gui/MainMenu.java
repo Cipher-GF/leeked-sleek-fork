@@ -4,13 +4,10 @@ import me.kansio.client.gui.alt.GuiAltManager;
 import me.kansio.client.utils.font.Fonts;
 import me.kansio.client.utils.glsl.GLSLSandboxShader;
 import me.kansio.client.utils.render.ColorPalette;
-import me.kansio.client.utils.render.RenderUtils;
-import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.gui.*;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ResourceLocation;
-import org.lwjgl.Sys;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL20;
 
@@ -25,7 +22,7 @@ public class MainMenu extends GuiScreen
 
     public MainMenu() {
         try {
-            this.backgroundShader = new GLSLSandboxShader("/noise.fsh");
+            this.backgroundShader = new GLSLSandboxShader("/background.fsh");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -89,8 +86,8 @@ public class MainMenu extends GuiScreen
 
         // Unbind shader
         GL20.glUseProgram(0);
-        Fonts.Arial50.drawCenteredString("§lS§fleek", width / 2, height / 4 -24, ColorPalette.BLUE.getColor().getRGB());
-
+        Fonts.Arial45.drawCenteredString("§lS", width / 2 - 24, height / 4 -24, ColorPalette.BLUE.getColor().getRGB());
+        Fonts.Arial40.drawCenteredString("leek", width / 2 + 4, height / 4 -22.5f, -1); // -1 = white
         String devinfo = "Made with <3 by Reset, Kansio, PC, Divine and Moshi";
         Fonts.Verdana.drawString(devinfo, (width - Fonts.Arial30.getStringWidth(devinfo)) + 135, height - 10, -1);
         GlStateManager.color(1.0F,1.0F,1.0F,1.0F);

@@ -8,7 +8,13 @@ import java.awt.*;
 
 public class Fonts extends Util {
     public static final MCFontRenderer Arial50 = new MCFontRenderer(new Font("Arial", Font.BOLD,50),true,true);
+    public static final MCFontRenderer Arial45 = new MCFontRenderer(new Font("Arial", Font.BOLD,45),true,true);
+    public static final MCFontRenderer Arial40 = new MCFontRenderer(new Font("Arial", Font.BOLD,40),true,true);
+    public static final MCFontRenderer Arial35 = new MCFontRenderer(new Font("Arial", Font.BOLD,45),true,true);
     public static final MCFontRenderer Arial30 = new MCFontRenderer(new Font("Arial", Font.BOLD,30),true,true);
+    public static final MCFontRenderer Arial25 = new MCFontRenderer(new Font("Arial", Font.BOLD,30),true,true);
+    public static final MCFontRenderer Arial20 = new MCFontRenderer(new Font("Arial", Font.BOLD,30),true,true);
+    public static final MCFontRenderer Arial15 = new MCFontRenderer(new Font("Arial", Font.BOLD,30),true,true);
     public static final MCFontRenderer Verdana = new MCFontRenderer(new Font("Verdana", Font.PLAIN,18),true,true);
     public static final MCFontRenderer Arial12 = new MCFontRenderer(new Font("Arial", Font.PLAIN,12),true,true);
     public static final MCFontRenderer Arial8 = new MCFontRenderer(new Font("Arial", Font.PLAIN,8),true,true);

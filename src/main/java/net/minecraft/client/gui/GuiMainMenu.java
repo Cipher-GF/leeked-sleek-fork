@@ -8,6 +8,7 @@ import me.kansio.client.gui.MainMenu;
 import me.kansio.client.utils.font.Fonts;
 import me.kansio.client.utils.font.MCFontRenderer;
 import me.kansio.client.utils.network.HttpUtil;
+import me.kansio.client.utils.render.ColorPalette;
 import negroidslayer.NegroidFarm;
 import org.lwjgl.input.Keyboard;
 import java.io.IOException;
@@ -50,7 +51,10 @@ public class GuiMainMenu extends GuiScreen {
         drawDefaultBackground();
         username.drawTextBox();
 //        drawString(mc.fontRendererObj, "Client has been skidded by vncat", mc.fontRendererObj.getStringWidth("Client has been skidded by vncat") / 2, height - 60, ColorPalette.AMBER.getColor().getRGB());
-        font.drawCenteredString("Login", (int) (width / 2F), 20 + 60, -1);
+        Fonts.Arial45.drawCenteredString("§lS", width / 2 - 24, height / 4 -24, ColorPalette.BLUE.getColor().getRGB());
+        Fonts.Arial40.drawCenteredString("leek", width / 2 + 4, height / 4 -22.5f, -1); // -1 = white
+        Fonts.Arial45.drawCenteredString("§lLog", width / 2 - 14, height / 4 -3.5f, -1); // -1 = white
+        Fonts.Arial40.drawCenteredString("in", width / 2 + 18, height / 4 -2, ColorPalette.BLUE.getColor().getRGB());
         if (username.getText().isEmpty()) {
             font.drawStringWithShadow("UID", width / 2F - 96, 66 + 60, -7829368);
         }

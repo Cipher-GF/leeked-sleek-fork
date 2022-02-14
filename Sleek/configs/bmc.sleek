@@ -2,7 +2,7 @@
   "data": {
     "author": "qoft",
     "name": "bmc",
-    "lastUpdated": "Date 2022/2/13 Time 13:54:52"
+    "lastUpdated": "Date 2022/2/13 Time 21:12:59"
   },
   "modules": [
     {
@@ -180,7 +180,7 @@
     {
       "name": "Penis ESP",
       "keybind": 0,
-      "enabled": true
+      "enabled": false
     },
     {
       "name": "NoRender",
@@ -398,7 +398,7 @@
     {
       "name": "No Fall",
       "keybind": 0,
-      "enabled": true,
+      "enabled": false,
       "Mode": "Collide"
     },
     {
@@ -482,6 +482,11 @@
       "keybind": 0,
       "enabled": true,
       "Cape": "Sleek"
+    },
+    {
+      "name": "Step",
+      "keybind": 0,
+      "enabled": true
     },
     {
       "name": "MCF",

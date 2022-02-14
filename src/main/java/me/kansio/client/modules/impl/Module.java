@@ -47,6 +47,8 @@ public abstract class Module {
         this(name, Keyboard.KEY_NONE, category);
     }
 
+
+
     public String getFormattedSuffix() {
         if (getSuffix().equalsIgnoreCase("")) return "";
 
@@ -197,4 +199,5 @@ public abstract class Module {
         this.keyBind = keyBind;
         Client.getInstance().getKeybindManager().save();
     }
+
 }
