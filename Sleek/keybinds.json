@@ -225,6 +225,11 @@
     "keybindName": "RSHIFT"
   },
   {
+    "name": "Step",
+    "keybind": 0,
+    "keybindName": "NONE"
+  },
+  {
     "name": "Auto Settings",
     "keybind": 0,
     "keybindName": "NONE"

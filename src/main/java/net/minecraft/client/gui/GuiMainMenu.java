@@ -7,16 +7,29 @@ import me.kansio.client.Client;
 import me.kansio.client.gui.MainMenu;
 import me.kansio.client.utils.font.Fonts;
 import me.kansio.client.utils.font.MCFontRenderer;
+import me.kansio.client.utils.glsl.GLSLSandboxShader;
 import me.kansio.client.utils.network.HttpUtil;
 import me.kansio.client.utils.render.ColorPalette;
 import negroidslayer.NegroidFarm;
+import net.minecraft.client.renderer.GlStateManager;
 import org.lwjgl.input.Keyboard;
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL20;
+
 import java.io.IOException;
 
 public class GuiMainMenu extends GuiScreen {
     private GuiTextField username;
     private GLSLSandboxShader backgroundShader;
     private long initTime = System.currentTimeMillis();
+
+    public GuiMainMenu() {
+        try {
+            this.backgroundShader = new GLSLSandboxShader("/background.fsh");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     protected void actionPerformed(GuiButton button) {
@@ -51,7 +64,7 @@ public class GuiMainMenu extends GuiScreen {
         final MCFontRenderer font = Fonts.Verdana;
         GlStateManager.enableAlpha();
         GlStateManager.disableCull();
-        this.backgroundShader.useShader(this.width, this.height, mouseX, mouseY, (System.currentTimeMillis() - initTime) / 1000f);
+        this.backgroundShader.useShader(this.width, this.height, x, y2, (System.currentTimeMillis() - initTime) / 1000f);
 
         GL11.glBegin(GL11.GL_QUADS);
 
