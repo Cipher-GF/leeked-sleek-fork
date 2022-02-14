@@ -15,7 +15,8 @@ import java.io.IOException;
 
 public class GuiMainMenu extends GuiScreen {
     private GuiTextField username;
-
+    private GLSLSandboxShader backgroundShader;
+    private long initTime = System.currentTimeMillis();
 
     @Override
     protected void actionPerformed(GuiButton button) {
@@ -48,7 +49,21 @@ public class GuiMainMenu extends GuiScreen {
     @Override
     public void drawScreen(int x, int y2, float z) {
         final MCFontRenderer font = Fonts.Verdana;
-        drawDefaultBackground();
+        GlStateManager.enableAlpha();
+        GlStateManager.disableCull();
+        this.backgroundShader.useShader(this.width, this.height, mouseX, mouseY, (System.currentTimeMillis() - initTime) / 1000f);
+
+        GL11.glBegin(GL11.GL_QUADS);
+
+        GL11.glVertex2f(-1f, -1f);
+        GL11.glVertex2f(-1f, 1f);
+        GL11.glVertex2f(1f, 1f);
+        GL11.glVertex2f(1f, -1f);
+
+        GL11.glEnd();
+
+        // Unbind shader
+        GL20.glUseProgram(0);
         username.drawTextBox();
 //        drawString(mc.fontRendererObj, "Client has been skidded by vncat", mc.fontRendererObj.getStringWidth("Client has been skidded by vncat") / 2, height - 60, ColorPalette.AMBER.getColor().getRGB());
         Fonts.Arial45.drawCenteredString("§lS", width / 2 - 24, height / 4 -24, ColorPalette.BLUE.getColor().getRGB());
@@ -68,6 +83,7 @@ public class GuiMainMenu extends GuiScreen {
         username = new GuiTextField(var3, mc.fontRendererObj, width / 2 - 100, 60 + 60, 200, 20);
         username.setFocused(true);
         Keyboard.enableRepeatEvents(true);
+        initTime = System.currentTimeMillis();
     }
 
     @Override
