@@ -21,7 +21,8 @@ VMOptions: `-Djava.library.path="C:\Users\Kansio\IdeaProjects\Client\workspace\v
 - Archybot (I'm not explaining this) (mr shit)
 - MasterGBerry (Moved to a whole differnet country to marry to his egirl)
 - Tenebrous (Just no, fucker groomed a 14yo youtuber)
-- Dehamad ("Its legit kinda" - Dehamad) ![skull](https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/twitter/282/skull_1f480.png)
+- Dehamad ("Its legit kinda" - Dehamad) 
 - ArcaneCiCi (I guess he edated a 16yo not as bad as it could be)
 - to be countined
 
+![skull](https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/twitter/282/skull_1f480.png)
