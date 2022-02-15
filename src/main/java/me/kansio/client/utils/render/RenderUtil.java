@@ -637,4 +637,62 @@ public class RenderUtil {
         GlStateManager.disableBlend();
 
     }
+    public static void drawBottemRoundedRect(double x, double y, double width, double height, double radius, int color) {
+        GlStateManager.enableBlend();
+        GlStateManager.disableTexture2D();
+        GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
+        double x1 = x + width;
+        double y1 = y + height;
+        float f = (color >> 24 & 0xFF) / 255.0F;
+        float f1 = (color >> 16 & 0xFF) / 255.0F;
+        float f2 = (color >> 8 & 0xFF) / 255.0F;
+        float f3 = (color & 0xFF) / 255.0F;
+        GL11.glPushAttrib(0);
+        GL11.glScaled(0.5, 0.5, 0.5);
+
+        x *= 2;
+        y *= 2;
+        x1 *= 2;
+        y1 *= 2;
+
+        glDisable(GL11.GL_TEXTURE_2D);
+        GL11.glColor4f(f1, f2, f3, f);
+        glEnable(GL11.GL_LINE_SMOOTH);
+
+        GL11.glBegin(GL11.GL_POLYGON);
+
+        // top left
+        for (int i = 0; i <= 90; i += 3) {
+            GL11.glVertex2d(x + radius + +(Math.sin((i * Math.PI / 180)) * (radius * -1)), y + radius + (Math.cos((i * Math.PI / 180)) * (radius * -1)));
+        }
+        
+        // bottem left
+        for (int i = 90; i <= 180; i += 3) {
+            GL11.glVertex2d(x + radius + (Math.sin((i * Math.PI / 180)) * (radius * -1)), y1 - radius + (Math.cos((i * Math.PI / 180)) * (radius * -1)));
+        }
+
+        // top right
+        for (int i = 0; i <= 90; i += 3) {
+            GL11.glVertex2d(x1 - radius + (Math.sin((i * Math.PI / 180)) * radius), y1 - radius + (Math.cos((i * Math.PI / 180)) * radius));
+        }
+
+        // bottem right
+        for (int i = 90; i <= 180; i += 3) {
+            GL11.glVertex2d(x1 - radius + (Math.sin((i * Math.PI / 180)) * radius), y + radius + (Math.cos((i * Math.PI / 180)) * radius));
+        }
+
+        GL11.glEnd();
+
+        glEnable(GL11.GL_TEXTURE_2D);
+        glDisable(GL11.GL_LINE_SMOOTH);
+        glEnable(GL11.GL_TEXTURE_2D);
+
+        GL11.glScaled(2, 2, 2);
+
+        GL11.glPopAttrib();
+        GL11.glColor4f(1, 1, 1, 1);
+        GlStateManager.enableTexture2D();
+        GlStateManager.disableBlend();
+
+    }
 }
