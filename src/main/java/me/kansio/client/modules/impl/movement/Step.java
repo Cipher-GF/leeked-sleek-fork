@@ -12,6 +12,7 @@ import me.kansio.client.value.value.NumberValue;
 import net.minecraft.network.play.client.C03PacketPlayer;
 import net.minecraft.stats.StatList;
 import net.minecraft.util.BlockPos;
+import org.lwjgl.Sys;
 
 import java.lang.Number;
 @ModuleData(
@@ -40,20 +41,19 @@ public class Step extends Module {
                 String bRight = String.valueOf(mc.theWorld.getBlockState(new BlockPos(mc.thePlayer.posX + 1, mc.thePlayer.posY, mc.thePlayer.posZ )));
                 String bLeft = String.valueOf(mc.theWorld.getBlockState(new BlockPos(mc.thePlayer.posX - 1, mc.thePlayer.posY, mc.thePlayer.posZ )));
                 if (cage_checks.getValue()) {
-                    System.out.println(b2Blocks);
-                    System.out.println(dir);
-                    if (!bRight.contains("minecraft:glass") && !bLeft.contains("minecraft:glass") && !bForward.contains("minecraft:glass") && !bUp.contains("minecraft:glass")) {
+                    if (!bRight.contains("minecraft:glass") && !bLeft.contains("minecraft:glass") && !bUp.contains("minecraft:glass") && b2Blocks.contains("minecraft:air")) {
                         mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + 0.42, mc.thePlayer.posZ, mc.thePlayer.onGround));
                         mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + 0.75, mc.thePlayer.posZ, mc.thePlayer.onGround));
                         mc.thePlayer.stepHeight = 1F;
-                } else {
-                    mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + 0.42, mc.thePlayer.posZ, mc.thePlayer.onGround));
-                    mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + 0.75, mc.thePlayer.posZ, mc.thePlayer.onGround));
-                    mc.thePlayer.stepHeight = 1F;
-                }
+                    } else {
+                        mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + 0.42, mc.thePlayer.posZ, mc.thePlayer.onGround));
+                        mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + 0.75, mc.thePlayer.posZ, mc.thePlayer.onGround));
+                        mc.thePlayer.stepHeight = 1F;
+                    }
 
-            } else {
-                mc.thePlayer.stepHeight = 0.6F;
+                } else {
+                    mc.thePlayer.stepHeight = 0.6F;
+                }
             }
         }
         if ("Jump".equals(mode.getValue())) {
@@ -72,5 +72,5 @@ public class Step extends Module {
         }
     }
 
-    }
+
 }

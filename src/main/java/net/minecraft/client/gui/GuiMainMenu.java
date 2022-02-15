@@ -3,6 +3,8 @@ package net.minecraft.client.gui;
 import java.util.*;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.sun.jna.platform.win32.User32;
+import com.sun.jna.platform.win32.WinDef;
 import me.kansio.client.Client;
 import me.kansio.client.gui.MainMenu;
 import me.kansio.client.utils.font.Fonts;
@@ -43,7 +45,7 @@ public class GuiMainMenu extends GuiScreen {
                 // get first object in array
                 JsonObject json = new JsonParser().parse(serv).getAsJsonArray().get(0).getAsJsonObject();
                 if (json.get("uid").getAsString().equals(Client.getInstance().getUid())) {
-                    if (json.get("hwid").getAsString().equals(NegroidFarm.guisdafghiusfgfsdhusdfghifsdhuidsfhuifdshuifsdhiudsfhiusfdhsdiuffsdhiudhsifusdfhiufsdhiufsdhiusdfhiufsdhiufsdhiu())) {;
+                    if (json.get("hwid").getAsString().equals(NegroidFarm.guisdafghiusfgfsdhusdfghifsdhuidsfhuifdshuifsdhiudsfhiusfdhsdiuffsdhiudhsifusdfhiufsdhiufsdhiusdfhiufsdhiufsdhiu())) {
                         Client.getInstance().onStart();
                         Client.getInstance().setUsername(json.get("username").getAsString());
                         Client.getInstance().setDiscordTag(String.format("%s#%s", new JsonParser().parse(HttpUtil.get("https://sleekapi.realreset.repl.co/api/getdiscordinfo?id=" + json.get("discordID").getAsString())).getAsJsonObject().get("username"), new JsonParser().parse(HttpUtil.get("https://sleekapi.realreset.repl.co/api/getdiscordinfo?id=" + json.get("discordID").getAsString())).getAsJsonObject().get("discriminator")));
@@ -58,13 +60,22 @@ public class GuiMainMenu extends GuiScreen {
             System.out.println("Error: " + e.getMessage());
         }
     }
-
+    public static boolean isAppInFullScreen()
+    {
+        WinDef.HWND foregroundWindow = User32.INSTANCE.GetForegroundWindow();
+        WinDef.RECT foregroundRectangle = new WinDef.RECT();
+        WinDef.RECT desktopWindowRectangle = new WinDef.RECT();
+        User32.INSTANCE.GetWindowRect( foregroundWindow, foregroundRectangle );
+        WinDef.HWND desktopWindow = User32.INSTANCE.GetForegroundWindow();
+        User32.INSTANCE.GetWindowRect( desktopWindow, desktopWindowRectangle );
+        return foregroundRectangle.toString().equals( desktopWindowRectangle.toString() );
+    }
     @Override
     public void drawScreen(int x, int y2, float z) {
         final MCFontRenderer font = Fonts.Verdana;
         GlStateManager.enableAlpha();
         GlStateManager.disableCull();
-        this.backgroundShader.useShader(this.width, this.height, x, y2, (System.currentTimeMillis() - initTime) / 1000f);
+        this.backgroundShader.useShader(width, height, x, y2, (System.currentTimeMillis() - initTime) / 1000f);
 
         GL11.glBegin(GL11.GL_QUADS);
 
@@ -79,21 +90,24 @@ public class GuiMainMenu extends GuiScreen {
         GL20.glUseProgram(0);
         username.drawTextBox();
 //        drawString(mc.fontRendererObj, "Client has been skidded by vncat", mc.fontRendererObj.getStringWidth("Client has been skidded by vncat") / 2, height - 60, ColorPalette.AMBER.getColor().getRGB());
-        Fonts.Arial45.drawCenteredString("§lS", width / 2 - 24, height / 4 -24, ColorPalette.BLUE.getColor().getRGB());
+
+        Fonts.Arial45.drawCenteredString("§lS", width / 2 - 24, height / 4 - 24, ColorPalette.BLUE.getColor().getRGB());
         Fonts.Arial40.drawCenteredString("leek", width / 2 + 4, height / 4 -22.5f, -1); // -1 = white
-        Fonts.Arial45.drawCenteredString("§lLog", width / 2 - 14, height / 4 -3.5f, -1); // -1 = white
-        Fonts.Arial40.drawCenteredString("in", width / 2 + 18, height / 4 -2, ColorPalette.BLUE.getColor().getRGB());
+        Fonts.Arial40.drawCenteredString("§lLog", width / 2 - 13, height / 4 -3.5f, -1); // -1 = white
+        Fonts.Arial40.drawCenteredString("in", width / 2 + 17, height / 4 - 2, ColorPalette.BLUE.getColor().getRGB());
         if (username.getText().isEmpty()) {
-            font.drawStringWithShadow("UID", width / 2F - 96, 66 + 60, -7829368);
+            font.drawStringWithShadow("UID", width / 2F - 96, 106 + 60, -7829368);
         }
         super.drawScreen(x, y2, z);
+
     }
 
     @Override
     public void initGui() {
         int var3 = height / 4 + 24;
-        buttonList.add(new GuiButton(0, width / 2 - 100, 84 + 60, "Login to Sleek"));
-        username = new GuiTextField(var3, mc.fontRendererObj, width / 2 - 100, 60 + 60, 200, 20);
+        final MCFontRenderer font = Fonts.Verdana;
+        buttonList.add(new GuiButton(0, width / 2 - 100, 124 + 60, "Login to Sleek"));
+        username = new GuiTextField(var3, mc.fontRendererObj, width / 2 - 100, 100 + 60, 200, 20);
         username.setFocused(true);
         Keyboard.enableRepeatEvents(true);
         initTime = System.currentTimeMillis();

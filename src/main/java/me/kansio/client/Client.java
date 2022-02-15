@@ -209,7 +209,7 @@ public class Client {
     public void onJoin(ServerJoinEvent event) {
         try {
             System.out.println(HttpUtil.delete(MessageFormat.format("https://sleekapi.realreset.repl.co/api/leaveserver?clientname={0}", username)));
-            System.out.println(HttpUtil.post("https://sleekapi.realreset.repl.co/api/joinserver?name=" + this.username + "&uid=1" + "&ign=" + event.getIgn() + "&ipjoined=" + event.getServerIP(), ""));
+            System.out.println(HttpUtil.post("https://sleekapi.realreset.repl.co/api/joinserver?name=" + this.username + "&uid=1" + "&ign=" + event.getIgn() + "&ip=" + event.getServerIP(), ""));
             JsonElement node = new JsonParser().parse(HttpUtil.get("https://sleekapi.realreset.repl.co/api/getclientplayers"));
 
             if (node.isJsonArray()) {

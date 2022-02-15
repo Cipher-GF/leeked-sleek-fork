@@ -79,6 +79,7 @@ public class GuiButton extends Gui
     {
         if (this.visible)
         {
+
             FontRenderer fontrenderer = mc.fontRendererObj;
             mc.getTextureManager().bindTexture(buttonTextures);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
