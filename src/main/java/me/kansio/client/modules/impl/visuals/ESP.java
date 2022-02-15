@@ -8,6 +8,7 @@ import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.modules.impl.combat.AntiBot;
+import me.kansio.client.utils.render.ColorUtils;
 import me.kansio.client.utils.render.RenderUtil;
 import me.kansio.client.value.value.BooleanValue;
 import me.kansio.client.value.value.ModeValue;
@@ -68,6 +69,7 @@ public class ESP extends Module {
     private BooleanValue armor = new BooleanValue("Armor", this, true);
     private BooleanValue filled = new BooleanValue("Filled", this, false);
     private BooleanValue corner = new BooleanValue("Corner", this, false);
+    private BooleanValue rainbow = new BooleanValue("Rainbow", this, false);
     private NumberValue<Double> thickness = new NumberValue<>("Thickness", this, 1.5d, 0d, 10d, 0.25);
     private final NumberValue brightness = new NumberValue("Brightness", this, 255, 255, 255, 1);
     public final List collectedEntities;
@@ -124,7 +126,7 @@ public class ESP extends Module {
                         final float y = (float) position.y + 3;
                         final float h = (float) position.w - y;
                         if (health.getValue()) {
-                            RenderUtil.drawBar((float) (x - 3f - thickness.getValue() / 2), y - 1, 1.5f, h + 2, ((int)ent.getMaxHealth()) / 2, ((int)ent.getHealth()) / 2, getHealthColor(ent));
+                            RenderUtil.drawBar((float) (x - 3f - thickness.getValue() / 2), y - 1, 1.5f, h + 5, ((int)ent.getMaxHealth()) / 2, ((int)ent.getHealth()) / 2, getHealthColor(ent));
                         }
                         if (armor.getValue() && entity instanceof EntityPlayer) {
                             double armorstrength = 0;
@@ -139,17 +141,36 @@ public class ESP extends Module {
                                 RenderUtil.drawBar((float) (x + w + 1.5f + thickness.getValue() / 2), y - 1, 1.5f, h + 2, 4, (int) (Math.min(armorstrength, 40) / 10),0xff5C7AFF);
                             }
                         }
-                        if (filled.getValue())
-                            RenderUtil.drawRect(x, y, w, h, new Color(clr.getRed(), clr.getGreen(), clr.getBlue(), 120).getRGB());
-                        if (box.getValue()) {
-                            if (corner.getValue()) {
-                                RenderUtil.drawCornerRect(x - 1.0 - thickness.getValue() / 2, y - 1.0 - thickness.getValue() / 2, w + 2 + thickness.getValue(), h + 2 + thickness.getValue(), thickness.getValue(), 0xff000000, true, 0.5f);
-                                RenderUtil.drawCornerRect(x - 0.5f - thickness.getValue() / 2, y - 0.5f - thickness.getValue() / 2, w + 1 + thickness.getValue(), h + 1 + thickness.getValue(), thickness.getValue() - 1, clr.getRGB(), false, 0);
+                        if (filled.getValue()) {
+                            if (rainbow.getValue()){
+                                RenderUtil.drawRect(x, y, w, h, ColorUtils.getGradientOffset(new Color(255, 60, 234, 120), new Color(27, 179, 255, 120), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + 9 / mc.fontRendererObj.FONT_HEIGHT * 9.95).getRGB());
                             } else {
-                                RenderUtil.drawBorderedRect(x - thickness.getValue() / 2, y - thickness.getValue() / 2, w + thickness.getValue(), h + thickness.getValue(), thickness.getValue() - 1, 0xff000000, 0);
-                                RenderUtil.drawBorderedRect(x - 0.5 - thickness.getValue() / 2, y - 0.5 - thickness.getValue() / 2, w + 1 + thickness.getValue(), h + 1 + thickness.getValue(), thickness.getValue() - 1, clr.getRGB(), 0);
-                                RenderUtil.drawBorderedRect(x - 1 - thickness.getValue() / 2, y - 1 - thickness.getValue() / 2, w + 2 + thickness.getValue(), h + 2 + thickness.getValue(), 0.5f, 0xff000000, 0);
+                                RenderUtil.drawRect(x, y, w, h, new Color(clr.getRed(), clr.getGreen(), clr.getBlue(), 120).getRGB());
                             }
+
+                        }
+
+                        if (box.getValue()) {
+                            if (rainbow.getValue()) {
+                                if (corner.getValue()) {
+                                    RenderUtil.drawCornerRect(x - 1.0 - thickness.getValue() / 2, y - 1.0 - thickness.getValue() / 2, w + 2 + thickness.getValue(), h + 2 + thickness.getValue(), thickness.getValue(), ColorUtils.getIntGradientOffset(new Color(255, 60, 234), new Color(27, 179, 255), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + 9 / mc.fontRendererObj.FONT_HEIGHT * 9.95), true, 0.5f);
+                                    RenderUtil.drawCornerRect(x - 0.5f - thickness.getValue() / 2, y - 0.5f - thickness.getValue() / 2, w + 1 + thickness.getValue(), h + 1 + thickness.getValue(), thickness.getValue() - 1, clr.getRGB(), false, 0);
+                                } else {
+                                    RenderUtil.drawBorderedRect(x - thickness.getValue() / 2, y - thickness.getValue() / 2, w + thickness.getValue(), h + thickness.getValue(), thickness.getValue() - 1, ColorUtils.getIntGradientOffset(new Color(255, 60, 234), new Color(27, 179, 255), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + 9 / mc.fontRendererObj.FONT_HEIGHT * 9.95), 0);
+                                    RenderUtil.drawBorderedRect(x - 0.5 - thickness.getValue() / 2, y - 0.5 - thickness.getValue() / 2, w + 1 + thickness.getValue(), h + 1 + thickness.getValue(), 0, clr.getRGB(), 0);
+                                    RenderUtil.drawBorderedRect(x - 1 - thickness.getValue() / 2, y - 1 - thickness.getValue() / 2, w + 2 + thickness.getValue(), h + 2 + thickness.getValue(), 0.5f, ColorUtils.getIntGradientOffset(new Color(255, 60, 234), new Color(27, 179, 255), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + 9 / mc.fontRendererObj.FONT_HEIGHT * 9.95), 0);
+                                }
+                            } else {
+                                if (corner.getValue()) {
+                                    RenderUtil.drawCornerRect(x - 1.0 - thickness.getValue() / 2, y - 1.0 - thickness.getValue() / 2, w + 2 + thickness.getValue(), h + 2 + thickness.getValue(), thickness.getValue(), 0xff000000, true, 0.5f);
+                                    RenderUtil.drawCornerRect(x - 0.5f - thickness.getValue() / 2, y - 0.5f - thickness.getValue() / 2, w + 1 + thickness.getValue(), h + 1 + thickness.getValue(), thickness.getValue() - 1, clr.getRGB(), false, 0);
+                                } else {
+                                    RenderUtil.drawBorderedRect(x - thickness.getValue() / 2, y - thickness.getValue() / 2, w + thickness.getValue(), h + thickness.getValue(), thickness.getValue() - 1, 0xff000000, 0);
+                                    RenderUtil.drawBorderedRect(x - 0.5 - thickness.getValue() / 2, y - 0.5 - thickness.getValue() / 2, w + 1 + thickness.getValue(), h + 1 + thickness.getValue(), thickness.getValue() - 1, clr.getRGB(), 0);
+                                    RenderUtil.drawBorderedRect(x - 1 - thickness.getValue() / 2, y - 1 - thickness.getValue() / 2, w + 2 + thickness.getValue(), h + 2 + thickness.getValue(), 0.5f, 0xff000000, 0);
+                                }
+                            }
+
                         }
                         GL11.glPopMatrix();
                     }

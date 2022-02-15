@@ -663,7 +663,8 @@ public class RenderUtil {
 
         // top left
         for (int i = 0; i <= 90; i += 3) {
-            GL11.glVertex2d(x + radius + +(Math.sin((i * Math.PI / 180)) * (radius * -1)), y + radius + (Math.cos((i * Math.PI / 180)) * (radius * -1)));
+//            GL11.glVertex2d(x + radius + (Math.sin((i * Math.PI / 180)) * (radius * -1)), y + radius + (Math.cos((i * Math.PI / 180)) * (radius * -1)));
+            GL11.glVertex2d(x, y);
         }
         
         // bottem left
@@ -671,14 +672,14 @@ public class RenderUtil {
             GL11.glVertex2d(x + radius + (Math.sin((i * Math.PI / 180)) * (radius * -1)), y1 - radius + (Math.cos((i * Math.PI / 180)) * (radius * -1)));
         }
 
-        // top right
+        // bottem right
         for (int i = 0; i <= 90; i += 3) {
             GL11.glVertex2d(x1 - radius + (Math.sin((i * Math.PI / 180)) * radius), y1 - radius + (Math.cos((i * Math.PI / 180)) * radius));
         }
 
         // bottem right
         for (int i = 90; i <= 180; i += 3) {
-            GL11.glVertex2d(x1 - radius + (Math.sin((i * Math.PI / 180)) * radius), y + radius + (Math.cos((i * Math.PI / 180)) * radius));
+            GL11.glVertex2d(x1, y);
         }
 
         GL11.glEnd();

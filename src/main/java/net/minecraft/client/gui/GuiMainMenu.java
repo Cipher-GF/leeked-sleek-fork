@@ -104,6 +104,7 @@ public class GuiMainMenu extends GuiScreen {
 
     @Override
     public void initGui() {
+//        mc.displayGuiScreen(new MainMenu());
         int var3 = height / 4 + 24;
         final MCFontRenderer font = Fonts.Verdana;
         buttonList.add(new GuiButton(0, width / 2 - 100, 124 + 60, "Login to Sleek"));

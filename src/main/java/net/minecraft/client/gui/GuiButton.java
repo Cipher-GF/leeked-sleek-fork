@@ -45,15 +45,21 @@ public class GuiButton extends Gui
 
     public GuiButton(int buttonId, int x, int y, int widthIn, int heightIn, String buttonText)
     {
-        this.width = 200;
-        this.height = 20;
+        // check if widthIn is not blank int
+        if ((widthIn != 0) || (widthIn != 0)) {
+            System.out.println("IS SET");
+            this.width = widthIn;
+            this.height = heightIn;
+        } else {
+            System.out.println("NOT SET");
+            this.width = 200;
+            this.height = 20;
+        }
         this.enabled = true;
         this.visible = true;
         this.id = buttonId;
         this.xPosition = x;
         this.yPosition = y;
-        this.width = widthIn;
-        this.height = heightIn;
         this.displayString = buttonText;
     }
 
@@ -95,7 +101,7 @@ public class GuiButton extends Gui
             GlStateManager.blendFunc(770, 771);
 
             RenderUtil.drawBottemRoundedRect(this.xPosition + this.width / 2 - 99.8f, this.yPosition, 300 - this.width / 2, 20, 10, ColorPalette.GREY.getColor().getRGB());
-//            RenderUtil.drawRect(this.xPosition + this.width / 2 - 99.8f, this.yPosition, 300 - this.width / 2, 2, ColorUtils.getIntGradientOffset(new Color(255, 60, 234), new Color(27, 179, 255), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + 9 / mc.fontRendererObj.FONT_HEIGHT * 9.95));
+            RenderUtil.drawRect(this.xPosition + this.width / 2 - 99.8f, this.yPosition, 300 - this.width / 2, 2, ColorUtils.getIntGradientOffset(new Color(255, 60, 234), new Color(27, 179, 255), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + 9 / mc.fontRendererObj.FONT_HEIGHT * 9.95));
             this.mouseDragged(mc, mouseX, mouseY);
             int j = 14737632;
 
