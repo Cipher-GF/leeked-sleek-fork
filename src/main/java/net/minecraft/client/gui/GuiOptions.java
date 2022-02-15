@@ -74,8 +74,8 @@ public class GuiOptions extends GuiScreen implements GuiYesNoCallback
                 this.field_175357_i.enabled = false;
             }
         }
-        this.buttonList.add(new GuiButton(110, this.width / 2 - 203, this.height / 6 + 48 - 6, I18n.format("options.skinCustomisation", new Object[0])));
-        this.buttonList.add(new GuiButton(8675309, this.width / 2 + 3, this.height / 6 + 48 - 6, "Super Secret Settings...")
+        this.buttonList.add(new GuiButton(110, this.width / 2 - 203, this.height / 6 + 48 - 6, 203, 20,I18n.format("options.skinCustomisation", new Object[0])));
+        this.buttonList.add(new GuiButton(8675309, this.width / 2 + 3, this.height / 6 + 48 - 6, 203, 20,"Super Secret Settings...")
         {
             public void playPressSound(SoundHandler soundHandlerIn)
             {
@@ -95,7 +95,7 @@ public class GuiOptions extends GuiScreen implements GuiYesNoCallback
         this.buttonList.add(new GuiButton(103, this.width / 2 + 3, this.height / 6 + 120 - 6, 200, 20, I18n.format("options.chat.title", new Object[0])));
         this.buttonList.add(new GuiButton(105, this.width / 2 - 203, this.height / 6 + 144 - 6, 200, 20, I18n.format("options.resourcepack", new Object[0])));
         this.buttonList.add(new GuiButton(104, this.width / 2 + 3, this.height / 6 + 144 - 6, 200, 20, I18n.format("options.snooper.view", new Object[0])));
-        this.buttonList.add(new GuiButton(200, this.width / 2 - 100, this.height / 6 + 168, I18n.format("gui.done", new Object[0])));
+        this.buttonList.add(new GuiButton(200, this.width / 2 - 100, this.height / 6 + 168, 203, 20,I18n.format("gui.done", new Object[0])));
     }
 
     public String func_175355_a(EnumDifficulty p_175355_1_)

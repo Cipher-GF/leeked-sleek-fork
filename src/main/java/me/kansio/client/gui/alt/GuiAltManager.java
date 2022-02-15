@@ -103,13 +103,13 @@ public final class GuiAltManager extends GuiScreen {
     @Override
     public void initGui() {
         int var3 = height / 4 + 24;
-        buttonList.add(new GuiButton(0, width / 2 - 100, var3 + 72 + 12, "Login"));
-        buttonList.add(new GuiButton(1, width / 2 - 100, var3 + 72 + 12 + 24, I18n.format("gui.cancel")));
-        buttonList.add(new GuiButton(2, width / 2 - 100, var3 + 72 + 12 + 48, "Clipboard"));
-        buttonList.add(new GuiButton(3, width / 2 - 100, var3 + 72 + 12 + 48 + 24, "Generate Cracked Account"));
-        buttonList.add(new GuiButton(5, width / 2 - 100, var3 + 72 + 12 + 48 + 24 + 24, "Microsoft Login"));
-        buttonList.add(new GuiButton(4, width / 2 - 100, var3 + 72 + 12 + 48 + 24 * 3, "DrilledAlts (Good)"));
-        buttonList.add(new GuiButton(6, width / 2 - 100, var3 + 72 + 12 + 48 + 24 + 24 * 3, "Generate Real Looking Name"));
+        buttonList.add(new GuiButton(0, width / 2 - 100, var3 + 72 + 12, 203, 20,"Login"));
+        buttonList.add(new GuiButton(1, width / 2 - 100, var3 + 72 + 12 + 24, 203, 20,I18n.format("gui.cancel")));
+        buttonList.add(new GuiButton(2, width / 2 - 100, var3 + 72 + 12 + 48, 203, 20,"Clipboard"));
+        buttonList.add(new GuiButton(3, width / 2 - 100, var3 + 72 + 12 + 48 + 24, 203, 20,"Generate Cracked Account"));
+        buttonList.add(new GuiButton(5, width / 2 - 100, var3 + 72 + 12 + 48 + 24 + 24, 203, 20,"Microsoft Login"));
+        buttonList.add(new GuiButton(4, width / 2 - 100, var3 + 72 + 12 + 48 + 24 * 3, 203, 20,"DrilledAlts (Good)"));
+        buttonList.add(new GuiButton(6, width / 2 - 100, var3 + 72 + 12 + 48 + 24 + 24 * 3, 203, 20,"Generate Real Looking Name"));
 
         username = new GuiTextField(var3, mc.fontRendererObj, width / 2 - 100, 60, 200, 20);
         password = new GuiTextField(var3, mc.fontRendererObj, width / 2 - 100, 100, 200, 20);

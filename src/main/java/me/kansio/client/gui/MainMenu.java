@@ -39,11 +39,11 @@ public class MainMenu extends GuiScreen
          */
         int j = height / 4 + 48;
         int i = 24;
-        this.buttonList.add(new GuiButton(0, width / 2 - 100, j - 25        , I18n.format("menu.singleplayer")));
-        this.buttonList.add(new GuiButton(1, width / 2 - 100, j + i - 25    , I18n.format("menu.multiplayer")));
-        this.buttonList.add(new GuiButton(2, width / 2 - 100, j + i * 2 - 25, "Alt Manager"));
-        this.buttonList.add(new GuiButton(3, width / 2 - 100, j + i * 2     , I18n.format("menu.options")));
-        this.buttonList.add(new GuiButton(4, width / 2 - 100, j + i * 2 + 25, I18n.format("menu.quit")));
+        this.buttonList.add(new GuiButton(0, width / 2 - 100, j - 25        , 203, 20,I18n.format("menu.singleplayer")));
+        this.buttonList.add(new GuiButton(1, width / 2 - 100, j + i - 25    , 203, 20,I18n.format("menu.multiplayer")));
+        this.buttonList.add(new GuiButton(2, width / 2 - 100, j + i * 2 - 25, 203, 20,"Alt Manager"));
+        this.buttonList.add(new GuiButton(3, width / 2 - 100, j + i * 2     , 203, 20,I18n.format("menu.options")));
+        this.buttonList.add(new GuiButton(4, width / 2 - 100, j + i * 2 + 25, 203, 20,I18n.format("menu.quit")));
         initTime = System.currentTimeMillis();
     }
 

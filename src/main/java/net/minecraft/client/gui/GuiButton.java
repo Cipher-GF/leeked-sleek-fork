@@ -1,5 +1,7 @@
 package net.minecraft.client.gui;
 
+import me.kansio.client.utils.font.Fonts;
+import me.kansio.client.utils.font.MCFontRenderer;
 import me.kansio.client.utils.render.ColorPalette;
 import me.kansio.client.utils.render.ColorUtils;
 import me.kansio.client.utils.render.RenderUtil;
@@ -38,23 +40,15 @@ public class GuiButton extends Gui
     public boolean visible;
     protected boolean hovered;
 
-    public GuiButton(int buttonId, int x, int y, String buttonText)
-    {
-        this(buttonId, x, y, 200, 20, buttonText);
-    }
+//    public GuiButton(int buttonId, int x, int y, String buttonText)
+//    {
+//        this(buttonId, x, y, 203, 20, buttonText);
+//    }
 
     public GuiButton(int buttonId, int x, int y, int widthIn, int heightIn, String buttonText)
     {
-        // check if widthIn is not blank int
-        if ((widthIn != 0) || (widthIn != 0)) {
-            System.out.println("IS SET");
-            this.width = widthIn;
-            this.height = heightIn;
-        } else {
-            System.out.println("NOT SET");
-            this.width = 200;
-            this.height = 20;
-        }
+        this.width = widthIn;
+        this.height = heightIn;
         this.enabled = true;
         this.visible = true;
         this.id = buttonId;
@@ -90,7 +84,7 @@ public class GuiButton extends Gui
     {
         if (this.visible)
         {
-
+            final MCFontRenderer font = Fonts.Verdana;
             FontRenderer fontrenderer = mc.fontRendererObj;
             mc.getTextureManager().bindTexture(buttonTextures);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
@@ -114,7 +108,7 @@ public class GuiButton extends Gui
                 j = 16777120;
             }
 
-            this.drawCenteredString(fontrenderer, this.displayString, this.xPosition + this.width / 2, this.yPosition + (this.height - 8) / 2, j);
+            this.drawCenteredString(fontrenderer, this.displayString, this.xPosition + (this.width / 2), this.yPosition + (this.height - 8) / 2, j);
         }
     }
 

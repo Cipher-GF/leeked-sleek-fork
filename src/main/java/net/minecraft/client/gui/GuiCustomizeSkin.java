@@ -38,7 +38,7 @@ public class GuiCustomizeSkin extends GuiScreen
             ++i;
         }
 
-        this.buttonList.add(new GuiButton(200, this.width / 2 - 100, this.height / 6 + 24 * (i >> 1), I18n.format("gui.done", new Object[0])));
+        this.buttonList.add(new GuiButton(200, this.width / 2 - 100, this.height / 6 + 24 * (i >> 1), 203, 20,I18n.format("gui.done", new Object[0])));
     }
 
     /**
