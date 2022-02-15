@@ -1,10 +1,15 @@
 package net.minecraft.client.gui;
 
+import me.kansio.client.utils.render.ColorPalette;
+import me.kansio.client.utils.render.ColorUtils;
+import me.kansio.client.utils.render.RenderUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
+
+import java.awt.*;
 
 public class GuiButton extends Gui
 {
@@ -88,8 +93,9 @@ public class GuiButton extends Gui
             GlStateManager.enableBlend();
             GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
             GlStateManager.blendFunc(770, 771);
-            this.drawTexturedModalRect(this.xPosition, this.yPosition, 0, 46 + i * 20, this.width / 2, this.height);
-            this.drawTexturedModalRect(this.xPosition + this.width / 2, this.yPosition, 200 - this.width / 2, 46 + i * 20, this.width / 2, this.height);
+
+            RenderUtil.drawRect(this.xPosition + this.width / 2 - 99.8f, this.yPosition, 300 - this.width / 2, 20, ColorPalette.BLUE.getColor().getRGB());
+            RenderUtil.drawRect(this.xPosition + this.width / 2 - 99.8f, this.yPosition, 300 - this.width / 2, 5, ColorUtils.getIntGradientOffset(new Color(1,1,1), new Color(255,255,255), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + 300 / 9 * 9.95));
             this.mouseDragged(mc, mouseX, mouseY);
             int j = 14737632;
 

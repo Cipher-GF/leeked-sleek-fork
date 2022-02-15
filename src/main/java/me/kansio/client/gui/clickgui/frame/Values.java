@@ -1,5 +1,7 @@
 package me.kansio.client.gui.clickgui.frame;
 
+import me.kansio.client.Client;
+import me.kansio.client.modules.impl.visuals.HUD;
 import me.kansio.client.utils.render.ColorPalette;
 import me.kansio.client.utils.render.ColorUtils;
 
@@ -10,6 +12,7 @@ public interface Values {
 
     int defaultWidth = 125;
     int defaultHeight = 300;
+
 
     int enabledColor = ColorPalette.LIGHT_BLUE.getColor().getRGB();
 
