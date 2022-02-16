@@ -89,7 +89,8 @@ public class MainMenu extends GuiScreen
         Fonts.Arial45.drawCenteredString("§lS", width / 2 - 24, height / 4 -24, ColorPalette.BLUE.getColor().getRGB());
         Fonts.Arial40.drawCenteredString("leek", width / 2 + 4, height / 4 -22.5f, -1); // -1 = white
         String devinfo = "Made with <3 by Reset, Kansio, PC, Divine and Moshi";
-        Fonts.Verdana.drawString(devinfo, (width - Fonts.Arial30.getStringWidth(devinfo)) + 135, height - 10, -1);
+        String text = "hi";
+        Fonts.Verdana.drawString(text, (width - Fonts.Arial30.getStringWidth(text)) + 135, height - 10, -1);
         GlStateManager.color(1.0F,1.0F,1.0F,1.0F);
         super.drawScreen(mouseX, mouseY, partialTicks);
     }

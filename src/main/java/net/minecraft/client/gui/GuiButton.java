@@ -12,6 +12,8 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 
 import java.awt.*;
+import java.awt.font.FontRenderContext;
+import java.awt.geom.AffineTransform;
 import java.util.Objects;
 
 public class GuiButton extends Gui
@@ -94,9 +96,9 @@ public class GuiButton extends Gui
             GlStateManager.enableBlend();
             GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
             GlStateManager.blendFunc(770, 771);
-
+            float boxWidth = this.xPosition + this.width / 2 - 99.8f;
             RenderUtil.drawBottemRoundedRect(this.xPosition + this.width / 2 - 99.8f, this.yPosition, 300 - this.width / 2, 20, 10, ColorPalette.GREY.getColor().getRGB());
-            RenderUtil.drawRect(this.xPosition + this.width / 2 - 99.8f, this.yPosition, 300 - this.width / 2, 2, ColorUtils.getIntGradientOffset(new Color(255, 60, 234), new Color(27, 179, 255), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + 9 / mc.fontRendererObj.FONT_HEIGHT * 9.95));
+            RenderUtil.drawRect(boxWidth, this.yPosition, 300 - this.width / 2, 2, ColorUtils.getIntGradientOffset(new Color(255, 60, 234), new Color(27, 179, 255), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + 9 / mc.fontRendererObj.FONT_HEIGHT * 9.95));
             this.mouseDragged(mc, mouseX, mouseY);
             int j = 14737632;
 
@@ -111,7 +113,13 @@ public class GuiButton extends Gui
             if (Objects.equals(this.displayString, "Login to Sleek")) {
                 Fonts.Verdana.drawString(this.displayString, this.xPosition + (this.width / 2f) - 35, this.yPosition + (this.height - 4f) / 2 - 1, j);
             } else {
-                Fonts.Verdana.drawString(this.displayString, this.xPosition + (this.width / 2f) - 30, this.yPosition + (this.height - 4f) / 2, j);
+                AffineTransform affinetransform = new AffineTransform();
+                FontRenderContext frc = new FontRenderContext(affinetransform,true,true);
+                Font fontx = new Font("Verdana", Font.PLAIN, 18);
+                double width = (this.xPosition + ((boxWidth) - (fontx.getStringBounds(this.displayString, frc).getWidth())) / 4f);
+                Fonts.Verdana.drawString(this.displayString, width, this.yPosition + (this.height - 4f) / 2, j);
+                // center the text in the button on depending on its length
+
             }
 //            this.drawCenteredString(fontrenderer, this.displayString, this.xPosition + (this.width / 2), this.yPosition + (this.height - 8) / 2, j);
         }
