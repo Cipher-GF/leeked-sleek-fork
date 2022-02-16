@@ -14,6 +14,8 @@ public class Fonts extends Util {
     public static final MCFontRenderer Arial30 = new MCFontRenderer(new Font("Arial", Font.BOLD,30),true,true);
     public static final MCFontRenderer Arial25 = new MCFontRenderer(new Font("Arial", Font.BOLD,30),true,true);
     public static final MCFontRenderer Arial20 = new MCFontRenderer(new Font("Arial", Font.BOLD,30),true,true);
+    public static final MCFontRenderer Arial20Plain = new MCFontRenderer(new Font("Arial", Font.PLAIN,30),true,true);
+    public static final MCFontRenderer Arial17Plain = new MCFontRenderer(new Font("Arial", Font.PLAIN,17),true,true);
     public static final MCFontRenderer Arial15 = new MCFontRenderer(new Font("Arial", Font.BOLD,30),true,true);
     public static final MCFontRenderer Verdana = new MCFontRenderer(new Font("Verdana", Font.PLAIN,18),true,true);
     public static final MCFontRenderer Arial12 = new MCFontRenderer(new Font("Arial", Font.PLAIN,12),true,true);

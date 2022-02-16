@@ -106,7 +106,6 @@ public class GuiMainMenu extends GuiScreen {
     public void initGui() {
 //        mc.displayGuiScreen(new MainMenu());
         int var3 = height / 4 + 24;
-        final MCFontRenderer font = Fonts.Verdana;
         buttonList.add(new GuiButton(0, width / 2 - 100, 124 + 60, 203, 20,"Login to Sleek"));
         username = new GuiTextField(var3, mc.fontRendererObj, width / 2 - 100, 100 + 60, 200, 20);
         username.setFocused(true);

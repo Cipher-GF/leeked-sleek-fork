@@ -12,6 +12,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 
 import java.awt.*;
+import java.util.Objects;
 
 public class GuiButton extends Gui
 {
@@ -107,8 +108,12 @@ public class GuiButton extends Gui
             {
                 j = 16777120;
             }
-
-            this.drawCenteredString(fontrenderer, this.displayString, this.xPosition + (this.width / 2), this.yPosition + (this.height - 8) / 2, j);
+            if (Objects.equals(this.displayString, "Login to Sleek")) {
+                Fonts.Verdana.drawString(this.displayString, this.xPosition + (this.width / 2f) - 35, this.yPosition + (this.height - 4f) / 2 - 1, j);
+            } else {
+                Fonts.Verdana.drawString(this.displayString, this.xPosition + (this.width / 2f) - 30, this.yPosition + (this.height - 4f) / 2, j);
+            }
+//            this.drawCenteredString(fontrenderer, this.displayString, this.xPosition + (this.width / 2), this.yPosition + (this.height - 8) / 2, j);
         }
     }
 
