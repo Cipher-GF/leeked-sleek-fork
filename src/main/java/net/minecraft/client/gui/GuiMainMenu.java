@@ -16,6 +16,7 @@ import negroidslayer.NegroidFarm;
 import net.minecraft.client.renderer.GlStateManager;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
+import me.kansio.client.protection.ProtectionUtil;
 import org.lwjgl.opengl.GL20;
 
 import java.io.IOException;

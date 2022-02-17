@@ -2,7 +2,7 @@ package net.minecraft.client.gui;
 
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.IChatComponent;
-
+import me.kansio.client.protection.ProtectionUtil;
 import java.io.IOException;
 import java.util.List;
 
