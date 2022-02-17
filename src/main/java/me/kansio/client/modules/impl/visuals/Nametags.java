@@ -100,7 +100,7 @@ public class Nametags extends Module {
         GlStateManager.enableBlend();
         GlStateManager.enableBlend();
         if (this.rect.getValue()) {
-            RenderUtil.drawRect(-width - 2, -(15 + 1), (float) width + 2.0f, 10f, 0x55000000);
+            RenderUtil.drawRect(-width - 2, -(15 + 1), (float) width + 2.0f * 2, 10f, 0x55000000);
             if (this.outline.getValue()) {
                 final int color = new Color(255, 255, 255, 255).getRGB();
 //                RenderUtil.drawBorderedRect((float) (-width - 2), (float) (-(mc.fontRendererObj.FONT_HEIGHT + 1)), width + 2.0f, 1.5f, color);
@@ -108,7 +108,7 @@ public class Nametags extends Module {
             }
         }
         GlStateManager.disableBlend();
-        Fonts.Verdana.drawString(displayTag, -width, -(15 - 1), this.getDisplayColour(player));
+        Fonts.Verdana.drawStringWithShadow(displayTag, -width, -(15 - 1), this.getDisplayColour(player));
         camera.posX = originalPositionX;
         camera.posY = originalPositionY;
         camera.posZ = originalPositionZ;
