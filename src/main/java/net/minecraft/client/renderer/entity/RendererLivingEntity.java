@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import me.kansio.client.Client;
 import me.kansio.client.event.impl.EntityLivingRenderEvent;
 import me.kansio.client.modules.impl.visuals.Chams;
+import me.kansio.client.modules.impl.visuals.Nametags;
 import me.kansio.client.utils.render.ColorUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
@@ -576,6 +577,66 @@ public abstract class RendererLivingEntity<T extends EntityLivingBase> extends R
             try {
                 field_178679_a[Team.EnumVisible.HIDE_FOR_OWN_TEAM.ordinal()] = 4;
             } catch (NoSuchFieldError var1) {
+                ;
+            }
+        }
+    }
+
+/*
+fuck you @Shotbowxd
+u cause mayhem
+*/
+    public void renderName(T entity, double x, double y, double z) {
+        if (((Nametags)Client.getInstance().getModuleManager().getModuleByName("Nametags")).tag.getValue() && Client.getInstance().getModuleManager().getModuleByName("Nametags").isToggled()) {
+            return;
+        }
+        if (!Reflector.RenderLivingEvent_Specials_Pre_Constructor.exists() || !Reflector.postForgeBusEvent(Reflector.RenderLivingEvent_Specials_Pre_Constructor, new Object[]{entity, this, Double.valueOf(x), Double.valueOf(y), Double.valueOf(z)})) {
+            if (this.canRenderName(entity)) {
+                double d0 = entity.getDistanceSqToEntity(this.renderManager.livingPlayer);
+                float f = entity.isSneaking() ? NAME_TAG_RANGE_SNEAK : NAME_TAG_RANGE;
+
+                if (d0 < (double) (f * f)) {
+                    String s = entity.getDisplayName().getFormattedText();
+                    float f1 = 0.02666667F;
+                    GlStateManager.alphaFunc(516, 0.1F);
+
+                    if (entity.isSneaking()) {
+                        FontRenderer fontrenderer = this.getFontRendererFromRenderManager();
+                        GlStateManager.pushMatrix();
+                        GlStateManager.translate((float) x, (float) y + entity.height + 0.5F - (entity.isChild() ? entity.height / 2.0F : 0.0F), (float) z);
+                        GL11.glNormal3f(0.0F, 1.0F, 0.0F);
+                        GlStateManager.rotate(-this.renderManager.playerViewY, 0.0F, 1.0F, 0.0F);
+                        GlStateManager.rotate(this.renderManager.playerViewX, 1.0F, 0.0F, 0.0F);
+                        GlStateManager.scale(-0.02666667F, -0.02666667F, 0.02666667F);
+                        GlStateManager.translate(0.0F, 9.374999F, 0.0F);
+                        GlStateManager.disableLighting();
+                        GlStateManager.depthMask(false);
+                        GlStateManager.enableBlend();
+                        GlStateManager.disableTexture2D();
+                        GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
+                        int i = fontrenderer.getStringWidth(s) / 2;
+                        Tessellator tessellator = Tessellator.getInstance();
+                        WorldRenderer worldrenderer = tessellator.getWorldRenderer();
+                        worldrenderer.begin(7, DefaultVertexFormats.POSITION_COLOR);
+                        worldrenderer.pos((double) (-i - 1), -1.0D, 0.0D).color(0.0F, 0.0F, 0.0F, 0.25F).endVertex();
+                        worldrenderer.pos((double) (-i - 1), 8.0D, 0.0D).color(0.0F, 0.0F, 0.0F, 0.25F).endVertex();
+                        worldrenderer.pos((double) (i + 1), 8.0D, 0.0D).color(0.0F, 0.0F, 0.0F, 0.25F).endVertex();
+                        worldrenderer.pos((double) (i + 1), -1.0D, 0.0D).color(0.0F, 0.0F, 0.0F, 0.25F).endVertex();
+                        tessellator.draw();
+                        GlStateManager.enableTexture2D();
+                        GlStateManager.depthMask(true);
+                        fontrenderer.drawString(s, -fontrenderer.getStringWidth(s) / 2, 0, 553648127);
+                        GlStateManager.enableLighting();
+                        GlStateManager.disableBlend();
+                        GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+                        GlStateManager.popMatrix();
+                    } else {
+                        this.renderOffsetLivingLabel(entity, x, y - (entity.isChild() ? (double) (entity.height / 2.0F) : 0.0D), z, s, 0.02666667F, d0);
+                    }
+                }
+            }
+
+            if (!Reflector.RenderLivingEvent_Specials_Post_Constructor.exists() || !Reflector.postForgeBusEvent(Reflector.RenderLivingEvent_Specials_Post_Constructor, new Object[]{entity, this, Double.valueOf(x), Double.valueOf(y), Double.valueOf(z)})) {
                 ;
             }
         }
