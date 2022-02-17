@@ -41,7 +41,8 @@ public class TargetHUD extends Util {
                 //Draw the background with the hurttime animation
                 RenderUtils.drawBorderedRoundedRect(150, 350, 150, 60, 10, 2, 2, new Color(target.hurtTime * 6, 0, 0, 100).getRGB());
 
-                mc.fontRendererObj.drawStringWithShadow(target.getName(), 210, 370, -1);
+//                mc.fontRendererObj.drawStringWithShadow(target.getName(), 210, 370, -1);
+                Fonts.Verdana.drawCenteredString("Name: " + target.getName(), 220, 370, -1);
 
                 if (target instanceof EntityPlayer) {
                     ResourceLocation skin = ((AbstractClientPlayer)target).getLocationSkin();

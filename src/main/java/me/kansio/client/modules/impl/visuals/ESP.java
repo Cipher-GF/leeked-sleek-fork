@@ -71,7 +71,7 @@ public class ESP extends Module {
     private BooleanValue corner = new BooleanValue("Corner", this, false);
     private BooleanValue rainbow = new BooleanValue("Rainbow", this, false);
     private NumberValue<Double> thickness = new NumberValue<>("Thickness", this, 1.5d, 0d, 10d, 0.25);
-    private final NumberValue brightness = new NumberValue("Brightness", this, 255, 255, 255, 1);
+    private final NumberValue brightness = new NumberValue("Brightness", this, 255, 1, 255, 1);
     public final List collectedEntities;
     private final IntBuffer viewport;
     private final FloatBuffer modelview;
