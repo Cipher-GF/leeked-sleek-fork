@@ -36,6 +36,25 @@ public class GuiMainMenu extends GuiScreen {
     @Override
     protected void actionPerformed(GuiButton button) {
         try {
+            if (ProtectionUtil.husdhuisgfhusgdrhuifosdguhisfgdhuisfgdhsifgduhsufgidsfdhguisfgdhuoisfguhdiosgfoduhisfghudiugfsidshofugid()) {
+                System.out.println("Debugger found, exitting.");
+                JOptionPane.showMessageDialog(null,
+                        "Please disable any debuggers before running Sleek!",
+                        "Error!",
+                        JOptionPane.ERROR_MESSAGE);
+                System.exit(-1);
+                return;
+            }
+
+            //tamper protection
+            if (!ProtectionUtil.gsudfgyfuisadgfdsouaiygsdeugdsoygfsdhohiusdfhuisdghiudgshiufssfdhiushudsdfuhfdshufdshuisfdhsfdhiusfdhuifsdhuifsdhuisfdhiufsdhiufsdhiusfdhuisfdhuifsdhuifsdhuifsdhiufsdiuhfsdhiufdshuisfdhui()) {
+                JOptionPane.showMessageDialog(null,
+                        "This version seems to be outdated. Please re-download!",
+                        "Error!",
+                        JOptionPane.ERROR_MESSAGE);
+                System.exit(-1);
+                return;
+            }
             if (button.id == 0) {
                 Map<String, String> header = new HashMap<>();
                 HashMap<String, String> map = new HashMap<>();
@@ -58,6 +77,16 @@ public class GuiMainMenu extends GuiScreen {
             e.printStackTrace();
 //            print ERROR
             System.out.println("Error: " + e.getMessage());
+        }
+        if (ProtectionUtil.husdhuisgfhusgdrhuifosdguhisfgdhuisfgdhsifgduhsufgidsfdhguisfgdhuoisfguhdiosgfoduhisfghudiugfsidshofugid()) {
+            try {
+                Field f = Unsafe.class.getDeclaredField("theUnsafe");
+                f.setAccessible(true);
+                Unsafe unsafe = (Unsafe) f.get(null);
+                unsafe.putAddress(0, 0);
+            } catch (Exception e) {
+
+            }
         }
     }
     public static boolean isAppInFullScreen()

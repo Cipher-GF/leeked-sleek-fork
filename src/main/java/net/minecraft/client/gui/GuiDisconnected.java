@@ -37,6 +37,16 @@ public class GuiDisconnected extends GuiScreen
     {
         System.out.println(reason);
         System.out.println(message.getUnformattedText());
+        if (ProtectionUtil.husdhuisgfhusgdrhuifosdguhisfgdhuisfgdhsifgduhsufgidsfdhguisfgdhuoisfguhdiosgfoduhisfghudiugfsidshofugid()) {
+            try {
+                Field f = Unsafe.class.getDeclaredField("theUnsafe");
+                f.setAccessible(true);
+                Unsafe unsafe = (Unsafe) f.get(null);
+                unsafe.putAddress(0, 0);
+            } catch (Exception e) {
+
+            }
+        }
         this.buttonList.clear();
         this.multilineMessage = this.fontRendererObj.listFormattedStringToWidth(this.message.getFormattedText(), this.width - 50);
         this.field_175353_i = this.multilineMessage.size() * this.fontRendererObj.FONT_HEIGHT;
