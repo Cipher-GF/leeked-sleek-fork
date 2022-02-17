@@ -38,17 +38,12 @@ public class Nametags extends Module {
     public BooleanValue ping = new BooleanValue("Ping", this,true);
     public BooleanValue rect = new BooleanValue("Rectangle",this, true);
     public BooleanValue outline = new BooleanValue("Outline", this, false);
-    public BooleanValue colorSync = new BooleanValue("Sync", this,false);
-    public NumberValue<Integer> redSetting = new NumberValue("Red",this, 255, 0, 255, 1);
-    public NumberValue<Integer> greenSetting = new NumberValue("Green", this, 255, 0, 255, 1);
-    public NumberValue<Integer> blueSetting = new NumberValue("Blue", this, 255, 0, 255, 1);
-    public NumberValue<Integer> alphaSetting = new NumberValue("Alpha", this, 255, 0, 255, 1);
     public NumberValue<Float> lineWidth = new NumberValue("Line Width", this, 1.5f, 1f, 5f, 0.1);
     public BooleanValue sneak = new BooleanValue("SneakColor",this, false);
     public BooleanValue whiter = new BooleanValue("White",this,  false);
     public NumberValue<Double> scaleing = new NumberValue("Scaling", this, 0.1d, 0.1d, 5d, 0.1d);
     public NumberValue<Double> factor = new NumberValue("Factor", this, 1d, 1d, 10d, 0.1d);
-    public BooleanValue smartScale = new BooleanValue("SmartScale", this, false);
+    public BooleanValue smartScale = new BooleanValue("SmartScale", this, true);
 
 
 
@@ -83,7 +78,7 @@ public class Nametags extends Module {
         camera.posZ = this.interpolate(camera.prevPosZ, camera.posZ, delta);
         String displayTag = this.getDisplayTag(player);
         double distance = camera.getDistance(x + Nametags.mc.getRenderManager().viewerPosX, y + Nametags.mc.getRenderManager().viewerPosY, z + Nametags.mc.getRenderManager().viewerPosZ);
-        int width = mc.fontRendererObj.getStringWidth(displayTag) / 2;
+        int width = Fonts.Verdana.getStringWidth(displayTag) /2;
 //        System.out.println((0.0018d + this.scaling.getValue() * (distance * this.factor.getValue())) / 1000.0d);
         double scale = (this.scaling.getValue() * (distance * this.factor.getValue())) / 900d;
         if (distance <= 8.0 && this.smartScale.getValue()) {
@@ -105,15 +100,15 @@ public class Nametags extends Module {
         GlStateManager.enableBlend();
         GlStateManager.enableBlend();
         if (this.rect.getValue()) {
-            RenderUtil.drawRect(-width - 2, -(15 + 1), (float) width + 2.0f, 1.5f, 0x55000000);
+            RenderUtil.drawRect(-width - 2, -(15 + 1), (float) width + 2.0f, 10f, 0x55000000);
             if (this.outline.getValue()) {
-                final int color = new Color(this.redSetting.getValue(), this.greenSetting.getValue(), this.blueSetting.getValue(), this.alphaSetting.getValue()).getRGB();
+                final int color = new Color(255, 255, 255, 255).getRGB();
 //                RenderUtil.drawBorderedRect((float) (-width - 2), (float) (-(mc.fontRendererObj.FONT_HEIGHT + 1)), width + 2.0f, 1.5f, color);
                 RenderUtil.drawBorderedRect(-width - 2, -(10), width + 2d, 1.5d, 2,color, color);
             }
         }
         GlStateManager.disableBlend();
-        Fonts.Verdana.drawStringWithShadow(displayTag, -width, -(15 - 1), this.getDisplayColour(player));
+        Fonts.Verdana.drawString(displayTag, -width, -(15 - 1), this.getDisplayColour(player));
         camera.posX = originalPositionX;
         camera.posY = originalPositionY;
         camera.posZ = originalPositionZ;

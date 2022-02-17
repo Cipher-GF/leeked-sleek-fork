@@ -13,6 +13,7 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.entity.layers.LayerRenderer;
 import net.minecraft.client.renderer.texture.DynamicTexture;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EnumPlayerModelParts;
@@ -587,7 +588,7 @@ fuck you @Shotbowxd
 u cause mayhem
 */
     public void renderName(T entity, double x, double y, double z) {
-        if (((Nametags)Client.getInstance().getModuleManager().getModuleByName("Nametags")).tag.getValue() && Client.getInstance().getModuleManager().getModuleByName("Nametags").isToggled()) {
+        if (Client.getInstance().getModuleManager().getModuleByName("Nametags").isToggled()) {
             return;
         }
         if (!Reflector.RenderLivingEvent_Specials_Pre_Constructor.exists() || !Reflector.postForgeBusEvent(Reflector.RenderLivingEvent_Specials_Pre_Constructor, new Object[]{entity, this, Double.valueOf(x), Double.valueOf(y), Double.valueOf(z)})) {
