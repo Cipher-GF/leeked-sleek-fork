@@ -1,5 +1,7 @@
 package me.kansio.client.modules.impl.visuals;
 
+import com.google.common.eventbus.Subscribe;
+import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 
@@ -12,11 +14,8 @@ public class NoWeather extends Module {
     
     @Subscribe
     public void onUpdate() {
-        if (this.Null()) {
-            return;
-        }
-        if (NoWeather.mc.world.isRaining()) {
-            NoWeather.mc.world.setRainStrength(0.0f);
+        if (NoWeather.mc.theWorld.isRaining()) {
+            NoWeather.mc.theWorld.setRainStrength(0.0f);
         }
     }
 }

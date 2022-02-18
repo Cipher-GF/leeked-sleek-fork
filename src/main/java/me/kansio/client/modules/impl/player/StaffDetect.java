@@ -79,8 +79,8 @@ public class StaffDetect extends Module {
         ScaledResolution sr = RenderUtils.getResolution();
 
         if (staffInMatch.size() != 0 && amount != 0) {
-            RenderUtils.drawRect(sr.getScaledWidth() / 2 - 80, sr.getScaledHeight() / 2 - 21, 167, 1, new Color(255, 0, 0).getRGB());
-            RenderUtils.drawRect(sr.getScaledWidth() / 2 - 80, sr.getScaledHeight() / 2 - 20, 167, 40, new Color(0, 0,0 , 100).getRGB());
+            RenderUtils.drawRect(sr.getScaledWidth() / 2 - 80, sr.getScaledHeight() / 2 + 129, 167, 1, new Color(255, 0, 0).getRGB());
+            RenderUtils.drawRect(sr.getScaledWidth() / 2 - 80, sr.getScaledHeight() / 2 + 130, 167, 40, new Color(0, 0,0 , 100).getRGB());
 
             if (amount > 1) {
                 mc.fontRendererObj.drawStringWithShadow("§4§lWarning:", sr.getScaledWidth() / 2 - 76, sr.getScaledHeight() / 2 - 14, -1);

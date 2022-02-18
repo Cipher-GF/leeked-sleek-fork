@@ -2,7 +2,7 @@
   "data": {
     "author": "qoft",
     "name": "bmc",
-    "lastUpdated": "Date 2022/2/14 Time 15:33:18"
+    "lastUpdated": "Date 2022/2/17 Time 21:26:33"
   },
   "modules": [
     {
@@ -81,14 +81,31 @@
       "Mode": "Floyed"
     },
     {
+      "name": "Nametags",
+      "keybind": 0,
+      "enabled": true,
+      "Health": "true",
+      "Size": "2.0",
+      "Invisibles": "false",
+      "Ping": "true",
+      "Rectangle": "true",
+      "Outline": "false",
+      "Line Width": "1.5",
+      "SneakColor": "false",
+      "White": "false",
+      "Scaling": "0.1",
+      "Factor": "1.0",
+      "SmartScale": "true"
+    },
+    {
       "name": "Killaura",
       "keybind": 19,
       "enabled": false,
       "Mode": "Smart",
       "Target Priority": "Distance",
       "Rotation Mode": "Default",
-      "Swing Range": "3.5",
-      "Block Range": "6.9",
+      "Swing Range": "3.7",
+      "Block Range": "8.0",
       "CPS": "10.0",
       "Randomize CPS": "2.0",
       "Hit Chance": "100",
@@ -165,6 +182,11 @@
       "Delay": "150"
     },
     {
+      "name": "FakePlayer",
+      "keybind": 0,
+      "enabled": false
+    },
+    {
       "name": "Penis ESP",
       "keybind": 0,
       "enabled": false
@@ -205,7 +227,7 @@
       "keybind": 33,
       "enabled": false,
       "Mode": "Vanilla",
-      "Speed": "2.6",
+      "Speed": "3.2",
       "AntiKick": "true",
       "Boost": "true",
       "Extra Boost": "true",
@@ -261,8 +283,8 @@
     },
     {
       "name": "Phase",
-      "keybind": 0,
-      "enabled": true,
+      "keybind": 48,
+      "enabled": false,
       "Mode": "BlocksMC (VClip)",
       "Distance": "2.0",
       "Sneak": "true"
@@ -294,7 +316,7 @@
       "name": "No Fall",
       "keybind": 0,
       "enabled": true,
-      "Mode": "Verus"
+      "Mode": "Collide"
     },
     {
       "name": "Anti Void",
@@ -341,7 +363,7 @@
     },
     {
       "name": "Scaffold",
-      "keybind": 0,
+      "keybind": 45,
       "enabled": false,
       "Safewalk": "true",
       "Keep Y": "false",
@@ -388,7 +410,9 @@
       "name": "Step",
       "keybind": 0,
       "enabled": true,
-      "Mode": "Verus"
+      "Mode": "Verus",
+      "Cage Checks": "true",
+      "Height": "1.5"
     },
     {
       "name": "Auto Settings",
@@ -458,6 +482,11 @@
       "Scoreboard Y": "0.0"
     },
     {
+      "name": "NoWeather",
+      "keybind": 0,
+      "enabled": false
+    },
+    {
       "name": "ESP",
       "keybind": 0,
       "enabled": true,
@@ -471,7 +500,8 @@
       "Armor": "true",
       "Filled": "false",
       "Corner": "false",
-      "Thickness": "1.25",
+      "Rainbow": "false",
+      "Thickness": "1.5",
       "Brightness": "255"
     },
     {
@@ -492,7 +522,7 @@
       "name": "Spammer",
       "keybind": 0,
       "enabled": false,
-      "Delay": "3000",
+      "Delay": "3000.0",
       "Text": "sex"
     },
     {

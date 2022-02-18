@@ -8,7 +8,6 @@ import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.utils.font.Fonts;
-import net.minecraft.client.renderer.entity.RendererLivingEntity;
 import me.kansio.client.utils.render.RenderUtil;
 import me.kansio.client.value.value.BooleanValue;
 import me.kansio.client.value.value.NumberValue;
@@ -17,9 +16,6 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemArmor;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemTool;
 
 import java.awt.*;
 import java.util.Objects;
@@ -57,7 +53,7 @@ public class Nametags extends Module {
                 double x = this.interpolate(player.lastTickPosX, player.posX, event.getPartialTicks()) - Nametags.mc.getRenderManager().renderPosX;
                 double y = this.interpolate(player.lastTickPosY, player.posY, event.getPartialTicks()) - Nametags.mc.getRenderManager().renderPosY;
                 double z = this.interpolate(player.lastTickPosZ, player.posZ, event.getPartialTicks()) - Nametags.mc.getRenderManager().renderPosZ;
-                this.renderNameTag(player, x, y, z, event.getPartialTicks());
+                this.renderNameTag(player, x, y -0.2, z, event.getPartialTicks());
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -100,15 +96,15 @@ public class Nametags extends Module {
         GlStateManager.enableBlend();
         GlStateManager.enableBlend();
         if (this.rect.getValue()) {
-            RenderUtil.drawRect(-width - 2, -(15 + 1), (float) width + 2.0f * 2, 10f, 0x55000000);
+            RenderUtil.drawRect(-width - 2, -(15 + 1), (width +1d) * 2, 10f, 0x55000000);
             if (this.outline.getValue()) {
                 final int color = new Color(255, 255, 255, 255).getRGB();
 //                RenderUtil.drawBorderedRect((float) (-width - 2), (float) (-(mc.fontRendererObj.FONT_HEIGHT + 1)), width + 2.0f, 1.5f, color);
-                RenderUtil.drawBorderedRect(-width - 2, -(10), width + 2d, 1.5d, 2,color, color);
+                RenderUtil.drawBorderedRect(-width - 2, -(15 + 1), (width + 1d) *2, 9.5f, 0.5f,color, 0x00000000);
             }
         }
         GlStateManager.disableBlend();
-        Fonts.Verdana.drawStringWithShadow(displayTag, -width, -(15 - 1), this.getDisplayColour(player));
+        Fonts.Verdana.drawStringWithShadow(displayTag, -width, -(15), this.getDisplayColour(player));
         camera.posX = originalPositionX;
         camera.posY = originalPositionY;
         camera.posZ = originalPositionZ;

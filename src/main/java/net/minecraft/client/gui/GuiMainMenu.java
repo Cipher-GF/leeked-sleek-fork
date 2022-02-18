@@ -1,5 +1,6 @@
 package net.minecraft.client.gui;
 
+import java.lang.reflect.Field;
 import java.util.*;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -18,7 +19,9 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 import me.kansio.client.protection.ProtectionUtil;
 import org.lwjgl.opengl.GL20;
+import sun.misc.Unsafe;
 
+import javax.swing.*;
 import java.io.IOException;
 
 public class GuiMainMenu extends GuiScreen {
