@@ -1,5 +1,6 @@
 package me.kansio.client.modules.impl.visuals;
 
+import me.kansio.client.Client;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
@@ -17,11 +18,14 @@ import org.lwjgl.input.Keyboard;
 public class ClickGUI extends Module {
 
     public BooleanValue hudcolor = new BooleanValue("Hud Colour", this, false);
-    private BooleanValue font = new BooleanValue("Font", this, false);
+    public BooleanValue fonttoggle = new BooleanValue("Font", this, false);
+    private BooleanValue box = new BooleanValue("Box", this, true);
+
 
     @Override
     public void onEnable() {
         mc.displayGuiScreen(new me.kansio.client.gui.clickgui.frame.ClickGUI());
         toggle();
     }
+
 }
