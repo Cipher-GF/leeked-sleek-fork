@@ -24,6 +24,7 @@ import me.kansio.client.utils.render.RenderUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiScreen;
+import org.lwjgl.Sys;
 import org.lwjgl.input.Keyboard;
 
 import java.awt.*;
@@ -91,19 +92,19 @@ public class FrameModule implements Values {
         }
         try {
             if (((ClickGUI)Client.getInstance().getModuleManager().getModuleByName("Click GUI")).fonttoggle.getValue()) {
-                Fonts.Verdana.drawString(listening ? "Press new keybind" : module.getName(), x + 3, y + (moduleHeight / 2F - (Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2F)), -1, true);
+                Fonts.Verdana.drawStringWithShadow(listening ? "Press new keybind" : module.getName(), x + 3, y + (moduleHeight / 2F - (Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2F))+1.2, 0xFFFFFFFF);
             } else {
-                Minecraft.getMinecraft().fontRendererObj.drawString(listening ? "Press new keybind" : module.getName(), x + 3, y + (moduleHeight / 2F - (Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2F)), -1, true);
+                Minecraft.getMinecraft().fontRendererObj.drawString(listening ? "Press new keybind" : module.getName(), x + 3, y + (moduleHeight / 2F - (Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2F)), 0xFFFFFFFF, true);
             }
         } catch (Exception e) {
             e.printStackTrace();
-            Minecraft.getMinecraft().fontRendererObj.drawString(listening ? "Press new keybind" : module.getName(), x + 3, y + (moduleHeight / 2F - (Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2F)), -1, true);
+            Minecraft.getMinecraft().fontRendererObj.drawString(listening ? "Press new keybind" : module.getName(), x + 3, y + (moduleHeight / 2F - (Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2F)),  0xFFFFFFFF, true);
         }
         if (!module.getValues().isEmpty()) {
             if (((ClickGUI)Client.getInstance().getModuleManager().getModuleByName("Click GUI")).fonttoggle.getValue()) {
-                Fonts.Verdana.drawString(opened ? "-" : "+", (x + owner.getWidth()) - 9, y + (moduleHeight / 2F - (Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2F)), -1, true);
+                Fonts.Verdana.drawString(opened ? "-" : "+", (x + owner.getWidth()) - 9, y + (moduleHeight / 2F - (Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2F))+1.2,  0xFFFFFFFF, true);
             } else {
-                Minecraft.getMinecraft().fontRendererObj.drawString(opened ? "-" : "+", (x + owner.getWidth()) - 9, y + (moduleHeight / 2F - (Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2F)), -1, true);
+                Minecraft.getMinecraft().fontRendererObj.drawString(opened ? "-" : "+", (x + owner.getWidth()) - 9, y + (moduleHeight / 2F - (Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2F)),  0xFFFFFFFF, true);
 
             }
         }
@@ -138,7 +139,7 @@ public class FrameModule implements Values {
 
                 component.drawScreen(mouseX, mouseY);
                 // Draw a line between the components
-                Gui.drawRect(x, y + moduleHeight + offset, x + defaultWidth, y + moduleHeight + offset, ColorPalette.LIGHT_BLUE.getColor().getRGB());
+                Gui.drawRect(x, y + moduleHeight + offset, x + defaultWidth, y + moduleHeight + offset, -1);
                 offset += component.getOffset();
             }
         }

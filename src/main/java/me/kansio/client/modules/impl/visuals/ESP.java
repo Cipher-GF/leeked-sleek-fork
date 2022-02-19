@@ -126,7 +126,7 @@ public class ESP extends Module {
                         final float y = (float) position.y + 3;
                         final float h = (float) position.w - y;
                         if (health.getValue()) {
-                            RenderUtil.drawBar((float) (x - 3f - thickness.getValue() / 2), y - 1, 1.5f, h + 5, ((int)ent.getMaxHealth()) / 2, ((int)ent.getHealth()) / 2, getHealthColor(ent));
+                            RenderUtil.drawBar((float) (x - 3f - thickness.getValue() / 2), y - 1, 1.5f, h + 1, ((int)ent.getMaxHealth()) / 2, ((int)ent.getHealth()) / 2, getHealthColor(ent));
                         }
                         if (armor.getValue() && entity instanceof EntityPlayer) {
                             double armorstrength = 0;

@@ -96,11 +96,10 @@ public class FrameCategory implements Values {
 
         // Drawing category name
         if (((ClickGUI)Client.getInstance().getModuleManager().getModuleByName("Click GUI")).fonttoggle.getValue()) {
-            Fonts.Verdana.drawStringWithShadow(category.getName(), x + 3, (int) (y + ((categoryNameHeight / 2F) - Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2F)), stringColor);
+            Fonts.Verdana.drawStringWithShadow(category.getName(), x + 3, (int) (y + ((categoryNameHeight / 2F) - 12 / 2F)), -1);
 
         } else {
-            Minecraft.getMinecraft().fontRendererObj.drawStringWithShadow(category.getName(), x + 3, (int) (y + ((categoryNameHeight / 2F) - Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2F)), stringColor);
-
+            Minecraft.getMinecraft().fontRendererObj.drawStringWithShadow(category.getName(), x + 3, (int) (y + ((categoryNameHeight / 2F) - Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2F)), -1);
         }
 
         GL11.glPushMatrix();
@@ -111,11 +110,13 @@ public class FrameCategory implements Values {
         // Drawing modules
         int i = 0;
         for (FrameModule module : this.modules) {
+
             module.setX(x);
             int thing = y + categoryNameHeight + i - offset;
             module.setY(thing);
             module.drawScreen(mouseX, mouseY);
-            Gui.drawRect(x, thing, x + width, y + categoryNameHeight + i - offset + 0.5, darkerMainColor2);
+            // Outline modules
+            Gui.drawRect(x, thing, x + width, y + categoryNameHeight + i - offset + 0.75, new Color(64,64,64).getRGB());
             i += module.getOffset();
         }
 
