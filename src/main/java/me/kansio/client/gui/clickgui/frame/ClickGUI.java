@@ -2,6 +2,8 @@ package me.kansio.client.gui.clickgui.frame;
 
 import me.kansio.client.gui.clickgui.frame.components.FrameCategory;
 import me.kansio.client.modules.api.ModuleCategory;
+import me.kansio.client.utils.glsl.GLSLSandboxShader;
+import net.minecraft.client.gui.GuiMainMenu;
 import net.minecraft.client.gui.GuiScreen;
 
 import java.io.IOException;
@@ -10,6 +12,7 @@ import java.util.List;
 
 public class ClickGUI extends GuiScreen {
     private final List<FrameCategory> categories;
+    private GLSLSandboxShader backgroundShader;
     //private final ConfigCategory configCategory = new ConfigCategory(10 + ((ModuleCategory.values().length - 1) * (Priority.defaultWidth + 10)), 10);
 
     public ClickGUI() {
@@ -24,8 +27,6 @@ public class ClickGUI extends GuiScreen {
             categories.add(new FrameCategory(category, 10 + (++index * (Values.defaultWidth + 10)), 13));
         }
 
-        //Reload the configs
-        //Client.getInstance().getConfigManager().loadConfigs();
     }
 
     @Override
@@ -33,6 +34,7 @@ public class ClickGUI extends GuiScreen {
         categories.forEach(FrameCategory::initGui);
         //configCategory.initGui();
         super.initGui();
+
     }
 
     @Override

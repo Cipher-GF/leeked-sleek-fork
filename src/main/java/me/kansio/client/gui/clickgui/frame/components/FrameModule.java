@@ -82,13 +82,14 @@ public class FrameModule implements Values {
         moduleAnimation.setReversed(!module.isToggled());
         moduleAnimation.setSpeed(1000).update();
 
+        int colorUsed = ColorPalette.WHITE.getColor().darker().getRGB();
 
         if(RenderUtils.hover(x, y, mouseX, mouseY, defaultWidth, moduleHeight)) {
             GuiScreen.drawRect(x,y, x + defaultWidth, y + moduleHeight, new Color(ColorPalette.LIGHT_BLUE.getColor().getRed(), ColorPalette.LIGHT_BLUE.getColor().getGreen(), ColorPalette.LIGHT_BLUE.getColor().getBlue(), 120).getRGB());
         }
 
         if (module.isToggled() || (moduleAnimation.isReversed() && moduleAnimation.getValue() != 0)) {
-            //GuiScreen.drawRect(x, y, x + defaultWidth, y + moduleHeight, ColorUtils.setAlpha(new Color(colorUsed), (int) moduleAnimation.getValue()).darker().getRGB());
+            GuiScreen.drawRect(x, y, x + defaultWidth, y + moduleHeight, ColorUtils.setAlpha(new Color(colorUsed), (int) moduleAnimation.getValue()).darker().getRGB());
         }
         try {
             if (((ClickGUI)Client.getInstance().getModuleManager().getModuleByName("Click GUI")).fonttoggle.getValue()) {
@@ -120,7 +121,6 @@ public class FrameModule implements Values {
                 //component.getSetting().constantCheck();
                 //if(component.getSetting().isHide()) continue;
                 boolean shouldBeHidden;
-
                 if (component.getSetting().hasParent() && component.getSetting().getParent() != null) {
                     if ((component.getSetting().getParent() instanceof ModeValue && component.getSetting().getModes().contains(component.getSetting().getParent().getValue()))
                             || (component.getSetting().getParent() instanceof BooleanValue && ((BooleanValue) component.getSetting().getParent()).getValue())) {

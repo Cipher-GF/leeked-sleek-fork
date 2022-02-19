@@ -1,8 +1,11 @@
 package me.kansio.client.gui.clickgui.frame.components.impl;
 
+import me.kansio.client.Client;
 import me.kansio.client.gui.clickgui.frame.Values;
 import me.kansio.client.gui.clickgui.frame.components.Component;
 import me.kansio.client.gui.clickgui.frame.components.FrameModule;
+import me.kansio.client.modules.impl.visuals.ClickGUI;
+import me.kansio.client.utils.font.Fonts;
 import me.kansio.client.value.Value;
 import me.kansio.client.value.value.NumberValue;
 import me.kansio.client.utils.render.RenderUtils;
@@ -50,8 +53,12 @@ public class SlideSetting extends Component implements Values {
                     this.setValue(newValue);
             }
         }
+        if (((ClickGUI) Client.getInstance().getModuleManager().getModuleByName("Click GUI")).fonttoggle.getValue()) {
+            Fonts.Verdana.drawStringWithShadow("§7" + getSetting().getName() + ": §f" + roundToPlace(((NumberValue) getSetting()).getValue().doubleValue(), 2), x + 5, y + (getOffset() / 2F - (fontRenderer.FONT_HEIGHT / 2F)), -1);
 
-        fontRenderer.drawString("§7" + getSetting().getName() + ": §f" + roundToPlace(((NumberValue) getSetting()).getValue().doubleValue(), 2), x + 5, y + (getOffset() / 2F - (fontRenderer.FONT_HEIGHT / 2F)), stringColor, true);
+        } else {
+            fontRenderer.drawString("§7" + getSetting().getName() + ": §f" + roundToPlace(((NumberValue) getSetting()).getValue().doubleValue(), 2), x + 5, y + (getOffset() / 2F - (fontRenderer.FONT_HEIGHT / 2F)), -1, true);
+        }
     }
 
     private double roundToPlace(double value, int places) {

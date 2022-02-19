@@ -1,8 +1,11 @@
 package me.kansio.client.gui.clickgui.frame.components.impl;
 
+import me.kansio.client.Client;
 import me.kansio.client.gui.clickgui.frame.Values;
 import me.kansio.client.gui.clickgui.frame.components.Component;
 import me.kansio.client.gui.clickgui.frame.components.FrameModule;
+import me.kansio.client.modules.impl.visuals.ClickGUI;
+import me.kansio.client.utils.font.Fonts;
 import me.kansio.client.value.Value;
 import me.kansio.client.value.value.ModeValue;
 import me.kansio.client.utils.render.RenderUtils;
@@ -21,11 +24,16 @@ public class EnumSetting extends Component implements Values {
 
     @Override
     public void drawScreen(int mouseX, int mouseY) {
-        FontRenderer fontRenderer = Minecraft.getMinecraft().fontRendererObj;
-        fontRenderer.drawString("§7" + getSetting().getName(), x + 5, y + (getOffset() / 2F - (fontRenderer.FONT_HEIGHT / 2F)), -1, true);
-        fontRenderer.drawString(((ModeValue) getSetting()).getValue().toUpperCase(), x + defaultWidth - fontRenderer.getStringWidth(((ModeValue) getSetting()).getValue().toUpperCase()) - 5, y + (getOffset() / 2F - (fontRenderer.FONT_HEIGHT / 2F)), -1, true);
-    }
+        if (((ClickGUI) Client.getInstance().getModuleManager().getModuleByName("Click GUI")).fonttoggle.getValue()) {
+            Fonts.Verdana.drawStringWithShadow("§7" + getSetting().getName(), x + 5, y + (getOffset() / 2F - (9 / 2F)), -1);
+            Fonts.Verdana.drawStringWithShadow(((ModeValue) getSetting()).getValue().toUpperCase(), x + defaultWidth - Fonts.Verdana.getStringWidth(((ModeValue) getSetting()).getValue().toUpperCase()) - 5, (y + (getOffset() / 2F - (12 / 2F))) + 1.2, -1);
+        } else {
+            FontRenderer fontRenderer = Minecraft.getMinecraft().fontRendererObj;
+            fontRenderer.drawString("§7" + getSetting().getName(), x + 5, y + (getOffset() / 2F - (fontRenderer.FONT_HEIGHT / 2F)), -1, true);
+            fontRenderer.drawString(((ModeValue) getSetting()).getValue().toUpperCase(), x + defaultWidth - fontRenderer.getStringWidth(((ModeValue) getSetting()).getValue().toUpperCase()) - 5, y + (getOffset() / 2F - (fontRenderer.FONT_HEIGHT / 2F)), -1, true);
+        }
 
+    }
     @Override
     public boolean mouseClicked(int mouseX, int mouseY, int mouseButton) {
         if (RenderUtils.hover(x, y, mouseX, mouseY, defaultWidth, getOffset())) {
