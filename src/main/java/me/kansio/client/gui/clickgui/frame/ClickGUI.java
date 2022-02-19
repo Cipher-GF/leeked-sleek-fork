@@ -21,7 +21,7 @@ public class ClickGUI extends GuiScreen {
             //Don't display the hidden category :)
             if (category == ModuleCategory.HIDDEN) continue;
 
-            categories.add(new FrameCategory(category, 10 + (++index * (Values.defaultWidth + 10)), 10));
+            categories.add(new FrameCategory(category, 10 + (++index * (Values.defaultWidth + 10)), 13));
         }
 
         //Reload the configs

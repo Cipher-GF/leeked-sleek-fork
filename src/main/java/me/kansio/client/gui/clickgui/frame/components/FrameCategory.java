@@ -5,7 +5,9 @@ import me.kansio.client.gui.clickgui.frame.Values;
 import me.kansio.client.gui.clickgui.utils.render.animation.easings.Animate;
 import me.kansio.client.gui.clickgui.utils.render.animation.easings.Easing;
 import me.kansio.client.modules.api.ModuleCategory;
+import me.kansio.client.modules.impl.visuals.ClickGUI;
 import me.kansio.client.utils.chat.ChatUtil;
+import me.kansio.client.utils.font.Fonts;
 import me.kansio.client.utils.render.RenderUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
@@ -93,7 +95,13 @@ public class FrameCategory implements Values {
         }
 
         // Drawing category name
-        Minecraft.getMinecraft().fontRendererObj.drawStringWithShadow(category.getName(), x + 3, (int) (y + ((categoryNameHeight / 2F) - Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2F)), stringColor);
+        if (((ClickGUI)Client.getInstance().getModuleManager().getModuleByName("Click GUI")).fonttoggle.getValue()) {
+            Fonts.Verdana.drawStringWithShadow(category.getName(), x + 3, (int) (y + ((categoryNameHeight / 2F) - Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2F)), stringColor);
+
+        } else {
+            Minecraft.getMinecraft().fontRendererObj.drawStringWithShadow(category.getName(), x + 3, (int) (y + ((categoryNameHeight / 2F) - Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2F)), stringColor);
+
+        }
 
         GL11.glPushMatrix();
         GL11.glEnable(3089);

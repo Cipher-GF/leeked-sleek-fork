@@ -81,7 +81,6 @@ public class FrameModule implements Values {
         moduleAnimation.setReversed(!module.isToggled());
         moduleAnimation.setSpeed(1000).update();
 
-        int colorUsed = ColorPalette.LIGHT_BLUE.getColor().getRGB();
 
         if(RenderUtils.hover(x, y, mouseX, mouseY, defaultWidth, moduleHeight)) {
             GuiScreen.drawRect(x,y, x + defaultWidth, y + moduleHeight, new Color(ColorPalette.LIGHT_BLUE.getColor().getRed(), ColorPalette.LIGHT_BLUE.getColor().getGreen(), ColorPalette.LIGHT_BLUE.getColor().getBlue(), 120).getRGB());
@@ -90,11 +89,29 @@ public class FrameModule implements Values {
         if (module.isToggled() || (moduleAnimation.isReversed() && moduleAnimation.getValue() != 0)) {
             //GuiScreen.drawRect(x, y, x + defaultWidth, y + moduleHeight, ColorUtils.setAlpha(new Color(colorUsed), (int) moduleAnimation.getValue()).darker().getRGB());
         }
+        try {
+            if (((ClickGUI)Client.getInstance().getModuleManager().getModuleByName("Click GUI")).fonttoggle.getValue()) {
+                Fonts.Verdana.drawString(listening ? "Press new keybind" : module.getName(), x + 3, y + (moduleHeight / 2F - (Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2F)), -1, true);
+            } else {
+                Minecraft.getMinecraft().fontRendererObj.drawString(listening ? "Press new keybind" : module.getName(), x + 3, y + (moduleHeight / 2F - (Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2F)), -1, true);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            Minecraft.getMinecraft().fontRendererObj.drawString(listening ? "Press new keybind" : module.getName(), x + 3, y + (moduleHeight / 2F - (Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2F)), -1, true);
+        }
+        if (!module.getValues().isEmpty()) {
+            if (((ClickGUI)Client.getInstance().getModuleManager().getModuleByName("Click GUI")).fonttoggle.getValue()) {
+                Fonts.Verdana.drawString(opened ? "-" : "+", (x + owner.getWidth()) - 9, y + (moduleHeight / 2F - (Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2F)), -1, true);
+            } else {
+                Minecraft.getMinecraft().fontRendererObj.drawString(opened ? "-" : "+", (x + owner.getWidth()) - 9, y + (moduleHeight / 2F - (Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2F)), -1, true);
 
-        Minecraft.getMinecraft().fontRendererObj.drawString(listening ? "Press new keybind" : module.getName(), x + 3, y + (moduleHeight / 2F - (Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2F)), module.isToggled() ? ColorPalette.LIGHT_BLUE.getColor().darker().getRGB() : stringColor, true);
-        if (!module.getValues().isEmpty())
-            Minecraft.getMinecraft().fontRendererObj.drawString(opened ? "-" : "+", (x + owner.getWidth()) - 9, y + (moduleHeight / 2F - (Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2F)), stringColor, true);
-
+            }
+        }
+//            if (((ClickGUI)Client.getInstance().getModuleManager().getModuleByName("ClickGUI")).fonttoggle.getValue()) {
+//                Fonts.Verdana.drawString(opened ? "-" : "+", (x + owner.getWidth()) - 9, y + (moduleHeight / 2F - (9 / 2F)), stringColor, true);
+//            } else {
+//                Minecraft.getMinecraft().fontRendererObj.drawString(opened ? "-" : "+", (x + owner.getWidth()) - 9, y + (moduleHeight / 2F - (Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2F)), stringColor, true);
+//            }
         int offset = 0;
 
         if (opened) {
