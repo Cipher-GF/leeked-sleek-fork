@@ -38,7 +38,7 @@ public class Step extends Module {
                 break;
             case "Verus":
                 System.out.println("Verus");
-                if ((mc.thePlayer.isCollidedHorizontally) && (mc.thePlayer.onGround) && (!Step.mc.thePlayer.isInsideOfMaterial(Material.water)) && (!Step.mc.thePlayer.isInsideOfMaterial(Material.lava))) {
+                if ((mc.thePlayer.isCollidedHorizontally) && (mc.thePlayer.onGround) && (!mc.thePlayer.isInsideOfMaterial(Material.water)) && (!mc.thePlayer.isInsideOfMaterial(Material.lava))) {
                     String bUp = String.valueOf(mc.theWorld.getBlockState(new BlockPos(mc.thePlayer.posX, mc.thePlayer.posY + 3, mc.thePlayer.posZ )));
                     // get facing direction
                     int dir = mc.thePlayer.getHorizontalFacing().getHorizontalIndex();
@@ -77,7 +77,41 @@ public class Step extends Module {
                         double rheight = mc.thePlayer.getEntityBoundingBox().minY - mc.thePlayer.posY;
                         if (rheight >= 0.625) {
                             try {
-                                this.ncpStep(rheight);
+                                block12:
+                                {
+                                    double y;
+                                    double posZ;
+                                    double posX;
+                                    block11:
+                                    {
+                                        posX = mc.thePlayer.posX;
+                                        posZ = mc.thePlayer.posZ;
+                                        y = mc.thePlayer.posY;
+                                        if (!(rheight < 1.1)) break block11;
+                                        double first = 0.42;
+                                        double second = 0.75;
+                                        mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(posX, y + first, posZ, false));
+                                        if (!(y + second < y + rheight)) break block12;
+                                        mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(posX, y + second, posZ, false));
+                                        break block12;
+                                    }
+                                    if (rheight < 1.6) {
+                                        double[] offset;
+                                        for (double off : offset = new double[]{0.42, 0.33, 0.24, 0.083, -0.078}) {
+                                            mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(posX, y += off, posZ, false));
+                                        }
+                                    } else if (rheight < 2.1) {
+                                        double[] heights;
+                                        for (double off : heights = new double[]{0.425, 0.821, 0.699, 0.599, 1.022, 1.372, 1.652, 1.869}) {
+                                            mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(posX, y + off, posZ, false));
+                                        }
+                                    } else {
+                                        double[] heights;
+                                        for (double off : heights = new double[]{0.425, 0.821, 0.699, 0.599, 1.022, 1.372, 1.652, 1.869, 2.019, 1.907}) {
+                                            mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(posX, y + off, posZ, false));
+                                        }
+                                    }
+                                }
                             } catch (Exception e) {
                                 e.printStackTrace();
 
@@ -95,9 +129,6 @@ public class Step extends Module {
 
     }
 
-    private void ncpStep(double rheight) {
-        System.out.println("NCP  THING" + rheight);
-    }
 
 
 }

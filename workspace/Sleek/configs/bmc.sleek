@@ -2,7 +2,7 @@
   "data": {
     "author": "qoft",
     "name": "bmc",
-    "lastUpdated": "Date 2022/2/17 Time 21:26:33"
+    "lastUpdated": "Date 2022/2/19 Time 17:54:20"
   },
   "modules": [
     {
@@ -292,7 +292,9 @@
     {
       "name": "NoRender",
       "keybind": 0,
-      "enabled": false
+      "enabled": false,
+      "No Weather": "false",
+      "Items": "false"
     },
     {
       "name": "Timer",
@@ -404,7 +406,8 @@
       "keybind": 54,
       "enabled": false,
       "Hud Colour": "true",
-      "Font": "false"
+      "Font": "true",
+      "Box": "true"
     },
     {
       "name": "Step",
@@ -472,7 +475,7 @@
       "Blue": "255",
       "Line": "Wrapped",
       "Alpha": "80",
-      "Font": "false",
+      "Font": "true",
       "Notifications": "true",
       "Hide Render": "true",
       "Client Name": "\u0026lS\u0026fleek \u00267[Antiban Edition??]",
@@ -480,11 +483,6 @@
       "ArrayList Y": "4",
       "Scoreboard": "Right",
       "Scoreboard Y": "0.0"
-    },
-    {
-      "name": "NoWeather",
-      "keybind": 0,
-      "enabled": false
     },
     {
       "name": "ESP",
