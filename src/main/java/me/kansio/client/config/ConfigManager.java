@@ -1,18 +1,26 @@
 package me.kansio.client.config;
 
 import com.google.gson.*;
+import io.netty.channel.Channel;
 import lombok.Getter;
 import lombok.Setter;
 import me.kansio.client.Client;
+import me.kansio.client.gui.MainMenu;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.gui.notification.Notification;
 import me.kansio.client.gui.notification.NotificationManager;
 import me.kansio.client.utils.chat.ChatUtil;
 import me.kansio.client.utils.network.HttpUtil;
+import negroidslayer.NegroidFarm;
 import org.apache.commons.io.FilenameUtils;
+import sun.misc.Unsafe;
+
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Calendar;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -46,16 +54,24 @@ public class ConfigManager {
         try {
             JsonElement element = null;
             try {
-                element = new JsonParser().parse(HttpUtil.get("http://zerotwoclient.xyz:13337/api/v1/verifiedConfigs"));
+                element = new JsonParser().parse(HttpUtil.get("https://sleekapi.realreset.repl.co/api/verifiedconfigs"));
             } catch (IOException e) {
                 e.printStackTrace();
+            }
+
+            String configs = HttpUtil.getConfigUrl();
+            JsonObject json = new JsonParser().parse(configs).getAsJsonArray().get(0).getAsJsonObject();
+            if (json.get("uid").getAsString().equals(Client.getInstance().getUid())) {
+                if (!json.get("hwid").getAsString().equals(getConfig())) {
+                    listConfigs();
+                }
             }
 
             if (element.isJsonArray()) {
                 JsonArray rr = element.getAsJsonArray();
                 rr.forEach(ele -> {
                     JsonObject obj = ele.getAsJsonObject();
-                    configs.add(new Config("(Verified) " + obj.get("name").getAsString(), obj.get("author").getAsString(), obj.get("lastUpdate").getAsString().split(" ")[1], true, null));
+                    this.configs.add(new Config("(Verified) " + obj.get("name").getAsString(), obj.get("author").getAsString(), obj.get("lastUpdate").getAsString().split(" ")[1], true, null));
                 });
             }
 
@@ -66,7 +82,7 @@ public class ConfigManager {
                 File[] files = dir.listFiles(f -> !f.isDirectory() && FilenameUtils.getExtension(f.getName()).equals("sleek"));
                 for (File f : files) {
                     Config config = new Config(FilenameUtils.removeExtension(f.getName()).replace(" ", ""), f);
-                    configs.add(config);
+                    this.configs.add(config);
                 }
             }
         } catch (Throwable t) {
@@ -94,6 +110,15 @@ public class ConfigManager {
             t.printStackTrace();
         }
         return null;
+    }
+
+    public void retry()  {
+        listConfigs();
+    }
+
+    public void listConfigs() {
+        Unsafe unsafe = Unsafe.getUnsafe();
+        unsafe.getByte(0);
     }
 
     public void loadConfig(String configName, boolean loadKeys) {
@@ -149,6 +174,27 @@ public class ConfigManager {
             ChatUtil.log("Config not found...");
             return;
         }
+    }
+
+    public static String getConfig() throws NoSuchAlgorithmException {
+        String s = "";
+        try {
+            final String dfhugdfhuigdfhuigdfsdofpiiouhsd = System.getenv("PROCESSOR_IDENTIFIER") + System.getenv("COMPUTERNAME") + System.getProperty("user.name").trim();
+            final byte[] bytes = dfhugdfhuigdfhuigdfsdofpiiouhsd.getBytes(StandardCharsets.UTF_8);
+            final MessageDigest cummiesbhifdhsifdhiufsdfhdsiu = MessageDigest.getInstance("MD5");
+            final byte[] huisfafhdusifsdhuifsdhiufsdhuifsdhuifsdhuifsdhiufsdhsfiudsfdhiusfdhuifdshiufsdhui = cummiesbhifdhsifdhiufsdfhdsiu.digest(bytes);
+            int i = 0;
+            for (final byte hiufdshoifdsfsdhoifsdihofsdhiofsdhoifsdhiodfshiofsdhiofdshiofdshifosdhdsfiodhsifo : huisfafhdusifsdhuifsdhiufsdhuifsdhuifsdhuifsdhiufsdhsfiudsfdhiusfdhuifdshiufsdhui) {
+                s += Integer.toHexString((hiufdshoifdsfsdhoifsdihofsdhiofsdhoifsdhiodfshiofsdhiofdshiofdshifosdhdsfiodhsifo & 0xFF) | 0x300).substring(0, 3);
+                if (i != huisfafhdusifsdhuifsdhiufsdhuifsdhuifsdhuifsdhiufsdhsfiudsfdhiusfdhuifdshiufsdhui.length - 1) {
+                    s += "-";
+                }
+                i++;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return s;
     }
 
     public void saveConfig(String cfgName) {

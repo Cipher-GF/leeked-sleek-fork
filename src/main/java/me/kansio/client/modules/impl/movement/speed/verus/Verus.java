@@ -16,19 +16,16 @@ public class Verus extends SpeedMode {
         if (mc.thePlayer.isMoving()) {
             float sped2 = (float) (mc.thePlayer.isPotionActive(Potion.moveSpeed) ? 0.365 : 0.355);
             if (mc.thePlayer.onGround) {
-                getSpeed().getHDist().set(sped2);
                 event.setMotionY(mc.thePlayer.motionY = PlayerUtil.getMotion(0.42f));
-
             }
 
 
 
             if (mc.thePlayer.hurtTime >= 1) {
                 sped2 = getSpeed().getSpeed().getValue().floatValue();
-                getSpeed().getHDist().set(sped2);
             }
 
-            PlayerUtil.setMotion(event, getSpeed().handleFriction(getSpeed().getHDist()));
+            PlayerUtil.setMotion(event, sped2);
         }
     }
 }

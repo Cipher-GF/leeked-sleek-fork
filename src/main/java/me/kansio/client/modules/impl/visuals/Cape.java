@@ -4,7 +4,7 @@ import me.kansio.client.Client;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
-import me.kansio.client.property.value.ModeValue;
+import me.kansio.client.value.value.ModeValue;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.util.ResourceLocation;
 
@@ -15,12 +15,18 @@ import net.minecraft.util.ResourceLocation;
 )
 public class Cape extends Module {
 
-    private ModeValue capemode = new ModeValue("Cape", this,"Sleek", "None");
+    private ModeValue capemode = new ModeValue("Cape", this,"Sleek", "Kitler", "HateFoo");
 
     public ResourceLocation getCape() {
         switch (capemode.getValue()) {
             case "Sleek": {
-                return new ResourceLocation("sleek/capes/sleekcape.png");
+                return new ResourceLocation("sleek/images/capes/sleekcape.png");
+            }
+            case "Kitler": {
+                return new ResourceLocation("sleek/images/capes/kitler.png");
+            }
+            case "HateFoo": {
+                return new ResourceLocation("sleek/images/capes/hatefoo.png");
             }
 
             default: {

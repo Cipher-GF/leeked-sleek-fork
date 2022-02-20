@@ -10,9 +10,9 @@ import me.kansio.client.gui.notification.NotificationManager;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
-import me.kansio.client.property.value.BooleanValue;
-import me.kansio.client.property.value.ModeValue;
-import me.kansio.client.property.value.NumberValue;
+import me.kansio.client.value.value.BooleanValue;
+import me.kansio.client.value.value.ModeValue;
+import me.kansio.client.value.value.NumberValue;
 import me.kansio.client.utils.combat.FightUtil;
 import me.kansio.client.utils.math.Stopwatch;
 import me.kansio.client.utils.network.PacketUtil;
@@ -44,7 +44,6 @@ public class KillAura extends Module {
     public static EntityLivingBase target;
     public static boolean isBlocking, swinging;
     public final Stopwatch attackTimer = new Stopwatch();
-    // Switch aura doesn't work rn
     public ModeValue mode = new ModeValue("Mode", this, /*"Switch",*/ "Smart");
     public ModeValue targetPriority = new ModeValue("Target Priority", this, "None", "Distance", "Armor", "HurtTime", "Health");
     public ModeValue rotatemode = new ModeValue("Rotation Mode", this, "None", "Default", "Down", "NCP", "AAC", "GWEN");
@@ -52,11 +51,13 @@ public class KillAura extends Module {
     public NumberValue<Double> autoblockRange = new NumberValue<>("Block Range", this, 3.0, 1.0, 12.0, 0.1);
     public NumberValue<Double> cps = new NumberValue<>("CPS", this, 12.0, 1.0, 20.0, 1.0);
     public NumberValue<Double> cprandom = new NumberValue<>("Randomize CPS", this, 3.0, 0.0, 10.0, 1.0);
+    public NumberValue chance = new NumberValue<>("Hit Chance", this, 100, 0, 100, 1);
     public ModeValue swingmode = new ModeValue("Swing Mode", this, "Client", "Server");
+    public ModeValue attackMethod = new ModeValue("Attack Method", this, "Packet", "Legit");
     public ModeValue autoblockmode = new ModeValue("Autoblock Mode", this, "None", "Real", "Verus", "Fake");
     public BooleanValue gcd = new BooleanValue("GCD", this, false);
     public BooleanValue targethud = new BooleanValue("TargetHud", this, false);
-    public ModeValue targethudmode = new ModeValue("TargetHud Mode", this, targethud, "Sleek", "Moon");
+    public ModeValue targethudmode = new ModeValue("TargetHud Mode", this, targethud, "Sleek", "Moon", "Exhi");
     public BooleanValue players = new BooleanValue("Players", this, true);
     public BooleanValue friends = new BooleanValue("Friends", this, true);
     public BooleanValue animals = new BooleanValue("Animals", this, true);
@@ -213,14 +214,14 @@ public class KillAura extends Module {
                     }
                     switch (mode.getValue()) {
                         case "Switch": {
-                            if (canIAttack && attack(target, RandomUtils.nextInt(90, 100), autoblockmode.getValue())) {
+                            if (canIAttack && attack(target, chance.getValue().intValue(), autoblockmode.getValue())) {
                                 index++;
                                 attackTimer.resetTime();
                             }
                             break;
                         }
                         case "Smart": {
-                            if (canIAttack && attack(target, RandomUtils.nextInt(90, 100), autoblockmode.getValue())) {
+                            if (canIAttack && attack(target, chance.getValue().intValue(), autoblockmode.getValue())) {
                                 attackTimer.resetTime();
                             }
                         }
@@ -232,15 +233,21 @@ public class KillAura extends Module {
 
     private boolean attack(EntityLivingBase entity, double chance, String blockMode) {
         if (FightUtil.canHit(chance / 100)) {
-            if (swingmode.getValue().equalsIgnoreCase("client"))
+            if (swingmode.getValue().equalsIgnoreCase("client")) {
                 mc.thePlayer.swingItem();
-            else if (swingmode.getValue().equalsIgnoreCase("server"))
+            }
+            else if (swingmode.getValue().equalsIgnoreCase("server")) {
                 mc.getNetHandler().addToSendQueue(new C0APacketAnimation());
+            }
 
-            mc.playerController.attackEntity(mc.thePlayer, entity);
+            //sending the attack directly through a packet prevents you from getting slowed down when hitting
+            if (attackMethod.getValue().equalsIgnoreCase("Packet"))
+                PacketUtil.sendPacket(new C02PacketUseEntity(target, C02PacketUseEntity.Action.ATTACK));
+            else
+                mc.playerController.attackEntity(mc.thePlayer, entity);
 
             if (!isBlocking && autoblockmode.getValue().equalsIgnoreCase("verus")) {
-                PacketUtil.sendPacketNoEvent(new C08PacketPlayerBlockPlacement(mc.thePlayer.inventory.getCurrentItem()));
+                PacketUtil.sendPacket(new C08PacketPlayerBlockPlacement(mc.thePlayer.inventory.getCurrentItem()));
                 isBlocking = true;
             }
 

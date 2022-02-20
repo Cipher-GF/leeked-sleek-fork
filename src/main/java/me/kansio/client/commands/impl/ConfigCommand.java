@@ -60,22 +60,20 @@ public class ConfigCommand extends Command {
                 case "verified": {
                     switch (args[1].toLowerCase()) {
                         case "list": {
-                            JsonElement element = new JsonParser().parse(HttpUtil.get("http://zerotwoclient.xyz:13337/api/v1/verifiedConfigs"));
-
+                            String serv = HttpUtil.get("https://sleekapi.realreset.repl.co/api/verifiedconfigs");
+                            JsonObject element = new JsonParser().parse(serv).getAsJsonArray().get(0).getAsJsonObject();
                             if (element.isJsonArray()) {
                                 JsonArray rr = element.getAsJsonArray();
                                 rr.forEach(ele -> {
                                     JsonObject obj = ele.getAsJsonObject();
-
                                     ChatUtil.log(MessageFormat.format("Config \"{0}\" made by {1} was last updated on {2}", obj.get("name").getAsString(), obj.get("author").getAsString(), obj.get("lastUpdate").getAsString().split(" ")[1]));
                                 });
                             }
                             break;
                         }
                         case "load": {
-
-                            JsonElement ar2 = new JsonParser().parse(HttpUtil.get("http://zerotwoclient.xyz:13337/api/v1/verifiedConfigs"));
-
+                            String serv = HttpUtil.get("https://sleekapi.realreset.repl.co/api/verifiedconfigs");
+                            JsonObject ar2 = new JsonParser().parse(serv).getAsJsonArray().get(0).getAsJsonObject();
                             if (!ar2.isJsonArray()) {
                                 return;
                             }

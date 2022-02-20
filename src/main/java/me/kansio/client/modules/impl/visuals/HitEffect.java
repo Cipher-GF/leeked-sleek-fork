@@ -6,9 +6,9 @@ import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.modules.impl.combat.KillAura;
-import me.kansio.client.property.value.BooleanValue;
-import me.kansio.client.property.value.ModeValue;
-import me.kansio.client.property.value.NumberValue;
+import me.kansio.client.value.value.BooleanValue;
+import me.kansio.client.value.value.ModeValue;
+import me.kansio.client.value.value.NumberValue;
 import me.kansio.client.utils.math.MathUtil;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.entity.EntityLivingBase;
@@ -23,7 +23,7 @@ import net.minecraft.world.World;
 )
 public class HitEffect extends Module {
 
-    // Particals
+    // Particles
     public ModeValue mode = new ModeValue("HitMarker Mode", this, "Blood", "None");
     public NumberValue<Integer> modenum = new NumberValue<>("Amount", this,1, 1, 20, 1);
 
@@ -33,20 +33,18 @@ public class HitEffect extends Module {
 
     // Crack Particals
     public BooleanValue crit = new BooleanValue("Criticals", this, false);
-    public NumberValue<Integer> critnum = new NumberValue<>("Amount", this,1, 1, 2, 1, crit);
+    public NumberValue<Integer> critnum = new NumberValue<>("Amount", this,1, 1, 10, 1, crit);
     public BooleanValue ench = new BooleanValue("Enchants", this, false);
-    public NumberValue<Integer> enchnum = new NumberValue<>("Amount", this,1, 1, 2, 1, ench);
+    public NumberValue<Integer> enchnum = new NumberValue<>("Amount", this,1, 1, 10, 1, ench);
 
     @Subscribe
     public void onUpdate(UpdateEvent event) {
         if (KillAura.target != null && KillAura.target.hurtTime > 9 ){
-
                 doParticle(KillAura.target);
                 doCrack(KillAura.target);
                 if (hitmarkersound.getValue()) {
                     doSound(KillAura.target);
                 }
-
         }
     }
 
@@ -80,11 +78,9 @@ public class HitEffect extends Module {
             case "None":
                 break;
         }
-
     }
 
     public void doSound(EntityLivingBase target) {
-
         double x, y, z;
         x = target.posX;
         y = target.posY;

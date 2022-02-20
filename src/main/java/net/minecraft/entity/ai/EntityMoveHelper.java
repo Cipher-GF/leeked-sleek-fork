@@ -1,5 +1,6 @@
 package net.minecraft.entity.ai;
 
+import me.kansio.client.utils.chat.ChatUtil;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.util.MathHelper;

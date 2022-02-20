@@ -42,6 +42,19 @@ public class ColorUtils extends Util {
         int bluePart = (int) (color1.getBlue() * inverse_percent + color2.getBlue() * offset);
         return new Color(redPart, greenPart, bluePart);
     }
+    public static int getIntGradientOffset(Color color1, Color color2, double offset) {
+        if (offset > 1) {
+            double left = offset % 1;
+            int off = (int) offset;
+            offset = off % 2 == 0 ? left : 1 - left;
+
+        }
+        double inverse_percent = 1 - offset;
+        int redPart = (int) (color1.getRed() * inverse_percent + color2.getRed() * offset);
+        int greenPart = (int) (color1.getGreen() * inverse_percent + color2.getGreen() * offset);
+        int bluePart = (int) (color1.getBlue() * inverse_percent + color2.getBlue() * offset);
+        return new Color(redPart, greenPart, bluePart).getRGB();
+    }
 
     public static int getRainbow(int speed, int offset) {
         float hue = (System.currentTimeMillis() + offset) % speed;
@@ -51,6 +64,7 @@ public class ColorUtils extends Util {
 
     public static Color getColorFromHud(int y) {
         Color color = null;
+        HUD hud = Client.getInstance().getModuleManager().getModuleByClass(HUD.class);
 
         switch (((HUD) Client.getInstance().getModuleManager().getModuleByName("HUD")).getColorMode().getValue()) {
             case "Sleek": {
@@ -67,6 +81,18 @@ public class ColorUtils extends Util {
             }
             case "Astolfo": {
                 color = ColorUtils.getGradientOffset(new Color(255, 60, 234), new Color(27, 179, 255), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + y / mc.fontRendererObj.FONT_HEIGHT * 9.95);
+                break;
+            }
+            case "Gradient": {
+                color = ColorUtils.getGradientOffset(new Color(hud.getTopRed().getValue().intValue(), hud.getTopGreen().getValue().intValue(), hud.getTopBlue().getValue().intValue()), new Color(hud.getBottomRed().getValue().intValue(), hud.getBottomGreen().getValue().intValue(), hud.getBottomBlue().getValue().intValue()), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + y / mc.fontRendererObj.FONT_HEIGHT * 9.95);
+                break;
+            }
+            case "Wave": {
+                color = ColorUtils.getGradientOffset(new Color(hud.getStaticRed().getValue().intValue(), hud.getStaticGreen().getValue().intValue(), hud.getStaticBlue().getValue().intValue()), new Color(hud.getStaticRed().getValue().intValue(), hud.getStaticGreen().getValue().intValue(), hud.getStaticBlue().getValue().intValue()).darker(), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + y / mc.fontRendererObj.FONT_HEIGHT * 9.95);
+                break;
+            }
+            case "Static": {
+                color = new Color(hud.getStaticRed().getValue().intValue(), hud.getStaticGreen().getValue().intValue(), hud.getStaticBlue().getValue().intValue());
                 break;
             }
         }

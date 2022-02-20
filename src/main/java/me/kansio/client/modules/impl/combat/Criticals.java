@@ -7,8 +7,8 @@ import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.modules.impl.movement.Flight;
-import me.kansio.client.property.value.BooleanValue;
-import me.kansio.client.property.value.ModeValue;
+import me.kansio.client.value.value.BooleanValue;
+import me.kansio.client.value.value.ModeValue;
 import me.kansio.client.utils.network.PacketUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.network.play.client.C02PacketUseEntity;
@@ -21,7 +21,7 @@ import net.minecraft.network.play.client.C03PacketPlayer;
 )
 public class Criticals extends Module {
 
-    private ModeValue mode = new ModeValue("Mode", this, "Packet", "Verus", "MiniJump");
+    private ModeValue mode = new ModeValue("Mode", this, "Packet", "Verus", "MiniJump", "Jump");
     private final BooleanValue c06 = new BooleanValue("C06", this, true);
 
     public final double[] packetValues = new double[]{0.0625D, 0.0D, 0.05D, 0.0D};
@@ -66,6 +66,14 @@ public class Criticals extends Module {
                 if (mc.thePlayer.onGround) {
                     mc.thePlayer.motionY = 0.22f;
                 }
+                break;
+            }
+            case "Jump": {
+                if (!mc.thePlayer.onGround) {
+                    return;
+                }
+
+                mc.thePlayer.jump();
                 break;
             }
         }

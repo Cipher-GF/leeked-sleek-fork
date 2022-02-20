@@ -12,13 +12,13 @@ import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.modules.impl.movement.flight.FlightMode;
-import me.kansio.client.property.value.BooleanValue;
-import me.kansio.client.property.value.ModeValue;
-import me.kansio.client.property.value.NumberValue;
-import me.kansio.client.utils.chat.ChatUtil;
+import me.kansio.client.value.value.BooleanValue;
+import me.kansio.client.value.value.ModeValue;
+import me.kansio.client.value.value.NumberValue;
 import me.kansio.client.utils.java.ReflectUtils;
 import me.kansio.client.utils.math.Stopwatch;
 
+import me.kansio.client.utils.player.TimerUtil;
 import net.minecraft.potion.Potion;
 
 import java.util.Comparator;
@@ -48,6 +48,7 @@ public class Flight extends Module {
     private final ModeValue mode = new ModeValue("Mode", this, modes.stream().map(FlightMode::getName).collect(Collectors.toList()).toArray(new String[]{}));
     private FlightMode currentMode = modes.stream().anyMatch(flyMode -> flyMode.getName().equalsIgnoreCase(mode.getValue())) ? modes.stream().filter(flyMode -> flyMode.getName().equalsIgnoreCase(mode.getValue())).findAny().get() : null;
     private NumberValue<Double> speed = new NumberValue<>("Speed", this, 1d, 0d, 10d, 0.1);
+    private BooleanValue antikick = new BooleanValue("AntiKick", this, true, mode, "BridgerLand (TP)");
 
     private BooleanValue boost = new BooleanValue("Boost", this, true, mode, "Funcraft");
     private BooleanValue extraBoost = new BooleanValue("Extra Boost", this, true, mode, "Funcraft");
@@ -71,7 +72,7 @@ public class Flight extends Module {
         mc.thePlayer.motionX = 0;
         mc.thePlayer.motionY = 0;
         mc.thePlayer.motionZ = 0;
-        mc.timer.timerSpeed = 1.0f;
+        TimerUtil.Reset();
         currentMode.onDisable();
     }
 

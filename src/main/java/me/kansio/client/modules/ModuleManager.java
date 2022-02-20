@@ -4,7 +4,7 @@ import lombok.Getter;
 import me.kansio.client.Client;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.impl.Module;
-import me.kansio.client.property.Value;
+import me.kansio.client.value.Value;
 import me.kansio.client.utils.font.MCFontRenderer;
 import me.kansio.client.utils.java.ReflectUtils;
 import net.minecraft.client.gui.FontRenderer;
@@ -114,6 +114,15 @@ public class ModuleManager {
     public Module getModuleByName(String name) {
         for (Module module : modules) {
             if (module.getName().equalsIgnoreCase(name)) {
+                return module;
+            }
+        }
+        return null;
+    }
+
+    public Module getModuleByNameIgnoreSpace(String name) {
+        for (Module module : modules) {
+            if (module.getName().replaceAll(" ", "").equalsIgnoreCase(name)) {
                 return module;
             }
         }

@@ -9,7 +9,7 @@ import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.modules.impl.movement.Flight;
-import me.kansio.client.property.value.ModeValue;
+import me.kansio.client.value.value.ModeValue;
 import net.minecraft.network.play.client.C03PacketPlayer;
 import net.minecraft.util.AxisAlignedBB;
 
@@ -20,12 +20,12 @@ import net.minecraft.util.AxisAlignedBB;
 )
 public class NoFall extends Module {
 
-    private ModeValue mode = new ModeValue("Mode", this, "Packet", "Spoof", "Verus");
+    private ModeValue mode = new ModeValue("Mode", this, "Packet", "Spoof", "Collide");
 
     @Subscribe
     public void onCollide(BlockCollisionEvent event) {
         switch (mode.getValue()) {
-            case "Verus": {
+            case "Collide": {
                 Flight flight = (Flight) Client.getInstance().getModuleManager().getModuleByName("Flight");
 
                 if (flight.isToggled()) return;
@@ -55,9 +55,11 @@ public class NoFall extends Module {
     public void onPacket(PacketEvent event) {
         switch (mode.getValueAsString()) {
             case "Packet": {
-                if (event.getPacket() instanceof C03PacketPlayer) {
-                    C03PacketPlayer c03 = event.getPacket();
-                    c03.onGround = true;
+                if (mc.thePlayer.fallDistance > 2f) {
+                    if (event.getPacket() instanceof C03PacketPlayer) {
+                        C03PacketPlayer c03 = event.getPacket();
+                        c03.onGround = true;
+                    }
                 }
                 break;
             }

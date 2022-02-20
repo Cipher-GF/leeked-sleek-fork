@@ -7,9 +7,20 @@ import net.minecraft.util.ResourceLocation;
 import java.awt.*;
 
 public class Fonts extends Util {
+    public static final MCFontRenderer Arial50 = new MCFontRenderer(new Font("Arial", Font.BOLD,50),true,true);
+    public static final MCFontRenderer Arial45 = new MCFontRenderer(new Font("Arial", Font.BOLD,45),true,true);
+    public static final MCFontRenderer Arial40 = new MCFontRenderer(new Font("Arial", Font.BOLD,40),true,true);
+    public static final MCFontRenderer Arial35 = new MCFontRenderer(new Font("Arial", Font.BOLD,45),true,true);
     public static final MCFontRenderer Arial30 = new MCFontRenderer(new Font("Arial", Font.BOLD,30),true,true);
+    public static final MCFontRenderer Arial25 = new MCFontRenderer(new Font("Arial", Font.BOLD,30),true,true);
+    public static final MCFontRenderer Arial20 = new MCFontRenderer(new Font("Arial", Font.BOLD,30),true,true);
+    public static final MCFontRenderer Arial20Plain = new MCFontRenderer(new Font("Arial", Font.PLAIN,30),true,true);
+    public static final MCFontRenderer Arial17Plain = new MCFontRenderer(new Font("Arial", Font.PLAIN,17),true,true);
+    public static final MCFontRenderer Arial15 = new MCFontRenderer(new Font("Arial", Font.BOLD,30),true,true);
     public static final MCFontRenderer Verdana = new MCFontRenderer(new Font("Verdana", Font.PLAIN,18),true,true);
+    public static final MCFontRenderer Verdana12 = new MCFontRenderer(new Font("Verdana", Font.PLAIN,12),true,true);
     public static final MCFontRenderer Arial12 = new MCFontRenderer(new Font("Arial", Font.PLAIN,12),true,true);
+    public static final MCFontRenderer Arial8 = new MCFontRenderer(new Font("Arial", Font.PLAIN,8),true,true);
     public static final MCFontRenderer HUD = new MCFontRenderer(new Font("Arial", Font.PLAIN,18),true,true);
 
     public static final MCFontRenderer SEGOE18 = new MCFontRenderer(new Font("Tahoma", Font.PLAIN,18),true,true);
@@ -18,6 +29,9 @@ public class Fonts extends Util {
     public static final MCFontRenderer NotifIcon = new MCFontRenderer(fontFromTTF(new ResourceLocation("sleek/fonts/notif-icon.ttf"),20,0), true, true);
     public static final MCFontRenderer UbuntuLight = new MCFontRenderer(fontFromTTF(new ResourceLocation("sleek/fonts/Ubuntu-Light.ttf"),12,0), true, true);
     public static final MCFontRenderer UbuntuMedium = new MCFontRenderer(fontFromTTF(new ResourceLocation("sleek/fonts/Ubuntu-Medium.ttf"),18, 0), true, true);
+    public static final MCFontRenderer Yantramanav_Regular = new MCFontRenderer(fontFromTTF(new ResourceLocation("sleek/fonts/Yantramanav-Regular.ttf"),18, 0), true, true);
+
+    public static final MCFontRenderer SFRegular = new MCFontRenderer(fontFromTTF(new ResourceLocation("sleek/fonts/sfregular.ttf"),18, 0), true, true);
 
 
     private static Font fontFromTTF(ResourceLocation fontLocation, float fontSize, int fontType) {

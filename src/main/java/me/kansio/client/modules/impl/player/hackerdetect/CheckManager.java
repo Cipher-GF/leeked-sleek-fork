@@ -2,9 +2,9 @@ package me.kansio.client.modules.impl.player.hackerdetect;
 
 import lombok.Getter;
 import me.kansio.client.modules.impl.player.hackerdetect.checks.Check;
-import me.kansio.client.modules.impl.player.hackerdetect.checks.movement.FlightA;
-import me.kansio.client.modules.impl.player.hackerdetect.checks.movement.SpeedA;
-import me.kansio.client.modules.impl.player.hackerdetect.checks.exploit.CagePhaseCheck;
+//import me.kansio.client.modules.impl.player.hackerdetect.checks.combat.*;
+import me.kansio.client.modules.impl.player.hackerdetect.checks.movement.*;
+import me.kansio.client.modules.impl.player.hackerdetect.checks.exploit.*;
 
 import java.util.ArrayList;
 
@@ -19,8 +19,9 @@ public class CheckManager {
         // Movement
         checks.add(new SpeedA());
         checks.add(new FlightA());
+
         //Exploit
-        checks.add(new CagePhaseCheck());
+        checks.add(new PhaseA());
 
     }
 }

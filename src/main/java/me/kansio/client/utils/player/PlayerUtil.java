@@ -5,21 +5,25 @@ import me.kansio.client.event.impl.MoveEvent;
 import me.kansio.client.modules.impl.combat.KillAura;
 import me.kansio.client.modules.impl.combat.TargetStrafe;
 import me.kansio.client.utils.Util;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockLiquid;
 import me.kansio.client.utils.network.PacketUtil;
 import me.kansio.client.utils.rotations.AimUtil;
-import net.minecraft.block.BlockLiquid;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.network.play.client.C03PacketPlayer;
 import net.minecraft.network.play.client.C0BPacketEntityAction;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovementInput;
 
 import javax.vecmath.Vector2d;
 import java.util.ArrayList;
 
 public class PlayerUtil extends Util {
+
+
 
     public static float getBaseSpeed() {
         float baseSpeed = 0.2873F;
@@ -63,7 +67,7 @@ public class PlayerUtil extends Util {
         if(!mc.thePlayer.isMoving())
             return;
 
-        final double yaw = getDirection();
+        final double yaw = getDirection() / 180 * Math.PI;
         mc.thePlayer.motionX = -Math.sin(yaw) * speed;
         mc.thePlayer.motionZ = Math.cos(yaw) * speed;
     }
@@ -464,5 +468,44 @@ public class PlayerUtil extends Util {
         final double raycastFinalZ = raycastFirstZ * speed;
         mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(posX + raycastFinalX, posY + y, posZ + raycastFinalZ, mc.thePlayer.onGround));
         mc.thePlayer.setPosition(posX + raycastFinalX, posY + y, posZ + raycastFinalZ);
+    }
+
+    public static double getPlayerSpeed() {
+        double val = Math.sqrt(mc.thePlayer.motionX * mc.thePlayer.motionY * mc.thePlayer.motionZ);
+
+        if (Double.isNaN(val)) {
+            return 0;
+        }
+
+        return val;
+    }
+    public static boolean isInLiquid() {
+        if (PlayerUtil.mc.thePlayer == null || PlayerUtil.mc.theWorld == null) {
+            return false;
+        }
+        final AxisAlignedBB boundingBox = PlayerUtil.mc.thePlayer.getEntityBoundingBox();
+        if (boundingBox == null) {
+            return false;
+        }
+        final int x1 = MathHelper.floor_double(boundingBox.minX);
+        final int x2 = MathHelper.floor_double(boundingBox.maxX + 1.0);
+        final int y1 = MathHelper.floor_double(boundingBox.minY);
+        final int y2 = MathHelper.floor_double(boundingBox.maxY + 1.0);
+        final int z1 = MathHelper.floor_double(boundingBox.minZ);
+        final int z2 = MathHelper.floor_double(boundingBox.maxZ + 1.0);
+        if (PlayerUtil.mc.theWorld.getChunkFromChunkCoords((int)PlayerUtil.mc.thePlayer.posX >> 4, (int)PlayerUtil.mc.thePlayer.posZ >> 4) == null) {
+            return false;
+        }
+        for (int x3 = x1; x3 < x2; ++x3) {
+            for (int y3 = y1; y3 < y2; ++y3) {
+                for (int z3 = z1; z3 < z2; ++z3) {
+                    final Block block = PlayerUtil.mc.theWorld.getBlockState(new BlockPos(x3, y3, z3)).getBlock();
+                    if (block instanceof BlockLiquid) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
 }

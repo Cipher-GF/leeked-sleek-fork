@@ -4,18 +4,21 @@ import me.kansio.client.Client;
 import me.kansio.client.commands.Command;
 import me.kansio.client.commands.CommandData;
 import me.kansio.client.modules.impl.Module;
+import me.kansio.client.utils.chat.ChatUtil;
+
 
 @CommandData(
         name = "panic",
-        description = "Disables every module"
+        description = "Disables all modules"
 )
 public class PanicCommand extends Command {
+
     @Override
     public void run(String[] args) {
-        for (Module m : Client.getInstance().getModuleManager().getModules()) {
-            if (m.isToggled()) {
-                m.toggle();
-            }
+        for (Module mod : Client.getInstance().getModuleManager().getModules()) {
+            if (mod.isToggled()) mod.toggle();
         }
+
+        ChatUtil.log("Disabled all modules.");
     }
 }

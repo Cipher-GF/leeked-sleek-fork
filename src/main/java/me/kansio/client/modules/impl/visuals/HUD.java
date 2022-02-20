@@ -9,10 +9,10 @@ import me.kansio.client.modules.impl.Module;
 import me.kansio.client.modules.impl.visuals.hud.ArrayListMode;
 import me.kansio.client.modules.impl.visuals.hud.InfoMode;
 import me.kansio.client.modules.impl.visuals.hud.WaterMarkMode;
-import me.kansio.client.property.value.BooleanValue;
-import me.kansio.client.property.value.ModeValue;
-import me.kansio.client.property.value.NumberValue;
-import me.kansio.client.property.value.StringValue;
+import me.kansio.client.value.value.BooleanValue;
+import me.kansio.client.value.value.ModeValue;
+import me.kansio.client.value.value.NumberValue;
+import me.kansio.client.value.value.StringValue;
 import me.kansio.client.utils.java.ReflectUtils;
 
 import java.util.Comparator;
@@ -76,20 +76,31 @@ public class HUD extends Module {
     private final ModeValue infomode = new ModeValue("Info Mode", this, infomodes.stream().map(InfoMode::getName).collect(Collectors.toList()).toArray(new String[]{}));
     private InfoMode currentinfomode = infomodes.stream().anyMatch(infoMode -> infoMode.getName().equalsIgnoreCase(infomode.getValue())) ? infomodes.stream().filter(infoMode -> infoMode.getName().equalsIgnoreCase(infomode.getValue())).findAny().get() : null ;
 
-    private final ModeValue colorMode = new ModeValue("Color Mode", this, "Sleek", "Rainbow", "Astolfo", "Nitrogen");
-    private final ModeValue line = new ModeValue("Line", this, "Wrapped");
-    //private final ModeValue colorMode = new ModeValue("Color Mode", this, "Sleek", "Rainbow", "Astolfo", "Nitrogen");
+    private final ModeValue colorMode = new ModeValue("Color Mode", this, "Sleek", "Rainbow", "Astolfo", "Nitrogen", "Gradient", "Wave", "Static");
+    
+    //wave
+    private final NumberValue topRed = new NumberValue("Top Red", this, 255, 0, 255, 1, colorMode, "Gradient");
+    private final NumberValue topGreen = new NumberValue("Top Green", this, 255, 0, 255, 1, colorMode, "Gradient");
+    private final NumberValue topBlue = new NumberValue("Top Blue", this, 255, 0, 255, 1, colorMode, "Gradient");
+    private final NumberValue bottomRed = new NumberValue("Bottom Red", this, 255, 0, 255, 1, colorMode, "Gradient");
+    private final NumberValue bottomGreen = new NumberValue("Bottom Green", this, 255, 0, 255, 1, colorMode, "Gradient");
+    private final NumberValue bottomBlue = new NumberValue("Bottom Blue", this, 255, 0, 255, 1, colorMode, "Gradient");
+    
+    //wave and static
+    private final NumberValue staticRed = new NumberValue("Red", this, 255, 0, 255, 1, colorMode, "Wave", "Static");
+    private final NumberValue staticGreen = new NumberValue("Green", this, 255, 0, 255, 1, colorMode, "Wave", "Static");
+    private final NumberValue staticBlue = new NumberValue("Blue", this, 255, 0, 255, 1, colorMode, "Wave", "Static");
+    
+    public ModeValue line = new ModeValue("Line", this, "None", "Top", "Wrapped");
+    public final NumberValue<Integer> bgalpha = new NumberValue<>("Alpha", this, 80, 0, 200, 1);
     public BooleanValue font = new BooleanValue("Font", this, false);
     public BooleanValue noti = new BooleanValue("Notifications", this, true);
     public BooleanValue hideRender = new BooleanValue("Hide Render", this, true);
-    public BooleanValue bps = new BooleanValue("BPS", this, true);
-
-    public BooleanValue watermark = new BooleanValue("Watermark", this, true);
 
     public StringValue clientName = new StringValue("Client Name", this, "Sleek");
     public StringValue listSuffix = new StringValue("Module Suffix", this, " [%s]");
 
-    public NumberValue arrayListY = new NumberValue("ArrayList Y", this, 4, 0, 20, 1);
+    public NumberValue arrayListY = new NumberValue("ArrayList Y", this, 4, 1, 20, 1);
 
     private final ModeValue scoreboardLocation = new ModeValue("Scoreboard", this, "Right", "Left");
     private final NumberValue<Double> scoreboardPos = new NumberValue<>("Scoreboard Y", this, 0.0, -500.0, 500.0, 1.0);

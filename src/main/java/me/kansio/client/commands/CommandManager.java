@@ -69,5 +69,7 @@ public class CommandManager {
         commands.add(new NameCommand());
         commands.add(new HelpCommand());
         commands.add(new HClipCommand());
+        commands.add(new PanicCommand());
+        commands.add(new KillsultsCommand());
     }
 }

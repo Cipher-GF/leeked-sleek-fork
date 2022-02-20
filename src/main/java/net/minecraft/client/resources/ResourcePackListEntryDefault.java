@@ -21,7 +21,7 @@ public class ResourcePackListEntryDefault extends ResourcePackListEntry
 {
     private static final Logger logger = LogManager.getLogger();
     private final IResourcePack field_148320_d;
-    private final ResourceLocation resourcePackIcon;
+    //private final ResourceLocation resourcePackIcon;
 
     public ResourcePackListEntryDefault(GuiScreenResourcePacks resourcePacksGUIIn)
     {
@@ -29,16 +29,7 @@ public class ResourcePackListEntryDefault extends ResourcePackListEntry
         this.field_148320_d = this.mc.getResourcePackRepository().rprDefaultResourcePack;
         DynamicTexture dynamictexture;
 
-        try
-        {
-            dynamictexture = new DynamicTexture(this.field_148320_d.getPackImage());
-        }
-        catch (IOException var4)
-        {
-            dynamictexture = TextureUtil.missingTexture;
-        }
-
-        this.resourcePackIcon = this.mc.getTextureManager().getDynamicTextureLocation("texturepackicon", dynamictexture);
+        //this.resourcePackIcon = this.mc.getTextureManager().getDynamicTextureLocation("texturepackicon", dynamictexture);
     }
 
     protected int func_183019_a()
@@ -94,10 +85,15 @@ public class ResourcePackListEntryDefault extends ResourcePackListEntry
         return "Default";
     }
 
-    protected void func_148313_c()
-    {
-        this.mc.getTextureManager().bindTexture(this.resourcePackIcon);
+    @Override
+    protected void func_148313_c() {
+
     }
+
+    //protected void func_148313_c()
+    //{
+    //    this.mc.getTextureManager().bindTexture(this.resourcePackIcon);
+    //}
 
     protected boolean func_148310_d()
     {

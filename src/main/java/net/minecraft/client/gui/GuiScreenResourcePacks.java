@@ -47,8 +47,8 @@ public class GuiScreenResourcePacks extends GuiScreen
      */
     public void initGui()
     {
-        this.buttonList.add(new GuiOptionButton(2, this.width / 2 - 154, this.height - 48, I18n.format("resourcePack.openFolder", new Object[0])));
-        this.buttonList.add(new GuiOptionButton(1, this.width / 2 + 4, this.height - 48, I18n.format("gui.done", new Object[0])));
+        this.buttonList.add(new GuiButton(2, this.width / 2 - 204, this.height - 48, 203, 20, I18n.format("resourcePack.openFolder", new Object[0])));
+        this.buttonList.add(new GuiButton(1, this.width / 2 + 4, this.height - 48, 203,20,I18n.format("gui.done", new Object[0])));
 
         if (!this.changed)
         {

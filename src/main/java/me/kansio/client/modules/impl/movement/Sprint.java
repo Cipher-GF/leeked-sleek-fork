@@ -9,11 +9,9 @@ import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
-import me.kansio.client.modules.impl.player.NoSlow;
-import me.kansio.client.property.value.BooleanValue;
-import me.kansio.client.property.value.ModeValue;
-import me.kansio.client.utils.network.PacketUtil;
-import net.minecraft.network.play.client.C02PacketUseEntity;
+import me.kansio.client.value.value.BooleanValue;
+import me.kansio.client.value.value.ModeValue;
+import net.minecraft.network.play.client.C03PacketPlayer;
 import net.minecraft.network.play.client.C0BPacketEntityAction;
 
 @ModuleData(
@@ -25,6 +23,8 @@ public class Sprint extends Module {
 
     private ModeValue mode = new ModeValue("Mode", this, "Legit", "Omni");
 
+    private boolean skip;
+
     @Getter
     private final BooleanValue keepSprint = new BooleanValue("Keep Sprint", this, true); //Handled in NetHandlerPlayerClient at "processEntityAction" and EntityPlayerSP at "setSprinting"
 
@@ -34,18 +34,19 @@ public class Sprint extends Module {
 
         switch (mode.getValue()) {
             case "Legit":
-                if (Client.getInstance().getModuleManager().getModuleByName("No Slow").isToggled()) {
-                    if (mc.thePlayer.moveForward > 0 && !mc.thePlayer.isCollidedHorizontally) {
-                        mc.thePlayer.setSprinting(true);
-                    }
+                if (!skip) {
+                    mc.thePlayer.setSprinting(
+                            !mc.thePlayer.isCollidedHorizontally
+                            && !mc.thePlayer.isSneaking()
+                            && mc.thePlayer.getFoodStats().getFoodLevel() > 5
+                            && mc.gameSettings.keyBindForward.pressed
+                    );
                 } else {
-                    if (mc.thePlayer.moveForward > 0 && !mc.thePlayer.isUsingItem() && !mc.thePlayer.isCollidedHorizontally) {
-                        mc.thePlayer.setSprinting(true);
-                    }
+                    skip = false;
                 }
                 break;
             case "Omni":
-                if (mc.thePlayer.isMoving())
+                if (mc.thePlayer.isMoving() && !mc.thePlayer.isSprinting())
                     mc.thePlayer.setSprinting(true);
                 break;
         }
@@ -53,7 +54,13 @@ public class Sprint extends Module {
 
     @Subscribe
     public void onPacket(PacketEvent event) {
-
+        if (event.getPacketDirection().name().equalsIgnoreCase("INBOUND") && !(event.getPacket() instanceof C03PacketPlayer))
+        if (keepSprint.getValue() && event.getPacket() instanceof C0BPacketEntityAction) {
+            C0BPacketEntityAction packet = event.getPacket();
+            if (((C0BPacketEntityAction) event.getPacket()).getAction() == C0BPacketEntityAction.Action.STOP_SPRINTING) {
+                event.setCancelled(true);
+            }
+        }
     }
 
     @Override

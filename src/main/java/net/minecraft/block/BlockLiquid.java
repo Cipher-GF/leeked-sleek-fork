@@ -1,5 +1,8 @@
 package net.minecraft.block;
 
+import me.kansio.client.Client;
+import me.kansio.client.modules.impl.movement.Jesus;
+import me.kansio.client.modules.impl.visuals.ClickGUI;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyInteger;
@@ -115,6 +118,14 @@ public abstract class BlockLiquid extends Block
 
     public AxisAlignedBB getCollisionBoundingBox(World worldIn, BlockPos pos, IBlockState state)
     {
+        try {
+            if (Client.getInstance().getModuleManager().getModuleByName("Jesus").isToggled()) {
+                return AxisAlignedBB.fromBounds((double)pos.getX()+0.5, (double)pos.getY()+0.5, (double)pos.getZ()+0.5, (double)pos.getX()+0.5, (double)pos.getY()+0.5, (double)pos.getZ()+0.5);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return null;
     }
 

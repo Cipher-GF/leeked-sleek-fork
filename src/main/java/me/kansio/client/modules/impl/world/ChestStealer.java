@@ -5,8 +5,8 @@ import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
-import me.kansio.client.property.value.BooleanValue;
-import me.kansio.client.property.value.NumberValue;
+import me.kansio.client.value.value.BooleanValue;
+import me.kansio.client.value.value.NumberValue;
 import me.kansio.client.utils.math.Stopwatch;
 import net.minecraft.client.gui.inventory.GuiChest;
 import net.minecraft.client.gui.inventory.GuiCrafting;
@@ -112,9 +112,7 @@ public class ChestStealer extends Module {
                 (item.getItem().getUnlocalizedName().contains("slime")) || (item.getItem().getUnlocalizedName().contains("web")) ||
                 ((item.getItem() instanceof ItemGlassBottle)) || (item.getItem().getUnlocalizedName().contains("piston")) ||
                 (item.getItem().getUnlocalizedName().contains("potion") && (isBadPotion(item))) ||
-                //   ((item.getItem() instanceof ItemArmor) && isBestArmor(item)) ||
                 (item.getItem() instanceof ItemEgg || (item.getItem().getUnlocalizedName().contains("bow")) && !item.getDisplayName().contains("Kit")) ||
-                //   ((item.getItem() instanceof ItemSword) && !isBestSword(item)) ||
                 (item.getItem().getUnlocalizedName().contains("Raw")));
     }
 

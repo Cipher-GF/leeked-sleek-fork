@@ -2,34 +2,49 @@ package me.kansio.client.gui;
 
 import me.kansio.client.gui.alt.GuiAltManager;
 import me.kansio.client.utils.font.Fonts;
+import me.kansio.client.utils.glsl.GLSLSandboxShader;
 import me.kansio.client.utils.render.ColorPalette;
-import me.kansio.client.utils.render.RenderUtils;
-import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.gui.*;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ResourceLocation;
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL20;
 
 import java.io.IOException;
 
 public class MainMenu extends GuiScreen
 {
 
-    private static final ResourceLocation BACKGROUND = new ResourceLocation("sleek/bg1.png");
-    private static final ResourceLocation SBACKGROUND = new ResourceLocation("sleek/stalin-1.jpg");
-    PositionedSoundRecord soundRecord = PositionedSoundRecord.create(new ResourceLocation("bgm.soviet"), 1.0f, true);
-    private boolean soviet = false;
+    private static final ResourceLocation BACKGROUND = new ResourceLocation("sleek/images/background.png");
+    private GLSLSandboxShader backgroundShader;
+    private long initTime = System.currentTimeMillis();
+
+    public MainMenu() {
+        try {
+            this.backgroundShader = new GLSLSandboxShader("/background.fsh");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public void initGui()
     {
+        /*
+        try {
+            this.backgroundShader = new GLSLSandboxShader("")
+        } catch (IOException e){
+            throw new IllegalStateException("Failed To Load Main Menu Shader");
+        }
+         */
         int j = height / 4 + 48;
         int i = 24;
-        this.buttonList.add(new GuiButton(0, width / 2 - 100, j, I18n.format("menu.singleplayer")));
-        this.buttonList.add(new GuiButton(1, width / 2 - 100, j + i, I18n.format("menu.multiplayer")));
-        this.buttonList.add(new GuiButton(2, width / 2 - 100, j + i * 2, "Alt Manager"));
-        this.buttonList.add(new GuiButton(3, width / 2 - 100, j + 84, 98, 20, I18n.format("menu.options")));
-        this.buttonList.add(new GuiButton(4, width / 2 + 2, j + 84, 98, 20, I18n.format("menu.quit")));
-        this.buttonList.add(new GuiButton(5, 0, 0, 98, 20, "Soviet"));
+        this.buttonList.add(new GuiButton(0, width / 2 - 100, j - 25        , 203, 20,I18n.format("menu.singleplayer")));
+        this.buttonList.add(new GuiButton(1, width / 2 - 100, j + i - 25    , 203, 20,I18n.format("menu.multiplayer")));
+        this.buttonList.add(new GuiButton(2, width / 2 - 100, j + i * 2 - 25, 203, 20,"Alt Manager"));
+        this.buttonList.add(new GuiButton(3, width / 2 - 100, j + i * 2     , 203, 20,I18n.format("menu.options")));
+        this.buttonList.add(new GuiButton(4, width / 2 - 100, j + i * 2 + 25, 203, 20,I18n.format("menu.quit")));
+        initTime = System.currentTimeMillis();
     }
 
     protected void actionPerformed(GuiButton button) throws IOException
@@ -50,30 +65,33 @@ public class MainMenu extends GuiScreen
             case 4:
                 this.mc.shutdown();
                 break;
-            case 5:
-                soviet = !soviet;
-
-
-                if (soviet) {
-                    mc.getSoundHandler().playSound(soundRecord);
-                } else {
-                    mc.getSoundHandler().stopSound(soundRecord);
-                }
-                break;
         }
     }
 
     public void drawScreen(int mouseX, int mouseY, float partialTicks)
     {
+
+        GlStateManager.enableAlpha();
+        GlStateManager.disableCull();
+        this.backgroundShader.useShader(this.width, this.height, mouseX, mouseY, (System.currentTimeMillis() - initTime) / 1000f);
+
+        GL11.glBegin(GL11.GL_QUADS);
+
+        GL11.glVertex2f(-1f, -1f);
+        GL11.glVertex2f(-1f, 1f);
+        GL11.glVertex2f(1f, 1f);
+        GL11.glVertex2f(1f, -1f);
+
+        GL11.glEnd();
+
+        // Unbind shader
+        GL20.glUseProgram(0);
+        Fonts.Arial45.drawCenteredString("§lS", width / 2 - 24, height / 4 -24, ColorPalette.BLUE.getColor().getRGB());
+        Fonts.Arial40.drawCenteredString("leek", width / 2 + 4, height / 4 -22.5f, -1); // -1 = white
+        String devinfo = "Made with <3 by Reset, Kansio, PC, Divine and Moshi";
+        String text = "hi";
+        Fonts.Verdana.drawString(text, (width - Fonts.Arial30.getStringWidth(text)) + 135, height - 10, -1);
         GlStateManager.color(1.0F,1.0F,1.0F,1.0F);
-        RenderUtils.drawImage(soviet ? SBACKGROUND : BACKGROUND, 0, 0, width, height);
-
-        String s = "§lS§fleek";
-        Fonts.Arial30.drawCenteredString(s, width / 2, height / 4 + 24, ColorPalette.GREEN.getColor().getRGB());
-
-        String s1 = "Made with <3 by Reset, Kansio, PC, Divine";
-        Fonts.Verdana.drawString(s1, (width - Fonts.Arial30.getStringWidth(s1)) + 100, height - 10, -1);
-
         super.drawScreen(mouseX, mouseY, partialTicks);
     }
 

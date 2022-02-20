@@ -12,7 +12,7 @@ public class SpeedA extends Check {
 
     @Override
     public String name() {
-        return "SpeedA";
+        return "Speed (Check A)";
     }
 
     @Override

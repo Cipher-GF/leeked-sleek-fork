@@ -30,7 +30,7 @@ public class HelpCommand extends Command {
                 }
             }
             aliases = sb.toString();
-            ChatUtil.log(MessageFormat.format("{0} - {1} ({2})", name, description, aliases));
+            ChatUtil.log(MessageFormat.format("§b{0} §7- §f{1}" + (aliases.isEmpty() ? "" : " §7(Aliases: {2})"), name, description, aliases));
         }
     }
 }

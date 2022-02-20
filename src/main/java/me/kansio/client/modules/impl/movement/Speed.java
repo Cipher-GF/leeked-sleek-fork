@@ -12,11 +12,14 @@ import me.kansio.client.modules.impl.Module;
 import me.kansio.client.modules.impl.movement.speed.SpeedMode;
 import me.kansio.client.gui.notification.Notification;
 import me.kansio.client.gui.notification.NotificationManager;
-import me.kansio.client.property.value.BooleanValue;
-import me.kansio.client.property.value.ModeValue;
-import me.kansio.client.property.value.NumberValue;
+import me.kansio.client.value.value.BooleanValue;
+import me.kansio.client.value.value.ModeValue;
+import me.kansio.client.value.value.NumberValue;
+import me.kansio.client.utils.chat.ChatUtil;
 import me.kansio.client.utils.java.ReflectUtils;
 import me.kansio.client.utils.player.PlayerUtil;
+import me.kansio.client.utils.player.TimerUtil;
+
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -44,7 +47,7 @@ public class Speed extends Module {
     private SpeedMode currentMode = modes.stream().anyMatch(speedMode -> speedMode.getName().equalsIgnoreCase(mode.getValue())) ? modes.stream().filter(speedMode -> speedMode.getName().equalsIgnoreCase(mode.getValue())).findAny().get() : null ;
 
     @Getter private final NumberValue<Double> speed = new NumberValue<>("Speed", this, 0.5, 0.0, 8.0, 0.1);
-    @Getter private final NumberValue<Float> timer = new NumberValue<>("Speed", this, 1.0F, 1.0F, 2.5F, 0.1F, mode, "Watchdog");
+    @Getter private final NumberValue<Float> timer = new NumberValue<>("Timer Speed", this, 1.0F, 1.0F, 2.5F, 0.1F, mode, "Watchdog");
     @Getter private final BooleanValue forceFriction = new BooleanValue("Force Friction", this, true);
     @Getter private final ModeValue frictionMode = new ModeValue("Friction", this, forceFriction, "NCP", "NEW", "LEGIT", "SILENT");
     @Getter private final AtomicDouble hDist = new AtomicDouble();
@@ -52,12 +55,20 @@ public class Speed extends Module {
     @Override
     public void onEnable() {
         currentMode = modes.stream().anyMatch(speedMode -> speedMode.getName().equalsIgnoreCase(mode.getValue())) ? modes.stream().filter(speedMode -> speedMode.getName().equalsIgnoreCase(mode.getValue())).findAny().get() : null ;
+
+        if (currentMode == null) {
+            ChatUtil.log("§c§lError! §fIt looks like this mode doesn't exist anymore, setting it to a mode that exists.");
+            currentMode = modes.get(0);
+            toggle();
+            return;
+        }
+
         currentMode.onEnable();
     }
 
     @Override
     public void onDisable() {
-        mc.timer.timerSpeed = 1.0f;
+        TimerUtil.Reset();
         PlayerUtil.setMotion(0);
         hDist.set(0);
 
@@ -84,100 +95,6 @@ public class Speed extends Module {
     public void onPacket(PacketEvent event) {
         currentMode.onPacket(event);
     }
-/*
-    @Subscribe
-    public void onMove(MoveEvent event) {
-        switch (mode.getValueAsString()) {
-            case "Ghostly": {
-                if (mc.thePlayer.ticksExisted % 3 == 0) {
-                    PlayerUtil.setMotion(speed.getValue().floatValue());
-                } else {
-                    PlayerUtil.setMotion(0.4f);
-                }
-                break;
-            }
-            case "Verus": {
-                if (mc.thePlayer.isMoving()) {
-
-                    if (mc.thePlayer.onGround) {
-                        event.setMotionY(mc.thePlayer.motionY = 0.42);
-                    }
-
-                    float sped2 = (float) (mc.thePlayer.isPotionActive(Potion.moveSpeed) ? 0.365 : 0.355);
-
-                    if (mc.thePlayer.hurtTime >= 1) {
-                        sped2 = speed.getValue().floatValue();
-                    }
-
-                    PlayerUtil.setMotion(event, sped2);
-                }
-                break;
-            }
-            case "Verus Ground": {
-                if (!mc.thePlayer.isInLava() && !mc.thePlayer.isInWater() && !mc.thePlayer.isOnLadder() && mc.thePlayer.ridingEntity == null) {
-                    if (mc.thePlayer.isMoving()) {
-                        mc.gameSettings.keyBindJump.pressed = false;
-                        if (mc.thePlayer.onGround) {
-                            mc.thePlayer.jump();
-                            mc.thePlayer.motionY = 0.0;
-                            PlayerUtil.strafe(0.61F);
-                            event.setMotionY(0.41999998688698);
-                        }
-                        PlayerUtil.strafe();
-                    }
-                }
-                break;
-            }
-            case "TestPixel": {
-                if (mc.thePlayer.isMovingOnGround()) {
-                    double speed = handleFriction(hDist);
-
-                    if (mc.thePlayer.moveStrafing != 0) {
-                        ChatUtil.log("This flags");
-                        return;
-                    }
-
-                    event.setMotionY(mc.thePlayer.motionY = PlayerUtil.getMotion(0.42f));
-                    PlayerUtil.setMotion(event, speed);
-                }
-                break;
-            }
-        }
-    }
-
-
-    @Subscribe
-    public void onUpdate(UpdateEvent event) {
-        switch (mode.getValueAsString()) {
-            case "Vanilla": {
-                PlayerUtil.setMotion(speed.getValue().floatValue());
-                break;
-            }
-            case "VanillaHop": {
-                if (mc.thePlayer.onGround) {
-                    mc.thePlayer.motionY = PlayerUtil.getMotion(0.42f);
-                }
-                PlayerUtil.setMotion(speed.getValue().floatValue());
-                break;
-            }
-            case "TestPixel": {
-                hDist.set(PlayerUtil.getBaseSpeed() * 1.06575F);
-                break;
-            }
-            case "Ghostly TP": {
-                double yaw = Math.toRadians(mc.thePlayer.rotationYaw);
-                double x = -Math.sin(yaw) * 1.8;
-                double z = Math.cos(yaw) * 1.8;
-
-                if (!mc.thePlayer.isMoving()) return;
-
-                if (mc.thePlayer.ticksExisted % 5 == 0) {
-                    mc.thePlayer.setPosition(mc.thePlayer.posX + x, mc.thePlayer.posY, mc.thePlayer.posZ + z);
-                }
-                break;
-            }
-        }
-    }*/
 
     public double handleFriction(AtomicDouble atomicDouble) {
         if (forceFriction.getValue()) {

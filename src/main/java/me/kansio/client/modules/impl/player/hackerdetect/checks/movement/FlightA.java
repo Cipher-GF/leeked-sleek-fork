@@ -19,7 +19,7 @@ public class FlightA extends Check {
 
     @Override
     public String name() {
-        return "Flight A";
+        return "Flight (Check A)";
     }
 
     @Override

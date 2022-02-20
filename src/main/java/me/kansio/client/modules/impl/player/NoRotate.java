@@ -5,7 +5,7 @@ import me.kansio.client.event.impl.PacketEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
-import me.kansio.client.property.value.ModeValue;
+import me.kansio.client.value.value.ModeValue;
 import me.kansio.client.utils.network.PacketUtil;
 import net.minecraft.network.play.client.C03PacketPlayer;
 import net.minecraft.network.play.server.S08PacketPlayerPosLook;
@@ -22,7 +22,7 @@ public class NoRotate extends Module {
     @Subscribe
     public void onSendPacket(PacketEvent event) {
         switch (mode.getValue()) {
-            case "Cancel": {
+            case "Cancel":
                 if (event.getPacket() instanceof S08PacketPlayerPosLook) {
                     S08PacketPlayerPosLook packet = event.getPacket();
                     if (mc.thePlayer != null && mc.theWorld != null && mc.thePlayer.rotationYaw != -180 && mc.thePlayer.rotationPitch != 0) {
@@ -30,7 +30,6 @@ public class NoRotate extends Module {
                     }
                 }
                 break;
-            }
             case "Packet":
                 if (event.getPacket() instanceof S08PacketPlayerPosLook) {
                     S08PacketPlayerPosLook packet = event.getPacket();

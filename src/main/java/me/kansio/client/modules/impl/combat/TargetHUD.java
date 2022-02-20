@@ -4,6 +4,7 @@ import me.kansio.client.Client;
 import me.kansio.client.event.impl.RenderOverlayEvent;
 import me.kansio.client.utils.Util;
 import me.kansio.client.utils.font.Fonts;
+import me.kansio.client.utils.render.ColorUtils;
 import me.kansio.client.utils.render.RenderUtils;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.gui.Gui;
@@ -40,18 +41,16 @@ public class TargetHUD extends Util {
                 //Draw the background with the hurttime animation
                 RenderUtils.drawBorderedRoundedRect(150, 350, 150, 60, 10, 2, 2, new Color(target.hurtTime * 6, 0, 0, 100).getRGB());
 
-                mc.fontRendererObj.drawStringWithShadow(target.getName(), 210, 370, -1);
+//                mc.fontRendererObj.drawStringWithShadow(target.getName(), 210, 370, -1);
+                Fonts.Verdana.drawCenteredString("Name: " + target.getName(), 220, 370, -1);
 
                 if (target instanceof EntityPlayer) {
                     ResourceLocation skin = ((AbstractClientPlayer)target).getLocationSkin();
                     RenderUtils.drawFace(skin, 160, 360, 30, 30);
-                    //draw the animation on the head
-                    //RenderUtils.drawRect(160, 360, 30, 30, new Color(255, 0, 0, (float) (target.hurtTime * 1.2)).getRGB());
                 }
 
-
                 RenderUtils.drawBorderedRoundedRect(155, 400, (float) (20 * 6.9), 5, 5, 0.5f, new Color(40, 40, 40, 255).getRGB(), new Color(45, 45, 45, 255).getRGB());
-                RenderUtils.drawBorderedRoundedRect(155, 400, (float) (target.getHealth() > 0 ? targetHealthWidth : 6.9), 5, 5, 0.5f, new Color(189, 1, 1, 255).getRGB(), new Color(255, 0, 0, 255).getRGB());
+                RenderUtils.drawBorderedRoundedRect(155, 400, (float) (target.getHealth() > 0 ? targetHealthWidth : 6.9), 5, 5, 0.5f, ColorUtils.getColorFromHud(1).getRGB(), ColorUtils.getColorFromHud(1).getRGB());
                 break;
             }
             case "Moon": {
@@ -76,6 +75,9 @@ public class TargetHUD extends Util {
                     }
                 }
                 break;
+            }
+            case "Exhi": {
+
             }
         }
     }

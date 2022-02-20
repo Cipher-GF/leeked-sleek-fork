@@ -5,8 +5,8 @@ import me.kansio.client.event.impl.NoSlowEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
-import me.kansio.client.property.value.BooleanValue;
-import me.kansio.client.property.value.ModeValue;
+import me.kansio.client.value.value.BooleanValue;
+import me.kansio.client.value.value.ModeValue;
 
 @ModuleData(
         name = "No Slow",
@@ -15,7 +15,7 @@ import me.kansio.client.property.value.ModeValue;
 )
 public class NoSlow extends Module {
 
-    public ModeValue mode = new ModeValue("Mode", this, "Vanilla", "IDk");
+    public ModeValue mode = new ModeValue("Mode", this, "Vanilla");
     public BooleanValue item = new BooleanValue("Item", this, true);
     public BooleanValue water = new BooleanValue("Water", this, false);
     public BooleanValue soulsand = new BooleanValue("SoulSand", this, false);

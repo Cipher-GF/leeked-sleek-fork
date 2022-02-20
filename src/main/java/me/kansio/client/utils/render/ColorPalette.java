@@ -21,8 +21,10 @@ public enum ColorPalette {
     ORANGE(new Color(255, 152, 0)),
     DEEP_ORANGE(new Color(255, 87, 34)),
     BROWN(new Color(121, 85, 72)),
-    GREY(new Color(158, 158, 158)),
+    LIGHT_GREY(new Color(158, 158, 158)),
+    WHITE(new Color(255, 255, 255)),
     DARK_GREY(new Color(38, 38, 38)),
+    GREY(new Color(97, 97, 97, 150)),
     BLUE_GREY(new Color(96, 125, 139));
 
     private final Color color;

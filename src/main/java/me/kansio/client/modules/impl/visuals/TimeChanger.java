@@ -6,7 +6,7 @@ import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
-import me.kansio.client.property.value.ModeValue;
+import me.kansio.client.value.value.ModeValue;
 import net.minecraft.network.play.server.S03PacketTimeUpdate;
 
 @ModuleData(
