@@ -97,8 +97,8 @@ public class GuiButton extends Gui
             GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
             GlStateManager.blendFunc(770, 771);
             float boxWidth = this.xPosition + this.width / 2 - 99.8f;
-            RenderUtil.drawBottemRoundedRect(this.xPosition + this.width / 2 - 99.8f, this.yPosition, 300 - this.width / 2, 20, 10, ColorPalette.GREY.getColor().getRGB());
-            RenderUtil.drawRect(boxWidth, this.yPosition, 300 - this.width / 2, 2, ColorUtils.getIntGradientOffset(new Color(255, 60, 234), new Color(27, 179, 255), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + 9 / mc.fontRendererObj.FONT_HEIGHT * 9.95));
+            RenderUtil.drawBottemRoundedRect(this.xPosition + this.width / 2 - 99.8f, this.yPosition, 300 - this.width / 2, 20, 10, 0x80000000);
+            RenderUtil.drawRect(boxWidth, this.yPosition, 300 - this.width / 2, 1, ColorUtils.getIntGradientOffset(new Color(255, 60, 234), new Color(27, 179, 255), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + 9 / mc.fontRendererObj.FONT_HEIGHT * 9.95));
             this.mouseDragged(mc, mouseX, mouseY);
             int j = 14737632;
 

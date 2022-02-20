@@ -1,11 +1,14 @@
 package me.kansio.client.utils.network;
 
+import me.kansio.client.utils.Util;
 import net.minecraft.network.Packet;
+import net.minecraft.network.play.INetHandlerPlayServer;
+import net.minecraft.network.play.server.S08PacketPlayerPosLook;
 
 /**
  * @author Moshi
  */
-public class TimedPacket {
+public class TimedPacket extends Util {
 
     private Packet<?> packet;
     private long time;
@@ -24,6 +27,10 @@ public class TimedPacket {
     }
 
     public void sendSilent() {
+        if (this.getPacket() instanceof S08PacketPlayerPosLook) {
+            mc.thePlayer.sendQueue.handlePlayerPosLook((S08PacketPlayerPosLook) this.getPacket());
+            return;
+        }
         PacketUtil.sendPacketNoEvent(this.getPacket());
     }
 

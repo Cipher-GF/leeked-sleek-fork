@@ -161,6 +161,8 @@ public class PlayerUtil extends Util {
         mc.thePlayer.motionY = getMotion(0.42f);
     }
 
+
+
     public static void damageVerusNoMotion() {
         PacketUtil.sendPacketNoEvent(
                 new C0BPacketEntityAction(mc.thePlayer, C0BPacketEntityAction.Action.STOP_SPRINTING));
