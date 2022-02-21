@@ -86,7 +86,7 @@ public class Flight extends Module {
         currentMode.onUpdate(event);
         if (mc.thePlayer.ticksExisted < 5) {
             if (isToggled()) {
-                NotificationManager.getNotificationManager().show(new Notification(Notification.NotificationType.INFO, "World Change!", "Flight disabled", 1));
+                NotificationManager.getNotificationManager().show(new Notification(Notification.NotificationType.INFO, "World Change!", "Flight disabled", 2));
                 toggle();
             }
         }
