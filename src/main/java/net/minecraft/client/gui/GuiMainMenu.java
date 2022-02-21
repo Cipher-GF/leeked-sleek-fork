@@ -125,8 +125,8 @@ public class GuiMainMenu extends GuiScreen {
 //        drawString(mc.fontRendererObj, "Client has been skidded by vncat", mc.fontRendererObj.getStringWidth("Client has been skidded by vncat") / 2, height - 60, ColorPalette.AMBER.getColor().getRGB());
 
         Fonts.Arial45.drawCenteredString("§lS", width / 2 - 24, height / 4 - 24, ColorPalette.BLUE.getColor().getRGB());
-        Fonts.Arial40.drawCenteredString("leek", width / 2 + 4, height / 4 -22.5f, -1); // -1 = white
-        Fonts.Arial40.drawCenteredString("§lLog", width / 2 - 13, height / 4 -3.5f, -1); // -1 = white
+        Fonts.Arial40.drawCenteredString("leek", width / 2 + 4, height / 4 -22.5f, ColorPalette.GREY.getColor().darker().getRGB()); // -1 = white
+        Fonts.Arial40.drawCenteredString("§lLog", width / 2 - 13, height / 4 -3.5f, ColorPalette.GREY.getColor().darker().getRGB()); // -1 = white
         Fonts.Arial40.drawCenteredString("in", width / 2 + 17, height / 4 - 2, ColorPalette.BLUE.getColor().getRGB());
         if (username.getText().isEmpty()) {
             font.drawStringWithShadow("UID", width / 2F - 96, 106 + 60, -7829368);

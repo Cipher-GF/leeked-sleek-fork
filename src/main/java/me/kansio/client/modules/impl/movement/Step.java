@@ -25,6 +25,11 @@ public class Step extends Module {
     private ModeValue mode = new ModeValue("Mode", this, "Vanilla", "Verus", "Jump", "NCP");
     public BooleanValue cage_checks = new BooleanValue("Cage Checks", this, true);
     private NumberValue<Float> height = new NumberValue<>("Height", this, 1.5f, 1.0f, 6.0f, 0.1f);
+    @Override
+    public void onDisable() {
+        mc.timer.timerSpeed = 1.0F;
+        mc.thePlayer.stepHeight = 0.625F;
+    }
     @Subscribe
     public void UpdateEvent(UpdateEvent event) {
         switch (mode.getValue()) {

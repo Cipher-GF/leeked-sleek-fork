@@ -1,8 +1,10 @@
 package net.minecraft.client.gui;
 
+import me.kansio.client.gui.alt.AltLoginThread;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.IChatComponent;
 import me.kansio.client.protection.ProtectionUtil;
+import org.apache.commons.lang3.RandomStringUtils;
 import sun.misc.Unsafe;
 
 import java.io.IOException;
@@ -68,7 +70,11 @@ public class GuiDisconnected extends GuiScreen
         }
         if (button.id == 1)
         {
-            System.out.println("RANDOM ALT");
+            AltLoginThread thread;
+            String name = RandomStringUtils.random(14, true, true);
+            thread = new AltLoginThread(name, "");
+            thread.start();
+
         }
     }
 
