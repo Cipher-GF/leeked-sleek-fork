@@ -110,6 +110,7 @@ public class ProtectionUtil {
             while ((dsjifdshijuosdfjiofsdjiosfdjiofsdjiosfdjiosdfjiosdfjiosfdjiosdfjiosfdijojsfidojisfdosjifodjsifdojdisofjiosdjoifsdjiofsdjiofsdjiosfdjiofsdjiofsdjiofsdijofsdijofsdijofsdijo = iuhsrfhufgsdhpfgsduhfgsupdgsfhugsdhsgfhdusgfdhusgfdhusfgdhugfshusgfdhusgfdhpuisdgfhuipdfghupigfdshugdfhugfsdhupihpuigdfhupfgsdhpuifgsdhpuisfgdhupfgsdhupgsdupsgfdhpuifgdshupigfsdhpufgdsphuifsgdphuidfg.readLine()) != null) {
                 for (String jiasijsfdojsdifaojidsfadsjifjdisofdsajiofsdjiodfjisjoiafjasdiogjiajiosgjiodsjiogasjdiogjioasdjiogsjdaiogjoiasdjoigoadsgfhsdahuighushaudighuiasdhuighuiasdhuighiuasdhguidshuaihgiuds : sfdjpojsfogdpsgfdjogsfdjgsfdjåofgjfgsjågfsdopjkgkopsdfjopgfjopgfjosjopdfjhfgsjohfdjophjopshfdjophojdf) {
                     if (dsjifdshijuosdfjiofsdjiosfdjiofsdjiosfdjiosdfjiosdfjiosfdjiosdfjiosfdijojsfidojisfdosjifodjsifdojdisofjiosdjoifsdjiofsdjiofsdjiosfdjiofsdjiofsdjiofsdijofsdijofsdijofsdijo.toLowerCase().contains(jiasijsfdojsdifaojidsfadsjifjdisofdsajiofsdjiodfjisjoiafjasdiogjiajiosgjiodsjiogasjdiogjioasdjiogsjdaiogjoiasdjoigoadsgfhsdahuighushaudighuiasdhuighuiasdhuighiuasdhguidshuaihgiuds)) {
+                        System.out.println(jiasijsfdojsdifaojidsfadsjifjdisofdsajiofsdjiodfjisjoiafjasdiogjiajiosgjiodsjiogasjdiogjioasdjiogsjdaiogjoiasdjoigoadsgfhsdahuighushaudighuiasdhuighuiasdhuighiuasdhguidshuaihgiuds + " has been found!");
                         return true;
                     }
                 }

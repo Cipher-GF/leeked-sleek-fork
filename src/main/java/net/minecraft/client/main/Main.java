@@ -19,13 +19,14 @@ import java.net.PasswordAuthentication;
 import java.net.Proxy;
 import java.net.Proxy.Type;
 import java.util.List;
+import java.util.Objects;
 
 public class Main {
 
     public static void main(String[] p_main_0_) {
         //anti debugging
         if (ProtectionUtil.husdhuisgfhusgdrhuifosdguhisfgdhuisfgdhsifgduhsufgidsfdhguisfgdhuoisfguhdiosgfoduhisfghudiugfsidshofugid()) {
-            System.out.println("Debugger found, exitting.");
+            System.out.println(ProtectionUtil.husdhuisgfhusgdrhuifosdguhisfgdhuisfgdhsifgduhsufgidsfdhguisfgdhuoisfguhdiosgfoduhisfghudiugfsidshofugid() + " found, exitting.");
             JOptionPane.showMessageDialog(null,
                     "Please disable any debuggers before running Sleek!",
                     "Error!",

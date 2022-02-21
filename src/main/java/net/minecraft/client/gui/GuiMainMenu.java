@@ -65,8 +65,6 @@ public class GuiMainMenu extends GuiScreen {
                 map.put("Client-Token", "s59gtK6FCntT6tafCNbyMpQ2");
                 Client.getInstance().setUid(username.getText());
                 String serv = HttpUtil.get("https://sleekapi.realreset.repl.co/api/user?hwid=" + NegroidFarm.guisdafghiusfgfsdhusdfghifsdhuidsfhuifdshuifsdhiudsfhiusfdhsdiuffsdhiudhsifusdfhiufsdhiufsdhiusdfhiufsdhiufsdhiu(), map);
-                System.out.println("https://sleekapi.realreset.repl.co/api/user?hwid=" + NegroidFarm.guisdafghiusfgfsdhusdfghifsdhuidsfhuifdshuifsdhiudsfhiusfdhsdiuffsdhiudhsifusdfhiufsdhiufsdhiusdfhiufsdhiufsdhiu());
-                System.out.println(serv);
                 // get first object in array
                 JsonObject json = new JsonParser().parse(serv).getAsJsonArray().get(0).getAsJsonObject();
                 if (json.get("uid").getAsString().equals(Client.getInstance().getUid())) {
@@ -74,7 +72,7 @@ public class GuiMainMenu extends GuiScreen {
                         Client.getInstance().onStart();
                         Client.getInstance().setUsername(json.get("username").getAsString());
                         Client.getInstance().setDiscordTag(String.format("%s#%s", new JsonParser().parse(HttpUtil.get("https://sleekapi.realreset.repl.co/api/getdiscordinfo?id=" + json.get("discordID").getAsString())).getAsJsonObject().get("username"), new JsonParser().parse(HttpUtil.get("https://sleekapi.realreset.repl.co/api/getdiscordinfo?id=" + json.get("discordID").getAsString())).getAsJsonObject().get("discriminator")));
-                        Client.getInstance().setRank(json.get("role").getAsString());
+                        Client.getInstance().setRank(json.get("rank").getAsString());
                         mc.displayGuiScreen(new MainMenu());
                     }
                 }

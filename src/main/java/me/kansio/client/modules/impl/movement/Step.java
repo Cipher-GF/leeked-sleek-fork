@@ -37,7 +37,6 @@ public class Step extends Module {
                 }
                 break;
             case "Verus":
-                System.out.println("Verus");
                 if ((mc.thePlayer.isCollidedHorizontally) && (mc.thePlayer.onGround) && (!mc.thePlayer.isInsideOfMaterial(Material.water)) && (!mc.thePlayer.isInsideOfMaterial(Material.lava))) {
                     String bUp = String.valueOf(mc.theWorld.getBlockState(new BlockPos(mc.thePlayer.posX, mc.thePlayer.posY + 3, mc.thePlayer.posZ )));
                     // get facing direction
