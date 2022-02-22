@@ -49,10 +49,10 @@ public class KillSults extends Module {
             ChatUtil.log("§c§lError! §fFailed to send killsult due to you having none set up...");
             return;
         }
-
+        String discordtag = Client.getInstance().getDiscordTag().replaceAll("\"", " ");
         String toSend = msgs.get(RandomUtils.nextInt(0, msgs.size() - 1))
                         .replaceAll("%killed%", name)
-                        .replaceAll("%discord%", Client.getInstance().getDiscordTag())
+                        .replaceAll("%discord%", discordtag)
                         .replaceAll("%username%", Client.getInstance().getUsername())
                         .replaceAll("%uid%", Client.getInstance().getUid());
         mc.thePlayer.sendChatMessage(toSend);
