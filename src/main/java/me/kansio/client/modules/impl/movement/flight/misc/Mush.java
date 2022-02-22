@@ -46,9 +46,9 @@ public class Mush extends FlightMode {
     @Override
     public void onMove(MoveEvent event) {
         if (mc.gameSettings.keyBindJump.isKeyDown()) {
-            mc.thePlayer.motionY = 1;
+            mc.thePlayer.motionY = 0.22;
         } else if (mc.gameSettings.keyBindSneak.isKeyDown()) {
-            mc.thePlayer.motionY = -1;
+            mc.thePlayer.motionY = -0.22;
         }
         PlayerUtil.setMotion(Math.max(speedy, PlayerUtil.getVerusBaseSpeed()));
     }

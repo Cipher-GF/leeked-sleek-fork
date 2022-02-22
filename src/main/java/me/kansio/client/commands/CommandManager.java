@@ -71,5 +71,6 @@ public class CommandManager {
         commands.add(new HClipCommand());
         commands.add(new PanicCommand());
         commands.add(new KillsultsCommand());
+        commands.add(new GCCommand());
     }
 }

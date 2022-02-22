@@ -28,32 +28,22 @@ public class Test2 extends FlightMode {
 
     @Override
     public void onEnable() {
-        PacketUtil.sendPacketNoEvent(new C03PacketPlayer());
+        PacketUtil.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY - 0.3, mc.thePlayer.posZ, true));
     }
 
     @Override
     public void onPacket(PacketEvent event) {
-        if (event.getPacket() instanceof C03PacketPlayer) {
-            C03PacketPlayer c03 = event.getPacket();
-            c03.y -= 0.5;
-        }
         if (event.getPacket() instanceof S08PacketPlayerPosLook) {
             ChatUtil.log("gooooo");
         }
     }
 
     @Override
-    public void onCollide(BlockCollisionEvent event) {
-        if (event.getBlock() instanceof BlockAir) {
-            if (mc.thePlayer.isSneaking())
-                return;
-            double x = event.getX();
-            double y = event.getY();
-            double z = event.getZ();
-            if (y < mc.thePlayer.posY) {
-                event.setAxisAlignedBB(AxisAlignedBB.fromBounds(-5, -1, -5, 5, 1.0F, 5).offset(x, y, z));
-            }
-        }
+    public void onMove(MoveEvent event) {
+        event.setMotionY(mc.thePlayer.motionY = 0F);
+        PlayerUtil.setMotion(event, 0.34463563);
     }
+
+
 
 }

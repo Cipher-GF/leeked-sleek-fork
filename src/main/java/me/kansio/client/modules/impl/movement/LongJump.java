@@ -7,11 +7,12 @@ import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
-import me.kansio.client.value.value.ModeValue;
-import me.kansio.client.value.value.NumberValue;
 import me.kansio.client.utils.math.Stopwatch;
 import me.kansio.client.utils.player.PlayerUtil;
 import me.kansio.client.utils.player.TimerUtil;
+import me.kansio.client.utils.render.RenderUtil;
+import me.kansio.client.value.value.ModeValue;
+import me.kansio.client.value.value.NumberValue;
 import net.minecraft.network.play.client.C03PacketPlayer;
 
 import java.text.DecimalFormat;
@@ -48,6 +49,8 @@ public class LongJump extends Module {
             }
             TimerUtil.setTimer(0.3f);
             PlayerUtil.damageVerus();
+        } else if ("Test".equals(mode.getValue())) {
+            //PlayerUtil.damagePlayer(mc.thePlayer.onGround);
         }
     }
 
@@ -88,16 +91,13 @@ public class LongJump extends Module {
             }
             case "Test": {
                 if (damageWaiterThing.timeElapsed(1000L)) {
-                    double x = mc.thePlayer.posX;
-                    double y = mc.thePlayer.posY;
-                    double z = mc.thePlayer.posZ;
-                    for (short i = 0; i <= ((4) / 0.0625); i++) {
-                        mc.getNetHandler().getNetworkManager().sendPacket(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + ((0.0625 / 2) * 1), mc.thePlayer.posZ, false));
-                        mc.getNetHandler().getNetworkManager().sendPacket(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + ((0.0625 / 2) * 2), mc.thePlayer.posZ, false));
-                        mc.getNetHandler().getNetworkManager().sendPacket(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ, (i == ((4) / 0.0625))));
-                    }
+//                    double x = mc.thePlayer.posX;
+//                    double y = mc.thePlayer.posY;
+//                    double z = mc.thePlayer.posZ;
                     damageWaiterThing.resetTime();
                     break;
+                } else {
+                    mc.thePlayer.motionY = 0.22;
                 }
             }
 
@@ -107,6 +107,7 @@ public class LongJump extends Module {
     @Subscribe
     public void render(RenderOverlayEvent event) {
         if (mode.getValue().equals("Test")) {
+            RenderUtil.drawBar((float) event.getSr().getScaledWidth_double() / 2, (float) (event.getSr().getScaledHeight_double() / 2) - 25, 100, 20, 1000, (float) damageWaiterThing.getTimeRemaining(1000), 0xFF00FF00);
             mc.fontRendererObj.drawStringWithShadow(new DecimalFormat("0.#").format(((double) (damageWaiterThing.getTimeRemaining(1000)) / 1000)), (float) event.getSr().getScaledWidth_double() / 2, (float) event.getSr().getScaledHeight_double() / 2, -1);
         }
     }

@@ -207,23 +207,23 @@ public class Client {
 
     @Subscribe
     public void onJoin(ServerJoinEvent event) {
-        try {
-            System.out.println(HttpUtil.delete(MessageFormat.format("https://sleekapi.realreset.repl.co/api/leaveserver?clientname={0}", username)));
-            System.out.println(HttpUtil.post("https://sleekapi.realreset.repl.co/api/joinserver?name=" + this.username + "&uid=1" + "&ign=" + event.getIgn() + "&ip=" + event.getServerIP(), ""));
-            JsonElement node = new JsonParser().parse(HttpUtil.get("https://sleekapi.realreset.repl.co/api/getclientplayers"));
-
-            if (node.isJsonArray()) {
-                users.clear();
-                for (JsonElement ele : node.getAsJsonArray()) {
-                    JsonObject obj = ele.getAsJsonObject();
-
-                    users.put(obj.get("ign").getAsString(), obj.get("name").getAsString());
-
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            System.out.println(HttpUtil.delete(MessageFormat.format("https://sleekapi.realreset.repl.co/api/leaveserver?clientname={0}", username)));
+//            System.out.println(HttpUtil.post("https://sleekapi.realreset.repl.co/api/joinserver?name=" + this.username + "&uid=1" + "&ign=" + event.getIgn() + "&ip=" + event.getServerIP(), ""));
+//            JsonElement node = new JsonParser().parse(HttpUtil.get("https://sleekapi.realreset.repl.co/api/getclientplayers"));
+//
+//            if (node.isJsonArray()) {
+//                users.clear();
+//                for (JsonElement ele : node.getAsJsonArray()) {
+//                    JsonObject obj = ele.getAsJsonObject();
+//
+//                    users.put(obj.get("ign").getAsString(), obj.get("name").getAsString());
+//
+//                }
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
     public void setRank(String rank) {

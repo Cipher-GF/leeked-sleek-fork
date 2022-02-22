@@ -15,13 +15,10 @@ import net.minecraft.util.ResourceLocation;
 )
 public class Cape extends Module {
 
-    private ModeValue capemode = new ModeValue("Cape", this,"Sleek", "Kitler", "HateFoo");
+    private ModeValue capemode = new ModeValue("Cape", this, "Kitler", "HateFoo");
 
     public ResourceLocation getCape() {
         switch (capemode.getValue()) {
-            case "Sleek": {
-                return new ResourceLocation("sleek/images/capes/sleekcape.png");
-            }
             case "Kitler": {
                 return new ResourceLocation("sleek/images/capes/kitler.png");
             }
