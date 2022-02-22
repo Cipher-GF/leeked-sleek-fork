@@ -1,4 +1,4 @@
-package me.kansio.client.modules.impl.world;
+package me.kansio.client.modules.impl.misc;
 
 import com.google.common.eventbus.Subscribe;
 import me.kansio.client.Client;
@@ -38,7 +38,8 @@ import javax.vecmath.Vector2f;
 import java.awt.*;
 
 @ModuleData(
-        name = "Scaffold", category = ModuleCategory.WORLD,
+        name = "Scaffold",
+        category = ModuleCategory.MISC,
         description = "Places blocks under you"
 )
 public class Scaffold extends Module {

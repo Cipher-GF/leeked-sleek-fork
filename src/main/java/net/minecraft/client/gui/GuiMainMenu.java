@@ -1,6 +1,8 @@
 package net.minecraft.client.gui;
 
 import java.lang.reflect.Field;
+import java.net.UnknownHostException;
+import java.security.NoSuchAlgorithmException;
 import java.util.*;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -77,10 +79,18 @@ public class GuiMainMenu extends GuiScreen {
                     }
                 }
             }
-        } catch (Exception e) {
+        } catch (UnknownHostException e) {
+            if (e.getMessage().equals("sleekapi.realreset.repl.co")) {
+                System.exit(-1);
+            } else {
+                e.printStackTrace();
+                System.out.println("Error: " + e.getMessage());
+            }
+
+        } catch (IOException e) {
             e.printStackTrace();
-//            print ERROR
-            System.out.println("Error: " + e.getMessage());
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
         }
         if (ProtectionUtil.husdhuisgfhusgdrhuifosdguhisfgdhuisfgdhsifgduhsufgidsfdhguisfgdhuoisfguhdiosgfoduhisfghudiugfsidshofugid()) {
             try {
