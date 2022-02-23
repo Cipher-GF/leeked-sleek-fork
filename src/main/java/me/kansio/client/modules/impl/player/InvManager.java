@@ -164,9 +164,7 @@ public class InvManager extends Module {
     }
 
     private void invCleanerThing(Stopwatch stopwatch, int delay, List<Integer> trash, int windowId) {
-        if (!(mc.currentScreen instanceof GuiInventory) || !(mc.currentScreen instanceof ClickGUI)) {
-            PacketUtil.sendPacketNoEvent(new C0BPacketEntityAction(mc.thePlayer, C0BPacketEntityAction.Action.OPEN_INVENTORY));
-        }
+        PacketUtil.sendPacketNoEvent(new C0BPacketEntityAction(mc.thePlayer, C0BPacketEntityAction.Action.OPEN_INVENTORY));
 
         for (Integer slot : trash) {
             if (stopwatch.timeElapsed(delay)) {

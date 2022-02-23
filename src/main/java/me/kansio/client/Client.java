@@ -73,6 +73,10 @@ public class Client {
     @Getter
     private static Client instance = new Client();
 
+    public static Client instance() {
+        return instance;
+    }
+
     @Getter
     private EventBus eventBus = new EventBus("Sleek");
 
