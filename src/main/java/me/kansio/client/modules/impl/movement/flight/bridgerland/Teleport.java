@@ -47,8 +47,8 @@ public class Teleport extends FlightMode {
 
     @Override
     public void onPacket(PacketEvent event) {
-        if (event.getPacket() instanceof S08PacketPlayerPosLook) {
-            event.setCancelled(true);
-        }
+//        if (event.getPacket() instanceof S08PacketPlayerPosLook) {
+//            event.setCancelled(true);
+//        }
     }
 }

@@ -89,17 +89,6 @@ public class LongJump extends Module {
                 }
                 break;
             }
-            case "Test": {
-                if (damageWaiterThing.timeElapsed(1000L)) {
-//                    double x = mc.thePlayer.posX;
-//                    double y = mc.thePlayer.posY;
-//                    double z = mc.thePlayer.posZ;
-                    damageWaiterThing.resetTime();
-                    break;
-                } else {
-                    mc.thePlayer.motionY = 0.22;
-                }
-            }
 
         }
     }

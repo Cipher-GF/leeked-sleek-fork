@@ -19,6 +19,8 @@ public class Bhop extends SpeedMode {
         if (mc.thePlayer.isMovingOnGround()) {
             mc.thePlayer.motionY = PlayerUtil.getMotion(0.42f);
         }
-        PlayerUtil.setMotion(getSpeed().handleFriction(getSpeed().getHDist()));
+        PlayerUtil.setMotion(getSpeed().getHDist().get());
+        mc.thePlayer.motionX *= 0.9;
+        mc.thePlayer.motionZ *= 0.9;
     }
 }
