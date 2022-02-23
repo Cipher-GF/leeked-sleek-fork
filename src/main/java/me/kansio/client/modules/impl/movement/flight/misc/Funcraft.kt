@@ -15,11 +15,14 @@ class Funcraft : FlightMode("Funcraft") {
 
     override fun onUpdate(event: UpdateEvent?) {
         if (mc.thePlayer.isMoving) {
-            if (boosted) {
+            if (boosted || speed > 0.25) {
 //                speed -= speed / 152
+                mc.timer.timerSpeed = 1.8f
+                speed -= speed/272
+            }
+            if(speed < 0.36){
                 mc.timer.timerSpeed = 1.34f
-                ChatUtil.log((speed / 130).toString())
-                speed /= 1.0093f
+
             }
             if (!boosted) {
                 speed = 0.0;
@@ -46,11 +49,8 @@ class Funcraft : FlightMode("Funcraft") {
             if (mc.thePlayer.onGround) {
                 event.motionY = 0.42; also { mc.thePlayer.motionY = 0.42; }
                 boosted = true;
-                if (thingy == 1) {
-                    val boost: Double = if (mc.thePlayer.isPotionActive(Potion.moveSpeed)) 1.5 else 1.62
-                    speed = boost * PlayerUtil.getBaseSpeed().toDouble() - 0.01
-                    thingy = 2
-                }
+
+                speed = 0.6
             }
         }
         // PlayerUtil.getBaseSpeed().toDouble().coerceAtLeast(speed) = Math.max(PlayerUtil.getBaseSpeed(), speed)
