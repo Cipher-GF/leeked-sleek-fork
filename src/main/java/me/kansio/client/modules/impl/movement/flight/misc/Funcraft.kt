@@ -13,10 +13,13 @@ class Funcraft : FlightMode("Funcraft") {
 
     override fun onUpdate(event: UpdateEvent?) {
         if (mc.thePlayer.isMoving) {
-            if (boosted) {
+            if (boosted || speed > 0.25) {
 //                speed -= speed / 152
+                mc.timer.timerSpeed = 1.8f
+                speed -= speed/272
+            }
+            if(speed < 0.36){
                 mc.timer.timerSpeed = 1.34f
-                speed /= 1.0098f
             }
             if (!boosted) {
                 speed = 0.0;
@@ -39,7 +42,7 @@ class Funcraft : FlightMode("Funcraft") {
             if (mc.thePlayer.onGround) {
                 event.motionY = 0.42; also { mc.thePlayer.motionY = 0.42; }
                 boosted = true;
-                speed = flight.speed.value * 0.90;
+                speed = 0.6
             }
         }
         PlayerUtil.setMotion(event, PlayerUtil.getBaseSpeed().toDouble().coerceAtLeast(speed))
