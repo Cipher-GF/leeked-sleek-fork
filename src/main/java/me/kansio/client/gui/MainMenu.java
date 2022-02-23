@@ -88,8 +88,9 @@ public class MainMenu extends GuiScreen
         GL20.glUseProgram(0);
         Fonts.Arial45.drawCenteredString("§lS", width / 2 - 24, height / 4 -24, ColorPalette.BLUE.getColor().getRGB());
         Fonts.Arial40.drawCenteredString("leek", width / 2 + 4, height / 4 -22.5f, ColorPalette.GREY.getColor().darker().getRGB()); // -1 = white
-        String devinfo = "Made with <3 by Reset, Kansio, qoft, and Divine";
-        Fonts.Verdana.drawString(devinfo, (width - Fonts.Arial30.getStringWidth(devinfo)) + 110, height - 10, -1);
+        String devinfo = "Made with <3 by Reset, qoft, and Divine";
+//        Fonts.Verdana.drawString(devinfo, (width - Fonts.Arial30.getStringWidth(devinfo)) + 110, height - 10, -1);
+        Fonts.Verdana.drawCenteredString(devinfo, width - 100, height - 10, -1);
         GlStateManager.color(1.0F,1.0F,1.0F,1.0F);
         super.drawScreen(mouseX, mouseY, partialTicks);
     }

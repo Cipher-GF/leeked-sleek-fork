@@ -13,10 +13,12 @@ public class NCPHop extends SpeedMode {
 
 
         if (mc.thePlayer.onGround) {
-            event.setMotionY(mc.thePlayer.motionY = PlayerUtil.getMotion(0.42f));
+            mc.timer.timerSpeed = 1.8f;
+            event.setMotionY(mc.thePlayer.motionY = PlayerUtil.getMotion(0.35f));
         }
         PlayerUtil.setMotion(event, 0.8);
         if (!mc.thePlayer.onGround) {
+            mc.timer.timerSpeed = 1.2f;
             event.setMotionX(mc.thePlayer.motionX * 0.98);
             event.setMotionZ(mc.thePlayer.motionZ * 0.98);
         }

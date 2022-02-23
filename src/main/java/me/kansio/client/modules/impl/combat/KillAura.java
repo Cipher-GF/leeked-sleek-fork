@@ -10,14 +10,16 @@ import me.kansio.client.gui.notification.NotificationManager;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
-import me.kansio.client.value.value.BooleanValue;
-import me.kansio.client.value.value.ModeValue;
-import me.kansio.client.value.value.NumberValue;
 import me.kansio.client.utils.combat.FightUtil;
 import me.kansio.client.utils.math.Stopwatch;
 import me.kansio.client.utils.network.PacketUtil;
+import me.kansio.client.utils.pathfinding.DortPathFinder;
+import me.kansio.client.utils.pathfinding.Vec3;
 import me.kansio.client.utils.rotations.AimUtil;
 import me.kansio.client.utils.rotations.Rotation;
+import me.kansio.client.value.value.BooleanValue;
+import me.kansio.client.value.value.ModeValue;
+import me.kansio.client.value.value.NumberValue;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -30,6 +32,7 @@ import net.minecraft.util.EnumFacing;
 import org.apache.commons.lang3.RandomUtils;
 
 import javax.vecmath.Vector2f;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -51,6 +54,8 @@ public class KillAura extends Module {
     public NumberValue<Double> autoblockRange = new NumberValue<>("Block Range", this, 3.0, 1.0, 12.0, 0.1);
     public NumberValue<Double> cps = new NumberValue<>("CPS", this, 12.0, 1.0, 20.0, 1.0);
     public NumberValue<Double> cprandom = new NumberValue<>("Randomize CPS", this, 3.0, 0.0, 10.0, 1.0);
+    public BooleanValue teleportAura = new BooleanValue("TP Hit", this, false);
+    public NumberValue<Double> tprange = new NumberValue<>("Teleport Range", this, 25.0, 0.0, 120.0, 1.0, teleportAura);
     public NumberValue chance = new NumberValue<>("Hit Chance", this, 100, 0, 100, 1);
     public ModeValue swingmode = new ModeValue("Swing Mode", this, "Client", "Server");
     public ModeValue attackMethod = new ModeValue("Attack Method", this, "Packet", "Legit");
@@ -105,7 +110,7 @@ public class KillAura extends Module {
 
     @Subscribe
     public void onMotion(UpdateEvent event) {
-        List<EntityLivingBase> entities = FightUtil.getMultipleTargets(swingrage.getValue(), players.getValue(), friends.getValue(), animals.getValue(), walls.getValue(), monsters.getValue(), invisible.getValue());
+        List<EntityLivingBase> entities = FightUtil.getMultipleTargets(teleportAura.getValue() ? tprange.getValue() : swingrage.getValue(), players.getValue(), friends.getValue(), animals.getValue(), walls.getValue(), monsters.getValue(), invisible.getValue());
 
         if (mc.currentScreen != null) return;
 
@@ -191,15 +196,10 @@ public class KillAura extends Module {
                         });
                         break;
                     }
-                    case "switch": {
-                        target = entities.get(index);
-                        if (target == null) {
-                            target = entities.get(0);
-                        }
-                        break;
-                    }
                 }
-                aimAtTarget(event, rotatemode.getValue(), target);
+                if (!teleportAura.getValue()) {
+                    aimAtTarget(event, rotatemode.getValue(), target);
+                }
             }
 
             if (event.isPre()) {
@@ -214,14 +214,14 @@ public class KillAura extends Module {
                     }
                     switch (mode.getValue()) {
                         case "Switch": {
-                            if (canIAttack && attack(target, chance.getValue().intValue(), autoblockmode.getValue())) {
+                            if (canIAttack && attack(target, chance.getValue().intValue())) {
                                 index++;
                                 attackTimer.resetTime();
                             }
                             break;
                         }
                         case "Smart": {
-                            if (canIAttack && attack(target, chance.getValue().intValue(), autoblockmode.getValue())) {
+                            if (canIAttack && attack(target, chance.getValue().intValue())) {
                                 attackTimer.resetTime();
                             }
                         }
@@ -231,20 +231,31 @@ public class KillAura extends Module {
         }
     }
 
-    private boolean attack(EntityLivingBase entity, double chance, String blockMode) {
+    private boolean attack(EntityLivingBase entity, double chance) {
         if (FightUtil.canHit(chance / 100)) {
             if (swingmode.getValue().equalsIgnoreCase("client")) {
                 mc.thePlayer.swingItem();
-            }
-            else if (swingmode.getValue().equalsIgnoreCase("server")) {
+            } else if (swingmode.getValue().equalsIgnoreCase("server")) {
                 mc.getNetHandler().addToSendQueue(new C0APacketAnimation());
             }
-
+            ArrayList<Vec3> path = DortPathFinder.computePath(new Vec3(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ), new Vec3(entity.posX, entity.posY, entity.posZ));
+            if (teleportAura.getValue()) {
+                for (Vec3 vec : path) {
+                    PacketUtil.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(vec.getX(), vec.getY(), vec.getZ(), true));
+                }
+            }
             //sending the attack directly through a packet prevents you from getting slowed down when hitting
             if (attackMethod.getValue().equalsIgnoreCase("Packet"))
                 PacketUtil.sendPacket(new C02PacketUseEntity(target, C02PacketUseEntity.Action.ATTACK));
             else
                 mc.playerController.attackEntity(mc.thePlayer, entity);
+
+            if (teleportAura.getValue()) {
+                Collections.reverse(path);
+                for (Vec3 vector : path) {
+                    PacketUtil.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(vector.getX(), vector.getY(), vector.getZ(), true));
+                }
+            }
 
             if (!isBlocking && autoblockmode.getValue().equalsIgnoreCase("verus")) {
                 PacketUtil.sendPacket(new C08PacketPlayerBlockPlacement(mc.thePlayer.inventory.getCurrentItem()));
