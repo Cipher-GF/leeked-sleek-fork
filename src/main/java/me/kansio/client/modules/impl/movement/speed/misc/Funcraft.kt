@@ -21,11 +21,9 @@ class Funcraft : SpeedMode("Funcraft") {
         if (mc.thePlayer.isMovingOnGround) {
             mc.timer.timerSpeed = 1.1f
             event!!.motionY = 0.4025; also { mc.thePlayer.motionY = 0.4025 }
-            // bro my pfp is eviate LMFAO
-            //speed += 0.02;
         }
         if (!mc.thePlayer.onGround) {
-            mc.timer.timerSpeed = 1.34f
+            mc.timer.timerSpeed = 1.2f
 //            speed -= speed / 152
             mc.thePlayer.motionX *= 0.9;
             mc.thePlayer.motionX *= 0.9;
@@ -42,6 +40,6 @@ class Funcraft : SpeedMode("Funcraft") {
     }
 
     override fun onDisable() {
-        speed = PlayerUtil.getBaseSpeed().toDouble();
+
     }
 }

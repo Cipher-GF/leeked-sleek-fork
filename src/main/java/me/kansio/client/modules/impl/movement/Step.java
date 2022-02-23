@@ -34,7 +34,7 @@ public class Step extends Module {
     public void UpdateEvent(UpdateEvent event) {
         switch (mode.getValue()) {
             case "Vanilla":
-                System.out.println("Vanilla");
+//                System.out.println("Vanilla");
                 if ((mc.thePlayer.isCollidedHorizontally) && (mc.thePlayer.onGround) && (!Client.getInstance().getModuleManager().getModuleByName("Flight").isToggled())) {
                     mc.thePlayer.stepHeight = height.getValue();
                 } else {
