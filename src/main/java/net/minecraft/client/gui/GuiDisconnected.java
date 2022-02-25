@@ -1,12 +1,8 @@
 package net.minecraft.client.gui;
 
-import me.kansio.client.gui.alt.AltLoginThread;
-import net.minecraft.client.multiplayer.GuiConnecting;
-import net.minecraft.client.multiplayer.ServerData;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.IChatComponent;
 import me.kansio.client.protection.ProtectionUtil;
-import org.apache.commons.lang3.RandomStringUtils;
 import sun.misc.Unsafe;
 
 import java.io.IOException;
@@ -15,12 +11,11 @@ import java.util.List;
 
 public class GuiDisconnected extends GuiScreen
 {
-    public String reason;
-    public IChatComponent message;
+    private String reason;
+    private IChatComponent message;
     private List<String> multilineMessage;
-    public final GuiScreen parentScreen;
+    private final GuiScreen parentScreen;
     private int field_175353_i;
-    private ServerData lastServer;
 
     public GuiDisconnected(GuiScreen screen, String reasonLocalizationKey, IChatComponent chatComp)
     {
@@ -73,12 +68,7 @@ public class GuiDisconnected extends GuiScreen
         }
         if (button.id == 1)
         {
-            AltLoginThread thread;
-            String name = RandomStringUtils.random(14, true, true);
-            thread = new AltLoginThread(name, "");
-            thread.start();
-            this.mc.displayGuiScreen(new GuiConnecting(this.parentScreen, this.mc, this.lastServer));
-
+            System.out.println("RANDOM ALT");
         }
     }
 

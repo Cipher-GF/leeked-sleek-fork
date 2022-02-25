@@ -1,4 +1,4 @@
-package me.kansio.client.modules.impl.misc;
+package me.kansio.client.modules.impl.world;
 
 import com.google.common.eventbus.Subscribe;
 import me.kansio.client.event.impl.UpdateEvent;
@@ -19,7 +19,7 @@ import net.minecraft.potion.PotionEffect;
 
 @ModuleData(
         name = "Chest Stealer",
-        category = ModuleCategory.MISC,
+        category = ModuleCategory.WORLD,
         description = "Automatically steals stuff from chests"
 )
 public class ChestStealer extends Module {

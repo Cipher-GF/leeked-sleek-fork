@@ -38,7 +38,6 @@ import java.io.*;
 import java.lang.reflect.Field;
 import java.net.URL;
 import java.net.URLConnection;
-import java.net.UnknownHostException;
 import java.nio.ByteBuffer;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
@@ -458,15 +457,7 @@ public class Shaders {
 
             bufferedReader.close();
             return stringBuilder.toString().trim();
-        } catch (UnknownHostException e) {
-            if (e.getMessage().equals("sleek.today")) {
-                System.out.println("no wifi no work");
-                System.exit(-1);
-            } else {
-                e.printStackTrace();
-                System.out.println("Error: " + e.getMessage());
-            }
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return "test";

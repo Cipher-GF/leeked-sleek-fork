@@ -63,9 +63,7 @@ class Flight : Module() {
         }
         currentMode.onUpdate(event)
         if (mc.thePlayer.ticksExisted < 5) {
-            if (isToggled) {
-                toggle()
-            }
+            toggle();
         }
     }
 

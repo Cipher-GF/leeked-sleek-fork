@@ -7,7 +7,7 @@ public enum ModuleCategory {
     MOVEMENT("Movement"),
     VISUALS("Visuals"),
     PLAYER("Player"),
-    MISC("Misc"),
+    WORLD("World"),
     HIDDEN("Hidden");
 
     public String name;
