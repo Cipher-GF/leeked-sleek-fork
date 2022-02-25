@@ -1,8 +1,16 @@
 package net.minecraft.client.gui;
 
+import me.kansio.client.gui.alt.AltLoginThread;
+import me.kansio.client.utils.font.Fonts;
+import me.kansio.client.utils.render.ColorPalette;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.GuiConnecting;
+import net.minecraft.client.multiplayer.ServerData;
+import net.minecraft.client.gui.GuiMultiplayer;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.IChatComponent;
 import me.kansio.client.protection.ProtectionUtil;
+import org.apache.commons.lang3.RandomStringUtils;
 import sun.misc.Unsafe;
 
 import java.io.IOException;
@@ -11,11 +19,13 @@ import java.util.List;
 
 public class GuiDisconnected extends GuiScreen
 {
-    private String reason;
-    private IChatComponent message;
+    public String reason;
+    public IChatComponent message;
     private List<String> multilineMessage;
-    private final GuiScreen parentScreen;
+    private ServerSelectionList serverListSelector;
+    public final GuiScreen parentScreen;
     private int field_175353_i;
+    private ServerData lastServer;
 
     public GuiDisconnected(GuiScreen screen, String reasonLocalizationKey, IChatComponent chatComp)
     {
@@ -62,13 +72,19 @@ public class GuiDisconnected extends GuiScreen
      */
     protected void actionPerformed(GuiButton button) throws IOException
     {
+        GuiMultiplayer serverlol = new GuiMultiplayer(this.parentScreen);
         if (button.id == 0)
         {
             this.mc.displayGuiScreen(this.parentScreen);
         }
         if (button.id == 1)
         {
-            System.out.println("RANDOM ALT");
+            AltLoginThread thread;
+            String name = RandomStringUtils.random(14, true, true);
+            thread = new AltLoginThread(name, "");
+            thread.start();
+            Minecraft.getMinecraft().displayGuiScreen(new GuiConnecting(new GuiMultiplayer(new GuiMainMenu()), Minecraft.getMinecraft(), lastServer));
+
         }
     }
 
