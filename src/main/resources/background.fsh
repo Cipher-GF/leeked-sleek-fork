@@ -23,10 +23,10 @@ float noise(vec2 n) {
 
 float fbm(vec2 n){
     float total=0.,amplitude=.8;
-    for(int i=0;i<18;i++){
+    for(int i=0;i<20;i++){
         total+=noise(n)*amplitude;
         n+=n;
-        amplitude*=.5;
+        amplitude*=0.40;
     }
     return total;
 }

@@ -103,5 +103,13 @@ public class ColorUtils extends Util {
     public static Color setAlpha(Color color, int alpha) {
         return new Color(color.getRed(), color.getGreen(), color.getBlue(), alpha);
     }
+    public static int removeAlphaComponent(final int colour) {
+        final int red = colour >> 16 & 0xFF;
+        final int green = colour >> 8 & 0xFF;
+        final int blue = colour & 0xFF;
 
+        return ((red & 0xFF) << 16) |
+                ((green & 0xFF) << 8) |
+                (blue & 0xFF);
+    }
 }

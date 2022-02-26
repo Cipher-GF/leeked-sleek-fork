@@ -32,11 +32,15 @@ public class GuiConnecting extends GuiScreen {
     private NetworkManager networkManager;
     private boolean cancel;
     private final GuiScreen previousGuiScreen;
+    public static ServerData lastServer;
 
     public GuiConnecting(GuiScreen p_i1181_1_, Minecraft mcIn, ServerData p_i1181_3_) {
         this.mc = mcIn;
         this.previousGuiScreen = p_i1181_1_;
-        ServerAddress serveraddress = ServerAddress.func_78860_a(p_i1181_3_.serverIP);
+        lastServer = p_i1181_3_;
+        System.out.println("p_i1181_3_: "+p_i1181_3_);
+        System.out.println("Connecting to " + p_i1181_3_.serverIP + " NAME: " + p_i1181_3_.serverName);
+        ServerAddress serveraddress = ServerAddress.func_78860_a(lastServer.serverIP);
         mcIn.loadWorld((WorldClient) null);
         mcIn.setServerData(p_i1181_3_);
         this.connect(serveraddress.getIP(), serveraddress.getPort());
@@ -45,11 +49,11 @@ public class GuiConnecting extends GuiScreen {
     public GuiConnecting(GuiScreen p_i1182_1_, Minecraft mcIn, String hostName, int port) {
         this.mc = mcIn;
         this.previousGuiScreen = p_i1182_1_;
-        mcIn.loadWorld((WorldClient) null);
+        mcIn.loadWorld(null);
         this.connect(hostName, port);
     }
 
-    private void connect(final String ip, final int port) {
+    public void connect(String ip, int port) {
         //set playtime
         Playtime playtime = (Playtime) Client.getInstance().getModuleManager().getModuleByName("Playtime");
         playtime.currentTime = System.currentTimeMillis();

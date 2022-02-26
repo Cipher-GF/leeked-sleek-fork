@@ -2,6 +2,7 @@ package me.kansio.client.modules.impl.movement;
 
 import com.google.common.eventbus.Subscribe;
 import me.kansio.client.Client;
+import me.kansio.client.event.impl.StepEvent;
 import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
@@ -15,16 +16,19 @@ import net.minecraft.stats.StatList;
 import net.minecraft.util.BlockPos;
 import org.lwjgl.Sys;
 
-import java.lang.Number;
 @ModuleData(
         name = "Step",
         category = ModuleCategory.MOVEMENT,
         description = "Step over blocks."
 )
 public class Step extends Module {
-    private ModeValue mode = new ModeValue("Mode", this, "Vanilla", "Verus", "Jump", "NCP");
+    private  ModeValue mode = new ModeValue("Mode", this, "Vanilla", "Verus", "Jump", "NCP");
     public BooleanValue cage_checks = new BooleanValue("Cage Checks", this, true);
-    private NumberValue<Float> height = new NumberValue<>("Height", this, 1.5f, 1.0f, 6.0f, 0.1f);
+    private  NumberValue<Float> height = new NumberValue<>("Height", this, 1.5f, 1.0f, 6.0f, 0.1f);
+    private final double[][] offsets = {
+            {0.41999998688698d, 0.7531999805212d}
+    };
+    private double stepTimer;
     @Subscribe
     public void UpdateEvent(UpdateEvent event) {
         switch (mode.getValue()) {
@@ -70,63 +74,27 @@ public class Step extends Module {
                 }
                 break;
             case "NCP":
-                try {
-                    if ((mc.thePlayer.isCollidedHorizontally) && (mc.thePlayer.onGround)) {
-                        mc.thePlayer.stepHeight = height.getValue();
-                        double rheight = mc.thePlayer.getEntityBoundingBox().minY - mc.thePlayer.posY;
-                        if (rheight >= 0.625) {
-                            try {
-                                block12:
-                                {
-                                    double y;
-                                    double posZ;
-                                    double posX;
-                                    block11:
-                                    {
-                                        posX = mc.thePlayer.posX;
-                                        posZ = mc.thePlayer.posZ;
-                                        y = mc.thePlayer.posY;
-                                        if (!(rheight < 1.1)) break block11;
-                                        double first = 0.42;
-                                        double second = 0.75;
-                                        mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(posX, y + first, posZ, false));
-                                        if (!(y + second < y + rheight)) break block12;
-                                        mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(posX, y + second, posZ, false));
-                                        break block12;
-                                    }
-                                    if (rheight < 1.6) {
-                                        double[] offset;
-                                        for (double off : offset = new double[]{0.42, 0.33, 0.24, 0.083, -0.078}) {
-                                            mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(posX, y += off, posZ, false));
-                                        }
-                                    } else if (rheight < 2.1) {
-                                        double[] heights;
-                                        for (double off : heights = new double[]{0.425, 0.821, 0.699, 0.599, 1.022, 1.372, 1.652, 1.869}) {
-                                            mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(posX, y + off, posZ, false));
-                                        }
-                                    } else {
-                                        double[] heights;
-                                        for (double off : heights = new double[]{0.425, 0.821, 0.699, 0.599, 1.022, 1.372, 1.652, 1.869, 2.019, 1.907}) {
-                                            mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(posX, y + off, posZ, false));
-                                        }
-                                    }
-                                }
-                            } catch (Exception e) {
-                                e.printStackTrace();
+                final double steppedHeight = 1.0;
+                if ((mc.thePlayer.isCollidedHorizontally) && (mc.thePlayer.onGround)) {
+                    final double[] offsets = this.offsets[steppedHeight > 1.0 ? 1 : 0];
 
-                            }
-                        }
-                    } else {
-                        mc.thePlayer.stepHeight = 0.6f;
+                    for (final double offset : offsets) {
+                        mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(
+                                mc.thePlayer.posX,
+                                mc.thePlayer.posY + offset * Math.min(steppedHeight, 1.0),
+                                mc.thePlayer.posZ,
+                                false
+                        ));
+                        System.out.println("Stepped");
                     }
-                } catch (Exception e) {
-                    e.printStackTrace();
+                    this.stepTimer = 1.0 / (offsets.length + 1);
                 }
 
         }
 
 
     }
+
 
 
 

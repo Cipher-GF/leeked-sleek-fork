@@ -5,8 +5,10 @@ import me.kansio.client.utils.font.Fonts;
 import me.kansio.client.utils.render.ColorPalette;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.GuiConnecting;
+import net.minecraft.client.multiplayer.ServerAddress;
 import net.minecraft.client.multiplayer.ServerData;
 import net.minecraft.client.gui.GuiMultiplayer;
+import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.IChatComponent;
 import me.kansio.client.protection.ProtectionUtil;
@@ -25,13 +27,18 @@ public class GuiDisconnected extends GuiScreen
     private ServerSelectionList serverListSelector;
     public final GuiScreen parentScreen;
     private int field_175353_i;
-    private ServerData lastServer;
+    private static ServerData lastServer;
 
     public GuiDisconnected(GuiScreen screen, String reasonLocalizationKey, IChatComponent chatComp)
     {
+        System.out.println(GuiDisconnected.lastServer);
         this.parentScreen = screen;
         this.reason = I18n.format(reasonLocalizationKey, new Object[0]);
         this.message = chatComp;
+    }
+
+    public static void setLastServer(ServerData lastServer) {
+        GuiDisconnected.lastServer = lastServer;
     }
 
     /**
@@ -60,6 +67,7 @@ public class GuiDisconnected extends GuiScreen
 
             }
         }
+        System.out.println(GuiDisconnected.lastServer);
         this.buttonList.clear();
         this.multilineMessage = this.fontRendererObj.listFormattedStringToWidth(this.message.getFormattedText(), this.width - 50);
         this.field_175353_i = this.multilineMessage.size() * this.fontRendererObj.FONT_HEIGHT;
@@ -72,7 +80,6 @@ public class GuiDisconnected extends GuiScreen
      */
     protected void actionPerformed(GuiButton button) throws IOException
     {
-        GuiMultiplayer serverlol = new GuiMultiplayer(this.parentScreen);
         if (button.id == 0)
         {
             this.mc.displayGuiScreen(this.parentScreen);
@@ -83,7 +90,10 @@ public class GuiDisconnected extends GuiScreen
             String name = RandomStringUtils.random(14, true, true);
             thread = new AltLoginThread(name, "");
             thread.start();
-            Minecraft.getMinecraft().displayGuiScreen(new GuiConnecting(new GuiMultiplayer(new GuiMainMenu()), Minecraft.getMinecraft(), lastServer));
+            ServerAddress serveraddress = ServerAddress.func_78860_a(lastServer.serverIP);
+            System.out.println(serveraddress.getIP());
+//            GuiConnecting.connect(serveraddress.getIP(), serveraddress.getPort());
+//            Minecraft.getMinecraft().displayGuiScreen(new GuiConnecting(new GuiMultiplayer(new GuiMainMenu()), Minecraft.getMinecraft(), lastServer));
 
         }
     }
