@@ -63,6 +63,7 @@ public class KillAura extends Module {
     public BooleanValue gcd = new BooleanValue("GCD", this, false);
     public BooleanValue targethud = new BooleanValue("TargetHud", this, false);
     public ModeValue targethudmode = new ModeValue("TargetHud Mode", this, targethud, "Sleek", "Moon", "Exhi");
+    public ModeValue targethud3d = new ModeValue("Preview Mode", this, targethud, "Face", "Model");
     public BooleanValue players = new BooleanValue("Players", this, true);
     public BooleanValue friends = new BooleanValue("Friends", this, true);
     public BooleanValue animals = new BooleanValue("Animals", this, true);

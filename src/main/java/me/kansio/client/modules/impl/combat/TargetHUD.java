@@ -8,6 +8,8 @@ import me.kansio.client.utils.render.ColorUtils;
 import me.kansio.client.utils.render.RenderUtils;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.gui.Gui;
+import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.client.network.NetworkPlayerInfo;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -43,15 +45,22 @@ public class TargetHUD extends Util {
 
 //                mc.fontRendererObj.drawStringWithShadow(target.getName(), 210, 370, -1);
                 NetworkPlayerInfo networkPlayerInfo = mc.getNetHandler().getPlayerInfo(target.getUniqueID());
-                Fonts.Verdana.drawCenteredString("Name: " + target.getName(), 220, 361, -1);
+                Fonts.Verdana.drawString("Name: " + target.getName(), 205, 361, -1);
                 final String ping = "Ping: " + (Objects.isNull(networkPlayerInfo) ? "0ms" : networkPlayerInfo.getResponseTime() + "ms");
-                Fonts.Verdana.drawCenteredString("Distance: " , 217, 371, -1);
-                Fonts.Verdana.drawCenteredString(""+MathUtils.round(mc.thePlayer.getDistanceToEntity(target), 2), 250, 371, -1);
-                Fonts.Verdana.drawCenteredString(ping, 217, 381, -1);
+                Fonts.Verdana.drawString("Distance:", 205, 371, -1);
+                Fonts.Verdana.drawString(" " + MathUtils.round(mc.thePlayer.getDistanceToEntity(target), 2), 250, 371, -1);
+                Fonts.Verdana.drawString(ping, 205, 381, -1);
 
                 if (target instanceof EntityPlayer) {
-                    ResourceLocation skin = ((AbstractClientPlayer)target).getLocationSkin();
-                    RenderUtils.drawFace(skin, 160, 360, 30, 30);
+                    switch (killaura.targethud3d.getValue()) {
+                        case "Face": {
+                            ResourceLocation skin = ((AbstractClientPlayer) target).getLocationSkin();
+                            RenderUtils.drawFace(skin, 165, 370, 20, 20);
+                        }
+                        case "Model": {
+                            GuiInventory.drawEntityOnScreen(175, 397, 24, 0, 0, target);
+                        }
+                    }
                 }
 
                 RenderUtils.drawBorderedRoundedRect(155, 400, (float) (20 * 6.9), 5, 5, 0.5f, new Color(40, 40, 40, 255).getRGB(), new Color(45, 45, 45, 255).getRGB());
@@ -62,7 +71,7 @@ public class TargetHUD extends Util {
                 float x = (event.getSr().getScaledWidth() >> 1) - 5;
                 float y = (event.getSr().getScaledHeight() >> 1) + 120;
                 if (target != null) {
-                    if (mc.thePlayer != null && target instanceof EntityPlayer) {
+                    if (mc.thePlayer != null) {
                         NetworkPlayerInfo networkPlayerInfo = mc.getNetHandler().getPlayerInfo(target.getUniqueID());
                         final String ping = "Ping: " + (Objects.isNull(networkPlayerInfo) ? "0ms" : networkPlayerInfo.getResponseTime() + "ms");
                         final String playerName = "Name: " + net.minecraft.util.StringUtils.stripControlCodes(target.getName());

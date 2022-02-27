@@ -2,6 +2,7 @@ package me.kansio.client.modules.impl.visuals;
 
 import com.google.common.eventbus.Subscribe;
 import me.kansio.client.event.impl.PacketEvent;
+import me.kansio.client.event.impl.TickEvent;
 import me.kansio.client.event.impl.UpdateEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
@@ -21,7 +22,7 @@ public class TimeChanger extends Module {
     private NumberValue<Integer> speed = new NumberValue("Speed", this, 1, 0, 10, 1, mode, "Spin");
 
     @Subscribe
-    public void onUpdate(UpdateEvent event) {
+    public void onTick(TickEvent event) {
         switch (mode.getValue()){
             case "Day":
                 mc.theWorld.setWorldTime(1000);
@@ -36,18 +37,18 @@ public class TimeChanger extends Module {
                 mc.theWorld.setWorldTime(18000);
                 break;
             case "Spin":
-                int i = (int) mc.theWorld.getWorldTime();
+                long i = mc.theWorld.getWorldTime();
                 if (i < 6050) {
-                    i *= (speed.getValue() / 2);
+                    i *= (speed.getValue() / 2F);
                 } else if (i < 12100) {
-                    i *= (speed.getValue() / 3);
+                    i *= (speed.getValue() / 3F);
                 } else {
-                    i *= (speed.getValue() / 5);
+                    i *= (speed.getValue() / 5F);
                 }
                 mc.theWorld.setWorldTime(i);
-                if (i > 24100) {
-                    mc.theWorld.setWorldTime(100);
-                }
+//                if (i > 24100) {
+//                    mc.theWorld.setWorldTime(100);
+//                }
                 break;
             case "Autism":
                 int d = (int) mc.theWorld.getWorldTime();

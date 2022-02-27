@@ -112,7 +112,7 @@ public class ConfigManager {
         return null;
     }
 
-    public void retry()  {
+    public void retry() {
         listConfigs();
     }
 
@@ -251,12 +251,7 @@ public class ConfigManager {
             try {
                 Files.delete(f.toPath());
             } catch (IOException e) {
-                NotificationManager.getNotificationManager().show(
-                        new Notification(Notification.NotificationType.ERROR,
-                                "Error",
-                                "Couldn't delete the config from disk.",
-                                5
-                        ));
+                NotificationManager.getNotificationManager().show(new Notification(Notification.NotificationType.ERROR, "Error", "Couldn't delete the config from disk.", 5));
                 e.printStackTrace();
             }
         }
