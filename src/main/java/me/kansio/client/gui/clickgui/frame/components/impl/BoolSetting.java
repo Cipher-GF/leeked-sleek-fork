@@ -8,6 +8,7 @@ import me.kansio.client.gui.clickgui.utils.render.animation.easings.Animate;
 import me.kansio.client.gui.clickgui.utils.render.animation.easings.Easing;
 import me.kansio.client.modules.impl.visuals.ClickGUI;
 import me.kansio.client.utils.font.Fonts;
+import me.kansio.client.utils.font.MCFontRenderer;
 import me.kansio.client.value.Value;
 import me.kansio.client.value.value.BooleanValue;
 import me.kansio.client.utils.render.RenderUtils;
@@ -37,8 +38,9 @@ public class BoolSetting extends Component implements Values {
     public void drawScreen(int mouseX, int mouseY) {
         animation.update();
         FontRenderer fontRenderer = Minecraft.getMinecraft().fontRendererObj;
+        MCFontRenderer font = Fonts.clickGuiFont();
         if (((ClickGUI) Client.getInstance().getModuleManager().getModuleByName("Click GUI")).fonttoggle.getValue()) {
-            Fonts.Verdana.drawStringWithShadow("§7" + getSetting().getName(), x + 5 - 0.3, (y + (getOffset() / 2F - (12 / 2F))) + 1.2, -1);
+            font.drawStringWithShadow("§7" + getSetting().getName(), x + 5 - 0.3, (y + (getOffset() / 2F - (12 / 2F))) + 1.2, -1);
         } else {
             fontRenderer.drawString("§7" + getSetting().getName(), x + 5, y + (getOffset() / 2F - (fontRenderer.FONT_HEIGHT / 2F)), -1, true);
 

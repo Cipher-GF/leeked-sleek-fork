@@ -42,7 +42,12 @@ public class TargetHUD extends Util {
                 RenderUtils.drawBorderedRoundedRect(150, 350, 150, 60, 10, 2, 2, new Color(target.hurtTime * 6, 0, 0, 100).getRGB());
 
 //                mc.fontRendererObj.drawStringWithShadow(target.getName(), 210, 370, -1);
-                Fonts.Verdana.drawCenteredString("Name: " + target.getName(), 220, 370, -1);
+                NetworkPlayerInfo networkPlayerInfo = mc.getNetHandler().getPlayerInfo(target.getUniqueID());
+                Fonts.Verdana.drawCenteredString("Name: " + target.getName(), 220, 361, -1);
+                final String ping = "Ping: " + (Objects.isNull(networkPlayerInfo) ? "0ms" : networkPlayerInfo.getResponseTime() + "ms");
+                Fonts.Verdana.drawCenteredString("Distance: " , 217, 371, -1);
+                Fonts.Verdana.drawCenteredString(""+MathUtils.round(mc.thePlayer.getDistanceToEntity(target), 2), 250, 371, -1);
+                Fonts.Verdana.drawCenteredString(ping, 217, 381, -1);
 
                 if (target instanceof EntityPlayer) {
                     ResourceLocation skin = ((AbstractClientPlayer)target).getLocationSkin();

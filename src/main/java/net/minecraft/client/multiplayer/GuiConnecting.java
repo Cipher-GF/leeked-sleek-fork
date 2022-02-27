@@ -38,11 +38,12 @@ public class GuiConnecting extends GuiScreen {
         this.mc = mcIn;
         this.previousGuiScreen = p_i1181_1_;
         lastServer = p_i1181_3_;
-        System.out.println("p_i1181_3_: "+p_i1181_3_);
-        System.out.println("Connecting to " + p_i1181_3_.serverIP + " NAME: " + p_i1181_3_.serverName);
-        ServerAddress serveraddress = ServerAddress.func_78860_a(lastServer.serverIP);
+//        System.out.println("p_i1181_3_: "+p_i1181_3_);
+//        System.out.println("Connecting to " + p_i1181_3_.serverIP + ":" + p_i1181_3_);
+        ServerAddress serveraddress = ServerAddress.func_78860_a(p_i1181_3_.serverIP);
         mcIn.loadWorld((WorldClient) null);
         mcIn.setServerData(p_i1181_3_);
+        System.out.println(serveraddress.getIP() + ":" + serveraddress.getPort());
         this.connect(serveraddress.getIP(), serveraddress.getPort());
     }
 

@@ -83,8 +83,13 @@ public class FrameModule implements Values {
         MCFontRenderer font = Fonts.clickGuiFont();
         moduleAnimation.setReversed(!module.isToggled());
         moduleAnimation.setSpeed(((ClickGUI)Client.getInstance().getModuleManager().getModuleByName("Click GUI")).animspeed.getValue() * 10).update();
+        int colorUsed;
+        if (((ClickGUI)Client.getInstance().getModuleManager().getModuleByName("Click GUI")).rainbow.getValue()) {
+            colorUsed = ColorUtils.getIntGradientOffset(new Color(255, 60, 234), new Color(27, 179, 255), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + 1 * 9.95);
+        } else {
+            colorUsed = new Color(139, 139, 139, 76).getRGB();
+        }
 
-        int colorUsed = new Color(255, 255, 255, 125).darker().getRGB();
 
         if(RenderUtils.hover(x, y, mouseX, mouseY, defaultWidth, moduleHeight)) {
             GuiScreen.drawRect(x,y, x + defaultWidth, y + moduleHeight, new Color(ColorPalette.LIGHT_BLUE.getColor().getRed(), ColorPalette.LIGHT_BLUE.getColor().getGreen(), ColorPalette.LIGHT_BLUE.getColor().getBlue(), 120).getRGB());
@@ -95,7 +100,7 @@ public class FrameModule implements Values {
         }
         try {
             if (((ClickGUI)Client.getInstance().getModuleManager().getModuleByName("Click GUI")).fonttoggle.getValue()) {
-                font.drawStringWithShadow(listening ? "Press new keybind" : module.getName(), x + 3, y + (moduleHeight / 2F - (Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2F))+1.2, 0xFFFFFFFF);
+                font.drawString(listening ? "Press new keybind" : module.getName(), x + 3, y + (moduleHeight / 2F - (Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2F))+1.2, 0xFFFFFFFF);
             } else {
                 Minecraft.getMinecraft().fontRendererObj.drawString(listening ? "Press new keybind" : module.getName(), x + 3, y + (moduleHeight / 2F - (Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2F)), 0xFFFFFFFF, true);
             }

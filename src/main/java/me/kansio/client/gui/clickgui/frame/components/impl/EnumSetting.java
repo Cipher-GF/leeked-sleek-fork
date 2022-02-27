@@ -6,6 +6,7 @@ import me.kansio.client.gui.clickgui.frame.components.Component;
 import me.kansio.client.gui.clickgui.frame.components.FrameModule;
 import me.kansio.client.modules.impl.visuals.ClickGUI;
 import me.kansio.client.utils.font.Fonts;
+import me.kansio.client.utils.font.MCFontRenderer;
 import me.kansio.client.value.Value;
 import me.kansio.client.value.value.ModeValue;
 import me.kansio.client.utils.render.RenderUtils;
@@ -24,9 +25,10 @@ public class EnumSetting extends Component implements Values {
 
     @Override
     public void drawScreen(int mouseX, int mouseY) {
+        MCFontRenderer font = Fonts.clickGuiFont();
         if (((ClickGUI) Client.getInstance().getModuleManager().getModuleByName("Click GUI")).fonttoggle.getValue()) {
-            Fonts.Verdana.drawStringWithShadow("§7" + getSetting().getName(), x + 5, y + (getOffset() / 2F - (9 / 2F)), -1);
-            Fonts.Verdana.drawStringWithShadow(((ModeValue) getSetting()).getValue().toUpperCase(), x + defaultWidth - Fonts.Verdana.getStringWidth(((ModeValue) getSetting()).getValue().toUpperCase()) - 5, (y + (getOffset() / 2F - (12 / 2F))) + 1.2, -1);
+            font.drawStringWithShadow("§7" + getSetting().getName(), x + 5, y + (getOffset() / 2F - (9 / 2F)), -1);
+            font.drawStringWithShadow(((ModeValue) getSetting()).getValue().toUpperCase(), x + defaultWidth - Fonts.Verdana.getStringWidth(((ModeValue) getSetting()).getValue().toUpperCase()) - 5, (y + (getOffset() / 2F - (12 / 2F))) + 1.2, -1);
         } else {
             FontRenderer fontRenderer = Minecraft.getMinecraft().fontRendererObj;
             fontRenderer.drawString("§7" + getSetting().getName(), x + 5, y + (getOffset() / 2F - (fontRenderer.FONT_HEIGHT / 2F)), -1, true);

@@ -1,9 +1,14 @@
 package me.kansio.client.gui.clickgui.frame.components.impl;
 
+import me.kansio.client.Client;
 import me.kansio.client.gui.clickgui.frame.Values;
 import me.kansio.client.gui.clickgui.frame.components.Component;
 import me.kansio.client.gui.clickgui.frame.components.FrameModule;
+import me.kansio.client.modules.impl.visuals.ClickGUI;
+import me.kansio.client.utils.font.Fonts;
+import me.kansio.client.utils.font.MCFontRenderer;
 import me.kansio.client.value.Value;
+import me.kansio.client.value.value.NumberValue;
 import me.kansio.client.value.value.StringValue;
 import me.kansio.client.utils.render.RenderUtils;
 import net.minecraft.client.Minecraft;
@@ -34,8 +39,13 @@ public class StringSetting extends Component implements Values {
         StringValue slide = (StringValue) getSetting();
 
         FontRenderer fontRenderer = Minecraft.getMinecraft().fontRendererObj;
+        MCFontRenderer font = Fonts.clickGuiFont();
+        if (((ClickGUI) Client.getInstance().getModuleManager().getModuleByName("Click GUI")).fonttoggle.getValue()) {
+            font.drawString("§7" + slide.getName() + ": §f" + slide.getValue(), x + 5, y + (getOffset() / 2F - (fontRenderer.FONT_HEIGHT / 2F)), -1, true);
 
-        fontRenderer.drawString("§7" + slide.getName() + ": §f" + slide.getValue(), x + 5, y + (getOffset() / 2F - (fontRenderer.FONT_HEIGHT / 2F)), stringColor, true);
+        } else {
+            fontRenderer.drawString("§7" + slide.getName() + ": §f" + slide.getValue(), x + 5, y + (getOffset() / 2F - (fontRenderer.FONT_HEIGHT / 2F)), -1, true);
+        }
 
         if (typing) {
             Gui.drawRect(x + 125, y + (getOffset() / 2F - (fontRenderer.FONT_HEIGHT / 2F)) + 9, defaultWidth - 8, y + (getOffset() / 2F - (fontRenderer.FONT_HEIGHT / 2F)) + 7 + 4, -1);
