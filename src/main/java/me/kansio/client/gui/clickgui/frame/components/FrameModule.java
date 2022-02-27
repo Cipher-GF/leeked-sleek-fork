@@ -12,6 +12,7 @@ import me.kansio.client.gui.clickgui.utils.render.animation.easings.Easing;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.modules.impl.visuals.ClickGUI;
 import me.kansio.client.modules.impl.visuals.HUD;
+import me.kansio.client.utils.font.MCFontRenderer;
 import me.kansio.client.utils.render.ColorPalette;
 import me.kansio.client.value.value.BooleanValue;
 import me.kansio.client.value.value.ModeValue;
@@ -79,10 +80,11 @@ public class FrameModule implements Values {
     }
 
     public void drawScreen(int mouseX, int mouseY) {
+        MCFontRenderer font = Fonts.clickGuiFont();
         moduleAnimation.setReversed(!module.isToggled());
-        moduleAnimation.setSpeed(1000).update();
+        moduleAnimation.setSpeed(((ClickGUI)Client.getInstance().getModuleManager().getModuleByName("Click GUI")).animspeed.getValue() * 10).update();
 
-        int colorUsed = ColorPalette.WHITE.getColor().darker().getRGB();
+        int colorUsed = new Color(255, 255, 255, 125).darker().getRGB();
 
         if(RenderUtils.hover(x, y, mouseX, mouseY, defaultWidth, moduleHeight)) {
             GuiScreen.drawRect(x,y, x + defaultWidth, y + moduleHeight, new Color(ColorPalette.LIGHT_BLUE.getColor().getRed(), ColorPalette.LIGHT_BLUE.getColor().getGreen(), ColorPalette.LIGHT_BLUE.getColor().getBlue(), 120).getRGB());
@@ -93,7 +95,7 @@ public class FrameModule implements Values {
         }
         try {
             if (((ClickGUI)Client.getInstance().getModuleManager().getModuleByName("Click GUI")).fonttoggle.getValue()) {
-                Fonts.Verdana.drawStringWithShadow(listening ? "Press new keybind" : module.getName(), x + 3, y + (moduleHeight / 2F - (Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2F))+1.2, 0xFFFFFFFF);
+                font.drawStringWithShadow(listening ? "Press new keybind" : module.getName(), x + 3, y + (moduleHeight / 2F - (Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2F))+1.2, 0xFFFFFFFF);
             } else {
                 Minecraft.getMinecraft().fontRendererObj.drawString(listening ? "Press new keybind" : module.getName(), x + 3, y + (moduleHeight / 2F - (Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2F)), 0xFFFFFFFF, true);
             }
@@ -103,7 +105,7 @@ public class FrameModule implements Values {
         }
         if (!module.getValues().isEmpty()) {
             if (((ClickGUI)Client.getInstance().getModuleManager().getModuleByName("Click GUI")).fonttoggle.getValue()) {
-                Fonts.Verdana.drawString(opened ? "-" : "+", (x + owner.getWidth()) - 9, y + (moduleHeight / 2F - (Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2F))+1.2,  0xFFFFFFFF, true);
+                font.drawString(opened ? "-" : "+", (x + owner.getWidth()) - 9, y + (moduleHeight / 2F - (Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2F))+1.2,  0xFFFFFFFF, true);
             } else {
                 Minecraft.getMinecraft().fontRendererObj.drawString(opened ? "-" : "+", (x + owner.getWidth()) - 9, y + (moduleHeight / 2F - (Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2F)),  0xFFFFFFFF, true);
 

@@ -7,6 +7,7 @@ import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.value.value.ModeValue;
+import me.kansio.client.value.value.NumberValue;
 import net.minecraft.network.play.server.S03PacketTimeUpdate;
 
 @ModuleData(
@@ -16,11 +17,12 @@ import net.minecraft.network.play.server.S03PacketTimeUpdate;
 )
 public class TimeChanger extends Module {
 
-    private ModeValue time = new ModeValue("Mode", this, "Day", "Noon", "Night", "Mid Night");
+    private ModeValue mode = new ModeValue("Mode", this, "Day", "Noon", "Night", "Mid Night", "Spin", "Autism");
+    private NumberValue<Integer> speed = new NumberValue("Speed", this, 1, 0, 10, 1, mode, "Spin");
 
     @Subscribe
     public void onUpdate(UpdateEvent event) {
-        switch (time.getValue()){
+        switch (mode.getValue()){
             case "Day":
                 mc.theWorld.setWorldTime(1000);
                 break;
@@ -33,6 +35,28 @@ public class TimeChanger extends Module {
             case "Mid Night":
                 mc.theWorld.setWorldTime(18000);
                 break;
+            case "Spin":
+                int i = (int) mc.theWorld.getWorldTime();
+                if (i < 6050) {
+                    i *= (speed.getValue() / 2);
+                } else if (i < 12100) {
+                    i *= (speed.getValue() / 3);
+                } else {
+                    i *= (speed.getValue() / 5);
+                }
+                mc.theWorld.setWorldTime(i);
+                if (i > 24100) {
+                    mc.theWorld.setWorldTime(100);
+                }
+                break;
+            case "Autism":
+                int d = (int) mc.theWorld.getWorldTime();
+                d *= 5;
+                System.out.println(d);
+                mc.theWorld.setWorldTime(d);
+                if (d > 24000) {
+                    mc.theWorld.setWorldTime(0);
+                }
         }
     }
 

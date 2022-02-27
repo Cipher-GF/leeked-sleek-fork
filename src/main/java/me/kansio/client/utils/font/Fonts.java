@@ -1,12 +1,16 @@
 package me.kansio.client.utils.font;
 
+import me.kansio.client.Client;
+import me.kansio.client.modules.impl.visuals.ClickGUI;
 import me.kansio.client.utils.Util;
-import net.minecraft.client.Minecraft;
 import net.minecraft.util.ResourceLocation;
 
 import java.awt.*;
+import java.util.Objects;
 
 public class Fonts extends Util {
+
+    // Arial Start
     public static final MCFontRenderer Arial50 = new MCFontRenderer(new Font("Arial", Font.BOLD,50),true,true);
     public static final MCFontRenderer Arial45 = new MCFontRenderer(new Font("Arial", Font.BOLD,45),true,true);
     public static final MCFontRenderer Arial40 = new MCFontRenderer(new Font("Arial", Font.BOLD,40),true,true);
@@ -17,11 +21,22 @@ public class Fonts extends Util {
     public static final MCFontRenderer Arial20Plain = new MCFontRenderer(new Font("Arial", Font.PLAIN,30),true,true);
     public static final MCFontRenderer Arial17Plain = new MCFontRenderer(new Font("Arial", Font.PLAIN,17),true,true);
     public static final MCFontRenderer Arial15 = new MCFontRenderer(new Font("Arial", Font.BOLD,30),true,true);
-    public static final MCFontRenderer Verdana = new MCFontRenderer(new Font("Verdana", Font.PLAIN,18),true,true);
-    public static final MCFontRenderer Verdana12 = new MCFontRenderer(new Font("Verdana", Font.PLAIN,12),true,true);
     public static final MCFontRenderer Arial12 = new MCFontRenderer(new Font("Arial", Font.PLAIN,12),true,true);
     public static final MCFontRenderer Arial8 = new MCFontRenderer(new Font("Arial", Font.PLAIN,8),true,true);
-    public static final MCFontRenderer HUD = new MCFontRenderer(new Font("Arial", Font.PLAIN,18),true,true);
+    // Arial End
+
+    // Verdana Start
+    public static final MCFontRenderer Verdana = new MCFontRenderer(new Font("Verdana", Font.PLAIN,18),true,true);
+    public static final MCFontRenderer Verdana12 = new MCFontRenderer(new Font("Verdana", Font.PLAIN,12),true,true);
+    // Verdana End
+
+    // Courier New Start
+    public static final MCFontRenderer CourierNew30 = new MCFontRenderer(new Font("Courier New", Font.BOLD,30),true,true);
+    // Courier New Start
+
+
+    public static MCFontRenderer HUD = clickGuiFont();
+
 
     public static final MCFontRenderer SEGOE18 = new MCFontRenderer(new Font("Tahoma", Font.PLAIN,18),true,true);
     public static final MCFontRenderer SEGOE12 = new MCFontRenderer(new Font("Tahoma", Font.PLAIN,12),true,true);
@@ -34,6 +49,7 @@ public class Fonts extends Util {
     public static final MCFontRenderer SFRegular = new MCFontRenderer(fontFromTTF(new ResourceLocation("sleek/fonts/sfregular.ttf"),18, 0), true, true);
 
 
+
     private static Font fontFromTTF(ResourceLocation fontLocation, float fontSize, int fontType) {
         Font output = null;
         try {
@@ -44,4 +60,24 @@ public class Fonts extends Util {
         }
         return output;
     }
+
+    public static final MCFontRenderer clickGuiVerdana = new MCFontRenderer(new Font("Verdana", Font.PLAIN,18),true,true);
+    public static final MCFontRenderer clickGuiLucidaSans = new MCFontRenderer(new Font("Lucida Sans", Font.PLAIN,18),true,true);
+    public static final MCFontRenderer clickGuiArial = new MCFontRenderer(new Font("Arial", Font.PLAIN,18),true,true);
+    public static MCFontRenderer clickGuiFont() {
+        try {
+            if (Objects.equals(((ClickGUI) Client.getInstance().getModuleManager().getModuleByName("Click GUI")).fontmode.getValue(), "Arial")) {
+                return clickGuiArial;
+            } else if (Objects.equals(((ClickGUI) Client.getInstance().getModuleManager().getModuleByName("Click GUI")).fontmode.getValue(), "Verdana")) {
+                return clickGuiVerdana;
+            } else if (Objects.equals(((ClickGUI) Client.getInstance().getModuleManager().getModuleByName("Click GUI")).fontmode.getValue(), "Lucida Sans")) {
+                return clickGuiLucidaSans;
+            }
+            return clickGuiVerdana;
+        } catch (Exception e) {
+            return clickGuiVerdana;
+        }
+
+    }
+
 }

@@ -6,6 +6,7 @@ import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.value.value.BooleanValue;
 import me.kansio.client.value.value.ModeValue;
+import me.kansio.client.value.value.NumberValue;
 import me.kansio.client.value.value.StringValue;
 import org.lwjgl.input.Keyboard;
 
@@ -17,15 +18,20 @@ import org.lwjgl.input.Keyboard;
 )
 public class ClickGUI extends Module {
 
-    public BooleanValue hudcolor = new BooleanValue("Hud Colour", this, false);
-    public BooleanValue fonttoggle = new BooleanValue("Font", this, false);
-    private BooleanValue box = new BooleanValue("Box", this, true);
+    public BooleanValue fonttoggle = new BooleanValue("Font", this, true);
+    public ModeValue fontmode = new ModeValue("Mode", this, fonttoggle, "Verdana", "Arial", "Lucida Sans");
+    public NumberValue<Integer> animspeed = new NumberValue("Animation Speed", this, 50, 1, 100, 1);
 
 
     @Override
     public void onEnable() {
-        mc.displayGuiScreen(new me.kansio.client.gui.clickgui.frame.ClickGUI());
-        toggle();
+        try {
+            mc.displayGuiScreen(new me.kansio.client.gui.clickgui.frame.ClickGUI());
+            toggle();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
 }

@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 import lombok.Getter;
 import lombok.Setter;
 import me.kansio.client.Client;
+import me.kansio.client.gui.clickgui.utils.render.animation.easings.Animate;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.visuals.ClickGUI;
@@ -23,6 +24,7 @@ import java.util.List;
 public abstract class Module {
 
     protected static final Minecraft mc = Minecraft.getMinecraft();
+    public String fontmode;
 
     private String name;
     private boolean toggled;

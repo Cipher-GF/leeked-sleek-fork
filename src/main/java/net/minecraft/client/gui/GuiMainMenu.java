@@ -107,7 +107,7 @@ public class GuiMainMenu extends GuiScreen {
     }
     @Override
     public void drawScreen(int x, int y2, float z) {
-        final MCFontRenderer font = Fonts.Verdana;
+        MCFontRenderer font = Fonts.HUD;
         GlStateManager.enableAlpha();
         GlStateManager.disableCull();
         this.backgroundShader.useShader(width, height, x, y2, (System.currentTimeMillis() - initTime) / 1000f);
@@ -131,7 +131,7 @@ public class GuiMainMenu extends GuiScreen {
         Fonts.Arial40.drawCenteredString("§lLog", width / 2 - 13, height / 4 -3.5f, -1); // -1 = white
         Fonts.Arial40.drawCenteredString("in", width / 2 + 17, height / 4 - 2, ColorPalette.BLUE.getColor().getRGB());
         if (username.getText().isEmpty()) {
-            font.drawStringWithShadow("UID", width / 2F - 96, 106 + 60, -7829368);
+            Fonts.Verdana.drawStringWithShadow("UID", width / 2F - 96, 106 + 60, -7829368);
         }
         super.drawScreen(x, y2, z);
 

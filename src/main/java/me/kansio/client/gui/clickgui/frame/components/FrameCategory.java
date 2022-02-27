@@ -8,6 +8,8 @@ import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.impl.visuals.ClickGUI;
 import me.kansio.client.utils.chat.ChatUtil;
 import me.kansio.client.utils.font.Fonts;
+import me.kansio.client.utils.font.MCFontRenderer;
+import me.kansio.client.utils.render.ColorUtils;
 import me.kansio.client.utils.render.RenderUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
@@ -17,6 +19,8 @@ import org.lwjgl.opengl.GL11;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
+
+
 
 public class FrameCategory implements Values {
 
@@ -60,6 +64,7 @@ public class FrameCategory implements Values {
     }
 
     public void drawScreen(int mouseX, int mouseY) {
+        MCFontRenderer font = Fonts.clickGuiFont();
         AtomicInteger offCat = new AtomicInteger();
         this.modules.forEach(module -> offCat.addAndGet(module.getOffset()));
 
@@ -79,11 +84,12 @@ public class FrameCategory implements Values {
         // Drawing category base
         Gui.drawRect(getX(), getY(), getX() + width, getY() + getHeight(), mainColor);
         // Drawing category name section
-        Gui.drawRect(getX(), getY(), getX() + width, getY() + categoryNameHeight, headerColor);
+        Gui.drawRect(getX(), getY(), getX() + width, getY() + categoryNameHeight-3, headerColor);
+        Gui.drawRect(getX(), getY()+16, getX() + width, (getY() + categoryNameHeight)-2, ColorUtils.getIntGradientOffset(new Color(255, 60, 234), new Color(27, 179, 255), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + 9 / 9 * 9.95));
 
         // Outline category base
         {
-            Gui.drawRect(getX() - outlineWidth, getY(), getX(), getY() + getHeight(), darkerMainColor);
+            Gui.drawRect(getX() - outlineWidth, getY(), getX(), getY() + getHeight()-3, darkerMainColor);
             Gui.drawRect(getX() + width, getY(), getX() + width + outlineWidth, getY() + getHeight(), darkerMainColor);
             Gui.drawRect(getX() - outlineWidth, y + getHeight(), getX() + width + outlineWidth, getY() + getHeight() + outlineWidth, darkerMainColor);
         }
@@ -96,8 +102,7 @@ public class FrameCategory implements Values {
 
         // Drawing category name
         if (((ClickGUI)Client.getInstance().getModuleManager().getModuleByName("Click GUI")).fonttoggle.getValue()) {
-            Fonts.Verdana.drawStringWithShadow(category.getName(), x + 3, (int) (y + ((categoryNameHeight / 2F) - 12 / 2F)), -1);
-
+            font.drawStringWithShadow(category.getName(), x + 3, (int) (y + ((categoryNameHeight / 2F) - 12 / 2F)) +1, -1);
         } else {
             Minecraft.getMinecraft().fontRendererObj.drawStringWithShadow(category.getName(), x + 3, (int) (y + ((categoryNameHeight / 2F) - Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2F)), -1);
         }
@@ -110,13 +115,12 @@ public class FrameCategory implements Values {
         // Drawing modules
         int i = 0;
         for (FrameModule module : this.modules) {
-
             module.setX(x);
-            int thing = y + categoryNameHeight + i - offset;
+            int thing = (y + categoryNameHeight + i - offset);
             module.setY(thing);
             module.drawScreen(mouseX, mouseY);
-            // Outline modules
-            Gui.drawRect(x, thing, x + width, y + categoryNameHeight + i - offset + 0.75, new Color(64,64,64).getRGB());
+//            // Outline modules
+//            Gui.drawRect(x, thing, x + width, y + categoryNameHeight + i - offset + 0.75, new Color(64,64,64).getRGB());
             i += module.getOffset();
         }
 
@@ -125,7 +129,7 @@ public class FrameCategory implements Values {
     }
 
     public void mouseClicked(int mouseX, int mouseY, int mouseButton) {
-        // I really need to explain?
+        // I really need to explain? yes.
         for (FrameModule module : this.modules) {
             if (module.mouseClicked(mouseX, mouseY, mouseButton)) {
                 setDrag(false);

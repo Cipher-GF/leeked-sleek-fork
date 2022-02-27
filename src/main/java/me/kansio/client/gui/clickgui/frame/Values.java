@@ -19,7 +19,7 @@ public interface Values {
     int mainColor = new Color(0,0,0, 130).getRGB();
     int darkerMainColor = new Color(32, 32, 32).getRGB();
     int darkerMainColor2 = new Color(64, 64, 64).getRGB();
-    int headerColor = ColorPalette.LIGHT_BLUE.getColor().getRGB();
+    int headerColor = new Color(64, 64, 64, 100).getRGB();
 
     int outlineWidth = 0;
     int categoryNameHeight = 20;
