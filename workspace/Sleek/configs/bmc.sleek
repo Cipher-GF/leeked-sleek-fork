@@ -2,14 +2,15 @@
   "data": {
     "author": "qoft",
     "name": "bmc",
-    "lastUpdated": "Date 2022/2/19 Time 17:54:20"
+    "lastUpdated": "Date 2022/2/27 Time 2:2:21"
   },
   "modules": [
     {
       "name": "Time Changer",
       "keybind": 0,
       "enabled": true,
-      "Mode": "Mid Night"
+      "Mode": "Mid Night",
+      "Speed": "1"
     },
     {
       "name": "Auto Server",
@@ -17,31 +18,6 @@
       "enabled": true,
       "Server": "BlocksMC",
       "Kit": "Knight"
-    },
-    {
-      "name": "TP Aura",
-      "keybind": 0,
-      "enabled": false,
-      "Mode": "Smart",
-      "Target Priority": "None",
-      "Rotation Mode": "None",
-      "Swing Range": "3.0",
-      "Block Range": "3.0",
-      "CPS": "1.0",
-      "Randomize CPS": "3.0",
-      "Hit Chance": "100",
-      "Swing Mode": "Client",
-      "Attack Method": "Packet",
-      "Autoblock Mode": "None",
-      "GCD": "false",
-      "TargetHud": "false",
-      "TargetHud Mode": "Sleek",
-      "Players": "true",
-      "Friends": "true",
-      "Animals": "true",
-      "Monsters": "true",
-      "Invisibles": "true",
-      "Walls": "true"
     },
     {
       "name": "Fast Use",
@@ -106,8 +82,10 @@
       "Rotation Mode": "Default",
       "Swing Range": "3.7",
       "Block Range": "8.0",
-      "CPS": "10.0",
+      "CPS": "9.0",
       "Randomize CPS": "2.0",
+      "TP Hit": "false",
+      "Teleport Range": "25.0",
       "Hit Chance": "100",
       "Swing Mode": "Client",
       "Attack Method": "Packet",
@@ -229,10 +207,6 @@
       "Mode": "Vanilla",
       "Speed": "3.2",
       "AntiKick": "true",
-      "Boost": "true",
-      "Extra Boost": "true",
-      "Glide": "true",
-      "Boost Mode": "Normal",
       "Timer": "5.0",
       "Blink": "true",
       "View Bobbing": "false"
@@ -337,6 +311,11 @@
       "SoulSand": "false"
     },
     {
+      "name": "Jesus",
+      "keybind": 0,
+      "enabled": false
+    },
+    {
       "name": "Brightness",
       "keybind": 0,
       "enabled": true,
@@ -405,14 +384,15 @@
       "name": "Click GUI",
       "keybind": 54,
       "enabled": false,
-      "Hud Colour": "true",
       "Font": "true",
-      "Box": "true"
+      "Mode": "SF Regular",
+      "Animation Speed": "50",
+      "RGB OMG": "false"
     },
     {
       "name": "Step",
-      "keybind": 0,
-      "enabled": true,
+      "keybind": 44,
+      "enabled": false,
       "Mode": "Verus",
       "Cage Checks": "true",
       "Height": "1.5"
@@ -453,7 +433,7 @@
     {
       "name": "Cape",
       "keybind": 0,
-      "enabled": true,
+      "enabled": false,
       "Cape": "Sleek"
     },
     {
