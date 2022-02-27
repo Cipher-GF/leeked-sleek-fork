@@ -54,6 +54,7 @@ public class Fonts extends Util {
 
 
     private static Font fontFromTTF(ResourceLocation fontLocation, float fontSize, int fontType) {
+        System.out.println("Loading font: " + fontLocation.toString() + " with size: " + fontSize + " and type: " + fontType);
         Font output = null;
         try {
             output = Font.createFont(fontType, mc.getResourceManager().getResource(fontLocation).getInputStream());
@@ -66,14 +67,15 @@ public class Fonts extends Util {
 
     public static final MCFontRenderer clickGuiVerdana = new MCFontRenderer(new Font("Verdana", Font.PLAIN,18),true,true);
     public static final MCFontRenderer clickGuiLucidaSans = new MCFontRenderer(new Font("Lucida Sans", Font.PLAIN,18),true,true);
-    public static final MCFontRenderer clickGuiRBRegular = new MCFontRenderer(fontFromTTF(new ResourceLocation("sleek/fonts/rbreg.ttf"),18, 0), true, true);
+
+    public static final MCFontRenderer clickGuiRBRegular = new MCFontRenderer(fontFromTTF(new ResourceLocation("sleek/fonts/sfregular.ttf"),18, 0), true, true);
     public static MCFontRenderer clickGuiFont() {
         try {
              if (Objects.equals(((ClickGUI) Client.getInstance().getModuleManager().getModuleByName("Click GUI")).fontmode.getValue(), "Verdana")) {
                 return clickGuiVerdana;
             } else if (Objects.equals(((ClickGUI) Client.getInstance().getModuleManager().getModuleByName("Click GUI")).fontmode.getValue(), "Lucida Sans")) {
                 return clickGuiLucidaSans;
-            } else if (Objects.equals(((ClickGUI) Client.getInstance().getModuleManager().getModuleByName("Click GUI")).fontmode.getValue(), "Roobert")) {
+            } else if (Objects.equals(((ClickGUI) Client.getInstance().getModuleManager().getModuleByName("Click GUI")).fontmode.getValue(), "SF Regular")) {
                  return clickGuiRBRegular;
             }
             return clickGuiVerdana;

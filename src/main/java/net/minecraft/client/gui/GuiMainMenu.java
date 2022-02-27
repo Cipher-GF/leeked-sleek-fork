@@ -15,6 +15,7 @@ import me.kansio.client.utils.network.HttpUtil;
 import me.kansio.client.utils.render.ColorPalette;
 import negroidslayer.NegroidFarm;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.util.ResourceLocation;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 import me.kansio.client.protection.ProtectionUtil;
