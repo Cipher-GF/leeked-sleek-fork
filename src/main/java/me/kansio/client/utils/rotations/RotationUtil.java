@@ -1,7 +1,9 @@
 package me.kansio.client.utils.rotations;
 
+import me.kansio.client.utils.Util;
 import me.kansio.client.utils.player.Location;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3;
@@ -11,7 +13,7 @@ import javax.vecmath.Vector2f;
 /**
  * Created on 07/09/2020 Package me.rhys.lite.util
  */
-public class RotationUtil {
+public class RotationUtil extends Util {
 
     public static Location location, lastLocation;
     private static final Minecraft minecraft = Minecraft.getMinecraft();
@@ -76,5 +78,31 @@ public class RotationUtil {
         if (speed < -maxSpeed)
             speed = -maxSpeed;
         return (playerPitch + speed);
+    }
+
+    public static float[] getRotations(final double posX, final double posY, final double posZ) {
+        final EntityPlayerSP player = mc.thePlayer;
+        final double x = posX - player.posX;
+        final double y = posY - (player.posY + player.getEyeHeight());
+        final double z = posZ - player.posZ;
+        final double dist = MathHelper.sqrt_double(x * x + z * z);
+        final float yaw = (float) (Math.atan2(z, x) * 180.0 / 3.141592653589793) - 90.0f;
+        final float pitch = (float) (-(Math.atan2(y, dist) * 180.0 / 3.141592653589793));
+        return new float[]{yaw, pitch};
+    }
+
+    public static float[] getRotation(Entity a1) {
+        double v1 = a1.posX - mc.thePlayer.posX;
+        double v3 = a1.posY + (double) a1.getEyeHeight() * 0.9 - (mc.thePlayer.posY + (double) mc.thePlayer.getEyeHeight());
+        double v5 = a1.posZ - mc.thePlayer.posZ;
+
+        double v7 = MathHelper.ceiling_float_int((float) (v1 * v1 + v5 * v5));
+        float v9 = (float) (Math.atan2(v5, v1) * 180.0 / 3.141592653589793) - 90.0f;
+        float v10 = (float) (-(Math.atan2(v3, v7) * 180.0 / 3.141592653589793));
+        return new float[]{mc.thePlayer.rotationYaw + MathHelper.wrapAngleTo180_float(v9 - mc.thePlayer.rotationYaw), mc.thePlayer.rotationPitch + MathHelper.wrapAngleTo180_float(v10 - mc.thePlayer.rotationPitch)};
+    }
+
+    public static boolean isVisibleFOV(final Entity e, final float fov) {
+        return ((Math.abs(RotationUtil.getRotation(e)[0] - mc.thePlayer.rotationYaw) % 360.0f > 180.0f) ? (360.0f - Math.abs(RotationUtil.getRotation(e)[0] - mc.thePlayer.rotationYaw) % 360.0f) : (Math.abs(RotationUtil.getRotation(e)[0] - mc.thePlayer.rotationYaw) % 360.0f)) <= fov;
     }
 }

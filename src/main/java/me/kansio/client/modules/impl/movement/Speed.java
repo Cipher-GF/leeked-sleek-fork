@@ -47,7 +47,7 @@ public class Speed extends Module {
     private SpeedMode currentMode = modes.stream().anyMatch(speedMode -> speedMode.getName().equalsIgnoreCase(mode.getValue())) ? modes.stream().filter(speedMode -> speedMode.getName().equalsIgnoreCase(mode.getValue())).findAny().get() : null ;
 
     @Getter private final NumberValue<Double> speed = new NumberValue<>("Speed", this, 0.5, 0.0, 8.0, 0.1);
-    @Getter private final NumberValue<Float> timer = new NumberValue<>("Timer Speed", this, 1.0F, 1.0F, 2.5F, 0.1F, mode, "Watchdog");
+    @Getter private final NumberValue<Float> timer = new NumberValue<>("Timer Speed", this, 1.0F, 1.0F, 2.5F, 0.1F, mode, "Watchdog", "BlocksMC");
     @Getter private final BooleanValue forceFriction = new BooleanValue("Force Friction", this, true);
     @Getter private final ModeValue frictionMode = new ModeValue("Friction", this, forceFriction, "NCP", "NEW", "LEGIT", "SILENT");
     @Getter private final AtomicDouble hDist = new AtomicDouble();

@@ -45,7 +45,7 @@
     "keybindName": "NONE"
   },
   {
-    "name": "Auto Settings",
+    "name": "Transactions",
     "keybind": 0,
     "keybindName": "NONE"
   },
@@ -255,6 +255,11 @@
     "keybindName": "NONE"
   },
   {
+    "name": "Aimbot",
+    "keybind": 0,
+    "keybindName": "NONE"
+  },
+  {
     "name": "Phase",
     "keybind": 0,
     "keybindName": "NONE"
@@ -286,8 +291,8 @@
   },
   {
     "name": "Timer",
-    "keybind": 0,
-    "keybindName": "NONE"
+    "keybind": 34,
+    "keybindName": "G"
   },
   {
     "name": "Cape",

@@ -9,6 +9,7 @@ import me.kansio.client.utils.math.BPSUtil;
 import me.kansio.client.utils.network.UserUtil;
 import me.kansio.client.utils.render.ColorPalette;
 import me.kansio.client.utils.render.ColorUtils;
+import net.minecraft.client.Minecraft;
 import net.minecraft.util.EnumChatFormatting;
 
 import java.text.DecimalFormat;
@@ -22,7 +23,7 @@ public class Sleek extends InfoMode {
     public void onRenderOverlay(RenderOverlayEvent event) {
         HUD hud = getHud();
         double bps = BPSUtil.getBPS();
-        int fps = Integer.parseInt(mc.debug.split(",", 2)[0]);
+        int fps = Minecraft.getDebugFPS();
         String userinfo = "§7" + UserUtil.getBuildType(Integer.parseInt(Client.getInstance().getUid())) + " - §f" + Client.getInstance().getUid();
         String ping = "§7Ping: §f" + mc.getNetHandler().getPlayerInfo(mc.thePlayer.getUniqueID()).getResponseTime() + "ms";
         String fpsinfo = "§7FPS: §f" + fps;
