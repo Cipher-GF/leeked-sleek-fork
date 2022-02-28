@@ -67,7 +67,7 @@ public class Fonts extends Util {
 
     public static final MCFontRenderer clickGuiVerdana = new MCFontRenderer(new Font("Verdana", Font.PLAIN,18),true,true);
     public static final MCFontRenderer clickGuiLucidaSans = new MCFontRenderer(new Font("Lucida Sans", Font.PLAIN,18),true,true);
-
+    public static final MCFontRenderer RBRegular = new MCFontRenderer(fontFromTTF(new ResourceLocation("sleek/fonts/rbreg.ttf"),18, 0), true, true);
     public static final MCFontRenderer clickGuiRBRegular = new MCFontRenderer(fontFromTTF(new ResourceLocation("sleek/fonts/sfregular.ttf"),18, 0), true, true);
     public static MCFontRenderer clickGuiFont() {
         try {
@@ -77,7 +77,11 @@ public class Fonts extends Util {
                 return clickGuiLucidaSans;
             } else if (Objects.equals(((ClickGUI) Client.getInstance().getModuleManager().getModuleByName("Click GUI")).fontmode.getValue(), "SF Regular")) {
                  return clickGuiRBRegular;
-            }
+            } else if (Objects.equals(((ClickGUI) Client.getInstance().getModuleManager().getModuleByName("Click GUI")).fontmode.getValue(), "Roobert")) {
+                 return RBRegular;
+            } else if (Objects.equals(((ClickGUI) Client.getInstance().getModuleManager().getModuleByName("Click GUI")).fontmode.getValue(), "SF Regular")) {
+                 return clickGuiRBRegular;
+             }
             return clickGuiVerdana;
         } catch (Exception e) {
             return clickGuiVerdana;

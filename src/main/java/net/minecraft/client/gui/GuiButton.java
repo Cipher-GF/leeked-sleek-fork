@@ -2,6 +2,9 @@ package net.minecraft.client.gui;
 
 import me.kansio.client.Client;
 import me.kansio.client.gui.MainMenu;
+import me.kansio.client.gui.clickgui.utils.render.animation.easings.Animate;
+import me.kansio.client.gui.clickgui.utils.render.animation.easings.Easing;
+import me.kansio.client.modules.impl.visuals.ClickGUI;
 import me.kansio.client.utils.font.Fonts;
 import me.kansio.client.utils.font.MCFontRenderer;
 import me.kansio.client.utils.render.ColorPalette;
@@ -20,6 +23,7 @@ import java.util.Objects;
 
 public class GuiButton extends Gui {
     protected static final ResourceLocation buttonTextures = new ResourceLocation("textures/gui/widgets.png");
+    private final Animate moduleAnimation;
 
     /**
      * Button width in pixels
@@ -58,12 +62,17 @@ public class GuiButton extends Gui {
     public boolean visible;
     protected boolean hovered;
 
+
+
+
 //    public GuiButton(int buttonId, int x, int y, String buttonText)
 //    {
 //        this(buttonId, x, y, 203, 20, buttonText);
 //    }
 
     public GuiButton(int buttonId, int x, int y, int widthIn, int heightIn, String buttonText) {
+        this.moduleAnimation = new Animate();
+        moduleAnimation.setMin(0).setMax(100).setReversed(!this.hovered).setEase(Easing.QUAD_IN_OUT);
         this.width = widthIn;
         this.height = heightIn;
         this.enabled = true;
@@ -95,6 +104,8 @@ public class GuiButton extends Gui {
      */
     public void drawButton(Minecraft mc, int mouseX, int mouseY) {
         if (this.visible) {
+            moduleAnimation.setReversed(!this.hovered);
+            moduleAnimation.setSpeed(180).update();
             final MCFontRenderer font = Fonts.Verdana;
             FontRenderer fontRenderer = mc.fontRendererObj;
             mc.getTextureManager().bindTexture(buttonTextures);
@@ -105,17 +116,13 @@ public class GuiButton extends Gui {
             GlStateManager.blendFunc(770, 771);
             float boxWidth = this.xPosition + this.width / 2F - 99.8f;
             float stringLen = fontRenderer.getStringWidth(this.displayString);
-
-            if (mc.currentScreen instanceof MainMenu) {
-                if (this.hovered) {
+            if (moduleAnimation.getValue() > 100) {
+                System.out.print((int) moduleAnimation.getValue() + "\n");
+                moduleAnimation.setSpeed(100).update();
+            }
+            if (this.hovered) {
 //                    RenderUtil.drawBottemRoundedRect(this.xPosition + this.width / 2F - 99.8f, this.yPosition, 300 - this.width / 2F, 20, 10, 0x80000000);
-                    RenderUtil.drawRect(this.xPosition + (this.width / 3f), this.yPosition + this.height - 1, this.xPosition + (this.width / 3f) + 4, 1, ColorUtils.getIntGradientOffset(new Color(255, 60, 234), new Color(27, 179, 255), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + 9F / mc.fontRendererObj.FONT_HEIGHT * 9.95));
-                } else {
-
-                }
-            } else {
-//                RenderUtil.drawBottemRoundedRect(this.xPosition + this.width / 2F - 99.8f, this.yPosition, 300 - this.width / 2F, 20, 10, 0x80000000);
-                RenderUtil.drawRect(boxWidth + 25, this.yPosition + this.height - 1, 250 - this.width / 2F, 1, ColorUtils.getIntGradientOffset(new Color(255, 60, 234), new Color(27, 179, 255), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + 9F / mc.fontRendererObj.FONT_HEIGHT * 9.95));
+                RenderUtil.drawRect(this.xPosition + (this.width / 3f) - 15, this.yPosition + this.height - 1, (int) moduleAnimation.getValue(), 1, ColorUtils.getIntGradientOffset(new Color(255, 60, 234), new Color(27, 179, 255), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + 9F / mc.fontRendererObj.FONT_HEIGHT * 9.95));
             }
             this.mouseDragged(mc, mouseX, mouseY);
             int j = 14737632;

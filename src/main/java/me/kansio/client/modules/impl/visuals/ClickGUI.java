@@ -19,7 +19,7 @@ import org.lwjgl.input.Keyboard;
 public class ClickGUI extends Module {
 
     public BooleanValue fonttoggle = new BooleanValue("Font", this, true);
-    public ModeValue fontmode = new ModeValue("Mode", this, fonttoggle, "SF Regular", "Lucida Sans", "Verdana");
+    public ModeValue fontmode = new ModeValue("Mode", this, fonttoggle, "SF Regular", "Lucida Sans", "Verdana", "Roobert");
     public NumberValue<Integer> animspeed = new NumberValue("Animation Speed", this, 50, 1, 100, 1);
     public BooleanValue rainbow = new BooleanValue("RGB OMG", this, false);
 
