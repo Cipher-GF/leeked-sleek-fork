@@ -26,6 +26,7 @@ import java.util.Comparator
 @Getter
 @ModuleData(name = "Flight", category = ModuleCategory.MOVEMENT, description = "Allows you to fly")
 class Flight : Module() {
+
     private val modes = ReflectUtils.getReflects("${this.javaClass.`package`.name}.flight", FlightMode::class.java).map { it.newInstance() as FlightMode }.sortedBy { it.name }
     val currentMode: FlightMode get() = modes.find { mode.equals(it.name) } ?: throw NullPointerException() // this should not happen
     private val mode = ModeValue(
