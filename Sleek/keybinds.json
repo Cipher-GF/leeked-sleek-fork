@@ -1,61 +1,6 @@
 [
   {
-    "name": "Inventory Manager",
-    "keybind": 0,
-    "keybindName": "NONE"
-  },
-  {
-    "name": "Inventory Move",
-    "keybind": 0,
-    "keybindName": "NONE"
-  },
-  {
-    "name": "Staff Detector",
-    "keybind": 0,
-    "keybindName": "NONE"
-  },
-  {
-    "name": "Target Strafe",
-    "keybind": 0,
-    "keybindName": "NONE"
-  },
-  {
-    "name": "Hacker Detect",
-    "keybind": 0,
-    "keybindName": "NONE"
-  },
-  {
-    "name": "Chest Stealer",
-    "keybind": 0,
-    "keybindName": "NONE"
-  },
-  {
-    "name": "Custom Speed",
-    "keybind": 0,
-    "keybindName": "NONE"
-  },
-  {
-    "name": "Auto Register",
-    "keybind": 0,
-    "keybindName": "NONE"
-  },
-  {
     "name": "Time Changer",
-    "keybind": 0,
-    "keybindName": "NONE"
-  },
-  {
-    "name": "Transactions",
-    "keybind": 0,
-    "keybindName": "NONE"
-  },
-  {
-    "name": "Anti Spammer",
-    "keybind": 0,
-    "keybindName": "NONE"
-  },
-  {
-    "name": "Ban Checker",
     "keybind": 0,
     "keybindName": "NONE"
   },
@@ -65,127 +10,7 @@
     "keybindName": "NONE"
   },
   {
-    "name": "Item Physics",
-    "keybind": 0,
-    "keybindName": "NONE"
-  },
-  {
-    "name": "Chat Bypass",
-    "keybind": 0,
-    "keybindName": "NONE"
-  },
-  {
-    "name": "Auto Report",
-    "keybind": 0,
-    "keybindName": "NONE"
-  },
-  {
-    "name": "DeathEffect",
-    "keybind": 0,
-    "keybindName": "NONE"
-  },
-  {
-    "name": "ACDetector",
-    "keybind": 0,
-    "keybindName": "NONE"
-  },
-  {
-    "name": "FakePlayer",
-    "keybind": 0,
-    "keybindName": "NONE"
-  },
-  {
-    "name": "Brightness",
-    "keybind": 0,
-    "keybindName": "NONE"
-  },
-  {
-    "name": "Kill Insults",
-    "keybind": 0,
-    "keybindName": "NONE"
-  },
-  {
-    "name": "Enemy List",
-    "keybind": 0,
-    "keybindName": "NONE"
-  },
-  {
-    "name": "Long Jump",
-    "keybind": 46,
-    "keybindName": "C"
-  },
-  {
-    "name": "Image ESP",
-    "keybind": 0,
-    "keybindName": "NONE"
-  },
-  {
-    "name": "Animations",
-    "keybind": 0,
-    "keybindName": "NONE"
-  },
-  {
-    "name": "Penis ESP",
-    "keybind": 0,
-    "keybindName": "NONE"
-  },
-  {
-    "name": "NoRender",
-    "keybind": 0,
-    "keybindName": "NONE"
-  },
-  {
-    "name": "Hit Effect",
-    "keybind": 0,
-    "keybindName": "NONE"
-  },
-  {
-    "name": "No Rotate",
-    "keybind": 0,
-    "keybindName": "NONE"
-  },
-  {
-    "name": "Auto Tool",
-    "keybind": 0,
-    "keybindName": "NONE"
-  },
-  {
-    "name": "Nametags",
-    "keybind": 0,
-    "keybindName": "NONE"
-  },
-  {
     "name": "Fast Use",
-    "keybind": 0,
-    "keybindName": "NONE"
-  },
-  {
-    "name": "Fast Bow",
-    "keybind": 0,
-    "keybindName": "NONE"
-  },
-  {
-    "name": "Scaffold",
-    "keybind": 47,
-    "keybindName": "V"
-  },
-  {
-    "name": "Crasher",
-    "keybind": 0,
-    "keybindName": "NONE"
-  },
-  {
-    "name": "Anti Void",
-    "keybind": 0,
-    "keybindName": "NONE"
-  },
-  {
-    "name": "Click GUI",
-    "keybind": 54,
-    "keybindName": "RSHIFT"
-  },
-  {
-    "name": "Spammer",
     "keybind": 0,
     "keybindName": "NONE"
   },
@@ -195,22 +20,12 @@
     "keybindName": "NONE"
   },
   {
-    "name": "Breaker",
+    "name": "Image ESP",
     "keybind": 0,
     "keybindName": "NONE"
   },
   {
-    "name": "Criticals",
-    "keybind": 0,
-    "keybindName": "NONE"
-  },
-  {
-    "name": "Velocity",
-    "keybind": 0,
-    "keybindName": "NONE"
-  },
-  {
-    "name": "Playtime",
+    "name": "Nametags",
     "keybind": 0,
     "keybindName": "NONE"
   },
@@ -220,32 +35,12 @@
     "keybindName": "R"
   },
   {
-    "name": "AutoPot",
-    "keybind": 0,
-    "keybindName": "NONE"
-  },
-  {
-    "name": "Anti Bot",
-    "keybind": 0,
-    "keybindName": "NONE"
-  },
-  {
-    "name": "No Slow",
-    "keybind": 0,
-    "keybindName": "NONE"
-  },
-  {
-    "name": "Plugins",
-    "keybind": 0,
-    "keybindName": "NONE"
-  },
-  {
-    "name": "No Fall",
-    "keybind": 0,
-    "keybindName": "NONE"
-  },
-  {
     "name": "Radar",
+    "keybind": 0,
+    "keybindName": "NONE"
+  },
+  {
+    "name": "Breaker",
     "keybind": 0,
     "keybindName": "NONE"
   },
@@ -255,27 +50,57 @@
     "keybindName": "NONE"
   },
   {
-    "name": "Phase",
+    "name": "Velocity",
     "keybind": 0,
     "keybindName": "NONE"
   },
   {
-    "name": "Jesus",
+    "name": "Enemy List",
     "keybind": 0,
     "keybindName": "NONE"
   },
   {
-    "name": "Regen",
+    "name": "ACDetector",
     "keybind": 0,
     "keybindName": "NONE"
   },
   {
-    "name": "Speed",
-    "keybind": 34,
-    "keybindName": "G"
+    "name": "Playtime",
+    "keybind": 0,
+    "keybindName": "NONE"
   },
   {
-    "name": "Chams",
+    "name": "AutoPot",
+    "keybind": 0,
+    "keybindName": "NONE"
+  },
+  {
+    "name": "FakePlayer",
+    "keybind": 0,
+    "keybindName": "NONE"
+  },
+  {
+    "name": "Penis ESP",
+    "keybind": 0,
+    "keybindName": "NONE"
+  },
+  {
+    "name": "Auto Report",
+    "keybind": 0,
+    "keybindName": "NONE"
+  },
+  {
+    "name": "Target Strafe",
+    "keybind": 0,
+    "keybindName": "NONE"
+  },
+  {
+    "name": "Kill Insults",
+    "keybind": 0,
+    "keybindName": "NONE"
+  },
+  {
+    "name": "Anti Spammer",
     "keybind": 0,
     "keybindName": "NONE"
   },
@@ -285,14 +110,134 @@
     "keybindName": "F"
   },
   {
+    "name": "Staff Detector",
+    "keybind": 0,
+    "keybindName": "NONE"
+  },
+  {
+    "name": "Inventory Move",
+    "keybind": 0,
+    "keybindName": "NONE"
+  },
+  {
+    "name": "Auto Tool",
+    "keybind": 0,
+    "keybindName": "NONE"
+  },
+  {
+    "name": "IRC",
+    "keybind": 0,
+    "keybindName": "NONE"
+  },
+  {
+    "name": "DeathEffect",
+    "keybind": 0,
+    "keybindName": "NONE"
+  },
+  {
+    "name": "Ban Checker",
+    "keybind": 0,
+    "keybindName": "NONE"
+  },
+  {
+    "name": "Crasher",
+    "keybind": 0,
+    "keybindName": "NONE"
+  },
+  {
+    "name": "Phase",
+    "keybind": 0,
+    "keybindName": "NONE"
+  },
+  {
+    "name": "NoRender",
+    "keybind": 0,
+    "keybindName": "NONE"
+  },
+  {
     "name": "Timer",
     "keybind": 34,
     "keybindName": "G"
   },
   {
-    "name": "Cape",
+    "name": "Item Physics",
     "keybind": 0,
     "keybindName": "NONE"
+  },
+  {
+    "name": "MCF",
+    "keybind": 0,
+    "keybindName": "NONE"
+  },
+  {
+    "name": "No Fall",
+    "keybind": 0,
+    "keybindName": "NONE"
+  },
+  {
+    "name": "Anti Void",
+    "keybind": 0,
+    "keybindName": "NONE"
+  },
+  {
+    "name": "No Slow",
+    "keybind": 0,
+    "keybindName": "NONE"
+  },
+  {
+    "name": "Jesus",
+    "keybind": 0,
+    "keybindName": "NONE"
+  },
+  {
+    "name": "Brightness",
+    "keybind": 0,
+    "keybindName": "NONE"
+  },
+  {
+    "name": "Hacker Detect",
+    "keybind": 0,
+    "keybindName": "NONE"
+  },
+  {
+    "name": "Inventory Manager",
+    "keybind": 0,
+    "keybindName": "NONE"
+  },
+  {
+    "name": "Scaffold",
+    "keybind": 47,
+    "keybindName": "V"
+  },
+  {
+    "name": "Plugins",
+    "keybind": 0,
+    "keybindName": "NONE"
+  },
+  {
+    "name": "Anti Bot",
+    "keybind": 0,
+    "keybindName": "NONE"
+  },
+  {
+    "name": "Transactions",
+    "keybind": 0,
+    "keybindName": "NONE"
+  },
+  {
+    "name": "Fast Bow",
+    "keybind": 0,
+    "keybindName": "NONE"
+  },
+  {
+    "name": "Chat Bypass",
+    "keybind": 0,
+    "keybindName": "NONE"
+  },
+  {
+    "name": "Click GUI",
+    "keybind": 54,
+    "keybindName": "RSHIFT"
   },
   {
     "name": "Step",
@@ -300,7 +245,22 @@
     "keybindName": "NONE"
   },
   {
-    "name": "MCF",
+    "name": "Custom Speed",
+    "keybind": 0,
+    "keybindName": "NONE"
+  },
+  {
+    "name": "Hit Effect",
+    "keybind": 0,
+    "keybindName": "NONE"
+  },
+  {
+    "name": "Regen",
+    "keybind": 0,
+    "keybindName": "NONE"
+  },
+  {
+    "name": "Cape",
     "keybind": 0,
     "keybindName": "NONE"
   },
@@ -315,7 +275,47 @@
     "keybindName": "NONE"
   },
   {
-    "name": "IRC",
+    "name": "No Rotate",
+    "keybind": 0,
+    "keybindName": "NONE"
+  },
+  {
+    "name": "Long Jump",
+    "keybind": 46,
+    "keybindName": "C"
+  },
+  {
+    "name": "Spammer",
+    "keybind": 0,
+    "keybindName": "NONE"
+  },
+  {
+    "name": "Auto Register",
+    "keybind": 0,
+    "keybindName": "NONE"
+  },
+  {
+    "name": "Speed",
+    "keybind": 34,
+    "keybindName": "G"
+  },
+  {
+    "name": "Animations",
+    "keybind": 0,
+    "keybindName": "NONE"
+  },
+  {
+    "name": "Chams",
+    "keybind": 0,
+    "keybindName": "NONE"
+  },
+  {
+    "name": "Criticals",
+    "keybind": 0,
+    "keybindName": "NONE"
+  },
+  {
+    "name": "Chest Stealer",
     "keybind": 0,
     "keybindName": "NONE"
   }

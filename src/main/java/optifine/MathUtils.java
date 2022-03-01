@@ -34,4 +34,19 @@ public class MathUtils
         bd = bd.setScale(places, RoundingMode.HALF_UP);
         return bd.doubleValue();
     }
+
+    public static float clampValue(final float value, final float floor, final float cap) {
+        if (value < floor) {
+            return floor;
+        }
+        return Math.min(value, cap);
+    }
+
+    public static int clampValue(final int value, final int floor, final int cap) {
+        if (value < floor) {
+            return floor;
+        }
+        return Math.min(value, cap);
+    }
+
 }

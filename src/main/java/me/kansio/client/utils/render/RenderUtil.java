@@ -73,6 +73,20 @@ public class RenderUtil {
         GL11.glColor4f(1f, 1f, 1f, 1f);
     }
 
+
+    public static int reAlpha(int color, float alpha) {
+        try {
+            Color c = new Color(color);
+            float r = ((float) 1 / 255) * c.getRed();
+            float g = ((float) 1 / 255) * c.getGreen();
+            float b = ((float) 1 / 255) * c.getBlue();
+            return new Color(r, g, b, alpha).getRGB();
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+        return color;
+    }
+
     public static void drawTexturedModalRect(final int x, final int y, final int u, final int v, final int width, final int height, final float zLevel) {
         final float var7 = 0.00390625f;
         final float var8 = 0.00390625f;
