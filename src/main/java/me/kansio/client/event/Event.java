@@ -1,12 +1,15 @@
 package me.kansio.client.event;
 
-import lombok.Getter;
-import lombok.Setter;
-
 public abstract class Event {
-
-    @Getter @Setter
     private boolean cancelled;
 
+    @SuppressWarnings("all")
+    public boolean isCancelled() {
+        return this.cancelled;
+    }
 
+    @SuppressWarnings("all")
+    public void setCancelled(final boolean cancelled) {
+        this.cancelled = cancelled;
+    }
 }

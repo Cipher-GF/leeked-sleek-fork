@@ -36,8 +36,6 @@ public class Blocks extends SpeedMode {
                 sped2 = getSpeed().getSpeed().getValue().floatValue();
             }
 
-
-
             PlayerUtil.setMotion(event, sped2);
         }
     }

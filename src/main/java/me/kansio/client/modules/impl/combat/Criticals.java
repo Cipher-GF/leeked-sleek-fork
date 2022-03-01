@@ -17,7 +17,7 @@ import net.minecraft.network.play.client.C03PacketPlayer;
 @ModuleData(
         name = "Criticals",
         category = ModuleCategory.COMBAT,
-        description = "Automatically deals criticals"
+        description = "Automatically deals critical hits"
 )
 public class Criticals extends Module {
 
@@ -40,7 +40,6 @@ public class Criticals extends Module {
                 doCritical();
                 entity.hurtResistantTime = -1;
             }
-
         }
     }
 

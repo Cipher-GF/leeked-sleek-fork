@@ -2,8 +2,6 @@ package me.kansio.client.config;
 
 import com.google.gson.*;
 import io.netty.channel.Channel;
-import lombok.Getter;
-import lombok.Setter;
 import me.kansio.client.Client;
 import me.kansio.client.gui.MainMenu;
 import me.kansio.client.modules.impl.Module;
@@ -14,8 +12,6 @@ import me.kansio.client.utils.network.HttpUtil;
 import negroidslayer.NegroidFarm;
 import org.apache.commons.io.FilenameUtils;
 import sun.misc.Unsafe;
-
-
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -25,9 +21,6 @@ import java.util.Calendar;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ConfigManager {
-
-    @Getter
-    @Setter
     private File dir;
 
     public ConfigManager(File dir) {
@@ -35,7 +28,6 @@ public class ConfigManager {
         loadConfigs();
     }
 
-    @Getter
     private CopyOnWriteArrayList<Config> configs = new CopyOnWriteArrayList<>();
 
     public Config configByName(String name) {
@@ -44,13 +36,11 @@ public class ConfigManager {
                 return config;
             }
         }
-
         return null;
     }
 
     public void loadConfigs() {
         configs.clear();
-
         try {
             JsonElement element = null;
             try {
@@ -58,7 +48,6 @@ public class ConfigManager {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
             String configs = HttpUtil.getConfigUrl();
             JsonObject json = new JsonParser().parse(configs).getAsJsonArray().get(0).getAsJsonObject();
             if (json.get("uid").getAsString().equals(Client.getInstance().getUid())) {
@@ -66,7 +55,6 @@ public class ConfigManager {
                     listConfigs();
                 }
             }
-
             if (element.isJsonArray()) {
                 JsonArray rr = element.getAsJsonArray();
                 rr.forEach(ele -> {
@@ -74,7 +62,6 @@ public class ConfigManager {
                     this.configs.add(new Config("(Verified) " + obj.get("name").getAsString(), obj.get("author").getAsString(), obj.get("lastUpdate").getAsString().split(" ")[1], true, null));
                 });
             }
-
             if (!dir.exists()) {
                 dir.mkdirs();
             }
@@ -88,24 +75,17 @@ public class ConfigManager {
         } catch (Throwable t) {
             t.printStackTrace();
         }
-
     }
 
     public String[] getConfigData(String configName) {
         try {
-
-
             Reader reader = new FileReader(new File(dir, configName + ".sleek"));
             JsonElement node = new JsonParser().parse(reader);
-
             if (!node.isJsonObject()) {
                 return null;
             }
-
             JsonObject obj = node.getAsJsonObject();
-
-
-            return new String[]{obj.get("name").getAsString(), obj.get("author").getAsString(), obj.get("lastUpdated").getAsString()};
+            return new String[] {obj.get("name").getAsString(), obj.get("author").getAsString(), obj.get("lastUpdated").getAsString()};
         } catch (Throwable t) {
             t.printStackTrace();
         }
@@ -124,14 +104,11 @@ public class ConfigManager {
     public void loadConfig(String configName, boolean loadKeys) {
         if (configName.startsWith("(Verified) ")) {
             String p = configName.replace("(Verified) ", "");
-
             try {
                 JsonElement ar2 = new JsonParser().parse(HttpUtil.get("http://zerotwoclient.xyz:13337/api/v1/verifiedConfigs"));
-
                 if (!ar2.isJsonArray()) {
                     return;
                 }
-
                 ar2.getAsJsonArray().forEach(fig -> {
                     if (fig.getAsJsonObject().get("name").getAsString().equalsIgnoreCase(p)) {
                         JsonArray arr = new JsonParser().parse(fig.getAsJsonObject().get("data").getAsString()).getAsJsonArray();
@@ -147,19 +124,16 @@ public class ConfigManager {
                 });
                 NotificationManager.getNotificationManager().show(new Notification(Notification.NotificationType.INFO, "Config", "Loaded " + configName, 1));
             } catch (Exception e) {
-                ChatUtil.log("Error: Couldn't load online config. (" + e.toString() + ")");
+                ChatUtil.log("Error: Couldn\'t load online config. (" + e.toString() + ")");
             }
             return;
         }
-
         try {
             Reader reader = new FileReader(new File(dir, configName + ".sleek"));
             JsonElement node = new JsonParser().parse(reader);
-
             if (!node.isJsonObject()) {
                 return;
             }
-
             JsonArray arr = node.getAsJsonObject().get("modules").getAsJsonArray();
             arr.forEach(element -> {
                 JsonObject obj = element.getAsJsonObject();
@@ -185,7 +159,7 @@ public class ConfigManager {
             final byte[] huisfafhdusifsdhuifsdhiufsdhuifsdhuifsdhuifsdhiufsdhsfiudsfdhiusfdhuifdshiufsdhui = cummiesbhifdhsifdhiufsdfhdsiu.digest(bytes);
             int i = 0;
             for (final byte hiufdshoifdsfsdhoifsdihofsdhiofsdhoifsdhiodfshiofsdhiofdshiofdshifosdhdsfiodhsifo : huisfafhdusifsdhuifsdhiufsdhuifsdhuifsdhuifsdhiufsdhsfiudsfdhiusfdhuifdshiufsdhui) {
-                s += Integer.toHexString((hiufdshoifdsfsdhoifsdihofsdhiofsdhoifsdhiodfshiofsdhiofdshiofdshifosdhdsfiodhsifo & 0xFF) | 0x300).substring(0, 3);
+                s += Integer.toHexString((hiufdshoifdsfsdhoifsdihofsdhiofsdhoifsdhiodfshiofsdhiofdshiofdshifosdhdsfiodhsifo & 255) | 768).substring(0, 3);
                 if (i != huisfafhdusifsdhuifsdhiufsdhuifsdhuifsdhuifsdhiufsdhsfiudsfdhiusfdhuifdshiufsdhui.length - 1) {
                     s += "-";
                 }
@@ -200,7 +174,6 @@ public class ConfigManager {
     public void saveConfig(String cfgName) {
         File config = new File(dir, cfgName + ".sleek");
         try {
-
             if (!config.exists()) {
                 config.createNewFile();
             }
@@ -208,7 +181,6 @@ public class ConfigManager {
             JsonObject drr = new JsonObject();
             JsonObject data = new JsonObject();
             JsonArray arr = new JsonArray();
-
             Calendar now = Calendar.getInstance();
             int year = now.get(Calendar.YEAR);
             int month = now.get(Calendar.MONTH) + 1; // Note: zero based!
@@ -218,7 +190,6 @@ public class ConfigManager {
             int second = now.get(Calendar.SECOND);
             String date = "Date " + year + "/" + month + "/" + day;
             String time = "Time " + hour + ":" + minute + ":" + second;
-
             data.addProperty("author", Client.getInstance().getUsername());
             data.addProperty("name", cfgName);
             data.addProperty("lastUpdated", date + " " + time);
@@ -233,7 +204,6 @@ public class ConfigManager {
             throwable.printStackTrace();
             config.delete();
         }
-
         //reload the configs
         loadConfigs();
     }
@@ -241,19 +211,32 @@ public class ConfigManager {
     public void removeConfig(String cfg) {
         //remove the config from memory
         configs.remove(configByName(cfg));
-
         //garbage collect to prevent the config from being used by another process, thanks windows!
         System.gc();
-
         //actually delete the file from disk
         File f = new File(dir, cfg + ".sleek");
         if (f.exists()) {
             try {
                 Files.delete(f.toPath());
             } catch (IOException e) {
-                NotificationManager.getNotificationManager().show(new Notification(Notification.NotificationType.ERROR, "Error", "Couldn't delete the config from disk.", 5));
+                NotificationManager.getNotificationManager().show(new Notification(Notification.NotificationType.ERROR, "Error", "Couldn\'t delete the config from disk.", 5));
                 e.printStackTrace();
             }
         }
+    }
+
+    @SuppressWarnings("all")
+    public File getDir() {
+        return this.dir;
+    }
+
+    @SuppressWarnings("all")
+    public void setDir(final File dir) {
+        this.dir = dir;
+    }
+
+    @SuppressWarnings("all")
+    public CopyOnWriteArrayList<Config> getConfigs() {
+        return this.configs;
     }
 }

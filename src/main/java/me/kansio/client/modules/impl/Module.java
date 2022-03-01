@@ -1,8 +1,6 @@
 package me.kansio.client.modules.impl;
 
 import com.google.gson.JsonObject;
-import lombok.Getter;
-import lombok.Setter;
 import me.kansio.client.Client;
 import me.kansio.client.gui.clickgui.utils.render.animation.easings.Animate;
 import me.kansio.client.modules.api.ModuleCategory;
@@ -13,19 +11,14 @@ import me.kansio.client.value.Value;
 import me.kansio.client.value.value.*;
 import net.minecraft.client.Minecraft;
 import org.lwjgl.input.Keyboard;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-@Getter
-@Setter
 public abstract class Module {
-
     protected static final Minecraft mc = Minecraft.getMinecraft();
     public String fontmode;
-
     private String name;
     private boolean toggled;
     private int keyBind;
@@ -49,30 +42,18 @@ public abstract class Module {
         this(name, Keyboard.KEY_NONE, category);
     }
 
-
-
     public String getFormattedSuffix() {
         if (getSuffix().equalsIgnoreCase("")) return "";
-
         HUD hud = (HUD) Client.getInstance().getModuleManager().getModuleByName("HUD");
-
-
         String suffix;
-
-        if (getSuffix().startsWith(" "))
-            suffix = getSuffix().replaceFirst(" ", "");
-        else
-            suffix = getSuffix();
-
+        if (getSuffix().startsWith(" ")) suffix = getSuffix().replaceFirst(" ", "");
+         else suffix = getSuffix();
         String formatted = hud.getListSuffix().getValue().replaceAll("%s", suffix);
-
-
         return formatted;
     }
 
     public void toggle() {
         toggled = !toggled;
-
         if (toggled) {
             Client.getInstance().getEventBus().register(this);
             onEnable();
@@ -80,8 +61,7 @@ public abstract class Module {
             Client.getInstance().getEventBus().unregister(this);
             onDisable();
         }
-        if (!(this instanceof ClickGUI))
-            onToggled();
+        if (!(this instanceof ClickGUI)) onToggled();
     }
 
     public String getSuffix() {
@@ -89,15 +69,12 @@ public abstract class Module {
     }
 
     public void onToggled() {
-
     }
 
     public void onEnable() {
-
     }
 
     public void onDisable() {
-
     }
 
     public void registerSubSettings(SubSettings... subSettings) {
@@ -120,24 +97,24 @@ public abstract class Module {
     public void load(JsonObject obj, boolean loadKey) {
         obj.entrySet().forEach(data -> {
             switch (data.getKey()) {
-                case "name": {
+            case "name": 
+                {
                     break;
                 }
-                case "keybind": {
+            case "keybind": 
+                {
                     if (loadKey) {
                         this.keyBind = data.getValue().getAsInt();
                     }
                     break;
                 }
-                case "enabled": {
-                    if (!(isToggled() && data.getValue().getAsBoolean()) && !(!isToggled() && !data.getValue().getAsBoolean()))
-                        setToggled(data.getValue().getAsBoolean());
+            case "enabled": 
+                {
+                    if (!(isToggled() && data.getValue().getAsBoolean()) && !(!isToggled() && !data.getValue().getAsBoolean())) setToggled(data.getValue().getAsBoolean());
                     break;
                 }
             }
-
             Value val = Client.getInstance().getValueManager().getValueFromOwner(this, data.getKey());
-
             if (val != null) {
                 if (val instanceof BooleanValue) {
                     val.setValue(data.getValue().getAsBoolean());
@@ -160,13 +137,11 @@ public abstract class Module {
                     val.setValue(data.getValue().getAsString());
                 }
             }
-
         });
     }
 
     public void setToggled(boolean toggled) {
         this.toggled = toggled;
-
         if (toggled) {
             Client.getInstance().getEventBus().register(this);
             onEnable();
@@ -174,8 +149,7 @@ public abstract class Module {
             Client.getInstance().getEventBus().unregister(this);
             onDisable();
         }
-        if (!(this instanceof ClickGUI))
-            onToggled();
+        if (!(this instanceof ClickGUI)) onToggled();
     }
 
     public JsonObject save() {
@@ -192,7 +166,6 @@ public abstract class Module {
         json.addProperty("name", this.name);
         json.addProperty("keybind", this.keyBind);
         json.addProperty("keybindName", Keyboard.getKeyName(this.keyBind));
-
         return json;
     }
 
@@ -202,4 +175,63 @@ public abstract class Module {
         Client.getInstance().getKeybindManager().save();
     }
 
+    @SuppressWarnings("all")
+    public String getFontmode() {
+        return this.fontmode;
+    }
+
+    @SuppressWarnings("all")
+    public String getName() {
+        return this.name;
+    }
+
+    @SuppressWarnings("all")
+    public boolean isToggled() {
+        return this.toggled;
+    }
+
+    @SuppressWarnings("all")
+    public int getKeyBind() {
+        return this.keyBind;
+    }
+
+    @SuppressWarnings("all")
+    public ModuleCategory getCategory() {
+        return this.category;
+    }
+
+    @SuppressWarnings("all")
+    public List<SubSettings> getSubSettings() {
+        return this.subSettings;
+    }
+
+    @SuppressWarnings("all")
+    public void setFontmode(final String fontmode) {
+        this.fontmode = fontmode;
+    }
+
+    @SuppressWarnings("all")
+    public void setName(final String name) {
+        this.name = name;
+    }
+
+    @SuppressWarnings("all")
+    public void setKeyBind(final int keyBind) {
+        this.keyBind = keyBind;
+    }
+
+    @SuppressWarnings("all")
+    public void setSuffix(final String suffix) {
+        this.suffix = suffix;
+    }
+
+    @SuppressWarnings("all")
+    public void setCategory(final ModuleCategory category) {
+        this.category = category;
+    }
+
+    @SuppressWarnings("all")
+    public void setSubSettings(final List<SubSettings> subSettings) {
+        this.subSettings = subSettings;
+    }
 }

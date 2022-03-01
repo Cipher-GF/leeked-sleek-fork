@@ -7,6 +7,7 @@ import me.kansio.client.modules.impl.Module;
 import me.kansio.client.modules.impl.visuals.HUD;
 import me.kansio.client.modules.impl.visuals.hud.ArrayListMode;
 import me.kansio.client.utils.font.Fonts;
+import me.kansio.client.utils.glsl.BlurUtil;
 import me.kansio.client.utils.render.ColorUtils;
 import net.minecraft.client.gui.Gui;
 
@@ -100,6 +101,7 @@ public class Sleek extends ArrayListMode {
                 float xPos = event.getSr().getScaledWidth() - mc.fontRendererObj.getStringWidth(name) - 6;
 
                 Gui.drawRect(xPos - 1.5, y - 1, event.getSr().getScaledWidth(), mc.fontRendererObj.FONT_HEIGHT + y + 1, new Color(0, 0, 0, hud.bgalpha.getValue()).getRGB());
+
                 switch (getHud().line.getValue()) {
                     case "None":
                         break;

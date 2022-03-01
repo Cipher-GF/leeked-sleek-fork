@@ -1,13 +1,12 @@
 package me.kansio.client.value.value;
 
-import lombok.Getter;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.value.Value;
 
-@Getter
 public final class NumberValue<T extends Number> extends Value<T> {
-
-    private final T min, max, increment;
+    private final T min;
+    private final T max;
+    private final T increment;
 
     public NumberValue(String name, Module owner, T value, T min, T max, T increment) {
         super(name, owner, value);
@@ -53,7 +52,6 @@ public final class NumberValue<T extends Number> extends Value<T> {
         }
     }
 
-
     public T getMax() {
         return max;
     }
@@ -86,4 +84,8 @@ public final class NumberValue<T extends Number> extends Value<T> {
         return (min instanceof Integer);
     }
 
+    @SuppressWarnings("all")
+    public T getIncrement() {
+        return this.increment;
+    }
 }

@@ -1,17 +1,14 @@
 package me.kansio.client.commands;
 
 import com.google.common.eventbus.Subscribe;
-import lombok.Getter;
 import me.kansio.client.Client;
 import me.kansio.client.commands.impl.*;
 import me.kansio.client.event.impl.ChatEvent;
 import me.kansio.client.utils.chat.ChatUtil;
-
 import java.util.ArrayList;
 
 public class CommandManager {
-
-    @Getter private ArrayList<Command> commands = new ArrayList<>();
+    private ArrayList<Command> commands = new ArrayList<>();
 
     public CommandManager() {
         registerCommands();
@@ -49,7 +46,6 @@ public class CommandManager {
                 }
             }
         }
-
     }
 
     public void clearCommands() {
@@ -72,5 +68,10 @@ public class CommandManager {
         commands.add(new PanicCommand());
         commands.add(new KillsultsCommand());
         commands.add(new GCCommand());
+    }
+
+    @SuppressWarnings("all")
+    public ArrayList<Command> getCommands() {
+        return this.commands;
     }
 }

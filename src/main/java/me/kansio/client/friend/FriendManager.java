@@ -1,12 +1,9 @@
 package me.kansio.client.friend;
 
-import lombok.Getter;
-
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class FriendManager {
-
-    @Getter private final CopyOnWriteArrayList<Friend> friends;
+    private final CopyOnWriteArrayList<Friend> friends;
 
     public FriendManager() {
         this.friends = new CopyOnWriteArrayList<>();
@@ -26,7 +23,6 @@ public class FriendManager {
 
     public boolean isFriend(String ign) {
         for (Friend friend : friends) {
-
             if (friend.getName().equals(ign)) {
                 return true;
             }
@@ -36,11 +32,15 @@ public class FriendManager {
 
     public Friend getFriend(String name) {
         for (Friend friend : friends) {
-
             if (friend.getName().equals(name)) {
                 return friend;
             }
         }
         return null;
+    }
+
+    @SuppressWarnings("all")
+    public CopyOnWriteArrayList<Friend> getFriends() {
+        return this.friends;
     }
 }

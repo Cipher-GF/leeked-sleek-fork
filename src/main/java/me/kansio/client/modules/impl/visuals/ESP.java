@@ -3,30 +3,17 @@ package me.kansio.client.modules.impl.visuals;
 import com.google.common.eventbus.Subscribe;
 import me.kansio.client.Client;
 import me.kansio.client.event.impl.Render3DEvent;
-import me.kansio.client.event.impl.RenderOverlayEvent;
 import me.kansio.client.modules.api.ModuleCategory;
 import me.kansio.client.modules.api.ModuleData;
 import me.kansio.client.modules.impl.Module;
-import me.kansio.client.modules.impl.combat.AntiBot;
 import me.kansio.client.utils.render.ColorUtils;
 import me.kansio.client.utils.render.RenderUtil;
 import me.kansio.client.value.value.BooleanValue;
-import me.kansio.client.value.value.ModeValue;
-import me.kansio.client.utils.render.RenderUtils;
 import me.kansio.client.value.value.NumberValue;
-import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.gui.Gui;
-import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.client.renderer.EntityRenderer;
 import net.minecraft.client.renderer.GLAllocation;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.boss.EntityDragon;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityGolem;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.monster.EntitySlime;
@@ -35,12 +22,9 @@ import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
-import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
-import org.lwjgl.util.glu.GLU;
 
 import javax.vecmath.Vector3d;
 import javax.vecmath.Vector4d;
@@ -71,7 +55,11 @@ public class ESP extends Module {
     private BooleanValue corner = new BooleanValue("Corner", this, false);
     private BooleanValue rainbow = new BooleanValue("Rainbow", this, false);
     private NumberValue<Double> thickness = new NumberValue<>("Thickness", this, 1.5d, 0d, 10d, 0.25);
-    private final NumberValue brightness = new NumberValue("Brightness", this, 255, 1, 255, 1);
+
+    private final NumberValue r = new NumberValue("Red", this, 255, 1, 255, 1);
+    private final NumberValue g = new NumberValue("Green", this, 255, 1, 255, 1);
+    private final NumberValue b = new NumberValue("Blue", this, 255, 1, 255, 1);
+
     public final List collectedEntities;
     private final IntBuffer viewport;
     private final FloatBuffer modelview;
@@ -190,7 +178,7 @@ public class ESP extends Module {
     private int getColor(EntityLivingBase ent) {
         if (Client.getInstance().getFriendManager().isFriend(ent.getName())) return new Color(83, 174, 253).getRGB();
         else if (ent.getName().equals(mc.thePlayer.getName())) return new Color(0xFF99ff99).getRGB();
-        return (int) brightness.getValue();
+        return new Color(r.getValue().intValue(), g.getValue().intValue(), b.getValue().intValue()).getRGB();
     }
 
     private int getHealthColor(EntityLivingBase player) {
@@ -201,7 +189,7 @@ public class ESP extends Module {
     private double getArmorStrength(final ItemStack itemStack) {
         if (!(itemStack.getItem() instanceof ItemArmor)) return -1;
         float damageReduction = ((ItemArmor) itemStack.getItem()).damageReduceAmount;
-        Map enchantments = EnchantmentHelper.getEnchantments(itemStack);
+        Map<Integer, Integer> enchantments = EnchantmentHelper.getEnchantments(itemStack);
         if (enchantments.containsKey(Enchantment.protection.effectId)) {
             int level = (int) enchantments.get(Enchantment.protection.effectId);
             damageReduction += Enchantment.protection.calcModifierDamage(level, DamageSource.generic);

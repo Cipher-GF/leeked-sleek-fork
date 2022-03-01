@@ -1,14 +1,10 @@
 package me.kansio.client.targets;
 
-import lombok.Getter;
 import net.minecraft.entity.player.EntityPlayer;
-
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class TargetManager {
-
-    @Getter
     private final ArrayList<String> target = new ArrayList<>();
 
     public boolean isTarget(EntityPlayer ent) {
@@ -19,4 +15,8 @@ public class TargetManager {
         return target.contains(ent);
     }
 
+    @SuppressWarnings("all")
+    public ArrayList<String> getTarget() {
+        return this.target;
+    }
 }

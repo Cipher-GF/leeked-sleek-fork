@@ -1,18 +1,14 @@
 package me.kansio.client.value;
 
-import lombok.Getter;
 import me.kansio.client.modules.impl.Module;
 import me.kansio.client.value.value.BooleanValue;
 import me.kansio.client.value.value.ModeValue;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public abstract class Value<Type> {
-
     private final String name;
-    @Getter
     protected List<String> modes = new ArrayList<>();
     private final Module owner;
     protected Value<?> parent;
@@ -51,7 +47,6 @@ public abstract class Value<Type> {
         this.value = value;
     }
 
-
     public void setValue(Type value) {
         this.value = value;
     }
@@ -68,4 +63,8 @@ public abstract class Value<Type> {
         return String.valueOf(value);
     }
 
+    @SuppressWarnings("all")
+    public List<String> getModes() {
+        return this.modes;
+    }
 }

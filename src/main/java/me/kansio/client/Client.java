@@ -8,8 +8,6 @@ import com.google.common.eventbus.Subscribe;
 import com.jagrosh.discordipc.IPCClient;
 import com.jagrosh.discordipc.IPCListener;
 import com.jagrosh.discordipc.entities.RichPresence;
-import lombok.Getter;
-import lombok.Setter;
 import me.kansio.client.commands.CommandManager;
 import me.kansio.client.config.ConfigManager;
 import me.kansio.client.event.impl.KeyboardEvent;
@@ -36,7 +34,6 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 import viamcp.ViaMCP;
 import viamcp.utils.JLoggerToLog4j;
-
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -50,105 +47,58 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Client {
-
-    @Getter
-    @Setter
     private String username;
-    @Getter
-    @Setter
     private String uid;
-    @Getter
-    @Setter
     private String discordTag;
-
-    @Getter
     private UserRank rank;
-
-    @Getter
     private Map<String, String> users = new HashMap<>();
-
-    @Getter
     private File dir;
-
-    @Getter
     private static Client instance = new Client();
 
     public static Client instance() {
         return instance;
     }
 
-    @Getter
     private EventBus eventBus = new EventBus("Sleek");
-
-    @Getter
     private ModuleManager moduleManager;
-
-    @Getter
     private CommandManager commandManager;
-
-    @Getter
     private ConfigManager configManager;
-
-    @Getter
     private KillsultManager killsultManager;
-
-    @Getter
     private ValueManager valueManager;
-
-    @Getter
     private KeybindManager keybindManager;
-
-    @Getter
     private FriendManager friendManager;
-
-    @Getter
     private CheckManager checkManager;
-
-    @Getter
     private TargetManager targetManager;
 
     public void onStart() {
         Logger jLogger = new JLoggerToLog4j(LogManager.getLogger("checksum"));
         jLogger.log(Level.INFO, "current checksum: " + ProtectionUtil.huisdfhufisdhfiusdhifsudfsihdusdiuhsfdiusfdhuisdfiuhsdfhisfdhiufsdhui());
-
         //Set the client file directory
         dir = new File(Minecraft.getMinecraft().mcDataDir, "Sleek");
-
         //Subscribe to the event bus
         eventBus.register(this);
-
         //Set the value manager
         valueManager = new ValueManager();
-
         //Set the module manager variable
         moduleManager = new ModuleManager();
-
         //Set the command manager
         commandManager = new CommandManager();
-
         //Set the killsult manager
         killsultManager = new KillsultManager();
-
         //load the killsults
         killsultManager.readKillSults();
-
         //Set the config manager
         configManager = new ConfigManager(new File(dir, "configs"));
-
         //Set the keybind manager
         keybindManager = new KeybindManager(dir);
         //load the keybinds
         keybindManager.load();
-
         //Set the friend manager
         friendManager = new FriendManager();
-
         //set the target manager
         targetManager = new TargetManager();
-
         //Set the check manager
         checkManager = new CheckManager();
-
         //Setup ViaMCP
         try {
             ViaMCP.getInstance().start();
@@ -175,9 +125,7 @@ public class Client {
             System.out.println("Discord not found, not setting rpc.");
         }
         */
-
         System.out.println("Client has been started.");
-
         //set the window title
         Display.setTitle("Sleek Beta 022122");
     }
@@ -189,13 +137,11 @@ public class Client {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         //save keybinds
         if (keybindManager != null) {
             keybindManager.save();
         }
     }
-
 
     @Subscribe
     public void onChat(PacketEvent event) {
@@ -203,7 +149,7 @@ public class Client {
             S02PacketChat packet = event.getPacket();
             for (Map.Entry<String, String> user : users.entrySet()) {
                 if (packet.getChatComponent().getUnformattedText().contains(user.getKey())) {
-                    packet.chatComponent = new ChatComponentText(packet.getChatComponent().getFormattedText().replaceAll(user.getKey(), MessageFormat.format("\247b{0} \2477({1})", user.getValue(), user.getKey())));
+                    packet.chatComponent = new ChatComponentText(packet.getChatComponent().getFormattedText().replaceAll(user.getKey(), MessageFormat.format("§b{0} §7({1})", user.getValue(), user.getKey())));
                 }
             }
         }
@@ -232,15 +178,18 @@ public class Client {
 
     public void setRank(String rank) {
         switch (rank) {
-            case "Developer": {
+        case "Developer": 
+            {
                 this.rank = UserRank.DEVELOPER;
                 break;
             }
-            case "Beta": {
+        case "Beta": 
+            {
                 this.rank = UserRank.BETA;
                 break;
             }
-            default: {
+        default: 
+            {
                 this.rank = UserRank.USER;
                 break;
             }
@@ -250,22 +199,17 @@ public class Client {
     @Subscribe
     public void onKeyboard(KeyboardEvent event) {
         int key = event.getKeyCode();
-
         if (key == Keyboard.KEY_RSHIFT) {
             ClickGUI clickGUI = (ClickGUI) Client.getInstance().getModuleManager().getModuleByName("Click GUI");
             clickGUI.toggle();
         }
-
         if (key == Keyboard.KEY_INSERT) {
             Minecraft.getMinecraft().displayGuiScreen(new ConfigurationGUI());
         }
-
         //This handles keybinds.
         for (Module module : moduleManager.getModules()) {
             //check if the keybind is -1, if it is, just continue.
-            if (module.getKeyBind() == -1)
-                continue;
-
+            if (module.getKeyBind() == -1) continue;
             //if the bind == the key, toggle the module
             if (module.getKeyBind() == key) {
                 module.toggle();
@@ -273,4 +217,103 @@ public class Client {
         }
     }
 
+    @SuppressWarnings("all")
+    public String getUsername() {
+        return this.username;
+    }
+
+    @SuppressWarnings("all")
+    public void setUsername(final String username) {
+        this.username = username;
+    }
+
+    @SuppressWarnings("all")
+    public String getUid() {
+        return this.uid;
+    }
+
+    @SuppressWarnings("all")
+    public void setUid(final String uid) {
+        this.uid = uid;
+    }
+
+    @SuppressWarnings("all")
+    public String getDiscordTag() {
+        return this.discordTag;
+    }
+
+    @SuppressWarnings("all")
+    public void setDiscordTag(final String discordTag) {
+        this.discordTag = discordTag;
+    }
+
+    @SuppressWarnings("all")
+    public UserRank getRank() {
+        return this.rank;
+    }
+
+    @SuppressWarnings("all")
+    public Map<String, String> getUsers() {
+        return this.users;
+    }
+
+    @SuppressWarnings("all")
+    public File getDir() {
+        return this.dir;
+    }
+
+    @SuppressWarnings("all")
+    public static Client getInstance() {
+        return Client.instance;
+    }
+
+    @SuppressWarnings("all")
+    public EventBus getEventBus() {
+        return this.eventBus;
+    }
+
+    @SuppressWarnings("all")
+    public ModuleManager getModuleManager() {
+        return this.moduleManager;
+    }
+
+    @SuppressWarnings("all")
+    public CommandManager getCommandManager() {
+        return this.commandManager;
+    }
+
+    @SuppressWarnings("all")
+    public ConfigManager getConfigManager() {
+        return this.configManager;
+    }
+
+    @SuppressWarnings("all")
+    public KillsultManager getKillsultManager() {
+        return this.killsultManager;
+    }
+
+    @SuppressWarnings("all")
+    public ValueManager getValueManager() {
+        return this.valueManager;
+    }
+
+    @SuppressWarnings("all")
+    public KeybindManager getKeybindManager() {
+        return this.keybindManager;
+    }
+
+    @SuppressWarnings("all")
+    public FriendManager getFriendManager() {
+        return this.friendManager;
+    }
+
+    @SuppressWarnings("all")
+    public CheckManager getCheckManager() {
+        return this.checkManager;
+    }
+
+    @SuppressWarnings("all")
+    public TargetManager getTargetManager() {
+        return this.targetManager;
+    }
 }
