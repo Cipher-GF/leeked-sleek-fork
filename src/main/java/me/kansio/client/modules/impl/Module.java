@@ -11,6 +11,7 @@ import me.kansio.client.value.Value;
 import me.kansio.client.value.value.*;
 import net.minecraft.client.Minecraft;
 import org.lwjgl.input.Keyboard;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -25,6 +26,7 @@ public abstract class Module {
     private String suffix = "";
     private ModuleCategory category;
     private List<SubSettings> subSettings = new ArrayList<>();
+    private boolean hidden = false;
 
     public Module() {
         name = getClass().getAnnotation(ModuleData.class).name();
@@ -47,7 +49,7 @@ public abstract class Module {
         HUD hud = (HUD) Client.getInstance().getModuleManager().getModuleByName("HUD");
         String suffix;
         if (getSuffix().startsWith(" ")) suffix = getSuffix().replaceFirst(" ", "");
-         else suffix = getSuffix();
+        else suffix = getSuffix();
         String formatted = hud.getListSuffix().getValue().replaceAll("%s", suffix);
         return formatted;
     }
@@ -77,6 +79,14 @@ public abstract class Module {
     public void onDisable() {
     }
 
+    public boolean isHidden() {
+        return hidden;
+    }
+
+    public void setHidden(boolean hidden) {
+        this.hidden = hidden;
+    }
+
     public void registerSubSettings(SubSettings... subSettings) {
         Collections.addAll(this.subSettings, subSettings);
     }
@@ -97,20 +107,22 @@ public abstract class Module {
     public void load(JsonObject obj, boolean loadKey) {
         obj.entrySet().forEach(data -> {
             switch (data.getKey()) {
-            case "name": 
-                {
+                case "name": {
                     break;
                 }
-            case "keybind": 
-                {
+                case "hidden": {
+                    this.hidden = data.getValue().getAsBoolean();
+                    break;
+                }
+                case "keybind": {
                     if (loadKey) {
                         this.keyBind = data.getValue().getAsInt();
                     }
                     break;
                 }
-            case "enabled": 
-                {
-                    if (!(isToggled() && data.getValue().getAsBoolean()) && !(!isToggled() && !data.getValue().getAsBoolean())) setToggled(data.getValue().getAsBoolean());
+                case "enabled": {
+                    if (!(isToggled() && data.getValue().getAsBoolean()) && !(!isToggled() && !data.getValue().getAsBoolean()))
+                        setToggled(data.getValue().getAsBoolean());
                     break;
                 }
             }
@@ -156,6 +168,7 @@ public abstract class Module {
         JsonObject json = new JsonObject();
         json.addProperty("name", this.name);
         json.addProperty("keybind", this.keyBind);
+        json.addProperty("hidden", this.hidden);
         json.addProperty("enabled", this.toggled);
         getValues().forEach(value -> json.addProperty(value.getName(), value.getValue().toString()));
         return json;

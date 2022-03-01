@@ -74,7 +74,8 @@ public class HUD extends Module {
     public BooleanValue hideBlur = new BooleanValue("Hide Blur", this, false);
     public StringValue clientName = new StringValue("Client Name", this, "Sleek");
     public StringValue listSuffix = new StringValue("Module Suffix", this, " [%s]");
-    public NumberValue arrayListY = new NumberValue("ArrayList Y", this, 4, 1, 20, 1);
+    public NumberValue arrayListY = new NumberValue("ArrayList Y", this, 4, 1, 200, 1);
+    public NumberValue arrayListX = new NumberValue("ArrayList X", this, 4, 1, 200, 1, arraylistmode, "Left");
     private final ModeValue scoreboardLocation = new ModeValue("Scoreboard", this, "Right", "Left");
     private final NumberValue<Double> scoreboardPos = new NumberValue<>("Scoreboard Y", this, 0.0, -500.0, 500.0, 1.0);
     public static boolean notifications;

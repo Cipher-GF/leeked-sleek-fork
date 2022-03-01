@@ -68,6 +68,8 @@ public class CommandManager {
         commands.add(new PanicCommand());
         commands.add(new KillsultsCommand());
         commands.add(new GCCommand());
+        commands.add(new HideModuleCommand());
+        commands.add(new ShowModuleCommand());
     }
 
     @SuppressWarnings("all")

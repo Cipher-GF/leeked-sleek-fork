@@ -58,6 +58,7 @@ public class TransactionCounter extends Module {
             }
 
             transactions++;
+            lastC0F = System.currentTimeMillis();
 
             if (transactions > 10) {
 

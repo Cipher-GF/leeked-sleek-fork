@@ -59,6 +59,9 @@ public class ModuleManager {
 
     public List<Module> getModulesSorted(FontRenderer customFontRenderer) {
         List<Module> moduleList = new ArrayList<>(modules);
+
+        moduleList.removeIf(Module::isHidden);
+
         moduleList.sort((a, b) -> {
             String dataA = a.getFormattedSuffix() == null ? "" : a.getFormattedSuffix();
             String dataB = b.getFormattedSuffix() == null ? "" : b.getFormattedSuffix();
@@ -73,6 +76,10 @@ public class ModuleManager {
 
     public List<Module> getModulesSorted(MCFontRenderer customFontRenderer) {
         List<Module> moduleList = new ArrayList<>(modules);
+
+        moduleList.removeIf(Module::isHidden);
+
+
         moduleList.sort((a, b) -> {
             String dataA = a.getFormattedSuffix() == null ? "" : a.getFormattedSuffix();
             String dataB = b.getFormattedSuffix() == null ? "" : b.getFormattedSuffix();

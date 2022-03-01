@@ -5,6 +5,7 @@ import me.kansio.client.modules.impl.movement.speed.SpeedMode
 import me.kansio.client.utils.player.PlayerUtil
 
 class BedlessNoobServer: SpeedMode("BridgerLand") {
+
     override fun onMove(event: MoveEvent) {
         if (mc.thePlayer.isMoving) {
             if (mc.thePlayer.onGround) {
