@@ -156,8 +156,8 @@
   },
   {
     "name": "Timer",
-    "keybind": 34,
-    "keybindName": "G"
+    "keybind": 33,
+    "keybindName": "F"
   },
   {
     "name": "Item Physics",
