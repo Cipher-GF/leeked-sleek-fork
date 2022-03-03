@@ -43,7 +43,8 @@ public class ModuleManager {
 
     public void reloadModules() {
         for (Module mod : modules) {
-            if (mod.isToggled()) mod.toggle();
+            if (mod.isToggled()) 
+                mod.toggle();
         }
         modules.clear();
         //load them using reflections
