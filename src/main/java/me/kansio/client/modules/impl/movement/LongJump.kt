@@ -37,8 +37,6 @@ class LongJump : Module() {
             }
             TimerUtil.setTimer(0.3f)
             PlayerUtil.damageVerus()
-        } else if ("Test" == mode.value) {
-            //PlayerUtil.damagePlayer(mc.thePlayer.onGround);
         }
     }
 
@@ -73,6 +71,16 @@ class LongJump : Module() {
                     PlayerUtil.setMotion(boost.value.toFloat().toDouble())
                 }
             }
+            "Test" -> {
+                mc.thePlayer.posY = mc.thePlayer.prevPosY
+                if (mc.thePlayer.isMoving) {
+                    if (mc.thePlayer.onGround) {
+                        mc.thePlayer.motionY = vertical.value
+                    }
+                    PlayerUtil.setMotion(boost.value.toFloat().toDouble())
+                }
+
+            }
             "FuncraftDev" -> {
 
                 if (mc.thePlayer.isMovingOnGround) {
@@ -86,9 +94,13 @@ class LongJump : Module() {
                     mc.thePlayer.motionX *= 0.9
                     mc.thePlayer.motionZ *= 0.9
                 }
-                if ((mc.theWorld.getCollidingBoundingBoxes(mc.thePlayer, mc.thePlayer.entityBoundingBox.offset(0.0, mc.thePlayer.motionY, 0.0)).size > 0
+                if ((mc.theWorld.getCollidingBoundingBoxes(
+                        mc.thePlayer,
+                        mc.thePlayer.entityBoundingBox.offset(0.0, mc.thePlayer.motionY, 0.0)
+                    ).size > 0
                             || mc.thePlayer.isCollidedVertically)
-                    && (launched && event!!.isPre)) {
+                    && (launched && event!!.isPre)
+                ) {
                     toggle()
                 }
 
