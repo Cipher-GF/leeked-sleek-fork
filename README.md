@@ -1,5 +1,4 @@
-# 667 commits gg
-commiting so the devil wont delete the repo
+# 600 commits gg
 :muscle:<br>
 ## code someone should implement
 ```java
