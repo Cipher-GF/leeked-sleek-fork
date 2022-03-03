@@ -80,29 +80,6 @@ public class TargetHUD extends Util {
                 render(target, 155, 400);
                 break;
             }
-            case "Moon": {
-                float x = (event.getSr().getScaledWidth() >> 1) - 5;
-                float y = (event.getSr().getScaledHeight() >> 1) + 120;
-                if (target != null) {
-                    if (mc.thePlayer != null) {
-                        NetworkPlayerInfo networkPlayerInfo = mc.getNetHandler().getPlayerInfo(target.getUniqueID());
-                        final String ping = "Ping: " + (Objects.isNull(networkPlayerInfo) ? "0ms" : networkPlayerInfo.getResponseTime() + "ms");
-                        final String playerName = "Name: " + net.minecraft.util.StringUtils.stripControlCodes(target.getName());
-                        RenderUtils.drawBorderedRect(x, y, 140, 45, 0.5, new Color(0, 0, 0, 255).getRGB(), new Color(0, 0, 0, 90).getRGB());
-                        RenderUtils.drawRect(x, y, 45, 45, new Color(0, 0, 0).getRGB());
-                        Fonts.Arial12.drawStringWithShadow(playerName, x + 46.5, y + 4, -1);
-                        Fonts.Arial12.drawStringWithShadow("Distance: " + MathUtils.round(mc.thePlayer.getDistanceToEntity(target), 2), x + 46.5, y + 12, -1);
-                        Fonts.Arial12.drawStringWithShadow(ping, x + 46.5, y + 28, new Color(0x5D5B5C).getRGB());
-                        Fonts.Arial12.drawStringWithShadow("Health: " + MathUtils.round((Float.isNaN(target.getHealth()) ? 20 : target.getHealth()) / 2, 2), x + 46.5, y + 20, getHealthColor(target));
-                        drawFace(x + 0.5, y + 0.5, 8, 8, 8, 8, 44, 44, 64, 64, (AbstractClientPlayer) target);
-                        RenderUtils.drawBorderedRect(x + 46, y + 45 - 10, 92, 8, 0.5, new Color(0).getRGB(), new Color(35, 35, 35).getRGB());
-                        double inc = 91 / target.getMaxHealth();
-                        double end = inc * (Math.min(target.getHealth(), target.getMaxHealth()));
-                        RenderUtils.drawRect(x + 46.5, y + 45 - 9.5, end, 7, getHealthColor(target));
-                    }
-                }
-                break;
-            }
             case "Exhi": {
 
             }
