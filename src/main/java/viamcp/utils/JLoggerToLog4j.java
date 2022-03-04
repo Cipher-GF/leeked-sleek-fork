@@ -15,6 +15,7 @@ public class JLoggerToLog4j extends Logger
         this.base = logger;
     }
 
+    public void log(LogRecord record)
     {
         this.log(record.getLevel(), record.getMessage());
     }
