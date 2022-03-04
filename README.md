@@ -1,19 +1,33 @@
 # 600 commits gg
 :muscle:<br>
-## code someone should implement
-```java
-Map<String, String> params = new HashMap<String, String>();
-    params.put("lastUpdate", "Date 2022/1/18 Time 11:45:44&");
-    params.put("name", "test5");
-    params.put("author", "tezers");
-    Map<String, String> bParams = new HashMap<>();
-    bParams.put("data", "test");
-    try { 
-      System.out.println(HttpUtil.postForm(HttpUtil.appendQueryParams("https://sleekapi.realreset.repl.co/api/verifiedconfig", params), bParams, null));
-    } catch(Exception e) {
-     e.printStackTrace();
-   }
-```
+
+[//]: # (## code someone should implement)
+
+[//]: # (```java)
+
+[//]: # (Map<String, String> params = new HashMap<String, String>&#40;&#41;;)
+
+[//]: # (    params.put&#40;"lastUpdate", "Date 2022/1/18 Time 11:45:44&"&#41;;)
+
+[//]: # (    params.put&#40;"name", "test5"&#41;;)
+
+[//]: # (    params.put&#40;"author", "tezers"&#41;;)
+
+[//]: # (    Map<String, String> bParams = new HashMap<>&#40;&#41;;)
+
+[//]: # (    bParams.put&#40;"data", "test"&#41;;)
+
+[//]: # (    try { )
+
+[//]: # (      System.out.println&#40;HttpUtil.postForm&#40;HttpUtil.appendQueryParams&#40;"https://sleekapi.realreset.repl.co/api/verifiedconfig", params&#41;, bParams, null&#41;&#41;;)
+
+[//]: # (    } catch&#40;Exception e&#41; {)
+
+[//]: # (     e.printStackTrace&#40;&#41;;)
+
+[//]: # (   })
+
+[//]: # (```)
 
 # so good hack
 ## Info

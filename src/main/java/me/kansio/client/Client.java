@@ -127,7 +127,7 @@ public class Client {
         */
         System.out.println("Client has been started.");
         //set the window title
-        Display.setTitle("Sleek Beta 022122");
+        Display.setTitle("Sleek Beta 030322");
     }
 
     public void onShutdown() {
