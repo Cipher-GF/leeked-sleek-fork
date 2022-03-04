@@ -1,0 +1,36 @@
+package today.sleek.client.modules.impl.visuals;
+
+import today.sleek.base.modules.ModuleCategory;
+import today.sleek.base.modules.ModuleData;
+import today.sleek.client.modules.impl.Module;
+import today.sleek.base.value.value.BooleanValue;
+import today.sleek.base.value.value.ModeValue;
+import today.sleek.base.value.value.NumberValue;
+import org.lwjgl.input.Keyboard;
+
+@ModuleData(
+        name = "Click GUI",
+        category = ModuleCategory.VISUALS,
+        description = "The click gui... nothing special (Credit: Wykt)",
+        bind = Keyboard.KEY_RSHIFT
+)
+public class ClickGUI extends Module {
+
+    public BooleanValue fonttoggle = new BooleanValue("Font", this, true);
+    public ModeValue fontmode = new ModeValue("Mode", this, fonttoggle, "SF Regular", "Lucida Sans", "Verdana", "Roobert");
+    public NumberValue<Integer> animspeed = new NumberValue("Animation Speed", this, 50, 1, 100, 1);
+    public BooleanValue rainbow = new BooleanValue("RGB OMG", this, false);
+
+
+    @Override
+    public void onEnable() {
+        try {
+            mc.displayGuiScreen(new today.sleek.client.gui.clickgui.frame.ClickGUI());
+            toggle();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+}
