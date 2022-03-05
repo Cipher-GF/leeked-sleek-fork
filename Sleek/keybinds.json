@@ -15,19 +15,14 @@
     "keybindName": "NONE"
   },
   {
-    "name": "Custom Speed",
-    "keybind": 0,
-    "keybindName": "NONE"
-  },
-  {
     "name": "Hit Effect",
     "keybind": 0,
     "keybindName": "NONE"
   },
   {
     "name": "Velocity",
-    "keybind": 0,
-    "keybindName": "NONE"
+    "keybind": 19,
+    "keybindName": "R"
   },
   {
     "name": "Chat Bypass",
@@ -41,8 +36,8 @@
   },
   {
     "name": "Criticals",
-    "keybind": 0,
-    "keybindName": "NONE"
+    "keybind": 39,
+    "keybindName": "SEMICOLON"
   },
   {
     "name": "No Slow",
@@ -61,8 +56,8 @@
   },
   {
     "name": "Sprint",
-    "keybind": 0,
-    "keybindName": "NONE"
+    "keybind": 47,
+    "keybindName": "V"
   },
   {
     "name": "Penis ESP",
@@ -111,8 +106,8 @@
   },
   {
     "name": "Phase",
-    "keybind": 0,
-    "keybindName": "NONE"
+    "keybind": 35,
+    "keybindName": "H"
   },
   {
     "name": "Enemy List",
@@ -171,8 +166,8 @@
   },
   {
     "name": "Timer",
-    "keybind": 33,
-    "keybindName": "F"
+    "keybind": 38,
+    "keybindName": "L"
   },
   {
     "name": "HUD",
@@ -236,8 +231,8 @@
   },
   {
     "name": "Long Jump",
-    "keybind": 46,
-    "keybindName": "C"
+    "keybind": 38,
+    "keybindName": "L"
   },
   {
     "name": "Time Changer",
@@ -256,8 +251,8 @@
   },
   {
     "name": "Scaffold",
-    "keybind": 41,
-    "keybindName": "GRAVE"
+    "keybind": 47,
+    "keybindName": "V"
   },
   {
     "name": "Anti Bot",
