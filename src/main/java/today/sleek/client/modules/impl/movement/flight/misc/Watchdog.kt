@@ -1,17 +1,15 @@
 package today.sleek.client.modules.impl.movement.flight.misc
 
 import net.minecraft.network.Packet
-import net.minecraft.network.play.client.C03PacketPlayer.C04PacketPlayerPosition
 import net.minecraft.network.play.server.S08PacketPlayerPosLook
-import today.sleek.base.event.impl.BlockCollisionEvent
+import net.minecraft.potion.Potion
 import today.sleek.base.event.impl.MoveEvent
 import today.sleek.base.event.impl.PacketEvent
 import today.sleek.base.event.impl.UpdateEvent
 import today.sleek.client.modules.impl.movement.flight.FlightMode
-import today.sleek.client.utils.network.PacketUtil
 import today.sleek.client.utils.player.PlayerUtil
 
-class Test2: FlightMode("Test2") {
+class Watchdog: FlightMode("Hypixel") {
 
     var dontgo = true
     var waiting = false
@@ -38,7 +36,7 @@ class Test2: FlightMode("Test2") {
 
     override fun onMove(event: MoveEvent?) {
         if (!waiting && !dontgo) {
-            PlayerUtil.setMotion(event, PlayerUtil.getBaseSpeed().toDouble())
+            PlayerUtil.setMotion(event, if (mc.thePlayer.isPotionActive(Potion.moveSpeed)) 0.4 else 0.3)
         } else {
             event!!.motionX = 0.0.also { mc.thePlayer.motionX = it }
             event.motionZ = 0.0.also { mc.thePlayer.motionZ = it }

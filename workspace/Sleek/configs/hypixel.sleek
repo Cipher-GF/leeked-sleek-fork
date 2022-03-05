@@ -2,7 +2,7 @@
   "data": {
     "author": "2158",
     "name": "hypixel",
-    "lastUpdated": "Date 2022/3/5 Time 2:41:58"
+    "lastUpdated": "Date 2022/3/5 Time 15:8:16"
   },
   "modules": [
     {
@@ -136,6 +136,12 @@
       "Disable if compass": "true"
     },
     {
+      "name": "Motion Blur",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": false
+    },
+    {
       "name": "Item Physics",
       "keybind": 0,
       "hidden": false,
@@ -260,21 +266,24 @@
       "enabled": false,
       "Mode": "Smart",
       "Target Priority": "Health",
-      "Rotation Mode": "None",
+      "Rotation Mode": "NCP",
       "Swing Range": "4.2",
       "Block Range": "6.0",
       "CPS": "9.0",
       "Randomize CPS": "2.0",
+      "FOV": "360.0",
+      "Draw FOV": "false",
       "TP Hit": "false",
       "Teleport Range": "25.0",
       "Hit Chance": "100",
       "Swing Mode": "Client",
       "Attack Method": "Packet",
-      "Autoblock Mode": "Fake",
+      "Autoblock Mode": "Verus",
       "GCD": "true",
       "TargetHud": "true",
       "TargetHud Mode": "Sleek",
       "Preview Mode": "Face",
+      "Hold": "false",
       "Players": "true",
       "Friends": "false",
       "Animals": "false",
@@ -362,12 +371,12 @@
       "keybind": 47,
       "hidden": false,
       "enabled": false,
-      "Mode": "Test2",
+      "Mode": "Hypixel",
       "Speed": "0.0",
       "AntiKick": "true",
       "Timer": "5.0",
       "Blink": "true",
-      "View Bobbing": "false",
+      "View Bobbing": "true",
       "Spoof Y": "false"
     },
     {
@@ -386,7 +395,7 @@
       "keybind": 48,
       "hidden": false,
       "enabled": false,
-      "Mode": "Test 3",
+      "Mode": "Watchdog (Hop)",
       "Speed": "0.2",
       "Timer Speed": "1.0",
       "Force Friction": "true",
@@ -394,6 +403,12 @@
     },
     {
       "name": "Jesus",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": false
+    },
+    {
+      "name": "Eagle",
       "keybind": 0,
       "hidden": false,
       "enabled": false
@@ -440,14 +455,8 @@
       "Animals": "true",
       "Mobs": "false",
       "Invisibles": "false",
-      "Passives": "true",
-      "Box": "true",
-      "Health": "true",
-      "Armor": "true",
+      "Passive": "true",
       "Filled": "false",
-      "Corner": "false",
-      "Rainbow": "false",
-      "Thickness": "1.5",
       "Red": "255",
       "Green": "255",
       "Blue": "255"
@@ -457,7 +466,7 @@
       "keybind": 45,
       "hidden": false,
       "enabled": false,
-      "Mode": "Test",
+      "Mode": "Hypixel",
       "Vertical Boost": "2.1",
       "Speed": "5.6000000000000005",
       "Spoof Y": "false"

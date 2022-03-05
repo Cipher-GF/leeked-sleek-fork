@@ -1,7 +1,10 @@
 package today.sleek.client.modules.impl.movement
 
 import com.google.common.eventbus.Subscribe
+import net.minecraft.network.Packet
+import net.minecraft.network.play.client.C03PacketPlayer
 import today.sleek.base.event.impl.MoveEvent
+import today.sleek.base.event.impl.PacketEvent
 import today.sleek.base.event.impl.UpdateEvent
 import today.sleek.base.modules.ModuleCategory
 import today.sleek.base.modules.ModuleData
@@ -19,7 +22,7 @@ class LongJump : Module() {
     var launched = false
     var wasLaunched = false
     var jumped = false
-    private val mode = ModeValue("Mode", this, "Verus", "Viper", "Vanilla", "FuncraftDev")
+    private val mode = ModeValue("Mode", this, "Verus", "Viper", "Vanilla", "Hypixel")
 
     //verus boost stuff
     private val vertical = NumberValue("Vertical Boost", this, 0.8, 0.05, 6.0, 0.1)
@@ -27,7 +30,11 @@ class LongJump : Module() {
     private val damageWaiterThing = Stopwatch()
     val spoofy = BooleanValue("Spoof Y", this, false)
     var speed = 0.8
+    var ticks = 0;
+    var hurt = false;
     override fun onEnable() {
+        ticks = 0
+        hurt = false
         launched = false
         wasLaunched = false
         jumped = false
@@ -77,29 +84,33 @@ class LongJump : Module() {
                 }
             }
 
-            "FuncraftDev" -> {
+            "Hypixel" -> {
+                if (event!!.isPre) {
+                    ++ticks
+                    if (mc.thePlayer.onGround && hurt) {
+                        toggle()
+                    }
 
-                if (mc.thePlayer.isMovingOnGround) {
-                    speed = 0.8
-                    repeat(4)
-                    { mc.thePlayer.motionY = 0.4025 }
-                    launched = true
+                    if (ticks == 21) {
+                        PlayerUtil.hypixelDamage();
+                        mc.timer.timerSpeed = 0.334f;
+                        mc.thePlayer.motionY = 0.67;
+                        PlayerUtil.setMotion(0.2783 * 1.7);
+                        hurt = true;
+                    } else {
+                        if (ticks == 22) {
+                            mc.thePlayer.motionY += 0.05;
+                            PlayerUtil.setMotion(0.2783 * 1.55);
+                        }
+                        if (ticks == 23) {
+                            PlayerUtil.setMotion(0.2783 * 1.48);
+                        }
+                        mc.timer.timerSpeed = 1.0f;
+                    }
+                    if (hurt && mc.thePlayer.fallDistance > 0.1) {
+                        mc.thePlayer.motionY += 0.015;
+                    }
                 }
-                if (!mc.thePlayer.onGround) {
-//                    speed -= speed / 152
-                    mc.thePlayer.motionX *= 0.9
-                    mc.thePlayer.motionZ *= 0.9
-                }
-                if ((mc.theWorld.getCollidingBoundingBoxes(
-                        mc.thePlayer,
-                        mc.thePlayer.entityBoundingBox.offset(0.0, mc.thePlayer.motionY, 0.0)
-                    ).size > 0
-                            || mc.thePlayer.isCollidedVertically)
-                    && (launched && event!!.isPre)
-                ) {
-                    toggle()
-                }
-
             }
         }
     }
@@ -123,6 +134,22 @@ class LongJump : Module() {
                         PlayerUtil.TPGROUND(event, 0.32, 0.0)
                         ++i
                     }
+                }
+            }
+            "Hypixel" -> {
+                if (ticks < 21) {
+                    event!!.isCancelled = true
+                }
+            }
+        }
+    }
+
+    @Subscribe
+    fun onPacket(event: PacketEvent) {
+        if (mode.value == "Hypixel") {
+            if (event.getPacket<Packet<*>>() is C03PacketPlayer) {
+                if (ticks < 21) {
+                    event.isCancelled = true
                 }
             }
         }

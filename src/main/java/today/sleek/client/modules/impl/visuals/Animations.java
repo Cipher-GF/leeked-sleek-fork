@@ -43,7 +43,7 @@ public class Animations extends Module {
         final float var = MathHelper.sin((float) (MathHelper.sqrt_float(f1) * Math.PI));
         final float sin = MathHelper.sin(MathHelper.sqrt_float(f1) * 3.1415927f);
         if (attackanim.getValue()) {
-            GlStateManager.scale(scale.getValue(), scale.getValue(), scale.getValue());
+            GlStateManager.scale(scale.getValue(), 1, -scale.getValue());
             switch (modeblockanim.getValue().toUpperCase()) {
                 case "Stella":
                     mc.getItemRenderer().transformFirstPersonItem(f, 0.0f);
