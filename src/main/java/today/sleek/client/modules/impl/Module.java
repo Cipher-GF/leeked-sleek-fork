@@ -7,7 +7,6 @@ import today.sleek.base.modules.ModuleData;
 import today.sleek.client.modules.impl.visuals.ClickGUI;
 import today.sleek.client.modules.impl.visuals.HUD;
 import today.sleek.base.value.Value;
-import me.kansio.client.value.value.*;
 import net.minecraft.client.Minecraft;
 import org.lwjgl.input.Keyboard;
 import today.sleek.base.value.value.*;

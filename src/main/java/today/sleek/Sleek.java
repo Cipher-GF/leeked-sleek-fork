@@ -2,6 +2,9 @@ package today.sleek;
 
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
+import com.jagrosh.discordipc.IPCClient;
+import com.jagrosh.discordipc.IPCListener;
+import com.jagrosh.discordipc.entities.RichPresence;
 import today.sleek.client.commands.CommandManager;
 import today.sleek.base.config.ConfigManager;
 import today.sleek.base.event.impl.KeyboardEvent;
@@ -31,6 +34,7 @@ import viamcp.utils.JLoggerToLog4j;
 import java.io.File;
 import java.io.IOException;
 import java.text.MessageFormat;
+import java.time.OffsetDateTime;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -95,7 +99,6 @@ public class Sleek {
         } catch (Exception e) {
             System.out.println("[Sleek] Failed to start ViaMCP");
         }
-        /*
         try {
             IPCClient client = new IPCClient(937350566886137886L);
             client.setListener(new IPCListener() {
@@ -114,7 +117,7 @@ public class Sleek {
         } catch (Exception e) {
             System.out.println("Discord not found, not setting rpc.");
         }
-        */
+
         System.out.println("Client has been started.");
         //set the window title
         Display.setTitle("Sleek Beta 030322");

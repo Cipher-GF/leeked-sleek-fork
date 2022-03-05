@@ -10,11 +10,14 @@ import today.sleek.client.gui.notification.NotificationManager;
 import today.sleek.base.modules.ModuleCategory;
 import today.sleek.base.modules.ModuleData;
 import today.sleek.client.modules.impl.Module;
+import today.sleek.client.utils.chat.ChatUtil;
 import today.sleek.client.utils.combat.FightUtil;
 import today.sleek.client.utils.math.Stopwatch;
 import today.sleek.client.utils.network.PacketUtil;
 import today.sleek.client.utils.pathfinding.DortPathFinder;
 import today.sleek.client.utils.pathfinding.Vec3;
+import today.sleek.client.utils.render.RenderUtil;
+import today.sleek.client.utils.render.RenderUtils;
 import today.sleek.client.utils.rotations.AimUtil;
 import today.sleek.client.utils.rotations.Rotation;
 import today.sleek.base.value.value.BooleanValue;
@@ -30,8 +33,10 @@ import net.minecraft.network.play.client.*;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import org.apache.commons.lang3.RandomUtils;
+import today.sleek.client.utils.rotations.RotationUtil;
 
 import javax.vecmath.Vector2f;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -54,6 +59,8 @@ public class KillAura extends Module {
     public NumberValue<Double> autoblockRange = new NumberValue<>("Block Range", this, 3.0, 1.0, 12.0, 0.1);
     public NumberValue<Double> cps = new NumberValue<>("CPS", this, 12.0, 1.0, 20.0, 1.0);
     public NumberValue<Double> cprandom = new NumberValue<>("Randomize CPS", this, 3.0, 0.0, 10.0, 1.0);
+    public NumberValue<Double> fov = new NumberValue<>("FOV", this, 360.0, 1.0, 360.0, 1.0);
+    public BooleanValue drawFOV = new BooleanValue("Draw FOV", this, false);
     public BooleanValue teleportAura = new BooleanValue("TP Hit", this, false);
     public NumberValue<Double> tprange = new NumberValue<>("Teleport Range", this, 25.0, 0.0, 120.0, 1.0, teleportAura);
     public NumberValue chance = new NumberValue<>("Hit Chance", this, 100, 0, 100, 1);
@@ -64,6 +71,7 @@ public class KillAura extends Module {
     public BooleanValue targethud = new BooleanValue("TargetHud", this, false);
     public ModeValue targethudmode = new ModeValue("TargetHud Mode", this, targethud, "Sleek", "Exhi", "Flux");
     public ModeValue targethud3d = new ModeValue("Preview Mode", this, targethud, "Face", "Model");
+    public BooleanValue hold = new BooleanValue("Hold", this, false);
     public BooleanValue players = new BooleanValue("Players", this, true);
     public BooleanValue friends = new BooleanValue("Friends", this, true);
     public BooleanValue animals = new BooleanValue("Animals", this, true);
@@ -111,7 +119,7 @@ public class KillAura extends Module {
 
     @Subscribe
     public void onMotion(UpdateEvent event) {
-        List<EntityLivingBase> entities = FightUtil.getMultipleTargets(teleportAura.getValue() ? tprange.getValue() : swingrage.getValue(), players.getValue(), friends.getValue(), animals.getValue(), walls.getValue(), monsters.getValue(), invisible.getValue());
+        List<EntityLivingBase> entities = FightUtil.getMultipleTargets(teleportAura.getValue() ? tprange.getValue() : swingrage.getValue(), players.getValue(), friends.getValue(), animals.getValue(), false, monsters.getValue(), invisible.getValue());
 
         if (mc.currentScreen != null) return;
 
@@ -128,9 +136,19 @@ public class KillAura extends Module {
             }
         }
 
+        //Return if the player isn't holding attack & hold is on
+        if (hold.getValue() && !mc.gameSettings.keyBindAttack.isKeyDown()) {
+            return;
+        }
+
+
         List<EntityLivingBase> blockRangeEntites = FightUtil.getMultipleTargets(autoblockRange.getValue(), players.getValue(), friends.getValue(), animals.getValue(), walls.getValue(), monsters.getValue(), invisible.getValue());
 
         entities.removeIf(e -> e.getName().contains("[NPC]"));
+
+        if (fov.getValue() != 360f) {
+            entities.removeIf(e -> !RotationUtil.isVisibleFOV(e, fov.getValue().floatValue() / 2));
+        }
 
         ItemStack heldItem = mc.thePlayer.getHeldItem();
 
@@ -198,6 +216,8 @@ public class KillAura extends Module {
                         break;
                     }
                 }
+
+
                 if (!teleportAura.getValue()) {
                     aimAtTarget(event, rotatemode.getValue(), target);
                 }
@@ -331,9 +351,16 @@ public class KillAura extends Module {
 
     @Subscribe
     public void onRender(RenderOverlayEvent event) {
+        if (drawFOV.getValue()) {
+            float drawingFOV = fov.getValue().floatValue() * 6;
+            RenderUtil.drawUnfilledCircle((RenderUtil.getResolution().getScaledWidth() - drawingFOV) / 2, (RenderUtil.getResolution().getScaledHeight() - drawingFOV) / 2, drawingFOV, Color.WHITE.getRGB());
+        }
+
         if (target == null) {
             return;
         }
+
+
         if (targethud.getValue()) {
             TargetHUD.draw(event, target);
         }
