@@ -1,9 +1,9 @@
 package today.sleek.client.modules.impl.visuals.hud.watermark
 
-import today.sleek.client.modules.impl.visuals.hud.WaterMarkMode
-import today.sleek.base.event.impl.RenderOverlayEvent
-import today.sleek.client.utils.network.UserUtil
 import net.minecraft.client.Minecraft
+import today.sleek.base.event.impl.RenderOverlayEvent
+import today.sleek.client.modules.impl.visuals.hud.WaterMarkMode
+import today.sleek.client.utils.network.UserUtil
 
 /**
  * @author Kansio

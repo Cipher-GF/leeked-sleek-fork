@@ -1,5 +1,10 @@
 package net.minecraft.client.gui;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.audio.PositionedSoundRecord;
+import net.minecraft.client.audio.SoundHandler;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.util.ResourceLocation;
 import today.sleek.client.gui.MainMenu;
 import today.sleek.client.gui.clickgui.utils.render.animation.easings.Animate;
 import today.sleek.client.gui.clickgui.utils.render.animation.easings.Easing;
@@ -7,11 +12,6 @@ import today.sleek.client.utils.font.Fonts;
 import today.sleek.client.utils.font.MCFontRenderer;
 import today.sleek.client.utils.render.ColorUtils;
 import today.sleek.client.utils.render.RenderUtil;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.audio.PositionedSoundRecord;
-import net.minecraft.client.audio.SoundHandler;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.util.ResourceLocation;
 
 import java.awt.*;
 

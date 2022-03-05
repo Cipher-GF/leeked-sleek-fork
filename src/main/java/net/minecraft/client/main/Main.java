@@ -7,9 +7,9 @@ import com.mojang.authlib.properties.PropertyMap.Serializer;
 import joptsimple.OptionParser;
 import joptsimple.OptionSet;
 import joptsimple.OptionSpec;
-import today.sleek.base.protection.ProtectionUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.Session;
+import today.sleek.base.protection.ProtectionUtil;
 
 import javax.swing.*;
 import java.io.File;

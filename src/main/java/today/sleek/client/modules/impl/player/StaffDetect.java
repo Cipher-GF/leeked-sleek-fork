@@ -1,17 +1,18 @@
 package today.sleek.client.modules.impl.player;
 
 import com.google.common.eventbus.Subscribe;
+import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.entity.player.EntityPlayer;
 import today.sleek.base.event.impl.RenderOverlayEvent;
 import today.sleek.base.event.impl.UpdateEvent;
 import today.sleek.base.modules.ModuleCategory;
 import today.sleek.base.modules.ModuleData;
-import today.sleek.client.modules.impl.Module;
-import today.sleek.client.utils.render.ColorUtils;
 import today.sleek.base.value.value.BooleanValue;
+import today.sleek.client.modules.impl.Module;
 import today.sleek.client.utils.chat.ChatUtil;
+import today.sleek.client.utils.render.ColorUtils;
 import today.sleek.client.utils.render.RenderUtils;
-import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.entity.player.EntityPlayer;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;

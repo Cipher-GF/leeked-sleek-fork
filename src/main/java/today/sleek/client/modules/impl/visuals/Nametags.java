@@ -2,20 +2,20 @@ package today.sleek.client.modules.impl.visuals;
 
 
 import com.google.common.eventbus.Subscribe;
-import today.sleek.Sleek;
-import today.sleek.base.event.impl.Render3DEvent;
-import today.sleek.base.modules.ModuleCategory;
-import today.sleek.base.modules.ModuleData;
-import today.sleek.client.modules.impl.Module;
-import today.sleek.client.utils.font.Fonts;
-import today.sleek.client.utils.render.RenderUtil;
-import today.sleek.base.value.value.BooleanValue;
-import today.sleek.base.value.value.NumberValue;
 import net.minecraft.client.network.NetworkPlayerInfo;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import today.sleek.Sleek;
+import today.sleek.base.event.impl.Render3DEvent;
+import today.sleek.base.modules.ModuleCategory;
+import today.sleek.base.modules.ModuleData;
+import today.sleek.base.value.value.BooleanValue;
+import today.sleek.base.value.value.NumberValue;
+import today.sleek.client.modules.impl.Module;
+import today.sleek.client.utils.font.Fonts;
+import today.sleek.client.utils.render.RenderUtil;
 
 import java.awt.*;
 import java.util.Objects;

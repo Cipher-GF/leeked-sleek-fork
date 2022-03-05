@@ -1,13 +1,13 @@
 package today.sleek.client.modules.impl.movement.flight.blox;
 
+import net.minecraft.block.BlockAir;
+import net.minecraft.util.AxisAlignedBB;
 import today.sleek.base.event.impl.BlockCollisionEvent;
 import today.sleek.base.event.impl.MoveEvent;
 import today.sleek.base.event.impl.PacketEvent;
 import today.sleek.base.event.impl.UpdateEvent;
 import today.sleek.client.modules.impl.movement.flight.FlightMode;
 import today.sleek.client.utils.player.PlayerUtil;
-import net.minecraft.block.BlockAir;
-import net.minecraft.util.AxisAlignedBB;
 
 public class BlocksMC extends FlightMode {
 

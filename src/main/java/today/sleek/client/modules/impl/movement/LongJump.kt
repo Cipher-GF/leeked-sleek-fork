@@ -5,12 +5,13 @@ import today.sleek.base.event.impl.MoveEvent
 import today.sleek.base.event.impl.UpdateEvent
 import today.sleek.base.modules.ModuleCategory
 import today.sleek.base.modules.ModuleData
+import today.sleek.base.value.value.BooleanValue
+import today.sleek.base.value.value.ModeValue
+import today.sleek.base.value.value.NumberValue
 import today.sleek.client.modules.impl.Module
 import today.sleek.client.utils.math.Stopwatch
 import today.sleek.client.utils.player.PlayerUtil
 import today.sleek.client.utils.player.TimerUtil
-import today.sleek.base.value.value.ModeValue
-import today.sleek.base.value.value.NumberValue
 
 @ModuleData(name = "Long Jump", category = ModuleCategory.MOVEMENT, description = "Jump further than normal")
 class LongJump : Module() {
@@ -24,6 +25,7 @@ class LongJump : Module() {
     private val vertical = NumberValue("Vertical Boost", this, 0.8, 0.05, 6.0, 0.1)
     private val boost = NumberValue("Speed", this, 1.45, 0.05, 10.0, 0.1)
     private val damageWaiterThing = Stopwatch()
+    val spoofy = BooleanValue("Spoof Y", this, false)
     var speed = 0.8
     override fun onEnable() {
         launched = false
@@ -47,6 +49,9 @@ class LongJump : Module() {
 
     @Subscribe
     fun onUpdate(event: UpdateEvent?) {
+        if (spoofy.value) {
+            mc.thePlayer.posY = mc.thePlayer.prevPosY
+        }
         when (mode.value) {
             "Verus" -> {
                 if (mc.thePlayer.hurtTime > 1 && !launched) {
@@ -71,16 +76,7 @@ class LongJump : Module() {
                     PlayerUtil.setMotion(boost.value.toFloat().toDouble())
                 }
             }
-            "Test" -> {
-                mc.thePlayer.posY = mc.thePlayer.prevPosY
-                if (mc.thePlayer.isMoving) {
-                    if (mc.thePlayer.onGround) {
-                        mc.thePlayer.motionY = vertical.value
-                    }
-                    PlayerUtil.setMotion(boost.value.toFloat().toDouble())
-                }
 
-            }
             "FuncraftDev" -> {
 
                 if (mc.thePlayer.isMovingOnGround) {

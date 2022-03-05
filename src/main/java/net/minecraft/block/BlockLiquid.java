@@ -1,6 +1,5 @@
 package net.minecraft.block;
 
-import today.sleek.Sleek;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyInteger;
@@ -13,6 +12,7 @@ import net.minecraft.util.*;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeColorHelper;
+import today.sleek.Sleek;
 
 import java.util.Random;
 

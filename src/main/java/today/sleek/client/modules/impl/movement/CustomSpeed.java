@@ -4,8 +4,8 @@ import com.google.common.eventbus.Subscribe;
 import today.sleek.base.event.impl.MoveEvent;
 import today.sleek.base.modules.ModuleCategory;
 import today.sleek.base.modules.ModuleData;
-import today.sleek.client.modules.impl.Module;
 import today.sleek.base.value.value.NumberValue;
+import today.sleek.client.modules.impl.Module;
 import today.sleek.client.utils.player.PlayerUtil;
 
 @ModuleData(

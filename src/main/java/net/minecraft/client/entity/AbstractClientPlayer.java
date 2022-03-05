@@ -1,8 +1,6 @@
 package net.minecraft.client.entity;
 
 import com.mojang.authlib.GameProfile;
-import today.sleek.Sleek;
-import today.sleek.client.modules.impl.visuals.Cape;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.network.NetworkPlayerInfo;
 import net.minecraft.client.renderer.ImageBufferDownload;
@@ -22,6 +20,8 @@ import optifine.CapeUtils;
 import optifine.Config;
 import optifine.PlayerConfigurations;
 import optifine.Reflector;
+import today.sleek.Sleek;
+import today.sleek.client.modules.impl.visuals.Cape;
 
 import java.io.File;
 

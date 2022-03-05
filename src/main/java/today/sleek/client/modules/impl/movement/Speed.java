@@ -1,19 +1,19 @@
 package today.sleek.client.modules.impl.movement;
 
-import com.google.common.util.concurrent.AtomicDouble;
 import com.google.common.eventbus.Subscribe;
+import com.google.common.util.concurrent.AtomicDouble;
 import today.sleek.base.event.impl.MoveEvent;
 import today.sleek.base.event.impl.PacketEvent;
 import today.sleek.base.event.impl.UpdateEvent;
 import today.sleek.base.modules.ModuleCategory;
 import today.sleek.base.modules.ModuleData;
-import today.sleek.client.modules.impl.Module;
-import today.sleek.client.modules.impl.movement.speed.SpeedMode;
-import today.sleek.client.gui.notification.Notification;
-import today.sleek.client.gui.notification.NotificationManager;
 import today.sleek.base.value.value.BooleanValue;
 import today.sleek.base.value.value.ModeValue;
 import today.sleek.base.value.value.NumberValue;
+import today.sleek.client.gui.notification.Notification;
+import today.sleek.client.gui.notification.NotificationManager;
+import today.sleek.client.modules.impl.Module;
+import today.sleek.client.modules.impl.movement.speed.SpeedMode;
 import today.sleek.client.utils.chat.ChatUtil;
 import today.sleek.client.utils.java.ReflectUtils;
 import today.sleek.client.utils.player.PlayerUtil;

@@ -1,11 +1,6 @@
 package today.sleek.client.modules.impl.player;
 
 import com.google.common.eventbus.Subscribe;
-import today.sleek.base.event.PacketDirection;
-import today.sleek.base.event.impl.PacketEvent;
-import today.sleek.base.modules.ModuleCategory;
-import today.sleek.base.modules.ModuleData;
-import today.sleek.client.modules.impl.Module;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.enchantment.Enchantment;
@@ -17,6 +12,11 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
 import net.minecraft.network.play.client.C02PacketUseEntity;
 import net.minecraft.util.BlockPos;
+import today.sleek.base.event.PacketDirection;
+import today.sleek.base.event.impl.PacketEvent;
+import today.sleek.base.modules.ModuleCategory;
+import today.sleek.base.modules.ModuleData;
+import today.sleek.client.modules.impl.Module;
 
 @ModuleData(
         name = "Auto Tool",

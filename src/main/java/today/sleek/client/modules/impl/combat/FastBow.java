@@ -1,15 +1,6 @@
 package today.sleek.client.modules.impl.combat;
 
 import com.google.common.eventbus.Subscribe;
-import today.sleek.base.event.impl.UpdateEvent;
-import today.sleek.base.modules.ModuleCategory;
-import today.sleek.base.modules.ModuleData;
-import today.sleek.client.modules.impl.Module;
-import today.sleek.base.value.value.BooleanValue;
-import today.sleek.base.value.value.ModeValue;
-import today.sleek.base.value.value.NumberValue;
-import today.sleek.client.utils.chat.ChatUtil;
-import today.sleek.client.utils.network.PacketUtil;
 import net.minecraft.item.ItemBow;
 import net.minecraft.network.play.client.C03PacketPlayer;
 import net.minecraft.network.play.client.C07PacketPlayerDigging;
@@ -17,6 +8,15 @@ import net.minecraft.network.play.client.C08PacketPlayerBlockPlacement;
 import net.minecraft.network.play.client.C09PacketHeldItemChange;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
+import today.sleek.base.event.impl.UpdateEvent;
+import today.sleek.base.modules.ModuleCategory;
+import today.sleek.base.modules.ModuleData;
+import today.sleek.base.value.value.BooleanValue;
+import today.sleek.base.value.value.ModeValue;
+import today.sleek.base.value.value.NumberValue;
+import today.sleek.client.modules.impl.Module;
+import today.sleek.client.utils.chat.ChatUtil;
+import today.sleek.client.utils.network.PacketUtil;
 
 @ModuleData(
         name = "Fast Bow",

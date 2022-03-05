@@ -1,14 +1,14 @@
 package today.sleek.client.modules.impl.visuals;
 
 import com.google.common.eventbus.Subscribe;
+import net.minecraft.network.play.server.S03PacketTimeUpdate;
 import today.sleek.base.event.impl.PacketEvent;
 import today.sleek.base.event.impl.TickEvent;
 import today.sleek.base.modules.ModuleCategory;
 import today.sleek.base.modules.ModuleData;
-import today.sleek.client.modules.impl.Module;
 import today.sleek.base.value.value.ModeValue;
 import today.sleek.base.value.value.NumberValue;
-import net.minecraft.network.play.server.S03PacketTimeUpdate;
+import today.sleek.client.modules.impl.Module;
 
 @ModuleData(
         name = "Time Changer",

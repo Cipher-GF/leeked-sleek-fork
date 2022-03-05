@@ -1,7 +1,7 @@
 package today.sleek.base.event.impl;
 
-import today.sleek.base.event.Event;
 import net.minecraft.entity.EntityLivingBase;
+import today.sleek.base.event.Event;
 
 public class EntityLivingRenderEvent extends Event {
 

@@ -1,7 +1,7 @@
 package today.sleek.client.utils.math;
 
-import today.sleek.client.utils.Util;
 import net.minecraft.entity.player.EntityPlayer;
+import today.sleek.client.utils.Util;
 
 public class BPSUtil extends Util {
 

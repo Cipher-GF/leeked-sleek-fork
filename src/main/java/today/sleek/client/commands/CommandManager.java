@@ -2,10 +2,9 @@ package today.sleek.client.commands;
 
 import com.google.common.eventbus.Subscribe;
 import today.sleek.Sleek;
-import me.kansio.client.commands.impl.*;
 import today.sleek.base.event.impl.ChatEvent;
-import today.sleek.client.utils.chat.ChatUtil;
 import today.sleek.client.commands.impl.*;
+import today.sleek.client.utils.chat.ChatUtil;
 
 import java.util.ArrayList;
 

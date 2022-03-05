@@ -1,9 +1,9 @@
 package today.sleek.client.modules.impl.player.hackerdetect.checks.movement;
 
-import today.sleek.Sleek;
-import today.sleek.client.modules.impl.player.hackerdetect.checks.Check;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
+import today.sleek.Sleek;
+import today.sleek.client.modules.impl.player.hackerdetect.checks.Check;
 
 import java.util.HashMap;
 

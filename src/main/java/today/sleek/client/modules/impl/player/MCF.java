@@ -1,14 +1,14 @@
 package today.sleek.client.modules.impl.player;
 
 import com.google.common.eventbus.Subscribe;
+import net.minecraft.entity.player.EntityPlayer;
 import today.sleek.Sleek;
 import today.sleek.base.event.impl.MouseEvent;
-import today.sleek.client.friend.Friend;
 import today.sleek.base.modules.ModuleCategory;
 import today.sleek.base.modules.ModuleData;
+import today.sleek.client.friend.Friend;
 import today.sleek.client.modules.impl.Module;
 import today.sleek.client.utils.chat.ChatUtil;
-import net.minecraft.entity.player.EntityPlayer;
 
 @ModuleData(
         name = "MCF",

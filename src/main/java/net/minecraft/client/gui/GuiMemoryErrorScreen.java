@@ -1,7 +1,7 @@
 package net.minecraft.client.gui;
 
-import today.sleek.client.gui.MainMenu;
 import net.minecraft.client.resources.I18n;
+import today.sleek.client.gui.MainMenu;
 
 import java.io.IOException;
 

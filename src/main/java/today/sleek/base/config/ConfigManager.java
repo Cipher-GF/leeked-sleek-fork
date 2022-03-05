@@ -1,14 +1,14 @@
 package today.sleek.base.config;
 
 import com.google.gson.*;
-import today.sleek.Sleek;
-import today.sleek.client.modules.impl.Module;
-import today.sleek.client.gui.notification.Notification;
-import today.sleek.client.gui.notification.NotificationManager;
-import today.sleek.client.utils.chat.ChatUtil;
-import today.sleek.client.utils.network.HttpUtil;
 import org.apache.commons.io.FilenameUtils;
 import sun.misc.Unsafe;
+import today.sleek.Sleek;
+import today.sleek.client.gui.notification.Notification;
+import today.sleek.client.gui.notification.NotificationManager;
+import today.sleek.client.modules.impl.Module;
+import today.sleek.client.utils.chat.ChatUtil;
+import today.sleek.client.utils.network.HttpUtil;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;

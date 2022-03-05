@@ -1,15 +1,15 @@
 package today.sleek.client.modules.impl.movement;
 
 import com.google.common.eventbus.Subscribe;
+import net.minecraft.network.play.client.C03PacketPlayer;
+import net.minecraft.network.play.client.C0BPacketEntityAction;
 import today.sleek.base.event.impl.PacketEvent;
 import today.sleek.base.event.impl.UpdateEvent;
 import today.sleek.base.modules.ModuleCategory;
 import today.sleek.base.modules.ModuleData;
-import today.sleek.client.modules.impl.Module;
 import today.sleek.base.value.value.BooleanValue;
 import today.sleek.base.value.value.ModeValue;
-import net.minecraft.network.play.client.C03PacketPlayer;
-import net.minecraft.network.play.client.C0BPacketEntityAction;
+import today.sleek.client.modules.impl.Module;
 
 @ModuleData(name = "Sprint", category = ModuleCategory.MOVEMENT, description = "Automatically sprints")
 public class Sprint extends Module {

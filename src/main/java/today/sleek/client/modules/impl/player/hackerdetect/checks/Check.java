@@ -1,11 +1,11 @@
 package today.sleek.client.modules.impl.player.hackerdetect.checks;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.entity.player.EntityPlayer;
 import today.sleek.Sleek;
 import today.sleek.base.event.impl.PacketEvent;
 import today.sleek.client.modules.impl.player.HackerDetect;
 import today.sleek.client.utils.chat.ChatUtil;
-import net.minecraft.client.Minecraft;
-import net.minecraft.entity.player.EntityPlayer;
 
 public abstract class Check {
 

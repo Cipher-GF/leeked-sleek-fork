@@ -2,10 +2,10 @@ package today.sleek.client.modules.impl.visuals;
 
 
 import com.mojang.authlib.GameProfile;
+import net.minecraft.client.entity.EntityOtherPlayerMP;
 import today.sleek.base.modules.ModuleCategory;
 import today.sleek.base.modules.ModuleData;
 import today.sleek.client.modules.impl.Module;
-import net.minecraft.client.entity.EntityOtherPlayerMP;
 
 import java.util.UUID;
 @ModuleData(

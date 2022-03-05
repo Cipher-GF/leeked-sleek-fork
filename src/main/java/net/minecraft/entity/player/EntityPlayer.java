@@ -3,8 +3,6 @@ package net.minecraft.entity.player;
 import com.google.common.base.Charsets;
 import com.google.common.collect.Lists;
 import com.mojang.authlib.GameProfile;
-import today.sleek.Sleek;
-import today.sleek.base.event.impl.NoSlowEvent;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBed;
 import net.minecraft.block.BlockDirectional;
@@ -44,6 +42,8 @@ import net.minecraft.stats.StatList;
 import net.minecraft.tileentity.TileEntitySign;
 import net.minecraft.util.*;
 import net.minecraft.world.*;
+import today.sleek.Sleek;
+import today.sleek.base.event.impl.NoSlowEvent;
 
 import java.util.Collection;
 import java.util.List;

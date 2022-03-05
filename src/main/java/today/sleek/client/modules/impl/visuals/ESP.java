@@ -1,15 +1,6 @@
 package today.sleek.client.modules.impl.visuals;
 
 import com.google.common.eventbus.Subscribe;
-import today.sleek.Sleek;
-import today.sleek.base.event.impl.Render3DEvent;
-import today.sleek.base.modules.ModuleCategory;
-import today.sleek.base.modules.ModuleData;
-import today.sleek.client.modules.impl.Module;
-import today.sleek.client.utils.render.ColorUtils;
-import today.sleek.client.utils.render.RenderUtil;
-import today.sleek.base.value.value.BooleanValue;
-import today.sleek.base.value.value.NumberValue;
 import net.minecraft.client.renderer.GLAllocation;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -25,14 +16,25 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
 import org.lwjgl.opengl.GL11;
+import today.sleek.Sleek;
+import today.sleek.base.event.impl.Render3DEvent;
+import today.sleek.base.modules.ModuleCategory;
+import today.sleek.base.modules.ModuleData;
+import today.sleek.base.value.value.BooleanValue;
+import today.sleek.base.value.value.NumberValue;
+import today.sleek.client.modules.impl.Module;
+import today.sleek.client.utils.render.ColorUtils;
+import today.sleek.client.utils.render.RenderUtil;
 
 import javax.vecmath.Vector3d;
 import javax.vecmath.Vector4d;
 import java.awt.*;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 //made by ohare
 

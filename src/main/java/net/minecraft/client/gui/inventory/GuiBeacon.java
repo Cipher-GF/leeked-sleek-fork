@@ -17,14 +17,10 @@ import net.minecraft.network.play.client.C17PacketCustomPayload;
 import net.minecraft.potion.Potion;
 import net.minecraft.tileentity.TileEntityBeacon;
 import net.minecraft.util.ResourceLocation;
-
-
-import java.io.IOException;
-
-
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.io.IOException;
 
 
 public class GuiBeacon extends GuiContainer

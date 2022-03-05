@@ -1,11 +1,11 @@
 package today.sleek.client.modules.impl.visuals.hud.watermark;
 
+import net.minecraft.client.renderer.GlStateManager;
 import today.sleek.base.event.impl.RenderOverlayEvent;
 import today.sleek.client.modules.impl.visuals.hud.WaterMarkMode;
 import today.sleek.client.utils.chat.ChatUtil;
 import today.sleek.client.utils.font.Fonts;
 import today.sleek.client.utils.render.ColorUtils;
-import net.minecraft.client.renderer.GlStateManager;
 
 public class Intent extends WaterMarkMode {
 

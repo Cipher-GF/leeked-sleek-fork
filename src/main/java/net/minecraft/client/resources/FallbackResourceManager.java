@@ -3,16 +3,12 @@ package net.minecraft.client.resources;
 import com.google.common.collect.Lists;
 import net.minecraft.client.resources.data.IMetadataSerializer;
 import net.minecraft.util.ResourceLocation;
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.*;
 import java.util.List;
 import java.util.Set;
-
-
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 
 public class FallbackResourceManager implements IResourceManager

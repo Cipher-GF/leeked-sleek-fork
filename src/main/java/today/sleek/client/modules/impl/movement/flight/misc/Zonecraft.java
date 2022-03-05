@@ -1,28 +1,28 @@
 package today.sleek.client.modules.impl.movement.flight.misc;
 
+import net.minecraft.network.Packet;
+import net.minecraft.network.play.INetHandlerPlayServer;
+import net.minecraft.network.play.client.C03PacketPlayer;
+import net.minecraft.network.play.client.C0CPacketInput;
+import net.minecraft.network.play.server.S08PacketPlayerPosLook;
 import today.sleek.base.event.impl.MoveEvent;
 import today.sleek.base.event.impl.PacketEvent;
 import today.sleek.client.modules.impl.movement.flight.FlightMode;
 import today.sleek.client.utils.chat.ChatUtil;
 import today.sleek.client.utils.network.PacketUtil;
 import today.sleek.client.utils.player.PlayerUtil;
-import net.minecraft.network.Packet;
-import net.minecraft.network.play.INetHandlerPlayServer;
-import net.minecraft.network.play.client.C03PacketPlayer;
-import net.minecraft.network.play.client.C0CPacketInput;
-import net.minecraft.network.play.server.S08PacketPlayerPosLook;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Test2 extends FlightMode {
+public class Zonecraft extends FlightMode {
 
     private List<Packet<INetHandlerPlayServer>> packets = new ArrayList<>();
     private boolean disabled = false;
     private int ticks = 0;
 
 
-    public Test2() {
+    public Zonecraft() {
         super("Zonecraft");
     }
 

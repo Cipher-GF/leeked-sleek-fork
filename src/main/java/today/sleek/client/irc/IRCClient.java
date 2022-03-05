@@ -1,12 +1,12 @@
 package today.sleek.client.irc;
 
-import today.sleek.Sleek;
-import today.sleek.client.modules.impl.player.IRC;
-import today.sleek.client.utils.chat.ChatUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.ChatComponentText;
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
+import today.sleek.Sleek;
+import today.sleek.client.modules.impl.player.IRC;
+import today.sleek.client.utils.chat.ChatUtil;
 
 import java.net.URI;
 import java.net.URISyntaxException;

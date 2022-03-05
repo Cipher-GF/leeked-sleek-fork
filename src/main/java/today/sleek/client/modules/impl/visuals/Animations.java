@@ -1,16 +1,16 @@
 package today.sleek.client.modules.impl.visuals;
 
-import today.sleek.base.modules.ModuleCategory;
-import today.sleek.base.modules.ModuleData;
-import today.sleek.client.modules.impl.Module;
-import today.sleek.base.value.value.BooleanValue;
-import today.sleek.base.value.value.ModeValue;
-import today.sleek.base.value.value.NumberValue;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import org.lwjgl.opengl.GL11;
+import today.sleek.base.modules.ModuleCategory;
+import today.sleek.base.modules.ModuleData;
+import today.sleek.base.value.value.BooleanValue;
+import today.sleek.base.value.value.ModeValue;
+import today.sleek.base.value.value.NumberValue;
+import today.sleek.client.modules.impl.Module;
 
 @ModuleData(
         name = "Animations",

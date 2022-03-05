@@ -1,13 +1,13 @@
 package today.sleek.client.modules.impl.visuals.hud.arraylist;
 
+import net.minecraft.client.gui.Gui;
+import net.minecraft.client.gui.ScaledResolution;
 import today.sleek.Sleek;
 import today.sleek.base.event.impl.RenderOverlayEvent;
 import today.sleek.client.modules.impl.Module;
 import today.sleek.client.modules.impl.visuals.hud.ArrayListMode;
 import today.sleek.client.utils.font.Fonts;
 import today.sleek.client.utils.render.ColorUtils;
-import net.minecraft.client.gui.Gui;
-import net.minecraft.client.gui.ScaledResolution;
 
 import java.util.Comparator;
 

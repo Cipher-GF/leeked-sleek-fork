@@ -1,12 +1,12 @@
 package today.sleek.client.utils.rotations;
 
-import today.sleek.client.utils.Util;
-import today.sleek.client.utils.player.Location;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3;
+import today.sleek.client.utils.Util;
+import today.sleek.client.utils.player.Location;
 
 import javax.vecmath.Vector2f;
 

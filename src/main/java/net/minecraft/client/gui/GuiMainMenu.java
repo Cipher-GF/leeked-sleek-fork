@@ -1,28 +1,29 @@
 package net.minecraft.client.gui;
 
-import java.lang.reflect.Field;
-import java.util.*;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.sun.jna.platform.win32.User32;
 import com.sun.jna.platform.win32.WinDef;
+import negroidslayer.NegroidFarm;
+import net.minecraft.client.renderer.GlStateManager;
+import org.lwjgl.input.Keyboard;
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL20;
+import sun.misc.Unsafe;
 import today.sleek.Sleek;
+import today.sleek.base.protection.ProtectionUtil;
 import today.sleek.client.gui.MainMenu;
 import today.sleek.client.utils.font.Fonts;
 import today.sleek.client.utils.font.MCFontRenderer;
 import today.sleek.client.utils.glsl.GLSLSandboxShader;
 import today.sleek.client.utils.network.HttpUtil;
 import today.sleek.client.utils.render.ColorPalette;
-import negroidslayer.NegroidFarm;
-import net.minecraft.client.renderer.GlStateManager;
-import org.lwjgl.input.Keyboard;
-import org.lwjgl.opengl.GL11;
-import today.sleek.base.protection.ProtectionUtil;
-import org.lwjgl.opengl.GL20;
-import sun.misc.Unsafe;
 
 import javax.swing.*;
 import java.io.IOException;
+import java.lang.reflect.Field;
+import java.util.HashMap;
+import java.util.Map;
 
 public class GuiMainMenu extends GuiScreen {
     private GuiTextField username;

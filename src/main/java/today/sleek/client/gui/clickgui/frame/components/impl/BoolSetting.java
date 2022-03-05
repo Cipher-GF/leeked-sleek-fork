@@ -1,6 +1,12 @@
 package today.sleek.client.gui.clickgui.frame.components.impl;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.client.renderer.GlStateManager;
+import org.lwjgl.opengl.GL11;
 import today.sleek.Sleek;
+import today.sleek.base.value.Value;
+import today.sleek.base.value.value.BooleanValue;
 import today.sleek.client.gui.clickgui.frame.Values;
 import today.sleek.client.gui.clickgui.frame.components.Component;
 import today.sleek.client.gui.clickgui.frame.components.FrameModule;
@@ -9,13 +15,7 @@ import today.sleek.client.gui.clickgui.utils.render.animation.easings.Easing;
 import today.sleek.client.modules.impl.visuals.ClickGUI;
 import today.sleek.client.utils.font.Fonts;
 import today.sleek.client.utils.font.MCFontRenderer;
-import today.sleek.base.value.Value;
-import today.sleek.base.value.value.BooleanValue;
 import today.sleek.client.utils.render.RenderUtils;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.renderer.GlStateManager;
-import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
 

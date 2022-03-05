@@ -6,7 +6,8 @@ import com.google.common.collect.Maps;
 import com.google.common.io.Files;
 import com.google.gson.*;
 import org.apache.commons.io.IOUtils;
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -17,12 +18,6 @@ import java.lang.reflect.Type;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-
-
-
-import org.apache.commons.io.IOUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 
 public class UserList<K, V extends UserListEntry<K>>

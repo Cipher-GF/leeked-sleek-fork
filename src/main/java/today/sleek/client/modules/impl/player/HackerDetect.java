@@ -1,17 +1,17 @@
 package today.sleek.client.modules.impl.player;
 
 import com.google.common.eventbus.Subscribe;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.network.play.server.S02PacketChat;
 import today.sleek.Sleek;
 import today.sleek.base.event.impl.PacketEvent;
 import today.sleek.base.event.impl.UpdateEvent;
 import today.sleek.base.modules.ModuleCategory;
 import today.sleek.base.modules.ModuleData;
+import today.sleek.base.value.value.ModeValue;
 import today.sleek.client.modules.impl.Module;
 import today.sleek.client.modules.impl.player.hackerdetect.checks.Check;
-import today.sleek.base.value.value.ModeValue;
 import today.sleek.client.utils.chat.ChatUtil;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.network.play.server.S02PacketChat;
 
 import java.util.HashMap;
 

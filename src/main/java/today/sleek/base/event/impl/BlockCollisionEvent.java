@@ -1,8 +1,8 @@
 package today.sleek.base.event.impl;
 
-import today.sleek.base.event.Event;
 import net.minecraft.block.Block;
 import net.minecraft.util.AxisAlignedBB;
+import today.sleek.base.event.Event;
 
 public class BlockCollisionEvent extends Event {
 

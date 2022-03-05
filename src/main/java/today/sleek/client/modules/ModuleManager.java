@@ -1,12 +1,12 @@
 package today.sleek.client.modules;
 
+import net.minecraft.client.gui.FontRenderer;
 import today.sleek.Sleek;
 import today.sleek.base.modules.ModuleCategory;
-import today.sleek.client.modules.impl.Module;
 import today.sleek.base.value.Value;
+import today.sleek.client.modules.impl.Module;
 import today.sleek.client.utils.font.MCFontRenderer;
 import today.sleek.client.utils.java.ReflectUtils;
-import net.minecraft.client.gui.FontRenderer;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;

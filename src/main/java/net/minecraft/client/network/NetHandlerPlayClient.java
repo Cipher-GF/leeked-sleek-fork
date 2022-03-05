@@ -5,11 +5,6 @@ import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.mojang.authlib.GameProfile;
 import io.netty.buffer.Unpooled;
-import today.sleek.Sleek;
-import today.sleek.base.event.PacketDirection;
-import today.sleek.base.event.impl.PacketEvent;
-import today.sleek.base.event.impl.ServerJoinEvent;
-import today.sleek.client.gui.MainMenu;
 import net.minecraft.block.Block;
 import net.minecraft.client.ClientBrandRetriever;
 import net.minecraft.client.Minecraft;
@@ -64,16 +59,18 @@ import net.minecraft.world.WorldProviderSurface;
 import net.minecraft.world.WorldSettings;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.storage.MapData;
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import today.sleek.Sleek;
+import today.sleek.base.event.PacketDirection;
+import today.sleek.base.event.impl.PacketEvent;
+import today.sleek.base.event.impl.ServerJoinEvent;
+import today.sleek.client.gui.MainMenu;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
 import java.util.Map.Entry;
-
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 
 public class NetHandlerPlayClient implements INetHandlerPlayClient {

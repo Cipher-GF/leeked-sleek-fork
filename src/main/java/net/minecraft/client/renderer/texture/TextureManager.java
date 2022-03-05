@@ -10,12 +10,8 @@ import net.minecraft.util.ReportedException;
 import net.minecraft.util.ResourceLocation;
 import optifine.Config;
 import optifine.RandomMobs;
-
-
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import shadersmod.client.ShadersTex;
 
 import java.io.IOException;

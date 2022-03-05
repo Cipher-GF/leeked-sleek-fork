@@ -10,7 +10,8 @@ import optifine.HttpPipeline;
 import optifine.HttpRequest;
 import optifine.HttpResponse;
 import org.apache.commons.io.FileUtils;
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -22,11 +23,6 @@ import java.net.Proxy;
 import java.net.Proxy.Type;
 import java.net.URL;
 import java.util.concurrent.atomic.AtomicInteger;
-
-
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 
 public class ThreadDownloadImageData extends SimpleTexture

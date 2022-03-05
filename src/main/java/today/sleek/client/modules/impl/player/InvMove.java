@@ -1,17 +1,17 @@
 package today.sleek.client.modules.impl.player;
 
 import com.google.common.eventbus.Subscribe;
-import today.sleek.base.event.impl.PacketEvent;
-import today.sleek.base.modules.ModuleCategory;
-import today.sleek.base.modules.ModuleData;
-import today.sleek.client.modules.impl.Module;
-import today.sleek.base.value.value.BooleanValue;
-import today.sleek.base.value.value.ModeValue;
 import net.minecraft.client.gui.GuiChat;
 import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.network.play.server.S2EPacketCloseWindow;
 import org.lwjgl.input.Keyboard;
+import today.sleek.base.event.impl.PacketEvent;
+import today.sleek.base.modules.ModuleCategory;
+import today.sleek.base.modules.ModuleData;
+import today.sleek.base.value.value.BooleanValue;
+import today.sleek.base.value.value.ModeValue;
+import today.sleek.client.modules.impl.Module;
 
 @ModuleData(
         name = "Inventory Move",

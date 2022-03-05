@@ -1,10 +1,10 @@
 package today.sleek.client.utils.render;
 
+import net.minecraft.client.renderer.GlStateManager;
+import org.lwjgl.opengl.GL11;
 import today.sleek.Sleek;
 import today.sleek.client.modules.impl.visuals.HUD;
 import today.sleek.client.utils.Util;
-import net.minecraft.client.renderer.GlStateManager;
-import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
 

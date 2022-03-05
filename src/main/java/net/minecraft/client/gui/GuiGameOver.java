@@ -1,10 +1,10 @@
 package net.minecraft.client.gui;
 
-import today.sleek.client.gui.MainMenu;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.EnumChatFormatting;
+import today.sleek.client.gui.MainMenu;
 
 import java.io.IOException;
 

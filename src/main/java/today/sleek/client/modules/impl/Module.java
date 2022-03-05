@@ -1,16 +1,15 @@
 package today.sleek.client.modules.impl;
 
 import com.google.gson.JsonObject;
+import net.minecraft.client.Minecraft;
+import org.lwjgl.input.Keyboard;
 import today.sleek.Sleek;
 import today.sleek.base.modules.ModuleCategory;
 import today.sleek.base.modules.ModuleData;
+import today.sleek.base.value.Value;
+import today.sleek.base.value.value.*;
 import today.sleek.client.modules.impl.visuals.ClickGUI;
 import today.sleek.client.modules.impl.visuals.HUD;
-import today.sleek.base.value.Value;
-import me.kansio.client.value.value.*;
-import net.minecraft.client.Minecraft;
-import org.lwjgl.input.Keyboard;
-import today.sleek.base.value.value.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;

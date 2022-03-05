@@ -1,14 +1,14 @@
 package today.sleek.client.modules.impl.player;
 
 import com.google.common.eventbus.Subscribe;
+import net.minecraft.network.play.client.C01PacketChatMessage;
+import net.minecraft.network.play.server.S02PacketChat;
 import today.sleek.base.event.impl.PacketEvent;
 import today.sleek.base.modules.ModuleCategory;
 import today.sleek.base.modules.ModuleData;
 import today.sleek.client.modules.impl.Module;
 import today.sleek.client.utils.chat.ChatUtil;
 import today.sleek.client.utils.network.PacketUtil;
-import net.minecraft.network.play.client.C01PacketChatMessage;
-import net.minecraft.network.play.server.S02PacketChat;
 
 @ModuleData(
         name = "Auto Register",

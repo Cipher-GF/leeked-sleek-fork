@@ -1,18 +1,18 @@
 package today.sleek.client.modules.impl.combat;
 
 import com.google.common.eventbus.Subscribe;
+import net.minecraft.network.play.server.S12PacketEntityVelocity;
+import net.minecraft.network.play.server.S27PacketExplosion;
 import today.sleek.base.event.impl.PacketEvent;
 import today.sleek.base.event.impl.UpdateEvent;
 import today.sleek.base.modules.ModuleCategory;
 import today.sleek.base.modules.ModuleData;
-import today.sleek.client.modules.impl.Module;
-import today.sleek.client.utils.moshi.IPacketUtils;
-import today.sleek.client.utils.network.TimedPacket;
 import today.sleek.base.value.value.BooleanValue;
 import today.sleek.base.value.value.ModeValue;
 import today.sleek.base.value.value.NumberValue;
-import net.minecraft.network.play.server.S12PacketEntityVelocity;
-import net.minecraft.network.play.server.S27PacketExplosion;
+import today.sleek.client.modules.impl.Module;
+import today.sleek.client.utils.moshi.IPacketUtils;
+import today.sleek.client.utils.network.TimedPacket;
 
 import java.util.LinkedList;
 

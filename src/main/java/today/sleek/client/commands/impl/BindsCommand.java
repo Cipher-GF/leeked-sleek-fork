@@ -1,11 +1,11 @@
 package today.sleek.client.commands.impl;
 
+import org.lwjgl.input.Keyboard;
 import today.sleek.Sleek;
 import today.sleek.client.commands.Command;
 import today.sleek.client.commands.CommandData;
 import today.sleek.client.modules.impl.Module;
 import today.sleek.client.utils.chat.ChatUtil;
-import org.lwjgl.input.Keyboard;
 @CommandData(
         name = "binds",
         description = "Lists binds"

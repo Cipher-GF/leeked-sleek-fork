@@ -1,11 +1,11 @@
 package today.sleek.client.modules.impl.movement.flight.verus;
 
+import net.minecraft.block.BlockAir;
+import net.minecraft.util.AxisAlignedBB;
 import today.sleek.base.event.impl.BlockCollisionEvent;
 import today.sleek.base.event.impl.MoveEvent;
 import today.sleek.client.modules.impl.movement.flight.FlightMode;
 import today.sleek.client.utils.player.PlayerUtil;
-import net.minecraft.block.BlockAir;
-import net.minecraft.util.AxisAlignedBB;
 
 public class VerusGlide extends FlightMode {
     public VerusGlide() {

@@ -1,12 +1,11 @@
 package today.sleek.client.modules.impl.movement.flight;
 
 import today.sleek.Sleek;
-import me.kansio.client.event.impl.*;
-import today.sleek.client.modules.impl.movement.Flight;
 import today.sleek.base.event.impl.BlockCollisionEvent;
 import today.sleek.base.event.impl.MoveEvent;
 import today.sleek.base.event.impl.PacketEvent;
 import today.sleek.base.event.impl.UpdateEvent;
+import today.sleek.client.modules.impl.movement.Flight;
 import today.sleek.client.utils.Util;
 
 public abstract class FlightMode extends Util {

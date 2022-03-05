@@ -1,11 +1,11 @@
 package today.sleek.client.utils.moshi;
 
-import today.sleek.base.event.impl.PacketEvent;
-import today.sleek.client.utils.network.TimedPacket;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.client.*;
 import net.minecraft.network.play.server.*;
+import today.sleek.base.event.impl.PacketEvent;
+import today.sleek.client.utils.network.TimedPacket;
 
 import java.util.function.Consumer;
 

@@ -1,18 +1,6 @@
 package today.sleek.client.modules.impl.combat;
 
 import com.google.common.eventbus.Subscribe;
-import today.sleek.Sleek;
-import today.sleek.base.event.impl.UpdateEvent;
-import today.sleek.base.modules.ModuleCategory;
-import today.sleek.base.modules.ModuleData;
-import today.sleek.client.modules.impl.Module;
-import today.sleek.client.modules.impl.movement.Speed;
-import today.sleek.base.value.value.BooleanValue;
-import today.sleek.base.value.value.ModeValue;
-import today.sleek.base.value.value.NumberValue;
-import today.sleek.client.utils.math.Stopwatch;
-import today.sleek.client.utils.network.PacketUtil;
-import today.sleek.client.utils.player.PlayerUtil;
 import net.minecraft.block.BlockGlass;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemPotion;
@@ -22,6 +10,18 @@ import net.minecraft.network.play.client.C09PacketHeldItemChange;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.BlockPos;
+import today.sleek.Sleek;
+import today.sleek.base.event.impl.UpdateEvent;
+import today.sleek.base.modules.ModuleCategory;
+import today.sleek.base.modules.ModuleData;
+import today.sleek.base.value.value.BooleanValue;
+import today.sleek.base.value.value.ModeValue;
+import today.sleek.base.value.value.NumberValue;
+import today.sleek.client.modules.impl.Module;
+import today.sleek.client.modules.impl.movement.Speed;
+import today.sleek.client.utils.math.Stopwatch;
+import today.sleek.client.utils.network.PacketUtil;
+import today.sleek.client.utils.player.PlayerUtil;
 
 import java.util.List;
 

@@ -1,14 +1,14 @@
 package today.sleek.client.modules.impl.player;
 
 import com.google.common.eventbus.Subscribe;
+import net.minecraft.network.play.client.C0FPacketConfirmTransaction;
 import today.sleek.base.event.impl.PacketEvent;
 import today.sleek.base.event.impl.UpdateEvent;
 import today.sleek.base.modules.ModuleCategory;
 import today.sleek.base.modules.ModuleData;
+import today.sleek.base.value.value.BooleanValue;
 import today.sleek.client.modules.impl.Module;
 import today.sleek.client.utils.chat.ChatUtil;
-import today.sleek.base.value.value.BooleanValue;
-import net.minecraft.network.play.client.C0FPacketConfirmTransaction;
 
 @ModuleData(
         name = "Transactions",

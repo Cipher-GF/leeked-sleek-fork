@@ -1,10 +1,5 @@
 package today.sleek.client.gui.notification;
 
-import today.sleek.Sleek;
-import today.sleek.client.modules.impl.visuals.HUD;
-import today.sleek.client.utils.font.Fonts;
-import today.sleek.client.utils.render.ColorPalette;
-import today.sleek.client.utils.render.ColorUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiScreen;
@@ -12,6 +7,11 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.WorldRenderer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
+import today.sleek.Sleek;
+import today.sleek.client.modules.impl.visuals.HUD;
+import today.sleek.client.utils.font.Fonts;
+import today.sleek.client.utils.render.ColorPalette;
+import today.sleek.client.utils.render.ColorUtils;
 
 import java.awt.*;
 

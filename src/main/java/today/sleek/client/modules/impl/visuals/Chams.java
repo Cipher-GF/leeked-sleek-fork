@@ -1,14 +1,14 @@
 package today.sleek.client.modules.impl.visuals;
 
 import com.google.common.eventbus.Subscribe;
+import net.minecraft.entity.player.EntityPlayer;
+import org.lwjgl.opengl.GL11;
 import today.sleek.base.event.impl.EntityLivingRenderEvent;
 import today.sleek.base.modules.ModuleCategory;
 import today.sleek.base.modules.ModuleData;
-import today.sleek.client.modules.impl.Module;
 import today.sleek.base.value.value.BooleanValue;
 import today.sleek.base.value.value.NumberValue;
-import net.minecraft.entity.player.EntityPlayer;
-import org.lwjgl.opengl.GL11;
+import today.sleek.client.modules.impl.Module;
 
 @ModuleData(name = "Chams", category = ModuleCategory.VISUALS, description = "Shows players behind walls")
 public class Chams extends Module {

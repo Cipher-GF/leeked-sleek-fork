@@ -1,18 +1,18 @@
 package today.sleek.client.modules.impl.visuals;
 
 import com.google.common.eventbus.Subscribe;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
 import today.sleek.Sleek;
 import today.sleek.base.event.impl.RenderOverlayEvent;
 import today.sleek.base.modules.ModuleCategory;
 import today.sleek.base.modules.ModuleData;
-import today.sleek.client.modules.impl.Module;
-import today.sleek.client.utils.font.Fonts;
 import today.sleek.base.value.value.BooleanValue;
 import today.sleek.base.value.value.NumberValue;
+import today.sleek.client.modules.impl.Module;
+import today.sleek.client.utils.font.Fonts;
 import today.sleek.client.utils.render.ColorUtils;
 import today.sleek.client.utils.render.RenderUtils;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
 
 import java.awt.*;
 import java.util.HashMap;

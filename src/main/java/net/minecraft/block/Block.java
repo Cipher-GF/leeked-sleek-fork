@@ -1,7 +1,5 @@
 package net.minecraft.block;
 
-import today.sleek.Sleek;
-import today.sleek.base.event.impl.BlockCollisionEvent;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -23,6 +21,8 @@ import net.minecraft.util.*;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import today.sleek.Sleek;
+import today.sleek.base.event.impl.BlockCollisionEvent;
 
 import java.util.List;
 import java.util.Random;

@@ -1,6 +1,11 @@
 package today.sleek.client.modules.impl.world;
 
 import com.google.common.eventbus.Subscribe;
+import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
+import net.minecraft.network.play.client.C07PacketPlayerDigging;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import today.sleek.base.event.impl.UpdateEvent;
 import today.sleek.base.modules.ModuleCategory;
 import today.sleek.base.modules.ModuleData;
@@ -9,11 +14,6 @@ import today.sleek.client.modules.impl.combat.KillAura;
 import today.sleek.client.utils.network.PacketUtil;
 import today.sleek.client.utils.rotations.AimUtil;
 import today.sleek.client.utils.rotations.Rotation;
-import net.minecraft.block.Block;
-import net.minecraft.init.Blocks;
-import net.minecraft.network.play.client.C07PacketPlayerDigging;
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.EnumFacing;
 
 @ModuleData(
         name = "Breaker",

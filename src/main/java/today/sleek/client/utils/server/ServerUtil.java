@@ -1,7 +1,7 @@
 package today.sleek.client.utils.server;
 
-import today.sleek.client.utils.Util;
 import net.minecraft.client.multiplayer.ServerData;
+import today.sleek.client.utils.Util;
 
 /**
  * @author Kansio

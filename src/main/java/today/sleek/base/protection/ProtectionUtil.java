@@ -1,9 +1,9 @@
 package today.sleek.base.protection;
 
-import today.sleek.Sleek;
 import org.apache.commons.lang3.SystemUtils;
 import org.apache.logging.log4j.LogManager;
 import sun.misc.Unsafe;
+import today.sleek.Sleek;
 import viamcp.utils.JLoggerToLog4j;
 
 import java.io.*;
