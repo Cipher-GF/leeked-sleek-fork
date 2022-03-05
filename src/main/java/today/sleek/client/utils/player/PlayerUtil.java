@@ -24,7 +24,6 @@ import java.util.ArrayList;
 public class PlayerUtil extends Util {
 
 
-
     public static float getBaseSpeed() {
         float baseSpeed = 0.2873F;
         if (mc.thePlayer.isPotionActive(Potion.moveSpeed)) {
@@ -45,27 +44,21 @@ public class PlayerUtil extends Util {
     public static double getDirection() {
         float rotationYaw = mc.thePlayer.rotationYaw;
 
-        if(mc.thePlayer.moveForward < 0F)
-            rotationYaw += 180F;
+        if (mc.thePlayer.moveForward < 0F) rotationYaw += 180F;
 
         float forward = 1F;
-        if(mc.thePlayer.moveForward < 0F)
-            forward = -0.5F;
-        else if(mc.thePlayer.moveForward > 0F)
-            forward = 0.5F;
+        if (mc.thePlayer.moveForward < 0F) forward = -0.5F;
+        else if (mc.thePlayer.moveForward > 0F) forward = 0.5F;
 
-        if(mc.thePlayer.moveStrafing > 0F)
-            rotationYaw -= 90F * forward;
+        if (mc.thePlayer.moveStrafing > 0F) rotationYaw -= 90F * forward;
 
-        if(mc.thePlayer.moveStrafing < 0F)
-            rotationYaw += 90F * forward;
+        if (mc.thePlayer.moveStrafing < 0F) rotationYaw += 90F * forward;
 
         return rotationYaw;
     }
 
     public static void strafe(final float speed) {
-        if(!mc.thePlayer.isMoving())
-            return;
+        if (!mc.thePlayer.isMoving()) return;
 
         final double yaw = getDirection() / 180 * Math.PI;
         mc.thePlayer.motionX = -Math.sin(yaw) * speed;
@@ -82,8 +75,7 @@ public class PlayerUtil extends Util {
                     mc.getNetHandler().getNetworkManager().sendPacket(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + hypixelValue[j], mc.thePlayer.posZ, false));
                 }
             }
-        }
-        else {
+        } else {
             for (int i = 0; i < (mc.thePlayer.isPotionActive(Potion.jump) ? 122 : 49); ++i) {
                 for (int length = normalValue.length, j = 0; j < length; ++j) {
                     mc.getNetHandler().getNetworkManager().sendPacket(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + normalValue[j], mc.thePlayer.posZ, false));
@@ -123,15 +115,13 @@ public class PlayerUtil extends Util {
     }
 
     public static void damageVerus() {
-        PacketUtil.sendPacketNoEvent(
-                new C0BPacketEntityAction(mc.thePlayer, C0BPacketEntityAction.Action.STOP_SPRINTING));
+        PacketUtil.sendPacketNoEvent(new C0BPacketEntityAction(mc.thePlayer, C0BPacketEntityAction.Action.STOP_SPRINTING));
 
         double val1 = 0;
 
         for (int i = 0; i <= 6; i++) {
             val1 += 0.5;
-            mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX,
-                    mc.thePlayer.posY + val1, mc.thePlayer.posZ, true));
+            mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + val1, mc.thePlayer.posZ, true));
         }
 
         double val2 = mc.thePlayer.posY + val1;
@@ -152,8 +142,7 @@ public class PlayerUtil extends Util {
         for (float value : vals) {
             val2 -= value;
         }
-        mc.thePlayer.sendQueue.addToSendQueue(
-                new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, val2, mc.thePlayer.posZ, false));
+        mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, val2, mc.thePlayer.posZ, false));
         mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer(true));
 
         PacketUtil.sendPacketNoEvent(new C0BPacketEntityAction(mc.thePlayer, C0BPacketEntityAction.Action.START_SPRINTING));
@@ -162,17 +151,14 @@ public class PlayerUtil extends Util {
     }
 
 
-
     public static void damageVerusNoMotion() {
-        PacketUtil.sendPacketNoEvent(
-                new C0BPacketEntityAction(mc.thePlayer, C0BPacketEntityAction.Action.STOP_SPRINTING));
+        PacketUtil.sendPacketNoEvent(new C0BPacketEntityAction(mc.thePlayer, C0BPacketEntityAction.Action.STOP_SPRINTING));
 
         double val1 = 0;
 
         for (int i = 0; i <= 6; i++) {
             val1 += 0.5;
-            mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX,
-                    mc.thePlayer.posY + val1, mc.thePlayer.posZ, true));
+            mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + val1, mc.thePlayer.posZ, true));
         }
 
         double val2 = mc.thePlayer.posY + val1;
@@ -193,8 +179,7 @@ public class PlayerUtil extends Util {
         for (float value : vals) {
             val2 -= value;
         }
-        mc.thePlayer.sendQueue.addToSendQueue(
-                new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, val2, mc.thePlayer.posZ, false));
+        mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, val2, mc.thePlayer.posZ, false));
         mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer(true));
 
         PacketUtil.sendPacketNoEvent(new C0BPacketEntityAction(mc.thePlayer, C0BPacketEntityAction.Action.START_SPRINTING));
@@ -217,8 +202,7 @@ public class PlayerUtil extends Util {
         for (int offset = 0; offset < mc.thePlayer.posY + mc.thePlayer.getEyeHeight(); offset += 2) {
             final AxisAlignedBB boundingBox = mc.thePlayer.getEntityBoundingBox().offset(0, -offset, 0);
 
-            if (!mc.theWorld.getCollidingBoundingBoxes(mc.thePlayer, boundingBox).isEmpty())
-                return true;
+            if (!mc.theWorld.getCollidingBoundingBoxes(mc.thePlayer, boundingBox).isEmpty()) return true;
         }
         return false;
     }
@@ -271,10 +255,8 @@ public class PlayerUtil extends Util {
             }
             double cos = Math.cos(Math.toRadians(rotationYaw + 90.0F));
             double sin = Math.sin(Math.toRadians(rotationYaw + 90.0F));
-            event.setMotionX(moveForward * moveSpeed * cos
-                    + moveStrafe * moveSpeed * sin);
-            event.setMotionZ(moveForward * moveSpeed * sin
-                    - moveStrafe * moveSpeed * cos);
+            event.setMotionX(moveForward * moveSpeed * cos + moveStrafe * moveSpeed * sin);
+            event.setMotionZ(moveForward * moveSpeed * sin - moveStrafe * moveSpeed * cos);
         }
     }
 
@@ -325,10 +307,8 @@ public class PlayerUtil extends Util {
             }
             double cos = Math.cos(Math.toRadians(rotationYaw + 90.0F));
             double sin = Math.sin(Math.toRadians(rotationYaw + 90.0F));
-            mc.thePlayer.motionX = moveForward * moveSpeed * cos
-                    + moveStrafe * moveSpeed * sin;
-            mc.thePlayer.motionZ = moveForward * moveSpeed * sin
-                    - moveStrafe * moveSpeed * cos;
+            mc.thePlayer.motionX = moveForward * moveSpeed * cos + moveStrafe * moveSpeed * sin;
+            mc.thePlayer.motionZ = moveForward * moveSpeed * sin - moveStrafe * moveSpeed * cos;
         }
     }
 
@@ -386,9 +366,7 @@ public class PlayerUtil extends Util {
             }
             double cos = Math.cos(Math.toRadians(rotationYaw + 90.0F));
             double sin = Math.sin(Math.toRadians(rotationYaw + 90.0F));
-            return new Vector2d(moveForward * moveSpeed * cos
-                    + moveStrafe * moveSpeed * sin, moveForward * moveSpeed * sin
-                    - moveStrafe * moveSpeed * cos);
+            return new Vector2d(moveForward * moveSpeed * cos + moveStrafe * moveSpeed * sin, moveForward * moveSpeed * sin - moveStrafe * moveSpeed * cos);
         }
         return new Vector2d(0, 0);
     }
@@ -434,7 +412,7 @@ public class PlayerUtil extends Util {
         if (strafe > 0.0f) {
             yaw -= ((forward < 0.0f) ? -45 : ((forward == 0.0f) ? 90 : 45));
         }
-        float direction =  yaw * 0.017453292f;
+        float direction = yaw * 0.017453292f;
 
         final double posX = mc.thePlayer.posX;
         final double posY = mc.thePlayer.posY;
@@ -459,7 +437,7 @@ public class PlayerUtil extends Util {
         if (strafe > 0.0f) {
             yaw -= var1;
         }
-        float direction =  yaw * 0.017453292f;
+        float direction = yaw * 0.017453292f;
 
         final double posX = mc.thePlayer.posX;
         final double posY = mc.thePlayer.posY;
@@ -481,6 +459,7 @@ public class PlayerUtil extends Util {
 
         return val;
     }
+
     public static boolean isInLiquid() {
         if (PlayerUtil.mc.thePlayer == null || PlayerUtil.mc.theWorld == null) {
             return false;
@@ -495,7 +474,7 @@ public class PlayerUtil extends Util {
         final int y2 = MathHelper.floor_double(boundingBox.maxY + 1.0);
         final int z1 = MathHelper.floor_double(boundingBox.minZ);
         final int z2 = MathHelper.floor_double(boundingBox.maxZ + 1.0);
-        if (PlayerUtil.mc.theWorld.getChunkFromChunkCoords((int)PlayerUtil.mc.thePlayer.posX >> 4, (int)PlayerUtil.mc.thePlayer.posZ >> 4) == null) {
+        if (PlayerUtil.mc.theWorld.getChunkFromChunkCoords((int) PlayerUtil.mc.thePlayer.posX >> 4, (int) PlayerUtil.mc.thePlayer.posZ >> 4) == null) {
             return false;
         }
         for (int x3 = x1; x3 < x2; ++x3) {
@@ -509,5 +488,14 @@ public class PlayerUtil extends Util {
             }
         }
         return false;
+    }
+
+    public static void hypixelDamage() {
+        double x = mc.thePlayer.posX, y = mc.thePlayer.posY, z = mc.thePlayer.posZ;
+        for (int i = 0; i < 65; i++) {
+            mc.thePlayer.sendQueue.addToSendQueueNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(x, y + 0.0624399212, z, false));
+            mc.thePlayer.sendQueue.addToSendQueueNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(x, y, z, false));
+        }
+        mc.thePlayer.sendQueue.addToSendQueueNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(x, y, z, true));
     }
 }

@@ -17,6 +17,7 @@ class Test2: FlightMode("Test2") {
     var waiting = false
 
     override fun onUpdate(event: UpdateEvent?) {
+        mc.thePlayer.posY = mc.thePlayer.prevPosY
         if (event!!.isPre) {
             if ((dontgo && !waiting) && mc.thePlayer.onGround) {
                 mc.thePlayer.jump()
@@ -48,6 +49,7 @@ class Test2: FlightMode("Test2") {
         if (event!!.getPacket<Packet<*>>() is S08PacketPlayerPosLook) {
             waiting = false
             dontgo = false
+            mc.thePlayer.performHurtAnimation()
         }
     }
 

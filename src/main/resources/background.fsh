@@ -6,7 +6,7 @@ uniform vec2 resolution;
 uniform float time;
 uniform vec2 mouse;
 
-const int   complexity      = 25;    // More points of color.
+const int   complexity      = 15;    // More points of color.
 const float mouse_factor    = 993.0;  // Makes it more/less jumpy.
 const float mouse_offset    = 5.0;   // Drives complexity in the amount of curls/cuves.  Zero is a single whirlpool.
 const float fluid_speed     = 9.0;  // Drives speed, higher number will make it slower.
