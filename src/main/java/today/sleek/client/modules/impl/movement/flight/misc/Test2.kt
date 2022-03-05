@@ -51,16 +51,8 @@ class Test2: FlightMode("Test2") {
         }
     }
 
-    override fun onCollide(event: BlockCollisionEvent?) {
-        super.onCollide(event)
-    }
-
     override fun onEnable() {
         dontgo = true
         waiting = false
-    }
-
-    override fun onDisable() {
-        super.onDisable()
     }
 }
