@@ -1,15 +1,15 @@
 package today.sleek.client.modules.impl.combat;
 
 import com.google.common.eventbus.Subscribe;
+import net.minecraft.entity.Entity;
 import today.sleek.Sleek;
 import today.sleek.base.event.impl.Render3DEvent;
 import today.sleek.base.event.impl.UpdateEvent;
 import today.sleek.base.modules.ModuleCategory;
 import today.sleek.base.modules.ModuleData;
-import today.sleek.client.modules.impl.Module;
 import today.sleek.base.value.value.BooleanValue;
 import today.sleek.base.value.value.NumberValue;
-import net.minecraft.entity.Entity;
+import today.sleek.client.modules.impl.Module;
 
 import static org.lwjgl.opengl.GL11.*;
 

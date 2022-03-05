@@ -1,12 +1,12 @@
 package today.sleek.client.modules.impl.visuals;
 
+import org.lwjgl.input.Keyboard;
 import today.sleek.base.modules.ModuleCategory;
 import today.sleek.base.modules.ModuleData;
-import today.sleek.client.modules.impl.Module;
 import today.sleek.base.value.value.BooleanValue;
 import today.sleek.base.value.value.ModeValue;
 import today.sleek.base.value.value.NumberValue;
-import org.lwjgl.input.Keyboard;
+import today.sleek.client.modules.impl.Module;
 
 @ModuleData(
         name = "Click GUI",

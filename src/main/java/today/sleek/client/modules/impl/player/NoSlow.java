@@ -4,9 +4,9 @@ import com.google.common.eventbus.Subscribe;
 import today.sleek.base.event.impl.NoSlowEvent;
 import today.sleek.base.modules.ModuleCategory;
 import today.sleek.base.modules.ModuleData;
-import today.sleek.client.modules.impl.Module;
 import today.sleek.base.value.value.BooleanValue;
 import today.sleek.base.value.value.ModeValue;
+import today.sleek.client.modules.impl.Module;
 
 @ModuleData(
         name = "No Slow",

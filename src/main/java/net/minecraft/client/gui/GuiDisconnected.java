@@ -1,13 +1,13 @@
 package net.minecraft.client.gui;
 
-import today.sleek.client.gui.alt.AltLoginThread;
 import net.minecraft.client.multiplayer.GuiConnecting;
 import net.minecraft.client.multiplayer.ServerData;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.IChatComponent;
-import today.sleek.base.protection.ProtectionUtil;
 import org.apache.commons.lang3.RandomStringUtils;
 import sun.misc.Unsafe;
+import today.sleek.base.protection.ProtectionUtil;
+import today.sleek.client.gui.alt.AltLoginThread;
 
 import java.io.IOException;
 import java.lang.reflect.Field;

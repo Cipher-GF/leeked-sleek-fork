@@ -1,10 +1,10 @@
 package today.sleek.client.modules.impl.movement.speed.blocks;
 
+import net.minecraft.potion.Potion;
 import today.sleek.base.event.impl.MoveEvent;
 import today.sleek.client.modules.impl.movement.speed.SpeedMode;
 import today.sleek.client.utils.player.PlayerUtil;
 import today.sleek.client.utils.player.TimerUtil;
-import net.minecraft.potion.Potion;
 
 /**
  * @author Kansio

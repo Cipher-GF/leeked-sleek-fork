@@ -1,17 +1,17 @@
 package today.sleek.client.gui.clickgui.frame.components.configs;
 
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiScreen;
 import today.sleek.Sleek;
 import today.sleek.base.config.Config;
+import today.sleek.client.gui.clickgui.frame.Values;
 import today.sleek.client.gui.clickgui.frame.components.configs.impl.CreateButton;
 import today.sleek.client.gui.clickgui.frame.components.configs.impl.DeleteButton;
 import today.sleek.client.gui.clickgui.frame.components.configs.impl.RenameConfig;
-import today.sleek.client.gui.clickgui.frame.Values;
 import today.sleek.client.gui.clickgui.utils.render.animation.easings.Animate;
 import today.sleek.client.gui.clickgui.utils.render.animation.easings.Easing;
 import today.sleek.client.utils.render.RenderUtils;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiScreen;
 
 import java.util.ArrayList;
 

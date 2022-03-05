@@ -1,5 +1,9 @@
 package today.sleek.client.gui.clickgui.frame.components.configs.impl;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.client.renderer.GlStateManager;
+import org.lwjgl.opengl.GL11;
 import today.sleek.Sleek;
 import today.sleek.base.config.Config;
 import today.sleek.client.gui.clickgui.frame.Values;
@@ -7,14 +11,10 @@ import today.sleek.client.gui.clickgui.frame.components.configs.ConfigComponent;
 import today.sleek.client.gui.clickgui.frame.components.configs.FrameConfig;
 import today.sleek.client.gui.clickgui.utils.render.animation.easings.Animate;
 import today.sleek.client.gui.clickgui.utils.render.animation.easings.Easing;
-import today.sleek.client.modules.impl.visuals.ClickGUI;
 import today.sleek.client.gui.notification.Notification;
 import today.sleek.client.gui.notification.NotificationManager;
+import today.sleek.client.modules.impl.visuals.ClickGUI;
 import today.sleek.client.utils.render.RenderUtils;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.renderer.GlStateManager;
-import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
 

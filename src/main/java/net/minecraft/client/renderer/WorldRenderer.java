@@ -7,10 +7,7 @@ import net.minecraft.util.EnumWorldBlockLayer;
 import net.minecraft.util.MathHelper;
 import optifine.Config;
 import optifine.TextureUtils;
-
-
 import org.apache.logging.log4j.LogManager;
-
 import org.lwjgl.opengl.GL11;
 import shadersmod.client.SVertexBuilder;
 

@@ -1,5 +1,7 @@
 package today.sleek.client.modules.impl.visuals.hud.info;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.util.EnumChatFormatting;
 import today.sleek.base.event.impl.RenderOverlayEvent;
 import today.sleek.client.modules.impl.visuals.HUD;
 import today.sleek.client.modules.impl.visuals.hud.InfoMode;
@@ -7,8 +9,6 @@ import today.sleek.client.utils.font.Fonts;
 import today.sleek.client.utils.math.BPSUtil;
 import today.sleek.client.utils.network.UserUtil;
 import today.sleek.client.utils.render.ColorUtils;
-import net.minecraft.client.Minecraft;
-import net.minecraft.util.EnumChatFormatting;
 
 import java.text.DecimalFormat;
 

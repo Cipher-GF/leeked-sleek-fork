@@ -1,9 +1,9 @@
 package today.sleek.client.modules.impl.movement.flight.misc
 
-import today.sleek.client.modules.impl.movement.flight.FlightMode
-import today.sleek.base.event.impl.BlockCollisionEvent
 import net.minecraft.block.BlockAir
 import net.minecraft.util.AxisAlignedBB
+import today.sleek.base.event.impl.BlockCollisionEvent
+import today.sleek.client.modules.impl.movement.flight.FlightMode
 
 class Collide : FlightMode("Collide") {
     override fun onCollide(event: BlockCollisionEvent) {

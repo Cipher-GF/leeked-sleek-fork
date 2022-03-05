@@ -1,8 +1,8 @@
 package today.sleek.base.value;
 
-import today.sleek.client.modules.impl.Module;
 import today.sleek.base.value.value.BooleanValue;
 import today.sleek.base.value.value.ModeValue;
+import today.sleek.client.modules.impl.Module;
 
 import java.util.ArrayList;
 import java.util.Collections;

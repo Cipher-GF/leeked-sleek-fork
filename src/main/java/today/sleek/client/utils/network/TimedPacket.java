@@ -1,8 +1,8 @@
 package today.sleek.client.utils.network;
 
-import today.sleek.client.utils.Util;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S08PacketPlayerPosLook;
+import today.sleek.client.utils.Util;
 
 /**
  * @author Moshi

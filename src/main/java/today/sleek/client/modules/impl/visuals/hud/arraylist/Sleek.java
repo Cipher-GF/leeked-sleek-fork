@@ -1,5 +1,6 @@
 package today.sleek.client.modules.impl.visuals.hud.arraylist;
 
+import net.minecraft.client.gui.Gui;
 import today.sleek.base.event.impl.RenderOverlayEvent;
 import today.sleek.base.modules.ModuleCategory;
 import today.sleek.client.modules.impl.Module;
@@ -7,7 +8,6 @@ import today.sleek.client.modules.impl.visuals.HUD;
 import today.sleek.client.modules.impl.visuals.hud.ArrayListMode;
 import today.sleek.client.utils.font.Fonts;
 import today.sleek.client.utils.render.ColorUtils;
-import net.minecraft.client.gui.Gui;
 
 import java.awt.*;
 import java.util.ArrayList;

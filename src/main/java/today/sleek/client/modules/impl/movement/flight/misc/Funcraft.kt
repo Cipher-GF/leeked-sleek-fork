@@ -1,10 +1,11 @@
 package today.sleek.client.modules.impl.movement.flight.misc
 
+import net.minecraft.potion.Potion
 import today.sleek.base.event.impl.MoveEvent
 import today.sleek.base.event.impl.UpdateEvent
 import today.sleek.client.modules.impl.movement.flight.FlightMode
+import today.sleek.client.utils.chat.ChatUtil
 import today.sleek.client.utils.player.PlayerUtil
-import net.minecraft.potion.Potion
 import kotlin.math.sqrt
 
 // speed -= speed / 152
@@ -26,14 +27,17 @@ class Funcraft : FlightMode("Funcraft") {
             }
         }
         if (mc.thePlayer.isMoving && !mc.thePlayer.isCollidedHorizontally) {
-            if (boosted || speed > 0.25) {
+            if (boosted || thing > 10) {
 //                speed -= speed / 152
                 mc.timer.timerSpeed = 1.8f
 
             }
-            if (speed < 0.36) {
+            if (thing < 16) {
                 mc.timer.timerSpeed = 1.34f
 
+            }
+            if (thing > 20) {
+                mc.timer.timerSpeed = 1.0f;
             }
             if (!boosted) {
                 speed = 0.0
@@ -53,18 +57,20 @@ class Funcraft : FlightMode("Funcraft") {
 
                 boosted = true
                 event!!.motionY = 0.42.also { mc.thePlayer.motionY = it }
-                val boost = if (mc.thePlayer.isPotionActive(Potion.moveSpeed)) 1.65 else 1.78
-                speed = boost * PlayerUtil.getBaseSpeed()
+
+                speed = 1.8 * PlayerUtil.getBaseSpeed()
 
             }
             2 -> {
-                speed *= flight.speed.value
+                speed *= flight.speed.value + 0.5
+
             }
             3 -> {
                 val diff = 0.1 * (lastDist - PlayerUtil.getBaseSpeed())
                 speed = lastDist - diff
             }
             else -> {//
+                ChatUtil.log("$thing")
                 if (mc.thePlayer.isCollidedVertically || mc.theWorld.getCollidingBoundingBoxes(
                         mc.thePlayer, mc.thePlayer.entityBoundingBox.offset(0.0, mc.thePlayer.motionY, 0.0)
                     ).size > 0

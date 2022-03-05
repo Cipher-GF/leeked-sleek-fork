@@ -6,6 +6,7 @@ import net.minecraft.client.gui.*;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.EnumChatFormatting;
 import org.lwjgl.input.Keyboard;
+
 import java.io.IOException;
 import java.text.MessageFormat;
 

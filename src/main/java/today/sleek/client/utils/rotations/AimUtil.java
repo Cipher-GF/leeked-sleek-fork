@@ -1,11 +1,11 @@
 package today.sleek.client.utils.rotations;
 
-import today.sleek.client.utils.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.MathHelper;
+import today.sleek.client.utils.Util;
 
 import java.util.concurrent.ThreadLocalRandom;
 

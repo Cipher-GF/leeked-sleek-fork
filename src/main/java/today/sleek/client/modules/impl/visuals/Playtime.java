@@ -1,13 +1,13 @@
 package today.sleek.client.modules.impl.visuals;
 
 import com.google.common.eventbus.Subscribe;
+import net.minecraft.network.handshake.client.C00Handshake;
 import today.sleek.base.event.impl.PacketEvent;
 import today.sleek.base.event.impl.RenderOverlayEvent;
 import today.sleek.base.modules.ModuleCategory;
 import today.sleek.base.modules.ModuleData;
 import today.sleek.client.modules.impl.Module;
 import today.sleek.client.utils.render.RenderUtils;
-import net.minecraft.network.handshake.client.C00Handshake;
 
 @ModuleData(
         name = "Playtime",

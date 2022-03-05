@@ -1,9 +1,9 @@
 package today.sleek.client.gui.clickgui.frame;
 
-import today.sleek.client.gui.clickgui.frame.components.FrameCategory;
-import today.sleek.base.modules.ModuleCategory;
-import today.sleek.client.utils.glsl.GLSLSandboxShader;
 import net.minecraft.client.gui.GuiScreen;
+import today.sleek.base.modules.ModuleCategory;
+import today.sleek.client.gui.clickgui.frame.components.FrameCategory;
+import today.sleek.client.utils.glsl.GLSLSandboxShader;
 
 import java.io.IOException;
 import java.util.ArrayList;

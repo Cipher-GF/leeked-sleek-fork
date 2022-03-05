@@ -1,15 +1,15 @@
 package today.sleek.client.modules.impl.player;
 
 import com.google.common.eventbus.Subscribe;
+import org.apache.commons.lang3.RandomStringUtils;
 import today.sleek.base.event.impl.UpdateEvent;
 import today.sleek.base.modules.ModuleCategory;
 import today.sleek.base.modules.ModuleData;
-import today.sleek.client.modules.impl.Module;
 import today.sleek.base.value.value.NumberValue;
 import today.sleek.base.value.value.StringValue;
+import today.sleek.client.modules.impl.Module;
 import today.sleek.client.utils.math.MathUtil;
 import today.sleek.client.utils.math.Stopwatch;
-import org.apache.commons.lang3.RandomStringUtils;
 
 @ModuleData(
         name = "Spammer",

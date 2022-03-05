@@ -1,17 +1,17 @@
 package today.sleek.client.gui.clickgui.frame.components.configs.impl;
 
-import today.sleek.Sleek;
-import today.sleek.client.gui.clickgui.frame.Values;
-import today.sleek.client.gui.clickgui.frame.components.configs.ConfigComponent;
-import today.sleek.client.gui.clickgui.frame.components.configs.FrameConfig;
-import today.sleek.client.modules.impl.visuals.ClickGUI;
-import today.sleek.client.gui.notification.Notification;
-import today.sleek.client.gui.notification.NotificationManager;
-import today.sleek.client.utils.render.RenderUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
 import org.lwjgl.input.Keyboard;
+import today.sleek.Sleek;
+import today.sleek.client.gui.clickgui.frame.Values;
+import today.sleek.client.gui.clickgui.frame.components.configs.ConfigComponent;
+import today.sleek.client.gui.clickgui.frame.components.configs.FrameConfig;
+import today.sleek.client.gui.notification.Notification;
+import today.sleek.client.gui.notification.NotificationManager;
+import today.sleek.client.modules.impl.visuals.ClickGUI;
+import today.sleek.client.utils.render.RenderUtils;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

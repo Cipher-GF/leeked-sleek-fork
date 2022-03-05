@@ -1,10 +1,6 @@
 package net.minecraft.client.renderer.entity;
 
 import com.google.common.collect.Lists;
-import today.sleek.Sleek;
-import today.sleek.base.event.impl.EntityLivingRenderEvent;
-import today.sleek.client.modules.impl.visuals.Chams;
-import today.sleek.client.utils.render.ColorUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.FontRenderer;
@@ -22,12 +18,14 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.MathHelper;
 import optifine.Config;
 import optifine.Reflector;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import org.lwjgl.opengl.GL11;
 import shadersmod.client.Shaders;
+import today.sleek.Sleek;
+import today.sleek.base.event.impl.EntityLivingRenderEvent;
+import today.sleek.client.modules.impl.visuals.Chams;
+import today.sleek.client.utils.render.ColorUtils;
 
 import java.nio.FloatBuffer;
 import java.util.List;

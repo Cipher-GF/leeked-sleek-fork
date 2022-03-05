@@ -1,13 +1,13 @@
 package today.sleek.client.modules.impl.visuals.hud.watermark;
 
-import today.sleek.base.event.impl.RenderOverlayEvent;
-import today.sleek.client.modules.impl.visuals.hud.WaterMarkMode;
-import today.sleek.client.utils.font.Fonts;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import org.lwjgl.opengl.GL11;
 import oshi.SystemInfo;
 import oshi.hardware.Processor;
+import today.sleek.base.event.impl.RenderOverlayEvent;
+import today.sleek.client.modules.impl.visuals.hud.WaterMarkMode;
+import today.sleek.client.utils.font.Fonts;
 
 import java.awt.*;
 

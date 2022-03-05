@@ -1,12 +1,12 @@
 package net.minecraft.client.gui;
 
-import today.sleek.client.gui.MainMenu;
-import today.sleek.client.utils.font.Fonts;
-import today.sleek.client.utils.render.ColorPalette;
 import net.minecraft.client.gui.achievement.GuiAchievements;
 import net.minecraft.client.gui.achievement.GuiStats;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.client.resources.I18n;
+import today.sleek.client.gui.MainMenu;
+import today.sleek.client.utils.font.Fonts;
+import today.sleek.client.utils.render.ColorPalette;
 
 import java.io.IOException;
 

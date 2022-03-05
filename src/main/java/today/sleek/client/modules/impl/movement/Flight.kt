@@ -1,22 +1,22 @@
 package today.sleek.client.modules.impl.movement
 
-import today.sleek.base.modules.ModuleData
-import today.sleek.base.modules.ModuleCategory
-import today.sleek.client.modules.impl.movement.flight.FlightMode
-import today.sleek.client.utils.java.ReflectUtils
-import today.sleek.base.value.value.ModeValue
-import today.sleek.base.value.value.NumberValue
 import com.google.common.eventbus.Subscribe
 import lombok.Getter
-import today.sleek.base.event.impl.UpdateEvent
+import net.minecraft.potion.Potion
+import today.sleek.base.event.impl.BlockCollisionEvent
 import today.sleek.base.event.impl.MoveEvent
 import today.sleek.base.event.impl.PacketEvent
-import today.sleek.base.event.impl.BlockCollisionEvent
+import today.sleek.base.event.impl.UpdateEvent
+import today.sleek.base.modules.ModuleCategory
+import today.sleek.base.modules.ModuleData
+import today.sleek.base.value.value.BooleanValue
+import today.sleek.base.value.value.ModeValue
+import today.sleek.base.value.value.NumberValue
 import today.sleek.client.modules.impl.Module
+import today.sleek.client.modules.impl.movement.flight.FlightMode
+import today.sleek.client.utils.java.ReflectUtils
 import today.sleek.client.utils.math.Stopwatch
 import today.sleek.client.utils.player.TimerUtil
-import today.sleek.base.value.value.BooleanValue
-import net.minecraft.potion.Potion
 
 @Getter
 @ModuleData(name = "Flight", category = ModuleCategory.MOVEMENT, description = "Allows you to fly")
@@ -35,6 +35,7 @@ class Flight : Module() {
     val timer = NumberValue("Timer", this, 1.0, 1.0, 5.0, 0.1, mode, "Mush")
     val blink = BooleanValue("Blink", this, true, mode, "Mush")
     val viewbob = BooleanValue("View Bobbing", this, true)
+    val spoofy = BooleanValue("Spoof Y", this, false)
     private val stopwatch = Stopwatch()
     var ticks = 0f
     var prevFOV = 0f
@@ -52,6 +53,9 @@ class Flight : Module() {
 
     @Subscribe
     fun onUpdate(event: UpdateEvent?) {
+        if (spoofy.value) {
+            mc.thePlayer.posY = mc.thePlayer.prevPosY
+        }
         if (viewbob.value && mc.thePlayer.isMoving) {
             mc.thePlayer.cameraYaw = 0.05f
         } else {

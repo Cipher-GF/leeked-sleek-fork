@@ -3,8 +3,6 @@ package net.minecraft.entity;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Maps;
-import today.sleek.Sleek;
-import today.sleek.client.modules.impl.visuals.Animations;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -32,6 +30,8 @@ import net.minecraft.scoreboard.Team;
 import net.minecraft.util.*;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
+import today.sleek.Sleek;
+import today.sleek.client.modules.impl.visuals.Animations;
 
 import java.util.*;
 

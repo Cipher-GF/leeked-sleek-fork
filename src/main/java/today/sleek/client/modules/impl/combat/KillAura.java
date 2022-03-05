@@ -1,14 +1,27 @@
 package today.sleek.client.modules.impl.combat;
 
 import com.google.common.eventbus.Subscribe;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemSword;
+import net.minecraft.network.Packet;
+import net.minecraft.network.play.client.*;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
+import org.apache.commons.lang3.RandomUtils;
 import today.sleek.Sleek;
 import today.sleek.base.event.impl.PacketEvent;
 import today.sleek.base.event.impl.RenderOverlayEvent;
 import today.sleek.base.event.impl.UpdateEvent;
-import today.sleek.client.gui.notification.Notification;
-import today.sleek.client.gui.notification.NotificationManager;
 import today.sleek.base.modules.ModuleCategory;
 import today.sleek.base.modules.ModuleData;
+import today.sleek.base.value.value.BooleanValue;
+import today.sleek.base.value.value.ModeValue;
+import today.sleek.base.value.value.NumberValue;
+import today.sleek.client.gui.notification.Notification;
+import today.sleek.client.gui.notification.NotificationManager;
 import today.sleek.client.modules.impl.Module;
 import today.sleek.client.utils.chat.ChatUtil;
 import today.sleek.client.utils.combat.FightUtil;
@@ -34,7 +47,6 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import org.apache.commons.lang3.RandomUtils;
 import today.sleek.client.utils.rotations.RotationUtil;
-
 import javax.vecmath.Vector2f;
 import java.awt.*;
 import java.util.ArrayList;

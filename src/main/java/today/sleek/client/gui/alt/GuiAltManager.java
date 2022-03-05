@@ -1,11 +1,11 @@
 package today.sleek.client.gui.alt;
 
-import today.sleek.client.utils.chat.NameUtil;
 import net.minecraft.client.gui.*;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.EnumChatFormatting;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.lwjgl.input.Keyboard;
+import today.sleek.client.utils.chat.NameUtil;
 
 import java.awt.*;
 import java.awt.datatransfer.DataFlavor;

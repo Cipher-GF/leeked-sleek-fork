@@ -1,9 +1,9 @@
 package today.sleek.client.utils.font;
 
+import net.minecraft.util.ResourceLocation;
 import today.sleek.Sleek;
 import today.sleek.client.modules.impl.visuals.ClickGUI;
 import today.sleek.client.utils.Util;
-import net.minecraft.util.ResourceLocation;
 
 import java.awt.*;
 import java.util.Objects;

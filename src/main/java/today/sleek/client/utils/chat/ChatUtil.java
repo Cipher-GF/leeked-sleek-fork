@@ -1,7 +1,7 @@
 package today.sleek.client.utils.chat;
 
-import today.sleek.client.utils.Util;
 import net.minecraft.util.ChatComponentText;
+import today.sleek.client.utils.Util;
 
 public class ChatUtil extends Util {
 

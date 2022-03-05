@@ -1,8 +1,5 @@
 package net.minecraft.client.renderer;
 
-import today.sleek.Sleek;
-import today.sleek.client.modules.impl.combat.KillAura;
-import today.sleek.client.modules.impl.visuals.Animations;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -33,6 +30,9 @@ import optifine.DynamicLights;
 import optifine.Reflector;
 import org.lwjgl.opengl.GL11;
 import shadersmod.client.Shaders;
+import today.sleek.Sleek;
+import today.sleek.client.modules.impl.combat.KillAura;
+import today.sleek.client.modules.impl.visuals.Animations;
 
 public class ItemRenderer
 {

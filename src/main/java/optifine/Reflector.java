@@ -1,7 +1,6 @@
 package optifine;
 
 import com.google.common.base.Optional;
-import today.sleek.client.gui.MainMenu;
 import net.minecraft.block.Block;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
@@ -33,6 +32,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.property.IUnlistedProperty;
+import today.sleek.client.gui.MainMenu;
 
 import javax.vecmath.Matrix4f;
 import java.lang.reflect.Constructor;

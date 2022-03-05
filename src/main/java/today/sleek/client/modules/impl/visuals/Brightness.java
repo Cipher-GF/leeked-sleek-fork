@@ -1,12 +1,12 @@
 package today.sleek.client.modules.impl.visuals;
 
 import com.google.common.eventbus.Subscribe;
+import net.minecraft.potion.PotionEffect;
 import today.sleek.base.event.impl.UpdateEvent;
 import today.sleek.base.modules.ModuleCategory;
 import today.sleek.base.modules.ModuleData;
-import today.sleek.client.modules.impl.Module;
 import today.sleek.base.value.value.ModeValue;
-import net.minecraft.potion.PotionEffect;
+import today.sleek.client.modules.impl.Module;
 
 @ModuleData(
         name = "Brightness",

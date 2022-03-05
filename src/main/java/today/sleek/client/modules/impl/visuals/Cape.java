@@ -1,12 +1,12 @@
 package today.sleek.client.modules.impl.visuals;
 
+import net.minecraft.client.entity.AbstractClientPlayer;
+import net.minecraft.util.ResourceLocation;
 import today.sleek.Sleek;
 import today.sleek.base.modules.ModuleCategory;
 import today.sleek.base.modules.ModuleData;
-import today.sleek.client.modules.impl.Module;
 import today.sleek.base.value.value.ModeValue;
-import net.minecraft.client.entity.AbstractClientPlayer;
-import net.minecraft.util.ResourceLocation;
+import today.sleek.client.modules.impl.Module;
 
 @ModuleData(
         name = "Cape",

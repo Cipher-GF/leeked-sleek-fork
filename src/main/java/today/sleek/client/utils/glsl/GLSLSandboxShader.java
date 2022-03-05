@@ -71,7 +71,7 @@ public class GLSLSandboxShader {
 
         // If compilation failed
         if (compiled == 0) {
-            System.err.println(glGetShaderInfoLog(shader, glGetShaderi(shader, GL_INFO_LOG_LENGTH)));
+            System.err.println(glGetShaderInfoLog(shader, GL_INFO_LOG_LENGTH));
 
             throw new IllegalStateException("Failed to compile shader");
         }

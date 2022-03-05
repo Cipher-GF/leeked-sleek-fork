@@ -1,9 +1,9 @@
 package today.sleek.client.modules.impl.player.hackerdetect.checks.chat;
 
+import net.minecraft.network.play.server.S02PacketChat;
 import today.sleek.Sleek;
 import today.sleek.base.event.impl.PacketEvent;
 import today.sleek.client.modules.impl.player.hackerdetect.checks.Check;
-import net.minecraft.network.play.server.S02PacketChat;
 
 import java.util.Arrays;
 import java.util.List;

@@ -1,8 +1,8 @@
 package today.sleek.client.utils.block;
 
-import today.sleek.client.utils.Util;
 import net.minecraft.block.Block;
 import net.minecraft.util.BlockPos;
+import today.sleek.client.utils.Util;
 
 public class BlockUtil extends Util {
 

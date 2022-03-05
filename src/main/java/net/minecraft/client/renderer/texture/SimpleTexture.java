@@ -5,11 +5,8 @@ import net.minecraft.client.resources.IResourceManager;
 import net.minecraft.client.resources.data.TextureMetadataSection;
 import net.minecraft.util.ResourceLocation;
 import optifine.Config;
-
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import shadersmod.client.ShadersTex;
 
 import java.awt.image.BufferedImage;

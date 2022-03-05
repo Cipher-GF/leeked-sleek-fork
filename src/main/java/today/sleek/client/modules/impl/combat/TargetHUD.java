@@ -1,13 +1,5 @@
 package today.sleek.client.modules.impl.combat;
 
-import today.sleek.Sleek;
-import today.sleek.base.event.impl.RenderOverlayEvent;
-import today.sleek.client.utils.Util;
-import today.sleek.client.utils.font.Fonts;
-import today.sleek.client.utils.render.AnimationUtils;
-import today.sleek.client.utils.render.ColorUtils;
-import today.sleek.client.utils.render.RenderUtil;
-import today.sleek.client.utils.render.RenderUtils;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.gui.GuiPlayerTabOverlay;
 import net.minecraft.client.gui.inventory.GuiInventory;
@@ -18,6 +10,14 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import optifine.MathUtils;
 import org.lwjgl.opengl.GL11;
+import today.sleek.Sleek;
+import today.sleek.base.event.impl.RenderOverlayEvent;
+import today.sleek.client.utils.Util;
+import today.sleek.client.utils.font.Fonts;
+import today.sleek.client.utils.render.AnimationUtils;
+import today.sleek.client.utils.render.ColorUtils;
+import today.sleek.client.utils.render.RenderUtil;
+import today.sleek.client.utils.render.RenderUtils;
 
 import java.awt.*;
 import java.util.Objects;

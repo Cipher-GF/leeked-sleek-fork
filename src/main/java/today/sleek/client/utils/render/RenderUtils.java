@@ -1,6 +1,5 @@
 package today.sleek.client.utils.render;
 
-import today.sleek.client.utils.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
@@ -13,6 +12,7 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.glu.GLU;
+import today.sleek.client.utils.Util;
 
 import javax.vecmath.Vector3d;
 import java.awt.*;

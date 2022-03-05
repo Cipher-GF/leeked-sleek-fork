@@ -1,14 +1,7 @@
 package today.sleek.client.utils.player;
 
-import today.sleek.Sleek;
-import today.sleek.base.event.impl.MoveEvent;
-import today.sleek.client.modules.impl.combat.KillAura;
-import today.sleek.client.modules.impl.combat.TargetStrafe;
-import today.sleek.client.utils.Util;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLiquid;
-import today.sleek.client.utils.network.PacketUtil;
-import today.sleek.client.utils.rotations.AimUtil;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.network.play.client.C03PacketPlayer;
 import net.minecraft.network.play.client.C0BPacketEntityAction;
@@ -17,6 +10,13 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovementInput;
+import today.sleek.Sleek;
+import today.sleek.base.event.impl.MoveEvent;
+import today.sleek.client.modules.impl.combat.KillAura;
+import today.sleek.client.modules.impl.combat.TargetStrafe;
+import today.sleek.client.utils.Util;
+import today.sleek.client.utils.network.PacketUtil;
+import today.sleek.client.utils.rotations.AimUtil;
 
 import javax.vecmath.Vector2d;
 import java.util.ArrayList;

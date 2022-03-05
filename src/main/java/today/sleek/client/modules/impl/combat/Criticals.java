@@ -1,18 +1,18 @@
 package today.sleek.client.modules.impl.combat;
 
 import com.google.common.eventbus.Subscribe;
+import net.minecraft.entity.Entity;
+import net.minecraft.network.play.client.C02PacketUseEntity;
+import net.minecraft.network.play.client.C03PacketPlayer;
 import today.sleek.Sleek;
 import today.sleek.base.event.impl.PacketEvent;
 import today.sleek.base.modules.ModuleCategory;
 import today.sleek.base.modules.ModuleData;
-import today.sleek.client.modules.impl.Module;
-import today.sleek.client.modules.impl.movement.Flight;
 import today.sleek.base.value.value.BooleanValue;
 import today.sleek.base.value.value.ModeValue;
+import today.sleek.client.modules.impl.Module;
+import today.sleek.client.modules.impl.movement.Flight;
 import today.sleek.client.utils.network.PacketUtil;
-import net.minecraft.entity.Entity;
-import net.minecraft.network.play.client.C02PacketUseEntity;
-import net.minecraft.network.play.client.C03PacketPlayer;
 
 @ModuleData(
         name = "Criticals",

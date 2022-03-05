@@ -1,8 +1,8 @@
 package today.sleek.base.value.value;
 
 
-import today.sleek.client.modules.impl.Module;
 import today.sleek.base.value.Value;
+import today.sleek.client.modules.impl.Module;
 
 import java.util.ArrayList;
 import java.util.Arrays;

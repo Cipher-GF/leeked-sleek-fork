@@ -2,18 +2,18 @@
 package today.sleek.client.modules.impl.player;
 
 import com.google.common.eventbus.Subscribe;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockAir;
+import net.minecraft.util.BlockPos;
 import today.sleek.Sleek;
 import today.sleek.base.event.impl.UpdateEvent;
 import today.sleek.base.modules.ModuleCategory;
 import today.sleek.base.modules.ModuleData;
-import today.sleek.client.modules.impl.Module;
-import today.sleek.client.modules.impl.movement.Flight;
 import today.sleek.base.value.value.ModeValue;
 import today.sleek.base.value.value.NumberValue;
+import today.sleek.client.modules.impl.Module;
+import today.sleek.client.modules.impl.movement.Flight;
 import today.sleek.client.utils.block.BlockUtil;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockAir;
-import net.minecraft.util.BlockPos;
 
 @ModuleData(
         name = "Anti Void",

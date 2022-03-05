@@ -1,9 +1,5 @@
 package today.sleek.client.utils.glsl;
 
-import today.sleek.Sleek;
-import today.sleek.client.modules.impl.visuals.HUD;
-import today.sleek.client.utils.player.TimeHelper;
-import today.sleek.client.utils.render.RenderUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
@@ -14,6 +10,10 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.EXTFramebufferObject;
 import org.lwjgl.opengl.GL11;
+import today.sleek.Sleek;
+import today.sleek.client.modules.impl.visuals.HUD;
+import today.sleek.client.utils.player.TimeHelper;
+import today.sleek.client.utils.render.RenderUtil;
 
 /**
  * @author Kansio

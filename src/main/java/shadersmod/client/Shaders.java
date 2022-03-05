@@ -1,7 +1,5 @@
 package shadersmod.client;
 
-import today.sleek.Sleek;
-import today.sleek.base.protection.ProtectionUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
@@ -33,6 +31,8 @@ import org.lwjgl.opengl.*;
 import org.lwjgl.util.glu.GLU;
 import shadersmod.common.SMCLog;
 import sun.misc.Unsafe;
+import today.sleek.Sleek;
+import today.sleek.base.protection.ProtectionUtil;
 
 import java.io.*;
 import java.lang.reflect.Field;

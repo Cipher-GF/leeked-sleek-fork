@@ -1,12 +1,6 @@
 package today.sleek.client.modules.impl.player;
 
 import com.google.common.eventbus.Subscribe;
-import today.sleek.base.event.impl.PacketEvent;
-import today.sleek.base.event.impl.UpdateEvent;
-import today.sleek.base.modules.ModuleCategory;
-import today.sleek.base.modules.ModuleData;
-import today.sleek.client.modules.impl.Module;
-import today.sleek.base.value.value.ModeValue;
 import net.minecraft.item.ItemSkull;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.Packet;
@@ -14,6 +8,12 @@ import net.minecraft.network.play.client.C08PacketPlayerBlockPlacement;
 import net.minecraft.network.play.client.C09PacketHeldItemChange;
 import net.minecraft.network.play.server.S2DPacketOpenWindow;
 import net.minecraft.network.play.server.S2FPacketSetSlot;
+import today.sleek.base.event.impl.PacketEvent;
+import today.sleek.base.event.impl.UpdateEvent;
+import today.sleek.base.modules.ModuleCategory;
+import today.sleek.base.modules.ModuleData;
+import today.sleek.base.value.value.ModeValue;
+import today.sleek.client.modules.impl.Module;
 
 @ModuleData(
         name = "Auto Server",

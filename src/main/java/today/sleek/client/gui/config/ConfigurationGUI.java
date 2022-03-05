@@ -1,14 +1,14 @@
 package today.sleek.client.gui.config;
 
+import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.gui.ScaledResolution;
+import org.lwjgl.input.Keyboard;
 import today.sleek.Sleek;
 import today.sleek.base.config.Config;
 import today.sleek.client.gui.notification.Notification;
 import today.sleek.client.gui.notification.NotificationManager;
 import today.sleek.client.utils.font.Fonts;
 import today.sleek.client.utils.render.RenderUtils;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.gui.ScaledResolution;
-import org.lwjgl.input.Keyboard;
 
 import java.awt.*;
 import java.io.IOException;

@@ -1,15 +1,15 @@
 package today.sleek.client.modules.impl.player;
 
 import com.google.common.eventbus.Subscribe;
+import net.minecraft.network.play.server.S02PacketChat;
+import org.apache.commons.lang3.RandomUtils;
 import today.sleek.Sleek;
 import today.sleek.base.event.impl.PacketEvent;
 import today.sleek.base.modules.ModuleCategory;
 import today.sleek.base.modules.ModuleData;
+import today.sleek.base.value.value.ModeValue;
 import today.sleek.client.modules.impl.Module;
 import today.sleek.client.utils.chat.ChatUtil;
-import today.sleek.base.value.value.ModeValue;
-import net.minecraft.network.play.server.S02PacketChat;
-import org.apache.commons.lang3.RandomUtils;
 
 import java.util.ArrayList;
 

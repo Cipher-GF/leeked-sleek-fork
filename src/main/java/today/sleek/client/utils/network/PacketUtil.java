@@ -1,7 +1,7 @@
 package today.sleek.client.utils.network;
 
-import today.sleek.client.utils.Util;
 import net.minecraft.network.Packet;
+import today.sleek.client.utils.Util;
 
 public class PacketUtil extends Util {
 

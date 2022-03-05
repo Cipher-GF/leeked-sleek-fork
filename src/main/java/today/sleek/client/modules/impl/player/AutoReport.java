@@ -1,14 +1,14 @@
 package today.sleek.client.modules.impl.player;
 
 import com.google.common.eventbus.Subscribe;
+import net.minecraft.entity.player.EntityPlayer;
 import today.sleek.base.event.impl.UpdateEvent;
 import today.sleek.base.modules.ModuleCategory;
 import today.sleek.base.modules.ModuleData;
-import today.sleek.client.modules.impl.Module;
 import today.sleek.base.value.value.NumberValue;
+import today.sleek.client.modules.impl.Module;
 import today.sleek.client.utils.math.MathUtil;
 import today.sleek.client.utils.math.Stopwatch;
-import net.minecraft.entity.player.EntityPlayer;
 
 @ModuleData(
         name = "Auto Report",

@@ -1,15 +1,15 @@
 package today.sleek.client.gui;
 
-import today.sleek.client.gui.alt.GuiAltManager;
-import today.sleek.client.utils.font.Fonts;
-import today.sleek.client.utils.glsl.GLSLSandboxShader;
-import today.sleek.client.utils.render.ColorPalette;
 import net.minecraft.client.gui.*;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL20;
+import today.sleek.client.gui.alt.GuiAltManager;
+import today.sleek.client.utils.font.Fonts;
+import today.sleek.client.utils.glsl.GLSLSandboxShader;
+import today.sleek.client.utils.render.ColorPalette;
 
 import java.io.IOException;
 

@@ -1,15 +1,15 @@
 package today.sleek.client.gui.clickgui.frame.components.configs;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Gui;
+import org.lwjgl.input.Mouse;
+import org.lwjgl.opengl.GL11;
 import today.sleek.Sleek;
 import today.sleek.base.config.Config;
 import today.sleek.client.gui.clickgui.frame.Values;
 import today.sleek.client.gui.clickgui.utils.render.animation.easings.Animate;
 import today.sleek.client.gui.clickgui.utils.render.animation.easings.Easing;
 import today.sleek.client.utils.render.RenderUtils;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Gui;
-import org.lwjgl.input.Mouse;
-import org.lwjgl.opengl.GL11;
 
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;

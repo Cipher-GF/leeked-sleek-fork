@@ -3,8 +3,8 @@ package today.sleek.client.modules.impl.player;
 import com.google.common.eventbus.Subscribe;
 import today.sleek.base.event.impl.ChatEvent;
 import today.sleek.base.modules.ModuleCategory;
-import today.sleek.client.irc.IRCClient;
 import today.sleek.base.modules.ModuleData;
+import today.sleek.client.irc.IRCClient;
 import today.sleek.client.modules.impl.Module;
 import today.sleek.client.utils.math.Stopwatch;
 

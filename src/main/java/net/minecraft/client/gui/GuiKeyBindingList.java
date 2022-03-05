@@ -1,12 +1,12 @@
 package net.minecraft.client.gui;
 
-import today.sleek.client.utils.font.Fonts;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.util.EnumChatFormatting;
 import org.apache.commons.lang3.ArrayUtils;
+import today.sleek.client.utils.font.Fonts;
 
 import java.util.Arrays;
 

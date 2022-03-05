@@ -1,7 +1,5 @@
 package today.sleek.client.utils.combat;
 
-import today.sleek.Sleek;
-import today.sleek.client.utils.Util;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityArmorStand;
@@ -12,6 +10,8 @@ import net.minecraft.entity.passive.EntitySquid;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.scoreboard.Team;
+import today.sleek.Sleek;
+import today.sleek.client.utils.Util;
 
 import java.util.ArrayList;
 import java.util.List;

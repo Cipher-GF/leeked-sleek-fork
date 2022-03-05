@@ -14,7 +14,8 @@ import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.IJsonSerializable;
 import net.minecraft.util.TupleIntJsonSerializable;
 import org.apache.commons.io.FileUtils;
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,10 +23,6 @@ import java.lang.reflect.Constructor;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 
 public class StatisticsFile extends StatFileWriter

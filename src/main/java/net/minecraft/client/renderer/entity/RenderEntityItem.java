@@ -1,6 +1,5 @@
 package net.minecraft.client.renderer.entity;
 
-import today.sleek.Sleek;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
@@ -13,6 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
+import today.sleek.Sleek;
 
 import java.util.Random;
 

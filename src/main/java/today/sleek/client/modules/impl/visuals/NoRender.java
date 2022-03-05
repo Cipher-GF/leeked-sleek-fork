@@ -1,12 +1,12 @@
 package today.sleek.client.modules.impl.visuals;
 
 import com.google.common.eventbus.Subscribe;
-import today.sleek.base.modules.ModuleCategory;
-import today.sleek.base.modules.ModuleData;
-import today.sleek.client.modules.impl.Module;
-import today.sleek.base.value.value.BooleanValue;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
+import today.sleek.base.modules.ModuleCategory;
+import today.sleek.base.modules.ModuleData;
+import today.sleek.base.value.value.BooleanValue;
+import today.sleek.client.modules.impl.Module;
 
 @ModuleData(
         name = "NoRender",

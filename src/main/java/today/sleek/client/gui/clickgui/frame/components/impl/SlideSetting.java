@@ -1,20 +1,20 @@
 package today.sleek.client.gui.clickgui.frame.components.impl;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.client.gui.Gui;
+import net.minecraft.util.MathHelper;
+import org.lwjgl.input.Mouse;
 import today.sleek.Sleek;
+import today.sleek.base.value.Value;
+import today.sleek.base.value.value.NumberValue;
 import today.sleek.client.gui.clickgui.frame.Values;
 import today.sleek.client.gui.clickgui.frame.components.Component;
 import today.sleek.client.gui.clickgui.frame.components.FrameModule;
 import today.sleek.client.modules.impl.visuals.ClickGUI;
 import today.sleek.client.utils.font.Fonts;
 import today.sleek.client.utils.font.MCFontRenderer;
-import today.sleek.base.value.Value;
-import today.sleek.base.value.value.NumberValue;
 import today.sleek.client.utils.render.RenderUtils;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.gui.Gui;
-import net.minecraft.util.MathHelper;
-import org.lwjgl.input.Mouse;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

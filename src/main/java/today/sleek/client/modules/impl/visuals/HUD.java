@@ -4,14 +4,14 @@ import com.google.common.eventbus.Subscribe;
 import today.sleek.base.event.impl.RenderOverlayEvent;
 import today.sleek.base.modules.ModuleCategory;
 import today.sleek.base.modules.ModuleData;
-import today.sleek.client.modules.impl.Module;
-import today.sleek.client.modules.impl.visuals.hud.ArrayListMode;
-import today.sleek.client.modules.impl.visuals.hud.InfoMode;
-import today.sleek.client.modules.impl.visuals.hud.WaterMarkMode;
 import today.sleek.base.value.value.BooleanValue;
 import today.sleek.base.value.value.ModeValue;
 import today.sleek.base.value.value.NumberValue;
 import today.sleek.base.value.value.StringValue;
+import today.sleek.client.modules.impl.Module;
+import today.sleek.client.modules.impl.visuals.hud.ArrayListMode;
+import today.sleek.client.modules.impl.visuals.hud.InfoMode;
+import today.sleek.client.modules.impl.visuals.hud.WaterMarkMode;
 import today.sleek.client.utils.java.ReflectUtils;
 
 import java.util.Comparator;

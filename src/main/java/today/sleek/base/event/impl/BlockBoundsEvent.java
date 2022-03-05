@@ -1,9 +1,9 @@
 package today.sleek.base.event.impl;
 
-import today.sleek.base.event.Event;
+import net.minecraft.block.Block;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
-import net.minecraft.block.Block;
+import today.sleek.base.event.Event;
 
 
 public class BlockBoundsEvent extends Event

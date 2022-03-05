@@ -1,8 +1,8 @@
 package today.sleek.base.event.impl;
 
+import net.minecraft.network.Packet;
 import today.sleek.base.event.Event;
 import today.sleek.base.event.PacketDirection;
-import net.minecraft.network.Packet;
 
 public class PacketEvent extends Event {
 

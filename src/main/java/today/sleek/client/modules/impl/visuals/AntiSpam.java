@@ -1,11 +1,11 @@
 package today.sleek.client.modules.impl.visuals;
 
 import com.google.common.eventbus.Subscribe;
+import net.minecraft.network.play.server.S02PacketChat;
 import today.sleek.base.event.impl.PacketEvent;
 import today.sleek.base.modules.ModuleCategory;
 import today.sleek.base.modules.ModuleData;
 import today.sleek.client.modules.impl.Module;
-import net.minecraft.network.play.server.S02PacketChat;
 
 import java.util.Arrays;
 import java.util.List;

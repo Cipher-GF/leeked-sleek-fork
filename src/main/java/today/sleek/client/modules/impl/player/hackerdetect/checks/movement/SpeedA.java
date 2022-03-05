@@ -1,11 +1,11 @@
 package today.sleek.client.modules.impl.player.hackerdetect.checks.movement;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.entity.player.EntityPlayer;
 import today.sleek.Sleek;
 import today.sleek.client.modules.impl.player.HackerDetect;
 import today.sleek.client.modules.impl.player.hackerdetect.checks.Check;
 import today.sleek.client.utils.math.BPSUtil;
-import net.minecraft.client.Minecraft;
-import net.minecraft.entity.player.EntityPlayer;
 
 public class SpeedA extends Check {
 
