@@ -21,8 +21,8 @@
   },
   {
     "name": "Velocity",
-    "keybind": 19,
-    "keybindName": "R"
+    "keybind": 38,
+    "keybindName": "L"
   },
   {
     "name": "Chat Bypass",
@@ -71,6 +71,11 @@
   },
   {
     "name": "Inventory Manager",
+    "keybind": 0,
+    "keybindName": "NONE"
+  },
+  {
+    "name": "Motion Blur",
     "keybind": 0,
     "keybindName": "NONE"
   },
