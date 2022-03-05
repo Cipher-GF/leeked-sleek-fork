@@ -27,13 +27,13 @@ public class Bhop extends SpeedMode {
                 if (!mc.thePlayer.isPotionActive(Potion.moveSpeed)) {
                     mc.thePlayer.jump();
                 } else {
-                    mc.thePlayer.motionX -= MathHelper.sin(f) * 0.29F;
-                    mc.thePlayer.motionZ += MathHelper.cos(f) * 0.29F;
+                    mc.thePlayer.motionX -= MathHelper.sin(f) * 0.21F;
+                    mc.thePlayer.motionZ += MathHelper.cos(f) * 0.21F;
                 }
 
                 mc.thePlayer.motionY = 0.411;
             } else {
-                if (mc.thePlayer.ticksExisted % 6 == 0) {
+                if (mc.thePlayer.ticksExisted % 4 == 0) {
                     PlayerUtil.setMotion(PlayerUtil.getBaseSpeed());
                     mc.thePlayer.motionX *= 0.9;
                     mc.thePlayer.motionZ *= 0.9;
