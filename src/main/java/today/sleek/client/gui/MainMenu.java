@@ -44,6 +44,7 @@ public class MainMenu extends GuiScreen {
         this.buttonList.add(new GuiButton(2, width / 2 - 15, j + i * 2 - 25,         350, 20,"Alt Manager"));
         this.buttonList.add(new GuiButton(3, width / 2 - 15, j + i * 2     ,         350, 20,I18n.format("menu.options")));
         this.buttonList.add(new GuiButton(4, width / 2 - 15, j + i * 2 + 25,         350, 20,I18n.format("menu.quit")));
+        this.buttonList.add(new GuiButton(2, width / 2 - 15, j + i * 2 + 50,         350, 20," Credits"));
 
         initTime = System.currentTimeMillis();
     }

@@ -61,10 +61,12 @@ public class TargetHUD extends Util {
                     switch (killaura.targethud3d.getValue()) {
                         case "Face": {
                             ResourceLocation skin = ((AbstractClientPlayer) target).getLocationSkin();
-                            RenderUtils.drawFace(skin, 165, 370, 20, 20);
+                            RenderUtils.drawFace(skin, 165, 360, 35, 35);
+                            break;
                         }
                         case "Model": {
-                            GuiInventory.drawEntityOnScreen(175, 397, 24, 0, 0, target);
+                            GuiInventory.drawEntityOnScreen(175, 397, 20, 0, 0, target);
+                            break;
                         }
                     }
                 }
