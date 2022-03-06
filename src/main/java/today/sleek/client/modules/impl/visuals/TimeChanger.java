@@ -52,7 +52,6 @@ public class TimeChanger extends Module {
             case "Autism":
                 int d = (int) mc.theWorld.getWorldTime();
                 d *= 5;
-                System.out.println(d);
                 mc.theWorld.setWorldTime(d);
                 if (d > 24000) {
                     mc.theWorld.setWorldTime(0);

@@ -29,7 +29,7 @@ public class MainMenu extends GuiScreen {
     }
 
     public void initGui() {
-        j = Math.round(height);
+        j = Math.round(height / 1.47F);
         /*
         try {
             this.backgroundShader = new GLSLSandboxShader("")
@@ -37,11 +37,18 @@ public class MainMenu extends GuiScreen {
             throw new IllegalStateException("Failed To Load Main Menu Shader");
         }
          */
-        this.buttonList.add(new GuiButton(0, this.width/2, j, 80, 20, "-> " + I18n.format("menu.singleplayer")));
-        this.buttonList.add(new GuiButton(1, this.width, j + 24, 80, 20, "-> " + I18n.format("menu.multiplayer")));
-        this.buttonList.add(new GuiButton(2, this.width, j + 24 * 2, 80, 20, "-> " + "Alt Manager"));
-        this.buttonList.add(new GuiButton(3, this.width, j + 24 * 2 + 25, 80, 20, "-> " + I18n.format("menu.options")));
-        this.buttonList.add(new GuiButton(4, this.width, j + 24 * 2 + 50, 80, 20, "-> " + I18n.format("menu.quit")));
+        int j = height / 4 + 48;
+        int i = 24;
+        this.buttonList.add(new GuiButton(0, width / 2 - 100, j - 25        , 203, 20,I18n.format("menu.singleplayer")));
+        this.buttonList.add(new GuiButton(1, width / 2 - 100, j + i - 25    , 203, 20,I18n.format("menu.multiplayer")));
+        this.buttonList.add(new GuiButton(2, width / 2 - 100, j + i * 2 - 25, 203, 20,"Alt Manager"));
+        this.buttonList.add(new GuiButton(3, width / 2 - 100, j + i * 2     , 203, 20,I18n.format("menu.options")));
+        this.buttonList.add(new GuiButton(4, width / 2 - 100, j + i * 2 + 25, 203, 20,I18n.format("menu.quit")));
+//        this.buttonList.add(new GuiButton(0, this.width/2, j              , 80, 20, I18n.format("menu.singleplayer")));
+//        this.buttonList.add(new GuiButton(1, this.width/2, j + 24         , 80, 20, I18n.format("menu.multiplayer")));
+//        this.buttonList.add(new GuiButton(2, this.width/2, j + 24 * 2     , 80, 20, "Alt Manager"));
+//        this.buttonList.add(new GuiButton(3, this.width/2, j + 24 * 2 + 25, 80, 20, I18n.format("menu.options")));
+//        this.buttonList.add(new GuiButton(4, this.width/2, j + 24 * 2 + 50, 80, 20, I18n.format("menu.quit")));
 //        this.buttonList.add(new GuiButton(0, 0, j, 203, 20, I18n.format("menu.singleplayer")));
 //        this.buttonList.add(new GuiButton(1, 0, j + 24, 203, 20, I18n.format("menu.multiplayer")));
 //        this.buttonList.add(new GuiButton(2, 0, j + 48, 203, 20, "Alt Manager"));
