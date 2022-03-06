@@ -1,5 +1,18 @@
 package net.minecraft.client.gui;
 
+<<<<<<< HEAD
+=======
+import me.kansio.client.Client;
+import me.kansio.client.gui.MainMenu;
+import me.kansio.client.gui.clickgui.utils.render.animation.easings.Animate;
+import me.kansio.client.gui.clickgui.utils.render.animation.easings.Easing;
+import me.kansio.client.modules.impl.visuals.ClickGUI;
+import me.kansio.client.utils.font.Fonts;
+import me.kansio.client.utils.font.MCFontRenderer;
+import me.kansio.client.utils.render.ColorPalette;
+import me.kansio.client.utils.render.ColorUtils;
+import me.kansio.client.utils.render.RenderUtil;
+>>>>>>> parent of 1e8e2873 (POG)
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.audio.SoundHandler;
@@ -57,15 +70,16 @@ public class GuiButton extends Gui {
     protected boolean hovered;
 
 
+
+
 //    public GuiButton(int buttonId, int x, int y, String buttonText)
 //    {
 //        this(buttonId, x, y, 203, 20, buttonText);
 //    }
 
-    float stringLen;
-
     public GuiButton(int buttonId, int x, int y, int widthIn, int heightIn, String buttonText) {
         this.moduleAnimation = new Animate();
+        moduleAnimation.setMin(0).setMax(80f).setReversed(!this.hovered).setEase(Easing.QUAD_IN_OUT);
         this.width = widthIn;
         this.height = heightIn;
         this.enabled = true;
@@ -97,11 +111,15 @@ public class GuiButton extends Gui {
      */
     public void drawButton(Minecraft mc, int mouseX, int mouseY) {
         if (this.visible) {
+<<<<<<< HEAD
             stringLen = Fonts.Verdana.getStringWidth(this.displayString);
             moduleAnimation.setMin(0).setMax(stringLen - 15).setReversed(!this.hovered).setEase(Easing.QUAD_IN_OUT);
+=======
+>>>>>>> parent of 1e8e2873 (POG)
             moduleAnimation.setReversed(!this.hovered);
             moduleAnimation.setSpeed(120).update();
             final MCFontRenderer font = Fonts.Verdana;
+            FontRenderer fontRenderer = mc.fontRendererObj;
             mc.getTextureManager().bindTexture(buttonTextures);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
             this.hovered = mouseX >= this.xPosition && mouseY >= this.yPosition && mouseX < this.xPosition + this.width && mouseY < this.yPosition + this.height;
@@ -109,6 +127,7 @@ public class GuiButton extends Gui {
             GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
             GlStateManager.blendFunc(770, 771);
             float boxWidth = this.xPosition + this.width / 2F - 99.8f;
+<<<<<<< HEAD
 //            RenderUtil.drawRect(this.xPosition + this.width / 2F - 79f, this.yPosition, 261 - this.width / 2F, 20, 0x80000000);
             this.mouseDragged(mc, mouseX, mouseY);
             int j = 14737632;
@@ -128,14 +147,29 @@ public class GuiButton extends Gui {
                     Fonts.Verdana.drawString(this.displayString, this.xPosition, this.yPosition + (this.height - 4f) / 2, j);
                 } else {
                     Fonts.Verdana.drawString(this.displayString, this.xPosition, this.yPosition + (this.height - 4f) / 2, j);
+=======
+            float stringLen = fontRenderer.getStringWidth(this.displayString);
+            RenderUtil.drawRect(this.xPosition + this.width / 2F - 79f, this.yPosition, 261 - this.width / 2F, 20, 0x80000000);
+            if (mc.currentScreen instanceof MainMenu) {
+                if (this.hovered) {
+//                    RenderUtil.drawBottemRoundedRect(this.xPosition + this.width / 2F - 99.8f, this.yPosition, 300 - this.width / 2F, 20, 10, 0x80000000);
+                    RenderUtil.drawRect(this.xPosition + (this.width / 3f) + 34.8, this.yPosition + this.height - 1, (int) moduleAnimation.getValue(), 1, ColorUtils.getIntGradientOffset(new Color(255, 60, 234), new Color(27, 179, 255), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + 9F / mc.fontRendererObj.FONT_HEIGHT * 9.95));
+                    RenderUtil.drawRect(this.xPosition + (this.width / 3f) + 34.8, this.yPosition + this.height - 1, -(int) moduleAnimation.getValue(), 1, ColorUtils.getIntGradientOffset(new Color(255, 60, 234), new Color(27, 179, 255), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + 9F / mc.fontRendererObj.FONT_HEIGHT * 9.95));
+>>>>>>> parent of 1e8e2873 (POG)
                 }
             } else {
 //                RenderUtil.drawBottemRoundedRect(this.xPosition + this.width / 2F - 99.8f, this.yPosition, 300 - this.width / 2F, 20, 10, 0x80000000);
                 RenderUtil.drawRect(boxWidth + 25, this.yPosition + this.height - 1, 250 - this.width / 2F, 1, ColorUtils.getIntGradientOffset(new Color(255, 60, 234), new Color(27, 179, 255), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + 9F / mc.fontRendererObj.FONT_HEIGHT * 9.95));
-                Fonts.Verdana.drawCenteredString(this.displayString, this.xPosition + (this.width / 2f), this.yPosition + (this.height - 4f) / 2, j);
-//                RenderUtil.drawRect(this.xPosition + (this.width / 3f) + 34.8, this.yPosition + this.height - 1, -(int) moduleAnimation.getValue(), 1, ColorUtils.getIntGradientOffset(new Color(255, 60, 234), new Color(27, 179, 255), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + 9F / mc.fontRendererObj.FONT_HEIGHT * 9.95));
             }
+            this.mouseDragged(mc, mouseX, mouseY);
+            int j = 14737632;
 
+            if (!this.enabled) {
+                j = 10526880;
+            } else if (this.hovered) {
+                j = 16777120;
+            }
+            Fonts.Verdana.drawCenteredString(this.displayString, this.xPosition + (this.width / 2f), this.yPosition + (this.height - 4f) / 2, j);
             // center the text in the button on depending on its length
 //            this.drawCenteredString(fontrenderer, this.displayString, this.xPosition + (this.width / 2), this.yPosition + (this.height - 8) / 2, j);
         }
