@@ -1,15 +1,16 @@
 package me.kansio.client.gui;
 
-import me.kansio.client.gui.alt.GuiAltManager;
-import me.kansio.client.utils.font.Fonts;
-import me.kansio.client.utils.glsl.GLSLSandboxShader;
-import me.kansio.client.utils.render.ColorPalette;
+import today.sleek.client.gui.alt.GuiAltManager;
+import today.sleek.client.utils.font.Fonts;
+import today.sleek.client.utils.glsl.GLSLSandboxShader;
+import today.sleek.client.utils.render.ColorPalette;
 import net.minecraft.client.gui.*;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL20;
+import today.sleek.client.utils.glsl.GLSLSandboxShader;
 
 import java.io.IOException;
 
@@ -36,7 +37,7 @@ public class MainMenu extends GuiScreen {
             throw new IllegalStateException("Failed To Load Main Menu Shader");
         }
          */
-        int j = height / 4 + 48;
+        int j = height / 4-15;
         int i = 24;
         this.buttonList.add(new GuiButton(0, width / 2 - 100, j - 25        , 203, 20,I18n.format("menu.singleplayer")));
         this.buttonList.add(new GuiButton(1, width / 2 - 100, j + i - 25    , 203, 20,I18n.format("menu.multiplayer")));
@@ -90,8 +91,6 @@ public class MainMenu extends GuiScreen {
         GL20.glUseProgram(0);
         Fonts.Arial45.drawCenteredString("§lS", width / 2 - 24, height / 4 -24, ColorPalette.BLUE.getColor().getRGB());
         Fonts.Arial40.drawCenteredString("leek", width / 2 + 4, height / 4 -22.5f, ColorPalette.GREY.getColor().darker().getRGB()); // -1 = white
-//        Fonts.Arial45.drawCenteredString("§lS", width / 12F - 12, j - 24, ColorPalette.BLUE.getColor().getRGB());
-//        Fonts.Arial40.drawCenteredString("leek", width / 12F + 16, j - 22.5f, -1); // -1 = white
 //        Fonts.Verdana.drawString(devinfo, (width - Fonts.Arial30.getStringWidth(devinfo)) + 110, height - 10, -1);
         String devinfo = "Made with <3 by Reset, Kansio, nullswap, Divine and qoft";
         Fonts.Verdana.drawCenteredString(devinfo, width - 150, height - 10, -1);
