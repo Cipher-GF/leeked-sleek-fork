@@ -1,15 +1,16 @@
 package today.sleek.client.gui;
 
+import today.sleek.client.gui.alt.GuiAltManager;
+import today.sleek.client.utils.font.Fonts;
+import today.sleek.client.utils.glsl.GLSLSandboxShader;
+import today.sleek.client.utils.render.ColorPalette;
 import net.minecraft.client.gui.*;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL20;
-import today.sleek.client.gui.alt.GuiAltManager;
-import today.sleek.client.utils.font.Fonts;
 import today.sleek.client.utils.glsl.GLSLSandboxShader;
-import today.sleek.client.utils.render.ColorPalette;
 
 import java.io.IOException;
 
@@ -18,18 +19,17 @@ public class MainMenu extends GuiScreen {
     private static final ResourceLocation BACKGROUND = new ResourceLocation("sleek/images/background.png");
     private GLSLSandboxShader backgroundShader;
     private long initTime = System.currentTimeMillis();
-    private int j;
+    private final int j = Math.round(height / 1.5F);
 
     public MainMenu() {
         try {
-            this.backgroundShader = new GLSLSandboxShader("/background.fsh");
+            this.backgroundShader = new GLSLSandboxShader("/menu.fsh");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     public void initGui() {
-        j = Math.round(height / 1.47F);
         /*
         try {
             this.backgroundShader = new GLSLSandboxShader("")
@@ -37,23 +37,14 @@ public class MainMenu extends GuiScreen {
             throw new IllegalStateException("Failed To Load Main Menu Shader");
         }
          */
-        int j = height / 4 + 48;
+        int j = height / 4+45;
         int i = 24;
-        this.buttonList.add(new GuiButton(0, width / 2 - 100, j - 25        , 203, 20,I18n.format("menu.singleplayer")));
-        this.buttonList.add(new GuiButton(1, width / 2 - 100, j + i - 25    , 203, 20,I18n.format("menu.multiplayer")));
-        this.buttonList.add(new GuiButton(2, width / 2 - 100, j + i * 2 - 25, 203, 20,"Alt Manager"));
-        this.buttonList.add(new GuiButton(3, width / 2 - 100, j + i * 2     , 203, 20,I18n.format("menu.options")));
-        this.buttonList.add(new GuiButton(4, width / 2 - 100, j + i * 2 + 25, 203, 20,I18n.format("menu.quit")));
-//        this.buttonList.add(new GuiButton(0, this.width/2, j              , 80, 20, I18n.format("menu.singleplayer")));
-//        this.buttonList.add(new GuiButton(1, this.width/2, j + 24         , 80, 20, I18n.format("menu.multiplayer")));
-//        this.buttonList.add(new GuiButton(2, this.width/2, j + 24 * 2     , 80, 20, "Alt Manager"));
-//        this.buttonList.add(new GuiButton(3, this.width/2, j + 24 * 2 + 25, 80, 20, I18n.format("menu.options")));
-//        this.buttonList.add(new GuiButton(4, this.width/2, j + 24 * 2 + 50, 80, 20, I18n.format("menu.quit")));
-//        this.buttonList.add(new GuiButton(0, 0, j, 203, 20, I18n.format("menu.singleplayer")));
-//        this.buttonList.add(new GuiButton(1, 0, j + 24, 203, 20, I18n.format("menu.multiplayer")));
-//        this.buttonList.add(new GuiButton(2, 0, j + 48, 203, 20, "Alt Manager"));
-//        this.buttonList.add(new GuiButton(3, 0, j + 72, 203, 20, I18n.format("menu.options")));
-//        this.buttonList.add(new GuiButton(4, 0, j + 96, 203, 20, I18n.format("menu.quit")));
+        this.buttonList.add(new GuiButton(0, width / 2 - 15, j -         25        , 350, 20,I18n.format("menu.singleplayer")));
+        this.buttonList.add(new GuiButton(1, width / 2 - 15, j + i -     25    ,     350, 20,I18n.format("menu.multiplayer")));
+        this.buttonList.add(new GuiButton(2, width / 2 - 15, j + i * 2 - 25,         350, 20,"Alt Manager"));
+        this.buttonList.add(new GuiButton(3, width / 2 - 15, j + i * 2     ,         350, 20,I18n.format("menu.options")));
+        this.buttonList.add(new GuiButton(4, width / 2 - 15, j + i * 2 + 25,         350, 20,I18n.format("menu.quit")));
+
         initTime = System.currentTimeMillis();
     }
 
@@ -78,7 +69,6 @@ public class MainMenu extends GuiScreen {
     }
 
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
-        j = Math.round(height / 1.6F);
 
         GlStateManager.enableAlpha();
         GlStateManager.disableCull();
@@ -95,13 +85,12 @@ public class MainMenu extends GuiScreen {
 
         // Unbind shader
         GL20.glUseProgram(0);
-        Fonts.Arial45.drawCenteredString("§lS", width / 25F - 28, j - 2.4F, ColorPalette.BLUE.getColor().getRGB());
-        Fonts.Arial40.drawCenteredString("leek", width / 25F, j, ColorPalette.GREY.getColor().darker().getRGB()); // -1 = white
-//        Fonts.Arial45.drawCenteredString("§lS", width / 12F - 12, j - 24, ColorPalette.BLUE.getColor().getRGB());
-        Fonts.Arial40.drawCenteredString("leek", width / 25F, j, -1); // -1 = white
+        Fonts.Arial45.drawCenteredString("§lS", width / 2 - 20, height / 4 -24, ColorPalette.BLUE.getColor().getRGB());
+        Fonts.Arial40.drawCenteredString("leek", width / 2 +8, height / 4 -22.5f, -1); // -1 = white
 //        Fonts.Verdana.drawString(devinfo, (width - Fonts.Arial30.getStringWidth(devinfo)) + 110, height - 10, -1);
         String devinfo = "Made with <3 by Reset, Kansio, nullswap, Divine and qoft";
         Fonts.Verdana.drawCenteredString(devinfo, width - 150, height - 10, -1);
+        String text = "hi";
 //        Fonts.Verdana.drawString(devinfo, (width - Fonts.Arial30.getStringWidth(devinfo)) + 135, height - 10, -1);
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         super.drawScreen(mouseX, mouseY, partialTicks);

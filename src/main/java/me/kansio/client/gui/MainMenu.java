@@ -44,18 +44,12 @@ public class MainMenu extends GuiScreen {
         this.buttonList.add(new GuiButton(2, width / 2 - 100, j + i * 2 - 25, 203, 20,"Alt Manager"));
         this.buttonList.add(new GuiButton(3, width / 2 - 100, j + i * 2     , 203, 20,I18n.format("menu.options")));
         this.buttonList.add(new GuiButton(4, width / 2 - 100, j + i * 2 + 25, 203, 20,I18n.format("menu.quit")));
-//        this.buttonList.add(new GuiButton(0, 0, j, 203, 20, I18n.format("menu.singleplayer")));
-//        this.buttonList.add(new GuiButton(1, 0, j + 24, 203, 20, I18n.format("menu.multiplayer")));
-//        this.buttonList.add(new GuiButton(2, 0, j + 48, 203, 20, "Alt Manager"));
-//        this.buttonList.add(new GuiButton(3, 0, j + 72, 203, 20, I18n.format("menu.options")));
-//        this.buttonList.add(new GuiButton(4, 0, j + 96, 203, 20, I18n.format("menu.quit")));
-
-        Fonts.Verdana.drawString("->", 5, j, 14737632);
         this.buttonList.add(new GuiButton(0, 0, j, 203, 20, I18n.format("menu.singleplayer")));
         this.buttonList.add(new GuiButton(1, 0, j + 24, 203, 20, I18n.format("menu.multiplayer")));
         this.buttonList.add(new GuiButton(2, 0, j + 48, 203, 20, "Alt Manager"));
         this.buttonList.add(new GuiButton(3, 0, j + 72, 203, 20, I18n.format("menu.options")));
         this.buttonList.add(new GuiButton(4, 0, j + 96, 203, 20, I18n.format("menu.quit")));
+
         initTime = System.currentTimeMillis();
     }
 
