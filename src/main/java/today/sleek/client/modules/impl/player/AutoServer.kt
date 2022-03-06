@@ -4,6 +4,7 @@ import today.sleek.base.modules.ModuleData
 import today.sleek.base.modules.ModuleCategory
 import today.sleek.base.value.value.ModeValue
 import com.google.common.eventbus.Subscribe
+import net.minecraft.event.HoverEvent
 import today.sleek.base.event.impl.PacketEvent
 import net.minecraft.network.play.server.S2FPacketSetSlot
 import net.minecraft.item.ItemStack
@@ -15,9 +16,12 @@ import net.minecraft.item.ItemSkull
 import net.minecraft.network.Packet
 import net.minecraft.network.play.server.S02PacketChat
 import net.minecraft.network.play.server.S45PacketTitle
+import net.minecraft.util.StringUtils
+import net.minecraft.util.Util
 import today.sleek.base.value.value.BooleanValue
 import today.sleek.base.value.value.StringValue
 import today.sleek.client.modules.impl.Module
+import today.sleek.client.utils.chat.ChatUtil
 
 @ModuleData(
     name = "Auto Server",
@@ -29,13 +33,18 @@ class AutoServer : Module() {
     private var hasSelectedKit = false
     private var hasWorldChanged = false
     private var hasClickedKitSelector = false
-    private val modeValue = ModeValue("Server", this, "BlocksMC", "Hypixel")
+    private val modeValue = ModeValue("Server", this, "BlocksMC", "Hypixel", "Viper")
+
+    //blocksmc
     private val kitValue = ModeValue("Kit", this, modeValue, arrayOf("BlocksMC"), "Armorer", "Knight")
 
+    //hypixel
     private val autoGG = BooleanValue("Auto GG", this, true, modeValue, "Hypixel")
     private val ggMessage = StringValue("GG Message", this, "gg")
     private val hideGGS = BooleanValue("Hide GGS", this, true, modeValue, "Hypixel")
 
+    //vipermc
+    private val autoChatGames = BooleanValue("Auto Chat Game", this, true, modeValue, "Viper")
 
     @Subscribe
     fun onPacket(event: PacketEvent) {
@@ -124,6 +133,32 @@ class AutoServer : Module() {
                     if (message.contains(": gg")) {
                         event.isCancelled = true
                     }
+                }
+            }
+            "Viper" -> {
+                try {
+                    if (autoChatGames.value && event.getPacket<Packet<*>>() is S02PacketChat) {
+                        val chatComponent = event.getPacket<S02PacketChat>().chatComponent
+                        val message = event.getPacket<S02PacketChat>().chatComponent.toString()
+
+
+                        if (!message.contains("hoverEvent=HoverEvent{action=SHOW_TEXT, value='TextComponent{text='")) {
+                            return
+                        }
+
+                        if (!message.contains("Hover for the word to type")) {
+                            return
+                        }
+
+                        for (msg in chatComponent.siblings) {
+                            if (msg.chatStyle.chatHoverEvent != null) {
+                                mc.thePlayer.sendChatMessage(StringUtils.stripControlCodes(msg.chatStyle.chatHoverEvent.value.formattedText))
+                                return
+                            }
+                        }
+                    }
+                } catch (ex: Exception) {
+                    ex.printStackTrace()
                 }
             }
         }
