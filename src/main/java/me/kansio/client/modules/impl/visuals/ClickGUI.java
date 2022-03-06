@@ -1,14 +1,12 @@
 package me.kansio.client.modules.impl.visuals;
 
-import me.kansio.client.Client;
-import me.kansio.client.modules.api.ModuleCategory;
-import me.kansio.client.modules.api.ModuleData;
-import me.kansio.client.modules.impl.Module;
-import me.kansio.client.value.value.BooleanValue;
-import me.kansio.client.value.value.ModeValue;
-import me.kansio.client.value.value.NumberValue;
-import me.kansio.client.value.value.StringValue;
 import org.lwjgl.input.Keyboard;
+import today.sleek.base.modules.ModuleCategory;
+import today.sleek.base.modules.ModuleData;
+import today.sleek.base.value.value.BooleanValue;
+import today.sleek.base.value.value.ModeValue;
+import today.sleek.base.value.value.NumberValue;
+import today.sleek.client.modules.impl.Module;
 
 @ModuleData(
         name = "Click GUI",
@@ -27,7 +25,7 @@ public class ClickGUI extends Module {
     @Override
     public void onEnable() {
         try {
-            mc.displayGuiScreen(new me.kansio.client.gui.clickgui.frame.ClickGUI());
+            mc.displayGuiScreen(new today.sleek.client.gui.clickgui.frame.ClickGUI());
             toggle();
         } catch (Exception e) {
             e.printStackTrace();
