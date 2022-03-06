@@ -3,6 +3,7 @@ package net.minecraft.client.gui;
 import javafx.scene.text.Font;
 import today.sleek.Sleek;
 import me.kansio.client.gui.MainMenu;
+<<<<<<< HEAD
 import today.sleek.client.gui.clickgui.utils.render.animation.easings.Animate;
 import today.sleek.client.gui.clickgui.utils.render.animation.easings.Easing;
 import today.sleek.client.modules.impl.visuals.ClickGUI;
@@ -11,6 +12,13 @@ import today.sleek.client.utils.font.MCFontRenderer;
 import today.sleek.client.utils.render.ColorPalette;
 import today.sleek.client.utils.render.ColorUtils;
 import today.sleek.client.utils.render.RenderUtil;
+=======
+import me.kansio.client.utils.font.Fonts;
+import me.kansio.client.utils.font.MCFontRenderer;
+import me.kansio.client.utils.render.ColorPalette;
+import me.kansio.client.utils.render.ColorUtils;
+import me.kansio.client.utils.render.RenderUtil;
+>>>>>>> parent of 1bced469 (made reset's shit buttons better)
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.audio.SoundHandler;
@@ -24,7 +32,6 @@ import java.util.Objects;
 
 public class GuiButton extends Gui {
     protected static final ResourceLocation buttonTextures = new ResourceLocation("textures/gui/widgets.png");
-    private final Animate moduleAnimation;
 
     /**
      * Button width in pixels
@@ -63,7 +70,10 @@ public class GuiButton extends Gui {
     public boolean visible;
     protected boolean hovered;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of 1bced469 (made reset's shit buttons better)
 //    public GuiButton(int buttonId, int x, int y, String buttonText)
 //    {
 //        this(buttonId, x, y, 203, 20, buttonText);
@@ -72,7 +82,10 @@ public class GuiButton extends Gui {
     float stringLen;
 
     public GuiButton(int buttonId, int x, int y, int widthIn, int heightIn, String buttonText) {
+<<<<<<< HEAD
         this.moduleAnimation = new Animate();
+=======
+>>>>>>> parent of 1bced469 (made reset's shit buttons better)
         this.width = widthIn;
         this.height = heightIn;
         this.enabled = true;
@@ -104,10 +117,13 @@ public class GuiButton extends Gui {
      */
     public void drawButton(Minecraft mc, int mouseX, int mouseY) {
         if (this.visible) {
+<<<<<<< HEAD
             stringLen = Fonts.Verdana.getStringWidth(this.displayString);
             moduleAnimation.setMin(0).setMax(stringLen - 15).setReversed(!this.hovered).setEase(Easing.QUAD_IN_OUT);
             moduleAnimation.setReversed(!this.hovered);
             moduleAnimation.setSpeed(120).update();
+=======
+>>>>>>> parent of 1bced469 (made reset's shit buttons better)
             final MCFontRenderer font = Fonts.Verdana;
             mc.getTextureManager().bindTexture(buttonTextures);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
@@ -116,7 +132,23 @@ public class GuiButton extends Gui {
             GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
             GlStateManager.blendFunc(770, 771);
             float boxWidth = this.xPosition + this.width / 2F - 99.8f;
+<<<<<<< HEAD
 //            RenderUtil.drawRect(this.xPosition + this.width / 2F - 79f, this.yPosition, 261 - this.width / 2F, 20, 0x80000000);
+=======
+            float stringLen = fontRenderer.getStringWidth(this.displayString);
+
+            if (mc.currentScreen instanceof MainMenu) {
+                if (this.hovered) {
+//                    RenderUtil.drawBottemRoundedRect(this.xPosition + this.width / 2F - 99.8f, this.yPosition, 300 - this.width / 2F, 20, 10, 0x80000000);
+                    RenderUtil.drawRect(this.xPosition + (this.width / 3f), this.yPosition + this.height - 1, this.xPosition + (this.width / 3f) + 4, 1, ColorUtils.getIntGradientOffset(new Color(255, 60, 234), new Color(27, 179, 255), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + 9F / mc.fontRendererObj.FONT_HEIGHT * 9.95));
+                } else {
+
+                }
+            } else {
+//                RenderUtil.drawBottemRoundedRect(this.xPosition + this.width / 2F - 99.8f, this.yPosition, 300 - this.width / 2F, 20, 10, 0x80000000);
+                RenderUtil.drawRect(boxWidth + 25, this.yPosition + this.height - 1, 250 - this.width / 2F, 1, ColorUtils.getIntGradientOffset(new Color(255, 60, 234), new Color(27, 179, 255), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + 9F / mc.fontRendererObj.FONT_HEIGHT * 9.95));
+            }
+>>>>>>> parent of 1bced469 (made reset's shit buttons better)
             this.mouseDragged(mc, mouseX, mouseY);
             int j = 14737632;
 

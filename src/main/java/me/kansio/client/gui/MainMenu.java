@@ -19,7 +19,7 @@ public class MainMenu extends GuiScreen {
     private static final ResourceLocation BACKGROUND = new ResourceLocation("sleek/images/background.png");
     private GLSLSandboxShader backgroundShader;
     private long initTime = System.currentTimeMillis();
-    private final int j = Math.round(height / 2F);
+    private final int j = Math.round(height / 1.5F);
 
     public MainMenu() {
         try {
@@ -37,6 +37,7 @@ public class MainMenu extends GuiScreen {
             throw new IllegalStateException("Failed To Load Main Menu Shader");
         }
          */
+<<<<<<< HEAD
         int j = height / 4-15;
         int i = 24;
         this.buttonList.add(new GuiButton(0, width / 2 - 100, j - 25        , 203, 20,I18n.format("menu.singleplayer")));
@@ -49,6 +50,15 @@ public class MainMenu extends GuiScreen {
 //        this.buttonList.add(new GuiButton(2, 0, j + 48, 203, 20, "Alt Manager"));
 //        this.buttonList.add(new GuiButton(3, 0, j + 72, 203, 20, I18n.format("menu.options")));
 //        this.buttonList.add(new GuiButton(4, 0, j + 96, 203, 20, I18n.format("menu.quit")));
+=======
+
+        Fonts.Verdana.drawString("->", 5, j, 14737632);
+        this.buttonList.add(new GuiButton(0, 0, j, 203, 20, I18n.format("menu.singleplayer")));
+        this.buttonList.add(new GuiButton(1, 0, j + 24, 203, 20, I18n.format("menu.multiplayer")));
+        this.buttonList.add(new GuiButton(2, 0, j + 48, 203, 20, "Alt Manager"));
+        this.buttonList.add(new GuiButton(3, 0, j + 72, 203, 20, I18n.format("menu.options")));
+        this.buttonList.add(new GuiButton(4, 0, j + 96, 203, 20, I18n.format("menu.quit")));
+>>>>>>> parent of 1bced469 (made reset's shit buttons better)
         initTime = System.currentTimeMillis();
     }
 
@@ -89,11 +99,17 @@ public class MainMenu extends GuiScreen {
 
         // Unbind shader
         GL20.glUseProgram(0);
+<<<<<<< HEAD
         Fonts.Arial45.drawCenteredString("§lS", width / 2 - 24, height / 4 -24, ColorPalette.BLUE.getColor().getRGB());
         Fonts.Arial40.drawCenteredString("leek", width / 2 + 4, height / 4 -22.5f, ColorPalette.GREY.getColor().darker().getRGB()); // -1 = white
+=======
+        Fonts.Arial45.drawCenteredString("§lS", width / 12F - 20, j - 24, ColorPalette.BLUE.getColor().getRGB());
+        Fonts.Arial40.drawCenteredString("leek", width / 12F + 8, j - 22.5f, ColorPalette.GREY.getColor().darker().getRGB()); // -1 = white
+>>>>>>> parent of 1bced469 (made reset's shit buttons better)
 //        Fonts.Verdana.drawString(devinfo, (width - Fonts.Arial30.getStringWidth(devinfo)) + 110, height - 10, -1);
         String devinfo = "Made with <3 by Reset, Kansio, nullswap, Divine and qoft";
         Fonts.Verdana.drawCenteredString(devinfo, width - 150, height - 10, -1);
+        Fonts.Arial40.drawCenteredString("leek", width / 12F + 8, j - 22.5f, -1); // -1 = white
         String text = "hi";
 //        Fonts.Verdana.drawString(devinfo, (width - Fonts.Arial30.getStringWidth(devinfo)) + 135, height - 10, -1);
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
