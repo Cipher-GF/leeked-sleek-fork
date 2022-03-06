@@ -99,6 +99,7 @@ public class GuiButton extends Gui {
         if (this.visible) {
             stringLen = Fonts.Verdana.getStringWidth(this.displayString);
             moduleAnimation.setMin(0).setMax(stringLen - 15).setReversed(!this.hovered).setEase(Easing.QUAD_IN_OUT);
+            System.out.println(stringLen);
             moduleAnimation.setReversed(!this.hovered);
             moduleAnimation.setSpeed(120).update();
             final MCFontRenderer font = Fonts.Verdana;
@@ -128,11 +129,6 @@ public class GuiButton extends Gui {
                 } else {
                     Fonts.Verdana.drawString(this.displayString, this.xPosition, this.yPosition + (this.height - 4f) / 2, j);
                 }
-            } else if (mc.currentScreen instanceof GuiControls) {
-//                    RenderUtil.drawBottemRoundedRect(this.xPosition + this.width / 2F - 99.8f, this.yPosition, 300 - this.width / 2F, 20, 10, 0x80000000);
-                RenderUtil.drawRect(this.xPosition-7.5f, this.yPosition + this.height - 1, Fonts.Verdana.getStringWidth(this.displayString) + 15, 1, ColorUtils.getIntGradientOffset(new Color(255, 60, 234), new Color(27, 179, 255), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + 9F / mc.fontRendererObj.FONT_HEIGHT * 9.95));
-//                    RenderUtil.drawRect(this.xPosition, this.yPosition + this.height - 1, -(int) moduleAnimation.getValue(), 1, ColorUtils.getIntGradientOffset(new Color(255, 60, 234), new Color(27, 179, 255), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + 9F / mc.fontRendererObj.FONT_HEIGHT * 9.95));
-                Fonts.Verdana.drawString(this.displayString, this.xPosition, this.yPosition + (this.height - 4f) / 2, j);
             } else {
 //                RenderUtil.drawBottemRoundedRect(this.xPosition + this.width / 2F - 99.8f, this.yPosition, 300 - this.width / 2F, 20, 10, 0x80000000);
                 RenderUtil.drawRect(boxWidth + 25, this.yPosition + this.height - 1, 250 - this.width / 2F, 1, ColorUtils.getIntGradientOffset(new Color(255, 60, 234), new Color(27, 179, 255), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + 9F / mc.fontRendererObj.FONT_HEIGHT * 9.95));

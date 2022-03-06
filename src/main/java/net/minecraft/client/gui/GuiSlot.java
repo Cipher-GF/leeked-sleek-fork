@@ -482,7 +482,7 @@ public abstract class GuiSlot
                 GlStateManager.enableTexture2D();
             }
 
-            this.drawSlot(j, p_148120_1_ - 5, k, l, mouseXIn, mouseYIn);
+            this.drawSlot(j, p_148120_1_, k, l, mouseXIn, mouseYIn);
         }
     }
 
