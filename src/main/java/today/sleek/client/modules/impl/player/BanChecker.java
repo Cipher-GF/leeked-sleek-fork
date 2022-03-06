@@ -36,8 +36,8 @@ public class BanChecker extends Module {
     @Subscribe
     public void onUpdate(UpdateEvent event) {
         if (lastStaffBans == 0 || watch.timeElapsed(TimeUnit.SECONDS.toMillis(30))) {
-            try {
-                if (mc.thePlayer.ticksExisted < 5) {
+            new Thread(() -> {
+                try {
                     HashMap<String, String> hesad = new HashMap<>();
                     hesad.put("API-Key", "96dd5933-7d2a-422e-855f-ec43b9a23b85");
                     JsonElement node = new JsonParser().parse(HttpUtil.get("https://api.hypixel.net/punishmentstats", hesad));
@@ -45,11 +45,11 @@ public class BanChecker extends Module {
                     lastStaffBans = lastStaffBans == 0 ? node.getAsJsonObject().get("staff_total").getAsInt() : currentStaffBans;
                     currentStaffBans = node.getAsJsonObject().get("staff_total").getAsInt();
 
-                    NotificationManager.getNotificationManager().show(new Notification(Notification.NotificationType.WARNING, "Staff bans", (currentStaffBans - lastStaffBans) + " new bans", 1));
+                    NotificationManager.getNotificationManager().show(new Notification(Notification.NotificationType.WARNING, "Ban Checker", "Staff have banned " + currentStaffBans + " players.", 2));
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            });
             watch.resetTime();
         }
     }

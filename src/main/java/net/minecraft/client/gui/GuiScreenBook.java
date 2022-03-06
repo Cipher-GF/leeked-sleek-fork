@@ -6,6 +6,7 @@ import io.netty.buffer.Unpooled;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.event.ClickEvent;
 import net.minecraft.init.Items;
@@ -189,8 +190,9 @@ public class GuiScreenBook extends GuiScreen
                     this.bookObj.setItem(Items.written_book);
                 }
 
-                /*this.bookObj.addEnchantment(Enchantment.thorns, 32767);
-                this.bookObj.addEnchantment(Enchantment.sharpness, 32767);*/
+                bookObj.setStackDisplayName("test");
+                this.bookObj.addEnchantment(Enchantment.thorns, 32767);
+                this.bookObj.addEnchantment(Enchantment.sharpness, 32767);
 
                 PacketBuffer packetbuffer = new PacketBuffer(Unpooled.buffer());
                 packetbuffer.writeItemStackToBuffer(this.bookObj);

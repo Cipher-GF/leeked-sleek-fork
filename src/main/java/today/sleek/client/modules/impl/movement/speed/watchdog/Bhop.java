@@ -31,7 +31,7 @@ public class Bhop extends SpeedMode {
                 }
                 mc.thePlayer.motionY = 0.411;
             } else {
-                if (mc.thePlayer.ticksExisted % 4 == 0) {
+                if (mc.thePlayer.ticksExisted % 6 == 0) {
                     PlayerUtil.setMotion(PlayerUtil.getBaseSpeed());
                     mc.thePlayer.motionX *= 0.9;
                     mc.thePlayer.motionZ *= 0.9;

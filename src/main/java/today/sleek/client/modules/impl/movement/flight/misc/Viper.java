@@ -24,7 +24,7 @@ public class Viper extends FlightMode {
         if (mc.thePlayer.isMoving()) {
             TimerUtil.setTimer(0.3f);
             for (int i = 0; i < 17; ++i) {
-                PlayerUtil.TPGROUND(event, 0.06, 0);
+                PlayerUtil.TPGROUND(event, 0.28, 0);
             }
         }
     }

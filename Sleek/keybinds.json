@@ -171,8 +171,8 @@
   },
   {
     "name": "Timer",
-    "keybind": 38,
-    "keybindName": "L"
+    "keybind": 47,
+    "keybindName": "V"
   },
   {
     "name": "HUD",
@@ -236,8 +236,8 @@
   },
   {
     "name": "Long Jump",
-    "keybind": 38,
-    "keybindName": "L"
+    "keybind": 46,
+    "keybindName": "C"
   },
   {
     "name": "Time Changer",
