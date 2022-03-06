@@ -7,6 +7,8 @@ import today.sleek.base.event.impl.MoveEvent
 import today.sleek.base.event.impl.PacketEvent
 import today.sleek.base.event.impl.UpdateEvent
 import today.sleek.client.modules.impl.movement.flight.FlightMode
+import today.sleek.client.utils.chat.ChatUtil
+import today.sleek.client.utils.math.BPSUtil
 import today.sleek.client.utils.player.PlayerUtil
 
 class Watchdog: FlightMode("Hypixel") {
@@ -36,7 +38,8 @@ class Watchdog: FlightMode("Hypixel") {
 
     override fun onMove(event: MoveEvent?) {
         if (!waiting && !dontgo) {
-            PlayerUtil.setMotion(event, if (mc.thePlayer.isPotionActive(Potion.moveSpeed)) 0.4 else 0.3)
+            PlayerUtil.setMotion(event, PlayerUtil.getBaseSpeed().toDouble())
+//            PlayerUtil.setMotion(event, PlayerUtil.getBaseSpeed() + (0.1 * if (mc.thePlayer.isPotionActive(Potion.moveSpeed)) mc.thePlayer.getActivePotionEffect(Potion.moveSpeed).amplifier else 0))
         } else {
             event!!.motionX = 0.0.also { mc.thePlayer.motionX = it }
             event.motionZ = 0.0.also { mc.thePlayer.motionZ = it }
