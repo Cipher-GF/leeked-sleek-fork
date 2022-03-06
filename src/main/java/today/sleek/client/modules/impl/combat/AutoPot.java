@@ -112,7 +112,7 @@ public class AutoPot extends Module {
 
     @Subscribe
     public void onUpdate(UpdateEvent event) {
-        if (!mc.thePlayer.onGround)
+        if (!mc.thePlayer.onGround )
             return;
 
         if (skywars.getValue() && mc.theWorld.getBlockState(new BlockPos(mc.thePlayer).down()).getBlock() instanceof BlockGlass) {

@@ -2,123 +2,9 @@
   "data": {
     "author": "2158",
     "name": "hypixel",
-    "lastUpdated": "Date 2022/3/5 Time 15:8:16"
+    "lastUpdated": "Date 2022/3/6 Time 11:48:16"
   },
   "modules": [
-    {
-      "name": "Click GUI",
-      "keybind": 54,
-      "hidden": false,
-      "enabled": false,
-      "Font": "false",
-      "Mode": "SF Regular",
-      "Animation Speed": "50",
-      "RGB OMG": "false"
-    },
-    {
-      "name": "Chest Stealer",
-      "keybind": 0,
-      "hidden": false,
-      "enabled": true,
-      "Check Chest": "true",
-      "Delay": "112"
-    },
-    {
-      "name": "Crasher",
-      "keybind": 0,
-      "hidden": false,
-      "enabled": false,
-      "Mode": "C03 Spam"
-    },
-    {
-      "name": "Hit Effect",
-      "keybind": 0,
-      "hidden": false,
-      "enabled": true,
-      "HitMarker Mode": "Blood",
-      "Amount": "1",
-      "Play Sound": "false",
-      "Sound Mode": "Blood",
-      "Criticals": "true",
-      "Enchants": "true"
-    },
-    {
-      "name": "Velocity",
-      "keybind": 0,
-      "hidden": false,
-      "enabled": true,
-      "Vertical": "0.0",
-      "Horizontal": "0.0",
-      "Mode": "Packet",
-      "Delay (MS)": "500",
-      "Explosion": "true"
-    },
-    {
-      "name": "Chat Bypass",
-      "keybind": 0,
-      "hidden": false,
-      "enabled": false
-    },
-    {
-      "name": "Anti Void",
-      "keybind": 0,
-      "hidden": false,
-      "enabled": false,
-      "Mode": "Basic",
-      "Fall Distance": "7"
-    },
-    {
-      "name": "Criticals",
-      "keybind": 0,
-      "hidden": false,
-      "enabled": false,
-      "Mode": "Verus",
-      "C06": "false"
-    },
-    {
-      "name": "No Slow",
-      "keybind": 0,
-      "hidden": false,
-      "enabled": false,
-      "Mode": "Vanilla",
-      "Item": "true",
-      "Water": "false",
-      "SoulSand": "false"
-    },
-    {
-      "name": "ACDetector",
-      "keybind": 0,
-      "hidden": false,
-      "enabled": false,
-      "Delay": "0.5"
-    },
-    {
-      "name": "Playtime",
-      "keybind": 0,
-      "hidden": false,
-      "enabled": true
-    },
-    {
-      "name": "Sprint",
-      "keybind": 0,
-      "hidden": false,
-      "enabled": true,
-      "Mode": "Omni",
-      "Keep Sprint": "true"
-    },
-    {
-      "name": "Penis ESP",
-      "keybind": 0,
-      "hidden": false,
-      "enabled": false
-    },
-    {
-      "name": "Plugins",
-      "keybind": 0,
-      "hidden": false,
-      "enabled": false,
-      "/About": "false"
-    },
     {
       "name": "Inventory Manager",
       "keybind": 0,
@@ -136,7 +22,87 @@
       "Disable if compass": "true"
     },
     {
-      "name": "Motion Blur",
+      "name": "Inventory Move",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": true,
+      "Mode": "Vanilla",
+      "No Close": "true"
+    },
+    {
+      "name": "Staff Detector",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": false,
+      "Announce": "true",
+      "Automatically Leave": "true",
+      "Notify When Leave": "true"
+    },
+    {
+      "name": "Target Strafe",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": true,
+      "Auto F5": "false",
+      "On Jump": "true",
+      "Controllable": "true",
+      "Render": "true",
+      "Radius": "4.0",
+      "Width": "1.0",
+      "Red": "100.0",
+      "Green": "100.0",
+      "Blue": "100.0"
+    },
+    {
+      "name": "Hacker Detect",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": false,
+      "Theme": "Sleek"
+    },
+    {
+      "name": "Chest Stealer",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": true,
+      "Check Chest": "true",
+      "Delay": "112"
+    },
+    {
+      "name": "Auto Register",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": false
+    },
+    {
+      "name": "Time Changer",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": true,
+      "Mode": "Day",
+      "Speed": "1"
+    },
+    {
+      "name": "Transactions",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": false,
+      "Test C0F": "true"
+    },
+    {
+      "name": "Anti Spammer",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": true
+    },
+    {
+      "name": "Ban Checker",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": false
+    },
+    {
+      "name": "Chat Bypass",
       "keybind": 0,
       "hidden": false,
       "enabled": false
@@ -148,12 +114,80 @@
       "enabled": true
     },
     {
-      "name": "Inventory Move",
+      "name": "Auto Server",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": false,
+      "Server": "BlocksMC",
+      "Kit": "Knight"
+    },
+    {
+      "name": "DeathEffect",
       "keybind": 0,
       "hidden": false,
       "enabled": true,
-      "Mode": "Vanilla",
-      "No Close": "true"
+      "Effect Mode": "Blood",
+      "Meme Sounds": "true",
+      "Meme Mode": "Win Error"
+    },
+    {
+      "name": "Auto Report",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": false,
+      "Delay (ms)": "100"
+    },
+    {
+      "name": "ACDetector",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": false,
+      "Delay": "0.5"
+    },
+    {
+      "name": "FakePlayer",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": false
+    },
+    {
+      "name": "Motion Blur",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": false
+    },
+    {
+      "name": "Brightness",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": true,
+      "Mode": "Gamma"
+    },
+    {
+      "name": "Kill Insults",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": false,
+      "Mode": "BlocksMC"
+    },
+    {
+      "name": "Enemy List",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": true,
+      "X-Pos": "5",
+      "Y-Pos": "200",
+      "Hide If Empty": "true"
+    },
+    {
+      "name": "Long Jump",
+      "keybind": 45,
+      "hidden": false,
+      "enabled": false,
+      "Mode": "Hypixel",
+      "Vertical Boost": "2.1",
+      "Speed": "5.6000000000000005",
+      "Spoof Y": "false"
     },
     {
       "name": "Animations",
@@ -167,10 +201,29 @@
       "Block Mode": "Lennox"
     },
     {
-      "name": "MCF",
+      "name": "Image ESP",
       "keybind": 0,
       "hidden": false,
-      "enabled": true
+      "enabled": false,
+      "Mode": "Zuiy"
+    },
+    {
+      "name": "Hit Effect",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": true,
+      "HitMarker Mode": "Blood",
+      "Amount": "1",
+      "Play Sound": "false",
+      "Sound Mode": "Blood",
+      "Criticals": "true",
+      "Enchants": "true"
+    },
+    {
+      "name": "Penis ESP",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": false
     },
     {
       "name": "NoRender",
@@ -181,59 +234,17 @@
       "Items": "false"
     },
     {
-      "name": "Anti Spammer",
-      "keybind": 0,
-      "hidden": false,
-      "enabled": true
-    },
-    {
-      "name": "Phase",
-      "keybind": 0,
-      "hidden": false,
-      "enabled": false,
-      "Mode": "BlocksMC (VClip)",
-      "Distance": "2.0",
-      "Sneak": "true"
-    },
-    {
-      "name": "Enemy List",
-      "keybind": 0,
-      "hidden": false,
-      "enabled": true,
-      "X-Pos": "5",
-      "Y-Pos": "200",
-      "Hide If Empty": "true"
-    },
-    {
-      "name": "No Fall",
+      "name": "No Rotate",
       "keybind": 0,
       "hidden": false,
       "enabled": false,
       "Mode": "Packet"
     },
     {
-      "name": "DeathEffect",
+      "name": "Auto Tool",
       "keybind": 0,
       "hidden": false,
-      "enabled": true,
-      "Effect Mode": "Blood",
-      "Meme Sounds": "true",
-      "Meme Mode": "Win Error"
-    },
-    {
-      "name": "Image ESP",
-      "keybind": 0,
-      "hidden": false,
-      "enabled": false,
-      "Mode": "Zuiy"
-    },
-    {
-      "name": "Auto Server",
-      "keybind": 0,
-      "hidden": false,
-      "enabled": false,
-      "Server": "BlocksMC",
-      "Kit": "Knight"
+      "enabled": false
     },
     {
       "name": "Nametags",
@@ -254,171 +265,11 @@
       "SmartScale": "true"
     },
     {
-      "name": "Breaker",
-      "keybind": 0,
-      "hidden": false,
-      "enabled": false
-    },
-    {
-      "name": "Killaura",
-      "keybind": 19,
-      "hidden": false,
-      "enabled": false,
-      "Mode": "Smart",
-      "Target Priority": "Health",
-      "Rotation Mode": "NCP",
-      "Swing Range": "4.2",
-      "Block Range": "6.0",
-      "CPS": "9.0",
-      "Randomize CPS": "2.0",
-      "FOV": "360.0",
-      "Draw FOV": "false",
-      "TP Hit": "false",
-      "Teleport Range": "25.0",
-      "Hit Chance": "100",
-      "Swing Mode": "Client",
-      "Attack Method": "Packet",
-      "Autoblock Mode": "Verus",
-      "GCD": "true",
-      "TargetHud": "true",
-      "TargetHud Mode": "Sleek",
-      "Preview Mode": "Face",
-      "Hold": "false",
-      "Players": "true",
-      "Friends": "false",
-      "Animals": "false",
-      "Monsters": "false",
-      "Invisibles": "false",
-      "Walls": "false"
-    },
-    {
-      "name": "Auto Tool",
-      "keybind": 0,
-      "hidden": false,
-      "enabled": false
-    },
-    {
-      "name": "No Rotate",
-      "keybind": 0,
-      "hidden": false,
-      "enabled": false,
-      "Mode": "Packet"
-    },
-    {
-      "name": "Timer",
-      "keybind": 0,
-      "hidden": false,
-      "enabled": false,
-      "Tick Timer": "false",
-      "Speed": "1.0",
-      "Ticks": "1.0"
-    },
-    {
       "name": "Fast Use",
       "keybind": 0,
       "hidden": false,
       "enabled": false,
       "Mode": "Verus"
-    },
-    {
-      "name": "HUD",
-      "keybind": 0,
-      "hidden": false,
-      "enabled": true,
-      "Watermark Mode": "Simple",
-      "Arraylist Mode": "Sleek",
-      "Info Mode": "Sleek",
-      "Color Mode": "Nitrogen",
-      "Top Red": "255",
-      "Top Green": "255",
-      "Top Blue": "255",
-      "Bottom Red": "255",
-      "Bottom Green": "255",
-      "Bottom Blue": "255",
-      "Red": "255",
-      "Green": "255",
-      "Blue": "255",
-      "Line": "Wrapped",
-      "Alpha": "80",
-      "Font": "false",
-      "Notifications": "true",
-      "Hide Render": "true",
-      "Hide Blur": "false",
-      "Client Name": "\u0026lS\u0026fleek \u00267",
-      "Module Suffix": " %s",
-      "ArrayList Y": "1",
-      "ArrayList X": "4",
-      "Scoreboard": "Right",
-      "Scoreboard Y": "180.0"
-    },
-    {
-      "name": "Target Strafe",
-      "keybind": 0,
-      "hidden": false,
-      "enabled": true,
-      "Auto F5": "false",
-      "On Jump": "true",
-      "Controllable": "true",
-      "Render": "true",
-      "Radius": "4.0",
-      "Width": "1.0",
-      "Red": "100.0",
-      "Green": "100.0",
-      "Blue": "100.0"
-    },
-    {
-      "name": "Flight",
-      "keybind": 47,
-      "hidden": false,
-      "enabled": false,
-      "Mode": "Hypixel",
-      "Speed": "0.0",
-      "AntiKick": "true",
-      "Timer": "5.0",
-      "Blink": "true",
-      "View Bobbing": "true",
-      "Spoof Y": "false"
-    },
-    {
-      "name": "Chams",
-      "keybind": 0,
-      "hidden": false,
-      "enabled": true,
-      "Fill": "false",
-      "Alpha": "255",
-      "Red": "255",
-      "Green": "255",
-      "Blue": "255"
-    },
-    {
-      "name": "Speed",
-      "keybind": 48,
-      "hidden": false,
-      "enabled": false,
-      "Mode": "Watchdog (Hop)",
-      "Speed": "0.2",
-      "Timer Speed": "1.0",
-      "Force Friction": "true",
-      "Friction": "NCP"
-    },
-    {
-      "name": "Jesus",
-      "keybind": 0,
-      "hidden": false,
-      "enabled": false
-    },
-    {
-      "name": "Eagle",
-      "keybind": 0,
-      "hidden": false,
-      "enabled": false
-    },
-    {
-      "name": "Hacker Detect",
-      "keybind": 0,
-      "hidden": false,
-      "enabled": false,
-      "Theme": "Sleek"
     },
     {
       "name": "Fast Bow",
@@ -428,71 +279,6 @@
       "Packets": "20",
       "Hold Bow": "true",
       "Mode": "Ghostly"
-    },
-    {
-      "name": "Kill Insults",
-      "keybind": 0,
-      "hidden": false,
-      "enabled": false,
-      "Mode": "BlocksMC"
-    },
-    {
-      "name": "AutoPot",
-      "keybind": 0,
-      "hidden": false,
-      "enabled": false,
-      "Mode": "Down",
-      "Skywars": "false",
-      "Min Health": "12",
-      "Delay": "150"
-    },
-    {
-      "name": "ESP",
-      "keybind": 0,
-      "hidden": false,
-      "enabled": true,
-      "Players": "true",
-      "Animals": "true",
-      "Mobs": "false",
-      "Invisibles": "false",
-      "Passive": "true",
-      "Filled": "false",
-      "Red": "255",
-      "Green": "255",
-      "Blue": "255"
-    },
-    {
-      "name": "Long Jump",
-      "keybind": 45,
-      "hidden": false,
-      "enabled": false,
-      "Mode": "Hypixel",
-      "Vertical Boost": "2.1",
-      "Speed": "5.6000000000000005",
-      "Spoof Y": "false"
-    },
-    {
-      "name": "Time Changer",
-      "keybind": 0,
-      "hidden": false,
-      "enabled": true,
-      "Mode": "Day",
-      "Speed": "1"
-    },
-    {
-      "name": "Spammer",
-      "keybind": 0,
-      "hidden": false,
-      "enabled": false,
-      "Delay": "3000.0",
-      "Text": "sex"
-    },
-    {
-      "name": "Brightness",
-      "keybind": 0,
-      "hidden": false,
-      "enabled": true,
-      "Mode": "Gamma"
     },
     {
       "name": "Scaffold",
@@ -510,84 +296,80 @@
       "Expansion": "4"
     },
     {
-      "name": "Anti Bot",
-      "keybind": 0,
+      "name": "Click GUI",
+      "keybind": 54,
       "hidden": false,
-      "enabled": false
+      "enabled": false,
+      "Font": "false",
+      "Mode": "SF Regular",
+      "Animation Speed": "50",
+      "RGB OMG": "false"
     },
     {
-      "name": "Transactions",
+      "name": "Crasher",
       "keybind": 0,
       "hidden": false,
       "enabled": false,
-      "Test C0F": "true"
+      "Mode": "C03 Spam"
     },
     {
-      "name": "IRC",
-      "keybind": 0,
-      "hidden": false,
-      "enabled": false
-    },
-    {
-      "name": "Regen",
+      "name": "Anti Void",
       "keybind": 0,
       "hidden": false,
       "enabled": false,
-      "Health": "15.0",
-      "Packets": "15.0",
-      "Mode": "Vanilla",
-      "Timer Bypass": "true"
+      "Mode": "Basic",
+      "Fall Distance": "7"
     },
     {
-      "name": "Step",
-      "keybind": 0,
+      "name": "NewAura",
+      "keybind": 22,
       "hidden": false,
       "enabled": false,
-      "Mode": "Vanilla",
-      "Cage Checks": "true",
-      "Height": "1.5"
-    },
-    {
-      "name": "Auto Register",
-      "keybind": 0,
-      "hidden": false,
-      "enabled": false
-    },
-    {
-      "name": "Cape",
-      "keybind": 0,
-      "hidden": false,
-      "enabled": false,
-      "Cape": "Sleek"
-    },
-    {
-      "name": "Radar",
-      "keybind": 0,
-      "hidden": false,
-      "enabled": false,
+      "Mode": "Smart",
+      "Target Priority": "Armor",
+      "Rotation Mode": "Default",
+      "Swing Range": "3.0",
+      "Block Range": "3.0",
+      "CPS": "12.0",
+      "Randomize CPS": "3.0",
+      "FOV": "360.0",
+      "Draw FOV": "false",
+      "TP Hit": "false",
+      "Teleport Range": "25.0",
+      "Hit Chance": "100",
+      "Swing Mode": "Client",
+      "Attack Method": "Packet",
+      "Autoblock Mode": "Verus",
+      "GCD": "false",
+      "TargetHud": "false",
+      "TargetHud Mode": "Sleek",
+      "Preview Mode": "Face",
+      "Hold": "false",
       "Players": "true",
-      "Monsters": "false",
-      "Animals": "false",
-      "Invisibles": "false"
+      "Friends": "true",
+      "Animals": "true",
+      "Monsters": "true",
+      "Invisibles": "true",
+      "Walls": "true"
     },
     {
-      "name": "Auto Report",
+      "name": "Spammer",
       "keybind": 0,
       "hidden": false,
       "enabled": false,
-      "Delay (ms)": "100"
+      "Delay": "3000.0",
+      "Text": "sex"
     },
     {
-      "name": "Staff Detector",
+      "name": "Criticals",
       "keybind": 0,
       "hidden": false,
       "enabled": false,
-      "Announce": "true",
-      "Automatically Leave": "true",
-      "Notify When Leave": "true"
+      "Mode": "Verus",
+      "C06": "false"
     },
     {
-      "name": "Ban Checker",
+      "name": "Breaker",
       "keybind": 0,
       "hidden": false,
       "enabled": false
@@ -619,7 +401,257 @@
       "Hub Disable": "true"
     },
     {
-      "name": "FakePlayer",
+      "name": "Velocity",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": true,
+      "Vertical": "0.0",
+      "Horizontal": "0.0",
+      "Mode": "Packet",
+      "Delay (MS)": "500",
+      "Explosion": "true"
+    },
+    {
+      "name": "Playtime",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": true
+    },
+    {
+      "name": "Killaura",
+      "keybind": 19,
+      "hidden": false,
+      "enabled": false,
+      "Mode": "Smart",
+      "Target Priority": "Health",
+      "Rotation Mode": "NCP",
+      "Swing Range": "4.2",
+      "Block Range": "6.0",
+      "CPS": "10.0",
+      "Randomize CPS": "2.0",
+      "FOV": "360.0",
+      "Draw FOV": "false",
+      "TP Hit": "false",
+      "Teleport Range": "25.0",
+      "Hit Chance": "100",
+      "Swing Mode": "Client",
+      "Attack Method": "Packet",
+      "Autoblock Mode": "Verus",
+      "GCD": "true",
+      "TargetHud": "true",
+      "TargetHud Mode": "Flux",
+      "Preview Mode": "Face",
+      "Hold": "false",
+      "Players": "true",
+      "Friends": "false",
+      "Animals": "false",
+      "Monsters": "false",
+      "Invisibles": "false",
+      "Walls": "false"
+    },
+    {
+      "name": "AutoPot",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": false,
+      "Mode": "Down",
+      "Skywars": "false",
+      "Min Health": "12",
+      "Delay": "150"
+    },
+    {
+      "name": "Anti Bot",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": false
+    },
+    {
+      "name": "No Slow",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": false,
+      "Mode": "Vanilla",
+      "Item": "true",
+      "Water": "false",
+      "SoulSand": "false"
+    },
+    {
+      "name": "Plugins",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": false,
+      "/About": "false"
+    },
+    {
+      "name": "No Fall",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": false,
+      "Mode": "Packet"
+    },
+    {
+      "name": "Sprint",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": true,
+      "Mode": "Omni",
+      "Keep Sprint": "true"
+    },
+    {
+      "name": "Phase",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": false,
+      "Mode": "BlocksMC (VClip)",
+      "Distance": "2.0",
+      "Sneak": "true"
+    },
+    {
+      "name": "Chams",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": true,
+      "Fill": "false",
+      "Alpha": "255",
+      "Red": "255",
+      "Green": "255",
+      "Blue": "255"
+    },
+    {
+      "name": "Speed",
+      "keybind": 48,
+      "hidden": false,
+      "enabled": false,
+      "Mode": "Watchdog (Hop)",
+      "Speed": "0.2",
+      "Timer Speed": "1.0",
+      "Force Friction": "true",
+      "Friction": "NCP"
+    },
+    {
+      "name": "Jesus",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": false
+    },
+    {
+      "name": "Regen",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": false,
+      "Health": "15.0",
+      "Packets": "15.0",
+      "Mode": "Vanilla",
+      "Timer Bypass": "true"
+    },
+    {
+      "name": "Radar",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": false,
+      "Players": "true",
+      "Monsters": "false",
+      "Animals": "false",
+      "Invisibles": "false"
+    },
+    {
+      "name": "Flight",
+      "keybind": 47,
+      "hidden": false,
+      "enabled": false,
+      "Mode": "Hypixel",
+      "Speed": "0.0",
+      "AntiKick": "true",
+      "Timer": "5.0",
+      "Blink": "true",
+      "View Bobbing": "false",
+      "Spoof Y": "false"
+    },
+    {
+      "name": "Eagle",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": false
+    },
+    {
+      "name": "Timer",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": false,
+      "Tick Timer": "false",
+      "Speed": "1.0",
+      "Ticks": "1.0"
+    },
+    {
+      "name": "Cape",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": false,
+      "Cape": "Sleek"
+    },
+    {
+      "name": "Step",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": false,
+      "Mode": "Vanilla",
+      "Cage Checks": "true",
+      "Height": "1.5"
+    },
+    {
+      "name": "MCF",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": true
+    },
+    {
+      "name": "HUD",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": true,
+      "Watermark Mode": "Simple",
+      "Arraylist Mode": "Left",
+      "Info Mode": "Sleek",
+      "Color Mode": "Gradient",
+      "Top Red": "255",
+      "Top Green": "0.0",
+      "Top Blue": "255",
+      "Bottom Red": "0.0",
+      "Bottom Green": "255",
+      "Bottom Blue": "255",
+      "Red": "255",
+      "Green": "255",
+      "Blue": "255",
+      "Line": "Wrapped",
+      "Alpha": "80",
+      "Font": "false",
+      "Notifications": "true",
+      "Hide Render": "true",
+      "Hide Blur": "false",
+      "Client Name": "Sleek",
+      "Module Suffix": " Funny%s",
+      "ArrayList Y": "30",
+      "ArrayList X": "4",
+      "Scoreboard": "Right",
+      "Scoreboard Y": "180.0"
+    },
+    {
+      "name": "ESP",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": true,
+      "Players": "true",
+      "Animals": "true",
+      "Mobs": "false",
+      "Invisibles": "false",
+      "Passive": "true",
+      "Filled": "false",
+      "Red": "255",
+      "Green": "1.0",
+      "Blue": "1.0"
+    },
+    {
+      "name": "IRC",
       "keybind": 0,
       "hidden": false,
       "enabled": false
