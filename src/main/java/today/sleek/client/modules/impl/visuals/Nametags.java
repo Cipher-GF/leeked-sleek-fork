@@ -29,7 +29,6 @@ import java.util.Objects;
 public class Nametags extends Module {
     public BooleanValue health = new BooleanValue("Health", this, true);
     private NumberValue<Double> scaling = new NumberValue<>("Size", this, 2d, 2d, 10d, 0.25);
-//    private final Setting<Float> scaling = this.register(new Setting<Float>("Size", Float.valueOf(0.3f), Float.valueOf(0.1f), Float.valueOf(20.0f)));
     public BooleanValue invisibles = new BooleanValue("Invisibles",this,  false);
     public BooleanValue ping = new BooleanValue("Ping", this,true);
     public BooleanValue rect = new BooleanValue("Rectangle",this, true);
@@ -47,7 +46,7 @@ public class Nametags extends Module {
     public void onRender3D(Render3DEvent event) {
         try {
             for (EntityPlayer player : Nametags.mc.theWorld.playerEntities) {
-                if (player.equals(Nametags.mc.thePlayer) || !player.isEntityAlive() || player.isInvisible() && !this.invisibles.getValue()) {
+                if (!player.isEntityAlive() || player.isInvisible() && !this.invisibles.getValue()) {
                     continue;
                 }
                 double x = this.interpolate(player.lastTickPosX, player.posX, event.getPartialTicks()) - Nametags.mc.getRenderManager().renderPosX;

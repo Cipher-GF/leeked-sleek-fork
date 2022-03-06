@@ -24,6 +24,7 @@ import today.sleek.base.value.value.ModeValue
 import today.sleek.base.value.value.NumberValue
 import today.sleek.client.modules.impl.Module
 import today.sleek.client.modules.impl.visuals.HUD
+import today.sleek.client.utils.chat.ChatUtil
 import today.sleek.client.utils.font.Fonts
 import today.sleek.client.utils.math.MathUtil
 import today.sleek.client.utils.math.Stopwatch
@@ -55,6 +56,7 @@ class Scaffold : Module() {
     private var lastSlot = 0
     var ything = 0
     private var didPlaceBlock = false
+
     override fun onEnable() {
         delayTimer.resetTime()
         val scaledResolution = RenderUtils.getResolution()
@@ -246,21 +248,27 @@ class Scaffold : Module() {
             }
             "NEW", "NCP" -> {
                 if (lastBlockEntry != null && blockEntry != null) {
-                    val rotation =
-                        RotationUtil.getRotations(getPositionByFace(lastBlockEntry!!.position, lastBlockEntry!!.facing))
-                    if (mc.thePlayer.isMoving) {
-                        mc.thePlayer.forceSprinting(sprint.value)
-                    }
+                    val rotation = RotationUtil.getRotations(getPositionByFace(lastBlockEntry!!.position, lastBlockEntry!!.facing))
 
-                    event.rotationYaw =
-                        RotationUtil.getRotations(getPositionByFace(blockEntry!!.position, blockEntry!!.facing)).x
-                    event.rotationPitch = 80f
+                    ChatUtil.log("set rots")
 
                     val blockEntry = find(Vec3(0.0, 0.0, 0.0)) ?: return
                     this.blockEntry = blockEntry
                 }
-                val blockEntry = find(Vec3(0.0, 0.0, 0.0))
+                val blockEntry = find(Vec3(0.0, if (mc.thePlayer.onGround) 0.0 else -1.0, 0.0))
                 lastBlockEntry = blockEntry
+
+                if (mc.thePlayer.isMoving) {
+                    mc.thePlayer.forceSprinting(sprint.value)
+                }
+
+
+
+                val rotation = RotationUtil.getRotations(getPositionByFace(lastBlockEntry!!.position, lastBlockEntry!!.facing))
+
+                event.rotationYaw = rotation.x
+                event.rotationPitch = rotation.y
+
                 if (event.isPre && blockEntry != null) {
                     val slot = slotWithBlock
                     if (slot > -1) {
@@ -365,6 +373,10 @@ class Scaffold : Module() {
     }
 
     private fun placeBlock(blockPos: BlockPos, facing: EnumFacing, slot: Int, swing: Boolean): Boolean {
+        if (mc.theWorld.getBlock(blockPos.x, blockPos.y + 1, blockPos.z).blockState.block !is BlockAir) {
+            return false
+        }
+
         if (delayTimer.timeElapsed(delay.value.toInt().toLong())) {
             delayTimer.resetTime()
             val offset = blockPos.offset(facing)

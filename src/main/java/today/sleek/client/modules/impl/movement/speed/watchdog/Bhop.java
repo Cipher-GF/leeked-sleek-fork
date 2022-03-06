@@ -22,7 +22,6 @@ public class Bhop extends SpeedMode {
     public void onUpdate(UpdateEvent event) {
         if (event.isPre()) {
             if (mc.thePlayer.onGround) {
-
                 float f = mc.thePlayer.rotationYaw * 0.017453292F;
                 if (!mc.thePlayer.isPotionActive(Potion.moveSpeed)) {
                     mc.thePlayer.jump();
@@ -30,7 +29,6 @@ public class Bhop extends SpeedMode {
                     mc.thePlayer.motionX -= MathHelper.sin(f) * 0.21F;
                     mc.thePlayer.motionZ += MathHelper.cos(f) * 0.21F;
                 }
-
                 mc.thePlayer.motionY = 0.411;
             } else {
                 if (mc.thePlayer.ticksExisted % 4 == 0) {
