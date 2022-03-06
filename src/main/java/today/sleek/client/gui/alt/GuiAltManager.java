@@ -62,7 +62,7 @@ public final class GuiAltManager extends GuiScreen {
             default: 
                 break;
             }
-        } catch (Throwable var11) {
+        } catch (Throwable ignored) {
         }
         //REMOVE ME LATER: throw new RuntimeException();
     }
@@ -94,7 +94,7 @@ public final class GuiAltManager extends GuiScreen {
         buttonList.add(new GuiButton(2, width / 2 - 100, var3 + 72 + 12 + 48, 203, 20, "Clipboard"));
         buttonList.add(new GuiButton(3, width / 2 - 100, var3 + 72 + 12 + 48 + 24, 203, 20, "Generate Cracked Account"));
         buttonList.add(new GuiButton(5, width / 2 - 100, var3 + 72 + 12 + 48 + 24 + 24, 203, 20, "Microsoft Login"));
-        buttonList.add(new GuiButton(4, width / 2 - 100, var3 + 72 + 12 + 48 + 24 * 3, 203, 20, "DrilledAlts (Good)"));
+        buttonList.add(new GuiButton(4, width / 2 - 100, var3 + 72 + 12 + 48 + 24 * 3, 203, 20, "DrilledAlts (Gone)"));
         buttonList.add(new GuiButton(6, width / 2 - 100, var3 + 72 + 12 + 48 + 24 + 24 * 3, 203, 20, "Generate Real Looking Name"));
         username = new GuiTextField(var3, mc.fontRendererObj, width / 2 - 100, 60, 200, 20);
         password = new GuiTextField(var3, mc.fontRendererObj, width / 2 - 100, 100, 200, 20);
