@@ -95,6 +95,11 @@
     "keybindName": "NONE"
   },
   {
+    "name": "NewAura",
+    "keybind": 0,
+    "keybindName": "NONE"
+  },
+  {
     "name": "MCF",
     "keybind": 0,
     "keybindName": "NONE"
@@ -111,8 +116,8 @@
   },
   {
     "name": "Phase",
-    "keybind": 35,
-    "keybindName": "H"
+    "keybind": 49,
+    "keybindName": "N"
   },
   {
     "name": "Enemy List",
@@ -171,8 +176,8 @@
   },
   {
     "name": "Timer",
-    "keybind": 47,
-    "keybindName": "V"
+    "keybind": 35,
+    "keybindName": "H"
   },
   {
     "name": "HUD",

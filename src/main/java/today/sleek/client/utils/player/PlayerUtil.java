@@ -2,6 +2,7 @@ package today.sleek.client.utils.player;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLiquid;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.network.play.client.C03PacketPlayer;
 import net.minecraft.network.play.client.C0BPacketEntityAction;
@@ -10,6 +11,7 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovementInput;
+import org.jetbrains.annotations.NotNull;
 import today.sleek.Sleek;
 import today.sleek.base.event.impl.MoveEvent;
 import today.sleek.client.modules.impl.combat.KillAura;
@@ -497,5 +499,22 @@ public class PlayerUtil extends Util {
             mc.thePlayer.sendQueue.addToSendQueueNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(x, y, z, false));
         }
         mc.thePlayer.sendQueue.addToSendQueueNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(x, y, z, true));
+    }
+
+    public static boolean isOverVoid() {
+        final AxisAlignedBB bb = mc.thePlayer.getEntityBoundingBox();
+        final double height = bb.maxY - bb.minY;
+
+        double offset = height;
+
+        AxisAlignedBB bbPos;
+
+        while (!mc.theWorld.checkBlockCollision((bbPos = bb.addCoord(0, -offset, 0)))) {
+            if (bbPos.minY <= 0.0) return true;
+
+            offset += height;
+        }
+
+        return false;
     }
 }
