@@ -39,4 +39,5 @@ VMOptions: `-Djava.library.path="C:\Users\Kansio\IdeaProjects\Client\workspace\v
 - Tenebrous (Just no, fucker groomed a 14yo youtuber)
 - Dehamad ("Its legit kinda" - Dehamad) 
 - ArcaneCiCi (I guess he edated a 16yo not as bad as it could be)
+- Uncodable (its sad to put a homie on here :( but simple explanation is he wanted to fuck a 11 year old)
 - to be continued 
