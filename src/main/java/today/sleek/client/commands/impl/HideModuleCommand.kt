@@ -26,7 +26,7 @@ class HideModuleCommand : Command() {
             return
         }
         val name = args[0]
-        Sleek.getInstance().moduleManager.getModuleByNameIgnoreSpace(name)?.isHidden = true
+        Sleek.getInstance().moduleManager.getModuleByNameIgnoreSpace(name).isHidden = true
         ChatUtil.log("You've hid the module '$name'.")
     }
 }
