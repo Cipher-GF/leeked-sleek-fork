@@ -114,7 +114,7 @@ class Scaffold : Module() {
 
     @Subscribe
     fun onRender(event: RenderOverlayEvent?) {
-        if (info.value && Sleek.getInstance().moduleManager.getModuleByName("HUD")!!.isToggled) {
+        if (info.value && Sleek.getInstance().moduleManager.getModuleByName("HUD").isToggled) {
             val hud = Sleek.getInstance().moduleManager.getModuleByName("HUD") as HUD
             val scaledResolution = RenderUtils.getResolution()
             RenderUtils.drawRect(
