@@ -65,7 +65,9 @@ class Aura : Module() {
     var monsters = BooleanValue("Monsters", this, true)
     var invisible = BooleanValue("Invisibles", this, true)
     var walls = BooleanValue("Walls", this, true)
+
     var currentRotation: Vector2f? = null
+
     private var index = 0
     private var canBlock = false
     private var lastRotation: Rotation? = null

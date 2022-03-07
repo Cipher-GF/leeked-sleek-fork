@@ -32,7 +32,7 @@ public class IRC extends Module {
             client = new IRCClient();
             client.connectBlocking();
 
-        } catch (URISyntaxException | InterruptedException e) {
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }

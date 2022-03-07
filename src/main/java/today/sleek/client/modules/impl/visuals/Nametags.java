@@ -74,14 +74,10 @@ public class Nametags extends Module {
         String displayTag = this.getDisplayTag(player);
         double distance = camera.getDistance(x + Nametags.mc.getRenderManager().viewerPosX, y + Nametags.mc.getRenderManager().viewerPosY, z + Nametags.mc.getRenderManager().viewerPosZ);
         int width = Fonts.Verdana.getStringWidth(displayTag) /2;
-//        System.out.println((0.0018d + this.scaling.getValue() * (distance * this.factor.getValue())) / 1000.0d);
         double scale = (this.scaling.getValue() * (distance * this.factor.getValue())) / 900d;
         if (distance <= 8.0 && this.smartScale.getValue()) {
             scale = 0.0245d;
         }
-//        if (this.scaling.getValue() == null) {
-//            scale = this.scaling.getValue() / 100.0;
-//        }
         GlStateManager.pushMatrix();
         RenderHelper.enableStandardItemLighting();
         GlStateManager.enablePolygonOffset();
