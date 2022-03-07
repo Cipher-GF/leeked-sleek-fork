@@ -113,127 +113,127 @@ class Aura : Module() {
                     C07PacketPlayerDigging.Action.RELEASE_USE_ITEM, BlockPos.ORIGIN, EnumFacing.DOWN
                 )
             )
+        }
 
-            if (mc.thePlayer.ticksExisted < 5) {
-                if (isToggled) {
-                    NotificationManager.getNotificationManager()
-                        .show(Notification(Notification.NotificationType.INFO, "World Change!", "Killaura disabled", 1))
-                    toggle()
+        if (mc.thePlayer.ticksExisted < 5) {
+            if (isToggled) {
+                NotificationManager.getNotificationManager()
+                    .show(Notification(Notification.NotificationType.INFO, "World Change!", "Killaura disabled", 1))
+                toggle()
+            }
+        }
+
+
+        //Return if the player isn't holding attack & hold is on
+        if (hold.value && !mc.gameSettings.keyBindAttack.isKeyDown()) {
+            return
+        }
+
+        val entities = FightUtil.getMultipleTargets(
+            if (teleportAura.value) tprange.value else swingrage.value,
+            players.value,
+            friends.value,
+            animals.value,
+            false,
+            monsters.value,
+            invisible.value
+        )
+        val blockRangeEntites = FightUtil.getMultipleTargets(
+            autoblockRange.value,
+            players.value,
+            friends.value,
+            animals.value,
+            walls.value,
+            monsters.value,
+            invisible.value
+        )
+
+        entities.removeIf { e: EntityLivingBase ->
+            e.name.contains("[NPC]")
+        }
+
+        if (fov.value != 360.0) {
+            entities.removeIf { e: EntityLivingBase? ->
+                !RotationUtil.isVisibleFOV(
+                    e, fov.value.toFloat() / 2
+                )
+            }
+        }
+
+        val heldItem = mc.thePlayer.heldItem
+
+        canBlock = (!blockRangeEntites.isEmpty() && heldItem != null && heldItem.item is ItemSword)
+
+        if (event.isPre) {
+            target = null
+        }
+
+        if (entities.isEmpty()) {
+            index = 0
+            isBlocking = false
+        } else {
+            if (index >= entities.size) index = 0
+
+            if (canBlock) {
+                when (autoblockmode.value) {
+                    "Real" -> {
+                        mc.playerController.sendUseItem(mc.thePlayer, mc.theWorld, mc.thePlayer.heldItem)
+                        isBlocking = true
+                    }
+                    "Fake" -> {
+                        isBlocking = true
+                    }
                 }
             }
-
-
-            //Return if the player isn't holding attack & hold is on
-            if (hold.value && !mc.gameSettings.keyBindAttack.isKeyDown()) {
-                return
-            }
-
-            val entities = FightUtil.getMultipleTargets(
-                if (teleportAura.value) tprange.value else swingrage.value,
-                players.value,
-                friends.value,
-                animals.value,
-                false,
-                monsters.value,
-                invisible.value
-            )
-            val blockRangeEntites = FightUtil.getMultipleTargets(
-                autoblockRange.value,
-                players.value,
-                friends.value,
-                animals.value,
-                walls.value,
-                monsters.value,
-                invisible.value
-            )
-
-            entities.removeIf { e: EntityLivingBase ->
-                e.name.contains("[NPC]")
-            }
-
-            if (fov.value != 360.0) {
-                entities.removeIf { e: EntityLivingBase? ->
-                    !RotationUtil.isVisibleFOV(
-                        e, fov.value.toFloat() / 2
-                    )
-                }
-            }
-
-            val heldItem = mc.thePlayer.heldItem
-
-            canBlock = (!blockRangeEntites.isEmpty() && heldItem != null && heldItem.item is ItemSword)
 
             if (event.isPre) {
-                target = null
-            }
-
-            if (entities.isEmpty()) {
-                index = 0
-                isBlocking = false
-            } else {
-                if (index >= entities.size) index = 0
-
-                if (canBlock) {
-                    when (autoblockmode.value) {
-                        "Real" -> {
-                            mc.playerController.sendUseItem(mc.thePlayer, mc.theWorld, mc.thePlayer.heldItem)
-                            isBlocking = true
-                        }
-                        "Fake" -> {
-                            isBlocking = true
-                        }
+                when (targetPriority.value.lowercase(Locale.getDefault())) {
+                    "distance" -> {
+                        entities.sortWith(Comparator.comparingInt { e: EntityLivingBase ->
+                            -e.getDistanceToEntity(
+                                mc.thePlayer
+                            ).toInt()
+                        })
+                    }
+                    "armor" -> {
+                        entities.sortWith(Comparator.comparingInt { e: EntityLivingBase -> -e.totalArmorValue })
+                    }
+                    "hurttime" -> {
+                        entities.sortWith(Comparator.comparingInt { e: EntityLivingBase -> -e.hurtResistantTime })
+                    }
+                    "health" -> {
+                        entities.sortWith(Comparator.comparingInt { e: EntityLivingBase ->
+                            -e.health.toInt()
+                        })
                     }
                 }
+                entities.reverse()
+                target = entities[0]
 
-                if (event.isPre) {
-                    when (targetPriority.value.lowercase(Locale.getDefault())) {
-                        "distance" -> {
-                            entities.sortWith(Comparator.comparingInt { e: EntityLivingBase ->
-                                -e.getDistanceToEntity(
-                                    mc.thePlayer
-                                ).toInt()
-                            })
-                        }
-                        "armor" -> {
-                            entities.sortWith(Comparator.comparingInt { e: EntityLivingBase -> -e.totalArmorValue })
-                        }
-                        "hurttime" -> {
-                            entities.sortWith(Comparator.comparingInt { e: EntityLivingBase -> -e.hurtResistantTime })
-                        }
-                        "health" -> {
-                            entities.sortWith(Comparator.comparingInt { e: EntityLivingBase ->
-                                -e.health.toInt()
-                            })
-                        }
+                //set the targetted players as main targets.
+
+                //set the targetted players as main targets.
+                entities.forEach(Consumer { entityLivingBase: EntityLivingBase? ->
+                    if (entityLivingBase is EntityPlayer && Sleek.getInstance().targetManager.isTarget(target as EntityPlayer)) {
+                        target = entities[entities.indexOf(entityLivingBase)]
                     }
-                    entities.reverse()
-                    target = entities[0]
+                })
+                if (!teleportAura.value) {
+                    aimAtTarget(event, rotatemode.value, target)
+                }
 
-                    //set the targetted players as main targets.
+                val canIAttack = attackTimer.timeElapsed((1000L / cps.value).toLong())
 
-                    //set the targetted players as main targets.
-                    entities.forEach(Consumer { entityLivingBase: EntityLivingBase? ->
-                        if (entityLivingBase is EntityPlayer && Sleek.getInstance().targetManager.isTarget(target as EntityPlayer)) {
-                            target = entities[entities.indexOf(entityLivingBase)]
-                        }
-                    })
-                    if (!teleportAura.value) {
-                        aimAtTarget(event, rotatemode.value, target)
+                if (canIAttack) {
+                    if (cps.value > 9) {
+                        cps.setValue(cps.value - RandomUtils.nextInt(0, cprandom.value.toInt()))
+                    } else {
+                        cps.setValue(cps.value + RandomUtils.nextInt(0, cprandom.value.toInt()))
                     }
-
-                    val canIAttack = attackTimer.timeElapsed((1000L / cps.value).toLong())
-
-                    if (canIAttack) {
-                        if (cps.value > 9) {
-                            cps.setValue(cps.value - RandomUtils.nextInt(0, cprandom.value.toInt()))
-                        } else {
-                            cps.setValue(cps.value + RandomUtils.nextInt(0, cprandom.value.toInt()))
-                        }
-                        when (mode.value) {
-                            "Smart" -> {
-                                if (attack(target!!, chance.value.toInt().toDouble())) {
-                                    attackTimer.resetTime()
-                                }
+                    when (mode.value) {
+                        "Smart" -> {
+                            if (attack(target!!, chance.value.toInt().toDouble())) {
+                                attackTimer.resetTime()
                             }
                         }
                     }
@@ -241,6 +241,7 @@ class Aura : Module() {
             }
         }
     }
+    
 
     private fun attack(entity: EntityLivingBase, chance: Double): Boolean {
         if (FightUtil.canHit(chance / 100)) {
