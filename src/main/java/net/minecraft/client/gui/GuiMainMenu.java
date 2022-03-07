@@ -76,6 +76,8 @@ public class GuiMainMenu extends GuiScreen {
                         Sleek.getInstance().setRank(json.get("rank").getAsString());
                         mc.displayGuiScreen(new MainMenu());
                     }
+                } else {
+                    System.out.println(serv);
                 }
             }
         } catch (Exception e) {
