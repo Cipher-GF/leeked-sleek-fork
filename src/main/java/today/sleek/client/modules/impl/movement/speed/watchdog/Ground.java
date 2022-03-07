@@ -1,5 +1,7 @@
 package today.sleek.client.modules.impl.movement.speed.watchdog;
 
+import net.minecraft.potion.Potion;
+import net.minecraft.util.MathHelper;
 import today.sleek.base.event.impl.MoveEvent;
 import today.sleek.base.event.impl.UpdateEvent;
 import today.sleek.client.modules.impl.movement.speed.SpeedMode;
@@ -17,9 +19,7 @@ public class Ground extends SpeedMode {
 
     @Override
     public void onEnable() {
-        this.moveSpeed = PlayerUtil.getSpeed() / 1.54;
-        this.lastDist = 0.0;
-        this.stage = 4;
+        mc.timer.timerSpeed = 1.4f;
     }
 
     @Override
@@ -29,50 +29,26 @@ public class Ground extends SpeedMode {
 
     @Override
     public void onMove(MoveEvent event) {
-        if (!mc.thePlayer.onGround) {
-            return;
-        }
-
-        switch (this.stage) {
-            case 1: {
-                this.moveSpeed = 0.459;
-                break;
-            }
-            case 2: {
-                this.moveSpeed = 0.46581;
-                break;
-            }
-            default: {
-                this.moveSpeed = PlayerUtil.getSpeed() / 1.59;
-                break;
-            }
-        }
-        PlayerUtil.setMotion(moveSpeed);
     }
 
     @Override
     public void onUpdate(UpdateEvent event) {
-        if (!mc.thePlayer.onGround) {
-            return;
-        }
-
-        switch (this.stage) {
-            case 1: {
-                ++this.stage;
-                break;
-            }
-            case 2: {
-                ++this.stage;
-                break;
-            }
-            default: {
-                this.stage = 1;
-                if (mc.thePlayer.isMoving() && !mc.gameSettings.keyBindJump.isPressed()) {
-                    this.stage = 1;
-                    break;
+        if (event.isPre()) {
+            if (mc.thePlayer.onGround) {
+                float f = mc.thePlayer.rotationYaw * 0.017453292F;
+                if (!mc.thePlayer.isPotionActive(Potion.moveSpeed)) {
+                    mc.thePlayer.jump();
+                } else {
+                    mc.thePlayer.motionX -= MathHelper.sin(f) * 0.25F;
+                    mc.thePlayer.motionZ += MathHelper.cos(f) * 0.25F;
                 }
-                this.moveSpeed = PlayerUtil.getSpeed() / 1.54;
-                break;
+                mc.timer.timerSpeed = 2.5f;
+                mc.thePlayer.motionY = 0.411;
+            } else {
+                if (mc.thePlayer.ticksExisted % 12 == 0) {
+                    mc.timer.timerSpeed = 1.6f;
+                } else
+                mc.timer.timerSpeed = 1.4f;
             }
         }
     }

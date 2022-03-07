@@ -2,6 +2,8 @@ package net.minecraft.client.model;
 
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
+import today.sleek.client.modules.impl.visuals.Skeletons;
 
 public class ModelPlayer extends ModelBiped
 {
@@ -129,6 +131,11 @@ public class ModelPlayer extends ModelBiped
         copyModelAngles(this.bipedLeftArm, this.bipedLeftArmwear);
         copyModelAngles(this.bipedRightArm, this.bipedRightArmwear);
         copyModelAngles(this.bipedBody, this.bipedBodyWear);
+
+        //render skeleton esp
+        if (entityIn instanceof EntityPlayer) {
+            Skeletons.addEntity((EntityPlayer) entityIn, this);
+        }
     }
 
     public void renderRightArm()
