@@ -141,7 +141,7 @@ public class GuiButton extends Gui {
 //                RenderUtil.drawRect(this.xPosition + (this.width / 3f) + 34.8, this.yPosition + this.height - 1, -(int) moduleAnimation.getValue(), 1, ColorUtils.getIntGradientOffset(new Color(255, 60, 234), new Color(27, 179, 255), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + 9F / mc.fontRendererObj.FONT_HEIGHT * 9.95));
             } else {
                 this.drawTexturedModalRect(this.xPosition, this.yPosition, 0, 46 + 16 * 20, this.width / 2, this.height);
-                this.drawTexturedModalRect(this.xPosition + this.width / 2, this.yPosition, 200 - this.width / 2, 46 + 16 * 20, this.width / 2, this.height);
+//                this.drawTexturedModalRect(this.xPosition + this.width / 2, this.yPosition, 200 - this.width / 2, 46 + 16 * 20, this.width / 2, this.height);
             }
 
             // center the text in the button on depending on its length
