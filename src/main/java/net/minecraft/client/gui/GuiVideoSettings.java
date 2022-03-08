@@ -4,6 +4,7 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.client.settings.GameSettings;
 import optifine.*;
 import shadersmod.client.GuiShaders;
+import today.sleek.client.utils.font.Fonts;
 
 import java.io.IOException;
 
@@ -39,15 +40,17 @@ public class GuiVideoSettings extends GuiScreen
 
             if (gamesettings$options != null)
             {
-                int j = this.width / 2 - 155 + i % 2 * 160;
+                int j = this.width / 2 - 165 + i % 2 * 170;
                 int k = this.height / 6 + 21 * (i / 2) - 12;
 
                 if (gamesettings$options.getEnumFloat())
                 {
+                    System.out.println(gamesettings$options.returnEnumOrdinal());
                     this.buttonList.add(new GuiOptionSliderOF(gamesettings$options.returnEnumOrdinal(), j, k, gamesettings$options));
                 }
                 else
                 {
+                    System.out.println(gamesettings$options.name());
                     this.buttonList.add(new GuiOptionButtonOF(gamesettings$options.returnEnumOrdinal(), j, k, gamesettings$options, this.guiGameSettings.getKeyBinding(gamesettings$options)));
                 }
             }
@@ -55,17 +58,17 @@ public class GuiVideoSettings extends GuiScreen
 
         int l = this.height / 6 + 21 * (videoOptions.length / 2) - 12;
         int i1 = 0;
-        i1 = this.width / 2 - 155 + 0;
+        i1 = this.width / 2 - 155 -10;
         this.buttonList.add(new GuiOptionButton(231, i1, l, Lang.get("of.options.shaders")));
         i1 = this.width / 2 - 155 + 160;
         this.buttonList.add(new GuiOptionButton(202, i1, l, Lang.get("of.options.quality")));
         l = l + 21;
-        i1 = this.width / 2 - 155 + 0;
+        i1 = this.width / 2 - 155 -10;
         this.buttonList.add(new GuiOptionButton(201, i1, l, Lang.get("of.options.details")));
         i1 = this.width / 2 - 155 + 160;
         this.buttonList.add(new GuiOptionButton(212, i1, l, Lang.get("of.options.performance")));
         l = l + 21;
-        i1 = this.width / 2 - 155 + 0;
+        i1 = this.width / 2 - 155 -10;
         this.buttonList.add(new GuiOptionButton(211, i1, l, Lang.get("of.options.animations")));
         i1 = this.width / 2 - 155 + 160;
         this.buttonList.add(new GuiOptionButton(222, i1, l, Lang.get("of.options.other")));
@@ -170,7 +173,7 @@ public class GuiVideoSettings extends GuiScreen
     public void drawScreen(int mouseX, int mouseY, float partialTicks)
     {
         this.drawDefaultBackground();
-        this.drawCenteredString(this.fontRendererObj, this.screenTitle, this.width / 2, 15, 16777215);
+        Fonts.Verdana.drawCenteredString(this.screenTitle, this.width / 2, 15, 16777215);
         String s = Config.getVersion();
         String s1 = "HD_U";
 
