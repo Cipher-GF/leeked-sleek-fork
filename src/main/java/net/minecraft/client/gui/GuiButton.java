@@ -17,6 +17,7 @@ import today.sleek.client.utils.render.RenderUtil;
 import java.awt.*;
 
 public class GuiButton extends Gui {
+
     protected static final ResourceLocation buttonTextures = new ResourceLocation("textures/gui/widgets.png");
     private final Animate moduleAnimation;
     /**
@@ -110,8 +111,6 @@ public class GuiButton extends Gui {
             float boxWidth = this.xPosition + this.width / 2F - 99.8f;
 //            RenderUtil.drawRect(this.xPosition + this.width / 2F - 79f, this.yPosition, 261 - this.width / 2F, 20, 0x80000000);
 
-
-            this.mouseDragged(mc, mouseX, mouseY);
             int j = 14737632;
 
             if (!this.enabled) {
@@ -124,23 +123,28 @@ public class GuiButton extends Gui {
                 RenderUtil.drawRoundedRect(this.xPosition + this.width / 2F - 220f, this.yPosition+1, (300 - this.width / 2F)-1, 20,5, 0x80000000);
                 RenderUtil.drawOutlinedRoundedRect(this.xPosition + this.width / 2F - 220f, this.yPosition+1, (300 - this.width / 2F)-1, 20,5,1, ColorUtils.getIntGradientOffset(new Color(255, 60, 234), new Color(27, 179, 255), (Math.abs(((System.currentTimeMillis()) / 20)) / 100D) + 9F / mc.fontRendererObj.FONT_HEIGHT * 9.95));
 
-
-            if (this.hovered) {
-//                    RenderUtil.drawRect(this.xPosition + 17, this.yPosition + this.height - 1, (int) moduleAnimation.getValue(), 1, ColorUtils.getIntGradientOffset(new Color(255, 60, 234), new Color(27, 179, 255), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + 9F / mc.fontRendererObj.FONT_HEIGHT * 9.95));
-//                    RenderUtil.drawRect(this.xPosition + 17, this.yPosition + this.height - 1, -(int) moduleAnimation.getValue(), 1, ColorUtils.getIntGradientOffset(new Color(255, 60, 234), new Color(27, 179, 255), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + 9F / mc.fontRendererObj.FONT_HEIGHT * 9.95));
-
-                Fonts.Verdana.drawString(this.displayString, this.xPosition-10, this.yPosition + (this.height - 4f) / 2, j);
-            } else {
-                Fonts.Verdana.drawString(this.displayString, this.xPosition-10, this.yPosition + (this.height - 4f) / 2, j);
-            }
-            } else {
+                if (this.hovered) {
+                    Fonts.Verdana.drawString(this.displayString, this.xPosition-10, this.yPosition + (this.height - 4f) / 2, j);
+                } else {
+                    Fonts.Verdana.drawString(this.displayString, this.xPosition-10, this.yPosition + (this.height - 4f) / 2, j);
+                }
+            } else if (mc.currentScreen instanceof GuiMainMenu) {
                 RenderUtil.drawRoundedRect(this.xPosition + this.width / 2F - 75f, this.yPosition, (300 - this.width / 2F)/1.335, 20,5, 0x80000000);
                 RenderUtil.drawOutlinedRoundedRect(this.xPosition + this.width / 2F - 75f, this.yPosition, (300 - this.width / 2F)/1.335, 20,5,1, ColorUtils.getIntGradientOffset(new Color(255, 60, 234), new Color(27, 179, 255), (Math.abs(((System.currentTimeMillis()) / 20)) / 100D) + 9F / mc.fontRendererObj.FONT_HEIGHT * 9.95));
 
 
-                Fonts.Verdana.drawCenteredString(this.displayString, this.xPosition + (this.width / 2f), this.yPosition + (this.height - 4f) / 2, j);
+                Fonts.Verdana.drawCenteredString(this.displayString, (this.xPosition + (this.width / 2f))-1, (this.yPosition + (this.height - 4f) / 2)-1, j);
 //                RenderUtil.drawRect(this.xPosition + (this.width / 3f) + 34.8, this.yPosition + this.height - 1, -(int) moduleAnimation.getValue(), 1, ColorUtils.getIntGradientOffset(new Color(255, 60, 234), new Color(27, 179, 255), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + 9F / mc.fontRendererObj.FONT_HEIGHT * 9.95));
+            } else {
+                int i = 1;
+                this.drawTexturedModalRect(this.xPosition, this.yPosition, 0, 46 + i * 20, this.width / 2, this.height);
+                this.drawTexturedModalRect(this.xPosition + this.width / 2, this.yPosition, 200 - this.width / 2, 46 + i * 20, this.width / 2, this.height);
+                Fonts.Verdana.drawCenteredString(this.displayString, (this.xPosition + (this.width / 2f))-1, (this.yPosition + (this.height - 4f) / 2)-1, j);
             }
+
+
+            this.mouseDragged(mc, mouseX, mouseY);
+
 
             // center the text in the button on depending on its length
 //            this.drawCenteredString(fontrenderer, this.displayString, this.xPosition + (this.width / 2), this.yPosition + (this.height - 8) / 2, j);
