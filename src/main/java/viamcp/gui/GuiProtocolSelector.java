@@ -27,7 +27,7 @@ public class GuiProtocolSelector extends GuiScreen
     public void initGui()
     {
         super.initGui();
-        buttonList.add(new GuiButton(1, width / 2 - 100, height - 27, 200, 20, "Back"));
+        buttonList.add(new GuiButton(1, width / 2 - 100, height - 27, 150, 20, "Back"));
         list = new SlotList(mc, width, height, 32, height - 32, 10);
     }
 
