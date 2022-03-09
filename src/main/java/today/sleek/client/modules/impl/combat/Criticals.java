@@ -21,7 +21,7 @@ import today.sleek.client.utils.network.PacketUtil;
 )
 public class Criticals extends Module {
 
-    private ModeValue mode = new ModeValue("Mode", this, "Packet", "Verus", "MiniJump", "Jump");
+    private ModeValue mode = new ModeValue("Mode", this, "Packet", "Verus", "MiniJump", "Jump", "Test");
     private final BooleanValue c06 = new BooleanValue("C06", this, true);
 
     public final double[] packetValues = new double[]{0.0625D, 0.0D, 0.05D, 0.0D};
@@ -49,6 +49,12 @@ public class Criticals extends Module {
                 for (double d : packetValues) {
                     PacketUtil.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + d, mc.thePlayer.posZ, false));
                 }
+                break;
+            }
+            case "Test": {
+                C03PacketPlayer.C04PacketPlayerPosition c04 = new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ, false);
+                c04.y += 1.0E-9;
+                PacketUtil.sendPacketNoEvent(c04);
                 break;
             }
             case "Verus": {

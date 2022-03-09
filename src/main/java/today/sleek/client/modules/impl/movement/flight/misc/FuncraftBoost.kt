@@ -1,6 +1,5 @@
 package today.sleek.client.modules.impl.movement.flight.misc
 
-import net.minecraft.potion.Potion
 import today.sleek.base.event.impl.MoveEvent
 import today.sleek.base.event.impl.UpdateEvent
 import today.sleek.client.modules.impl.movement.flight.FlightMode
@@ -9,7 +8,7 @@ import today.sleek.client.utils.player.PlayerUtil
 import kotlin.math.sqrt
 
 // speed -= speed / 152
-class Funcraft : FlightMode("Funcraft") {
+class FuncraftBoost : FlightMode("FuncraftBoost") {
     var thing = 0
     var speed = 2.5
     var boosted = false
@@ -50,7 +49,6 @@ class Funcraft : FlightMode("Funcraft") {
     override fun onMove(event: MoveEvent?) {
 
 
-//        ChatUtil.log("Before: $thing | $speed")
         ++thing
         when (thing) {
             1 -> {
@@ -63,14 +61,13 @@ class Funcraft : FlightMode("Funcraft") {
             }
             2 -> {
                 speed *= flight.speed.value + 0.5
-
+                ChatUtil.log("test $speed")
             }
             3 -> {
                 val diff = 0.1 * (lastDist - PlayerUtil.getBaseSpeed())
                 speed = lastDist - diff
             }
-            else -> {//
-                ChatUtil.log("$thing")
+            else -> {
                 if (mc.thePlayer.isCollidedVertically || mc.theWorld.getCollidingBoundingBoxes(
                         mc.thePlayer, mc.thePlayer.entityBoundingBox.offset(0.0, mc.thePlayer.motionY, 0.0)
                     ).size > 0
@@ -80,29 +77,6 @@ class Funcraft : FlightMode("Funcraft") {
                 speed -= speed / 152
             }
         }
-//        ChatUtil.log("After: $thing | $speed")
-//        event!!.motionY = 0.0; also {
-//            mc.thePlayer.motionY = 0.0
-//            mc.thePlayer.setPosition(
-//                mc.thePlayer.posX, mc.thePlayer.posY - 8E-6, mc.thePlayer.posZ
-//            )
-////            ChatUtil.log("" + (mc.thePlayer.posY - 8E-6))
-//        }
-//        if (thingy == 2) {
-//            speed *= if (mc.thePlayer.isPotionActive(Potion.moveSpeed)) flight.speed.value - 0.3 else flight.speed.value
-//            thingy = 3
-//        }
-//        if (mc.thePlayer.isMoving) {
-//            if (mc.thePlayer.onGround) {
-//                event.motionY = 0.42; also {
-//                    mc.thePlayer.motionY = 0.42
-//                    speed = 0.8
-//                }
-//                boosted = true
-//
-//            }
-//        }
-        // PlayerUtil.getBaseSpeed().toDouble().coerceAtLeast(speed) = Math.max(PlayerUtil.getBaseSpeed(), speed)
         PlayerUtil.setMotion(event, PlayerUtil.getBaseSpeed().toDouble().coerceAtLeast(speed))
 
 
