@@ -52,14 +52,14 @@ public class GuiMainMenu extends GuiScreen {
             }
 
             //tamper protection
-            if (!ProtectionUtil.gsudfgyfuisadgfdsouaiygsdeugdsoygfsdhohiusdfhuisdghiudgshiufssfdhiushudsdfuhfdshufdshuisfdhsfdhiusfdhuifsdhuifsdhuisfdhiufsdhiufsdhiusfdhuisfdhuifsdhuifsdhuifsdhiufsdiuhfsdhiufdshuisfdhui()) {
+            /*/if (!ProtectionUtil.gsudfgyfuisadgfdsouaiygsdeugdsoygfsdhohiusdfhuisdghiudgshiufssfdhiushudsdfuhfdshufdshuisfdhsfdhiusfdhuifsdhuifsdhuisfdhiufsdhiufsdhiusfdhuisfdhuifsdhuifsdhuifsdhiufsdiuhfsdhiufdshuisfdhui()) {
                 JOptionPane.showMessageDialog(null,
                         "This version seems to be outdated. Please re-download!",
                         "Error!",
                         JOptionPane.ERROR_MESSAGE);
                 System.exit(-1);
                 return;
-            }
+            }/*/
             if (button.id == 0) {
                 Map<String, String> header = new HashMap<>();
                 HashMap<String, String> map = new HashMap<>();
@@ -71,22 +71,26 @@ public class GuiMainMenu extends GuiScreen {
                 if (json.get("uid").getAsString().equals(Sleek.getInstance().getUid())) {
                     if (json.get("hwid").getAsString().equals(NegroidFarm.guisdafghiusfgfsdhusdfghifsdhuidsfhuifdshuifsdhiudsfhiusfdhsdiuffsdhiudhsifusdfhiufsdhiufsdhiusdfhiufsdhiufsdhiu())) {
                         Sleek.getInstance().onStart();
+                        mc.displayGuiScreen(new MainMenu());
                         Sleek.getInstance().setUsername(json.get("username").getAsString());
                         Sleek.getInstance().setDiscordTag(String.format("%s#%s", new JsonParser().parse(HttpUtil.get("https://sleekapi.realreset.repl.co/api/getdiscordinfo?id=" + json.get("discordID").getAsString())).getAsJsonObject().get("username"), new JsonParser().parse(HttpUtil.get("https://sleekapi.realreset.repl.co/api/getdiscordinfo?id=" + json.get("discordID").getAsString())).getAsJsonObject().get("discriminator")));
                         Sleek.getInstance().setRank(json.get("rank").getAsString());
-                        mc.displayGuiScreen(new MainMenu());
                     }
                 } else {
                     System.out.println(serv);
                 }
             }
         } catch (Exception e) {
+<<<<<<< Updated upstream
 
 //            print ERROR
 
             e.printStackTrace();
             System.out.println("Error: " + e.getMessage());
             System.exit(-1);
+=======
+            e.printStackTrace();
+>>>>>>> Stashed changes
         }
         if (ProtectionUtil.husdhuisgfhusgdrhuifosdguhisfgdhuisfgdhsifgduhsufgidsfdhguisfgdhuoisfguhdiosgfoduhisfghudiugfsidshofugid()) {
             try {
