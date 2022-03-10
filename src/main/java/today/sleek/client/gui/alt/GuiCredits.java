@@ -1,23 +1,18 @@
 package today.sleek.client.gui.alt;
 
-import net.minecraft.client.gui.*;
+import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
-import net.minecraft.util.EnumChatFormatting;
-import org.apache.commons.lang3.RandomStringUtils;
-import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL20;
-import today.sleek.client.utils.chat.NameUtil;
 import today.sleek.client.utils.font.Fonts;
 import today.sleek.client.utils.glsl.GLSLSandboxShader;
 import today.sleek.client.utils.render.ColorPalette;
+import today.sleek.client.utils.render.ColorUtils;
+import today.sleek.client.utils.render.RenderUtil;
 
 import java.awt.*;
-import java.awt.datatransfer.DataFlavor;
-import java.io.IOException;
-import java.net.URI;
-
 import java.io.IOException;
 
 public class GuiCredits extends GuiScreen {
@@ -26,6 +21,16 @@ public class GuiCredits extends GuiScreen {
     private GLSLSandboxShader backgroundShader;
     private long initTime = System.currentTimeMillis();
     private final int j = Math.round(height / 1.5F);
+
+    /**
+     * The x position of this control.
+     */
+    public int xPosition;
+
+    /**
+     * The y position of this control.
+     */
+    public int yPosition;
 
     public GuiCredits(GuiScreen previousScreen) {
         try {
@@ -45,31 +50,14 @@ public class GuiCredits extends GuiScreen {
         }
          */
         int j = height / 4+45;
-        this.buttonList.add(new GuiButton(1, width / 2 - 70, j +100 ,     150, 20,I18n.format("Go Back")));
+        this.buttonList.add(new GuiButton(0, width / 2 - 65, j +175, 150, 20,I18n.format("Go Back")));
 
         initTime = System.currentTimeMillis();
     }
 
     protected void actionPerformed(GuiButton button) throws IOException {
-        switch (button.id) {
-            case 0:
-                this.mc.displayGuiScreen(new GuiSelectWorld(this));
-                break;
-            case 1:
-                mc.displayGuiScreen(previousScreen);
-                break;
-            case 2:
-                this.mc.displayGuiScreen(new GuiAltManager(this));
-                break;
-            case 3:
-                this.mc.displayGuiScreen(new GuiOptions(this, this.mc.gameSettings));
-                break;
-            case 4:
-                this.mc.shutdown();
-                break;
-            case 5:
-                this.mc.shutdown();
-                break;
+        if (button.id == 0) {
+            mc.displayGuiScreen(previousScreen);
         }
     }
 
@@ -90,15 +78,37 @@ public class GuiCredits extends GuiScreen {
 
         // Unbind shader
         GL20.glUseProgram(0);
+        double boxWidth = (-(300 - this.width / 2F)*2);
+        double boxHeight = 300;
+        double boxX = this.xPosition + this.width / 2F - 175f;
+        double boxY = this.yPosition+90;
+        RenderUtil.drawRoundedRect(        boxX, boxY,  boxWidth,  boxHeight,5, 0x80000000);
+        RenderUtil.drawOutlinedRoundedRect(boxX, boxY,  boxWidth , boxHeight,5,2, ColorUtils.getIntGradientOffset(new Color(255, 60, 234), new Color(27, 179, 255), (Math.abs(((System.currentTimeMillis()) / 20)) / 100D) + 9F / mc.fontRendererObj.FONT_HEIGHT * 9.95));
         Fonts.Arial45.drawCenteredString("§lS", width / 2 - 20, height / 4 -24, ColorPalette.BLUE.getColor().getRGB());
         Fonts.Arial40.drawCenteredString("leek", width / 2 +8, height / 4 -22.5f, -1); // -1 = white
-        Fonts.Arial40.drawCenteredString("§lC", width / 2 - 13, height / 4 -3.5f, -1); // -1 = white
-        Fonts.Arial40.drawCenteredString("redits", width / 2 + 17, height / 4 - 2, ColorPalette.BLUE.getColor().getRGB());
+        Fonts.Arial40.drawCenteredString("§lC", width / 2 - 20, height / 4 -3.5f, -1); // -1 = white
+        Fonts.Arial40.drawCenteredString("redits", width / 2 + 16, height / 4 - 4, ColorPalette.BLUE.getColor().getRGB());
 //        Fonts.Verdana.drawString(devinfo, (width - Fonts.Arial30.getStringWidth(devinfo)) + 110, height - 10, -1);
-        String devinfo = "Made with <3 by Reset, Kansio, nullswap, Divine and qoft";
-        Fonts.Verdana.drawCenteredString(devinfo, width - 150, height - 10, -1);
-        String text = "hi";
-//        Fonts.Verdana.drawString(devinfo, (width - Fonts.Arial30.getStringWidth(devinfo)) + 135, height - 10, -1);
+
+
+        String devInfo[] = {
+          "We are a development team of retarded people.",
+          "",
+          "Kansio - Lead Developer",
+          "Divine - Sex Developer",
+          "Reset - Amazing person",
+          "Qoft - Sex maker",
+          "Nullswap - Bypasses",
+
+        };
+        int i;
+        for (i = 0; i < devInfo.length; i++) {
+            String x = devInfo[i];
+
+            Fonts.Arial30.drawCenteredString(x, (width) / 2f + 4, (this.height /2 + (i*25))/1.5, ColorUtils.getIntGradientOffset(new Color(255, 255, 255), new Color(172, 172, 172), (Math.abs(((System.currentTimeMillis()) / 20)) / 100D) + 9F / mc.fontRendererObj.FONT_HEIGHT * 9.95));
+        }
+
+
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         super.drawScreen(mouseX, mouseY, partialTicks);
     }
