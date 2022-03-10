@@ -83,9 +83,10 @@ public class GuiMainMenu extends GuiScreen {
         } catch (Exception e) {
 
 //            print ERROR
-            System.exit(-1);
+
             e.printStackTrace();
             System.out.println("Error: " + e.getMessage());
+            System.exit(-1);
         }
         if (ProtectionUtil.husdhuisgfhusgdrhuifosdguhisfgdhuisfgdhsifgduhsufgidsfdhguisfgdhuoisfguhdiosgfoduhisfghudiugfsidshofugid()) {
             try {
