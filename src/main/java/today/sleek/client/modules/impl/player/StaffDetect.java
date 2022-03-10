@@ -65,10 +65,10 @@ public class StaffDetect extends Module {
             RenderUtils.drawRect(sr.getScaledWidth() / 2 - 80, sr.getScaledHeight() / 2 + 129, 167, 3, ColorUtils.getGradientOffset(new Color(255, 0, 0), new Color(104, 0, 0), (Math.abs(((System.currentTimeMillis()) / 10)) / 50.0) + 9 / mc.fontRendererObj.FONT_HEIGHT * 9.95).getRGB());
             if (amount > 1) {
                 mc.fontRendererObj.drawStringWithShadow("§4§lWarning:", sr.getScaledWidth() / 2 - 76, sr.getScaledHeight() / 2 + 140, -1);
-                mc.fontRendererObj.drawStringWithShadow("§f" + amount + " §cStaff members §fwere detected!", sr.getScaledWidth() / 2 + 74, sr.getScaledHeight() / 2, -1);
+                mc.fontRendererObj.drawStringWithShadow("§f" + amount + " §cStaff members §fwere detected!", sr.getScaledWidth() / 2 - 75, sr.getScaledHeight() / 2+155, -1);
             } else {
                 mc.fontRendererObj.drawStringWithShadow("§4§lWarning:", sr.getScaledWidth() / 2 - 70, sr.getScaledHeight() / 2 + 136, -1);
-                mc.fontRendererObj.drawStringWithShadow("§fA §cStaff member §fwas detected!", sr.getScaledWidth() / 2 - 69, sr.getScaledHeight() / 2, -1);
+                mc.fontRendererObj.drawStringWithShadow("§fA §cStaff member §fwas detected!", sr.getScaledWidth() / 2 - 69, sr.getScaledHeight() / 2+150, -1);
             }
         }
     }
