@@ -1,33 +1,39 @@
-package today.sleek.client.gui;
+package today.sleek.client.gui.alt;
 
-import today.sleek.client.gui.alt.GuiAltManager;
-import today.sleek.client.gui.alt.GuiCredits;
-import today.sleek.client.utils.font.Fonts;
-import today.sleek.client.utils.glsl.GLSLSandboxShader;
-import today.sleek.client.utils.render.ColorPalette;
 import net.minecraft.client.gui.*;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.EnumChatFormatting;
+import org.apache.commons.lang3.RandomStringUtils;
+import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL20;
+import today.sleek.client.utils.chat.NameUtil;
+import today.sleek.client.utils.font.Fonts;
 import today.sleek.client.utils.glsl.GLSLSandboxShader;
+import today.sleek.client.utils.render.ColorPalette;
+
+import java.awt.*;
+import java.awt.datatransfer.DataFlavor;
+import java.io.IOException;
+import java.net.URI;
 
 import java.io.IOException;
 
-public class MainMenu extends GuiScreen {
+public class GuiCredits extends GuiScreen {
+    private final GuiScreen previousScreen;
 
-    private static final ResourceLocation BACKGROUND = new ResourceLocation("sleek/images/background.png");
     private GLSLSandboxShader backgroundShader;
     private long initTime = System.currentTimeMillis();
     private final int j = Math.round(height / 1.5F);
 
-    public MainMenu() {
+    public GuiCredits(GuiScreen previousScreen) {
         try {
             this.backgroundShader = new GLSLSandboxShader("/menu.fsh");
         } catch (Exception e) {
             e.printStackTrace();
         }
+        this.previousScreen = previousScreen;
     }
 
     public void initGui() {
@@ -39,13 +45,7 @@ public class MainMenu extends GuiScreen {
         }
          */
         int j = height / 4+45;
-        int i = 24;
-        this.buttonList.add(new GuiButton(0, width / 2 - 15, j -         25        , 350, 20,I18n.format("menu.singleplayer")));
-        this.buttonList.add(new GuiButton(1, width / 2 - 15, j + i -     25    ,     350, 20,I18n.format("menu.multiplayer")));
-        this.buttonList.add(new GuiButton(2, width / 2 - 15, j + i * 2 - 25,         350, 20,"Alt Manager"));
-        this.buttonList.add(new GuiButton(3, width / 2 - 15, j + i * 2     ,         350, 20,I18n.format("menu.options")));
-        this.buttonList.add(new GuiButton(4, width / 2 - 15, j + i * 2 + 25,         350, 20,I18n.format("menu.quit")));
-        this.buttonList.add(new GuiButton(5, width / 2 - 15, j + i * 2 + 50,         350, 20,"Credits"));
+        this.buttonList.add(new GuiButton(1, width / 2 - 70, j +100 ,     150, 20,I18n.format("Go Back")));
 
         initTime = System.currentTimeMillis();
     }
@@ -56,7 +56,7 @@ public class MainMenu extends GuiScreen {
                 this.mc.displayGuiScreen(new GuiSelectWorld(this));
                 break;
             case 1:
-                this.mc.displayGuiScreen(new GuiMultiplayer(this));
+                mc.displayGuiScreen(previousScreen);
                 break;
             case 2:
                 this.mc.displayGuiScreen(new GuiAltManager(this));
@@ -68,7 +68,7 @@ public class MainMenu extends GuiScreen {
                 this.mc.shutdown();
                 break;
             case 5:
-                this.mc.displayGuiScreen(new GuiCredits(this));
+                this.mc.shutdown();
                 break;
         }
     }
@@ -92,6 +92,8 @@ public class MainMenu extends GuiScreen {
         GL20.glUseProgram(0);
         Fonts.Arial45.drawCenteredString("§lS", width / 2 - 20, height / 4 -24, ColorPalette.BLUE.getColor().getRGB());
         Fonts.Arial40.drawCenteredString("leek", width / 2 +8, height / 4 -22.5f, -1); // -1 = white
+        Fonts.Arial40.drawCenteredString("§lC", width / 2 - 13, height / 4 -3.5f, -1); // -1 = white
+        Fonts.Arial40.drawCenteredString("redits", width / 2 + 17, height / 4 - 2, ColorPalette.BLUE.getColor().getRGB());
 //        Fonts.Verdana.drawString(devinfo, (width - Fonts.Arial30.getStringWidth(devinfo)) + 110, height - 10, -1);
         String devinfo = "Made with <3 by Reset, Kansio, nullswap, Divine and qoft";
         Fonts.Verdana.drawCenteredString(devinfo, width - 150, height - 10, -1);
