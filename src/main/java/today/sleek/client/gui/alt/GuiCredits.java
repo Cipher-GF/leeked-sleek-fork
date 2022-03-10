@@ -101,8 +101,7 @@ public class GuiCredits extends GuiScreen {
           "Nullswap - Bypasses",
 
         };
-        int i;
-        for (i = 0; i < devInfo.length; i++) {
+        for (int i = 0; i < devInfo.length; i++) {
             String x = devInfo[i];
 
             Fonts.Arial30.drawCenteredString(x, (width) / 2f + 4, (this.height /2 + (i*25))/1.5, ColorUtils.getIntGradientOffset(new Color(255, 255, 255), new Color(172, 172, 172), (Math.abs(((System.currentTimeMillis()) / 20)) / 100D) + 9F / mc.fontRendererObj.FONT_HEIGHT * 9.95));
