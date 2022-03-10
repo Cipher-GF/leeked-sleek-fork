@@ -84,9 +84,9 @@ public class GuiDisconnected extends GuiScreen
             String name = RandomStringUtils.random(14, true, true);
             thread = new AltLoginThread(name, "");
             thread.start();
+            System.out.println("Started thread");
             System.out.println(GuiConnecting.lastServer);
-            GuiConnecting.lastServer = GuiDisconnected.lastServer;
-            this.mc.displayGuiScreen(new GuiConnecting(this, this.mc, GuiDisconnected.lastServer));
+            this.mc.displayGuiScreen(new GuiConnecting(this, this.mc, GuiConnecting.lastServer));
 //            System.out.println(serveraddress.getIP());
 //            GuiConnecting.connect(serveraddress.getIP(), serveraddress.getPort());
 //            Minecraft.getMinecraft().displayGuiScreen(new GuiConnecting(new GuiMultiplayer(new GuiMainMenu()), Minecraft.getMinecraft(), lastServer));
