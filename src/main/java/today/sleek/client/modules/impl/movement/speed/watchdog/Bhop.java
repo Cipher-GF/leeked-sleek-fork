@@ -24,18 +24,25 @@ public class Bhop extends SpeedMode {
             if (mc.thePlayer.onGround) {
                 float f = mc.thePlayer.rotationYaw * 0.017453292F;
                 if (!mc.thePlayer.isPotionActive(Potion.moveSpeed)) {
-                    mc.thePlayer.jump();
+                    if (mc.thePlayer.hurtTime > 1) {
+                        mc.thePlayer.motionX -= MathHelper.sin(f) * 0.665F;
+                        mc.thePlayer.motionZ += MathHelper.cos(f) * 0.665F;
+                    } else {
+                        mc.thePlayer.motionX -= MathHelper.sin(f) * 0.215F;
+                        mc.thePlayer.motionZ += MathHelper.cos(f) * 0.215F;
+                    }
                 } else {
-                    mc.thePlayer.motionX -= MathHelper.sin(f) * 0.21F;
-                    mc.thePlayer.motionZ += MathHelper.cos(f) * 0.21F;
+                    if (mc.thePlayer.hurtTime > 1) {
+                        mc.thePlayer.motionX -= MathHelper.sin(f) * 0.425F;
+                        mc.thePlayer.motionZ += MathHelper.cos(f) * 0.425F;
+                    } else {
+                        mc.thePlayer.motionX -= MathHelper.sin(f) * 0.265F;
+                        mc.thePlayer.motionZ += MathHelper.cos(f) * 0.265F;
+                    }
                 }
-                mc.thePlayer.motionY = 0.411;
+                mc.thePlayer.motionY = 0.4181;
             } else {
-                if (mc.thePlayer.ticksExisted % 6 == 0) {
-                    PlayerUtil.setMotion(PlayerUtil.getBaseSpeed());
-                    mc.thePlayer.motionX *= 0.9;
-                    mc.thePlayer.motionZ *= 0.9;
-                }
+
             }
         }
     }

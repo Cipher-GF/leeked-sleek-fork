@@ -34,7 +34,6 @@ public class Nametags extends Module {
     public BooleanValue ping = new BooleanValue("Ping", this,true);
     public BooleanValue rect = new BooleanValue("Rectangle",this, true);
     public BooleanValue outline = new BooleanValue("Outline", this, false);
-    public NumberValue<Float> lineWidth = new NumberValue("Line Width", this, 1.5f, 1f, 5f, 0.1);
     public BooleanValue sneak = new BooleanValue("SneakColor",this, false);
     public BooleanValue whiter = new BooleanValue("White",this,  false);
     public NumberValue<Double> scaleing = new NumberValue("Scaling", this, 0.1d, 0.1d, 5d, 0.1d);
@@ -74,15 +73,11 @@ public class Nametags extends Module {
         camera.posZ = this.interpolate(camera.prevPosZ, camera.posZ, delta);
         String displayTag = this.getDisplayTag(player);
         double distance = camera.getDistance(x + Nametags.mc.getRenderManager().viewerPosX, y + Nametags.mc.getRenderManager().viewerPosY, z + Nametags.mc.getRenderManager().viewerPosZ);
-        int width = Fonts.Verdana.getStringWidth(displayTag) /2;
-//        System.out.println((0.0018d + this.scaling.getValue() * (distance * this.factor.getValue())) / 1000.0d);
-        double scale = (this.scaling.getValue() * (distance * this.factor.getValue())) / 900d;
-        if (distance <= 8.0 && this.smartScale.getValue()) {
-            scale = 0.0245d;
+        int width = mc.fontRendererObj.getStringWidth(displayTag) /2;
+        double scale = (this.scaling.getValue() * (distance * this.factor.getValue())) / 1100d;
+        if (this.scaling.getValue() == null) {
+            scale = this.scaling.getValue() / 100.0;
         }
-//        if (this.scaling.getValue() == null) {
-//            scale = this.scaling.getValue() / 100.0;
-//        }
         GlStateManager.pushMatrix();
         RenderHelper.enableStandardItemLighting();
         GlStateManager.enablePolygonOffset();
@@ -95,16 +90,8 @@ public class Nametags extends Module {
         GlStateManager.disableDepth();
         GlStateManager.enableBlend();
         GlStateManager.enableBlend();
-        if (this.rect.getValue()) {
-            RenderUtil.drawRect(-width - 2, -(15 + 1), (width +1d) * 2, 10f, 0x55000000);
-            if (this.outline.getValue()) {
-                final int color = new Color(255, 255, 255, 255).getRGB();
-//                RenderUtil.drawBorderedRect((float) (-width - 2), (float) (-(mc.fontRendererObj.FONT_HEIGHT + 1)), width + 2.0f, 1.5f, color);
-                RenderUtil.drawBorderedRect(-width - 2, -(15 + 1), (width + 1d) *2, 9.5f, 0.5f,color, 0x00000000);
-            }
-        }
         GlStateManager.disableBlend();
-        Fonts.Verdana.drawStringWithShadow(displayTag, -width, -(15), this.getDisplayColour(player));
+        mc.fontRendererObj.drawStringWithShadow(displayTag, -width, -(15), this.getDisplayColour(player));
         camera.posX = originalPositionX;
         camera.posY = originalPositionY;
         camera.posZ = originalPositionZ;
@@ -115,9 +102,6 @@ public class Nametags extends Module {
         GlStateManager.popMatrix();
     }
 
-
-
-
     private String getDisplayTag(EntityPlayer player) {
         String name = player.getDisplayName().getFormattedText();
         if (name.contains(mc.getSession().getUsername())) {
@@ -126,23 +110,8 @@ public class Nametags extends Module {
         if (!this.health.getValue()) {
             return name;
         }
-        float health = player.getHealth();
-        String color = health > 18.0f ? "\u00a7a" : (health > 16.0f ? "\u00a72" : (health > 12.0f ? "\u00a7e" : (health > 8.0f ? "\u00a76" : (health > 5.0f ? "\u00a7c" : "\u00a74"))));
-        String pingStr = "";
-        if (this.ping.getValue()) {
-            try {
-                NetworkPlayerInfo networkPlayerInfo = mc.getNetHandler().getPlayerInfo(player.getUniqueID());
-                int ping = (Objects.isNull(networkPlayerInfo) ? 0 : networkPlayerInfo.getResponseTime());
-                pingStr = pingStr + ping + "ms ";
-            } catch (Exception responseTime) {
-                // empty catch block
-            }
-        }
-        String popStr = " ";
-        String idString = "";
-        String gameModeStr = "";
-        name = Math.floor(health) == (double) health ? name + color + " " + (health > 0.0f ? Integer.valueOf((int) Math.floor(health)) : "dead") : name + color + " " + (health > 0.0f ? Integer.valueOf((int) health) : "dead");
-        return pingStr + idString + gameModeStr + name + popStr;
+        float health = (float) round(player.getHealth(), 1);
+        return "§7[§f" + Math.round(mc.thePlayer.getDistanceToEntity(player)) + "§7]" + " §c" + player.getName() + " §7[§f" + health + "§c\u2764§7]";
     }
 
     private int getDisplayColour(EntityPlayer player) {
@@ -163,6 +132,11 @@ public class Nametags extends Module {
 
     private double interpolate(double previous, double current, float delta) {
         return previous + (current - previous) * (double) delta;
+    }
+
+    private static double round (float value, int precision) {
+        int scale = (int) Math.pow(10, precision);
+        return (double) Math.round(value * scale) / scale;
     }
 }
 

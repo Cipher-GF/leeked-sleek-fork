@@ -12,7 +12,8 @@ import today.sleek.base.event.impl.UpdateEvent
 import today.sleek.base.modules.ModuleCategory
 import today.sleek.base.modules.ModuleData
 import today.sleek.client.modules.impl.Module
-import today.sleek.client.modules.impl.combat.Aura
+import today.sleek.client.modules.impl.combat.KillAura
+import today.sleek.client.utils.chat.ChatUtil
 import java.awt.Color
 import java.text.DecimalFormat
 import java.util.concurrent.ThreadLocalRandom
@@ -35,30 +36,30 @@ class DamageParticles : Module() {
 
     @Subscribe
     fun onUpdate(e: UpdateEvent) {
-        if (Aura.target == null) {
+        if (KillAura.target == null) {
             lastHealth = 20f
             lastTarget = null
             return
         }
-        if (lastTarget == null || Aura.target !== lastTarget) {
-            lastTarget = Aura.target
-            lastHealth = Aura.target!!.health
+        if (lastTarget == null || KillAura.target !== lastTarget) {
+            lastTarget = KillAura.target
+            lastHealth = KillAura.target!!.health
             return
         }
-        if (Aura.target!!.health != lastHealth) {
-            if (Aura.target!!.health < lastHealth) {
+        if (KillAura.target!!.health != lastHealth) {
+            if (KillAura.target!!.health < lastHealth) {
                 hits.add(
                     Hit(
-                        Aura.target!!.position.add(
+                        KillAura.target!!.position.add(
                             ThreadLocalRandom.current().nextDouble(-0.5, 0.5),
                             ThreadLocalRandom.current().nextDouble(1.0, 1.5),
                             ThreadLocalRandom.current().nextDouble(-0.5, 0.5)
                         ),
-                        (lastHealth - Aura.target!!.health).toDouble()
+                        (lastHealth - KillAura.target!!.health).toDouble()
                     )
                 )
             }
-            lastHealth = Aura.target!!.health
+            lastHealth = KillAura.target!!.health
         }
     }
 
