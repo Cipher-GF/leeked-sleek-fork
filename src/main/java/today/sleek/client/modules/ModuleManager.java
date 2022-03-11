@@ -48,7 +48,6 @@ public class ModuleManager {
                 mod.toggle();
         }
         modules.clear();
-        //load them using reflections
         for (Class<?> mod : ReflectUtils.getReflects(this.getClass().getPackage().getName() + ".impl", Module.class)) {
             try {
                 Module module = (Module) mod.getDeclaredConstructor().newInstance();

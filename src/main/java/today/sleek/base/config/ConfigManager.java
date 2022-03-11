@@ -42,7 +42,7 @@ public class ConfigManager {
         try {
             JsonElement element = null;
             try {
-                element = new JsonParser().parse(HttpUtil.get("https://sleekapi.realreset.repl.co/api/verifiedconfigs"));
+                element = new JsonParser().parse(HttpUtil.get("http://zerotwoclient.xyz:8080/api/verifiedconfigs"));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -103,7 +103,7 @@ public class ConfigManager {
         if (configName.startsWith("(Verified) ")) {
             String p = configName.replace("(Verified) ", "");
             try {
-                JsonElement ar2 = new JsonParser().parse(HttpUtil.get("http://zerotwoclient.xyz:13337/api/v1/verifiedConfigs"));
+                JsonElement ar2 = new JsonParser().parse(HttpUtil.get("http://zerotwoclient.xyz:8080:13337/api/v1/verifiedConfigs"));
                 if (!ar2.isJsonArray()) {
                     return;
                 }

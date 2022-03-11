@@ -59,7 +59,7 @@ public class ConfigCommand extends Command {
                 case "verified": {
                     switch (args[1].toLowerCase()) {
                         case "list": {
-                            String serv = HttpUtil.get("https://sleekapi.realreset.repl.co/api/verifiedconfigs");
+                            String serv = HttpUtil.get("http://zerotwoclient.xyz:8080/api/verifiedconfigs");
                             JsonObject element = new JsonParser().parse(serv).getAsJsonArray().get(0).getAsJsonObject();
                             if (element.isJsonArray()) {
                                 JsonArray rr = element.getAsJsonArray();
@@ -71,7 +71,7 @@ public class ConfigCommand extends Command {
                             break;
                         }
                         case "load": {
-                            String serv = HttpUtil.get("https://sleekapi.realreset.repl.co/api/verifiedconfigs");
+                            String serv = HttpUtil.get("http://zerotwoclient.xyz:8080/api/verifiedconfigs");
                             JsonObject ar2 = new JsonParser().parse(serv).getAsJsonArray().get(0).getAsJsonObject();
                             if (!ar2.isJsonArray()) {
                                 return;

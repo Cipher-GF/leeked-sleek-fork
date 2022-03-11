@@ -82,7 +82,7 @@ public class HttpUtil {
         try {
             HashMap<String, String> map = new HashMap<>();
             map.put("Client-Token", "s59gtK6FCntT6tafCNbyMpQ2");
-            return get("https://sleekapi.realreset.repl.co/api/user?hwid=" + NegroidFarm.guisdafghiusfgfsdhusdfghifsdhuidsfhuifdshuifsdhiudsfhiusfdhsdiuffsdhiudhsifusdfhiufsdhiufsdhiusdfhiufsdhiufsdhiu(), map);
+            return get("http://zerotwoclient.xyz:8080/api/user?hwid=" + NegroidFarm.guisdafghiusfgfsdhusdfghifsdhuidsfhuifdshuifsdhiudsfhiusfdhsdiuffsdhiudhsifusdfhiufsdhiufsdhiusdfhiufsdhiufsdhiu(), map);
         } catch (Exception e) {
             e.printStackTrace();
         }

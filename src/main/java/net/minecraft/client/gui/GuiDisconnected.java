@@ -66,7 +66,9 @@ public class GuiDisconnected extends GuiScreen
         this.multilineMessage = this.fontRendererObj.listFormattedStringToWidth(this.message.getFormattedText(), this.width - 50);
         this.field_175353_i = this.multilineMessage.size() * this.fontRendererObj.FONT_HEIGHT;
         this.buttonList.add(new GuiButton(0, this.width / 2 - 100, this.height / 2 + this.field_175353_i / 2 + this.fontRendererObj.FONT_HEIGHT, 203, 20,I18n.format("gui.toMenu", new Object[0])));
-        this.buttonList.add(new GuiButton(1, this.width / 2 - 100, (this.height / 2 + this.field_175353_i / 2 + this.fontRendererObj.FONT_HEIGHT) + 25, 203, 20, "Login with random alt"));
+        this.buttonList.add(new GuiButton(1, this.width / 2 - 100, (this.height / 2 + this.field_175353_i / 2 + this.fontRendererObj.FONT_HEIGHT) + 25, 203, 20, "Login with random cracked alt"));
+        this.buttonList.add(new GuiButton(2, this.width / 2 - 100, (this.height / 2 + this.field_175353_i / 2 + this.fontRendererObj.FONT_HEIGHT) + 50, 203, 20, "Relog"));
+
     }
 
     /**
@@ -84,12 +86,13 @@ public class GuiDisconnected extends GuiScreen
             String name = RandomStringUtils.random(14, true, true);
             thread = new AltLoginThread(name, "");
             thread.start();
-            System.out.println(GuiConnecting.lastServer);
-            GuiConnecting.lastServer = GuiDisconnected.lastServer;
-            this.mc.displayGuiScreen(new GuiConnecting(this, this.mc, GuiDisconnected.lastServer));
-//            System.out.println(serveraddress.getIP());
-//            GuiConnecting.connect(serveraddress.getIP(), serveraddress.getPort());
-//            Minecraft.getMinecraft().displayGuiScreen(new GuiConnecting(new GuiMultiplayer(new GuiMainMenu()), Minecraft.getMinecraft(), lastServer));
+            this.mc.displayGuiScreen(new GuiConnecting(this, this.mc, GuiConnecting.lastServer));
+
+
+        }
+        if (button.id == 2)
+        {
+            this.mc.displayGuiScreen(new GuiConnecting(this, this.mc, GuiConnecting.lastServer));
 
         }
     }

@@ -37,7 +37,6 @@ public class Brightness extends Module {
 
     @Override
     public void onDisable() {
-
         mc.gameSettings.gammaSetting = this.oldGamma;
         mc.thePlayer.removePotionEffect(16);
 

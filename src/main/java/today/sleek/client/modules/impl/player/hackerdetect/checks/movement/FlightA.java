@@ -20,6 +20,10 @@ public class FlightA extends Check {
 
     @Override
     public void onUpdate() {
+        if (mc.thePlayer.ticksExisted < 5) {
+            airTicks.clear();
+        }
+
         for (EntityPlayer ent : mc.theWorld.playerEntities) {
             if (ent == mc.thePlayer) {
                 return;

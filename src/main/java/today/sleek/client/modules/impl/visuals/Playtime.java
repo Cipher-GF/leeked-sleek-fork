@@ -38,9 +38,9 @@ public class Playtime extends Module {
         long estimatedTime = System.currentTimeMillis() - currentTime;
 
         //totally not skidded from stackoverflow
-        int seconds = (int) (estimatedTime / 1000) % 60 ;
-        int minutes = (int) ((estimatedTime / (1000*60)) % 60);
-        int hours   = (int) ((estimatedTime / (1000*60*60)) % 24);
+        int seconds = (int) (estimatedTime / 1000) % 60;
+        int minutes = (int) ((estimatedTime / (1000 * 60)) % 60);
+        int hours = (int) ((estimatedTime / (1000 * 60 * 60)) % 24);
 
         //draw on hud
         mc.fontRendererObj.drawStringWithShadow(hours + "h " + minutes + "m, " + seconds + "s", RenderUtils.getResolution().getScaledWidth() / 2 - 20, 20, -1);
