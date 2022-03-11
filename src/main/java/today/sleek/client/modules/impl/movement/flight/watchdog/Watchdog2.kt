@@ -8,10 +8,11 @@ import today.sleek.base.event.impl.UpdateEvent
 import today.sleek.client.modules.impl.movement.flight.FlightMode
 import today.sleek.client.utils.player.PlayerUtil
 
-class Watchdog : FlightMode("Watchdog") {
+class Watchdog2 : FlightMode("Test") {
 
     var dontgo = true
     var waiting = false
+    var speed = 0.6
 
     override fun onUpdate(event: UpdateEvent) {
         mc.thePlayer.posY = mc.thePlayer.prevPosY
@@ -26,6 +27,7 @@ class Watchdog : FlightMode("Watchdog") {
             }
             if (!waiting && !dontgo) {
                 mc.thePlayer.motionY = 0.0;
+                speed -= 0.05
             } else {
                 mc.thePlayer.motionX = 0.0
                 mc.thePlayer.motionZ = 0.0
@@ -35,7 +37,7 @@ class Watchdog : FlightMode("Watchdog") {
 
     override fun onMove(event: MoveEvent) {
         if (!waiting && !dontgo) {
-            PlayerUtil.setMotion(event, PlayerUtil.getBaseSpeed().toDouble())
+            PlayerUtil.setMotion(event, Math.max(PlayerUtil.getBaseSpeed().toDouble(), speed))
         } else {
             event.motionX = 0.0.also { mc.thePlayer.motionX = it }
             event.motionZ = 0.0.also { mc.thePlayer.motionZ = it }
@@ -56,6 +58,7 @@ class Watchdog : FlightMode("Watchdog") {
         }
         dontgo = true
         waiting = false
+        speed = 0.5
         mc.timer.timerSpeed = flight.timer.value.toFloat()
     }
 }

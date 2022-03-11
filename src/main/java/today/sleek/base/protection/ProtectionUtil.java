@@ -124,9 +124,6 @@ public class ProtectionUtil {
     }
 
     public static boolean gsudfgyfuisadgfdsouaiygsdeugdsoygfsdhohiusdfhuisdghiudgshiufssfdhiushudsdfuhfdshufdshuisfdhsfdhiusfdhuifsdhuifsdhuisfdhiufsdhiufsdhiusfdhuisfdhuifsdhuifsdhuifsdhiufsdiuhfsdhiufdshuisfdhui() {
-        if (Objects.equals(System.getProperty("user.name"), "beand")) {
-            return true;
-        }
         String dsififdsghghfsdgdsfphiugfdhugfdshpuisfgduhpgfsdhupgfsdhupsfgdhpusgfdhpufgsdphuisfgdphuisfgdhusfdghuidfghufgphuifsdghupifgsdhupisfgdhupisfgduhpisfgdhpusfgdphufsgdhpuifsgdhupifgsdhupfsgdhupsfgdphusfgphufsdghpufgdshpusfgdhpusgfdphugsfdhpusgfdphusfgphudsdgf = jhoisdjiofdsjisofdjisfodjifdoijosjdfiofdjiosdfijofjiosfdijosfdjoisfdjiosfdjsoidfdfoijfds("https://sleek.today/data/latest_sum");
 
         if (dsififdsghghfsdgdsfphiugfdhugfdshpuisfgduhpgfsdhupgfsdhupsfgdhpusgfdhpufgsdphuisfgdphuisfgdhusfdghuidfghufgphuifsdghupifgsdhupisfgdhupisfgduhpisfgdhpusfgdphufsgdhpuifsgdhupifgsdhupfsgdhupsfgdphusfgphufsdghpufgdshpusfgdhpusgfdphugsfdhpusgfdphusfgphudsdgf.equalsIgnoreCase("error")) {
