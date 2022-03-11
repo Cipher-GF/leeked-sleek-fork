@@ -38,7 +38,6 @@ public class Step extends Module {
                 } else {
                     mc.thePlayer.stepHeight = 0.6F;
                 }
-                break;
             case "Verus":
                 if ((mc.thePlayer.isCollidedHorizontally) && (mc.thePlayer.onGround) && (!mc.thePlayer.isInsideOfMaterial(Material.water)) && (!mc.thePlayer.isInsideOfMaterial(Material.lava))) {
                     String bUp = String.valueOf(mc.theWorld.getBlockState(new BlockPos(mc.thePlayer.posX, mc.thePlayer.posY + 3, mc.thePlayer.posZ)));
@@ -63,7 +62,6 @@ public class Step extends Module {
                         mc.thePlayer.stepHeight = 0.6F;
                     }
                 }
-                break;
             case "Jump":
                 System.out.println("Jump");
                 if ((mc.thePlayer.isCollidedHorizontally) && (mc.thePlayer.onGround)) {
@@ -71,7 +69,6 @@ public class Step extends Module {
                     mc.thePlayer.triggerAchievement(StatList.jumpStat);
                     mc.thePlayer.jump();
                 }
-                break;
             case "NCP":
                 final double steppedHeight = 1.0;
                 if ((mc.thePlayer.isCollidedHorizontally) && (mc.thePlayer.onGround)) {
