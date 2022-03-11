@@ -5,7 +5,6 @@ import com.google.common.eventbus.Subscribe;
 import com.jagrosh.discordipc.IPCClient;
 import com.jagrosh.discordipc.IPCListener;
 import com.jagrosh.discordipc.entities.RichPresence;
-import today.sleek.client.commands.CommandManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.play.server.S02PacketChat;
 import net.minecraft.util.ChatComponentText;
@@ -20,6 +19,7 @@ import today.sleek.base.keybind.KeybindManager;
 import today.sleek.base.manager.KillsultManager;
 import today.sleek.base.manager.ValueManager;
 import today.sleek.base.protection.ProtectionUtil;
+import today.sleek.client.commands.CommandManager;
 import today.sleek.client.friend.FriendManager;
 import today.sleek.client.gui.config.ConfigurationGUI;
 import today.sleek.client.modules.ModuleManager;
@@ -121,7 +121,7 @@ public class Sleek {
 
         System.out.println("Client has been started.");
         //set the window title
-        Display.setTitle("Sleek Beta 030322");
+        Display.setTitle("Minecraft 1.8.8");
     }
 
     public void onShutdown() {
@@ -172,18 +172,15 @@ public class Sleek {
 
     public void setRank(String rank) {
         switch (rank) {
-        case "Developer": 
-            {
+            case "Developer": {
                 this.rank = UserRank.DEVELOPER;
                 break;
             }
-        case "Beta": 
-            {
+            case "Beta": {
                 this.rank = UserRank.BETA;
                 break;
             }
-        default: 
-            {
+            default: {
                 this.rank = UserRank.USER;
                 break;
             }
