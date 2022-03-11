@@ -10,9 +10,15 @@ import today.sleek.base.value.value.BooleanValue;
 import today.sleek.base.value.value.NumberValue;
 import today.sleek.client.modules.impl.Module;
 
-@ModuleData(name = "Chams", category = ModuleCategory.VISUALS, description = "Shows players behind walls")
-public class Chams extends Module {
+@ModuleData(
+        name = "Wallhack",
+        category = ModuleCategory.VISUALS,
+        description = "Shows players behind walls"
+)
+public class Wallhack extends Module {
+
     public BooleanValue fill = new BooleanValue("Fill", this, true);
+
     public NumberValue<Integer> alpha = new NumberValue<Integer>("Alpha", this, 255, 0, 255, 1);
     public NumberValue<Integer> r = new NumberValue<>("Red", this, 255, 0, 255, 1);
     public NumberValue<Integer> g = new NumberValue<Integer>("Green", this, 255, 0, 255, 1);

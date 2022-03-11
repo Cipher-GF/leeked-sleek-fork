@@ -24,7 +24,7 @@ import org.lwjgl.opengl.GL11;
 import shadersmod.client.Shaders;
 import today.sleek.Sleek;
 import today.sleek.base.event.impl.EntityLivingRenderEvent;
-import today.sleek.client.modules.impl.visuals.Chams;
+import today.sleek.client.modules.impl.visuals.Wallhack;
 import today.sleek.client.utils.render.ColorUtils;
 
 import java.nio.FloatBuffer;
@@ -170,13 +170,13 @@ public abstract class RendererLivingEntity<T extends EntityLivingBase> extends R
 
                     boolean valid = entity instanceof EntityPlayer;
                     if (valid) {
-                        Chams chams = (Chams) Sleek.getInstance().getModuleManager().getModuleByName("Chams");
-                        boolean shouldFill = Sleek.getInstance().getModuleManager().getModuleByName("Chams").isToggled() && chams.fill.getValue();
+                        Wallhack wallhack = (Wallhack) Sleek.getInstance().getModuleManager().getModuleByName("Wallhack");
+                        boolean shouldFill = Sleek.getInstance().getModuleManager().getModuleByName("Wallhack").isToggled() && wallhack.fill.getValue();
                         if (shouldFill) {
                             Minecraft mc = Minecraft.getMinecraft();
                             mc.entityRenderer.enableLightmap();
 
-                            ColorUtils.glColor(chams.r.getValue(), chams.g.getValue(), chams.b.getValue(), chams.alpha.getValue());
+                            ColorUtils.glColor(wallhack.r.getValue(), wallhack.g.getValue(), wallhack.b.getValue(), wallhack.alpha.getValue());
 
 
                             GL11.glPushMatrix();

@@ -27,6 +27,7 @@ import java.util.Objects;
 )
 
 public class Nametags extends Module {
+
     public BooleanValue health = new BooleanValue("Health", this, true);
     private NumberValue<Double> scaling = new NumberValue<>("Size", this, 2d, 2d, 10d, 0.25);
     public BooleanValue invisibles = new BooleanValue("Invisibles",this,  false);
