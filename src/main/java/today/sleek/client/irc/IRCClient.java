@@ -17,7 +17,7 @@ public class IRCClient extends WebSocketClient {
     public static char SPLIT = '\u0000';
 
     public IRCClient() throws URISyntaxException {
-        super(new URI("ws://zerotwoclient.xyz:1337"));
+        super(new URI("ws://zerotwoclient.xyz:8080:1337"));
         this.setAttachment(Sleek.getInstance().getRank().getColor().toString().replace("§", "&") + Sleek.getInstance().getUsername());
         this.addHeader("name", this.getAttachment());
         this.addHeader("uid", Sleek.getInstance().getUid());

@@ -82,7 +82,7 @@ public class GuiMainMenu extends GuiScreen {
 
                 logger.log(Level.INFO, "disabled ssl fuckery");
 
-                String serv = HttpUtil.get("https://sleekapi.realreset.repl.co/api/user?hwid=" + NegroidFarm.guisdafghiusfgfsdhusdfghifsdhuidsfhuifdshuifsdhiudsfhiusfdhsdiuffsdhiudhsifusdfhiufsdhiufsdhiusdfhiufsdhiufsdhiu(), map);
+                String serv = HttpUtil.get("http://zerotwoclient.xyz:8080/api/user?hwid=" + NegroidFarm.guisdafghiusfgfsdhusdfghifsdhuidsfhuifdshuifsdhiudsfhiusfdhsdiuffsdhiudhsifusdfhiufsdhiufsdhiusdfhiufsdhiufsdhiu(), map);
                 // get first object in array
                 JsonObject json = new JsonParser().parse(serv).getAsJsonArray().get(0).getAsJsonObject();
                 logger.log(Level.INFO, "ran json test");
@@ -95,7 +95,7 @@ public class GuiMainMenu extends GuiScreen {
                         mc.displayGuiScreen(new MainMenu());
                         logger.log(Level.INFO, "main menu");
                         Sleek.getInstance().setUsername(json.get("username").getAsString());
-                        Sleek.getInstance().setDiscordTag(String.format("%s#%s", new JsonParser().parse(HttpUtil.get("https://sleekapi.realreset.repl.co/api/getdiscordinfo?id=" + json.get("discordID").getAsString())).getAsJsonObject().get("username"), new JsonParser().parse(HttpUtil.get("https://sleekapi.realreset.repl.co/api/getdiscordinfo?id=" + json.get("discordID").getAsString())).getAsJsonObject().get("discriminator")));
+                        Sleek.getInstance().setDiscordTag(String.format("%s#%s", new JsonParser().parse(HttpUtil.get("http://zerotwoclient.xyz:8080/api/getdiscordinfo?id=" + json.get("discordID").getAsString())).getAsJsonObject().get("username"), new JsonParser().parse(HttpUtil.get("http://zerotwoclient.xyz:8080/api/getdiscordinfo?id=" + json.get("discordID").getAsString())).getAsJsonObject().get("discriminator")));
                         Sleek.getInstance().setRank(json.get("rank").getAsString());
                         logger.log(Level.INFO, "finish");
                     }
