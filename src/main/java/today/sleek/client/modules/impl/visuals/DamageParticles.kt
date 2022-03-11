@@ -83,13 +83,11 @@ internal class Hit(pos: BlockPos, healthVal: Double) {
     private val pos: BlockPos
     private val healthVal: Double
     private val maxTime: Long = 1000
+
     fun onRender() {
-        val x = pos.x + (pos.x - pos.x) * mc.timer.renderPartialTicks - Minecraft.getMinecraft()
-            .getRenderManager().viewerPosX
-        val y = pos.y + (pos.y - pos.y) * mc.timer.renderPartialTicks - Minecraft.getMinecraft()
-            .getRenderManager().viewerPosY
-        val z = pos.z + (pos.z - pos.z) * mc.timer.renderPartialTicks - Minecraft.getMinecraft()
-            .getRenderManager().viewerPosZ
+        val x = pos.x + (pos.x - pos.x) * mc.timer.renderPartialTicks - Minecraft.getMinecraft().getRenderManager().viewerPosX
+        val y = pos.y + (pos.y - pos.y) * mc.timer.renderPartialTicks - Minecraft.getMinecraft().getRenderManager().viewerPosY
+        val z = pos.z + (pos.z - pos.z) * mc.timer.renderPartialTicks - Minecraft.getMinecraft().getRenderManager().viewerPosZ
         val var10001 = if (mc.gameSettings.thirdPersonView == 2) -1.0f else 1.0f
         val size = 1.5
         GL11.glPushMatrix()
