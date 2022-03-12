@@ -59,7 +59,6 @@ public class Speed extends Module {
         PlayerUtil.setMotion(0);
         hDist.set(0);
         currentMode.onDisable();
-        mc.thePlayer.speedInAir = 0.0249F;
     }
 
     @Subscribe
