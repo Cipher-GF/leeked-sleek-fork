@@ -18,10 +18,10 @@ class VerusDamage3 : FlightMode("VerusBoost") {
 
     override fun onUpdate(event: UpdateEvent?) {
         PlayerUtil.setMotion(Math.max(speed, PlayerUtil.getVerusBaseSpeed()))
-        if (mc.thePlayer.onGround && mc.thePlayer.hurtTime > 0) {
+        if (!mc.thePlayer.onGround && mc.thePlayer.hurtTime > 0) {
             boosted = true
             speed = flight.speed.value
-        } else if (mc.thePlayer.onGround) {
+        } else if (mc.thePlayer.onGround && !boosted) {
             PlayerUtil.damageVerus()
         }
     }
