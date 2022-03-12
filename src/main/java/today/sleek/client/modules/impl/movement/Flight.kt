@@ -32,7 +32,7 @@ class Flight : Module() {
 
     val speed = NumberValue("Speed", this, 1.0, 0.0, 10.0, 0.1)
     val antikick = BooleanValue("AntiKick", this, true, mode, "BridgerLand (TP)")
-    val timer = NumberValue("Timer", this, 1.0, 1.0, 5.0, 0.1, mode, "Mush", "Test 2", "Watchdog", "Test")
+    val timer = NumberValue("Timer", this, 1.0, 1.0, 5.0, 0.1, mode, "Mush", "Test 2", "Hypixel", "Test")
     val blink = BooleanValue("Blink", this, true, mode, "Mush")
     val viewbob = BooleanValue("View Bobbing", this, true)
     val spoofy = BooleanValue("Spoof Y", this, false)
@@ -57,7 +57,7 @@ class Flight : Module() {
             mc.thePlayer.posY = mc.thePlayer.prevPosY
         }
         if (viewbob.value && mc.thePlayer.isMoving) {
-            mc.thePlayer.cameraYaw = 0.05f
+            mc.thePlayer.cameraYaw = 0.1f
         } else {
             mc.thePlayer.cameraYaw = 0f
         }

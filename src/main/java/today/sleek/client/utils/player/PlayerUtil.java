@@ -20,6 +20,7 @@ import today.sleek.base.event.impl.MoveEvent;
 import today.sleek.client.modules.impl.combat.KillAura;
 import today.sleek.client.modules.impl.combat.TargetStrafe;
 import today.sleek.client.utils.Util;
+import today.sleek.client.utils.math.MathUtil;
 import today.sleek.client.utils.network.PacketUtil;
 import today.sleek.client.utils.rotations.AimUtil;
 
@@ -548,7 +549,7 @@ public class PlayerUtil extends Util {
     public static void hypixelDamage() {
         double x = mc.thePlayer.posX, y = mc.thePlayer.posY, z = mc.thePlayer.posZ;
         for (int i = 0; i < 65; i++) {
-            mc.thePlayer.sendQueue.addToSendQueueNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(x, y + 0.0624399212, z, false));
+            mc.thePlayer.sendQueue.addToSendQueueNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(x, y + 0.0624399212 + MathUtil.getRandomInRange(0.001, 0.0075), z, false));
             mc.thePlayer.sendQueue.addToSendQueueNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(x, y, z, false));
         }
         mc.thePlayer.sendQueue.addToSendQueueNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(x, y, z, true));
