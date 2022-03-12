@@ -44,7 +44,7 @@ class Scaffold : Module() {
     var keepY = BooleanValue("Keep Y", this, false)
     private val modeValue = ModeValue("Mode", this, "Verus", "New", "NCP", "Vulcan", "Dev")
     private val swing = BooleanValue("Swing", this, true)
-    private val sprint = BooleanValue("Sprint", this, false)
+    val sprint = BooleanValue("Sprint", this, false)
     private val tower = BooleanValue("Tower", this, true)
     private val info = BooleanValue("Show Info", this, true)
     private val delay = NumberValue("Delay", this, 0, 0, 9000, 1)

@@ -28,6 +28,7 @@ import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import today.sleek.Sleek;
+import today.sleek.client.modules.impl.world.Scaffold;
 
 import java.util.List;
 import java.util.Random;
@@ -584,7 +585,9 @@ public abstract class Entity implements ICommandSender {
             double d5 = z;
 
             boolean flag = this.onGround && this.isSneaking() && this instanceof EntityPlayer;
-            boolean shouldSafewalk = Sleek.getInstance().getModuleManager().getModuleByName("Safewalk").isToggled();
+
+            Scaffold scaffold = Sleek.getInstance().getModuleManager().getModuleByClass(Scaffold.class);
+            boolean shouldSafewalk = Sleek.getInstance().getModuleManager().getModuleByName("Safewalk").isToggled() || scaffold.getSafewalk().getValue();
 
             if (flag || shouldSafewalk) {
                 double d6;
