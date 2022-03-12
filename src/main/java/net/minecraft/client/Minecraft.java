@@ -98,6 +98,7 @@ import today.sleek.Sleek;
 import today.sleek.base.event.impl.KeyboardEvent;
 import today.sleek.base.event.impl.MouseEvent;
 import today.sleek.base.protection.ProtectionUtil;
+import today.sleek.client.gui.GuiMainMenu;
 import today.sleek.client.gui.MainMenu;
 import today.sleek.client.gui.clickgui.utils.render.animation.easings.Delta;
 
