@@ -1,4 +1,4 @@
-package net.minecraft.client.gui;
+package today.sleek.client.gui;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -6,6 +6,9 @@ import com.sun.jna.platform.win32.User32;
 import com.sun.jna.platform.win32.WinDef;
 import negroidslayer.NegroidFarm;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.client.renderer.GlStateManager;
 import org.apache.logging.log4j.LogManager;
 import org.lwjgl.input.Keyboard;

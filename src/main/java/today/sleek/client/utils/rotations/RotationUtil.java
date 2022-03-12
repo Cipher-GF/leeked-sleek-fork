@@ -35,6 +35,23 @@ public class RotationUtil extends Util {
         return new Vector2f(yaw, pitch);
     }
 
+    public static float getDirFromMovement(final float forward, final float strafing, float yaw) {
+        if (forward == 0.0F && strafing == 0.0F) return yaw;
+
+        boolean reversed = forward < 0.0f;
+        float strafingYaw = 90.0f *
+                (forward > 0.0f ? 0.5f : reversed ? -0.5f : 1.0f);
+
+        if (reversed)
+            yaw += 180.0f;
+        if (strafing > 0.0f)
+            yaw -= strafingYaw;
+        else if (strafing < 0.0f)
+            yaw += strafingYaw;
+
+        return yaw;
+    }
+
     public static Vector2f getRotations(Vec3 origin, Vec3 position) {
 
         Vec3 org = new Vec3(origin.xCoord, origin.yCoord, origin.zCoord);
@@ -44,6 +61,19 @@ public class RotationUtil extends Util {
         float pitch = (float) (-Math.toDegrees(Math.atan2(difference.yCoord, distance)));
 
         return new Vector2f(yaw, pitch);
+    }
+
+
+    public static void applySmoothing(final float[] lastRotations, final float smoothing, final float[] dstRotation) {
+        if (smoothing > 0.0F) {
+            final float yawChange = MathHelper.wrapAngleTo180_float(dstRotation[0] - lastRotations[0]);
+            final float pitchChange = MathHelper.wrapAngleTo180_float(dstRotation[1] - lastRotations[1]);
+
+            final float smoothingFactor = Math.max(1.0F, smoothing / 10.0F);
+
+            dstRotation[0] = lastRotations[0] + yawChange / smoothingFactor;
+            dstRotation[1] = Math.max(Math.min(90.0F, lastRotations[1] + pitchChange / smoothingFactor), -90.0F);
+        }
     }
 
     public static Vector2f getRotations(Entity entity) {

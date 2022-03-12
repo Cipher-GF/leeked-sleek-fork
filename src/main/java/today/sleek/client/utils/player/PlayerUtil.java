@@ -3,10 +3,13 @@ package today.sleek.client.utils.player;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.network.play.client.C03PacketPlayer;
 import net.minecraft.network.play.client.C0BPacketEntityAction;
 import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.MathHelper;
@@ -312,6 +315,56 @@ public class PlayerUtil extends Util {
             double sin = Math.sin(Math.toRadians(rotationYaw + 90.0F));
             mc.thePlayer.motionX = moveForward * moveSpeed * cos + moveStrafe * moveSpeed * sin;
             mc.thePlayer.motionZ = moveForward * moveSpeed * sin - moveStrafe * moveSpeed * cos;
+        }
+    }
+
+    public static boolean canSprint(final EntityPlayerSP player, final boolean omni) {
+        return (player.movementInput.moveForward >= 0.8F || (omni && player.isMoving())) &&
+                (player.getFoodStats().getFoodLevel() > 6.0F || player.capabilities.allowFlying) &&
+                !player.isPotionActive(Potion.blindness) &&
+                !player.isCollidedHorizontally &&
+                !player.isSneaking();
+    }
+
+    public static boolean canSprint(final EntityPlayerSP player) {
+        return canSprint(player, true);
+    }
+
+    public static double getBaseMoveSpeed(final EntityPlayerSP player) {
+
+
+        double SPRINTING_MOD = 1.0 / 1.3F;
+        double SNEAK_MOD = 0.3F;
+        double ICE_MOD = 2.5F;
+        double WALK_SPEED = 0.221;
+        double SWIM_MOD = 0.115F / WALK_SPEED;
+        double[] DEPTH_STRIDER_VALUES = {
+                1.0F,
+                0.1645F / SWIM_MOD / WALK_SPEED,
+                0.1995F / SWIM_MOD / WALK_SPEED,
+                1.0F / SWIM_MOD,
+        };
+
+        double base = player.isSneaking() ? WALK_SPEED * SNEAK_MOD : canSprint(player) ? WALK_SPEED / SPRINTING_MOD : WALK_SPEED;
+
+        final PotionEffect speed = player.getActivePotionEffect(Potion.moveSpeed);
+        final int moveSpeedAmp = speed == null || speed.getDuration() < 3 ? 0 : speed.getAmplifier() + 1;
+
+        if (moveSpeedAmp > 0)
+            base *= 1.0 + 0.2 * moveSpeedAmp;
+
+        if (player.isInWater()) {
+            base *= SWIM_MOD;
+            final int depthStriderLevel = EnchantmentHelper.getDepthStriderModifier(player);
+            if (depthStriderLevel > 0) {
+                base *= DEPTH_STRIDER_VALUES[depthStriderLevel];
+            }
+
+            return base * SWIM_MOD;
+        } else if (player.isInLava()) {
+            return base * SWIM_MOD;
+        } else {
+            return base;
         }
     }
 
