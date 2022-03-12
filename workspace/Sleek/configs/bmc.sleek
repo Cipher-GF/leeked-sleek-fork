@@ -2,7 +2,7 @@
   "data": {
     "author": "qoft",
     "name": "bmc",
-    "lastUpdated": "Date 2022/3/10 Time 16:26:46"
+    "lastUpdated": "Date 2022/3/12 Time 10:58:9"
   },
   "modules": [
     {
@@ -93,11 +93,11 @@
       "SoulSand": "false"
     },
     {
-      "name": "ACDetector",
+      "name": "AC Detector",
       "keybind": 0,
       "hidden": false,
       "enabled": false,
-      "Delay": "0.5"
+      "Delay": "1.0"
     },
     {
       "name": "Playtime",
@@ -125,6 +125,17 @@
       "keybind": 0,
       "hidden": false,
       "enabled": false
+    },
+    {
+      "name": "Wallhack",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": false,
+      "Fill": "true",
+      "Alpha": "255",
+      "Red": "255",
+      "Green": "255",
+      "Blue": "255"
     },
     {
       "name": "Plugins",
@@ -191,38 +202,6 @@
       "Only Players": "true",
       "Click Aim": "true",
       "Weapon Check": "true"
-    },
-    {
-      "name": "NewAura",
-      "keybind": 19,
-      "hidden": false,
-      "enabled": false,
-      "Mode": "Smart",
-      "Target Priority": "Health",
-      "Rotation Mode": "Default",
-      "Swing Range": "3.6",
-      "Block Range": "7.5",
-      "CPS": "10.0",
-      "Randomize CPS": "3.0",
-      "FOV": "357.0",
-      "Draw FOV": "false",
-      "TP Hit": "false",
-      "Teleport Range": "25.0",
-      "Hit Chance": "100",
-      "Swing Mode": "Client",
-      "Attack Method": "Packet",
-      "Autoblock Mode": "Fake",
-      "GCD": "true",
-      "TargetHud": "true",
-      "TargetHud Mode": "Sleek",
-      "Preview Mode": "Model",
-      "Hold": "false",
-      "Players": "true",
-      "Friends": "true",
-      "Animals": "true",
-      "Monsters": "true",
-      "Invisibles": "true",
-      "Walls": "true"
     },
     {
       "name": "MCF",
@@ -308,7 +287,6 @@
       "Ping": "true",
       "Rectangle": "true",
       "Outline": "false",
-      "Line Width": "1.5",
       "SneakColor": "false",
       "White": "false",
       "Scaling": "0.1",
@@ -330,7 +308,7 @@
     },
     {
       "name": "Killaura",
-      "keybind": 209,
+      "keybind": 19,
       "hidden": false,
       "enabled": false,
       "Mode": "Smart",
@@ -415,7 +393,7 @@
       "Hide Blur": "false",
       "Client Name": "\u0026lS\u0026fleek \u00267[Antiban Edition??]",
       "Module Suffix": " %s",
-      "ArrayList Y": "4",
+      "ArrayList Y": "1.0",
       "ArrayList X": "4",
       "Scoreboard": "Right",
       "Scoreboard Y": "0.0"
@@ -449,15 +427,10 @@
       "Spoof Y": "false"
     },
     {
-      "name": "Chams",
+      "name": "Zoot",
       "keybind": 0,
       "hidden": false,
-      "enabled": true,
-      "Fill": "false",
-      "Alpha": "255",
-      "Red": "255",
-      "Green": "255",
-      "Blue": "255"
+      "enabled": false
     },
     {
       "name": "Speed",
@@ -520,6 +493,12 @@
       "Skywars": "false",
       "Min Health": "12",
       "Delay": "150"
+    },
+    {
+      "name": "Damage Particles",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": false
     },
     {
       "name": "ESP",
@@ -595,6 +574,12 @@
       "hidden": false,
       "enabled": false,
       "Test C0F": "true"
+    },
+    {
+      "name": "More Inventory",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": false
     },
     {
       "name": "IRC",
