@@ -2,6 +2,7 @@ package today.sleek.client.utils.network;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.Packet;
+import today.sleek.client.utils.chat.ChatUtil;
 
 public class PacketSleepThread extends Thread {
 
@@ -10,6 +11,7 @@ public class PacketSleepThread extends Thread {
             sleep_ms(delay);
             if (Minecraft.getMinecraft().thePlayer != null) {
                 PacketUtil.sendPacketNoEvent(packet);
+                ChatUtil.log("sent");
             }
         });
     }

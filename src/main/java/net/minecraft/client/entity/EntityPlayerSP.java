@@ -204,7 +204,11 @@ public class EntityPlayerSP extends AbstractClientPlayer {
 
         if (this.isCurrentViewEntity()) {
             UpdateEvent event = new UpdateEvent(posX, getEntityBoundingBox().minY, posZ, rotationYaw, rotationPitch, onGround);
-            Sleek.getInstance().getEventBus().post(event);
+            try {
+                Sleek.getInstance().getEventBus().post(event);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             double d0 = this.posX - this.lastReportedPosX;
             double d1 = this.getEntityBoundingBox().minY - this.lastReportedPosY;
             double d2 = this.posZ - this.lastReportedPosZ;
@@ -242,7 +246,11 @@ public class EntityPlayerSP extends AbstractClientPlayer {
                 this.lastReportedPitch = event.getRotationPitch();
             }
         }
-        Sleek.getInstance().getEventBus().post(new UpdateEvent(false));
+        try {
+            Sleek.getInstance().getEventBus().post(new UpdateEvent(false));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**

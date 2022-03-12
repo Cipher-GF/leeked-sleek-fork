@@ -1,11 +1,15 @@
 package today.sleek.client.modules.impl.movement.flight.watchdog
 
 import net.minecraft.network.Packet
+import net.minecraft.network.play.client.C03PacketPlayer
 import net.minecraft.network.play.server.S08PacketPlayerPosLook
 import today.sleek.base.event.impl.MoveEvent
 import today.sleek.base.event.impl.PacketEvent
 import today.sleek.base.event.impl.UpdateEvent
 import today.sleek.client.modules.impl.movement.flight.FlightMode
+import today.sleek.client.utils.chat.ChatUtil
+import today.sleek.client.utils.network.PacketSleepThread
+import today.sleek.client.utils.network.PacketUtil
 import today.sleek.client.utils.player.PlayerUtil
 
 class Watchdog2 : FlightMode("Test") {
@@ -19,11 +23,14 @@ class Watchdog2 : FlightMode("Test") {
         if (event.isPre) {
             if ((dontgo && !waiting) && mc.thePlayer.onGround) {
                 mc.thePlayer.jump()
+                PacketUtil.sendPacketNoEvent(C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY - 1.234, mc.thePlayer.posZ, true))
                 waiting = true
             }
             if (waiting && mc.thePlayer.onGround) {
-                event.posY -= 0.0784;
-                event.isOnGround = true;
+                PacketUtil.sendPacketNoEvent(C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY - 1.534, mc.thePlayer.posZ, false))
+                PacketSleepThread.delayPacket(C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY - 1.9432, mc.thePlayer.posZ, false), 300)
+                event.isOnGround = true
+                mc.thePlayer.motionY = 0.434123
             }
             if (!waiting && !dontgo) {
                 mc.thePlayer.motionY = 0.0;
@@ -48,7 +55,8 @@ class Watchdog2 : FlightMode("Test") {
         if (event.getPacket<Packet<*>>() is S08PacketPlayerPosLook) {
             waiting = false
             dontgo = false
-            mc.thePlayer.performHurtAnimation()
+            //mc.thePlayer.performHurtAnimation()
+            ChatUtil.log("s08")
         }
     }
 

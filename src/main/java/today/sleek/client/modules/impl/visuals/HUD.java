@@ -65,12 +65,13 @@ public class HUD extends Module {
     private final NumberValue staticRed = new NumberValue("Red", this, 255, 0, 255, 1, colorMode, "Wave", "Static");
     private final NumberValue staticGreen = new NumberValue("Green", this, 255, 0, 255, 1, colorMode, "Wave", "Static");
     private final NumberValue staticBlue = new NumberValue("Blue", this, 255, 0, 255, 1, colorMode, "Wave", "Static");
+
     public ModeValue line = new ModeValue("Line", this, "None", "Top", "Wrapped");
-    public final NumberValue<Integer> bgalpha = new NumberValue<>("Alpha", this, 80, 0, 200, 1);
+
+    public final NumberValue<Integer> bgalpha = new NumberValue<>("Alpha", this, 80, 1, 200, 1);
     public BooleanValue font = new BooleanValue("Font", this, false);
     public BooleanValue noti = new BooleanValue("Notifications", this, true);
     public BooleanValue hideRender = new BooleanValue("Hide Render", this, true);
-    public BooleanValue hideBlur = new BooleanValue("Hide Blur", this, false);
     public StringValue clientName = new StringValue("Client Name", this, "Sleek");
     public StringValue listSuffix = new StringValue("Module Suffix", this, " [%s]");
     public NumberValue arrayListY = new NumberValue("ArrayList Y", this, 4, 1, 200, 1);
@@ -231,12 +232,6 @@ public class HUD extends Module {
         return this.hideRender;
     }
 
-    @SuppressWarnings("all")
-    public BooleanValue getHideBlur() {
-        return this.hideBlur;
-    }
-
-    @SuppressWarnings("all")
     public StringValue getClientName() {
         return this.clientName;
     }
