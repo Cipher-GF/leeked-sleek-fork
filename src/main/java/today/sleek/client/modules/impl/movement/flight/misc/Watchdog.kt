@@ -9,6 +9,7 @@ import today.sleek.base.event.impl.UpdateEvent
 import today.sleek.client.modules.impl.movement.flight.FlightMode
 import today.sleek.client.utils.chat.ChatUtil
 import today.sleek.client.utils.math.BPSUtil
+import today.sleek.client.utils.math.MathUtil
 import today.sleek.client.utils.player.PlayerUtil
 
 class Watchdog: FlightMode("Hypixel") {
@@ -24,7 +25,7 @@ class Watchdog: FlightMode("Hypixel") {
                 waiting = true
             }
             if (waiting && mc.thePlayer.onGround) {
-                event.posY -= 0.0784;
+                event.posY -= 0.0784F + MathUtil.getRandomInRange(0.001f, 0.025f)
                 event.isOnGround = true;
             }
             if (!waiting && !dontgo) {
@@ -55,7 +56,11 @@ class Watchdog: FlightMode("Hypixel") {
     }
 
     override fun onEnable() {
+        if (!mc.thePlayer.onGround) {
+            flight.toggle()
+        }
         dontgo = true
         waiting = false
+        mc.timer.timerSpeed = flight.timer.value.toFloat()
     }
 }

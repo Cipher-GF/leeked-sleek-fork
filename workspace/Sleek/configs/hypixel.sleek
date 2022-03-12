@@ -2,7 +2,7 @@
   "data": {
     "author": "xd",
     "name": "hypixel",
-    "lastUpdated": "Date 2022/3/11 Time 13:28:47"
+    "lastUpdated": "Date 2022/3/11 Time 20:6:52"
   },
   "modules": [
     {
@@ -93,11 +93,11 @@
       "SoulSand": "false"
     },
     {
-      "name": "ACDetector",
+      "name": "AC Detector",
       "keybind": 0,
       "hidden": false,
       "enabled": false,
-      "Delay": "0.5"
+      "Delay": "1.0"
     },
     {
       "name": "Playtime",
@@ -112,6 +112,24 @@
       "enabled": true,
       "Mode": "Legit",
       "Keep Sprint": "true"
+    },
+    {
+      "name": "Fast Place",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": false,
+      "Delay": "0"
+    },
+    {
+      "name": "Wallhack",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": false,
+      "Fill": "true",
+      "Alpha": "255",
+      "Red": "255",
+      "Green": "255",
+      "Blue": "255"
     },
     {
       "name": "Penis ESP",
@@ -174,36 +192,16 @@
       "Block Mode": "Lennox"
     },
     {
-      "name": "NewAura",
-      "keybind": 22,
+      "name": "Aim Assist",
+      "keybind": 0,
       "hidden": false,
       "enabled": false,
-      "Mode": "Smart",
-      "Target Priority": "Armor",
-      "Rotation Mode": "Default",
-      "Swing Range": "3.0",
-      "Block Range": "3.0",
-      "CPS": "12.0",
-      "Randomize CPS": "3.0",
-      "FOV": "360.0",
-      "Draw FOV": "false",
-      "TP Hit": "false",
-      "Teleport Range": "25.0",
-      "Hit Chance": "100",
-      "Swing Mode": "Client",
-      "Attack Method": "Packet",
-      "Autoblock Mode": "Verus",
-      "GCD": "false",
-      "TargetHud": "false",
-      "TargetHud Mode": "Sleek",
-      "Preview Mode": "Face",
-      "Hold": "false",
-      "Players": "true",
-      "Friends": "true",
-      "Animals": "true",
-      "Monsters": "true",
-      "Invisibles": "true",
-      "Walls": "true"
+      "Rotate Speed": "25.0",
+      "Range": "4.0",
+      "FOV": "25.0",
+      "Only Players": "true",
+      "Click Aim": "true",
+      "Weapon Check": "true"
     },
     {
       "name": "MCF",
@@ -289,12 +287,18 @@
       "Ping": "true",
       "Rectangle": "true",
       "Outline": "false",
-      "Line Width": "1.5",
       "SneakColor": "false",
       "White": "false",
       "Scaling": "0.1",
       "Factor": "1.0",
       "SmartScale": "true"
+    },
+    {
+      "name": "Perspective",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": false,
+      "Toggle": "true"
     },
     {
       "name": "Breaker",
@@ -323,7 +327,7 @@
       "Attack Method": "Packet",
       "Autoblock Mode": "Verus",
       "GCD": "true",
-      "TargetHud": "true",
+      "TargetHud": "false",
       "TargetHud Mode": "Flux",
       "Preview Mode": "Face",
       "Hold": "false",
@@ -349,7 +353,7 @@
     },
     {
       "name": "Timer",
-      "keybind": 47,
+      "keybind": 0,
       "hidden": false,
       "enabled": false,
       "Tick Timer": "false",
@@ -388,7 +392,7 @@
       "Hide Render": "true",
       "Hide Blur": "false",
       "Client Name": "Sleek",
-      "Module Suffix": " Funny%s",
+      "Module Suffix": " %s",
       "ArrayList Y": "30",
       "ArrayList X": "4",
       "Scoreboard": "Right",
@@ -417,21 +421,16 @@
       "Mode": "Hypixel",
       "Speed": "0.0",
       "AntiKick": "true",
-      "Timer": "5.0",
+      "Timer": "4.0",
       "Blink": "true",
       "View Bobbing": "false",
       "Spoof Y": "false"
     },
     {
-      "name": "Chams",
+      "name": "Zoot",
       "keybind": 0,
       "hidden": false,
-      "enabled": true,
-      "Fill": "false",
-      "Alpha": "255",
-      "Red": "255",
-      "Green": "255",
-      "Blue": "255"
+      "enabled": false
     },
     {
       "name": "Speed",
@@ -443,6 +442,12 @@
       "Timer Speed": "1.0",
       "Force Friction": "true",
       "Friction": "NCP"
+    },
+    {
+      "name": "Safewalk",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": false
     },
     {
       "name": "Jesus",
@@ -483,11 +488,17 @@
       "name": "AutoPot",
       "keybind": 0,
       "hidden": false,
-      "enabled": false,
+      "enabled": true,
       "Mode": "Down",
       "Skywars": "false",
       "Min Health": "12",
       "Delay": "150"
+    },
+    {
+      "name": "Damage Particles",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": false
     },
     {
       "name": "ESP",
@@ -519,8 +530,7 @@
       "keybind": 0,
       "hidden": false,
       "enabled": true,
-      "Mode": "Day",
-      "Speed": "1"
+      "Mode": "Day"
     },
     {
       "name": "Spammer",
@@ -566,10 +576,25 @@
       "Test C0F": "true"
     },
     {
+      "name": "More Inventory",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": false
+    },
+    {
       "name": "IRC",
       "keybind": 0,
       "hidden": false,
       "enabled": false
+    },
+    {
+      "name": "Legit HUD",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": false,
+      "Toggle Sneak": "true",
+      "Toggle Sneak X": "5",
+      "Toggle Sneak Y": "5"
     },
     {
       "name": "Regen",

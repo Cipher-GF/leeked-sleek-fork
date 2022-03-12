@@ -6,6 +6,7 @@ import today.sleek.base.event.impl.MoveEvent
 import today.sleek.base.event.impl.PacketEvent
 import today.sleek.base.event.impl.UpdateEvent
 import today.sleek.client.modules.impl.movement.flight.FlightMode
+import today.sleek.client.utils.math.MathUtil
 import today.sleek.client.utils.player.PlayerUtil
 
 class Test3 : FlightMode("Test 2") {
@@ -14,18 +15,16 @@ class Test3 : FlightMode("Test 2") {
     var waiting = false
 
     override fun onUpdate(event: UpdateEvent) {
-//        mc.thePlayer.posY = mc.thePlayer.prevPosY
+        mc.thePlayer.posY = mc.thePlayer.prevPosY
         if (event.isPre) {
-            if (waiting && mc.thePlayer.onGround) {
-                waiting = false
-                dontgo = false
-            }
             if ((dontgo && !waiting) && mc.thePlayer.onGround) {
-//                mc.thePlayer.jump()
-                mc.thePlayer.motionY = 0.1
+                mc.thePlayer.motionY = 0.05 + MathUtil.getRandomInRange(0.025, 0.1)
                 waiting = true
             }
-
+            if (waiting && mc.thePlayer.onGround) {
+                event.posY -= 0.0784;
+                event.isOnGround = true;
+            }
             if (!waiting && !dontgo) {
                 mc.thePlayer.motionY = 0.0;
             } else {
