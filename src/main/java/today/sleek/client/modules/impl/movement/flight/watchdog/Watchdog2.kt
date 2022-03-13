@@ -31,12 +31,14 @@ class Watchdog2 : FlightMode("Hypixel2") {
                 waiting = true
             }
             if (waiting && mc.thePlayer.onGround) {
-                event.posY -= 0.0784F + MathUtil.getRandomInRange(0.001f, 0.025f)
+                event.posY -= 0.0784F + MathUtil.getRandomInRange(0.0005f, 0.0154f)
                 event.isOnGround = true;
 
             }
             if (!waiting && !dontgo) {
-                mc.thePlayer.motionY = 0.0;
+                mc.thePlayer.motionY = 0.0
+                if(mc.timer.timerSpeed > 1)
+                    mc.timer.timerSpeed -= mc.timer.timerSpeed/159
             } else {
                 mc.thePlayer.motionX = 0.0
                 mc.thePlayer.motionZ = 0.0
@@ -44,7 +46,7 @@ class Watchdog2 : FlightMode("Hypixel2") {
             if (!dontgo && !waiting) {
                 ChatUtil.log("$blinking")
                 val variable = blinking
-                if (mc.thePlayer.ticksExisted % 10 == 0) {
+                if (mc.thePlayer.ticksExisted % 21 == 0) {
                     blinking = !blinking
                 }
                 if (!blinking && variable) {
@@ -62,7 +64,7 @@ class Watchdog2 : FlightMode("Hypixel2") {
 
     override fun onMove(event: MoveEvent?) {
         if (!waiting && !dontgo) {
-            PlayerUtil.setMotion(event, PlayerUtil.getBaseSpeed().toDouble())
+            PlayerUtil.setMotion(event, PlayerUtil.getBaseSpeed().toDouble()*1.00725)
         } else {
             event!!.motionX = 0.0.also { mc.thePlayer.motionX = it }
             event.motionZ = 0.0.also { mc.thePlayer.motionZ = it }
@@ -71,7 +73,8 @@ class Watchdog2 : FlightMode("Hypixel2") {
 
     override fun onPacket(event: PacketEvent?) {
         val packet = event!!.getPacket<Packet<*>>()
-        if (packet is S08PacketPlayerPosLook) {
+        if (packet is S08PacketPlayerPosLook && (dontgo || waiting)) {
+            mc.timer.timerSpeed = flight.timer.value.toFloat()
             dontgo = false
             waiting = false
             mc.thePlayer.performHurtAnimation()
@@ -79,8 +82,8 @@ class Watchdog2 : FlightMode("Hypixel2") {
         if (blinking) {
             when (packet) {
                 is C00PacketKeepAlive -> {
-                    event.isCancelled = true
-                    list.add(packet)
+                    //event.isCancelled = true
+                    //list.add(packet)
                 }
                 is C03PacketPlayer -> {
                     event.isCancelled = true
@@ -103,7 +106,6 @@ class Watchdog2 : FlightMode("Hypixel2") {
         waiting = false
         blinking = false
         list.clear()
-        mc.timer.timerSpeed = flight.timer.value.toFloat()
     }
 
     override fun onDisable() {

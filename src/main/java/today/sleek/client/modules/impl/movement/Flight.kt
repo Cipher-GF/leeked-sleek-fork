@@ -32,7 +32,7 @@ class Flight : Module() {
 
     val speed = NumberValue("Speed", this, 1.0, 0.0, 10.0, 0.1)
     val antikick = BooleanValue("AntiKick", this, true, mode, "BridgerLand (TP)")
-    val timer = NumberValue("Timer", this, 1.0, 1.0, 5.0, 0.1, mode, "Mush", "Test 2", "Hypixel", "Test")
+    val timer = NumberValue("Timer", this, 1.0, 1.0, 5.0, 0.1, mode, "Mush", "Test 2", "Hypixel", "Hypixel2", "Test")
     val blink = BooleanValue("Blink", this, true, mode, "Mush")
     val viewbob = BooleanValue("View Bobbing", this, true)
     val spoofy = BooleanValue("Spoof Y", this, false)
