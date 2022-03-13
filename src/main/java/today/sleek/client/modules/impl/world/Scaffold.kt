@@ -9,10 +9,7 @@ import net.minecraft.item.ItemStack
 import net.minecraft.network.play.client.C09PacketHeldItemChange
 import net.minecraft.network.play.client.C0APacketAnimation
 import net.minecraft.potion.Potion
-import net.minecraft.util.AxisAlignedBB
-import net.minecraft.util.BlockPos
-import net.minecraft.util.EnumFacing
-import net.minecraft.util.Vec3
+import net.minecraft.util.*
 import today.sleek.Sleek
 import today.sleek.base.event.impl.KeyboardEvent
 import today.sleek.base.event.impl.RenderOverlayEvent
@@ -23,6 +20,7 @@ import today.sleek.base.value.value.BooleanValue
 import today.sleek.base.value.value.ModeValue
 import today.sleek.base.value.value.NumberValue
 import today.sleek.client.modules.impl.Module
+import today.sleek.client.modules.impl.combat.KillAura
 import today.sleek.client.modules.impl.visuals.HUD
 import today.sleek.client.utils.chat.ChatUtil
 import today.sleek.client.utils.font.Fonts
@@ -49,6 +47,9 @@ class Scaffold : Module() {
     private val info = BooleanValue("Show Info", this, true)
     private val delay = NumberValue("Delay", this, 0, 0, 9000, 1)
     private val expansion = NumberValue("Expansion", this, 4, 1, 6, 1)
+
+    private var autoJump = BooleanValue("Auto Jump", this, true, modeValue, "NCP")
+
     private var animation = 0
     private var blockEntry: BlockEntry? = null
     private var lastBlockEntry: BlockEntry? = null
@@ -117,35 +118,11 @@ class Scaffold : Module() {
         if (info.value && Sleek.getInstance().moduleManager.getModuleByName("HUD").isToggled) {
             val hud = Sleek.getInstance().moduleManager.getModuleByName("HUD") as HUD
             val scaledResolution = RenderUtils.getResolution()
-            RenderUtils.drawRect(
-                (scaledResolution.scaledWidth / 2 - 30).toDouble(),
-                (scaledResolution.scaledHeight / 2 + 50 + animation).toDouble(),
-                (20 + mc.fontRendererObj.getStringWidth(
-                    blockCount.toString() + ""
-                ) + 10).toDouble(),
-                30.0,
-                Color(0, 0, 0, 105).rgb
-            )
-            RenderUtils.drawRect(
-                (scaledResolution.scaledWidth / 2 - 30).toDouble(),
-                (scaledResolution.scaledHeight / 2 + 50 + animation).toDouble(),
-                (20 + mc.fontRendererObj.getStringWidth(
-                    blockCount.toString() + ""
-                ) + 10).toDouble(),
-                1.0,
-                ColorPalette.GREEN.color.rgb
-            )
             if (hud.font.value) {
                 Fonts.Verdana.drawString(
                     blockCount.toString() + "",
                     (scaledResolution.scaledWidth / 2 - 5).toFloat(),
                     (scaledResolution.scaledHeight / 2 + 61 + animation).toFloat(),
-                    -1
-                )
-                Fonts.Verdana.drawString(
-                    "Blocks",
-                    (scaledResolution.scaledWidth / 2 - 15).toFloat(),
-                    (scaledResolution.scaledHeight / 2 + 71 + animation).toFloat(),
                     -1
                 )
             } else {
@@ -155,18 +132,7 @@ class Scaffold : Module() {
                     scaledResolution.scaledHeight / 2 + 61 + animation,
                     -1
                 )
-                mc.fontRendererObj.drawString(
-                    "Blocks",
-                    scaledResolution.scaledWidth / 2 - 15,
-                    scaledResolution.scaledHeight / 2 + 71 + animation,
-                    -1
-                )
             }
-            mc.renderItem.renderItemIntoGUI(
-                mc.thePlayer.inventory.getStackInSlot(
-                    slotWithBlock
-                ), scaledResolution.scaledWidth / 2 - 28, scaledResolution.scaledHeight / 2 + 57 + animation
-            )
         }
     }
 
@@ -250,19 +216,26 @@ class Scaffold : Module() {
                 if (lastBlockEntry != null && blockEntry != null) {
                     val rotation = RotationUtil.getRotations(getPositionByFace(lastBlockEntry!!.position, lastBlockEntry!!.facing))
 
-                    ChatUtil.log("set rots")
-
                     val blockEntry = find(Vec3(0.0, 0.0, 0.0)) ?: return
                     this.blockEntry = blockEntry
                 }
-                val blockEntry = find(Vec3(0.0, if (mc.thePlayer.onGround) 0.0 else -1.0, 0.0))
+
+                if (event.isPre && autoJump.value && mc.thePlayer.onGround) {
+                    mc.thePlayer.jump()
+                }
+
+                var blockEntry: BlockEntry?
+
+                if (mc.thePlayer.onGround || mc.thePlayer.fallDistance > 0.35) {
+                    blockEntry = find(Vec3(0.0, (if (mc.thePlayer.onGround) 0.0 else 0.0), 0.0))
+                } else {
+                    return
+                }
                 lastBlockEntry = blockEntry
 
                 if (mc.thePlayer.isMoving) {
                     mc.thePlayer.forceSprinting(sprint.value)
                 }
-
-
 
                 val rotation = RotationUtil.getRotations(getPositionByFace(lastBlockEntry!!.position, lastBlockEntry!!.facing))
 
@@ -439,10 +412,11 @@ class Scaffold : Module() {
             }
             return -1
         }
+
     val blockCount: Int
         get() {
             var blockCount = 0
-            for (i in 0..7) {
+            for (i in 0..8) {
                 if (Minecraft.getMinecraft().thePlayer.inventory.getStackInSlot(i) == null) {
                     continue
                 }

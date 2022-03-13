@@ -319,7 +319,13 @@ public class GuiIngame extends Gui {
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         GlStateManager.disableLighting();
         GlStateManager.enableAlpha();
-        Sleek.getInstance().getEventBus().post(new RenderOverlayEvent());
+
+        try {
+            Sleek.getInstance().getEventBus().post(new RenderOverlayEvent());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     protected void renderTooltip(ScaledResolution sr, float partialTicks) {

@@ -29,7 +29,6 @@ class Watchdog: FlightMode("Hypixel") {
                 mc.thePlayer.motionY = 0.0;
             } else {
                 mc.thePlayer.motionX = 0.0
-                mc.thePlayer.motionZ = 0.0
             }
         }
     }

@@ -257,7 +257,7 @@ public class GameSettings {
     public KeyBinding ofKeyBindZoom;
     private File optionsFileOF;
 
-    public KeyBinding togglePerspective = new KeyBinding("Toggle Perspective", Keyboard.KEY_F, "Sleek");
+    public KeyBinding togglePerspective = new KeyBinding("Toggle Perspective", Keyboard.KEY_LMENU, "Sleek");
 
     public GameSettings(Minecraft mcIn, File p_i46326_2_) {
         this.keyBindings = (KeyBinding[]) ((KeyBinding[]) ArrayUtils.addAll(new KeyBinding[]{this.keyBindAttack, this.keyBindUseItem, this.keyBindForward, this.keyBindLeft, this.keyBindBack, this.keyBindRight, this.keyBindJump, this.keyBindSneak, this.keyBindSprint, this.keyBindDrop, this.keyBindInventory, this.keyBindChat, this.keyBindPlayerList, this.keyBindPickBlock, this.keyBindCommand, this.keyBindScreenshot, this.keyBindTogglePerspective, this.keyBindSmoothCamera, this.keyBindFullscreen, this.keyBindSpectatorOutlines}, this.keyBindsHotbar));

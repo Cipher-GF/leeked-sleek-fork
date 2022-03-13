@@ -28,11 +28,13 @@ class Watchdog2 : FlightMode("Hypixel2") {
         if (event!!.isPre) {
             if ((dontgo && !waiting) && mc.thePlayer.onGround) {
                 mc.thePlayer.jump()
+                PacketUtil.sendPacketNoEvent(C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY - 1.234, mc.thePlayer.posZ, true))
                 waiting = true
             }
             if (waiting && mc.thePlayer.onGround) {
                 event.posY -= 0.0784F + MathUtil.getRandomInRange(0.001f, 0.025f)
                 event.isOnGround = true;
+
             }
             if (!waiting && !dontgo) {
                 mc.thePlayer.motionY = 0.0;

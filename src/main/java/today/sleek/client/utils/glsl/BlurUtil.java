@@ -147,12 +147,4 @@ public class BlurUtil {
         EXTFramebufferObject.glFramebufferRenderbufferEXT(36160, 36128, 36161, stencil_depth_buffer_ID);
         EXTFramebufferObject.glFramebufferRenderbufferEXT(36160, 36096, 36161, stencil_depth_buffer_ID);
     }
-
-    public static boolean blurEnabled() {
-        if (OpenGlHelper.shadersSupported && mc.getRenderViewEntity() instanceof EntityPlayer) {
-            HUD hud = (HUD) Sleek.getInstance().getModuleManager().getModuleByName("HUD");
-            return !hud.hideBlur.getValue();
-        }
-        return false;
-    }
 }
