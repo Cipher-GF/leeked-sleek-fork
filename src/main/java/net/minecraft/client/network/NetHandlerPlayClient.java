@@ -66,6 +66,7 @@ import today.sleek.base.event.PacketDirection;
 import today.sleek.base.event.impl.PacketEvent;
 import today.sleek.base.event.impl.ServerJoinEvent;
 import today.sleek.client.gui.MainMenu;
+import today.sleek.client.utils.chat.ChatUtil;
 
 import java.io.File;
 import java.io.IOException;
@@ -1153,6 +1154,7 @@ public class NetHandlerPlayClient implements INetHandlerPlayClient {
 
     @SuppressWarnings("incomplete-switch")
     public void handleTitle(S45PacketTitle packetIn) {
+        System.out.println(packetIn.toString());
         PacketThreadUtil.checkThreadAndEnqueue(packetIn, this, this.gameController);
         S45PacketTitle.Type s45packettitle$type = packetIn.getType();
         String s = null;

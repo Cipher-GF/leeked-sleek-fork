@@ -145,4 +145,15 @@ public class S45PacketTitle implements Packet<INetHandlerPlayClient>
             return astring;
         }
     }
+
+    @Override
+    public String toString() {
+        return "S45PacketTitle{" +
+                "type=" + type +
+                ", message=" + message +
+                ", fadeInTime=" + fadeInTime +
+                ", displayTime=" + displayTime +
+                ", fadeOutTime=" + fadeOutTime +
+                '}';
+    }
 }

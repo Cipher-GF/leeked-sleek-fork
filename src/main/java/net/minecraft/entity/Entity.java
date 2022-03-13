@@ -587,7 +587,7 @@ public abstract class Entity implements ICommandSender {
             boolean flag = this.onGround && this.isSneaking() && this instanceof EntityPlayer;
 
             Scaffold scaffold = Sleek.getInstance().getModuleManager().getModuleByClass(Scaffold.class);
-            boolean shouldSafewalk = Sleek.getInstance().getModuleManager().getModuleByName("Safewalk").isToggled() || scaffold.getSafewalk().getValue();
+            boolean shouldSafewalk = Sleek.getInstance().getModuleManager().getModuleByName("Safewalk").isToggled() || (scaffold.isToggled() && scaffold.getSafewalk().getValue());
 
             if (flag || shouldSafewalk) {
                 double d6;

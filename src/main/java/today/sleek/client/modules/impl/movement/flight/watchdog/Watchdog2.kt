@@ -1,54 +1,92 @@
 package today.sleek.client.modules.impl.movement.flight.watchdog
 
 import net.minecraft.network.Packet
+import net.minecraft.network.play.client.C00PacketKeepAlive
+import net.minecraft.network.play.client.C03PacketPlayer
+import net.minecraft.network.play.client.C03PacketPlayer.C04PacketPlayerPosition
+import net.minecraft.network.play.client.C0FPacketConfirmTransaction
 import net.minecraft.network.play.server.S08PacketPlayerPosLook
 import today.sleek.base.event.impl.MoveEvent
 import today.sleek.base.event.impl.PacketEvent
 import today.sleek.base.event.impl.UpdateEvent
 import today.sleek.client.modules.impl.movement.flight.FlightMode
+import today.sleek.client.utils.chat.ChatUtil
+import today.sleek.client.utils.math.MathUtil
+import today.sleek.client.utils.network.PacketUtil
 import today.sleek.client.utils.player.PlayerUtil
 
-class Watchdog2 : FlightMode("Test") {
+class Watchdog2 : FlightMode("Hypixel2") {
 
     var dontgo = true
     var waiting = false
-    var speed = 0.6
+    var blinking = false
+    var list = mutableListOf<Packet<*>>()
 
-    override fun onUpdate(event: UpdateEvent) {
-        mc.thePlayer.posY = mc.thePlayer.prevPosY
-        if (event.isPre) {
+    override fun onUpdate(event: UpdateEvent?) {
+
+//        mc.thePlayer.posY = mc.thePlayer.prevPosY
+        if (event!!.isPre) {
             if ((dontgo && !waiting) && mc.thePlayer.onGround) {
                 mc.thePlayer.jump()
                 waiting = true
             }
             if (waiting && mc.thePlayer.onGround) {
-                event.posY -= 0.0784;
+                event.posY -= 0.0784F + MathUtil.getRandomInRange(0.001f, 0.025f)
                 event.isOnGround = true;
             }
             if (!waiting && !dontgo) {
                 mc.thePlayer.motionY = 0.0;
-                speed -= 0.05
             } else {
                 mc.thePlayer.motionX = 0.0
                 mc.thePlayer.motionZ = 0.0
             }
         }
+        if (mc.thePlayer.ticksExisted % 5 == 0) {
+            for (packet in list) {
+                PacketUtil.sendPacketNoEvent(packet)
+            }
+            ChatUtil.log("${list.size}")
+            list.clear()
+            blinking = false
+        } else {
+            if (!dontgo && !waiting) {
+                blinking = true
+            }
+        }
     }
 
-    override fun onMove(event: MoveEvent) {
+    override fun onMove(event: MoveEvent?) {
         if (!waiting && !dontgo) {
-            PlayerUtil.setMotion(event, Math.max(PlayerUtil.getBaseSpeed().toDouble(), speed))
+            PlayerUtil.setMotion(event, PlayerUtil.getBaseSpeed().toDouble())
         } else {
-            event.motionX = 0.0.also { mc.thePlayer.motionX = it }
+            event!!.motionX = 0.0.also { mc.thePlayer.motionX = it }
             event.motionZ = 0.0.also { mc.thePlayer.motionZ = it }
         }
     }
 
-    override fun onPacket(event: PacketEvent) {
-        if (event.getPacket<Packet<*>>() is S08PacketPlayerPosLook) {
-            waiting = false
+    override fun onPacket(event: PacketEvent?) {
+        val packet = event!!.getPacket<Packet<*>>()
+        if (packet is S08PacketPlayerPosLook) {
             dontgo = false
+            waiting = false
             mc.thePlayer.performHurtAnimation()
+        }
+        if (blinking) {
+            when (packet) {
+                is C00PacketKeepAlive -> {
+                    event.isCancelled = true
+                    list.add(packet)
+                }
+                is C03PacketPlayer -> {
+                    event.isCancelled = true
+                    list.add(packet)
+
+                }
+                is C0FPacketConfirmTransaction -> {
+                    event.isCancelled = true
+                    list.add(packet)
+                }
+            }
         }
     }
 
@@ -58,7 +96,14 @@ class Watchdog2 : FlightMode("Test") {
         }
         dontgo = true
         waiting = false
-        speed = 0.5
+        blinking = false
+        list.clear()
         mc.timer.timerSpeed = flight.timer.value.toFloat()
+    }
+
+    override fun onDisable() {
+        for (packet in list) {
+            PacketUtil.sendPacketNoEvent(packet)
+        }
     }
 }
