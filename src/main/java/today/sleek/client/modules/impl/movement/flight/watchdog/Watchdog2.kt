@@ -28,7 +28,6 @@ class Watchdog2 : FlightMode("Hypixel2") {
         if (event!!.isPre) {
             if ((dontgo && !waiting) && mc.thePlayer.onGround) {
                 mc.thePlayer.jump()
-                PacketUtil.sendPacketNoEvent(C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY - 1.234, mc.thePlayer.posZ, true))
                 waiting = true
             }
             if (waiting && mc.thePlayer.onGround) {
@@ -42,19 +41,23 @@ class Watchdog2 : FlightMode("Hypixel2") {
                 mc.thePlayer.motionX = 0.0
                 mc.thePlayer.motionZ = 0.0
             }
-        }
-        if (mc.thePlayer.ticksExisted % 5 == 0) {
-            for (packet in list) {
-                PacketUtil.sendPacketNoEvent(packet)
-            }
-            ChatUtil.log("${list.size}")
-            list.clear()
-            blinking = false
-        } else {
             if (!dontgo && !waiting) {
-                blinking = true
+                ChatUtil.log("$blinking")
+                val variable = blinking
+                if (mc.thePlayer.ticksExisted % 10 == 0) {
+                    blinking = !blinking
+                }
+                if (!blinking && variable) {
+                    for (packet in list) {
+                        PacketUtil.sendPacketNoEvent(packet)
+                    }
+                    ChatUtil.log("${list.size}")
+                    list.clear()
+                }
+                ChatUtil.log("t: $blinking")
             }
         }
+
     }
 
     override fun onMove(event: MoveEvent?) {
