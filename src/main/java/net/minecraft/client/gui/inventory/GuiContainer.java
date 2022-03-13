@@ -2,12 +2,14 @@ package net.minecraft.client.gui.inventory;
 
 import com.google.common.collect.Sets;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.gui.*;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureMap;
+import net.minecraft.client.settings.GameSettings;
+import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
@@ -16,6 +18,10 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.input.Keyboard;
+import today.sleek.Sleek;
+import today.sleek.client.gui.alt.GuiAltManager;
+import today.sleek.client.gui.alt.GuiCredits;
+import today.sleek.client.utils.font.Fonts;
 
 import java.io.IOException;
 import java.util.Set;
@@ -92,6 +98,7 @@ public abstract class GuiContainer extends GuiScreen
         this.mc.thePlayer.openContainer = this.inventorySlots;
         this.guiLeft = (this.width - this.xSize) / 2;
         this.guiTop = (this.height - this.ySize) / 2;
+
     }
 
     /**
@@ -118,6 +125,7 @@ public abstract class GuiContainer extends GuiScreen
         int l = 240;
         OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float)k / 1.0F, (float)l / 1.0F);
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+
 
         for (int i1 = 0; i1 < this.inventorySlots.inventorySlots.size(); ++i1)
         {
@@ -711,6 +719,8 @@ public abstract class GuiContainer extends GuiScreen
             }
         }
     }
+
+
 
     /**
      * This function is what controls the hotbar shortcut check when you press a number key when hovering a stack. Args

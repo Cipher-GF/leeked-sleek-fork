@@ -2,7 +2,7 @@
   "data": {
     "author": "qoft",
     "name": "bmc",
-    "lastUpdated": "Date 2022/3/12 Time 10:58:9"
+    "lastUpdated": "Date 2022/3/12 Time 12:49:25"
   },
   "modules": [
     {
@@ -109,7 +109,7 @@
       "name": "Sprint",
       "keybind": 0,
       "hidden": false,
-      "enabled": true,
+      "enabled": false,
       "Mode": "Legit",
       "Keep Sprint": "true"
     },
@@ -287,10 +287,10 @@
       "Ping": "true",
       "Rectangle": "true",
       "Outline": "false",
-      "SneakColor": "false",
+      "SneakColor": "true",
       "White": "false",
-      "Scaling": "0.1",
-      "Factor": "1.0",
+      "Scaling": "1.4000000000000001",
+      "Factor": "1.5",
       "SmartScale": "true"
     },
     {
@@ -393,7 +393,7 @@
       "Hide Blur": "false",
       "Client Name": "\u0026lS\u0026fleek \u00267[Antiban Edition??]",
       "Module Suffix": " %s",
-      "ArrayList Y": "1.0",
+      "ArrayList Y": "1",
       "ArrayList X": "4",
       "Scoreboard": "Right",
       "Scoreboard Y": "0.0"

@@ -1,5 +1,6 @@
 package net.minecraft.client.gui;
 
+import net.minecraft.client.gui.inventory.GuiContainer;
 import today.sleek.client.gui.GuiMainMenu;
 import today.sleek.client.gui.MainMenu;
 import net.minecraft.client.Minecraft;
@@ -110,7 +111,7 @@ public class GuiButton extends Gui {
             GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
             GlStateManager.blendFunc(770, 771);
             float boxWidth = this.xPosition + this.width / 2F - 99.8f;
-//            RenderUtil.drawRect(this.xPosition + this.width / 2F - 79f, this.yPosition, 261 - this.width / 2F, 20, 0x80000000);
+//            RenderUtil.drawRect(this.xPosition + this.width / 2F - 79f, this.yPosition, 261 - this.width / 2F, 20, new Color(0, 0, 0, 150).getRGB());
 
             int j = 14737632;
 
@@ -121,7 +122,7 @@ public class GuiButton extends Gui {
             }
 
             if (mc.currentScreen instanceof MainMenu) {
-                RenderUtil.drawRoundedRect(this.xPosition + this.width / 2F - 220f, this.yPosition+1, (300 - this.width / 2F)-1, 20,5, 0x80000000);
+                RenderUtil.drawRoundedRect(this.xPosition + this.width / 2F - 220f, this.yPosition+1, (300 - this.width / 2F)-1, 20,5, new Color(0, 0, 0, 150).getRGB());
                 RenderUtil.drawOutlinedRoundedRect(this.xPosition + this.width / 2F - 220f, this.yPosition+1, (300 - this.width / 2F)-1, 20,5,1, ColorUtils.getIntGradientOffset(new Color(255, 60, 234), new Color(27, 179, 255), (Math.abs(((System.currentTimeMillis()) / 20)) / 100D) + 9F / mc.fontRendererObj.FONT_HEIGHT * 9.95));
 
                 if (this.hovered) {
@@ -130,18 +131,22 @@ public class GuiButton extends Gui {
                     Fonts.Verdana.drawCenteredString(this.displayString, this.xPosition+13, this.yPosition + (this.height - 4f) / 2, j);
                 }
             } else if (mc.currentScreen instanceof GuiMainMenu) {
-                RenderUtil.drawRoundedRect(this.xPosition + this.width / 2F - 75f, this.yPosition, ((300 - this.width / 2F)/1.335), 20,5, 0x80000000);
+                RenderUtil.drawRoundedRect(this.xPosition + this.width / 2F - 75f, this.yPosition, ((300 - this.width / 2F)/1.335), 20,5, new Color(0, 0, 0, 150).getRGB());
                 RenderUtil.drawOutlinedRoundedRect(this.xPosition + this.width / 2F - 75f, this.yPosition, ((300 - this.width / 2F)/1.335), 20,5,1, ColorUtils.getIntGradientOffset(new Color(255, 60, 234), new Color(27, 179, 255), (Math.abs(((System.currentTimeMillis()) / 20)) / 100D) + 9F / mc.fontRendererObj.FONT_HEIGHT * 9.95));
                 Fonts.Verdana.drawCenteredString(this.displayString, (this.xPosition + (this.width / 2f))-1, (this.yPosition + (this.height - 4f) / 2)-1, j);
 
             } else if (mc.currentScreen instanceof GuiCredits) {
-                RenderUtil.drawRoundedRect(this.xPosition + this.width / 2F - 75f, this.yPosition, ((300 - this.width / 2F)/1.335)-18, 20,5, 0x80000000);
+                RenderUtil.drawRoundedRect(this.xPosition + this.width / 2F - 75f, this.yPosition, ((300 - this.width / 2F)/1.335)-18, 20,5, new Color(0, 0, 0, 150).getRGB());
                 RenderUtil.drawOutlinedRoundedRect(this.xPosition + this.width / 2F - 75f, this.yPosition, (((300 - this.width / 2F)/1.335)-18), 20,5,1, ColorUtils.getIntGradientOffset(new Color(255, 60, 234), new Color(27, 179, 255), (Math.abs(((System.currentTimeMillis()) / 20)) / 100D) + 9F / mc.fontRendererObj.FONT_HEIGHT * 9.95));
                 Fonts.Verdana.drawCenteredString(this.displayString, (this.xPosition + (this.width / 2f))-1, (this.yPosition + (this.height - 4f) / 2)-1, j);
             } else if (mc.currentScreen instanceof GuiDisconnected) {
-                RenderUtil.drawRoundedRect(this.xPosition + this.width / 2F - 75f, this.yPosition, ((300 - this.width / 2F)/1.335), 20,5, 0x80000000);
+                RenderUtil.drawRoundedRect(this.xPosition + this.width / 2F - 75f, this.yPosition, ((300 - this.width / 2F)/1.335), 20,5, new Color(0, 0, 0, 150).getRGB());
                 RenderUtil.drawOutlinedRoundedRect(this.xPosition + this.width / 2F - 75f, this.yPosition, (((300 - this.width / 2F)/1.335)), 20,5,1, ColorUtils.getIntGradientOffset(new Color(255, 60, 234), new Color(27, 179, 255), (Math.abs(((System.currentTimeMillis()) / 20)) / 100D) + 9F / mc.fontRendererObj.FONT_HEIGHT * 9.95));
                 Fonts.Verdana.drawCenteredString(this.displayString, (this.xPosition + (this.width / 2f))-1, (this.yPosition + (this.height - 4f) / 2)-1, j);
+            } else if (mc.currentScreen instanceof GuiContainer) {
+                RenderUtil.drawRoundedRect(this.xPosition + this.width / 2F - 75f, this.yPosition, ((300 - this.width / 2F)/1.335)-40, 20,5, new Color(0, 0, 0, 150).getRGB());
+                RenderUtil.drawOutlinedRoundedRect(this.xPosition + this.width / 2F - 75f, this.yPosition, (((300 - this.width / 2F)/1.335))-40, 20,5,1, ColorUtils.getIntGradientOffset(new Color(255, 60, 234), new Color(27, 179, 255), (Math.abs(((System.currentTimeMillis()) / 20)) / 100D) + 9F / mc.fontRendererObj.FONT_HEIGHT * 9.95));
+                Fonts.Verdana.drawCenteredString(this.displayString, (this.xPosition + (this.width / 2f))-6, (this.yPosition + (this.height - 4f) / 2)-1, j);
             }
 
             else {

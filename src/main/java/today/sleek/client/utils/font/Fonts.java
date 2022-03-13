@@ -16,12 +16,12 @@ public class Fonts extends Util {
     public static final MCFontRenderer Arial40 = new MCFontRenderer(new Font("Arial", Font.BOLD,40),true,true);
     public static final MCFontRenderer Arial35 = new MCFontRenderer(new Font("Arial", Font.BOLD,45),true,true);
     public static final MCFontRenderer Arial30 = new MCFontRenderer(new Font("Arial", Font.BOLD,30),true,true);
-    public static final MCFontRenderer Arial25 = new MCFontRenderer(new Font("Arial", Font.BOLD,30),true,true);
-    public static final MCFontRenderer Arial20 = new MCFontRenderer(new Font("Arial", Font.BOLD,30),true,true);
-    public static final MCFontRenderer Arial20Plain = new MCFontRenderer(new Font("Arial", Font.PLAIN,30),true,true);
-    public static final MCFontRenderer Arial17Plain = new MCFontRenderer(new Font("Arial", Font.PLAIN,17),true,true);
+    public static final MCFontRenderer Arial25 = new MCFontRenderer(new Font("Arial", Font.BOLD,25),true,true);
+    public static final MCFontRenderer Arial20 = new MCFontRenderer(new Font("Arial", Font.BOLD,20),true,true);
+    public static final MCFontRenderer Arial20Plain = new MCFontRenderer(new Font("Arial", Font.PLAIN,20),true,true);
     public static final MCFontRenderer Arial15 = new MCFontRenderer(new Font("Arial", Font.BOLD,30),true,true);
     public static final MCFontRenderer Arial12 = new MCFontRenderer(new Font("Arial", Font.PLAIN,12),true,true);
+    public static final MCFontRenderer Arial9Plain = new MCFontRenderer(new Font("Arial", Font.PLAIN,8),true,true);
     public static final MCFontRenderer Arial8 = new MCFontRenderer(new Font("Arial", Font.PLAIN,8),true,true);
     // Arial End
 

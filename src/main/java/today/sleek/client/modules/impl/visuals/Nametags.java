@@ -49,6 +49,10 @@ public class Nametags extends Module {
                 if (!player.isEntityAlive() || player.isInvisible() && !this.invisibles.getValue()) {
                     continue;
                 }
+                // check if the player is the same as the rendering player
+                if (player == mc.thePlayer) {
+                    continue;
+                }
                 double x = this.interpolate(player.lastTickPosX, player.posX, event.getPartialTicks()) - Nametags.mc.getRenderManager().renderPosX;
                 double y = this.interpolate(player.lastTickPosY, player.posY, event.getPartialTicks()) - Nametags.mc.getRenderManager().renderPosY;
                 double z = this.interpolate(player.lastTickPosZ, player.posZ, event.getPartialTicks()) - Nametags.mc.getRenderManager().renderPosZ;

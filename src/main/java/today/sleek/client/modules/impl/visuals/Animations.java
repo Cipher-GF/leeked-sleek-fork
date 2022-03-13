@@ -23,7 +23,7 @@ public class Animations extends Module {
     public BooleanValue smoothhit = new BooleanValue("Smooth Hit", this, false, attackanim);
     public NumberValue<Float> scale = new NumberValue<>("Scale", this, 1.0f, 0.0f, 2.0f, 0.1f, attackanim);
     public NumberValue<Integer> slowdown = new NumberValue<>("Swing Speed", this, 1, -4, 12, 1, attackanim);
-    private ModeValue modeblockanim = new ModeValue("Block Mode", this, attackanim, "Normal", "Hide", "1.7", "Ethereal", "Stella", "Interia", "Styles", "Slide", "Lucky", "Remix", "Swang", "Down", "Knife", "Exhi", "oHare", "oHare2", "Wizzard", "Lennox", "ETB", "Spin", "Rotate");
+    private ModeValue modeblockanim = new ModeValue("Block Mode", this, attackanim, "Normal", "Hide", "1.7", "Ethereal", "Stella", "Interia", "Styles", "Slide", "Lucky", "Remix", "Swang", "Down", "Knife", "Exhi", "oHare", "oHare2", "Wizzard", "Lennox", "ETB", "Spin", "Rotate", "Dick");
     private float rotate;
 
     private void func_178103_d(final float n) {
@@ -223,6 +223,17 @@ public class Animations extends Module {
                     mc.getItemRenderer().transformFirstPersonItem(f / 2.5f, 0.0f);
                     GlStateManager.rotate(-90.0f, 1.0f, 0.0f, 0.2f);
                     GlStateManager.rotate(rotate, 0.0f, -1.0f, 0.0f);
+                    break;
+                case "DICK":
+                    GlStateManager.translate(0.41F, -0.25F, -1F); // size?
+                    GlStateManager.translate(-0.38F, -0.20, 0.0F); // where it is
+                    GlStateManager.rotate(145F, -25f, 90F, -20F); // rotation, duh
+                    float gay22 = MathHelper.sin(MathHelper.sqrt_float(f1) / .4f * (float) Math.PI);
+//                    GlStateManager.rotate(gay22 / -5F, 5F, -90F, 180F);
+                    GlStateManager.translate(gay22 / 4F, gay22 / -2F, 0);
+
+                    float size2 = 0.295F;
+                    GlStateManager.scale(size2, size2, size2);
                     break;
             }
         }

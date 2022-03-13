@@ -464,4 +464,5 @@ public class MCFontRenderer extends CFont {
             this.colorCode[index] = ((red & 0xFF) << 16 | (green & 0xFF) << 8 | blue & 0xFF);
         }
     }
+
 }
