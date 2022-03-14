@@ -48,7 +48,7 @@ public final class GuiAltManager extends GuiScreen {
                 break;
             case 4: 
                 if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
-                    Desktop.getDesktop().browse(new URI("http://sellix.io/drilledalts"));
+                    Desktop.getDesktop().browse(new URI("https://discord.gg/W6CaMDumnN"));
                 }
                 break;
             case 5: 
@@ -94,7 +94,7 @@ public final class GuiAltManager extends GuiScreen {
         buttonList.add(new GuiButton(2, width / 2 - 100, var3 + 72 + 12 + 48, 203, 20, "Clipboard"));
         buttonList.add(new GuiButton(3, width / 2 - 100, var3 + 72 + 12 + 48 + 24, 203, 20, "Generate Cracked Account"));
         buttonList.add(new GuiButton(5, width / 2 - 100, var3 + 72 + 12 + 48 + 24 + 24, 203, 20, "Microsoft Login"));
-        buttonList.add(new GuiButton(4, width / 2 - 100, var3 + 72 + 12 + 48 + 24 * 3, 203, 20, "DrilledAlts (Gone)"));
+        buttonList.add(new GuiButton(4, width / 2 - 100, var3 + 72 + 12 + 48 + 24 * 3, 203, 20, "MoxyGen (Good)"));
         buttonList.add(new GuiButton(6, width / 2 - 100, var3 + 72 + 12 + 48 + 24 + 24 * 3, 203, 20, "Generate Real Looking Name"));
         username = new GuiTextField(var3, mc.fontRendererObj, width / 2 - 100, 60, 200, 20);
         password = new GuiTextField(var3, mc.fontRendererObj, width / 2 - 100, 100, 200, 20);

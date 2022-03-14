@@ -1,15 +1,19 @@
 package today.sleek.client.modules.impl.movement.flight.watchdog
 
 import net.minecraft.network.Packet
+import net.minecraft.network.play.client.C03PacketPlayer
+import net.minecraft.network.play.client.C03PacketPlayer.C04PacketPlayerPosition
 import net.minecraft.network.play.server.S08PacketPlayerPosLook
 import today.sleek.base.event.impl.MoveEvent
 import today.sleek.base.event.impl.PacketEvent
 import today.sleek.base.event.impl.UpdateEvent
 import today.sleek.client.modules.impl.movement.flight.FlightMode
 import today.sleek.client.utils.math.MathUtil
+import today.sleek.client.utils.network.PacketSleepThread
+import today.sleek.client.utils.network.PacketUtil
 import today.sleek.client.utils.player.PlayerUtil
 
-class Watchdog: FlightMode("Hypixel") {
+class Watchdog4: FlightMode("HypixelTest") {
 
     var dontgo = true
     var waiting = false
@@ -18,11 +22,13 @@ class Watchdog: FlightMode("Hypixel") {
         mc.thePlayer.posY = mc.thePlayer.prevPosY
         if (event!!.isPre) {
             if ((dontgo && !waiting) && mc.thePlayer.onGround) {
+                PacketUtil.sendPacketNoEvent(C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY - 1.534, mc.thePlayer.posZ, false))
+                PacketSleepThread.delayPacket(C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY - 1.9432, mc.thePlayer.posZ, false), 300)
                 mc.thePlayer.jump()
                 waiting = true
             }
             if (waiting && mc.thePlayer.onGround) {
-                event.posY -= 0.0784F + MathUtil.getRandomInRange(0.0005f, 0.0154f)
+                event.posY
                 event.isOnGround = true;
             }
             if (!waiting && !dontgo) {
