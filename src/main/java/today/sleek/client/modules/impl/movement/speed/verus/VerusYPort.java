@@ -4,10 +4,10 @@ import today.sleek.base.event.impl.MoveEvent;
 import today.sleek.client.modules.impl.movement.speed.SpeedMode;
 import today.sleek.client.utils.player.PlayerUtil;
 
-public class VerusGround extends SpeedMode {
+public class VerusYPort extends SpeedMode {
 
-    public VerusGround() {
-        super("Verus Port");
+    public VerusYPort() {
+        super("Verus yPort");
     }
 
     @Override

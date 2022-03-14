@@ -27,11 +27,11 @@ class LowHop : SpeedMode("Watchdog (LowHop)") {
                     if (ticks == 4) {
                         mc.thePlayer.motionY = -.09
                     }
-//                    if(ticks < 4){
-//                        mc.timer.timerSpeed = 1.3f
-//                    }else{
-//                        mc.timer.timerSpeed = 1.1f
-//                    }
+                    if(ticks < 4){
+                        mc.timer.timerSpeed = 1.3f
+                    }else{
+                        mc.timer.timerSpeed = 1.1f
+                    }
                 }
             //}
         }

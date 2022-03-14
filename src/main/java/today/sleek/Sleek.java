@@ -172,7 +172,7 @@ public class Sleek {
 
     public void setRank(String rank) {
         switch (rank) {
-            case "Developer": {
+            case "DEV": {
                 this.rank = UserRank.DEVELOPER;
                 break;
             }

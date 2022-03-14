@@ -47,6 +47,7 @@ public class Fonts extends Util {
     public static final MCFontRenderer Yantramanav_Regular = new MCFontRenderer(fontFromTTF(new ResourceLocation("sleek/fonts/Yantramanav-Regular.ttf"),18, 0), true, true);
 
     public static final MCFontRenderer SFRegular = new MCFontRenderer(fontFromTTF(new ResourceLocation("sleek/fonts/sfregular.ttf"),18, 0), true, true);
+    public static final MCFontRenderer SFRegular40 = new MCFontRenderer(fontFromTTF(new ResourceLocation("sleek/fonts/sfregular.ttf"),40, 0), true, true);
 
 
 

@@ -22,24 +22,26 @@ public class IRC extends Module {
     }
 
     private IRCClient client;
-    Stopwatch time = new Stopwatch();
 
 
     public void onEnable() {
-        time.resetTime();
 
         try {
             client = new IRCClient();
             client.connectBlocking();
 
-        } catch (URISyntaxException | InterruptedException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     public void onDisable() {
-        client.close();
-        client = null;
+        try {
+            client.closeBlocking();
+            client = null;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Subscribe
@@ -48,7 +50,7 @@ public class IRC extends Module {
 
         if (message.startsWith("-") || message.startsWith("- ")) {
             event.setCancelled(true);
-            client.send(event.getMessage().replace("-", ""));
+            client.sendMessage(event.getMessage().replace("-", ""));
         }
     }
 }

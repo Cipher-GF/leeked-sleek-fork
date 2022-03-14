@@ -66,7 +66,8 @@ public class ConfigManager {
             if (dir != null) {
                 File[] files = dir.listFiles(f -> !f.isDirectory() && FilenameUtils.getExtension(f.getName()).equals("sleek"));
                 for (File f : files) {
-                    Config config = new Config(FilenameUtils.removeExtension(f.getName()).replace(" ", ""), f);
+                    String[] data = getConfigData(FilenameUtils.removeExtension(f.getName()).replace(" ", ""));
+                    Config config = new Config(FilenameUtils.removeExtension(f.getName()).replace(" ", ""), data[1], data[2], false, f);
                     this.configs.add(config);
                 }
             }
@@ -82,7 +83,7 @@ public class ConfigManager {
             if (!node.isJsonObject()) {
                 return null;
             }
-            JsonObject obj = node.getAsJsonObject();
+            JsonObject obj = node.getAsJsonObject().get("data").getAsJsonObject();
             return new String[] {obj.get("name").getAsString(), obj.get("author").getAsString(), obj.get("lastUpdated").getAsString()};
         } catch (Throwable t) {
             t.printStackTrace();

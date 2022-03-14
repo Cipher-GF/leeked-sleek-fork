@@ -11,7 +11,7 @@ import today.sleek.client.utils.player.PlayerUtil;
 public class Bhop extends SpeedMode {
 
     public Bhop() {
-        super("Watchdog (Hop)");
+        super("Watchdog");
     }
 
     @Override

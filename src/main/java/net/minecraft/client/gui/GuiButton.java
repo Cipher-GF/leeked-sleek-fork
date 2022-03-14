@@ -8,7 +8,7 @@ import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
-import today.sleek.client.gui.alt.GuiCredits;
+import today.sleek.client.gui.GuiCredits;
 import today.sleek.client.gui.clickgui.utils.render.animation.easings.Animate;
 import today.sleek.client.gui.clickgui.utils.render.animation.easings.Easing;
 import today.sleek.client.utils.font.Fonts;

@@ -13,9 +13,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ModuleManager {
-    private final ArrayList<Module> modules = new ArrayList<>();
+    private final CopyOnWriteArrayList<Module> modules = new CopyOnWriteArrayList<>();
 
     public ModuleManager() {
         for (Class<?> mod : ReflectUtils.getReflects(this.getClass().getPackage().getName() + ".impl", Module.class)) {
@@ -136,7 +137,7 @@ public class ModuleManager {
     }
 
     @SuppressWarnings("all")
-    public ArrayList<Module> getModules() {
+    public CopyOnWriteArrayList<Module> getModules() {
         return this.modules;
     }
 }
