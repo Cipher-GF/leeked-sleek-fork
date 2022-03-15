@@ -5,6 +5,7 @@ import com.google.common.eventbus.Subscribe;
 import com.jagrosh.discordipc.IPCClient;
 import com.jagrosh.discordipc.IPCListener;
 import com.jagrosh.discordipc.entities.RichPresence;
+import lombok.SneakyThrows;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.play.server.S02PacketChat;
 import net.minecraft.util.ChatComponentText;
@@ -12,6 +13,7 @@ import org.apache.logging.log4j.LogManager;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 import today.sleek.base.config.ConfigManager;
+import today.sleek.base.event.SleekEventBus;
 import today.sleek.base.event.impl.KeyboardEvent;
 import today.sleek.base.event.impl.PacketEvent;
 import today.sleek.base.event.impl.ServerJoinEvent;
@@ -22,6 +24,7 @@ import today.sleek.base.protection.ProtectionUtil;
 import today.sleek.base.scripting.ScriptManager;
 import today.sleek.client.commands.CommandManager;
 import today.sleek.client.friend.FriendManager;
+import today.sleek.client.gui.click.Screen;
 import today.sleek.client.gui.config.ConfigurationGUI;
 import today.sleek.client.modules.ModuleManager;
 import today.sleek.client.modules.impl.Module;
@@ -30,6 +33,7 @@ import today.sleek.client.modules.impl.visuals.ClickGUI;
 import today.sleek.client.rank.UserRank;
 import today.sleek.client.targets.TargetManager;
 import today.sleek.client.utils.network.HttpUtil;
+import today.sleek.client.utils.server.ServerUtil;
 import viamcp.ViaMCP;
 import viamcp.utils.JLoggerToLog4j;
 
@@ -39,6 +43,8 @@ import java.text.MessageFormat;
 import java.time.OffsetDateTime;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -55,7 +61,8 @@ public class Sleek {
         return instance;
     }
 
-    private EventBus eventBus = new EventBus("Sleek");
+    private EventBus eventBus = new EventBus(new SleekEventBus());
+
     private ModuleManager moduleManager;
     private CommandManager commandManager;
     private ConfigManager configManager;
@@ -66,6 +73,7 @@ public class Sleek {
     private CheckManager checkManager;
     private TargetManager targetManager;
     private ScriptManager scriptManager;
+    public Screen userInterface;
 
     public void onStart() {
         Logger jLogger = new JLoggerToLog4j(LogManager.getLogger("checksum"));
@@ -105,23 +113,48 @@ public class Sleek {
             System.out.println("[Sleek] Failed to start ViaMCP");
         }
         try {
+            final OffsetDateTime[] time = {OffsetDateTime.now()};
+            final String[] lastServer = {ServerUtil.getServer()};
+
             IPCClient client = new IPCClient(937350566886137886L);
             client.setListener(new IPCListener() {
                 @Override
                 public void onReady(IPCClient client) {
-                    RichPresence.Builder builder = new RichPresence.Builder();
-                    builder.setState("UID: " + uid)
-                            .setDetails("Destroying servers")
-                            .setStartTimestamp(OffsetDateTime.now())
-                            .setLargeImage("canary-large", "Discord Canary")
-                            .setSmallImage("ptb-small", "Discord PTB");
-                    client.sendRichPresence(builder.build());
+                    Timer timer = new Timer();
+                    timer.schedule(new TimerTask() {
+                        @SneakyThrows
+                        @Override
+                        public void run() {
+                            //update the time whenever they switch servers
+                            if (!lastServer[0].equalsIgnoreCase(ServerUtil.getServer())) {
+                                time[0] = OffsetDateTime.now();
+                                lastServer[0] = ServerUtil.getServer();
+                            }
+
+                            //create rpc
+                            RichPresence.Builder builder = new RichPresence.Builder();
+
+                            builder.setState("UID: " + uid)
+                                    .setDetails(ServerUtil.getServer())
+                                    .setStartTimestamp(time[0])
+                                    .setLargeImage("canary-large", "Discord Canary")
+                                    .setSmallImage("ptb-small", "Discord PTB");
+
+                            //update it
+                            client.sendRichPresence(builder.build());
+                        }
+                    }, 0, 5000);
                 }
             });
+
             client.connect();
         } catch (Exception e) {
-            System.out.println("Discord not found, not setting rpc.");
+            System.out.println("Error: Discord RPC!");
+            e.printStackTrace();
         }
+
+        //set the ui
+        userInterface = new Screen();
 
         System.out.println("Client has been started.");
         //set the window title
