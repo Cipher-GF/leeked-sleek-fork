@@ -41,11 +41,9 @@ public class ConfigManager {
         configs.clear();
         try {
             JsonElement element = null;
-            try {
-                element = new JsonParser().parse(HttpUtil.get("http://zerotwoclient.xyz:8080/api/verifiedconfigs"));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+
+            element = new JsonParser().parse(HttpUtil.get("http://zerotwoclient.xyz:8080/api/verifiedconfigs"));
+
             String configs = HttpUtil.getConfigUrl();
             JsonObject json = new JsonParser().parse(configs).getAsJsonArray().get(0).getAsJsonObject();
             if (json.get("uid").getAsString().equals(Sleek.getInstance().getUid())) {
