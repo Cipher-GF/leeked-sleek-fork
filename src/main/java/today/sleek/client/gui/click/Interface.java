@@ -3,6 +3,7 @@ package today.sleek.client.gui.click;
 import net.minecraft.client.*;
 import net.minecraft.util.*;
 import org.lwjgl.opengl.*;
+import today.sleek.Sleek;
 import today.sleek.base.modules.ModuleCategory;
 import today.sleek.client.gui.click.components.tab.main.MainButtonTab;
 import today.sleek.client.gui.click.tab.Tab;
@@ -11,6 +12,7 @@ import today.sleek.client.gui.click.tab.cheat.TabDefaultCheat;
 import today.sleek.client.gui.click.utility.ExpandAnimation;
 import today.sleek.client.gui.click.utils.ColorCreator;
 import today.sleek.client.gui.click.utils.Draw;
+import today.sleek.client.utils.font.Fonts;
 import today.sleek.client.utils.math.Stopwatch;
 
 import java.awt.*;
@@ -94,7 +96,6 @@ public class Interface
     }
     
     public void drawInterface(final double mouseX, final double mouseY) {
-        Draw.drawGradientRect(0, 0, this.screen.getResolution().getScaledWidth(), this.screen.getResolution().getScaledHeight(), new Color(255, 255, 255, 0).getRGB(), ColorCreator.createRainbowFromOffset2(-6000, 0));
         this.currentFrameMouseX = mouseX;
         this.currentFrameMouseY = mouseY;
         if (this.moving) {
@@ -132,16 +133,16 @@ public class Interface
         final double scissorX = this.positionX + this.width / 2.0 - this.expandAnimation.getX();
         final double scissorY = this.screen.getResolution().getScaledHeight() - (this.positionY + this.height + 10.0) + this.height / 2.0 + 5.0 - this.expandAnimation.getY() / 2.0f;
         GL11.glScissor((int)scissorX * this.screen.getResolution().getScaleFactor(), (int)scissorY * this.screen.getResolution().getScaleFactor(), (int)(this.expandAnimation.getX() * 2.0f) * this.screen.getResolution().getScaleFactor(), (int)this.expandAnimation.getY() * this.screen.getResolution().getScaleFactor());
-//        Draw.drawRectangle(this.positionX - 0.5, this.positionY - 0.5, this.positionX + this.width + 0.5, this.positionY + this.height + 0.5, this.getColor(255, 255, 255, 255));
-       // Draw.drawRectangle(this.positionX - 1.0, this.positionY - 1.0, this.positionX + this.width + 1.0, this.positionY + this.height + 1.0, this.getColor(255, 255, 255, 255));
+        Draw.drawRectangle(this.positionX - 0.5, this.positionY - 0.5, this.positionX + this.width + 0.5, this.positionY + this.height + 0.5, this.getColor(255, 255, 255, 255));
+        Draw.drawRectangle(this.positionX - 1.0, this.positionY - 1.0, this.positionX + this.width + 1.0, this.positionY + this.height + 1.0, this.getColor(255, 255, 255, 255));
         Draw.drawRectangle(this.positionX - 1.5, this.positionY - 1.5, this.positionX + this.width + 1.5, this.positionY + this.height + 1.5, new Color(40, 39, 41, 255).getRGB());
 
         GL11.glColor3f(1.0f, 1.0f, 1.0f);
-        //Draw.drawImg(new ResourceLocation("client/gui/logo/32x32.png"), this.positionX - 4, this.positionY - 2, 32.0, 32.0);
-       // Draw.drawRectangle(this.positionX, this.positionY + 24.0, this.positionX + 24.0, this.positionY + 25.0, this.getColor(0, 0, 0, 50));
-        //Draw.drawRectangle(this.positionX + 24.0, this.positionY, this.positionX + 25.5, this.positionY + this.height, this.getColor(0, 0, 0, 50));
-        //Draw.drawRectangle(this.positionX + 24.0, this.positionY, this.positionX + 25.0, this.positionY + this.height, this.getColor(0, 0, 0, 50));
-        //Draw.drawRectangle(this.positionX + 24.0, this.positionY, this.positionX + 24.5, this.positionY + this.height, this.getColor(0, 0, 0, 50));
+        Draw.drawImg(new ResourceLocation("client/gui/logo/32x32.png"), this.positionX - 4, this.positionY - 2, 32.0, 32.0);
+        Draw.drawRectangle(this.positionX, this.positionY + 24.0, this.positionX + 24.0, this.positionY + 25.0, this.getColor(0, 0, 0, 50));
+        Draw.drawRectangle(this.positionX + 24.0, this.positionY, this.positionX + 25.5, this.positionY + this.height, this.getColor(0, 0, 0, 50));
+        Draw.drawRectangle(this.positionX + 24.0, this.positionY, this.positionX + 25.0, this.positionY + this.height, this.getColor(0, 0, 0, 50));
+        Draw.drawRectangle(this.positionX + 24.0, this.positionY, this.positionX + 24.5, this.positionY + this.height, this.getColor(0, 0, 0, 50));
         for (final today.sleek.client.gui.click.components.Component component2 : this.components) {
             if (component2 instanceof MainButtonTab) {
                 final MainButtonTab tabButton = (MainButtonTab)component2;
@@ -155,9 +156,8 @@ public class Interface
         }
         this.components.forEach(component -> component.drawComponent(this.positionX + component.positionX, this.positionY + component.positionY));
         if (this.currentTab == null) {
-            //Fonts.f18.drawString("�c" + Helium.clientUser + "�f, welcome to �cHelium�f.", this.positionX + 30.0, this.positionY + 6.0, this.getColor(215, 215, 215));
-            //Fonts.f18.drawString("�fYou are currently on build �c" + Helium.client_build, this.positionX + 30.0, this.positionY + 16.0, this.getColor(215, 215, 215));
-            //Fonts.f14.drawString("This is a §2§lBETA §fbuild, Report any bugs to Mere, Kansio or Shotbowxd", this.positionX + 30.0, this.positionY + 16.0, this.getColor(215, 215, 215));
+            Fonts.Arial15.drawString("§7Logged in as: §b" + Sleek.getInstance().getUsername() + " §7(uid: " + Sleek.getInstance().getUid() + ")", this.positionX + 30.0, this.positionY + 6.0, this.getColor(215, 215, 215));
+            Fonts.Arial15.drawString("§7User Type: " + Sleek.getInstance().getRank().getColor() + Sleek.getInstance().getRank().getDisplayName(), this.positionX + 30.0, this.positionY + 16.0, this.getColor(215, 215, 215));
         }
         else {
             this.currentTab.components.forEach(component -> component.drawComponent(this.positionX + component.positionX, this.positionY + component.positionY));

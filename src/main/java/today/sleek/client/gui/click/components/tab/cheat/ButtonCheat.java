@@ -54,21 +54,23 @@ public class ButtonCheat extends BaseButton
         } else {
             color = new Color(20, 19, 20);
         }
+        Draw.drawRectangle(x + 3, y + 1, x + this.maxWidth - 3, y - 2 + this.maxHeight + 1, new Color(40, 40, 40).getRGB());
         if (cheat.isToggled()) {
-            Draw.drawRectangle(x, y - 1, x + this.maxWidth, y + 1 + this.maxHeight, new Color(40, 40, 40).getRGB());
             if (!this.listeningForKey) {
-                Fonts.Arial18.drawString("    " + this.cheat.getName(), x + 8, y + 9, Color.WHITE.getRGB());
+                Fonts.Arial18.drawString("  " + this.cheat.getName(), x + 3, y + 9, Color.WHITE.getRGB());
             } else {
-                Fonts.Arial18.drawString("    " + "...", x + 8, y + 9, Color.WHITE.getRGB());
+                Fonts.Arial18.drawString("  " + "...", x + 8, y + 9, Color.WHITE.getRGB());
             }
             //Fonts.Arial30.drawString(" �a�", x + 2.0, y + 6.5, Color.WHITE.getRGB());
         } else {
             if (!this.listeningForKey) {
-                Fonts.Arial18.drawString("    " + this.cheat.getName(), x + 8, y + 9, Color.WHITE.getRGB());
+                Fonts.Arial18.drawString("  " + this.cheat.getName(), x + 3, y + 9, Color.WHITE.getRGB());
             } else {
-                Fonts.Arial18.drawString("    " + "...", x + 8, y + 9, Color.WHITE.getRGB());
+                Fonts.Arial18.drawString("  " + "...", x + 8, y + 9, Color.WHITE.getRGB());
             }
         }
+
+        //Fonts.Arial12.drawString("  " + this.cheat.getDescription(), x + 8, y + 18, Color.GRAY.getRGB());
     }
     
     @Override
