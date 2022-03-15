@@ -11,6 +11,7 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.client.renderer.GlStateManager;
 import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL20;
@@ -23,7 +24,6 @@ import today.sleek.client.utils.font.MCFontRenderer;
 import today.sleek.client.utils.glsl.GLSLSandboxShader;
 import today.sleek.client.utils.network.HttpUtil;
 import today.sleek.client.utils.render.ColorPalette;
-import viamcp.utils.JLoggerToLog4j;
 
 import javax.net.ssl.*;
 import javax.swing.*;
@@ -34,8 +34,6 @@ import java.security.NoSuchAlgorithmException;
 import java.security.cert.X509Certificate;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class GuiMainMenu extends GuiScreen {
     private GuiTextField username;
@@ -73,42 +71,44 @@ public class GuiMainMenu extends GuiScreen {
                 return;
             }
             if (button.id == 0) {
-                Logger logger = new JLoggerToLog4j(LogManager.getLogger("debug"));
-                logger.log(Level.INFO, "got button shit");
+                org.apache.logging.log4j.Logger logger = LogManager.getLogger();
+                logger.info("got button shit");
                 Map<String, String> header = new HashMap<>();
                 HashMap<String, String> map = new HashMap<>();
                 map.put("Client-Token", "s59gtK6FCntT6tafCNbyMpQ2");
                 Sleek.getInstance().setUid(username.getText());
-                logger.log(Level.INFO, "set uid");
+                logger.info("set uid");
 
                 disableSslVerification();
 
-                logger.log(Level.INFO, "disabled ssl fuckery");
+                logger.info("disabled ssl fuckery");
 
                 String serv = HttpUtil.get("http://zerotwoclient.xyz:8080/api/user?hwid=" + NegroidFarm.guisdafghiusfgfsdhusdfghifsdhuidsfhuifdshuifsdhiudsfhiusfdhsdiuffsdhiudhsifusdfhiufsdhiufsdhiusdfhiufsdhiufsdhiu(), map);
                 // get first object in array
                 JsonObject json = new JsonParser().parse(serv).getAsJsonArray().get(0).getAsJsonObject();
-                logger.log(Level.INFO, "ran json test");
+                logger.info("ran json test");
                 if (json.get("uid").getAsString().equals(Sleek.getInstance().getUid())) {
-                    logger.log(Level.INFO, "uid pass");
+                    logger.info("uid pass");
                     if (json.get("hwid").getAsString().equals(NegroidFarm.guisdafghiusfgfsdhusdfghifsdhuidsfhuifdshuifsdhiudsfhiusfdhsdiuffsdhiudhsifusdfhiufsdhiufsdhiusdfhiufsdhiufsdhiu())) {
-                        logger.log(Level.INFO, "run start next");
+                        logger.info("run start next");
                         Sleek.getInstance().onStart();
-                        logger.log(Level.INFO, "ran start");
+                        logger.info("ran start");
                         mc.displayGuiScreen(new MainMenu());
-                        logger.log(Level.INFO, "main menu");
+                        logger.info("main menu");
                         Sleek.getInstance().setUsername(json.get("username").getAsString());
                         Sleek.getInstance().setDiscordTag(String.format("%s#%s", new JsonParser().parse(HttpUtil.get("http://zerotwoclient.xyz:8080/api/getdiscordinfo?id=" + json.get("discordID").getAsString())).getAsJsonObject().get("username"), new JsonParser().parse(HttpUtil.get("http://zerotwoclient.xyz:8080/api/getdiscordinfo?id=" + json.get("discordID").getAsString())).getAsJsonObject().get("discriminator")));
                         Sleek.getInstance().setRank(json.get("rank").getAsString());
-                        logger.log(Level.INFO, "finish");
+                        logger.info("finish");
                     }
                 } else {
+                    logger.info(serv);
                     System.out.println(serv);
                 }
             }
         } catch (Exception e) {
-            Logger logger = new JLoggerToLog4j(LogManager.getLogger("launch error"));
-            logger.log(Level.SEVERE, "error: ", e);
+
+            Logger logger = LogManager.getLogger("launch error");
+            logger.error("Launch-Error", e);
         }
         if (ProtectionUtil.husdhuisgfhusgdrhuifosdguhisfgdhuisfgdhsifgduhsufgidsfdhguisfgdhuoisfguhdiosgfoduhisfghudiugfsidshofugid()) {
             try {

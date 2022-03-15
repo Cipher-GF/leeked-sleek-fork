@@ -71,6 +71,7 @@ public class CommandManager {
         commands.add(new GCCommand());
         commands.add(new HideModuleCommand());
         commands.add(new ShowModuleCommand());
+        commands.add(new ScriptCommand());
     }
 
     @SuppressWarnings("all")

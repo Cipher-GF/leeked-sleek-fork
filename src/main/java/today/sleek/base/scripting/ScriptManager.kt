@@ -1,0 +1,61 @@
+package today.sleek.base.scripting
+
+import net.minecraft.util.EnumChatFormatting
+import org.apache.commons.io.FilenameUtils
+import org.apache.commons.lang3.exception.ExceptionUtils
+import today.sleek.Sleek
+import today.sleek.base.scripting.base.ScriptAPI
+import today.sleek.base.scripting.base.ScriptFile
+import today.sleek.client.utils.chat.ChatUtil
+import java.io.File
+import java.io.FileReader
+import javax.script.ScriptContext
+import javax.script.ScriptEngine
+import javax.script.ScriptEngineManager
+import javax.script.SimpleScriptContext
+
+
+class ScriptManager(val dir: File) {
+
+    val scripts = arrayListOf<ScriptFile>()
+    val factory = ScriptEngineManager()
+    var engine: ScriptEngine = factory.getEngineByName("Nashorn")
+
+    fun unloadScripts() {
+        scripts.clear()
+        Sleek.instance().moduleManager.unloadScripts()
+    }
+
+    fun loadScripts() {
+        for (file in dir.listFiles()!!) {
+            println(file.name)
+            if (FilenameUtils.getExtension(file.name) == "js") {
+                scripts.add(ScriptFile(file, FilenameUtils.removeExtension(file.name).replace(" ", "")))
+            }
+        }
+    }
+
+    fun loadScript(name: String) {
+        for (script in scripts) {
+            if (script.name.equals(name, ignoreCase = true)) {
+                try {
+                    engine.eval(FileReader(script.file))
+                } catch (nigga: Exception) {
+                    val stacktrace: String = ExceptionUtils.getStackTrace(nigga)
+                    ChatUtil.log(EnumChatFormatting.RED.toString() + stacktrace)
+                    nigga.printStackTrace()
+                }
+            }
+        }
+
+    }
+
+    init {
+        if (!dir.exists()) {
+            dir.mkdirs()
+        }
+        engine.put("script", ScriptAPI)
+        loadScripts()
+    }
+
+}
