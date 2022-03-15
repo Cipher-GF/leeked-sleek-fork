@@ -104,11 +104,11 @@ public class PropertyComboBox extends PropertyComponent {
     }
 
     public ArrayList<String> getUnorderedList() {
-        return (ArrayList<String>) stringsProperty.getChoices();
+        return new ArrayList<String>(stringsProperty.getChoices());
     }
 
     public ArrayList<String> getOrderedList() {
-        return (ArrayList<String>) stringsProperty.getChoices();
+        return new ArrayList<String>(stringsProperty.getChoices());
     }
 
 }

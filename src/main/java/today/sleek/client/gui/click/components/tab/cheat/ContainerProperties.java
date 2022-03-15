@@ -72,7 +72,6 @@ public class ContainerProperties extends BaseContainer {
             double barPosition = div * scrollIndex;
 
             Draw.drawRectangle(x + this.maxWidth - 2, theInterface.getPositionY() + barPosition - 1, x + this.maxWidth, theInterface.getPositionY() + barPosition + barHeight + 0.5, new Color(70, 70, 70, 255).getRGB());
-
         }
 
 

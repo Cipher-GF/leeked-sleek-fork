@@ -5,6 +5,7 @@ import net.minecraft.client.settings.*;
 import java.io.*;
 import org.lwjgl.input.*;
 import net.minecraft.client.gui.*;
+import today.sleek.client.gui.click.utils.GuiUtil;
 
 public class Screen extends GuiScreen
 {
@@ -91,7 +92,7 @@ public class Screen extends GuiScreen
             mc.entityRenderer.theShaderGroup = null;
         }/*/
         this.theInterface.setClosing(true);
-        //GuiUtil.closeScreenAndReturn();
+        GuiUtil.closeScreenAndReturn();
     }
     
     public ScaledResolution getResolution() {

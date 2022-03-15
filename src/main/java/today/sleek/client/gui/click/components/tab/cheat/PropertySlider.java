@@ -36,7 +36,7 @@ public class PropertySlider extends PropertyComponent
         this.positionX = x - this.theInterface.getPositionX();
         this.positionY = y - this.theInterface.getPositionY();
         //Draw.drawCircle(x + 80, y + this.maxHeight / 2.0 - 6.0, 4, new Color(255, 255, 255).getRGB());
-        Fonts.Arial15.drawString(this.getProperty() + " idk", x + 6.0, y + this.maxHeight / 2.0 - 5.5, this.theInterface.getColor(255, 255, 255));
+        Fonts.Arial15.drawString(this.getProperty().getName(), x + 6.0, y + this.maxHeight / 2.0 - 5.5, this.theInterface.getColor(255, 255, 255));
         Draw.drawRectangle(x + 80.0, y + this.maxHeight / 2.0 - 6.0, x + this.maxWidth - 10.0, y + this.maxHeight / 2.0 - 4.0, new Color(54, 56, 56).getRGB());
         Draw.drawRectangle(x + 80.0, y + this.maxHeight / 2.0 - 4.5, x + 80.0 + this.currentPosition + 1.5, y + this.maxHeight / 2.0 - 4.5,
                 new Color(147, 2, 0).getRGB());

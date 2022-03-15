@@ -8,6 +8,8 @@ import today.sleek.client.gui.click.components.base.BaseContainer;
 import today.sleek.client.gui.click.tab.cheat.TabDefaultCheat;
 import today.sleek.client.gui.click.utils.Draw;
 import today.sleek.client.modules.impl.Module;
+import today.sleek.client.utils.font.Fonts;
+
 import java.awt.*;
 
 /**
@@ -38,7 +40,6 @@ public class ContainerCheats extends BaseContainer {
 
     public void drawComponent(double x, double y) {
 
-       // Draw.drawRectangle(x + maxWidth - 1.5, y, x + maxWidth, theInterface.getPositionY() + maxHeight, theInterface.getColor(111, 110, 112, 255));
         if (components.size() > 8) {
             double barHeight = maxHeight;
             double div = barHeight / components.size();
@@ -49,15 +50,8 @@ public class ContainerCheats extends BaseContainer {
 
             //Draw.drawRectangle(x + maxWidth - 1.5, theInterface.getPositionY() + barPosition + 1, x + maxWidth, theInterface.getPositionY() + barPosition + barHeight - 1, theInterface.getColor(110, 110, 110, 255));
         }
-        String cat = cheatCategory.name().replaceAll("MOVEMENT", "Movement").replaceAll("VISUAL", "Render").replaceAll("COMBAT", "Combat").replaceAll("PLAYER", "Player").replaceAll("MISC", "Misc");
+        String cat = cheatCategory.name().replaceAll("MOVEMENT", "Movement").replaceAll("VISUALS", "Render").replaceAll("COMBAT", "Combat").replaceAll("PLAYER", "Player").replaceAll("MISC", "Misc");
         Draw.drawRectangle(theInterface.getPositionX() + 25, theInterface.getPositionY() - 1, theInterface.getPositionX() + 173, theInterface.getPositionY() + 251, new Color(32, 31, 32).getRGB());
-        /*Draw.drawCircle( Fonts.clickGuiVerdana.getStringWidth(cat) + 50 + theInterface.getPositionX(), theInterface.getPositionY() + 26, 13, Interface.categoryColor(cheatCategory).getRGB());
-        Fonts.clickGuiVerdana.drawStringWithShadow(cat, theInterface.getPositionX() + 35, theInterface.getPositionY() + 20, new Color(255, 255, 255).getRGB());
-        if (Sleek.getInstance().getModuleManager().getModulesFromCategory(cheatCategory).size() < 10) {
-            Fonts.clickGuiVerdana.drawString("" + Sleek.getInstance().get.searchRegistry(cheatCategory).size(), Fonts.verdanaGui.getStringWidth(cat) + 50 + theInterface.getPositionX() - Fonts.verdanaGui.getStringWidth(Helium.instance.cheatManager.searchRegistry(cheatCategory).size() + "") + 4, theInterface.getPositionY() + 20, new Color(255, 255, 255).getRGB());
-        } else {
-            Fonts.clickGuiVerdana.drawString("" + Helium.instance.cheatManager.searchRegistry(cheatCategory).size(), Fonts.verdanaGui.getStringWidth(cat) + 50 + theInterface.getPositionX() - Fonts.verdanaGui.getStringWidth(Helium.instance.cheatManager.searchRegistry(cheatCategory).size() + "") + 9, theInterface.getPositionY() + 20, new Color(255, 255, 255).getRGB());
-        }/*/
         int index = 0;
         for (Component component : this.components) {
             if (components.indexOf(component) >= scrollIndex && components.indexOf(component) < scrollIndex  + 8) {
