@@ -6,6 +6,7 @@ import today.sleek.base.modules.ModuleData;
 import today.sleek.base.value.value.BooleanValue;
 import today.sleek.base.value.value.ModeValue;
 import today.sleek.base.value.value.NumberValue;
+import today.sleek.client.gui.click.Screen;
 import today.sleek.client.modules.impl.Module;
 
 @ModuleData(
@@ -25,7 +26,7 @@ public class ClickGUI extends Module {
     @Override
     public void onEnable() {
         try {
-            mc.displayGuiScreen(new today.sleek.client.gui.clickgui.frame.ClickGUI());
+            mc.displayGuiScreen(new Screen());
             toggle();
         } catch (Exception e) {
             e.printStackTrace();

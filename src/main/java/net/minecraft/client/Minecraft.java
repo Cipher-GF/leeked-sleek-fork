@@ -100,7 +100,7 @@ import today.sleek.base.event.impl.MouseEvent;
 import today.sleek.base.protection.ProtectionUtil;
 import today.sleek.client.gui.GuiMainMenu;
 import today.sleek.client.gui.MainMenu;
-import today.sleek.client.gui.clickgui.utils.render.animation.easings.Delta;
+import today.sleek.client.gui.legacy.clickgui.utils.render.animation.easings.Delta;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

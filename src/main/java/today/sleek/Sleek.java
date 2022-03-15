@@ -23,6 +23,7 @@ import today.sleek.base.manager.ValueManager;
 import today.sleek.base.protection.ProtectionUtil;
 import today.sleek.client.commands.CommandManager;
 import today.sleek.client.friend.FriendManager;
+import today.sleek.client.gui.click.Screen;
 import today.sleek.client.gui.config.ConfigurationGUI;
 import today.sleek.client.modules.ModuleManager;
 import today.sleek.client.modules.impl.Module;
@@ -70,6 +71,8 @@ public class Sleek {
     private FriendManager friendManager;
     private CheckManager checkManager;
     private TargetManager targetManager;
+    public Screen userInterface;
+
 
     public void onStart() {
         Logger jLogger = new JLoggerToLog4j(LogManager.getLogger("checksum"));
@@ -146,6 +149,9 @@ public class Sleek {
             System.out.println("Error: Discord RPC!");
             e.printStackTrace();
         }
+
+        //set the ui
+        userInterface = new Screen();
 
         System.out.println("Client has been started.");
         //set the window title
