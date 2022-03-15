@@ -13,6 +13,20 @@ public class ServerUtil extends Util {
         return serverData != null && serverData.serverIP.toLowerCase().contains(server);
     }
 
+    public static String getServer() {
+        final ServerData serverData = mc.getCurrentServerData();
+
+        if (mc.isIntegratedServerRunning()) {
+            return "Singleplayer";
+        }
+
+        if (serverData == null) {
+            return "Menu";
+        }
+
+        return serverData.serverIP;
+    }
+
     public static boolean onHypixel() {
         final ServerData serverData = mc.getCurrentServerData();
 

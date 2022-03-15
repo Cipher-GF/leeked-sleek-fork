@@ -5,6 +5,7 @@ import com.google.common.eventbus.Subscribe;
 import com.jagrosh.discordipc.IPCClient;
 import com.jagrosh.discordipc.IPCListener;
 import com.jagrosh.discordipc.entities.RichPresence;
+import lombok.SneakyThrows;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.play.server.S02PacketChat;
 import net.minecraft.util.ChatComponentText;
@@ -29,6 +30,7 @@ import today.sleek.client.modules.impl.visuals.ClickGUI;
 import today.sleek.client.rank.UserRank;
 import today.sleek.client.targets.TargetManager;
 import today.sleek.client.utils.network.HttpUtil;
+import today.sleek.client.utils.server.ServerUtil;
 import viamcp.ViaMCP;
 import viamcp.utils.JLoggerToLog4j;
 
@@ -38,6 +40,8 @@ import java.text.MessageFormat;
 import java.time.OffsetDateTime;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -101,22 +105,43 @@ public class Sleek {
             System.out.println("[Sleek] Failed to start ViaMCP");
         }
         try {
+            final OffsetDateTime[] time = {OffsetDateTime.now()};
+
+            final String[] lastServer = {ServerUtil.getServer()};
+
             IPCClient client = new IPCClient(937350566886137886L);
             client.setListener(new IPCListener() {
                 @Override
                 public void onReady(IPCClient client) {
-                    RichPresence.Builder builder = new RichPresence.Builder();
-                    builder.setState("UID: " + uid)
-                            .setDetails("Destroying servers")
-                            .setStartTimestamp(OffsetDateTime.now())
-                            .setLargeImage("canary-large", "Discord Canary")
-                            .setSmallImage("ptb-small", "Discord PTB");
-                    client.sendRichPresence(builder.build());
+                    Timer timer = new Timer();
+                    timer.schedule(new TimerTask() {
+                        @SneakyThrows
+                        @Override
+                        public void run() {
+                            if (!lastServer[0].equalsIgnoreCase(ServerUtil.getServer())) {
+                                time[0] = OffsetDateTime.now();
+                                System.out.println("[Sleek] [DiscordRPC] Updated the discord rpc time.");
+                                lastServer[0] = ServerUtil.getServer();
+                            }
+
+                            RichPresence.Builder builder = new RichPresence.Builder();
+
+                            builder.setState("UID: " + uid)
+                                    .setDetails(ServerUtil.getServer())
+                                    .setStartTimestamp(time[0])
+                                    .setLargeImage("canary-large", "Discord Canary")
+                                    .setSmallImage("ptb-small", "Discord PTB");
+                            client.sendRichPresence(builder.build());
+                            System.out.println("[Sleek] [DiscordRPC] Updated the discord rpc.");
+                        }
+                    }, 0, 5000);
                 }
             });
+
             client.connect();
         } catch (Exception e) {
-            System.out.println("Discord not found, not setting rpc.");
+            System.out.println("Error: Discord RPC!");
+            e.printStackTrace();
         }
 
         System.out.println("Client has been started.");
