@@ -13,6 +13,7 @@ import org.apache.logging.log4j.LogManager;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 import today.sleek.base.config.ConfigManager;
+import today.sleek.base.event.SleekEventBus;
 import today.sleek.base.event.impl.KeyboardEvent;
 import today.sleek.base.event.impl.PacketEvent;
 import today.sleek.base.event.impl.ServerJoinEvent;
@@ -58,7 +59,8 @@ public class Sleek {
         return instance;
     }
 
-    private EventBus eventBus = new EventBus("Sleek");
+    private EventBus eventBus = new EventBus(new SleekEventBus());
+
     private ModuleManager moduleManager;
     private CommandManager commandManager;
     private ConfigManager configManager;
@@ -106,7 +108,6 @@ public class Sleek {
         }
         try {
             final OffsetDateTime[] time = {OffsetDateTime.now()};
-
             final String[] lastServer = {ServerUtil.getServer()};
 
             IPCClient client = new IPCClient(937350566886137886L);

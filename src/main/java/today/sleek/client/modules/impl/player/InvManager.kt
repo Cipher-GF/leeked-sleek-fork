@@ -1,37 +1,26 @@
 package today.sleek.client.modules.impl.player
 
-import today.sleek.base.modules.ModuleData
-import today.sleek.base.modules.ModuleCategory
-import today.sleek.base.value.value.NumberValue
 import com.google.common.eventbus.Subscribe
-import today.sleek.base.event.impl.UpdateEvent
 import net.minecraft.client.gui.inventory.GuiChest
-import net.minecraft.init.Items
 import net.minecraft.client.gui.inventory.GuiInventory
-import net.minecraft.item.ItemStack
-import net.minecraft.item.ItemArmor
+import net.minecraft.enchantment.Enchantment
+import net.minecraft.enchantment.EnchantmentHelper
+import net.minecraft.init.Items
+import net.minecraft.item.*
 import net.minecraft.network.play.client.C0BPacketEntityAction
 import net.minecraft.network.play.client.C0DPacketCloseWindow
-import net.minecraft.item.ItemGlassBottle
-import net.minecraft.item.ItemEgg
-import net.minecraft.enchantment.EnchantmentHelper
-import net.minecraft.enchantment.Enchantment
-import net.minecraft.item.ItemSword
-import net.minecraft.util.DamageSource
-import net.minecraft.item.ItemBook
-import net.minecraft.item.ItemEnderPearl
-import net.minecraft.item.ItemTool
-import net.minecraft.item.ItemFood
-import net.minecraft.item.ItemPotion
-import net.minecraft.item.ItemBlock
 import net.minecraft.potion.Potion
 import net.minecraft.potion.PotionEffect
+import net.minecraft.util.DamageSource
+import today.sleek.base.event.impl.UpdateEvent
+import today.sleek.base.modules.ModuleCategory
+import today.sleek.base.modules.ModuleData
 import today.sleek.base.value.value.BooleanValue
+import today.sleek.base.value.value.NumberValue
 import today.sleek.client.modules.impl.Module
 import today.sleek.client.utils.math.Stopwatch
 import today.sleek.client.utils.network.PacketUtil
 import java.util.*
-import kotlin.collections.ArrayList
 
 @ModuleData(
     name = "Inventory Manager",
@@ -61,6 +50,7 @@ class InvManager : Module() {
     private var bestArmorSlot: IntArray = IntArray(4)
     private var bestSwordSlot = 0
     override fun onEnable() {}
+
     @Subscribe
     fun onUpdate(event: UpdateEvent) {
         if (!event.isPre) return
@@ -259,17 +249,22 @@ class InvManager : Module() {
         var itemStack: ItemStack?
         var armor: ItemArmor
         var armorType: Int
-        var i: Int = 0
+        var i = 0
         while (i < bestArmorSlot.size) {
             itemStack = mc.thePlayer.inventory.armorItemInSlot(i)
-            allArmor[i] = ArrayList<Int>()
-            if (itemStack != null && itemStack.item != null && itemStack.item is ItemArmor) {
-                armor = itemStack.item as ItemArmor
-                armorType = armor.damageReduceAmount + EnchantmentHelper.getEnchantmentModifierDamage(
-                    arrayOf(itemStack),
-                    DamageSource.generic
-                )
-                bestArmorDamageReduction[i] = armorType
+
+            if (allArmor.isNotEmpty()) {
+                allArmor[i] = ArrayList()
+
+                if (itemStack != null && itemStack.item != null && itemStack.item is ItemArmor) {
+                    armor = itemStack.item as ItemArmor
+                    armorType = armor.damageReduceAmount + EnchantmentHelper.getEnchantmentModifierDamage(
+                        arrayOf(itemStack),
+                        DamageSource.generic
+                    )
+                    bestArmorDamageReduction[i] = armorType
+                }
+
             }
             ++i
         }
