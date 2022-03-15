@@ -25,11 +25,11 @@ public class BindCommand extends Command {
                 }
             }
             else if (args[0].equalsIgnoreCase("del")) {
-                Module module = Sleek.getInstance().getModuleManager().getModuleByNameIgnoreSpace(args[2]);
+                Module module = Sleek.getInstance().getModuleManager().getModuleByName(args[0].replace('_', ' '));
                 ChatUtil.log("Deleted the bind.");
                 module.setKeyBind(0, true);
             } else {
-                Module module = Sleek.getInstance().getModuleManager().getModuleByNameIgnoreSpace(args[0]);
+                Module module = Sleek.getInstance().getModuleManager().getModuleByName(args[0].replace('_', ' '));
                 if (module != null) {
                     int key = Keyboard.getKeyIndex(args[1].toUpperCase());
                     if (key != -1) {
@@ -41,7 +41,11 @@ public class BindCommand extends Command {
         } catch (ArrayIndexOutOfBoundsException exception) {
             ChatUtil.log("Usage: bind [module] [key]");
             ChatUtil.log("Usage: bind del [module]");
+            ChatUtil.log("Usage: bind list");
         } catch (Exception exception) {
+            ChatUtil.log("Usage: bind [module] [key]");
+            ChatUtil.log("Usage: bind del [module]");
+            ChatUtil.log("Usage: bind list");
             exception.printStackTrace();
 //            ChatUtil.displayChatMessage("Invalid arguments.");
         }

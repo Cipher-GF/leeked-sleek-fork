@@ -43,6 +43,16 @@ public class ModuleManager {
         //Collections.addAll(Client.getInstance().getValueManager().getObjects(), values);
     }
 
+    public void unloadScripts() {
+        for (Module mod : modules) {
+            if (mod.getCategory().equals(ModuleCategory.SCRIPT)) {
+                if (mod.isToggled())
+                    mod.toggle();
+                modules.remove(mod);
+            }
+        }
+    }
+
     public void reloadModules() {
         for (Module mod : modules) {
             if (mod.isToggled()) 

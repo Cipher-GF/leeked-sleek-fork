@@ -55,7 +55,7 @@ public class ConfigManager {
                 JsonArray rr = element.getAsJsonArray();
                 rr.forEach(ele -> {
                     JsonObject obj = ele.getAsJsonObject();
-                    this.configs.add(new Config("(Verified) " + obj.get("name").getAsString(), obj.get("author").getAsString(), obj.get("lastUpdate").getAsString().split(" ")[1], true, null));
+                    this.configs.add(new Config("(Online) " + obj.get("name").getAsString(), obj.get("author").getAsString(), obj.get("lastUpdate").getAsString().split(" ")[1], true, null));
                 });
             }
             if (!dir.exists()) {

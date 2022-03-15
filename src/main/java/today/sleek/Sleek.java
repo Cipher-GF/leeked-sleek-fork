@@ -21,6 +21,7 @@ import today.sleek.base.keybind.KeybindManager;
 import today.sleek.base.manager.KillsultManager;
 import today.sleek.base.manager.ValueManager;
 import today.sleek.base.protection.ProtectionUtil;
+import today.sleek.base.scripting.ScriptManager;
 import today.sleek.client.commands.CommandManager;
 import today.sleek.client.friend.FriendManager;
 import today.sleek.client.gui.click.Screen;
@@ -71,8 +72,8 @@ public class Sleek {
     private FriendManager friendManager;
     private CheckManager checkManager;
     private TargetManager targetManager;
+    private ScriptManager scriptManager;
     public Screen userInterface;
-
 
     public void onStart() {
         Logger jLogger = new JLoggerToLog4j(LogManager.getLogger("checksum"));
@@ -103,6 +104,8 @@ public class Sleek {
         targetManager = new TargetManager();
         //Set the check manager
         checkManager = new CheckManager();
+        //Set the script manager
+        scriptManager = new ScriptManager(new File(dir, "scripts"));
         //Setup ViaMCP
         try {
             ViaMCP.getInstance().start();
@@ -340,5 +343,10 @@ public class Sleek {
     @SuppressWarnings("all")
     public TargetManager getTargetManager() {
         return this.targetManager;
+    }
+
+    @SuppressWarnings("all")
+    public ScriptManager getScriptManager() {
+        return this.scriptManager;
     }
 }
