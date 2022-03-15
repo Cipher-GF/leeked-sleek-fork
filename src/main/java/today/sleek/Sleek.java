@@ -118,12 +118,13 @@ public class Sleek {
                         @SneakyThrows
                         @Override
                         public void run() {
+                            //update the time whenever they switch servers
                             if (!lastServer[0].equalsIgnoreCase(ServerUtil.getServer())) {
                                 time[0] = OffsetDateTime.now();
-                                System.out.println("[Sleek] [DiscordRPC] Updated the discord rpc time.");
                                 lastServer[0] = ServerUtil.getServer();
                             }
 
+                            //create rpc
                             RichPresence.Builder builder = new RichPresence.Builder();
 
                             builder.setState("UID: " + uid)
@@ -131,8 +132,9 @@ public class Sleek {
                                     .setStartTimestamp(time[0])
                                     .setLargeImage("canary-large", "Discord Canary")
                                     .setSmallImage("ptb-small", "Discord PTB");
+
+                            //update it
                             client.sendRichPresence(builder.build());
-                            System.out.println("[Sleek] [DiscordRPC] Updated the discord rpc.");
                         }
                     }, 0, 5000);
                 }
