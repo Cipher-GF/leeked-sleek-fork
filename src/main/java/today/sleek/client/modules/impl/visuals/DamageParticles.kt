@@ -35,7 +35,7 @@ class DamageParticles : Module() {
     private var lastTarget: EntityLivingBase? = null
 
     @Subscribe
-    fun onUpdate(e: UpdateEvent) {
+    fun onUpdate(event: UpdateEvent) {
         if (KillAura.target == null) {
             lastHealth = 20f
             lastTarget = null
