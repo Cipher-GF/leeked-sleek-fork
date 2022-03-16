@@ -4,15 +4,13 @@ import net.minecraft.util.EnumChatFormatting
 import org.apache.commons.io.FilenameUtils
 import org.apache.commons.lang3.exception.ExceptionUtils
 import today.sleek.Sleek
-import today.sleek.base.scripting.base.ScriptAPI
+import today.sleek.base.scripting.base.lib.*
 import today.sleek.base.scripting.base.ScriptFile
 import today.sleek.client.utils.chat.ChatUtil
 import java.io.File
 import java.io.FileReader
-import javax.script.ScriptContext
 import javax.script.ScriptEngine
 import javax.script.ScriptEngineManager
-import javax.script.SimpleScriptContext
 
 
 class ScriptManager(val dir: File) {
@@ -55,6 +53,7 @@ class ScriptManager(val dir: File) {
             dir.mkdirs()
         }
         engine.put("script", ScriptAPI)
+        engine.put("chat", Chat)
         loadScripts()
     }
 

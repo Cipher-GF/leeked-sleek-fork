@@ -17,6 +17,7 @@ import today.sleek.client.modules.impl.Module;
 )
 public class ClickGUI extends Module {
 
+    public ModeValue mode = new ModeValue("Mode", this, "Legacy", "New");
     public BooleanValue fonttoggle = new BooleanValue("Font", this, true);
     public ModeValue fontmode = new ModeValue("Mode", this, fonttoggle, "SF Regular", "Lucida Sans", "Verdana", "Roobert");
     public NumberValue<Integer> animspeed = new NumberValue("Animation Speed", this, 50, 1, 250, 1);
@@ -25,12 +26,27 @@ public class ClickGUI extends Module {
 
     @Override
     public void onEnable() {
-        try {
-            mc.displayGuiScreen(new Screen());
-            toggle();
-        } catch (Exception e) {
-            e.printStackTrace();
+        switch (mode.getValue()) {
+            case "New": {
+                try {
+                    mc.displayGuiScreen(new Screen());
+                    toggle();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
+            }
+            case "Legacy": {
+                try {
+                    mc.displayGuiScreen(new today.sleek.client.gui.legacy.clickgui.frame.ClickGUI());
+                    toggle();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
+            }
         }
+
 
     }
 

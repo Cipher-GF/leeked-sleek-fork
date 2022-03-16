@@ -3,9 +3,11 @@ package today.sleek.client.irc
 import com.google.gson.GsonBuilder
 import net.minecraft.client.Minecraft
 import net.minecraft.util.ChatComponentText
+import net.minecraft.util.EnumChatFormatting
 import org.java_websocket.client.WebSocketClient
 import org.java_websocket.handshake.ServerHandshake
 import today.sleek.Sleek
+import today.sleek.client.utils.chat.ChatUtil
 import java.net.URI
 import java.nio.charset.StandardCharsets
 import java.util.*
@@ -13,7 +15,7 @@ import java.util.*
 //class IRCClient : WebSocketClient(URI("ws://zerotwoclient.xyz:6534")) {
 class IRCClient : WebSocketClient(URI("ws://zerotwoclient.xyz:4635")) {
     init {
-        setAttachment(Sleek.getInstance().rank.color.toString() + Sleek.getInstance().username)
+        setAttachment("&${Sleek.getInstance().rank.color.formattingCode}${Sleek.getInstance().username}")
         addHeader("name", getAttachment())
         addHeader("uid", Sleek.getInstance().uid)
         connectionLostTimeout = 100
@@ -27,7 +29,7 @@ class IRCClient : WebSocketClient(URI("ws://zerotwoclient.xyz:4635")) {
     override fun onMessage(s: String) {
         val decoded = base64Decode(s)
         println(decoded)
-        Minecraft.getMinecraft().thePlayer.addChatMessage(ChatComponentText("§7[§bIRC§7] §f» $decoded"))
+        Minecraft.getMinecraft().thePlayer.addChatMessage(ChatComponentText("§7[§bIRC§7] §f» ${ChatUtil.translateColorCodes(decoded)}"))
         //»
     }
 
@@ -57,7 +59,7 @@ class IRCClient : WebSocketClient(URI("ws://zerotwoclient.xyz:4635")) {
     }
 
     fun sendMessage(msg: String) {
-        val message = Message(msg, Author(getAttachment(), Sleek.instance().uid))
+        val message = Message("&${EnumChatFormatting.WHITE.formattingCode}${msg}", Author(getAttachment(), Sleek.instance().uid))
         val gson = GsonBuilder().setPrettyPrinting().create()
         val nigga = gson.toJson(message)
         val encoded = base64Encode(nigga)

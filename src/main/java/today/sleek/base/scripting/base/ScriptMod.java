@@ -18,19 +18,22 @@ public class ScriptMod {
     }
 
     public void onEvent(String eventName, Event e) {
-        callbacks.get(eventName).call(e);
+        JSObject callback = callbacks.get(eventName);
+        if (callback != null) {
+            callback.call(e);
+        }
     }
 
     public void onEnable() {
-
+        onEvent("enable", null);
     }
 
     public void onLoad() {
-
+        onEvent("load", null);
     }
 
     public void onDisable() {
-
+        onEvent("disable", null);
     }
 
     public void on(String eventName, JSObject callback) {
@@ -39,10 +42,3 @@ public class ScriptMod {
 
 }
 
-interface CallbackArg {
-    <T extends Event> void call(T event);
-}
-
-interface Callback {
-    void call();
-}
