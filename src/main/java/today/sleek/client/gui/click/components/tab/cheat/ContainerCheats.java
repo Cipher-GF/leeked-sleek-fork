@@ -48,14 +48,14 @@ public class ContainerCheats extends BaseContainer {
             }
             double barPosition = div * scrollIndex;
 
-            //Draw.drawRectangle(x + maxWidth - 1.5, theInterface.getPositionY() + barPosition + 1, x + maxWidth, theInterface.getPositionY() + barPosition + barHeight - 1, theInterface.getColor(110, 110, 110, 255));
+            Draw.drawRectangle(x + maxWidth - 1.5, theInterface.getPositionY() + barPosition + 1, x + maxWidth, theInterface.getPositionY() + barPosition + barHeight - 1, theInterface.getColor(110, 110, 110, 255));
         }
         String cat = cheatCategory.name().replaceAll("MOVEMENT", "Movement").replaceAll("VISUALS", "Render").replaceAll("COMBAT", "Combat").replaceAll("PLAYER", "Player").replaceAll("MISC", "Misc");
         Draw.drawRectangle(theInterface.getPositionX() + 25, theInterface.getPositionY() - 1, theInterface.getPositionX() + 173, theInterface.getPositionY() + 251, new Color(32, 31, 32).getRGB());
         int index = 0;
         for (Component component : this.components) {
-            if (components.indexOf(component) >= scrollIndex && components.indexOf(component) < scrollIndex  + 8) {
-                component.drawComponent(theInterface.getPositionX() + component.positionX, 50 + theInterface.getPositionY() + (25 * index));
+            if (components.indexOf(component) >= scrollIndex && components.indexOf(component) < scrollIndex + 10) {
+                component.drawComponent(theInterface.getPositionX() + component.positionX, theInterface.getPositionY() + (25 * index));
                 index += 1;
             }
         }
