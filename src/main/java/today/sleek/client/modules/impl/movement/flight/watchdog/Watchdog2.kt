@@ -44,7 +44,6 @@ class Watchdog2 : FlightMode("Hypixel2") {
                 mc.thePlayer.motionZ = 0.0
             }
             if (!dontgo && !waiting) {
-                ChatUtil.log("$blinking")
                 val variable = blinking
                 if (mc.thePlayer.ticksExisted % 21 == 0) {
                     blinking = !blinking
@@ -53,10 +52,8 @@ class Watchdog2 : FlightMode("Hypixel2") {
                     for (packet in list) {
                         PacketUtil.sendPacketNoEvent(packet)
                     }
-                    ChatUtil.log("${list.size}")
                     list.clear()
                 }
-                ChatUtil.log("t: $blinking")
             }
         }
 
@@ -77,7 +74,7 @@ class Watchdog2 : FlightMode("Hypixel2") {
             mc.timer.timerSpeed = flight.timer.value.toFloat()
             dontgo = false
             waiting = false
-            mc.thePlayer.performHurtAnimation()
+            
         }
         if (blinking) {
             when (packet) {

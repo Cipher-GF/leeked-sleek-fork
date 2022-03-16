@@ -9,7 +9,7 @@ import today.sleek.client.modules.impl.movement.flight.FlightMode
 import today.sleek.client.utils.math.MathUtil
 import today.sleek.client.utils.player.PlayerUtil
 
-class Watchdog: FlightMode("Hypixel") {
+class WatchdogTest: FlightMode("Hypixel3") {
 
     var dontgo = true
     var waiting = false
@@ -23,6 +23,8 @@ class Watchdog: FlightMode("Hypixel") {
             if (waiting && mc.thePlayer.onGround) {
                 event.posY -= 0.0784F + MathUtil.getRandomInRange(0.0005f, 0.0154f)
                 event.isOnGround = true;
+                waiting = false
+                dontgo = false
             }
             if (!waiting && !dontgo) {
                 mc.thePlayer.motionY = 0.0;

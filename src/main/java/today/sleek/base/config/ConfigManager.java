@@ -82,7 +82,12 @@ public class ConfigManager {
                 return null;
             }
             JsonObject obj = node.getAsJsonObject().get("data").getAsJsonObject();
-            return new String[] {obj.get("name").getAsString(), obj.get("author").getAsString(), obj.get("lastUpdated").getAsString()};
+            return new String[] {
+                    obj.get("name").getAsString(),
+                    obj.get("author").getAsString(),
+                    obj.get("lastUpdated").getAsString(),
+                    node.getAsJsonObject().get("modules").getAsJsonArray().toString()
+            };
         } catch (Throwable t) {
             t.printStackTrace();
         }

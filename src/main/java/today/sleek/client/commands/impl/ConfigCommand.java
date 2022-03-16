@@ -12,6 +12,8 @@ import today.sleek.client.utils.network.HttpUtil;
 
 import java.io.File;
 import java.text.MessageFormat;
+import java.util.HashMap;
+import java.util.Map;
 
 @CommandData(
         name = "config",
@@ -56,11 +58,36 @@ public class ConfigCommand extends Command {
                     }
                     break;
                 }
-                case "verified": {
+                case "teest": {
+                    String[] data = Sleek.getInstance().getConfigManager().getConfigData(args[1]);
+                    for (String dat : data) {
+                        ChatUtil.log(dat);
+                    }
+                    break;
+                }
+                case "upload": {
+                    String[] data = Sleek.getInstance().getConfigManager().getConfigData(args[1]);
+                    Map<String, String> params = new HashMap<String, String>();
+                    params.put("lastUpdate", data[2]);
+                    params.put("name", data[0]);
+                    params.put("author", data[1]);
+                    Map<String, String> bParams = new HashMap<>();
+                    bParams.put("data", data[3]);
+                    try {
+
+                        System.out.println(HttpUtil.postForm(HttpUtil.appendQueryParams("http://zerotwoclient.xyz:8080/api/verifiedconfig", params), bParams, null));
+                    } catch(Exception e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+                case "online": {
                     switch (args[1].toLowerCase()) {
                         case "list": {
+                            ChatUtil.log("nig");
                             String serv = HttpUtil.get("http://zerotwoclient.xyz:8080/api/verifiedconfigs");
-                            JsonObject element = new JsonParser().parse(serv).getAsJsonArray().get(0).getAsJsonObject();
+                            System.out.println(serv);
+                            JsonObject element = new JsonParser().parse(serv).getAsJsonObject().get("configs").getAsJsonArray().get(0).getAsJsonObject();
                             if (element.isJsonArray()) {
                                 JsonArray rr = element.getAsJsonArray();
                                 rr.forEach(ele -> {
@@ -103,7 +130,7 @@ public class ConfigCommand extends Command {
             ChatUtil.log(".config save <configName>");
             ChatUtil.log(".config load <configName>");
             ChatUtil.log(".config remove <configName>");
-            ChatUtil.log(".config verified <list | load> [name]");
+            ChatUtil.log(".config online <list | load> [name]");
             ChatUtil.log(".config reload");
             ChatUtil.log(".config list");
         }

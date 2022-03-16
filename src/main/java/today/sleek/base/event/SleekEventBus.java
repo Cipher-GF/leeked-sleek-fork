@@ -21,6 +21,7 @@ public class SleekEventBus extends EventBus implements SubscriberExceptionHandle
     @Override
     public void handleException(Throwable throwable, SubscriberExceptionContext subscriberExceptionContext) {
         if (throwable instanceof RuntimeException) {
+            throwable.printStackTrace();
             throw (RuntimeException) throwable;
         }
     }

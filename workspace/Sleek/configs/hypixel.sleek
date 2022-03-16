@@ -1,8 +1,8 @@
 {
   "data": {
-    "author": "dope",
+    "author": "xd",
     "name": "hypixel",
-    "lastUpdated": "Date 2022/3/13 Time 18:27:32"
+    "lastUpdated": "Date 2022/3/15 Time 20:30:28"
   },
   "modules": [
     {
@@ -17,7 +17,7 @@
     },
     {
       "name": "Chest Stealer",
-      "keybind": 48,
+      "keybind": 0,
       "hidden": false,
       "enabled": true,
       "Check Chest": "true",
@@ -121,12 +121,6 @@
       "Delay": "0"
     },
     {
-      "name": "Penis ESP",
-      "keybind": 0,
-      "hidden": false,
-      "enabled": false
-    },
-    {
       "name": "Wallhack",
       "keybind": 0,
       "hidden": false,
@@ -138,27 +132,17 @@
       "Blue": "255"
     },
     {
+      "name": "Penis ESP",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": false
+    },
+    {
       "name": "Plugins",
       "keybind": 0,
       "hidden": false,
       "enabled": false,
       "/About": "false"
-    },
-    {
-      "name": "Inventory Manager",
-      "keybind": 37,
-      "hidden": false,
-      "enabled": true,
-      "AutoSword": "true",
-      "Sword Only in Inv": "true",
-      "AutoSword Delay": "120.0",
-      "Inv Cleaner": "true",
-      "Clean Only in Inv": "true",
-      "InvCleaner Delay": "88.0",
-      "Auto Armor": "true",
-      "Armor Only in Inv": "true",
-      "AutoArmor Delay": "88.0",
-      "Disable if compass": "true"
     },
     {
       "name": "Motion Blur",
@@ -225,7 +209,7 @@
     },
     {
       "name": "Phase",
-      "keybind": 38,
+      "keybind": 0,
       "hidden": false,
       "enabled": false,
       "Mode": "BlocksMC (VClip)",
@@ -240,6 +224,22 @@
       "X-Pos": "5",
       "Y-Pos": "200",
       "Hide If Empty": "true"
+    },
+    {
+      "name": "InvManager",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": true,
+      "AutoSword": "true",
+      "Sword Only in Inv": "true",
+      "AutoSword Delay": "67.0",
+      "Inv Cleaner": "true",
+      "Clean Only in Inv": "true",
+      "InvCleaner Delay": "67.0",
+      "Auto Armor": "true",
+      "Armor Only in Inv": "true",
+      "AutoArmor Delay": "67.0",
+      "Disable if compass": "false"
     },
     {
       "name": "No Fall",
@@ -413,17 +413,11 @@
       "Blue": "100.0"
     },
     {
-      "name": "Zoot",
-      "keybind": 0,
-      "hidden": false,
-      "enabled": false
-    },
-    {
       "name": "Flight",
-      "keybind": 33,
+      "keybind": 47,
       "hidden": false,
       "enabled": false,
-      "Mode": "Hypixel2",
+      "Mode": "Hypixel3",
       "Speed": "0.0",
       "AntiKick": "true",
       "Timer": "1.5",
@@ -432,8 +426,14 @@
       "Spoof Y": "false"
     },
     {
+      "name": "Zoot",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": false
+    },
+    {
       "name": "Speed",
-      "keybind": 47,
+      "keybind": 48,
       "hidden": false,
       "enabled": false,
       "Mode": "Watchdog (LowHop)",
@@ -449,7 +449,7 @@
       "enabled": false
     },
     {
-      "name": "Eagle",
+      "name": "Jesus",
       "keybind": 0,
       "hidden": false,
       "enabled": false
@@ -462,7 +462,7 @@
       "Theme": "Sleek"
     },
     {
-      "name": "Jesus",
+      "name": "Eagle",
       "keybind": 0,
       "hidden": false,
       "enabled": false
@@ -494,6 +494,12 @@
       "Delay": "150"
     },
     {
+      "name": "Damage Particles",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": true
+    },
+    {
       "name": "ESP",
       "keybind": 0,
       "hidden": false,
@@ -509,14 +515,8 @@
       "Blue": "255"
     },
     {
-      "name": "Damage Particles",
-      "keybind": 0,
-      "hidden": false,
-      "enabled": true
-    },
-    {
       "name": "Long Jump",
-      "keybind": 21,
+      "keybind": 45,
       "hidden": false,
       "enabled": false,
       "Mode": "Hypixel",
@@ -548,7 +548,7 @@
     },
     {
       "name": "Scaffold",
-      "keybind": 34,
+      "keybind": 37,
       "hidden": false,
       "enabled": false,
       "Safewalk": "true",
@@ -639,6 +639,13 @@
       "Invisibles": "false"
     },
     {
+      "name": "Auto Report",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": false,
+      "Delay (ms)": "100"
+    },
+    {
       "name": "Staff Detector",
       "keybind": 0,
       "hidden": false,
@@ -648,23 +655,10 @@
       "Notify When Leave": "true"
     },
     {
-      "name": "Auto Report",
-      "keybind": 0,
-      "hidden": false,
-      "enabled": false,
-      "Delay (ms)": "100"
-    },
-    {
-      "name": "Ban Checker",
-      "keybind": 0,
-      "hidden": false,
-      "enabled": false
-    },
-    {
       "name": "Disabler",
       "keybind": 0,
       "hidden": false,
-      "enabled": true,
+      "enabled": false,
       "Mode": "Watchdog Timer",
       "Delay": "350",
       "Cancel Transactions": "false",

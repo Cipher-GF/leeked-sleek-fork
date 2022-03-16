@@ -43,7 +43,7 @@ public class ConfigurationGUI extends GuiScreen {
         for (Config cfg : listedConfigs) {
             RenderUtils.drawRoundedRect(sr.getScaledWidth() / 2 - 140, sr.getScaledHeight() / 2 - 92 + y, 135, 25, 3, (selectedConfig != null && selectedConfig == cfg) ? new Color(198, 96, 234).getRGB() : new Color(57, 57, 57, 255).getRGB());
 
-            mc.fontRendererObj.drawString(cfg.getName().replace("(Verified)", "§a§l✔ §f"), sr.getScaledWidth() / 2 - 138, sr.getScaledHeight() / 2 - 90 + y, -1);
+            mc.fontRendererObj.drawString(cfg.getName().replace("(Online)", "§a§l✔ §f"), sr.getScaledWidth() / 2 - 138, sr.getScaledHeight() / 2 - 90 + y, -1);
 
             Fonts.UbuntuLight.drawString("Created by: " + cfg.getAuthor(), sr.getScaledWidth() / 2 - 138, sr.getScaledHeight() / 2 - 78 + y, -1);
             Fonts.UbuntuLight.drawString("Updated: " + cfg.getLastUpdated(), sr.getScaledWidth() / 2 - 138, sr.getScaledHeight() / 2 - 72 + y, -1);
