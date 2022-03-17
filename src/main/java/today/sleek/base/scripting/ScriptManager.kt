@@ -1,6 +1,8 @@
 package today.sleek.base.scripting
 
+import net.minecraft.client.Minecraft
 import net.minecraft.util.EnumChatFormatting
+import net.minecraft.util.EnumFacing
 import org.apache.commons.io.FilenameUtils
 import org.apache.commons.lang3.exception.ExceptionUtils
 import today.sleek.Sleek
@@ -54,6 +56,10 @@ class ScriptManager(val dir: File) {
         }
         engine.put("script", ScriptAPI)
         engine.put("chat", Chat)
+        engine.put("player", Player)
+        engine.put("packets", Packets)
+        engine.put("mc", Minecraft.getMinecraft())
+        engine.put("stopwatch", Stopwatch)
         loadScripts()
     }
 

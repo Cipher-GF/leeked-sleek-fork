@@ -8,7 +8,7 @@ import today.sleek.client.utils.player.PlayerUtil
 import kotlin.math.sqrt
 
 // speed -= speed / 152
-class FuncraftBoost : FlightMode("Funcraft") {
+class OldNCP : FlightMode("test") {
     var thing = 0
     var speed = 2.5
     var boosted = false
@@ -23,6 +23,12 @@ class FuncraftBoost : FlightMode("Funcraft") {
                 mc.thePlayer.setPosition(
                     mc.thePlayer.posX, mc.thePlayer.posY - 8E-6, mc.thePlayer.posZ
                 )
+            }
+        }
+        if (mc.thePlayer.onGround && mc.thePlayer.isMoving) {
+            if (!boosted) {
+                PlayerUtil.damagePlayer()
+                boosted = true
             }
         }
         if (mc.thePlayer.isMoving && !mc.thePlayer.isCollidedHorizontally) {
@@ -49,25 +55,28 @@ class FuncraftBoost : FlightMode("Funcraft") {
     override fun onMove(event: MoveEvent?) {
 
 
-        ++thing
         when (thing) {
             1 -> {
 
-                boosted = true
-                event!!.motionY = 0.42.also { mc.thePlayer.motionY = it }
+                if (mc.thePlayer.hurtResistantTime == 19) {
+                    thing = 2
+                    event!!.motionY = 0.42.also { mc.thePlayer.motionY = it }
 
-                speed = 1.8 * PlayerUtil.getBaseSpeed()
+                    speed = 1.8 * PlayerUtil.getBaseSpeed()
+                }
 
             }
             2 -> {
+                ++thing
                 speed *= flight.speed.value + 0.5
-                ChatUtil.log("test $speed")
             }
             3 -> {
+                ++thing
                 val diff = 0.1 * (lastDist - PlayerUtil.getBaseSpeed())
                 speed = lastDist - diff
             }
             else -> {
+                ++thing
                 if (mc.thePlayer.isCollidedVertically || mc.theWorld.getCollidingBoundingBoxes(
                         mc.thePlayer, mc.thePlayer.entityBoundingBox.offset(0.0, mc.thePlayer.motionY, 0.0)
                     ).size > 0
@@ -77,7 +86,7 @@ class FuncraftBoost : FlightMode("Funcraft") {
                 speed -= speed / 152
             }
         }
-        PlayerUtil.setMotion(event, PlayerUtil.getBaseSpeed().toDouble().coerceAtLeast(speed))
+        PlayerUtil.setMotion(event, if (mc.thePlayer.hurtResistantTime != 19 && thing == 1) 0.011 else PlayerUtil.getBaseSpeed().toDouble().coerceAtLeast(speed))
 
 
     }
