@@ -48,6 +48,36 @@ public class FightUtil extends Util {
         return list;
     }
 
+    public static List<EntityLivingBase> getMultipleTargetsSafe(double range, int max, boolean players, boolean friends, boolean animals, boolean walls, boolean mobs, boolean invis) {
+        List<EntityLivingBase> list = new ArrayList<>();
+        mc.theWorld.loadedEntityList.stream().filter(entity -> {
+            if (!(entity instanceof EntityLivingBase)) {
+                return false;
+            }
+            EntityLivingBase entityLivingBase = (EntityLivingBase) entity;
+            if (entityLivingBase == mc.thePlayer ||
+                    mc.thePlayer.getDistanceToEntity(entityLivingBase) > range
+                    || !entityLivingBase.canEntityBeSeen(mc.thePlayer) && !walls
+                    || entityLivingBase.isDead
+                    || entityLivingBase instanceof EntityArmorStand
+                    || entityLivingBase instanceof EntityVillager
+                    || entityLivingBase instanceof EntityAnimal && !animals
+                    || entityLivingBase instanceof EntitySquid && !animals
+                    || entityLivingBase instanceof EntityPlayer && !players
+                    || entityLivingBase instanceof EntityMob && !mobs
+                    || entityLivingBase instanceof EntitySlime && !mobs
+                    || Sleek.getInstance().getFriendManager().isFriend(entityLivingBase.getName()) && !friends
+                    || entityLivingBase.isInvisible() && !invis) return false;
+            return true;
+        }).forEach(entity -> {
+            if (list.size() > max) {
+                return;
+            }
+            list.add((EntityLivingBase) entity);
+        });
+        return list;
+    }
+
     public static boolean isValid(EntityLivingBase entityLivingBase, double range, boolean invis, boolean players, boolean animals, boolean mobs) {
         return !(mc.thePlayer.getDistanceToEntity(entityLivingBase) > range
                 || entityLivingBase.isDead

@@ -11,7 +11,8 @@
       "hidden": false,
       "enabled": false,
       "Font": "true",
-      "Mode": "SF Regular",
+      "Mode": "Legacy",
+      "Font Mode": "SF Regular",
       "Animation Speed": "50",
       "RGB OMG": "false"
     },
