@@ -26,6 +26,7 @@ class Watchdog4 : FlightMode("Hypixel4") {
 
 //        mc.thePlayer.posY = mc.thePlayer.prevPosY
         if (event!!.isPre) {
+
             if (waiting && mc.thePlayer.onGround) {
                 event.posY -= 0.0784F + MathUtil.getRandomInRange(0.0005f, 0.0154f)
                 event.isOnGround = true;

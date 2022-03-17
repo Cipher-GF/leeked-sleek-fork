@@ -24,6 +24,10 @@ class Watchdog3 : FlightMode("Hypixel Test") {
                 mc.thePlayer.cameraYaw = .1.toFloat()
                 event.isOnGround = (true)
                 PlayerUtil.setMotion(PlayerUtil.getBaseSpeed() * .9)
+            } else {
+
+                mc.thePlayer.motionX = 0.0
+                mc.thePlayer.motionZ = 0.0
             }
 
             if (!uselessShit) {

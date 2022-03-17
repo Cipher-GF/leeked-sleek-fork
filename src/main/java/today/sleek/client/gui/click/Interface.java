@@ -138,7 +138,7 @@ public class Interface
         Draw.drawRectangle(this.positionX - 1.5, this.positionY - 1.5, this.positionX + this.width + 1.5, this.positionY + this.height + 1.5, new Color(40, 39, 41, 255).getRGB());
 
         GL11.glColor3f(1.0f, 1.0f, 1.0f);
-        Draw.drawImg(new ResourceLocation("client/gui/logo/32x32.png"), this.positionX - 4, this.positionY - 2, 32.0, 32.0);
+        //Draw.drawImg(new ResourceLocation("client/gui/logo/32x32.png"), this.positionX - 4, this.positionY - 2, 32.0, 32.0);
         Draw.drawRectangle(this.positionX, this.positionY + 24.0, this.positionX + 24.0, this.positionY + 25.0, this.getColor(0, 0, 0, 50));
         Draw.drawRectangle(this.positionX + 24.0, this.positionY, this.positionX + 25.5, this.positionY + this.height, this.getColor(0, 0, 0, 50));
         Draw.drawRectangle(this.positionX + 24.0, this.positionY, this.positionX + 25.0, this.positionY + this.height, this.getColor(0, 0, 0, 50));
@@ -150,7 +150,7 @@ public class Interface
                     continue;
                 }
                 int y = 0;
-                Draw.drawRectangle(this.positionX - 2.0, this.positionY + tabButton.positionY - 4.0, this.positionX + 25.0, this.positionY + tabButton.positionY + 21.0, new Color(118, 118, 118, 255).getRGB());
+                //Draw.drawRectangle(this.positionX - 2.0, this.positionY + tabButton.positionY - 4.0, this.positionX + 25.0, this.positionY + tabButton.positionY + 21.0, new Color(118, 118, 118, 255).getRGB());
                 Draw.drawRectangle(this.positionX - 2.0, this.positionY + tabButton.positionY - 4.0, this.positionX, this.positionY + tabButton.positionY + 21.0, new Color(255, 63, 65, 255).getRGB());
             }
         }
