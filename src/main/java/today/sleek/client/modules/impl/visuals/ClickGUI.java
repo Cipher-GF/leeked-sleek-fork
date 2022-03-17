@@ -19,7 +19,7 @@ public class ClickGUI extends Module {
 
     public ModeValue mode = new ModeValue("Mode", this, "Legacy", "New");
     public BooleanValue fonttoggle = new BooleanValue("Font", this, true);
-    public ModeValue fontmode = new ModeValue("Mode", this, fonttoggle, "SF Regular", "Lucida Sans", "Verdana", "Roobert");
+    public ModeValue fontmode = new ModeValue("Font Mode", this, fonttoggle, "SF Regular", "Lucida Sans", "Verdana", "Roobert");
     public NumberValue<Integer> animspeed = new NumberValue("Animation Speed", this, 50, 1, 250, 1);
     public BooleanValue rainbow = new BooleanValue("RGB OMG", this, false);
 

@@ -2,6 +2,7 @@ package today.sleek.base.scripting.base;
 
 import jdk.nashorn.api.scripting.JSObject;
 import today.sleek.base.event.Event;
+import today.sleek.base.scripting.base.lib.Player;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,7 +21,8 @@ public class ScriptMod {
     public void onEvent(String eventName, Event e) {
         JSObject callback = callbacks.get(eventName);
         if (callback != null) {
-            callback.call(e);
+            callback.call(this, e);
+
         }
     }
 

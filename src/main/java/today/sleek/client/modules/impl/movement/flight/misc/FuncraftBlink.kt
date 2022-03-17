@@ -1,18 +1,24 @@
 package today.sleek.client.modules.impl.movement.flight.misc
 
+import net.minecraft.network.Packet
+import net.minecraft.network.play.client.C03PacketPlayer
 import today.sleek.base.event.impl.MoveEvent
+import today.sleek.base.event.impl.PacketEvent
 import today.sleek.base.event.impl.UpdateEvent
 import today.sleek.client.modules.impl.movement.flight.FlightMode
 import today.sleek.client.utils.chat.ChatUtil
+import today.sleek.client.utils.network.PacketUtil
 import today.sleek.client.utils.player.PlayerUtil
 import kotlin.math.sqrt
 
 // speed -= speed / 152
-class FuncraftBoost : FlightMode("Funcraft") {
+class FuncraftBlink : FlightMode("Funcraft - Blink") {
     var thing = 0
     var speed = 2.5
     var boosted = false
+    var blinking = false
     var lastDist = 0.0;
+    var packets = arrayListOf<Packet<*>>()
 
     override fun onUpdate(event: UpdateEvent?) {
         if (!event!!.isPre) {
@@ -67,6 +73,16 @@ class FuncraftBoost : FlightMode("Funcraft") {
                 val diff = 0.1 * (lastDist - PlayerUtil.getBaseSpeed())
                 speed = lastDist - diff
             }
+            4 -> {
+                blinking = true
+            }
+            14 -> {
+                blinking = false
+                for (packet in packets) {
+                    PacketUtil.sendPacketNoEvent(packet)
+                }
+                packets.clear()
+            }
             else -> {
                 if (mc.thePlayer.isCollidedVertically || mc.theWorld.getCollidingBoundingBoxes(
                         mc.thePlayer, mc.thePlayer.entityBoundingBox.offset(0.0, mc.thePlayer.motionY, 0.0)
@@ -82,9 +98,25 @@ class FuncraftBoost : FlightMode("Funcraft") {
 
     }
 
+    override fun onPacket(event: PacketEvent) {
+        if (blinking) {
+            if (event.getPacket<Packet<*>>() is C03PacketPlayer) {
+                packets.add(event.getPacket<Packet<*>>())
+            }
+        }
+    }
+
     override fun onEnable() {
         boosted = false
         lastDist = 0.0
         thing = 0
+        blinking = false
+    }
+
+    override fun onDisable() {
+        for (packet in packets) {
+            PacketUtil.sendPacketNoEvent(packet)
+        }
+        packets.clear()
     }
 }
