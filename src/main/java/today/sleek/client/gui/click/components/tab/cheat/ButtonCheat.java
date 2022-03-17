@@ -54,7 +54,19 @@ public class ButtonCheat extends BaseButton
         } else {
             color = new Color(20, 19, 20);
         }
+
         Draw.drawRectangle(x + 3, y + 1, x + this.maxWidth - 3, y - 2 + this.maxHeight + 1, new Color(40, 40, 40).getRGB());
+
+
+        //State selector
+        {
+            Draw.drawRectangle(x + maxWidth - 25, y + 4, x + maxWidth - 5, y + 12, theInterface.getColor(60, 60, 60));
+            if (cheat.isToggled())
+                Draw.drawRectangle(x + maxWidth - 14, y + 5, x + maxWidth - 6, y + 11, theInterface.getColor(80, 150, 80));
+            else
+                Draw.drawRectangle(x + maxWidth - 24, y + 5, x + maxWidth - 16, y + 11, theInterface.getColor(200, 80, 80));
+        }
+
         if (cheat.isToggled()) {
             if (!this.listeningForKey) {
                 Fonts.Arial18.drawString("  " + this.cheat.getName(), x + 3, y + 9, Color.WHITE.getRGB());
@@ -79,6 +91,16 @@ public class ButtonCheat extends BaseButton
         if (this.listeningForKey) {
             bindText = "...";
         }
+
+        if (theInterface.isMouseInBounds(
+                theInterface.getPositionX() + positionX + maxWidth - 25,
+                theInterface.getPositionX() + positionX + maxWidth - 5,
+                theInterface.getPositionY() + positionY + 4,
+                theInterface.getPositionY() + positionY + 12)) {
+            cheat.setToggled(!cheat.isToggled());
+            return true;
+        }
+
         if (this.theInterface.isMouseInBounds(this.theInterface.getPositionX() + this.positionX, this.theInterface.getPositionX() + this.positionX + this.maxWidth, this.theInterface.getPositionY() + this.positionY, this.theInterface.getPositionY() + this.positionY + this.maxHeight)) {
             switch (button) {
                 case 0: {

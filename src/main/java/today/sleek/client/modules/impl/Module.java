@@ -11,6 +11,7 @@ import today.sleek.base.value.value.*;
 import today.sleek.client.modules.impl.visuals.ClickGUI;
 import today.sleek.client.modules.impl.visuals.HUD;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -148,6 +149,8 @@ public abstract class Module {
                     val.setValue(data.getValue().getAsString());
                 } else if (val instanceof StringValue) {
                     val.setValue(data.getValue().getAsString());
+                } else if (val instanceof NumberValue) {
+                    val.setValue(val.getValue());
                 }
             }
         });
