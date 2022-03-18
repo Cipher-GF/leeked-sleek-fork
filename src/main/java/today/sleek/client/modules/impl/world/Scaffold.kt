@@ -139,7 +139,7 @@ class Scaffold : Module() {
     @Subscribe
     fun onUpdate(event: UpdateEvent) {
         when (modeValue.valueAsString) {
-            "Vulcan", "Verus" -> {
+            "Vulcan", "Verus", "NEW" -> {
                 var vec2f: Vector2f? = null
                 if (mc.thePlayer.isMoving) {
                     mc.thePlayer.forceSprinting(sprint.value)
@@ -169,24 +169,48 @@ class Scaffold : Module() {
                         }
                     }
                 }
-                if (this.blockEntry != null && vec2f != null && slot > -1 && event.isPre) {
-                    if (lastSlot != slot) {
-                        mc.thePlayer.inventory.currentItem = slot
-                        lastSlot = slot
+
+                if (modeValue.value.equals("new", ignoreCase = true)) {
+                    if (event.isPre && blockEntry != null) {
+                        val slot = slotWithBlock
+                        if (slot > -1) {
+                            if (lastSlot != slot) {
+                                mc.thePlayer.sendQueue.addToSendQueue(C09PacketHeldItemChange(slot))
+                                lastSlot = slot
+                            }
+                            if (placeBlock(blockEntry.position.add(0, 0, 0), blockEntry.facing, slot, swing.value)) {
+                                if (tower.value && !mc.thePlayer.isPotionActive(Potion.jump) && !mc.thePlayer.isMoving && mc.gameSettings.keyBindJump.pressed) {
+                                    mc.thePlayer.motionY = .42
+                                    mc.thePlayer.motionX = 0.0
+                                    mc.thePlayer.motionZ = mc.thePlayer.motionX
+                                    if (towerTimer.timeElapsed(1500L)) {
+                                        towerTimer.resetTime()
+                                        mc.thePlayer.motionY = -.28
+                                    }
+                                }
+                            }
+                        }
                     }
-                    placeBlockVerus(
-                        this.blockEntry!!.position.add(0, 0, 0),
-                        this.blockEntry!!.facing,
-                        slot,
-                        swing.value
-                    )
-                    if (tower.value && !mc.thePlayer.isPotionActive(Potion.jump) && !mc.thePlayer.isMoving && mc.gameSettings.keyBindJump.pressed) {
-                        mc.thePlayer.motionY = .52
-                        mc.thePlayer.motionX = 0.0
-                        mc.thePlayer.motionZ = mc.thePlayer.motionX
-                        if (towerTimer.timeElapsed(1500L)) {
-                            towerTimer.resetTime()
-                            mc.thePlayer.motionY = -1.28
+                } else {
+                    if (this.blockEntry != null && vec2f != null && slot > -1 && event.isPre) {
+                        if (lastSlot != slot) {
+                            mc.thePlayer.inventory.currentItem = slot
+                            lastSlot = slot
+                        }
+                        placeBlockVerus(
+                            this.blockEntry!!.position.add(0, 0, 0),
+                            this.blockEntry!!.facing,
+                            slot,
+                            swing.value
+                        )
+                        if (tower.value && !mc.thePlayer.isPotionActive(Potion.jump) && !mc.thePlayer.isMoving && mc.gameSettings.keyBindJump.pressed) {
+                            mc.thePlayer.motionY = .52
+                            mc.thePlayer.motionX = 0.0
+                            mc.thePlayer.motionZ = mc.thePlayer.motionX
+                            if (towerTimer.timeElapsed(1500L)) {
+                                towerTimer.resetTime()
+                                mc.thePlayer.motionY = -1.28
+                            }
                         }
                     }
                 }
@@ -211,8 +235,7 @@ class Scaffold : Module() {
                         i++
                     }
                 }
-            }
-            "NEW", "NCP" -> {
+            } "NCP" -> {
                 if (lastBlockEntry != null && blockEntry != null) {
                     val rotation = RotationUtil.getRotations(getPositionByFace(lastBlockEntry!!.position, lastBlockEntry!!.facing))
 
