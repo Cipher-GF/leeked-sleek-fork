@@ -38,14 +38,14 @@ public class AntiFlagFold extends Module {
     private Stopwatch timerMotion = new Stopwatch();
     private BlockData blockData;
     private BooleanValue Switch = new BooleanValue("Switch", this, true);
-    private BooleanValue Hypixel = new BooleanValue("Hypixel", this, true);
+    private BooleanValue hypixel = new BooleanValue("Hypixel", this, true);
     private BooleanValue tower = new BooleanValue("Tower", this, true);
     private BooleanValue keepy = new BooleanValue("KeepY", this, true);
     private int NoigaY;
 
     @Subscribe
     public void onUpdate(UpdateEvent event) {
-        setSuffix(Hypixel.getValue() ? "Hypixel" : "Normal");
+        setSuffix(hypixel.getValue() ? "Hypixel" : "Normal");
         if (keepy.getValue()) {
             if ((!mc.thePlayer.isMoving() && mc.gameSettings.keyBindJump.isKeyDown()) || (mc.thePlayer.isCollidedVertically || mc.thePlayer.onGround)) {
                 NoigaY = MathHelper.floor_double(mc.thePlayer.posY);
@@ -91,9 +91,8 @@ public class AntiFlagFold extends Module {
                         timerMotion.resetTime();
                     }
                 }
-                if (Hypixel.getValue()) {
-                    if (mc.playerController.onPlayerRightClick(mc.thePlayer, mc.theWorld, mc.thePlayer.getHeldItem(), blockData.position, blockData.face, new Vec3(blockData.position.getX() + MathUtil.getRandomInRange(100000000, 800000000) * 1.0E-9, blockData.position.getY() + MathUtil.getRandomInRange(100000000, 800000000) * 1.0E-9, blockData.position.getZ() + MathUtil.getRandomInRange(100000000, 800000000) * 1.0E-9))) {
-                    }
+                if (hypixel.getValue()) {
+                    mc.playerController.onPlayerRightClick(mc.thePlayer, mc.theWorld, mc.thePlayer.getHeldItem(), blockData.position, blockData.face, new Vec3(blockData.position.getX() + MathUtil.getRandomInRange(100000000, 800000000) * 1.0E-9, blockData.position.getY() + MathUtil.getRandomInRange(100000000, 800000000) * 1.0E-9, blockData.position.getZ() + MathUtil.getRandomInRange(100000000, 800000000) * 1.0E-9));
                     mc.thePlayer.sendQueue.addToSendQueue(new C0APacketAnimation());
                 } else if (mc.playerController.onPlayerRightClick(mc.thePlayer, mc.theWorld, mc.thePlayer.getHeldItem(), blockData.position, blockData.face, new Vec3(blockData.position.getX() + Math.random(), blockData.position.getY() + Math.random(), blockData.position.getZ() + Math.random()))) {
                     mc.thePlayer.sendQueue.addToSendQueue(new C0APacketAnimation());
