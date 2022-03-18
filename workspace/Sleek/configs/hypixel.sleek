@@ -2,7 +2,7 @@
   "data": {
     "author": "xd",
     "name": "hypixel",
-    "lastUpdated": "Date 2022/3/15 Time 20:30:28"
+    "lastUpdated": "Date 2022/3/18 Time 8:45:13"
   },
   "modules": [
     {
@@ -10,8 +10,9 @@
       "keybind": 54,
       "hidden": false,
       "enabled": false,
+      "Mode": "Legacy",
       "Font": "false",
-      "Mode": "SF Regular",
+      "Font Mode": "SF Regular",
       "Animation Speed": "50",
       "RGB OMG": "true"
     },
@@ -186,6 +187,15 @@
       "Only Players": "true",
       "Click Aim": "true",
       "Weapon Check": "true"
+    },
+    {
+      "name": "Aura",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": false,
+      "Reach": "3.0",
+      "CPS": "8",
+      "Always Click": "false"
     },
     {
       "name": "MCF",
@@ -395,7 +405,7 @@
       "ArrayList Y": "34",
       "ArrayList X": "4",
       "Scoreboard": "Right",
-      "Scoreboard Y": "180.0"
+      "Scoreboard Y": "116.0"
     },
     {
       "name": "Target Strafe",
@@ -417,10 +427,10 @@
       "keybind": 47,
       "hidden": false,
       "enabled": false,
-      "Mode": "Hypixel3",
-      "Speed": "0.0",
+      "Mode": "Hypixel2",
+      "Speed": "0.7000000000000001",
       "AntiKick": "true",
-      "Timer": "1.5",
+      "Timer": "1.2000000000000002",
       "Blink": "true",
       "View Bobbing": "true",
       "Spoof Y": "false"
@@ -436,7 +446,7 @@
       "keybind": 48,
       "hidden": false,
       "enabled": false,
-      "Mode": "Watchdog (LowHop)",
+      "Mode": "Funcraft",
       "Speed": "0.4",
       "Timer Speed": "1.0",
       "Force Friction": "true",
@@ -487,7 +497,7 @@
       "name": "AutoPot",
       "keybind": 0,
       "hidden": false,
-      "enabled": false,
+      "enabled": true,
       "Mode": "Down",
       "Skywars": "false",
       "Min Health": "12",
@@ -515,6 +525,14 @@
       "Blue": "255"
     },
     {
+      "name": "Chicago",
+      "keybind": 50,
+      "hidden": false,
+      "enabled": false,
+      "Reach": "48.0",
+      "CPS": "8"
+    },
+    {
       "name": "Long Jump",
       "keybind": 45,
       "hidden": false,
@@ -522,7 +540,7 @@
       "Mode": "Hypixel",
       "Vertical Boost": "2.1",
       "Speed": "5.6000000000000005",
-      "Spoof Y": "true"
+      "Spoof Y": "false"
     },
     {
       "name": "Time Changer",
