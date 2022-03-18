@@ -2,7 +2,7 @@
   "data": {
     "author": "dope",
     "name": "hypixel",
-    "lastUpdated": "Date 2022/3/18 Time 16:21:4"
+    "lastUpdated": "Date 2022/3/18 Time 16:25:41"
   },
   "modules": [
     {
@@ -317,7 +317,7 @@
       "Rotation Mode": "None",
       "Swing Range": "4.2",
       "Block Range": "6.0",
-      "CPS": "11.0",
+      "CPS": "14.0",
       "Randomize CPS": "2.0",
       "FOV": "360.0",
       "Draw FOV": "false",
@@ -427,7 +427,7 @@
       "Mode": "Hypixel",
       "Speed": "1.3",
       "AntiKick": "true",
-      "Timer": "1.0",
+      "Timer": "1.3",
       "Blink": "true",
       "View Bobbing": "true",
       "Spoof Y": "false"
