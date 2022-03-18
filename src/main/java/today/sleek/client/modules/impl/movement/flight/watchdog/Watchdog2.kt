@@ -27,12 +27,12 @@ class Watchdog2 : FlightMode("Hypixel2") {
 //        mc.thePlayer.posY = mc.thePlayer.prevPosY
         if (event!!.isPre) {
             if ((dontgo && !waiting) && mc.thePlayer.onGround) {
-                mc.thePlayer.jump()
+                mc.thePlayer.motionY = 0.42
                 waiting = true
             }
             if (waiting && mc.thePlayer.onGround) {
                 event.posY -= 0.0784F + MathUtil.getRandomInRange(0.0005f, 0.0154f)
-                event.isOnGround = true;
+                event.isOnGround = true
 
             }
             if (!waiting && !dontgo) {
@@ -61,7 +61,7 @@ class Watchdog2 : FlightMode("Hypixel2") {
 
     override fun onMove(event: MoveEvent?) {
         if (!waiting && !dontgo) {
-            PlayerUtil.setMotion(event, PlayerUtil.getBaseSpeed().toDouble()*1.00725)
+            PlayerUtil.setMotion(event, PlayerUtil.getBaseSpeed().toDouble()*0.875)
         } else {
             event!!.motionX = 0.0.also { mc.thePlayer.motionX = it }
             event.motionZ = 0.0.also { mc.thePlayer.motionZ = it }

@@ -1,8 +1,8 @@
 {
   "data": {
-    "author": "xd",
+    "author": "dope",
     "name": "hypixel",
-    "lastUpdated": "Date 2022/3/15 Time 20:30:28"
+    "lastUpdated": "Date 2022/3/18 Time 16:21:4"
   },
   "modules": [
     {
@@ -10,14 +10,15 @@
       "keybind": 54,
       "hidden": false,
       "enabled": false,
+      "Mode": "Legacy",
       "Font": "false",
-      "Mode": "SF Regular",
+      "Font Mode": "SF Regular",
       "Animation Speed": "50",
       "RGB OMG": "true"
     },
     {
       "name": "Chest Stealer",
-      "keybind": 0,
+      "keybind": 48,
       "hidden": false,
       "enabled": true,
       "Check Chest": "true",
@@ -78,8 +79,8 @@
       "name": "Criticals",
       "keybind": 0,
       "hidden": false,
-      "enabled": false,
-      "Mode": "Verus",
+      "enabled": true,
+      "Mode": "MiniJump",
       "C06": "false"
     },
     {
@@ -96,7 +97,7 @@
       "name": "AC Detector",
       "keybind": 0,
       "hidden": false,
-      "enabled": false,
+      "enabled": true,
       "Delay": "1.0"
     },
     {
@@ -118,7 +119,13 @@
       "keybind": 0,
       "hidden": false,
       "enabled": false,
-      "Delay": "0"
+      "Delay": "1"
+    },
+    {
+      "name": "Penis ESP",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": false
     },
     {
       "name": "Wallhack",
@@ -132,12 +139,6 @@
       "Blue": "255"
     },
     {
-      "name": "Penis ESP",
-      "keybind": 0,
-      "hidden": false,
-      "enabled": false
-    },
-    {
       "name": "Plugins",
       "keybind": 0,
       "hidden": false,
@@ -148,7 +149,7 @@
       "name": "Motion Blur",
       "keybind": 0,
       "hidden": false,
-      "enabled": false
+      "enabled": true
     },
     {
       "name": "Item Physics",
@@ -173,7 +174,7 @@
       "Smooth Hit": "false",
       "Scale": "1.0",
       "Swing Speed": "7",
-      "Block Mode": "Swang"
+      "Block Mode": "Exhi"
     },
     {
       "name": "Aim Assist",
@@ -209,7 +210,7 @@
     },
     {
       "name": "Phase",
-      "keybind": 0,
+      "keybind": 38,
       "hidden": false,
       "enabled": false,
       "Mode": "BlocksMC (VClip)",
@@ -227,7 +228,7 @@
     },
     {
       "name": "InvManager",
-      "keybind": 0,
+      "keybind": 37,
       "hidden": false,
       "enabled": true,
       "AutoSword": "true",
@@ -246,7 +247,7 @@
       "keybind": 0,
       "hidden": false,
       "enabled": false,
-      "Mode": "Packet"
+      "Mode": "Collide"
     },
     {
       "name": "DeathEffect",
@@ -254,15 +255,15 @@
       "hidden": false,
       "enabled": true,
       "Effect Mode": "Blood",
-      "Meme Sounds": "true",
-      "Meme Mode": "Win Error"
+      "Meme Sounds": "false",
+      "Meme Mode": "OOF"
     },
     {
       "name": "Image ESP",
       "keybind": 0,
       "hidden": false,
       "enabled": false,
-      "Mode": "Zuiy"
+      "Mode": "Edp"
     },
     {
       "name": "Auto Server",
@@ -316,7 +317,7 @@
       "Rotation Mode": "None",
       "Swing Range": "4.2",
       "Block Range": "6.0",
-      "CPS": "9.0",
+      "CPS": "11.0",
       "Randomize CPS": "2.0",
       "FOV": "360.0",
       "Draw FOV": "false",
@@ -342,7 +343,7 @@
       "name": "Auto Tool",
       "keybind": 0,
       "hidden": false,
-      "enabled": false
+      "enabled": true
     },
     {
       "name": "No Rotate",
@@ -390,7 +391,7 @@
       "Font": "false",
       "Notifications": "true",
       "Hide Render": "true",
-      "Client Name": "\u0026lS\u0026fleek \u00267",
+      "Client Name": "\u0026lL\u00267uca\u0026lfig\u00267",
       "Module Suffix": " %s",
       "ArrayList Y": "34",
       "ArrayList X": "4",
@@ -401,7 +402,7 @@
       "name": "Target Strafe",
       "keybind": 0,
       "hidden": false,
-      "enabled": true,
+      "enabled": false,
       "Auto F5": "false",
       "On Jump": "true",
       "Controllable": "true",
@@ -413,32 +414,32 @@
       "Blue": "100.0"
     },
     {
-      "name": "Flight",
-      "keybind": 47,
-      "hidden": false,
-      "enabled": false,
-      "Mode": "Hypixel3",
-      "Speed": "0.0",
-      "AntiKick": "true",
-      "Timer": "1.5",
-      "Blink": "true",
-      "View Bobbing": "true",
-      "Spoof Y": "false"
-    },
-    {
       "name": "Zoot",
       "keybind": 0,
       "hidden": false,
       "enabled": false
     },
     {
-      "name": "Speed",
-      "keybind": 48,
+      "name": "Flight",
+      "keybind": 33,
       "hidden": false,
       "enabled": false,
-      "Mode": "Watchdog (LowHop)",
+      "Mode": "Hypixel",
+      "Speed": "1.3",
+      "AntiKick": "true",
+      "Timer": "1.0",
+      "Blink": "true",
+      "View Bobbing": "true",
+      "Spoof Y": "false"
+    },
+    {
+      "name": "Speed",
+      "keybind": 47,
+      "hidden": false,
+      "enabled": false,
+      "Mode": "Watchdog",
       "Speed": "0.4",
-      "Timer Speed": "1.0",
+      "Timer Speed": "1.1",
       "Force Friction": "true",
       "Friction": "NCP"
     },
@@ -449,7 +450,7 @@
       "enabled": false
     },
     {
-      "name": "Jesus",
+      "name": "Eagle",
       "keybind": 0,
       "hidden": false,
       "enabled": false
@@ -462,7 +463,7 @@
       "Theme": "Sleek"
     },
     {
-      "name": "Eagle",
+      "name": "Jesus",
       "keybind": 0,
       "hidden": false,
       "enabled": false
@@ -487,17 +488,11 @@
       "name": "AutoPot",
       "keybind": 0,
       "hidden": false,
-      "enabled": false,
+      "enabled": true,
       "Mode": "Down",
-      "Skywars": "false",
+      "Skywars": "true",
       "Min Health": "12",
       "Delay": "150"
-    },
-    {
-      "name": "Damage Particles",
-      "keybind": 0,
-      "hidden": false,
-      "enabled": true
     },
     {
       "name": "ESP",
@@ -515,8 +510,14 @@
       "Blue": "255"
     },
     {
+      "name": "Damage Particles",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": true
+    },
+    {
       "name": "Long Jump",
-      "keybind": 45,
+      "keybind": 21,
       "hidden": false,
       "enabled": false,
       "Mode": "Hypixel",
@@ -548,7 +549,7 @@
     },
     {
       "name": "Scaffold",
-      "keybind": 37,
+      "keybind": 34,
       "hidden": false,
       "enabled": false,
       "Safewalk": "true",
@@ -558,7 +559,7 @@
       "Sprint": "false",
       "Tower": "false",
       "Show Info": "true",
-      "Delay": "432",
+      "Delay": "216",
       "Expansion": "4",
       "Auto Jump": "false"
     },
@@ -566,7 +567,7 @@
       "name": "Anti Bot",
       "keybind": 0,
       "hidden": false,
-      "enabled": false
+      "enabled": true
     },
     {
       "name": "Transactions",
@@ -585,7 +586,7 @@
       "name": "IRC",
       "keybind": 0,
       "hidden": false,
-      "enabled": false
+      "enabled": true
     },
     {
       "name": "Legit HUD",
@@ -639,13 +640,6 @@
       "Invisibles": "false"
     },
     {
-      "name": "Auto Report",
-      "keybind": 0,
-      "hidden": false,
-      "enabled": false,
-      "Delay (ms)": "100"
-    },
-    {
       "name": "Staff Detector",
       "keybind": 0,
       "hidden": false,
@@ -653,6 +647,13 @@
       "Announce": "true",
       "Automatically Leave": "true",
       "Notify When Leave": "true"
+    },
+    {
+      "name": "Auto Report",
+      "keybind": 0,
+      "hidden": false,
+      "enabled": false,
+      "Delay (ms)": "100"
     },
     {
       "name": "Disabler",

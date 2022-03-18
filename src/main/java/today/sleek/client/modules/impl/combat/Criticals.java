@@ -12,6 +12,7 @@ import today.sleek.base.value.value.BooleanValue;
 import today.sleek.base.value.value.ModeValue;
 import today.sleek.client.modules.impl.Module;
 import today.sleek.client.modules.impl.movement.Flight;
+import today.sleek.client.utils.math.MathUtil;
 import today.sleek.client.utils.network.PacketUtil;
 
 @ModuleData(
@@ -69,7 +70,7 @@ public class Criticals extends Module {
             }
             case "MiniJump": {
                 if (mc.thePlayer.onGround) {
-                    mc.thePlayer.motionY = 0.22f;
+                    mc.thePlayer.motionY = MathUtil.getRandomInRange(0.075f,0.1875f);
                 }
                 break;
             }
