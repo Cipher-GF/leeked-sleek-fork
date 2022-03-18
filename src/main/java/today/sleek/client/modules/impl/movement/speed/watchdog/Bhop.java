@@ -12,7 +12,7 @@ import static today.sleek.client.utils.player.PlayerUtil.getDirection;
 
 
 public class Bhop extends SpeedMode {
-
+    int ticks = 0;
     public Bhop() {
         super("Watchdog");
     }
@@ -27,6 +27,7 @@ public class Bhop extends SpeedMode {
             float f = (float) (getDirection() / 180 * Math.PI);
             if (mc.thePlayer.onGround) {
                 mc.thePlayer.jump();
+                ticks = 0;
                 if (!mc.thePlayer.isPotionActive(Potion.moveSpeed)) {
                     if (mc.thePlayer.hurtTime > 1) {
                         mc.thePlayer.motionX -= MathHelper.sin(f) * 0.365F;
@@ -43,10 +44,22 @@ public class Bhop extends SpeedMode {
                 }
                 PlayerUtil.strafe();
             } else {
+                ticks++;
                 final double yaw = getDirection() / 180 * Math.PI;
+                if(ticks == 3 || ticks == 4){
+                    mc.thePlayer.motionY -= 0.03;
+                }
+                if(mc.thePlayer.hurtTime != 0) {
+                    mc.thePlayer.motionX -= (mc.thePlayer.motionX - (-Math.sin(yaw) * PlayerUtil.getSpeed1()*1.015))/2;
+                    mc.thePlayer.motionZ -= (mc.thePlayer.motionZ - (Math.cos(yaw) * PlayerUtil.getSpeed1()*1.015))/2;
+                }
                 event.setRotationYaw((float) getDirection());
                 mc.thePlayer.motionX -= (mc.thePlayer.motionX - (-Math.sin(yaw) * PlayerUtil.getSpeed1()))/3.34;
                 mc.thePlayer.motionZ -= (mc.thePlayer.motionZ - (Math.cos(yaw) * PlayerUtil.getSpeed1()))/3.34;
+                if(mc.thePlayer.isPotionActive(Potion.moveSpeed)){
+                    mc.thePlayer.motionX -= (mc.thePlayer.motionX - (-Math.sin(yaw) * PlayerUtil.getSpeed1()))/4;
+                    mc.thePlayer.motionZ -= (mc.thePlayer.motionZ - (Math.cos(yaw) * PlayerUtil.getSpeed1()))/4;
+                }
             }
             mc.thePlayer.setSprinting(true);
         }
