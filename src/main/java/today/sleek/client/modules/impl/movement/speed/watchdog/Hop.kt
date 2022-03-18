@@ -1,30 +1,24 @@
-package today.sleek.client.modules.impl.movement.speed.misc
+package today.sleek.client.modules.impl.movement.speed.watchdog
 
 import today.sleek.base.event.impl.MoveEvent
-import today.sleek.base.event.impl.UpdateEvent
 import today.sleek.client.modules.impl.movement.speed.SpeedMode
 import today.sleek.client.utils.player.PlayerUtil
 
-class Funcraft : SpeedMode("Funcraft") {
-
-    private var speed = 0.3
-
-    override fun onUpdate(event: UpdateEvent) {
-        super.onUpdate(event)
-    }
+class Hop: SpeedMode("Watchdog (New)") {
 
     override fun onMove(event: MoveEvent) {
-        speed = PlayerUtil.getVerusBaseSpeed();
         if (mc.thePlayer.isMovingOnGround) {
-            mc.timer.timerSpeed = 1.1f
+            mc.timer.timerSpeed = 1.0f
             event.motionY = 0.4025; also { mc.thePlayer.motionY = 0.4025 }
         }
         if (!mc.thePlayer.onGround) {
-            mc.timer.timerSpeed = 1.2f
+            mc.timer.timerSpeed = speed.timer.value
             //speed -= speed / 152
             mc.thePlayer.motionX *= 0.9
             mc.thePlayer.motionZ *= 0.9
         }
-        PlayerUtil.setMotion(event, speed)
+        val speed = if (mc.thePlayer.hurtTime > 0 ) PlayerUtil.getBaseSpeed() * 2 else PlayerUtil.getBaseSpeed()
+        PlayerUtil.setMotion(event, speed.toDouble())
     }
+
 }

@@ -116,7 +116,7 @@ public class KillAura extends Module {
 
     @Subscribe
     public void onMotion(UpdateEvent event) {
-        List<EntityLivingBase> entities = FightUtil.getMultipleTargets(teleportAura.getValue() ? tprange.getValue() : swingrage.getValue(), players.getValue(), friends.getValue(), animals.getValue(), false, monsters.getValue(), invisible.getValue());
+        List<EntityLivingBase> entities = FightUtil.getMultipleTargetsSafe(teleportAura.getValue() ? tprange.getValue() : swingrage.getValue(), 5, players.getValue(), friends.getValue(), animals.getValue(), false, monsters.getValue(), invisible.getValue());
 
         if (mc.currentScreen != null) return;
 

@@ -115,7 +115,7 @@ public class Nametags extends Module {
             return name;
         }
         float health = (float) round(player.getHealth(), 1);
-        return "§7[§f" + Math.round(mc.thePlayer.getDistanceToEntity(player)) + "§7]" + " §c" + player.getName() + " §7[§f" + health + "§c\u2764§7]";
+        return "§7[§f" + Math.round(mc.thePlayer.getDistanceToEntity(player)) + "§7]" + " "+ (Sleek.getInstance().getFriendManager().isFriend(player.getName()) ? "§b" : "§c") + player.getName() + " §7[§f" + health + "§c\u2764§7]";
     }
 
     private int getDisplayColour(EntityPlayer player) {
@@ -123,7 +123,7 @@ public class Nametags extends Module {
         if (this.whiter.getValue()) {
             colour = -1;
         }
-        if (Sleek.getInstance().getFriendManager().isFriend(String.valueOf(player))) {
+        if (Sleek.getInstance().getFriendManager().isFriend(player.getName())) {
             return -11157267;
         }
         if (player.isInvisible()) {

@@ -495,6 +495,7 @@ class Scaffold : Module() {
         for (facing in EnumFacing.values()) {
             val offset = position.offset(facing)
             if (mc.theWorld.getBlockState(offset).block is BlockAir || !rayTrace(
+
                     mc.thePlayer.getLook(0.0f),
                     getPositionByFace(offset, invert[facing.ordinal])
                 )

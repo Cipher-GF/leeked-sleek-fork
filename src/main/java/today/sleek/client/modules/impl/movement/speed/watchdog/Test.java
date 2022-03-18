@@ -5,16 +5,15 @@ import net.minecraft.util.MathHelper;
 import today.sleek.base.event.impl.MoveEvent;
 import today.sleek.base.event.impl.UpdateEvent;
 import today.sleek.client.modules.impl.movement.speed.SpeedMode;
-import today.sleek.client.utils.player.PlayerUtil;
 
-public class Ground extends SpeedMode {
+public class Test extends SpeedMode {
 
     private double moveSpeed;
     private double lastDist;
     private int stage;
 
-    public Ground() {
-        super("Watchdog (Ground)");
+    public Test() {
+        super("Watchdog (Test)");
     }
 
     @Override

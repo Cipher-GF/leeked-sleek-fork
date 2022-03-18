@@ -20,7 +20,7 @@ class LowHop : SpeedMode("Watchdog (LowHop)") {
                     var speed = if (PlayerUtil.getSpeed() < 0.72f) PlayerUtil.getSpeed() * 1.03f else 0.72f
                     if (mc.thePlayer.onGround && mc.thePlayer.isPotionActive(Potion.moveSpeed)) speed *= (1f + 0.125f * (1 + mc.thePlayer.getActivePotionEffect(
                         Potion.moveSpeed).amplifier))
-                    PlayerUtil.strafe(speed as Float)
+                    PlayerUtil.strafe(speed.toFloat())
                     return
                 } else {
                     ticks++

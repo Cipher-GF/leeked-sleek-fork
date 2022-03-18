@@ -15,7 +15,7 @@ import today.sleek.client.utils.math.MathUtil
 import today.sleek.client.utils.network.PacketUtil
 import today.sleek.client.utils.player.PlayerUtil
 
-class Watchdog4 : FlightMode("Hypixel2") {
+class Watchdog4 : FlightMode("Hypixel4") {
 
     var dontgo = true
     var waiting = false
@@ -26,16 +26,18 @@ class Watchdog4 : FlightMode("Hypixel2") {
 
 //        mc.thePlayer.posY = mc.thePlayer.prevPosY
         if (event!!.isPre) {
-            if ((dontgo && !waiting) && mc.thePlayer.onGround) {
-                mc.thePlayer.jump()
-                waiting = true
-            }
+
             if (waiting && mc.thePlayer.onGround) {
                 event.posY -= 0.0784F + MathUtil.getRandomInRange(0.0005f, 0.0154f)
                 event.isOnGround = true;
                 waiting = false
                 dontgo = false
             }
+            if ((dontgo && !waiting) && mc.thePlayer.onGround) {
+                mc.thePlayer.jump()
+                waiting = true
+            }
+
             if (!waiting && !dontgo) {
                 mc.thePlayer.motionY = 0.0
                 if(mc.timer.timerSpeed > 1)
