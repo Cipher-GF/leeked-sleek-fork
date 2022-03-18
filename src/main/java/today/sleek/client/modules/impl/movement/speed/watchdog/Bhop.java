@@ -49,7 +49,7 @@ public class Bhop extends SpeedMode {
                 if(ticks == 3 || ticks == 4){
                     mc.thePlayer.motionY -= 0.03;
                 }
-                if(mc.thePlayer.hurtTime != 0) {
+                if(mc.thePlayer.hurtTime != 0 && PlayerUtil.getSpeed1() < 0.425) {
                     mc.thePlayer.motionX -= (mc.thePlayer.motionX - (-Math.sin(yaw) * PlayerUtil.getSpeed1()*1.015))/2;
                     mc.thePlayer.motionZ -= (mc.thePlayer.motionZ - (Math.cos(yaw) * PlayerUtil.getSpeed1()*1.015))/2;
                 }
