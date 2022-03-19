@@ -8,7 +8,8 @@ import today.sleek.base.modules.ModuleCategory
 import today.sleek.client.modules.impl.Module
 
 object ScriptAPI {
-    fun registerModule(name: String?): ScriptMod {
+
+    fun registerModule(name: String): ScriptMod {
         val mod = ScriptMod(name, "Test...")
         Sleek.getInstance().moduleManager.registerModule(object : Module(name, ModuleCategory.SCRIPT) {
             override fun onEnable() {
