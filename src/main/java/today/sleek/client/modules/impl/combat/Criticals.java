@@ -37,7 +37,7 @@ public class Criticals extends Module {
         if (event.getPacket() instanceof C02PacketUseEntity && ((C02PacketUseEntity) event.getPacket()).getAction() == C02PacketUseEntity.Action.ATTACK) {
             final C02PacketUseEntity packetUseEntity = event.getPacket();
             final Entity entity = packetUseEntity.getEntityFromWorld(mc.theWorld);
-            if (mc.thePlayer.onGround && entity.hurtResistantTime != -1) {
+            if (mc.thePlayer.onGround && entity.hurtResistantTime != -1 && !Sleek.getInstance().getModuleManager().getModuleByName("Speed").isToggled()) {
                 doCritical();
                 entity.hurtResistantTime = -1;
             }
