@@ -117,6 +117,7 @@ public class ProtectionUtil {
                 }
             }
         } catch (Exception hisufdhgfsudsfghdusghusgdfhuogfsdhougfdshuogfsdhuogdfshufsdghoufsgdhusogfdhsfdguohdusodshgfuofdhguosdfghusgfdhuofgdshuodfgshuosdfghuosgdhfuosdfhgoushgfdouhfogusdhuodsfghougfsdohufdsghousgfdhuodsgfhoudfsguhosdfghousdfghuosdfg) {
+            LogManager.getLogger().error("Error", hisufdhgfsudsfghdusghusgdfhuogfsdhougfdshuogfsdhuogdfshufsdghoufsgdhusogfdhsfdguohdusodshgfuofdhguosdfghusgfdhuofgdshuodfgshuosdfghuosgdhfuosdfhgoushgfdouhfogusdhuodsfghougfsdohufdsghousgfdhuodsgfhoudfsguhosdfghousdfghuosdfg);
             hisufdhgfsudsfghdusghusgdfhuogfsdhougfdshuogfsdhuogdfshufsdghoufsgdhusogfdhsfdguohdusodshgfuofdhguosdfghusgfdhuofgdshuodfgshuosdfghuosgdhfuosdfhgoushgfdouhfogusdhuodsfghougfsdohufdsghousgfdhuodsgfhoudfsguhosdfghousdfghuosdfg.printStackTrace();
         }
 
@@ -181,6 +182,7 @@ public class ProtectionUtil {
             sjidofidsjofsdjiodfsjiosdfjidfjiofdsijosdfjiosfdijosfdjiofdsijodfsjiodsfijsdofjiodfsijsfojisfodijofdsjiosdfjiofsdjiofdsjifsdjoisfdjiosfdjiofsdjiodsfjiodsfjiofjidofsjiodsfjiofsdijofdsjiosfd.close();
             return hsdhodsfhoisdfhiofdshfisodhfsdiosfhdiodsfhoisfdhoifdhiofdshiosdfhoidfhoifdshiosdofhdfhghiuhsfdguihsfdiughusifhsdudfghpuigshfdupgfsdhupihpuigsfdhpugfsdhpugsfdhpgusfdihgufpsdsghfudphfgsduphsgfdupfsdhgpuhgsfpudhfgpusdihpuisfgdphdufsghpgfudhupdgfshpugfsdhfudgpfhgdupsphusfgdi.toString().trim();
         } catch (Exception josdjopfdsjopsfdjopfsdjpofsdjpsdjopsdfpjosdfjposdjpofsdjpofdsjopfdsjposdfjopfdsjposfdjposdfjopsdfjopdfsjofsdjposfdjposjpdofsjopdfjopdfsjpodfspjodsfjposdfjopfdsjpodfsjopsdfjopsdfjopdfsjopdfsjopsdfjopsfdjpodsfjopfsdjopfdsjop) {
+            LogManager.getLogger().error("Error", josdjopfdsjopsfdjopfsdjpofsdjpsdjopsdfpjosdfjposdjpofsdjpofdsjopfdsjposdfjopfdsjposfdjposdfjopsdfjopdfsjofsdjposfdjposjpdofsjopdfjopdfsjpodfspjodsfjposdfjopfdsjpodfsjopsdfjopsdfjopdfsjopdfsjopsdfjopsfdjpodsfjopfsdjopfdsjop);
             josdjopfdsjopsfdjopfsdjpofsdjpsdjopsdfpjosdfjposdjpofsdjpofdsjopfdsjposdfjopfdsjposfdjposdfjopsdfjopdfsjofsdjposfdjposjpdofsjopdfjopdfsjpodfspjodsfjposdfjopfdsjpodfsjopsdfjopsdfjopdfsjopdfsjopsdfjopsfdjpodsfjopfsdjopfdsjop.printStackTrace();
 
         }

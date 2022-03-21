@@ -30,4 +30,8 @@ public class PacketEvent extends Event {
     public Class getPacketClass() {
         return packet.getClass();
     }
+
+    public boolean isSending() {
+        return this.packetDirection == PacketDirection.INBOUND;
+    }
 }

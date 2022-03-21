@@ -115,11 +115,18 @@ public class GuiCredits extends GuiScreen {
 
         List<String> devInfo = Arrays.asList("We are a development team of retarded people.",
                 "",
-                "Kansio - Lead Developer",
-                "Divine - Sex Developer",
-                "Reset - Amazing person",
-                "Qoft - Sex maker",
-                "Nullswap - Bypasses");
+                "Divine - lead Developer",
+                "Kansio - lead developer",
+                "Reset - raping main menu",
+                "Qoft - a couple features",
+                "Nullswap - hypixel and funcraft bypasses",
+                "Dort - some bypasses (not dev)",
+                "Vince - cool guy (not dev)",
+                "Wykt - clickgui base (not dev)"
+        );
+        for (String s : devInfo) {
+            devInfo.set(devInfo.indexOf(s), s.toLowerCase());
+        }
         devInfo.sort(Comparator.comparingInt(dev ->
                 mc.fontRendererObj.getStringWidth((String) dev)
         ).reversed());
@@ -127,7 +134,7 @@ public class GuiCredits extends GuiScreen {
         for (int i = 0; i < devInfo.size(); i++) {
             String x = devInfo.get(i);
 
-            Fonts.Arial30.drawCenteredString(x, (width) / 2f + 4, (this.height / 2 + (i * 25)) / 1.5, ColorUtils.getIntGradientOffset(new Color(255, 255, 255), new Color(172, 172, 172), (Math.abs(((System.currentTimeMillis()) / 20)) / 100D) + 9F / mc.fontRendererObj.FONT_HEIGHT * 9.95));
+            Fonts.Arial30.drawCenteredString(x.toLowerCase(), (width) / 2f + 4, (this.height / 2 + (i * 25)) / 1.5, ColorUtils.getIntGradientOffset(new Color(255, 255, 255), new Color(172, 172, 172), (Math.abs(((System.currentTimeMillis()) / 20)) / 100D) + 9F / mc.fontRendererObj.FONT_HEIGHT * 9.95));
         }
 
 

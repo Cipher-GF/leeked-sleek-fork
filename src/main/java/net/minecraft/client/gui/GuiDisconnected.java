@@ -7,6 +7,7 @@ import net.minecraft.util.IChatComponent;
 import org.apache.commons.lang3.RandomStringUtils;
 import sun.misc.Unsafe;
 import today.sleek.base.protection.ProtectionUtil;
+import today.sleek.client.gui.MainMenu;
 import today.sleek.client.gui.alt.AltLoginThread;
 
 import java.io.IOException;
@@ -92,7 +93,7 @@ public class GuiDisconnected extends GuiScreen
         }
         if (button.id == 2)
         {
-            this.mc.displayGuiScreen(new GuiConnecting(this, this.mc, GuiConnecting.lastServer));
+            this.mc.displayGuiScreen(new GuiConnecting(new GuiMultiplayer(new MainMenu()), this.mc, GuiConnecting.lastServer));
 
         }
     }

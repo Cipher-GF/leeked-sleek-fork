@@ -15,7 +15,7 @@ import today.sleek.client.utils.math.MathUtil
 import today.sleek.client.utils.network.PacketUtil
 import today.sleek.client.utils.player.PlayerUtil
 
-class Watchdog4 : FlightMode("Hypixel4") {
+class Watchdog4 : FlightMode("Hypixel3") {
 
     var dontgo = true
     var waiting = false

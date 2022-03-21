@@ -10,6 +10,7 @@ import today.sleek.client.modules.impl.combat.TargetStrafe
 import today.sleek.client.utils.rotations.AimUtil
 import kotlin.math.cos
 import kotlin.math.sin
+import com.google.gson.Gson
 
 object Player {
 
