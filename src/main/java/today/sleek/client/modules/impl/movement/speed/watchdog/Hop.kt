@@ -17,7 +17,7 @@ class Hop: SpeedMode("Watchdog (New)") {
             mc.thePlayer.motionX *= 0.9
             mc.thePlayer.motionZ *= 0.9
         }
-        val speed = if (mc.thePlayer.hurtTime > 0 ) PlayerUtil.getBaseSpeed() * 2 else PlayerUtil.getBaseSpeed()
+        val speed = if (mc.thePlayer.hurtTime > 0 ) PlayerUtil.getBaseSpeed() * 1.4 else PlayerUtil.getBaseSpeed()
         PlayerUtil.setMotion(event, speed.toDouble())
     }
 
