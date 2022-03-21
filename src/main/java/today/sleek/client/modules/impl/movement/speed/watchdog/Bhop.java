@@ -4,7 +4,6 @@ import net.minecraft.potion.Potion;
 import net.minecraft.util.MathHelper;
 import today.sleek.base.event.impl.MoveEvent;
 import today.sleek.base.event.impl.UpdateEvent;
-import today.sleek.base.scripting.base.lib.Player;
 import today.sleek.client.modules.impl.movement.speed.SpeedMode;
 import today.sleek.client.utils.player.PlayerUtil;
 

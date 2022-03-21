@@ -1,6 +1,7 @@
 package today.sleek.client.modules.impl.combat;
 
 import com.google.common.eventbus.Subscribe;
+import net.minecraft.network.play.client.C03PacketPlayer;
 import net.minecraft.network.play.server.S12PacketEntityVelocity;
 import net.minecraft.network.play.server.S27PacketExplosion;
 import today.sleek.base.event.impl.PacketEvent;
@@ -12,6 +13,7 @@ import today.sleek.base.value.value.ModeValue;
 import today.sleek.base.value.value.NumberValue;
 import today.sleek.client.modules.impl.Module;
 import today.sleek.client.utils.moshi.IPacketUtils;
+import today.sleek.client.utils.network.PacketUtil;
 import today.sleek.client.utils.network.TimedPacket;
 
 import java.util.LinkedList;
@@ -25,7 +27,7 @@ public class Velocity extends Module implements IPacketUtils {
 
     private NumberValue<Double> v = new NumberValue<>("Vertical", this, 100.0, 0.0, 100.0, 1.0);
     private NumberValue<Double> h = new NumberValue<>("Horizontal", this, 100.0, 0.0, 100.0, 1.0);
-    private ModeValue modeValue = new ModeValue("Mode", this, "Packet", "Push", "Delayed");
+    private ModeValue modeValue = new ModeValue("Mode", this, "Packet", "Teleport", "Push", "Delayed");
     private NumberValue<Integer> delay = new NumberValue<Integer>("Delay (MS)", this, 500, 0, 3000, 50,
             modeValue, "Delayed");
     public BooleanValue explotion = new BooleanValue("Explosion", this, true);
@@ -65,6 +67,22 @@ public class Velocity extends Module implements IPacketUtils {
                 } else if (event.getPacket() instanceof S27PacketExplosion) {
                     if (explotion.getValue()) {
                         event.setCancelled(true);
+                    }
+                }
+                break;
+            }
+            case "Teleport": {
+                if (event.getPacket() instanceof S12PacketEntityVelocity) {
+                    S12PacketEntityVelocity packet = event.getPacket();
+                    if (mc.theWorld != null && mc.thePlayer != null && mc.theWorld.getEntityByID(packet.getEntityID()) == mc.thePlayer) {
+                        event.setCancelled(true);
+                        PacketUtil.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, (mc.thePlayer.posY - mc.thePlayer.fallDistance - 0.21), mc.thePlayer.posZ, true));
+
+                    }
+                } else if (event.getPacket() instanceof S27PacketExplosion) {
+                    if (explotion.getValue()) {
+                        event.setCancelled(true);
+                        PacketUtil.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY - 1.25232, mc.thePlayer.posZ, true));
                     }
                 }
                 break;
