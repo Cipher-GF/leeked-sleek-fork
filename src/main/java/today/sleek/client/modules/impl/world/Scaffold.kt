@@ -75,7 +75,7 @@ class Scaffold : Module() {
             "Dev", "New", "NCP" -> {
                 blockEntry = null
                 startSlot = mc.thePlayer.inventory.currentItem
-                if (slotWithBlock > -1) {
+                if (slotWithBlock > -1 && mc.thePlayer.inventory.currentItem != slotWithBlock) {
                     mc.thePlayer.sendQueue.addToSendQueue(
                         C09PacketHeldItemChange(
                             slotWithBlock

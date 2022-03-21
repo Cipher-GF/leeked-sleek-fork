@@ -336,6 +336,11 @@ public class KillAura extends Module {
             isBlocking = false;
         }
 
+        //fix bad packets I on vulcan
+        if (event.getPacket() instanceof C0BPacketEntityAction) {
+            event.setCancelled(true);
+        }
+
         if (gcd.getValue() && target != null && event.getPacket() instanceof C03PacketPlayer && ((C03PacketPlayer) event.getPacket()).getRotating()) {
             C03PacketPlayer p = event.getPacket();
             float m = (float) (0.005 * mc.gameSettings.mouseSensitivity / 0.005);

@@ -22,7 +22,6 @@ public class ScriptMod {
         JSObject callback = callbacks.get(eventName);
         if (callback != null) {
             callback.call(this, e);
-
         }
     }
 
