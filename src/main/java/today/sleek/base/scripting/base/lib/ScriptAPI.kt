@@ -40,31 +40,31 @@ object ScriptAPI {
                 mod.onEvent("move", event)
             }
             @Subscribe
-            fun onSlow(event: MoveEvent) {
+            fun onSlow(event: NoSlowEvent) {
                 mod.onEvent("slow", event)
             }
             @Subscribe
-            fun onPacket(event: MoveEvent) {
+            fun onPacket(event: PacketEvent) {
                 mod.onEvent("packet", event)
             }
             @Subscribe
-            fun onRender3D(event: MoveEvent) {
+            fun onRender3D(event: Render3DEvent) {
                 mod.onEvent("render3d", event)
             }
             @Subscribe
-            fun onRenderOverlay(event: MoveEvent) {
+            fun onRenderOverlay(event: RenderOverlayEvent) {
                 mod.onEvent("render2d", event)
             }
             @Subscribe
-            fun onJoin(event: MoveEvent) {
+            fun onJoin(event: ServerJoinEvent) {
                 mod.onEvent("join", event)
             }
             @Subscribe
-            fun onStep(event: MoveEvent) {
+            fun onStep(event: StepEvent) {
                 mod.onEvent("step", event)
             }
             @Subscribe
-            fun onTick(event: MoveEvent) {
+            fun onTick(event: TickEvent) {
                 mod.onEvent("tick", event)
             }
         })

@@ -183,6 +183,9 @@ public class Sleek {
                     packet.chatComponent = new ChatComponentText(packet.getChatComponent().getFormattedText().replaceAll(user.getKey(), MessageFormat.format("§b{0} §7({1})", user.getValue(), user.getKey())));
                 }
             }
+            if (packet.getChatComponent().getUnformattedText().contains("A player has been removed from your game.")) {
+                packet.chatComponent = new ChatComponentText(packet.getChatComponent().getFormattedText().replace("player", "novoline user"));
+            }
         }
     }
 

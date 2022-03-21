@@ -68,17 +68,16 @@ public class CopsAndCrims extends Module {
         target = null;
         if (!targets.isEmpty()) {
             target = targets.get(0);
-            if (target != null) {
+            if (target != null && target.canEntityBeSeen(mc.thePlayer)) {
                 float rotations[] = getRotations(target);
                 event.setRotationYaw(rotations[0]);
                 event.setRotationPitch(rotations[1]);
                 if (watch.timeElapsed(1000 / cps.getValue())) {
                     watch.resetTime();
-                    if (target.canEntityBeSeen(mc.thePlayer)) {
-                        PacketUtil.sendPacketNoEvent(new C0BPacketEntityAction(mc.thePlayer, C0BPacketEntityAction.Action.START_SNEAKING));
-                        PacketUtil.sendPacketNoEvent(new C08PacketPlayerBlockPlacement(mc.thePlayer.getHeldItem()));
-                        PacketUtil.sendPacketNoEvent(new C0BPacketEntityAction(mc.thePlayer, C0BPacketEntityAction.Action.STOP_SNEAKING));
-                    }
+                    PacketUtil.sendPacketNoEvent(new C0BPacketEntityAction(mc.thePlayer, C0BPacketEntityAction.Action.START_SNEAKING));
+                    PacketUtil.sendPacketNoEvent(new C08PacketPlayerBlockPlacement(mc.thePlayer.getHeldItem()));
+                    PacketUtil.sendPacketNoEvent(new C0BPacketEntityAction(mc.thePlayer, C0BPacketEntityAction.Action.STOP_SNEAKING));
+
                 }
 
             }
@@ -118,7 +117,7 @@ public class CopsAndCrims extends Module {
                 distance = Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaZ, 2));
 
         float yaw = (float) Math.toDegrees(-Math.atan(deltaX / deltaZ)),
-                pitch = (float) ((-Math.toDegrees(Math.atan(deltaY / distance))));
+                pitch = (float) ((-Math.toDegrees(Math.atan(deltaY / distance)))) + (mc.thePlayer.getDistanceToEntity(e) / 4);
 
         double v = Math.toDegrees(Math.atan(deltaZ / deltaX));
         if (deltaX < 0 && deltaZ < 0) {

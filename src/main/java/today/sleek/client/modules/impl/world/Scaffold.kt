@@ -72,7 +72,7 @@ class Scaffold : Module() {
                 }
                 lastSlot = slotWithBlock
             }
-            "Dev", "NEW", "NCP" -> {
+            "Dev", "New", "NCP" -> {
                 blockEntry = null
                 startSlot = mc.thePlayer.inventory.currentItem
                 if (slotWithBlock > -1) {
@@ -139,7 +139,7 @@ class Scaffold : Module() {
     @Subscribe
     fun onUpdate(event: UpdateEvent) {
         when (modeValue.valueAsString) {
-            "Vulcan", "Verus", "NEW" -> {
+            "Vulcan", "Verus", "New" -> {
                 var vec2f: Vector2f? = null
                 if (mc.thePlayer.isMoving) {
                     mc.thePlayer.forceSprinting(sprint.value)
