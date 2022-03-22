@@ -19,8 +19,6 @@ public class Verus extends SpeedMode {
                 event.setMotionY(mc.thePlayer.motionY = PlayerUtil.getMotion(0.42f));
             }
 
-
-
             if (mc.thePlayer.hurtTime >= 1) {
                 sped2 = getSpeed().getSpeed().getValue().floatValue();
             }

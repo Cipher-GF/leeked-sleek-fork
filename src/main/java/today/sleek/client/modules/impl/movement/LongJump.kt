@@ -115,13 +115,6 @@ class LongJump : Module() {
         }
     }
 
-    //    @Subscribe
-    //    public void render(RenderOverlayEvent event) {
-    //        if (mode.getValue().equals("Test")) {
-    //            RenderUtil.drawBar((float) event.getSr().getScaledWidth_double() / 2, (float) (event.getSr().getScaledHeight_double() / 2) - 25, 100, 20, 1000, (float) damageWaiterThing.getTimeRemaining(1000), 0xFF00FF00);
-    //            mc.fontRendererObj.drawStringWithShadow(new DecimalFormat("0.#").format(((double) (damageWaiterThing.getTimeRemaining(1000)) / 1000)), (float) event.getSr().getScaledWidth_double() / 2, (float) event.getSr().getScaledHeight_double() / 2, -1);
-    //        }
-    //    }
     @Subscribe
     fun onMove(event: MoveEvent?) {
         when (mode.value) {
