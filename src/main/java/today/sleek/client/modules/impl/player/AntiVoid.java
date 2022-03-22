@@ -4,8 +4,12 @@ package today.sleek.client.modules.impl.player;
 import com.google.common.eventbus.Subscribe;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockAir;
+import net.minecraft.network.play.server.S08PacketPlayerPosLook;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import today.sleek.Sleek;
+import today.sleek.base.event.impl.BlockCollisionEvent;
+import today.sleek.base.event.impl.PacketEvent;
 import today.sleek.base.event.impl.UpdateEvent;
 import today.sleek.base.modules.ModuleCategory;
 import today.sleek.base.modules.ModuleData;
@@ -14,6 +18,7 @@ import today.sleek.base.value.value.NumberValue;
 import today.sleek.client.modules.impl.Module;
 import today.sleek.client.modules.impl.movement.Flight;
 import today.sleek.client.utils.block.BlockUtil;
+import today.sleek.client.utils.player.PlayerUtil;
 
 @ModuleData(
         name = "Anti Void",
@@ -27,26 +32,61 @@ public class AntiVoid extends Module {
     double prevY = 0;
     double prevZ = 0;
 
-    private final ModeValue modeValue = new ModeValue("Mode", this, "Basic", "Blink");
+    private boolean isTeleporting = false;
+
+    private final ModeValue modeValue = new ModeValue("Mode", this, "Basic", "Blink", "Vulcan");
     private final NumberValue fallDist = new NumberValue<>("Fall Distance", this, 7, 0, 30, 1);
 
     @Subscribe
     public void onUpdate(UpdateEvent event) {
-        //save a safe position to teleport to
-        if (!(BlockUtil.getBlockAt(new BlockPos(mc.thePlayer.posX, mc.thePlayer.posY - 1, mc.thePlayer.posZ)) instanceof BlockAir)) {
-            prevX = mc.thePlayer.posX;
-            prevY = mc.thePlayer.posY;
-            prevZ = mc.thePlayer.posZ;
+        switch (modeValue.getValue()) {
+            case "Basic": {
+                //save a safe position to teleport to
+                if (!(BlockUtil.getBlockAt(new BlockPos(mc.thePlayer.posX, mc.thePlayer.posY - 1, mc.thePlayer.posZ)) instanceof BlockAir)) {
+                    prevX = mc.thePlayer.posX;
+                    prevY = mc.thePlayer.posY;
+                    prevZ = mc.thePlayer.posZ;
+                }
+
+                //check if they should be teleported back to the safe position
+                if (shouldTeleportBack()) {
+                    mc.thePlayer.setPositionAndUpdate(prevX, prevY, prevZ);
+
+                    //set the motion to 0
+                    mc.thePlayer.motionZ = 0;
+                    mc.thePlayer.motionX = 0;
+                    mc.thePlayer.motionY = 0;
+                }
+                break;
+            }
+            case "Vulcan": {
+                if (shouldTeleportBack()) {
+                    isTeleporting = true;
+                }
+                break;
+            }
         }
+    }
 
-        //check if they should be teleported back to the safe position
-        if (shouldTeleportBack()) {
-            mc.thePlayer.setPositionAndUpdate(prevX, prevY, prevZ);
+    @Subscribe
+    public void onPacket(PacketEvent event) {
+        switch (modeValue.getValue()) {
+            case "Vulcan": {
+                if (event.getPacket() instanceof S08PacketPlayerPosLook) {
+                    isTeleporting = false;
+                }
+                break;
+            }
+        }
+    }
 
-            //set the motion to 0
-            mc.thePlayer.motionZ = 0;
-            mc.thePlayer.motionX = 0;
-            mc.thePlayer.motionY = 0;
+    @Subscribe
+    public void onCollide(BlockCollisionEvent event) {
+        if (event.getBlock() instanceof BlockAir && isTeleporting) {
+            double x = event.getX();
+            double y = event.getY();
+            double z = event.getZ();
+            event.setAxisAlignedBB(AxisAlignedBB.fromBounds(-5, -1, -5, 5, 1.0F, 5).offset(x, y, z));
         }
     }
 
