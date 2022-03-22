@@ -1,9 +1,8 @@
 package net.minecraft.client;
 
-public class ClientBrandRetriever
-{
-    public static String getClientModName()
-    {
-        return "vanilIa";
+public class ClientBrandRetriever {
+
+    public static String getClientModName() {
+        return "Vanilla";
     }
 }
