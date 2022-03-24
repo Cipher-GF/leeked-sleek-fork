@@ -2,11 +2,13 @@ package today.sleek.client.modules.impl.player;
 
 import com.google.common.eventbus.Subscribe;
 import net.minecraft.network.play.client.C09PacketHeldItemChange;
+import today.sleek.Sleek;
 import today.sleek.base.event.impl.PacketEvent;
 import today.sleek.base.event.impl.UpdateEvent;
 import today.sleek.base.modules.ModuleCategory;
 import today.sleek.base.modules.ModuleData;
 import today.sleek.client.modules.impl.Module;
+import today.sleek.client.modules.impl.world.Scaffold;
 import today.sleek.client.utils.network.PacketUtil;
 
 /**
@@ -30,6 +32,9 @@ public class AntiDesync extends Module {
 
     @Subscribe
     public void onUpdate(UpdateEvent event) {
+        if (Sleek.getInstance().getModuleManager().getModuleByName("Scaffold").isToggled())
+            return;
+
         if (mc.thePlayer.inventory.currentItem != currSlot && currSlot != -1)
             PacketUtil.sendPacketNoEvent(new C09PacketHeldItemChange(mc.thePlayer.inventory.currentItem));
     }
