@@ -9,11 +9,10 @@ import today.sleek.base.event.impl.MoveEvent
 import today.sleek.base.event.impl.PacketEvent
 import today.sleek.base.event.impl.UpdateEvent
 import today.sleek.client.modules.impl.movement.flight.FlightMode
-import today.sleek.client.utils.math.MathUtil
 import today.sleek.client.utils.network.PacketUtil
 import today.sleek.client.utils.player.PlayerUtil
 
-class Watchdog: FlightMode("Hypixel") {
+class Watchdog : FlightMode("Hypixel") {
 
     var dontgo = true
     var waiting = false
@@ -24,7 +23,7 @@ class Watchdog: FlightMode("Hypixel") {
         if (event!!.isPre) {
             if ((dontgo && !waiting) && mc.thePlayer.onGround) {
                 event.posY = mc.thePlayer.posY + 0.017
-                mc.thePlayer.motionY = 0.4-0.22
+                mc.thePlayer.motionY = 0.4 - 0.22
                 waiting = true
                 blinking = false
                 mc.thePlayer.onGround = false
@@ -43,8 +42,8 @@ class Watchdog: FlightMode("Hypixel") {
                     }
                     list.clear()
                 }
-                if(mc.timer.timerSpeed > 1.1)
-                    mc.timer.timerSpeed -= mc.timer.timerSpeed/(259f*mc.timer.timerSpeed)
+                if (mc.timer.timerSpeed > 1.1)
+                    mc.timer.timerSpeed -= mc.timer.timerSpeed / (259f * mc.timer.timerSpeed)
             } else {
                 mc.thePlayer.motionX = 0.0
             }

@@ -7,7 +7,7 @@ import today.sleek.client.utils.player.PlayerUtil;
 public class VerusYPort extends SpeedMode {
 
     public VerusYPort() {
-        super("Verus yPort");
+        super("Verus (Port)");
     }
 
     @Override

@@ -12,6 +12,7 @@ import today.sleek.base.value.value.BooleanValue;
 import today.sleek.base.value.value.ModeValue;
 import today.sleek.base.value.value.NumberValue;
 import today.sleek.client.modules.impl.Module;
+import today.sleek.client.utils.math.MathUtil;
 import today.sleek.client.utils.moshi.IPacketUtils;
 import today.sleek.client.utils.network.PacketUtil;
 import today.sleek.client.utils.network.TimedPacket;
@@ -31,6 +32,9 @@ public class Velocity extends Module implements IPacketUtils {
     private NumberValue<Integer> delay = new NumberValue<Integer>("Delay (MS)", this, 500, 0, 3000, 50,
             modeValue, "Delayed");
     public BooleanValue explotion = new BooleanValue("Explosion", this, true);
+    private BooleanValue moveOnly = new BooleanValue("Only While Moving", this, false);
+
+    private NumberValue chance = new NumberValue("Chance", this, 100, 0, 100, 1);
 
     // Handles delayed velocities
     LinkedList<TimedPacket> velocities = new LinkedList<>();
@@ -57,6 +61,13 @@ public class Velocity extends Module implements IPacketUtils {
     @Subscribe
     public void onPacket(PacketEvent event) {
         if (mc.thePlayer == null || mc.theWorld == null)
+            return;
+
+        if (moveOnly.getValue() && !mc.thePlayer.isMoving())
+            return;
+
+
+        if (chance.getValue().floatValue() != 100f && MathUtil.getRandomInRange(0, 100) > chance.getValue().floatValue())
             return;
 
         switch (modeValue.getValueAsString()) {

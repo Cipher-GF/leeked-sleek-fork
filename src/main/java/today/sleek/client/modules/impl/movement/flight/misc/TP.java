@@ -6,7 +6,7 @@ import today.sleek.client.utils.player.PlayerUtil;
 
 public class TP extends FlightMode {
     public TP() {
-        super("TP");
+        super("Teleport");
     }
 
     @Override

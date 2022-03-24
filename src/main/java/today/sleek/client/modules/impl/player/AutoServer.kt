@@ -14,14 +14,19 @@ import net.minecraft.network.play.server.S2DPacketOpenWindow
 import today.sleek.base.event.impl.UpdateEvent
 import net.minecraft.item.ItemSkull
 import net.minecraft.network.Packet
+import net.minecraft.network.play.client.C01PacketChatMessage
 import net.minecraft.network.play.server.S02PacketChat
 import net.minecraft.network.play.server.S45PacketTitle
 import net.minecraft.util.StringUtils
 import net.minecraft.util.Util
 import today.sleek.base.value.value.BooleanValue
+import today.sleek.base.value.value.NumberValue
 import today.sleek.base.value.value.StringValue
+import today.sleek.client.gui.notification.Notification
+import today.sleek.client.gui.notification.NotificationManager
 import today.sleek.client.modules.impl.Module
 import today.sleek.client.utils.chat.ChatUtil
+import today.sleek.client.utils.network.PacketSleepThread
 
 @ModuleData(
     name = "Auto Server",
@@ -42,6 +47,9 @@ class AutoServer : Module() {
     private val autoGG = BooleanValue("Auto GG", this, true, modeValue, "Hypixel")
     private val ggMessage = StringValue("GG Message", this, "gg")
     private val hideGGS = BooleanValue("Hide GGS", this, true, modeValue, "Hypixel")
+    private val autoPlay = BooleanValue("Auto Play", this, true, modeValue, "Hypixel")
+    private val autoPlayDelay = NumberValue("Auto Play Delay", this, 3000, 0, 15000, 1, autoPlay)
+
 
     //vipermc
     private val autoChatGames = BooleanValue("Auto Chat Game", this, true, modeValue, "Viper")
@@ -139,6 +147,26 @@ class AutoServer : Module() {
 
                     if (message.contains(": gg")) {
                         event.isCancelled = true
+                    }
+                }
+
+                //autoplay
+                if (autoPlay.value && event.getPacket<Packet<*>>() is S02PacketChat) {
+                    val message = (event.getPacket<Packet<*>>() as S02PacketChat).chatComponent.unformattedText
+                    if (message.contains("ClickEvent{action=RUN_COMMAND, value='/play ")) {
+                        PacketSleepThread.delayPacket(
+                            C01PacketChatMessage((message.split("action=RUN_COMMAND, value='")[1].split("'}")[0])),
+                            autoPlayDelay.value.toLong()
+                        )
+
+                        NotificationManager.getNotificationManager().show(
+                            Notification(
+                                Notification.NotificationType.INFO,
+                                "Auto Play",
+                                "Sending you to another game in " + (autoPlayDelay.value.toInt() / 1000) + " seconds",
+                                3000
+                            )
+                        )
                     }
                 }
             }

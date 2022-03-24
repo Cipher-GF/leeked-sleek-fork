@@ -3,7 +3,6 @@ package today.sleek.client.modules.impl.movement.flight.misc
 import net.minecraft.block.BlockAir
 import net.minecraft.network.Packet
 import net.minecraft.network.play.client.C03PacketPlayer
-import net.minecraft.util.AxisAlignedBB
 import today.sleek.base.event.impl.BlockCollisionEvent
 import today.sleek.base.event.impl.MoveEvent
 import today.sleek.base.event.impl.PacketEvent
@@ -16,7 +15,9 @@ import today.sleek.client.utils.player.TimerUtil
 class Mush : FlightMode("Mush") {
     var speedy = 2.5
     var blinking = false
+
     private val c03Packets: ArrayList<out C03PacketPlayer> = ArrayList()
+
     override fun onUpdate(event: UpdateEvent) {
         if (mc.thePlayer.ticksExisted % 18 == 0) {
             mc.timer.timerSpeed = 1.0F

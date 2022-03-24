@@ -84,7 +84,7 @@ public class GuiMainMenu extends GuiScreen {
                 logger.info("disabled ssl fuckery");
 
                 String serv = HttpUtil.get("https://api.sleek.today/api/user?hwid=" + NegroidFarm.guisdafghiusfgfsdhusdfghifsdhuidsfhuifdshuifsdhiudsfhiusfdhsdiuffsdhiudhsifusdfhiufsdhiufsdhiusdfhiufsdhiufsdhiu(), map);
-                // get first object in array
+
                 logger.info(serv);
                 JsonObject json = new JsonParser().parse(serv).getAsJsonArray().get(0).getAsJsonObject();
                 logger.info("ran json test");
@@ -99,6 +99,7 @@ public class GuiMainMenu extends GuiScreen {
                         Sleek.getInstance().setUsername(json.get("username").getAsString());
                         Sleek.getInstance().setDiscordTag(String.format("%s#%s", new JsonParser().parse(HttpUtil.get("https://api.sleek.today/api/getdiscordinfo?id=" + json.get("discordID").getAsString())).getAsJsonObject().get("username"), new JsonParser().parse(HttpUtil.get("https://api.sleek.today/api/getdiscordinfo?id=" + json.get("discordID").getAsString())).getAsJsonObject().get("discriminator")));
                         Sleek.getInstance().setRank(json.get("rank").getAsString());
+                        logger.info("finish");
                         logger.info("finish");
                     }
                 } else {

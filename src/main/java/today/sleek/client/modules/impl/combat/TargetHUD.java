@@ -30,8 +30,8 @@ public class TargetHUD extends Util {
 
     public static float animation = 0;
 
-    public static void draw(RenderOverlayEvent event, EntityLivingBase target) {
-        KillAura killaura = Sleek.getInstance().getModuleManager().getModuleByClass(KillAura.class);
+    public static void render(RenderOverlayEvent event, EntityLivingBase target, double x, double y) {
+        KillAura killaura = (KillAura) Sleek.getInstance().getModuleManager().getModuleByName("KillAura");
         switch (killaura.targethudmode.getValue()) {
             case "Sleek": {
                 float targetHealthWidth = (float) (target.getHealth() * 6.9);
@@ -47,9 +47,7 @@ public class TargetHUD extends Util {
                 }
 
                 //Draw the background with the hurttime animation
-
-                RenderUtils.drawRoundedRect(150.0, 350, 150, 60, 10,  new Color(target.hurtTime * 6, 0, 0, 100).getRGB());
-                RenderUtil.drawOutlinedRoundedRect(150, 350, 150, 60, 10, 2, new Color(2).getRGB());
+                RenderUtils.drawBorderedRoundedRect(150, 350, 150, 60, 10, 2, 2, new Color(target.hurtTime * 6, 0, 0, 100).getRGB());
 
 //                mc.fontRendererObj.drawStringWithShadow(target.getName(), 210, 370, -1);
                 NetworkPlayerInfo networkPlayerInfo = mc.getNetHandler().getPlayerInfo(target.getUniqueID());
@@ -60,7 +58,7 @@ public class TargetHUD extends Util {
                 Fonts.Verdana.drawString(ping, 205, 381, -1);
 
                 if (target instanceof EntityPlayer) {
-                    switch (killaura.targethud3d.getValue()) {
+                    switch (killaura.targetHudPreview.getValue()) {
                         case "Face": {
                             ResourceLocation skin = ((AbstractClientPlayer) target).getLocationSkin();
                             RenderUtils.drawFace(skin, 165, 360, 35, 35);
@@ -143,7 +141,7 @@ public class TargetHUD extends Util {
                 mc.getTextureManager().bindTexture(info.getLocationSkin());
                 drawScaledCustomSizeModalRect(2f, 2f, 8.0f, 8.0f, 8, 8, 24, 24, 64.0f, 64.0f);
 
-                    //drawScaledCustomSizeModalRect(2f, 2f, 40.0f, 8.0f, 8, 8, 24, 24, 64.0f, 64.0f);
+                //drawScaledCustomSizeModalRect(2f, 2f, 40.0f, 8.0f, 8, 8, 24, 24, 64.0f, 64.0f);
 
                 GlStateManager.bindTexture(0);
                 break;

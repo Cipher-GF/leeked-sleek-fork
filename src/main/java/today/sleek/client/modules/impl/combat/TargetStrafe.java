@@ -2,6 +2,7 @@ package today.sleek.client.modules.impl.combat;
 
 import com.google.common.eventbus.Subscribe;
 import net.minecraft.entity.Entity;
+import org.lwjgl.input.Keyboard;
 import today.sleek.Sleek;
 import today.sleek.base.event.impl.Render3DEvent;
 import today.sleek.base.event.impl.UpdateEvent;
@@ -81,7 +82,7 @@ public class TargetStrafe extends Module {
         }
 
         if (jump.getValue()) {
-            if (mc.gameSettings.keyBindJump.isKeyDown())
+            if (Keyboard.isKeyDown(mc.gameSettings.keyBindJump.getKeyCode()))
                 return KillAura.target != null;
             else
                 return false;
