@@ -48,6 +48,9 @@ public class Aura extends Module {
 
         targets.sort(Comparator.comparingDouble(e -> e.getDistanceToEntity(mc.thePlayer)));
 
+        if (targets.isEmpty()) {
+            return;
+        }
         target = targets.get(0);
         if (target != null) {
             float rotations[] = getRotations(target);

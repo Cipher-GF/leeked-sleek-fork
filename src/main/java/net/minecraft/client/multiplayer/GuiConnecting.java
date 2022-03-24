@@ -53,8 +53,8 @@ public class GuiConnecting extends GuiScreen {
 
     public void connect(String ip, int port) {
         //set playtime
-        Playtime playtime = (Playtime) Sleek.getInstance().getModuleManager().getModuleByName("Playtime");
-        playtime.currentTime = System.currentTimeMillis();
+        Playtime playtime = (Playtime) Sleek.getInstance().getModuleManager().getModuleByClass(Playtime.class);
+        playtime.setStartTime(System.currentTimeMillis());
 
         logger.info("Connecting to " + ip + ", " + port);
         (new Thread("Server Connector #" + CONNECTION_ID.incrementAndGet()) {

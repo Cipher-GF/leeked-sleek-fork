@@ -31,7 +31,7 @@ public class TargetHUD extends Util {
     public static float animation = 0;
 
     public static void draw(RenderOverlayEvent event, EntityLivingBase target) {
-        KillAura killaura = (KillAura) Sleek.getInstance().getModuleManager().getModuleByName("KillAura");
+        KillAura killaura = Sleek.getInstance().getModuleManager().getModuleByClass(KillAura.class);
         switch (killaura.targethudmode.getValue()) {
             case "Sleek": {
                 float targetHealthWidth = (float) (target.getHealth() * 6.9);
@@ -47,7 +47,9 @@ public class TargetHUD extends Util {
                 }
 
                 //Draw the background with the hurttime animation
-                RenderUtils.drawBorderedRoundedRect(150, 350, 150, 60, 10, 2, 2, new Color(target.hurtTime * 6, 0, 0, 100).getRGB());
+
+                RenderUtils.drawRoundedRect(150.0, 350, 150, 60, 10,  new Color(target.hurtTime * 6, 0, 0, 100).getRGB());
+                RenderUtil.drawOutlinedRoundedRect(150, 350, 150, 60, 10, 2, new Color(2).getRGB());
 
 //                mc.fontRendererObj.drawStringWithShadow(target.getName(), 210, 370, -1);
                 NetworkPlayerInfo networkPlayerInfo = mc.getNetHandler().getPlayerInfo(target.getUniqueID());

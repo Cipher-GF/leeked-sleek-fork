@@ -75,7 +75,7 @@ public class ConfigCommand extends Command {
                     bParams.put("data", data[3]);
                     try {
 
-                        System.out.println(HttpUtil.postForm(HttpUtil.appendQueryParams("http://zerotwoclient.xyz:8080/api/verifiedconfig", params), bParams, null));
+                        System.out.println(HttpUtil.postForm(HttpUtil.appendQueryParams("https://api.sleek.today/api/verifiedconfig", params), bParams, null));
                     } catch(Exception e) {
                         e.printStackTrace();
                     }
@@ -85,7 +85,7 @@ public class ConfigCommand extends Command {
                     switch (args[1].toLowerCase()) {
                         case "list": {
                             ChatUtil.log("nig");
-                            String serv = HttpUtil.get("http://zerotwoclient.xyz:8080/api/verifiedconfigs");
+                            String serv = HttpUtil.get("https://api.sleek.today/api/verifiedconfigs");
                             System.out.println(serv);
                             JsonObject element = new JsonParser().parse(serv).getAsJsonObject().get("configs").getAsJsonArray().get(0).getAsJsonObject();
                             if (element.isJsonArray()) {
@@ -98,7 +98,7 @@ public class ConfigCommand extends Command {
                             break;
                         }
                         case "load": {
-                            String serv = HttpUtil.get("http://zerotwoclient.xyz:8080/api/verifiedconfigs");
+                            String serv = HttpUtil.get("https://api.sleek.today/api/verifiedconfigs");
                             JsonObject ar2 = new JsonParser().parse(serv).getAsJsonArray().get(0).getAsJsonObject();
                             if (!ar2.isJsonArray()) {
                                 return;

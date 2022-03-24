@@ -42,7 +42,7 @@ public class ConfigManager {
         try {
             JsonElement element = null;
 
-            element = new JsonParser().parse(HttpUtil.get("http://zerotwoclient.xyz:8080/api/verifiedconfigs"));
+            element = new JsonParser().parse(HttpUtil.get("https://api.sleek.today/api/verifiedconfigs"));
 
             String configs = HttpUtil.getConfigUrl();
             JsonObject json = new JsonParser().parse(configs).getAsJsonArray().get(0).getAsJsonObject();
@@ -107,7 +107,7 @@ public class ConfigManager {
         if (configName.startsWith("(Verified) ")) {
             String p = configName.replace("(Verified) ", "");
             try {
-                JsonElement ar2 = new JsonParser().parse(HttpUtil.get("http://zerotwoclient.xyz:8080:13337/api/v1/verifiedConfigs"));
+                JsonElement ar2 = new JsonParser().parse(HttpUtil.get("https://api.sleek.today:13337/api/v1/verifiedConfigs"));
                 if (!ar2.isJsonArray()) {
                     return;
                 }
