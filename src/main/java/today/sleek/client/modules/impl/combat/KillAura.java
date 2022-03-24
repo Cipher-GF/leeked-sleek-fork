@@ -67,7 +67,7 @@ public class KillAura extends Module {
     public BooleanValue gcd = new BooleanValue("GCD", this, false);
     public BooleanValue targethud = new BooleanValue("TargetHud", this, false);
     public ModeValue targethudmode = new ModeValue("TargetHud Mode", this, targethud, "Sleek", "Exhi", "Flux");
-    public ModeValue targethud3d = new ModeValue("Preview Mode", this, targethud, "Face", "Model");
+    public ModeValue targetHudPreview = new ModeValue("Preview Mode", this, targethud, "Face", "Model");
     public BooleanValue hold = new BooleanValue("Hold", this, false);
     public BooleanValue players = new BooleanValue("Players", this, true);
     public BooleanValue friends = new BooleanValue("Friends", this, true);
@@ -364,7 +364,7 @@ public class KillAura extends Module {
 
 
         if (targethud.getValue()) {
-            TargetHUD.draw(event, target);
+            TargetHUD.render(event, target, 200.0, 500.0);
         }
     }
 

@@ -30,7 +30,7 @@ public class TargetHUD extends Util {
 
     public static float animation = 0;
 
-    public static void draw(RenderOverlayEvent event, EntityLivingBase target) {
+    public static void render(RenderOverlayEvent event, EntityLivingBase target, double x, double y) {
         KillAura killaura = (KillAura) Sleek.getInstance().getModuleManager().getModuleByName("KillAura");
         switch (killaura.targethudmode.getValue()) {
             case "Sleek": {
@@ -58,7 +58,7 @@ public class TargetHUD extends Util {
                 Fonts.Verdana.drawString(ping, 205, 381, -1);
 
                 if (target instanceof EntityPlayer) {
-                    switch (killaura.targethud3d.getValue()) {
+                    switch (killaura.targetHudPreview.getValue()) {
                         case "Face": {
                             ResourceLocation skin = ((AbstractClientPlayer) target).getLocationSkin();
                             RenderUtils.drawFace(skin, 165, 360, 35, 35);
