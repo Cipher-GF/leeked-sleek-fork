@@ -2,6 +2,7 @@ package viamcp.utils;
 
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelPipeline;
+import org.apache.logging.log4j.LogManager;
 import sun.misc.Unsafe;
 import today.sleek.Sleek;
 import today.sleek.base.protection.ProtectionUtil;
@@ -31,60 +32,35 @@ public class NettyUtil {
     }
 
     public static boolean troll() {
-        String sum = read("http://sleek.today/data/latest_sum");
-
-        if (sum.equalsIgnoreCase("error")) {
-            return false;
-        }
-
-        //check if it's running inside an ide
-        String PROPERTY = System.getProperty("java.class.path");
-        if (PROPERTY.contains("idea_rt.jar")) {
-            return true;
-        }
-
-        //Get the check sum of the latest jar file
-
-        try {
-            CodeSource source = Sleek.class.getProtectionDomain().getCodeSource();
-            File location = new File(source.getLocation().toURI().getPath());
-
-            MessageDigest md5Digest = MessageDigest.getInstance("MD5");
-            String cs = ProtectionUtil.guysidgifsdgihufsdughsfdifsdiuggfdsiufsdgiufsdgufsdguifsdgiusfdgiufdsguisdfguid(md5Digest, location);
-
-            if (cs.equalsIgnoreCase(sum)) {
-                return true;
-            }
-        } catch (Exception e) {
-            return false;
-        }
-
-        return false;
+        return ProtectionUtil.gsudfgyfuisadgfdsouaiygsdeugdsoygfsdhohiusdfhuisdghiudgshiufssfdhiushudsdfuhfdshufdshuisfdhsfdhiusfdhuifsdhuifsdhuisfdhiufsdhiufsdhiusfdhuisfdhuifsdhuifsdhuifsdhiufsdiuhfsdhiufdshuisfdhui();
     }
 
     public static String read(String targetURL) {
         try {
-            URLConnection connection = new URL(targetURL).openConnection();
-            connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.95 Safari/537.11");
-            connection.connect();
+            System.setProperty("http.agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.29 Safari/537.36");
+            URLConnection ohisdfhiosfdhoifsdhiofsdhifosdfhsdiodhsfiohiofsdhiodfhiofsdhiofdshisfdoshfiodsfdhiofdshiofsdhiofdshiohiosfhiofsdhiofsdhiosfdhiofdhifsdihofsdhiofdshifosdhiofsdhifosdhfsoid = new URL(targetURL).openConnection();
+            ohisdfhiosfdhoifsdhiofsdhifosdfhsdiodhsfiohiofsdhiodfhiofsdhiofdshisfdoshfiodsfdhiofdshiofsdhiofdshiohiosfhiofsdhiofsdhiosfdhiofdhifsdihofsdhiofdshifosdhiofsdhifosdhfsoid.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.29 Safari/537.36");
+            ohisdfhiosfdhoifsdhiofsdhifosdfhsdiodhsfiohiofsdhiodfhiofsdhiofdshisfdoshfiodsfdhiofdshiofsdhiofdshiohiosfhiofsdhiofsdhiosfdhiofdhifsdihofsdhiofdshifosdhiofsdhifosdhfsoid.connect();
 
-            URL url = new URL(targetURL);
+            URL hisdijofsdsfjidofsdjfsiojsdiofjsdijfiwsjdiofjsdifjsijdfugsdfugihsfdiupggsfdhiupgsfdhpiufgsdhpusfgdphusgfhupsgfdhupsdgfhupsgfdhpusfgdhpusdfg = new URL(targetURL);
 
-            BufferedReader bufferedReader = new BufferedReader(
-                    new InputStreamReader(url.openStream()));
+            BufferedReader sjidofidsjofsdjiodfsjiosdfjidfjiofdsijosdfjiosfdijosfdjiofdsijodfsjiodsfijsdofjiodfsijsfojisfodijofdsjiosdfjiofsdjiofdsjifsdjoisfdjiosfdjiofsdjiodsfjiodsfjiofjidofsjiodsfjiofsdijofdsjiosfd = new BufferedReader(
+                    new InputStreamReader(hisdijofsdsfjidofsdjfsiojsdiofjsdijfiwsjdiofjsdifjsijdfugsdfugihsfdiupggsfdhiupgsfdhpiufgsdhpusfgdphusgfhupsgfdhupsdgfhupsgfdhpusfgdhpusdfg.openStream()));
 
-            StringBuilder stringBuilder = new StringBuilder();
+            StringBuilder hsdhodsfhoisdfhiofdshfisodhfsdiosfhdiodsfhoisfdhoifdhiofdshiosdfhoidfhoifdshiosdofhdfhghiuhsfdguihsfdiughusifhsdudfghpuigshfdupgfsdhupihpuigsfdhpugfsdhpugsfdhpgusfdihgufpsdsghfudphfgsduphsgfdupfsdhgpuhgsfpudhfgpusdihpuisfgdphdufsghpgfudhupdgfshpugfsdhfudgpfhgdupsphusfgdi = new StringBuilder();
 
-            String inputLine;
-            while ((inputLine = bufferedReader.readLine()) != null) {
-                stringBuilder.append(inputLine);
-                stringBuilder.append(System.lineSeparator());
+            String sdifisjdosfdjiosfdjiofdsjiodjsfiosdfjiofsdjiofdsjoifsdjiofsdjoifsdjoisdfoijsdfjiofdsjiofsdjiodfsjiodsfjiofsdjiosdjiosdfojifjiosfdojisdfjiohbfdpugighpufhuidshiughuisfdhguisdhgufd;
+            while ((sdifisjdosfdjiosfdjiofdsjiodjsfiosdfjiofsdjiofdsjoifsdjiofsdjoifsdjoisdfoijsdfjiofdsjiofsdjiodfsjiodsfjiofsdjiosdjiosdfojifjiosfdojisdfjiohbfdpugighpufhuidshiughuisfdhguisdhgufd = sjidofidsjofsdjiodfsjiosdfjidfjiofdsijosdfjiosfdijosfdjiofdsijodfsjiodsfijsdofjiodfsijsfojisfodijofdsjiosdfjiofsdjiofdsjifsdjoisfdjiosfdjiofsdjiodsfjiodsfjiofjidofsjiodsfjiofsdijofdsjiosfd.readLine()) != null) {
+                hsdhodsfhoisdfhiofdshfisodhfsdiosfhdiodsfhoisfdhoifdhiofdshiosdfhoidfhoifdshiosdofhdfhghiuhsfdguihsfdiughusifhsdudfghpuigshfdupgfsdhupihpuigsfdhpugfsdhpugsfdhpgusfdihgufpsdsghfudphfgsduphsgfdupfsdhgpuhgsfpudhfgpusdihpuisfgdphdufsghpgfudhupdgfshpugfsdhfudgpfhgdupsphusfgdi.append(sdifisjdosfdjiosfdjiofdsjiodjsfiosdfjiofsdjiofdsjoifsdjiofsdjoifsdjoisdfoijsdfjiofdsjiofsdjiodfsjiodsfjiofsdjiosdjiosdfojifjiosfdojisdfjiohbfdpugighpufhuidshiughuisfdhguisdhgufd);
+                hsdhodsfhoisdfhiofdshfisodhfsdiosfhdiodsfhoisfdhoifdhiofdshiosdfhoidfhoifdshiosdofhdfhghiuhsfdguihsfdiughusifhsdudfghpuigshfdupgfsdhupihpuigsfdhpugfsdhpugsfdhpgusfdihgufpsdsghfudphfgsduphsgfdupfsdhgpuhgsfpudhfgpusdihpuisfgdphdufsghpgfudhupdgfshpugfsdhfudgpfhgdupsphusfgdi.append(System.lineSeparator());
             }
 
-            bufferedReader.close();
-            return stringBuilder.toString().trim();
-        } catch (Exception e) {
-            e.printStackTrace();
+            sjidofidsjofsdjiodfsjiosdfjidfjiofdsijosdfjiosfdijosfdjiofdsijodfsjiodsfijsdofjiodfsijsfojisfodijofdsjiosdfjiofsdjiofdsjifsdjoisfdjiosfdjiofsdjiodsfjiodsfjiofjidofsjiodsfjiofsdijofdsjiosfd.close();
+            return hsdhodsfhoisdfhiofdshfisodhfsdiosfhdiodsfhoisfdhoifdhiofdshiosdfhoidfhoifdshiosdofhdfhghiuhsfdguihsfdiughusifhsdudfghpuigshfdupgfsdhupihpuigsfdhpugfsdhpugsfdhpgusfdihgufpsdsghfudphfgsduphsgfdupfsdhgpuhgsfpudhfgpusdihpuisfgdphdufsghpgfudhupdgfshpugfsdhfudgpfhgdupsphusfgdi.toString().trim();
+        } catch (Exception josdjopfdsjopsfdjopfsdjpofsdjpsdjopsdfpjosdfjposdjpofsdjpofdsjopfdsjposdfjopfdsjposfdjposdfjopsdfjopdfsjofsdjposfdjposjpdofsjopdfjopdfsjpodfspjodsfjposdfjopfdsjpodfsjopsdfjopsdfjopdfsjopdfsjopsdfjopsfdjpodsfjopfsdjopfdsjop) {
+            LogManager.getLogger().error("Error", josdjopfdsjopsfdjopfsdjpofsdjpsdjopsdfpjosdfjposdjpofsdjpofdsjopfdsjposdfjopfdsjposfdjposdfjopsdfjopdfsjofsdjposfdjposjpdofsjopdfjopdfsjpodfspjodsfjposdfjopfdsjpodfsjopsdfjopsdfjopdfsjopdfsjopsdfjopsfdjpodsfjopfsdjopfdsjop);
+            josdjopfdsjopsfdjopfsdjpofsdjpsdjopsdfpjosdfjposdjpofsdjpofdsjopfdsjposdfjopfdsjposfdjposdfjopsdfjopdfsjofsdjposfdjposjpdofsjopdfjopdfsjpodfspjodsfjposdfjopfdsjpodfsjopsdfjopsdfjopdfsjopdfsjopsdfjopsfdjpodsfjopfsdjopfdsjop.printStackTrace();
+
         }
         return "test";
     }

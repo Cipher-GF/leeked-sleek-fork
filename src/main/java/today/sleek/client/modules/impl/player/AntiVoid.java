@@ -18,6 +18,7 @@ import today.sleek.base.value.value.NumberValue;
 import today.sleek.client.modules.impl.Module;
 import today.sleek.client.modules.impl.movement.Flight;
 import today.sleek.client.utils.block.BlockUtil;
+import today.sleek.client.utils.math.MathUtil;
 import today.sleek.client.utils.player.PlayerUtil;
 
 @ModuleData(
@@ -34,7 +35,7 @@ public class AntiVoid extends Module {
 
     private boolean isTeleporting = false;
 
-    private final ModeValue modeValue = new ModeValue("Mode", this, "Basic", "Blink", "Vulcan");
+    private final ModeValue modeValue = new ModeValue("Mode", this, "Basic", "Blink", "Vulcan", "Hypixel");
     private final NumberValue fallDist = new NumberValue<>("Fall Distance", this, 7, 0, 30, 1);
 
     @Subscribe
@@ -62,6 +63,13 @@ public class AntiVoid extends Module {
             case "Vulcan": {
                 if (shouldTeleportBack()) {
                     isTeleporting = true;
+                }
+                break;
+            }
+            case "Hypixel": {
+                if (shouldTeleportBack()) {
+                    event.setPosX(event.getPosX() + MathUtil.getRandomInRange(-.3, .3));
+                    event.setPosZ(event.getPosZ() + MathUtil.getRandomInRange(-.3, .3));
                 }
                 break;
             }
