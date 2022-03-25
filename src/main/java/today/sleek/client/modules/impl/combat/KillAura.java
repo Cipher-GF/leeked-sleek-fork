@@ -382,7 +382,7 @@ public class KillAura extends Module {
             return;
         }
 
-        if (tpHitRender.getValue())
+        if (tpHitRender.getValue() && teleportAura.getValue())
             for (Vec3 vec : path) {
                 double xPos = vec.getX() - mc.getRenderManager().renderPosX;
                 double yPos = vec.getY() - mc.getRenderManager().renderPosY;
