@@ -2,7 +2,6 @@ package today.sleek.client.utils.player;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLiquid;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
@@ -14,13 +13,11 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovementInput;
-import org.jetbrains.annotations.NotNull;
 import today.sleek.Sleek;
 import today.sleek.base.event.impl.MoveEvent;
 import today.sleek.client.modules.impl.combat.KillAura;
 import today.sleek.client.modules.impl.combat.TargetStrafe;
 import today.sleek.client.utils.Util;
-import today.sleek.client.utils.math.MathUtil;
 import today.sleek.client.utils.network.PacketUtil;
 import today.sleek.client.utils.rotations.AimUtil;
 
@@ -547,12 +544,12 @@ public class PlayerUtil extends Util {
     }
 
     public static void hypixelDamage() {
-        double rand = MathUtil.getRandomInRange(0.001, 0.0075);
         double x = mc.thePlayer.posX, y = mc.thePlayer.posY, z = mc.thePlayer.posZ;
-        for (int i = 0; i < 65; i++) {
-            mc.thePlayer.sendQueue.addToSendQueueNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(x, y + 0.0624399212 + rand, z, false));
+        for (double i = 0; i <= 3 / 0.0625; i++) {
+            mc.thePlayer.sendQueue.addToSendQueueNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(x, y + 0.0625, z, false));
             mc.thePlayer.sendQueue.addToSendQueueNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(x, y, z, false));
         }
+
         mc.thePlayer.sendQueue.addToSendQueueNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(x, y, z, true));
     }
 

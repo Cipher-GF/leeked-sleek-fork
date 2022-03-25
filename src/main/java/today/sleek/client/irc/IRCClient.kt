@@ -13,7 +13,7 @@ import java.nio.charset.StandardCharsets
 import java.util.*
 
 //class IRCClient : WebSocketClient(URI("ws://zerotwoclient.xyz:6534")) {
-class IRCClient : WebSocketClient(URI("ws://zerotwoclient.xyz:4635")) {
+class IRCClient : WebSocketClient(URI("ws://irc.sleek.today")) {
     init {
         setAttachment("&${Sleek.getInstance().rank.color.formattingCode}${Sleek.getInstance().username}")
         addHeader("name", getAttachment())

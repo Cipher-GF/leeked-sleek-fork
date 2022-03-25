@@ -24,6 +24,10 @@ class Funcraft : SpeedMode("Funcraft") {
             //speed -= speed / 152
             mc.thePlayer.motionX *= 0.9
             mc.thePlayer.motionZ *= 0.9
+            if (mc.thePlayer.moveStrafing != 0.0F) {
+                mc.thePlayer.motionX *= 0.22
+                mc.thePlayer.motionZ *= 0.22
+            }
         }
         PlayerUtil.setMotion(event, speed)
     }

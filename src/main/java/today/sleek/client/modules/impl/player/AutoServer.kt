@@ -129,8 +129,15 @@ class AutoServer : Module() {
                     val packet = event.getPacket<S45PacketTitle>()
                     val title = packet.message.formattedText
 
+
                     if (title.contains("§6§lVICTORY!") || title.contains("§7You were the last man standing!")) {
                         mc.thePlayer.sendChatMessage(ggMessage.value)
+                    }
+                    if (title.contains("you died", ignoreCase = true) || title.contains("game over", ignoreCase = true)) {
+                        mc.thePlayer.sendChatMessage("/play solo_insane")
+                    }
+                    if (title.contains("you win", ignoreCase = true) || title.contains("victory", ignoreCase = true)) {
+                        mc.thePlayer.sendChatMessage("/play solo_insane")
                     }
                 }
 

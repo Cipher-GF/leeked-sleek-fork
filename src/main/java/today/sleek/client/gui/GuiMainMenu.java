@@ -83,28 +83,30 @@ public class GuiMainMenu extends GuiScreen {
 
                 logger.info("disabled ssl fuckery");
 
-                /*/String serv = HttpUtil.get("http://zerotwoclient.xyz:8080/api/user?hwid=" + NegroidFarm.guisdafghiusfgfsdhusdfghifsdhuidsfhuifdshuifsdhiudsfhiusfdhsdiuffsdhiudhsifusdfhiufsdhiufsdhiusdfhiufsdhiufsdhiu(), map);
-                // get first object in array
+                String serv = HttpUtil.get("https://api.sleek.today/api/user?hwid=" + NegroidFarm.guisdafghiusfgfsdhusdfghifsdhuidsfhuifdshuifsdhiudsfhiusfdhsdiuffsdhiudhsifusdfhiufsdhiufsdhiusdfhiufsdhiufsdhiu(), map);
+
+                logger.info(serv);
                 JsonObject json = new JsonParser().parse(serv).getAsJsonArray().get(0).getAsJsonObject();
                 logger.info("ran json test");
                 if (json.get("uid").getAsString().equals(Sleek.getInstance().getUid())) {
                     logger.info("uid pass");
                     if (json.get("hwid").getAsString().equals(NegroidFarm.guisdafghiusfgfsdhusdfghifsdhuidsfhuifdshuifsdhiudsfhiusfdhsdiuffsdhiudhsifusdfhiufsdhiufsdhiusdfhiufsdhiufsdhiu())) {
-                        logger.info("run start next");/*/
+                        logger.info("run start next");
                         Sleek.getInstance().onStart();
                         logger.info("ran start");
                         mc.displayGuiScreen(new MainMenu());
-                        /*/logger.info("main menu");/*/
-                        Sleek.getInstance().setUsername("Kansio");
-                        Sleek.getInstance().setDiscordTag("nigger");
-                        Sleek.getInstance().setRank("Developer");
-                        /*/logger.info("finish");
+                        logger.info("main menu");
+                        Sleek.getInstance().setUsername(json.get("username").getAsString());
+                        Sleek.getInstance().setDiscordTag(String.format("%s#%s", new JsonParser().parse(HttpUtil.get("https://api.sleek.today/api/getdiscordinfo?id=" + json.get("discordID").getAsString())).getAsJsonObject().get("username"), new JsonParser().parse(HttpUtil.get("https://api.sleek.today/api/getdiscordinfo?id=" + json.get("discordID").getAsString())).getAsJsonObject().get("discriminator")));
+                        Sleek.getInstance().setRank(json.get("rank").getAsString());
+                        logger.info("finish");
+                        logger.info("finish");
                     }
                 } else {
                     logger.info(serv);
                     System.out.println(serv);
                 }
-            /*/}
+            }
         } catch (Exception e) {
 
             Logger logger = LogManager.getLogger("launch error");

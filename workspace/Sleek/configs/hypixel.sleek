@@ -613,7 +613,7 @@
       "name": "IRC",
       "keybind": 0,
       "hidden": false,
-      "enabled": true
+      "enabled": false
     },
     {
       "name": "Legit HUD",

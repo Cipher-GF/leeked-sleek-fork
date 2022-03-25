@@ -164,7 +164,7 @@ public class Sleek {
     public void onShutdown() {
         //leave
         try {
-            System.out.println(HttpUtil.delete(MessageFormat.format("http://zerotwoclient.xyz:8080/api/leaveserver?clientname={0}", username)));
+            System.out.println(HttpUtil.delete(MessageFormat.format("https://api.sleek.today/api/leaveserver?clientname={0}", username)));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -192,9 +192,9 @@ public class Sleek {
     @Subscribe
     public void onJoin(ServerJoinEvent event) {
 //        try {
-//            System.out.println(HttpUtil.delete(MessageFormat.format("http://zerotwoclient.xyz:8080/api/leaveserver?clientname={0}", username)));
-//            System.out.println(HttpUtil.post("http://zerotwoclient.xyz:8080/api/joinserver?name=" + this.username + "&uid=1" + "&ign=" + event.getIgn() + "&ip=" + event.getServerIP(), ""));
-//            JsonElement node = new JsonParser().parse(HttpUtil.get("http://zerotwoclient.xyz:8080/api/getclientplayers"));
+//            System.out.println(HttpUtil.delete(MessageFormat.format("https://api.sleek.today/api/leaveserver?clientname={0}", username)));
+//            System.out.println(HttpUtil.post("https://api.sleek.today/api/joinserver?name=" + this.username + "&uid=1" + "&ign=" + event.getIgn() + "&ip=" + event.getServerIP(), ""));
+//            JsonElement node = new JsonParser().parse(HttpUtil.get("https://api.sleek.today/api/getclientplayers"));
 //
 //            if (node.isJsonArray()) {
 //                users.clear();

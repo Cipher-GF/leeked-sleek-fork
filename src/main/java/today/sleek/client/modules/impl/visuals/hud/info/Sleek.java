@@ -22,6 +22,7 @@ public class Sleek extends InfoMode {
         HUD hud = getHud();
         double bps = BPSUtil.getBPS();
         int fps = Minecraft.getDebugFPS();
+        if (mc.getNetHandler().getPlayerInfo(mc.thePlayer.getUniqueID()) == null) return;
         String userinfo = "§7" + UserUtil.getBuildType(Integer.parseInt(today.sleek.Sleek.getInstance().getUid())) + " - §f" + today.sleek.Sleek.getInstance().getUid();
         String ping = "§7Ping: §f" + mc.getNetHandler().getPlayerInfo(mc.thePlayer.getUniqueID()).getResponseTime() + "ms";
         String fpsinfo = "§7FPS: §f" + fps;

@@ -141,7 +141,7 @@ public class TargetHUD extends Util {
                 mc.getTextureManager().bindTexture(info.getLocationSkin());
                 drawScaledCustomSizeModalRect(2f, 2f, 8.0f, 8.0f, 8, 8, 24, 24, 64.0f, 64.0f);
 
-                    //drawScaledCustomSizeModalRect(2f, 2f, 40.0f, 8.0f, 8, 8, 24, 24, 64.0f, 64.0f);
+                //drawScaledCustomSizeModalRect(2f, 2f, 40.0f, 8.0f, 8, 8, 24, 24, 64.0f, 64.0f);
 
                 GlStateManager.bindTexture(0);
                 break;

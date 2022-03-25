@@ -93,7 +93,7 @@ public class MainMenu extends GuiScreen {
 //        Fonts.Verdana.drawString(devinfo, (width - Fonts.Arial30.getStringWidth(devinfo)) + 110, height - 10, -1);
         String devinfo = "Made with <3 by Reset, Kansio, nullswap, Divine and qoft";
         Fonts.SFRegular.drawCenteredString(devinfo, width - 140, height - 10, -1);
-        Fonts.SFRegular.drawString("Sleek 0.2 b5", 0, height - 10, -1);
+        Fonts.SFRegular.drawString("Sleek 0.2 b8 (032222)", 0, height - 10, -1);
         String text = "hi";
 //        Fonts.Verdana.drawString(devinfo, (width - Fonts.Arial30.getStringWidth(devinfo)) + 135, height - 10, -1);
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);

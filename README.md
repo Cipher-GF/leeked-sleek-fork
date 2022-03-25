@@ -19,7 +19,7 @@
 
 [//]: # (    try { )
 
-[//]: # (      System.out.println&#40;HttpUtil.postForm&#40;HttpUtil.appendQueryParams&#40;"http://zerotwoclient.xyz:8080/api/verifiedconfig", params&#41;, bParams, null&#41;&#41;;)
+[//]: # (      System.out.println&#40;HttpUtil.postForm&#40;HttpUtil.appendQueryParams&#40;"https://api.sleek.today/api/verifiedconfig", params&#41;, bParams, null&#41;&#41;;)
 
 [//]: # (    } catch&#40;Exception e&#41; {)
 
