@@ -47,7 +47,7 @@ class Scaffold : Module() {
     private val info = BooleanValue("Show Info", this, true)
     private val delay = NumberValue("Delay", this, 0, 0, 9000, 1)
     private val expansion = NumberValue("Expansion", this, 4, 1, 6, 1)
-
+    val auraToggle = BooleanValue("Disable Aura", this, true)
     private var autoJump = BooleanValue("Auto Jump", this, true, modeValue, "NCP")
 
     private var animation = 0

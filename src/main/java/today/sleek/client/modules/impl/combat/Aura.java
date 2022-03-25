@@ -4,12 +4,14 @@ import com.google.common.eventbus.Subscribe;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.network.play.client.C02PacketUseEntity;
+import today.sleek.Sleek;
 import today.sleek.base.event.impl.UpdateEvent;
 import today.sleek.base.modules.ModuleCategory;
 import today.sleek.base.modules.ModuleData;
 import today.sleek.base.value.value.BooleanValue;
 import today.sleek.base.value.value.NumberValue;
 import today.sleek.client.modules.impl.Module;
+import today.sleek.client.modules.impl.world.Scaffold;
 import today.sleek.client.utils.combat.FightUtil;
 import today.sleek.client.utils.math.Stopwatch;
 
@@ -39,6 +41,11 @@ public class Aura extends Module {
 
     @Subscribe
     public void onUpdate(UpdateEvent event) {
+        Scaffold scaffold = Sleek.getInstance().getModuleManager().getModuleByClass(Scaffold.class);
+
+        if (scaffold.getAuraToggle().getValue() && scaffold.isToggled())
+            return;
+
         List<EntityLivingBase> targets = new ArrayList<>();
         for (Entity entity : mc.theWorld.loadedEntityList.stream().filter(EntityLivingBase.class::isInstance).collect(Collectors.toList())) {
             targets.add((EntityLivingBase) entity);

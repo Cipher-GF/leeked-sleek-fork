@@ -66,7 +66,7 @@ public class HUD extends Module {
     private final NumberValue staticGreen = new NumberValue("Green", this, 255, 0, 255, 1, colorMode, "Wave", "Static");
     private final NumberValue staticBlue = new NumberValue("Blue", this, 255, 0, 255, 1, colorMode, "Wave", "Static");
 
-    public ModeValue line = new ModeValue("Line", this, "None", "Top", "Wrapped");
+    public ModeValue line = new ModeValue("Line", this, "None", "Top", "Wrapped", "Side");
 
     public final NumberValue<Integer> bgalpha = new NumberValue<>("Alpha", this, 80, 1, 200, 1);
     public BooleanValue font = new BooleanValue("Font", this, false);

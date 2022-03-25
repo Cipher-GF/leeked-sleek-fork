@@ -106,6 +106,9 @@ public class Sleek extends ArrayListMode {
                     case "Wrapped":
                         Gui.drawRect(xPos - 2.5, y - 1, xPos - 1.5, mc.fontRendererObj.FONT_HEIGHT + y + 1, color.getRGB());
                         break;
+                    case "Side":
+                        Gui.drawRect(event.getSr().getScaledWidth() - 1.5, y - 1, event.getSr().getScaledWidth(), mc.fontRendererObj.FONT_HEIGHT + y + 1, color.getRGB());
+                        break;
                 }
                 if (sorted.size() > index) {
                     Module nextMod = sorted.get(index);
@@ -126,6 +129,8 @@ public class Sleek extends ArrayListMode {
                             break;
                         case "Wrapped":
                             Gui.drawRect(xPos - 2.5, mc.fontRendererObj.FONT_HEIGHT + y + 1, xPos + 100, mc.fontRendererObj.FONT_HEIGHT + y + 2, color.getRGB());
+                            break;
+                        case "Side":
                             break;
                     }
                 }
