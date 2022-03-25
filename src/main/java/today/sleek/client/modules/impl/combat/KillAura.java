@@ -60,7 +60,7 @@ public class KillAura extends Module {
     public NumberValue<Double> fov = new NumberValue<>("FOV", this, 360.0, 1.0, 360.0, 1.0);
     public BooleanValue drawFOV = new BooleanValue("Draw FOV", this, false);
     public BooleanValue teleportAura = new BooleanValue("TP Hit", this, false);
-    public BooleanValue tpHitRender = new BooleanValue("Render Path", this, true, teleportAura);
+    public BooleanValue tpHitRender = new BooleanValue("Render Path", this, false, teleportAura);
     public NumberValue<Double> tprange = new NumberValue<>("Teleport Range", this, 25.0, 0.0, 120.0, 1.0, teleportAura);
     public NumberValue chance = new NumberValue<>("Hit Chance", this, 100, 0, 100, 1);
     public ModeValue swingmode = new ModeValue("Swing Mode", this, "Client", "Server");
