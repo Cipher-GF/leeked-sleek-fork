@@ -32,6 +32,7 @@ import today.sleek.client.utils.render.RenderUtil;
 import today.sleek.client.utils.rotations.AimUtil;
 import today.sleek.client.utils.rotations.Rotation;
 import today.sleek.client.utils.rotations.RotationUtil;
+
 import javax.vecmath.Vector2f;
 import java.awt.*;
 import java.util.ArrayList;
@@ -59,6 +60,7 @@ public class KillAura extends Module {
     public NumberValue<Double> fov = new NumberValue<>("FOV", this, 360.0, 1.0, 360.0, 1.0);
     public BooleanValue drawFOV = new BooleanValue("Draw FOV", this, false);
     public BooleanValue teleportAura = new BooleanValue("TP Hit", this, false);
+    public BooleanValue tpHitRender = new BooleanValue("Render Path", this, true, teleportAura);
     public NumberValue<Double> tprange = new NumberValue<>("Teleport Range", this, 25.0, 0.0, 120.0, 1.0, teleportAura);
     public NumberValue chance = new NumberValue<>("Hit Chance", this, 100, 0, 100, 1);
     public ModeValue swingmode = new ModeValue("Swing Mode", this, "Client", "Server");
@@ -80,6 +82,12 @@ public class KillAura extends Module {
     private boolean canBlock;
     private Rotation lastRotation;
 
+    private ArrayList<Vec3> path;
+
+    private int switchState;
+    private Stopwatch switchTimer = new Stopwatch();
+    private NumberValue switchDelay = new NumberValue("Switch Delay", this, 250, 1, 1000, 1);
+
     public static boolean isSwinging() {
         return swinging;
     }
@@ -89,6 +97,7 @@ public class KillAura extends Module {
         index = 0;
         lastRotation = null;
         target = null;
+        switchState = 0;
         this.attackTimer.resetTime();
     }
 
@@ -138,13 +147,24 @@ public class KillAura extends Module {
             return;
         }
 
-
         List<EntityLivingBase> blockRangeEntites = FightUtil.getMultipleTargets(autoblockRange.getValue(), players.getValue(), friends.getValue(), animals.getValue(), walls.getValue(), monsters.getValue(), invisible.getValue());
 
         entities.removeIf(e -> e.getName().contains("[NPC]"));
 
+        entities.removeIf(e -> e.getHealth() < 0);
+
         if (fov.getValue() != 360f) {
             entities.removeIf(e -> !RotationUtil.isVisibleFOV(e, fov.getValue().floatValue() / 2));
+        }
+
+        //target switching (switch aura)
+        if (switchTimer.timeElapsed(switchDelay.getValue().longValue())) {
+            if (switchState < (entities.size() - 1)) {
+                switchState++;
+            } else {
+                switchState = 0;
+            }
+            switchTimer.resetTime();
         }
 
         ItemStack heldItem = mc.thePlayer.getHeldItem();
@@ -202,7 +222,7 @@ public class KillAura extends Module {
                             }
                         }
                         Collections.reverse(entities);
-                        target = entities.get(0);
+                        target = entities.get(switchState);
 
                         //set the targetted players as main targets.
                         entities.forEach(entityLivingBase -> {
@@ -256,7 +276,7 @@ public class KillAura extends Module {
             } else if (swingmode.getValue().equalsIgnoreCase("server")) {
                 mc.getNetHandler().addToSendQueue(new C0APacketAnimation());
             }
-            ArrayList<Vec3> path = DortPathFinder.computePath(new Vec3(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ), new Vec3(entity.posX, entity.posY, entity.posZ));
+            path = DortPathFinder.computePath(new Vec3(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ), new Vec3(entity.posX, entity.posY, entity.posZ));
             if (teleportAura.getValue()) {
                 for (Vec3 vec : path) {
                     PacketUtil.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(vec.getX(), vec.getY(), vec.getZ(), true));
@@ -362,6 +382,14 @@ public class KillAura extends Module {
             return;
         }
 
+        if (tpHitRender.getValue())
+            for (Vec3 vec : path) {
+                double xPos = vec.getX() - mc.getRenderManager().renderPosX;
+                double yPos = vec.getY() - mc.getRenderManager().renderPosY;
+                double zPos = vec.getZ() - mc.getRenderManager().renderPosZ;
+
+                RenderUtil.drawEntityESP(xPos, yPos, zPos, 100, 100, new Color(255, 255, 255), true);
+            }
 
         if (targethud.getValue()) {
             TargetHUD.render(event, target, 200.0, 500.0);
