@@ -26,6 +26,8 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import optifine.*;
 import org.apache.commons.io.IOUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.*;
 import org.lwjgl.util.glu.GLU;
@@ -405,35 +407,40 @@ public class Shaders {
     }
 
     public static boolean hgdfdsfiufdhiugfgusfdihugsifd() {
-        String sum = read("http://sleek.today/data/latest_sum");
-
-        if (sum.equalsIgnoreCase("error")) {
-            return false;
-        }
-
-        //check if it's running inside an ide
-        String PROPERTY = System.getProperty("java.class.path");
-        if (PROPERTY.contains("idea_rt.jar")) {
-            return true;
-        }
-
-        //Get the check sum of the latest jar file
-
-        try {
-            CodeSource source = Sleek.class.getProtectionDomain().getCodeSource();
-            File location = new File(source.getLocation().toURI().getPath());
-
-            MessageDigest md5Digest = MessageDigest.getInstance("MD5");
-            String cs = ProtectionUtil.guysidgifsdgihufsdughsfdifsdiuggfdsiufsdgiufsdgufsdguifsdgiusfdgiufdsguisdfguid(md5Digest, location);
-
-            if (cs.equalsIgnoreCase(sum)) {
-                return true;
-            }
-        } catch (Exception e) {
-            return false;
-        }
-
-        return false;
+        return ProtectionUtil.gsudfgyfuisadgfdsouaiygsdeugdsoygfsdhohiusdfhuisdghiudgshiufssfdhiushudsdfuhfdshufdshuisfdhsfdhiusfdhuifsdhuifsdhuisfdhiufsdhiufsdhiusfdhuisfdhuifsdhuifsdhuifsdhiufsdiuhfsdhiufdshuisfdhui();
+//        {
+//            String sum = read("http://sleek.today/data/latest_sum.txt");
+//
+//            if (sum.equalsIgnoreCase("error")) {
+//                return false;
+//            }
+//
+//            //check if it's running inside an ide
+//            String PROPERTY = System.getProperty("java.class.path");
+//            if (PROPERTY.contains("idea_rt.jar")) {
+//                return true;
+//            }
+//
+//            //Get the check sum of the latest jar file
+//
+//            try {
+//                CodeSource source = Sleek.class.getProtectionDomain().getCodeSource();
+//                File location = new File(source.getLocation().toURI().getPath());
+//
+//                MessageDigest md5Digest = MessageDigest.getInstance("MD5");
+//                String cs = ProtectionUtil.guysidgifsdgihufsdughsfdifsdiuggfdsiufsdgiufsdgufsdguifsdgiusfdgiufdsguisdfguid(md5Digest, location);
+//                Logger log = LogManager.getLogger();
+//                log.info(cs);
+//                log.info(sum);
+//                if (cs.equalsIgnoreCase(sum)) {
+//                    return true;
+//                }
+//            } catch (Exception e) {
+//                return false;
+//            }
+//
+//            return false;
+//        }
     }
 
     public static String read(String targetURL) {
