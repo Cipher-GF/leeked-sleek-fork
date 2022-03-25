@@ -78,10 +78,10 @@ public class GuiMainMenu extends GuiScreen {
                 map.put("Client-Token", "s59gtK6FCntT6tafCNbyMpQ2");
                 Sleek.getInstance().setUid(username.getText());
                 logger.info("set uid");
-
-                disableSslVerification();
-
-                logger.info("disabled ssl fuckery");
+//
+//                disableSslVerification();
+//
+//                logger.info("disabled ssl fuckery");
 
                 String serv = HttpUtil.get("https://api.sleek.today/api/user?hwid=" + NegroidFarm.guisdafghiusfgfsdhusdfghifsdhuidsfhuifdshuifsdhiudsfhiusfdhsdiuffsdhiudhsifusdfhiufsdhiufsdhiusdfhiufsdhiufsdhiu(), map);
 
