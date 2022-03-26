@@ -25,7 +25,7 @@ public class BoolSetting extends Component implements Values {
     public BoolSetting(int x, int y, FrameModule owner, Value setting)
     {
         super(x, y, owner, setting);
-        this.animation = new Animate().setMin(0).setMax(5).setSpeed(15).setEase(Easing.LINEAR).setReversed(!((BooleanValue) setting).getValue());
+        this.animation = new Animate().setMin(0).setMax(5).setSpeed(100).setEase(Easing.LINEAR).setReversed(!((BooleanValue) setting).getValue());
     }
 
     @Override
