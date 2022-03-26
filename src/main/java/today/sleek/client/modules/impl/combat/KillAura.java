@@ -1,6 +1,7 @@
 package today.sleek.client.modules.impl.combat;
 
 import com.google.common.eventbus.Subscribe;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -8,11 +9,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.client.*;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import org.apache.commons.lang3.RandomUtils;
+import org.lwjgl.opengl.GL11;
 import today.sleek.Sleek;
 import today.sleek.base.event.impl.PacketEvent;
+import today.sleek.base.event.impl.Render3DEvent;
 import today.sleek.base.event.impl.RenderOverlayEvent;
 import today.sleek.base.event.impl.UpdateEvent;
 import today.sleek.base.modules.ModuleCategory;
@@ -28,7 +32,9 @@ import today.sleek.client.utils.math.Stopwatch;
 import today.sleek.client.utils.network.PacketUtil;
 import today.sleek.client.utils.pathfinding.DortPathFinder;
 import today.sleek.client.utils.pathfinding.Vec3;
+import today.sleek.client.utils.render.GLUtil;
 import today.sleek.client.utils.render.RenderUtil;
+import today.sleek.client.utils.render.RenderUtils;
 import today.sleek.client.utils.rotations.AimUtil;
 import today.sleek.client.utils.rotations.Rotation;
 import today.sleek.client.utils.rotations.RotationUtil;
@@ -77,6 +83,7 @@ public class KillAura extends Module {
     public BooleanValue monsters = new BooleanValue("Monsters", this, true);
     public BooleanValue invisible = new BooleanValue("Invisibles", this, true);
     public BooleanValue walls = new BooleanValue("Walls", this, true);
+    public BooleanValue targetTracer = new BooleanValue("Draw Target Tracer", this, true);
     public Vector2f currentRotation = null;
     private int index;
     private boolean canBlock;
@@ -378,21 +385,108 @@ public class KillAura extends Module {
             RenderUtil.drawUnfilledCircle((RenderUtil.getResolution().getScaledWidth() - drawingFOV) / 2, (RenderUtil.getResolution().getScaledHeight() - drawingFOV) / 2, drawingFOV, Color.WHITE.getRGB());
         }
 
+        RenderUtils.drawLine(0, 0, 0, 100, 200, 300);
+
+
         if (target == null) {
             return;
         }
 
-        if (tpHitRender.getValue() && teleportAura.getValue())
-            for (Vec3 vec : path) {
-                double xPos = vec.getX() - mc.getRenderManager().renderPosX;
-                double yPos = vec.getY() - mc.getRenderManager().renderPosY;
-                double zPos = vec.getZ() - mc.getRenderManager().renderPosZ;
-
-                RenderUtil.drawEntityESP(xPos, yPos, zPos, 100, 100, new Color(255, 255, 255), true);
-            }
-
         if (targethud.getValue()) {
             TargetHUD.render(event, target, 200.0, 500.0);
+        }
+    }
+
+    @Subscribe
+    public void onRender3D(Render3DEvent event) {
+        if (targetTracer.getValue()) {
+            if (target != null) {
+                trace(target, 2, new Color(255, 0, 0), Minecraft.getMinecraft().timer.renderPartialTicks);
+            }
+        }
+
+        if (tpHitRender.getValue() && teleportAura.getValue()) {
+            for (Vec3 vec : path) {
+                final double x = RenderUtil.interpolate(vec.getX(), vec.getX(), event.getPartialTicks());
+                final double y = RenderUtil.interpolate(vec.getY(), vec.getY(), event.getPartialTicks());
+                final double z = RenderUtil.interpolate(vec.getZ(), vec.getZ(), event.getPartialTicks());
+
+                double xPos = x - mc.getRenderManager().renderPosX;
+                double yPos = vec.getY();
+                double zPos = z - mc.getRenderManager().renderPosZ;
+
+                RenderUtil.drawEntityESP(xPos, yPos - 3.5, zPos, 0.5, 0.5, new Color(255, 255, 255), false);
+            }
+        }
+    }
+
+    private void drawEntityESP(double x, double y, double z, double height, double width, Color color) {
+        GL11.glPushMatrix();
+        GLUtil.setGLCap(3042, true);
+        GLUtil.setGLCap(3553, false);
+        GLUtil.setGLCap(2896, false);
+        GLUtil.setGLCap(2929, false);
+        GL11.glDepthMask(false);
+        GL11.glLineWidth(1.8f);
+        GL11.glBlendFunc(770, 771);
+        GLUtil.setGLCap(2848, true);
+        GL11.glDepthMask(true);
+        RenderUtil.BB(new AxisAlignedBB(x - width + 0.25, y, z - width + 0.25, x + width - 0.25, y + height, z + width - 0.25), new Color(color.getRed(), color.getGreen(), color.getBlue(), 120).getRGB());
+        RenderUtil.OutlinedBB(new AxisAlignedBB(x - width + 0.25, y, z - width + 0.25, x + width - 0.25, y + height, z + width - 0.25), 1, color.getRGB());
+        GLUtil.revertAllCaps();
+        GL11.glPopMatrix();
+        GL11.glColor4f(1, 1, 1, 1);
+    }
+
+    //credit: moonx (idk how to do visuals)
+    private void trace(Entity entity, float width, Color color, float partialTicks) {
+        /* Setup separate path rather than changing everything */
+        float r = ((float) 1 / 255) * color.getRed();
+        float g = ((float) 1 / 255) * color.getGreen();
+        float b = ((float) 1 / 255) * color.getBlue();
+        GL11.glPushMatrix();
+
+        /* Load custom identity */
+        GL11.glLoadIdentity();
+
+        /* Set the camera towards the partialTicks */
+        mc.entityRenderer.orientCamera(partialTicks);
+
+        /* PRE */
+        GL11.glDisable(2929);
+        GL11.glDisable(3553);
+        GL11.glEnable(3042);
+        GL11.glBlendFunc(770, 771);
+
+        /* Keep it AntiAliased */
+        GL11.glEnable(GL11.GL_LINE_SMOOTH);
+
+        /* Interpolate needed X, Y, Z files */
+        double x = RenderUtil.interpolate(entity.posX, entity.lastTickPosX, partialTicks) - mc.getRenderManager().viewerPosX;
+        double y = RenderUtil.interpolate(entity.posY, entity.lastTickPosY, partialTicks) - mc.getRenderManager().viewerPosY;
+        double z = RenderUtil.interpolate(entity.posZ, entity.lastTickPosZ, partialTicks) - mc.getRenderManager().viewerPosZ;
+
+
+
+        /* Setup line width */
+        GL11.glLineWidth(width);
+
+        /* Drawing */
+        GL11.glBegin(GL11.GL_LINE_STRIP);
+        {
+            GL11.glColor3d(r, g, b);
+            GL11.glVertex3d(x, y, z);
+            GL11.glVertex3d(0.0, mc.thePlayer.getEyeHeight(), 0.0);
+            GL11.glEnd();
+            GL11.glDisable(GL11.GL_LINE_SMOOTH);
+
+            /* POST */
+            GL11.glDisable(3042);
+            GL11.glEnable(3553);
+            GL11.glEnable(2929);
+
+            /* End the custom path */
+            GL11.glPopMatrix();
         }
     }
 

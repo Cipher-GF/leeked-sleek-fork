@@ -37,6 +37,15 @@ public class RenderUtils extends Util {
         return mouseX >= x && mouseX <= x + width && mouseY >= y && mouseY <= y + height;
     }
 
+    public static void drawLine(float x1, float y1, float z1, float x2, float y2, float z2) {
+        glLineWidth(19);
+        glBegin(GL_LINES);
+        glColor3f(1, 1, 1);
+        glVertex3f(x1, y1, z1);
+        glVertex3f(x2, y2, z2);
+        glEnd();
+    }
+
     public static void drawHLine(float x, float y, float right, int bottom) {
         if (y < x) {
             float var5 = x;
