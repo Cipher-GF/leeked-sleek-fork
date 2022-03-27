@@ -16,7 +16,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 @ModuleData(
-        name = "Discord RPC (CRASHES)",
+        name = "Discord RPC",
         category = ModuleCategory.WORLD,
         description = "Starts the Discord RPC"
 )
