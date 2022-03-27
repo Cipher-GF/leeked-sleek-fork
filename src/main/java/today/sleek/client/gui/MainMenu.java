@@ -36,14 +36,14 @@ public class MainMenu extends GuiScreen {
             throw new IllegalStateException("Failed To Load Main Menu Shader");
         }
          */
-        int j = height / 4+45;
+        int j = height / 4 + 45;
         int i = 24;
-        this.buttonList.add(new GuiButton(0, width / 2 - 15, j -         25        , 350, 20,I18n.format("menu.singleplayer")));
-        this.buttonList.add(new GuiButton(1, width / 2 - 15, j + i -     25    ,     350, 20,I18n.format("menu.multiplayer")));
-        this.buttonList.add(new GuiButton(2, width / 2 - 15, j + i * 2 - 25,         350, 20,"Alt Manager"));
-        this.buttonList.add(new GuiButton(3, width / 2 - 15, j + i * 2     ,         350, 20,I18n.format("menu.options")));
-        this.buttonList.add(new GuiButton(4, width / 2 - 15, j + i * 2 + 25,         350, 20,I18n.format("menu.quit")));
-        this.buttonList.add(new GuiButton(5, width / 2 - 15, j + i * 2 + 50,         350, 20,"Credits"));
+        this.buttonList.add(new GuiButton(0, width / 2 - 50, j - 25, 100, 20, I18n.format("menu.singleplayer")));
+        this.buttonList.add(new GuiButton(1, width / 2 - 50, j + i - 25, 100, 20, I18n.format("menu.multiplayer")));
+        this.buttonList.add(new GuiButton(2, width / 2 - 50, j + i * 2 - 25, 100, 20, "Alt Manager"));
+        this.buttonList.add(new GuiButton(3, width / 2 - 50, j + i * 2, 100, 20, I18n.format("menu.options")));
+        this.buttonList.add(new GuiButton(4, width / 2 - 50, j + i * 2 + 25, 100, 20, I18n.format("menu.quit")));
+        this.buttonList.add(new GuiButton(5, width / 2 - 50, j + i * 2 + 50, 100, 20, "Credits"));
 
         initTime = System.currentTimeMillis();
     }
@@ -88,7 +88,7 @@ public class MainMenu extends GuiScreen {
 
         // Unbind shader
         GL20.glUseProgram(0);
-        Fonts.SFRegular40.drawCenteredString("§lS§fleek", width / 2, height / 4 -24, ColorPalette.BLUE.getColor().getRGB());
+        Fonts.SFRegular40.drawCenteredString("§lS§fleek", width / 2, height / 4 - 24, ColorPalette.BLUE.getColor().getRGB());
 //        Fonts.Arial40.drawCenteredString("", width / 2 +8, height / 4 -22.5f, -1); // -1 = white
 //        Fonts.Verdana.drawString(devinfo, (width - Fonts.Arial30.getStringWidth(devinfo)) + 110, height - 10, -1);
         String devinfo = "Made with <3 by Reset, Kansio, nullswap, Divine and qoft";
