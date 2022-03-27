@@ -54,7 +54,7 @@ public class GuiCredits extends GuiScreen {
         }
          */
         int j = height / 4 + 45;
-        this.buttonList.add(new GuiButton(0, width / 2 - 65, j + 175, 150, 20, I18n.format("Go Back")));
+        this.buttonList.add(new GuiButton(0, width / 2 - 70, j + 150, 150, 20, I18n.format("Go Back")));
 
         initTime = System.currentTimeMillis();
     }
@@ -83,9 +83,9 @@ public class GuiCredits extends GuiScreen {
         // Unbind shader
         GL20.glUseProgram(0);
         double boxWidth = 400;
-        double boxHeight = 300;
-        double boxX = 150;
-        double boxY = 50;
+        double boxHeight = 200;
+        double boxX = this.width / 2 - boxWidth / 2;
+        double boxY = this.height / 2 - boxHeight / 2;
         double boxRadius = 5;
         /*
         RenderUtil.drawRoundedRect(this.xPosition + this.width / 2F - 220f, this.yPosition+1, (300 - this.width / 2F)-1, 20,5, new Color(0, 0, 0, 150).getRGB());
@@ -108,12 +108,13 @@ public class GuiCredits extends GuiScreen {
                         (Math.abs(((System.currentTimeMillis()) / 20)) / 100D) + 9F / mc.fontRendererObj.FONT_HEIGHT * 9.95));
 //        RenderUtil.drawRoundedRect(        boxX, boxY,  boxWidth,  boxHeight,5, 0x80000000);
 //        RenderUtil.drawOutlinedRoundedRect(boxX, boxY,  boxWidth , boxHeight,5,2,
-        Fonts.Arial40.drawCenteredString("§lS§fleek Credits", (width) / 2f + 4, height / 4 - 22.5f, ColorPalette.BLUE.getColor().getRGB()); // -1 = white
+        Fonts.Arial40.drawCenteredString("§lS§fleek Credits", (width) / 2f + 4, this.height / 4 +35f, ColorPalette.BLUE.getColor().getRGB()); // -1 = white
 
 //        Fonts.Verdana.drawString(devinfo, (width - Fonts.Arial30.getStringWidth(devinfo)) + 110, height - 10, -1);
 
 
-        List<String> devInfo = Arrays.asList("We are a development team of retarded people.",
+        List<String> devInfo = Arrays.asList(
+                "We are a development team of retarded people.",
                 "",
                 "Divine - lead Developer",
                 "Kansio - lead developer",
@@ -124,17 +125,16 @@ public class GuiCredits extends GuiScreen {
                 "Vince - cool guy (not dev)",
                 "Wykt - clickgui base (not dev)"
         );
-        for (String s : devInfo) {
-            devInfo.set(devInfo.indexOf(s), s.toLowerCase());
-        }
+//        for (String s : devInfo) {
+//            devInfo.set(devInfo.indexOf(s), s.toLowerCase());
+//        }
         devInfo.sort(Comparator.comparingInt(dev ->
                 mc.fontRendererObj.getStringWidth((String) dev)
         ).reversed());
 
         for (int i = 0; i < devInfo.size(); i++) {
             String x = devInfo.get(i);
-
-            Fonts.Arial30.drawCenteredString(x.toLowerCase(), (width) / 2f + 4, (this.height / 2 + (i * 25)) / 1.5, ColorUtils.getIntGradientOffset(new Color(255, 255, 255), new Color(172, 172, 172), (Math.abs(((System.currentTimeMillis()) / 20)) / 100D) + 9F / mc.fontRendererObj.FONT_HEIGHT * 9.95));
+            Fonts.Arial25.drawCenteredString(x.toLowerCase(), (width) / 2f + 4, ((this.height / 2 + (i * 25)) / 1.8) + 50, ColorUtils.getIntGradientOffset(new Color(255, 255, 255), new Color(172, 172, 172), (Math.abs(((System.currentTimeMillis()) / 20)) / 100D) + 9F / mc.fontRendererObj.FONT_HEIGHT * 9.95));
         }
 
 

@@ -107,52 +107,54 @@ public class Sleek {
         //Set the script manager
         scriptManager = new ScriptManager(new File(dir, "scripts"));
         //Setup ViaMCP
+        System.out.print("Loading ViaVersion...");
+
         try {
             ViaMCP.getInstance().start();
         } catch (Exception e) {
             System.out.println("[Sleek] Failed to start ViaMCP");
         }
-        try {
-            final OffsetDateTime[] time = {OffsetDateTime.now()};
-            final String[] lastServer = {ServerUtil.getServer()};
-
-            IPCClient client = new IPCClient(937350566886137886L);
-            client.setListener(new IPCListener() {
-                @Override
-                public void onReady(IPCClient client) {
-                    Timer timer = new Timer();
-                    timer.schedule(new TimerTask() {
-                        @SneakyThrows
-                        @Override
-                        public void run() {
-                            //update the time whenever they switch servers
-                            if (!lastServer[0].equalsIgnoreCase(ServerUtil.getServer())) {
-                                time[0] = OffsetDateTime.now();
-                                lastServer[0] = ServerUtil.getServer();
-                            }
-
-                            //create rpc
-                            RichPresence.Builder builder = new RichPresence.Builder();
-
-                            builder.setState("UID: " + uid)
-                                    .setDetails(ServerUtil.getServer())
-                                    .setStartTimestamp(time[0])
-                                    .setLargeImage("canary-large", "Discord Canary")
-                                    .setSmallImage("ptb-small", "Discord PTB");
-
-                            //update it
-                            client.sendRichPresence(builder.build());
-                        }
-                    }, 0, 5000);
-                }
-            });
-
-            client.connect();
-        } catch (Exception e) {
-            System.out.println("Error: Discord RPC!");
-            e.printStackTrace();
-        }
-
+        System.out.print("\r\nLoading Discord RPC...");
+//        try {
+//            final OffsetDateTime[] time = {OffsetDateTime.now()};
+//            final String[] lastServer = {ServerUtil.getServer()};
+//
+//            IPCClient client = new IPCClient(921136646253056012L);
+//            client.setListener(new IPCListener() {
+//                @Override
+//                public void onReady(IPCClient client) {
+//                    Timer timer = new Timer();
+//                    timer.schedule(new TimerTask() {
+//                        @SneakyThrows
+//                        @Override
+//                        public void run() {
+//                            //update the time whenever they switch servers
+//                            if (!lastServer[0].equalsIgnoreCase(ServerUtil.getServer())) {
+//                                time[0] = OffsetDateTime.now();
+//                                lastServer[0] = ServerUtil.getServer();
+//                            }
+//
+//                            //create rpc
+//                            RichPresence.Builder builder = new RichPresence.Builder();
+//
+//                            builder.setState("UID: " + uid)
+//                                    .setDetails(ServerUtil.getServer())
+//                                    .setStartTimestamp(time[0])
+//                                    .setLargeImage("icon", "sleek.today");
+////                                    .setSmallImage("ptb-small", "Discord PTB");
+//                            //update it
+//                            client.sendRichPresence(builder.build());
+//                        }
+//                    }, 0, 5000);
+//                }
+//            });
+//
+//            client.connect();
+//        } catch (Exception e) {
+//            System.out.println("Error: Discord RPC!");
+//            e.printStackTrace();
+//        }
+        System.out.print("[Sleek] Sleek has been loaded!");
         //set the ui
         userInterface = new Screen();
 
