@@ -54,20 +54,14 @@ public class GuiMainMenu extends GuiScreen {
         try {
             if (ProtectionUtil.husdhuisgfhusgdrhuifosdguhisfgdhuisfgdhsifgduhsufgidsfdhguisfgdhuoisfguhdiosgfoduhisfghudiugfsidshofugid()) {
                 System.out.println("Debugger found, exitting.");
-                JOptionPane.showMessageDialog(null,
-                        "Please disable any debuggers before running Sleek!",
-                        "Error!",
-                        JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Please disable any debuggers before running Sleek!", "Error!", JOptionPane.ERROR_MESSAGE);
                 System.exit(-1);
                 return;
             }
 
             //tamper protection
             if (!ProtectionUtil.gsudfgyfuisadgfdsouaiygsdeugdsoygfsdhohiusdfhuisdghiudgshiufssfdhiushudsdfuhfdshufdshuisfdhsfdhiusfdhuifsdhuifsdhuisfdhiufsdhiufsdhiusfdhuisfdhuifsdhuifsdhuifsdhiufsdiuhfsdhiufdshuisfdhui()) {
-                JOptionPane.showMessageDialog(null,
-                        "This version seems to be outdated. Please re-download!",
-                        "Error!",
-                        JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "This version seems to be outdated. Please re-download!", "Error!", JOptionPane.ERROR_MESSAGE);
                 System.exit(-1);
                 return;
             }
@@ -126,16 +120,17 @@ public class GuiMainMenu extends GuiScreen {
             }
         }
     }
-    public static boolean isAppInFullScreen()
-    {
+
+    public static boolean isAppInFullScreen() {
         WinDef.HWND foregroundWindow = User32.INSTANCE.GetForegroundWindow();
         WinDef.RECT foregroundRectangle = new WinDef.RECT();
         WinDef.RECT desktopWindowRectangle = new WinDef.RECT();
-        User32.INSTANCE.GetWindowRect( foregroundWindow, foregroundRectangle );
+        User32.INSTANCE.GetWindowRect(foregroundWindow, foregroundRectangle);
         WinDef.HWND desktopWindow = User32.INSTANCE.GetForegroundWindow();
-        User32.INSTANCE.GetWindowRect( desktopWindow, desktopWindowRectangle );
-        return foregroundRectangle.toString().equals( desktopWindowRectangle.toString() );
+        User32.INSTANCE.GetWindowRect(desktopWindow, desktopWindowRectangle);
+        return foregroundRectangle.toString().equals(desktopWindowRectangle.toString());
     }
+
     @Override
     public void drawScreen(int x, int y2, float z) {
         MCFontRenderer font = Fonts.clickGuiFont();
@@ -157,12 +152,12 @@ public class GuiMainMenu extends GuiScreen {
         username.drawTextBox();
 //        drawString(mc.fontRendererObj, "Client has been skidded by vncat", mc.fontRendererObj.getStringWidth("Client has been skidded by vncat") / 2, height - 60, ColorPalette.AMBER.getColor().getRGB());
 
-        Fonts.Arial45.drawCenteredString("§lS", width / 2 - 24, height / 4 - 24, ColorPalette.BLUE.getColor().getRGB());
-        Fonts.Arial40.drawCenteredString("leek", width / 2 + 4, height / 4 -22.5f, -1); // -1 = white
-        Fonts.Arial40.drawCenteredString("§lLog", width / 2 - 13, height / 4 -3.5f, -1); // -1 = white
-        Fonts.Arial40.drawCenteredString("in", width / 2 + 17, height / 4 - 2, ColorPalette.BLUE.getColor().getRGB());
-        if (username.getText().isEmpty()) {
-            font.drawStringWithShadow("UID", width / 2F - 96, 106 + 60, -7829368);
+        Fonts.Arial45.drawCenteredString("§lS", width / 2F - 24, height / 4F - 24, ColorPalette.BLUE.getColor().getRGB());
+        Fonts.Arial40.drawCenteredString("leek", width / 2F + 4, height / 4F - 22.5f, -1); // -1 = white
+        Fonts.Arial40.drawCenteredString("§lLog", width / 2F - 13, height / 4F - 3.5f, -1); // -1 = white
+        Fonts.Arial40.drawCenteredString("in", width / 2F + 17, height / 4F - 2, ColorPalette.BLUE.getColor().getRGB());
+        if (username.getText().isEmpty() && !username.isFocused()) {
+            font.drawStringWithShadow("UID", width / 2F - 75, height / 2F - 13, -7829368);
         }
         super.drawScreen(x, y2, z);
 
@@ -172,9 +167,8 @@ public class GuiMainMenu extends GuiScreen {
     public void initGui() {
 //        mc.displayGuiScreen(new MainMenu());
         int var3 = height / 4 + 24;
-        buttonList.add(new GuiButton(0, width / 2, 124 + 60, 203, 20,"Login to Sleek"));
-        username = new GuiTextField(var3, mc.fontRendererObj, width / 2, 100 + 60, 200, 20);
-        username.setFocused(true);
+        buttonList.add(new GuiButton(0, width / 2 - 50, height / 2 + 10, 100, 20, "Login to Sleek"));
+        username = new GuiTextField(var3, mc.fontRendererObj, width / 2 - 80, height / 2 - 20, 150, 20);
         Keyboard.enableRepeatEvents(true);
         initTime = System.currentTimeMillis();
     }
@@ -182,20 +176,17 @@ public class GuiMainMenu extends GuiScreen {
     private void disableSslVerification() {
         try {
             // Create a trust manager that does not validate certificate chains
-            TrustManager[] trustAllCerts = new TrustManager[] {
-                    new X509TrustManager() {
-                        public java.security.cert.X509Certificate[] getAcceptedIssuers() {
-                            return null;
-                        }
+            TrustManager[] trustAllCerts = new TrustManager[]{new X509TrustManager() {
+                public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+                    return null;
+                }
 
-                        public void checkClientTrusted(X509Certificate[] certs,
-                                                       String authType) {
-                        }
+                public void checkClientTrusted(X509Certificate[] certs, String authType) {
+                }
 
-                        public void checkServerTrusted(X509Certificate[] certs,
-                                                       String authType) {
-                        }
-                    } };
+                public void checkServerTrusted(X509Certificate[] certs, String authType) {
+                }
+            }};
 
             // Install the all-trusting trust manager
             SSLContext sc = SSLContext.getInstance("SSL");

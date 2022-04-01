@@ -11,7 +11,7 @@ import java.util.Set;
 public class KeyBinding implements Comparable<KeyBinding>
 {
     private static final List<KeyBinding> keybindArray = Lists.<KeyBinding>newArrayList();
-    private static final IntHashMap<KeyBinding> hash = new IntHashMap();
+    private static final IntHashMap<KeyBinding> hash = new IntHashMap<>();
     private static final Set<String> keybindSet = Sets.<String>newHashSet();
     private final String keyDescription;
     private final int keyCodeDefault;
@@ -27,7 +27,7 @@ public class KeyBinding implements Comparable<KeyBinding>
     {
         if (keyCode != 0)
         {
-            KeyBinding keybinding = (KeyBinding)hash.lookup(keyCode);
+            KeyBinding keybinding = hash.lookup(keyCode);
 
             if (keybinding != null)
             {
@@ -86,7 +86,8 @@ public class KeyBinding implements Comparable<KeyBinding>
     /**
      * Returns true if the key is pressed (used for continuous querying). Should be used in tickers.
      */
-    public boolean isKeyDown()
+    public boolean
+    isKeyDown()
     {
         return this.pressed;
     }
