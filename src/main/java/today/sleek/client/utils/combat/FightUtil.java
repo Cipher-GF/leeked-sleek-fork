@@ -127,4 +127,14 @@ public class FightUtil extends Util {
         }
         return false;
     }
+    // Credit: i have no idea i was given this
+    public static boolean isOnSameTeam(Entity entity) {
+        if (!(entity instanceof EntityLivingBase)) return false;
+        if (((EntityLivingBase) entity).getTeam() != null && mc.thePlayer.getTeam() != null) {
+            char c1 = entity.getDisplayName().getFormattedText().charAt(1);
+            char c2 = mc.thePlayer.getDisplayName().getFormattedText().charAt(1);
+            return c1 == c2;
+        }
+        return false;
+    }
 }

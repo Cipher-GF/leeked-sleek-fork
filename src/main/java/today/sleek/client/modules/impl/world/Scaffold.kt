@@ -33,7 +33,7 @@ import today.sleek.client.utils.rotations.RotationUtil
 import java.awt.Color
 import javax.vecmath.Vector2f
 
-@ModuleData(name = "Scaffold", category = ModuleCategory.WORLD, description = "Places blocks under you")
+@ModuleData(name = "Scaffold", category = ModuleCategory.PLAYER, description = "Places blocks under you")
 class Scaffold : Module() {
     private val delayTimer = Stopwatch()
     private val towerTimer = Stopwatch()

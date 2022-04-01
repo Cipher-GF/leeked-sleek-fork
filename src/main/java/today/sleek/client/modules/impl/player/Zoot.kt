@@ -24,9 +24,9 @@ class Zoot : Module() {
     fun onUpdate(event: UpdateEvent) {
         for (potion in Potion.potionTypes) {
             lateinit var effect: PotionEffect
-            if (event.isPre && potion != null && (mc.thePlayer.getActivePotionEffect(potion).also {
+            if (event.isPre && (potion != null) && (((mc.thePlayer.getActivePotionEffect(potion).also {
                     effect = it
-                } != null && potion.isBadEffect || mc.thePlayer.isBurning && !mc.thePlayer.isInWater && mc.thePlayer.onGround)) {
+                } != null) && potion.isBadEffect) || (mc.thePlayer.isBurning && !mc.thePlayer.isInWater && mc.thePlayer.onGround))) {
                 var i = 0
                 while (if (mc.thePlayer.isBurning) i < 20 else i < effect.duration / 20) {
                     mc.thePlayer.sendQueue.addToSendQueue(C03PacketPlayer(true))
