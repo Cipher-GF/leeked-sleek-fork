@@ -385,9 +385,6 @@ public class KillAura extends Module {
             RenderUtil.drawUnfilledCircle((RenderUtil.getResolution().getScaledWidth() - drawingFOV) / 2, (RenderUtil.getResolution().getScaledHeight() - drawingFOV) / 2, drawingFOV, Color.WHITE.getRGB());
         }
 
-        RenderUtils.drawLine(0, 0, 0, 100, 200, 300);
-
-
         if (target == null) {
             return;
         }

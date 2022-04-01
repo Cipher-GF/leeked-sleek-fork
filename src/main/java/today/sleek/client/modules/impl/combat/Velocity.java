@@ -1,9 +1,18 @@
 package today.sleek.client.modules.impl.combat;
 
 import com.google.common.eventbus.Subscribe;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockAir;
+import net.minecraft.block.state.BlockState;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.network.play.client.C03PacketPlayer;
+import net.minecraft.network.play.client.C07PacketPlayerDigging;
 import net.minecraft.network.play.server.S12PacketEntityVelocity;
+import net.minecraft.network.play.server.S23PacketBlockChange;
 import net.minecraft.network.play.server.S27PacketExplosion;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import today.sleek.base.event.impl.PacketEvent;
 import today.sleek.base.event.impl.UpdateEvent;
 import today.sleek.base.modules.ModuleCategory;
@@ -12,10 +21,14 @@ import today.sleek.base.value.value.BooleanValue;
 import today.sleek.base.value.value.ModeValue;
 import today.sleek.base.value.value.NumberValue;
 import today.sleek.client.modules.impl.Module;
+import today.sleek.client.utils.block.BlockUtil;
+import today.sleek.client.utils.chat.ChatUtil;
 import today.sleek.client.utils.math.MathUtil;
 import today.sleek.client.utils.moshi.IPacketUtils;
 import today.sleek.client.utils.network.PacketUtil;
 import today.sleek.client.utils.network.TimedPacket;
+import today.sleek.client.utils.rotations.AimUtil;
+import today.sleek.client.utils.rotations.Rotation;
 
 import java.util.LinkedList;
 
@@ -107,6 +120,7 @@ public class Velocity extends Module implements IPacketUtils {
                     p.motionZ *= pushH;
                     p.motionY *= pushV;
                 });
+
                 break;
             }
             case "Delayed": {
@@ -125,6 +139,18 @@ public class Velocity extends Module implements IPacketUtils {
             }
         }
 
+    }
+
+    public boolean isVoidUnder(double x, double y, double z) {
+        for (double i = mc.thePlayer.posY + 1; i > 0; i--) {
+            Block below = BlockUtil.getBlockAt(new BlockPos(x, y - i, z));
+
+            //if it's air this returns true.
+            if (!(below instanceof BlockAir))
+                return false;
+        }
+
+        return true;
     }
 
     @Override

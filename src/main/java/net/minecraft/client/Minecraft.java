@@ -46,6 +46,7 @@ import net.minecraft.crash.CrashReportCategory;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLeashKnot;
 import net.minecraft.entity.EntityList;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.boss.BossStatus;
 import net.minecraft.entity.item.*;
 import net.minecraft.entity.player.EntityPlayer;
@@ -101,6 +102,8 @@ import today.sleek.base.protection.ProtectionUtil;
 import today.sleek.client.gui.GuiMainMenu;
 import today.sleek.client.gui.MainMenu;
 import today.sleek.client.gui.legacy.clickgui.utils.render.animation.easings.Delta;
+import today.sleek.client.modules.impl.combat.Aimbot;
+import today.sleek.client.utils.combat.FightUtil;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -1266,13 +1269,24 @@ public class Minecraft implements IThreadListener, IPlayerUsage {
         }
     }
 
+    public boolean canBreakBlock() {
+        List<EntityLivingBase> attackList = FightUtil.getMultipleTargets(3.0, true, false, false, false, false, true);
+
+        if (Sleek.getInstance().getModuleManager().getModuleByClass(Aimbot.class).isToggled() && !attackList.isEmpty()) {
+            return false;
+        }
+
+
+        return true;
+    }
+
     private void sendClickBlockToController(boolean leftClick) {
         if (!leftClick) {
             this.leftClickCounter = 0;
         }
 
         if (this.leftClickCounter <= 0 && !this.thePlayer.isUsingItem()) {
-            if (leftClick && this.objectMouseOver != null && this.objectMouseOver.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK) {
+            if (leftClick && this.objectMouseOver != null && this.objectMouseOver.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK /*/ Sleek Start /*/ && canBreakBlock() /*/ Sleek End /*/) {
                 BlockPos blockpos = this.objectMouseOver.getBlockPos();
 
                 if (this.theWorld.getBlockState(blockpos).getBlock().getMaterial() != Material.air && this.playerController.onPlayerDamageBlock(blockpos, this.objectMouseOver.sideHit)) {
@@ -1302,6 +1316,9 @@ public class Minecraft implements IThreadListener, IPlayerUsage {
                         break;
 
                     case BLOCK:
+                        if (!canBreakBlock())
+                            break;
+
                         BlockPos blockpos = this.objectMouseOver.getBlockPos();
 
                         if (this.theWorld.getBlockState(blockpos).getBlock().getMaterial() != Material.air) {
@@ -1309,11 +1326,11 @@ public class Minecraft implements IThreadListener, IPlayerUsage {
                             break;
                         }
 
-                    case MISS:
+                    /*/case MISS:
                     default:
                         if (this.playerController.isNotCreative()) {
                             this.leftClickCounter = 10;
-                        }
+                        }/*/
                 }
             }
         }

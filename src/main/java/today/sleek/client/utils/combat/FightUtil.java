@@ -48,6 +48,26 @@ public class FightUtil extends Util {
         return list;
     }
 
+    public static double[] getRotationToEntity(Entity entity) {
+        double pX = mc.thePlayer.posX;
+        double pY = mc.thePlayer.posY + (mc.thePlayer.getEyeHeight());
+        double pZ = mc.thePlayer.posZ;
+
+        double eX = entity.posX;
+        double eY = entity.posY + (entity.height/2);
+        double eZ = entity.posZ;
+
+        double dX = pX - eX;
+        double dY = pY - eY;
+        double dZ = pZ - eZ;
+        double dH = Math.sqrt(Math.pow(dX, 2) + Math.pow(dZ, 2));
+
+        double yaw = (Math.toDegrees(Math.atan2(dZ, dX)) + 90);
+        double pitch = (Math.toDegrees(Math.atan2(dH, dY)));
+
+        return new double[]{yaw, 90 - pitch};
+    }
+
     public static List<EntityLivingBase> getMultipleTargetsSafe(double range, int max, boolean players, boolean friends, boolean animals, boolean walls, boolean mobs, boolean invis) {
         List<EntityLivingBase> list = new ArrayList<>();
         mc.theWorld.loadedEntityList.stream().filter(entity -> {

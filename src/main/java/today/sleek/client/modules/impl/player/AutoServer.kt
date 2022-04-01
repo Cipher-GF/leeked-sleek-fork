@@ -200,7 +200,7 @@ class AutoServer : Module() {
     }
 
     @Subscribe
-    fun onUpdate(event: UpdateEvent?) {
+    fun onUpdate(event: UpdateEvent) {
         //set autoplay click to false since the world changed.
         if (mc.thePlayer.ticksExisted < 5) {
             hasClickedAutoPlay = false
@@ -210,8 +210,6 @@ class AutoServer : Module() {
         }
         when (modeValue.value) {
             "BlocksMC" -> {
-
-
                 //auto select kit
                 if (!hasSelectedKit && !hasClickedKitSelector && mc.thePlayer.ticksExisted > 5) {
                     var slot = 0
