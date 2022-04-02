@@ -27,6 +27,7 @@ import today.sleek.base.value.value.NumberValue;
 import today.sleek.client.gui.notification.Notification;
 import today.sleek.client.gui.notification.NotificationManager;
 import today.sleek.client.modules.impl.Module;
+import today.sleek.client.modules.impl.visuals.TargetHUD;
 import today.sleek.client.utils.combat.FightUtil;
 import today.sleek.client.utils.math.Stopwatch;
 import today.sleek.client.utils.network.PacketUtil;
@@ -34,7 +35,6 @@ import today.sleek.client.utils.pathfinding.DortPathFinder;
 import today.sleek.client.utils.pathfinding.Vec3;
 import today.sleek.client.utils.render.GLUtil;
 import today.sleek.client.utils.render.RenderUtil;
-import today.sleek.client.utils.render.RenderUtils;
 import today.sleek.client.utils.rotations.AimUtil;
 import today.sleek.client.utils.rotations.Rotation;
 import today.sleek.client.utils.rotations.RotationUtil;
@@ -73,9 +73,6 @@ public class KillAura extends Module {
     public ModeValue attackMethod = new ModeValue("Attack Method", this, "Packet", "Legit");
     public ModeValue autoblockmode = new ModeValue("Autoblock Mode", this, "None", "Real", "Verus", "Hold", "Fake");
     public BooleanValue gcd = new BooleanValue("GCD", this, false);
-    public BooleanValue targethud = new BooleanValue("TargetHud", this, false);
-    public ModeValue targethudmode = new ModeValue("TargetHud Mode", this, targethud, "Sleek", "Exhi", "Flux");
-    public ModeValue targetHudPreview = new ModeValue("Preview Mode", this, targethud, "Face", "Model");
     public BooleanValue hold = new BooleanValue("Hold", this, false);
     public BooleanValue players = new BooleanValue("Players", this, true);
     public BooleanValue friends = new BooleanValue("Friends", this, true);
@@ -389,8 +386,10 @@ public class KillAura extends Module {
             return;
         }
 
-        if (targethud.getValue()) {
-            TargetHUD.render(event, target, 200.0, 500.0);
+        TargetHUD targetHUD = Sleek.getInstance().getModuleManager().getModuleByClass(TargetHUD.class);
+
+        if (targetHUD.isToggled()) {
+            targetHUD.render(event, target);
         }
     }
 

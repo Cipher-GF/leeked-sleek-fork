@@ -43,6 +43,9 @@ public class Fonts extends Util {
     public static final MCFontRenderer SEGOE18 = new MCFontRenderer(new Font("Tahoma", Font.PLAIN,18),true,true);
     public static final MCFontRenderer SEGOE12 = new MCFontRenderer(new Font("Tahoma", Font.PLAIN,12),true,true);
 
+    public static final MCFontRenderer Tahoma13 = new MCFontRenderer(new Font("Tahoma", Font.PLAIN,13),true,true);
+
+
     public static final MCFontRenderer NotifIcon = new MCFontRenderer(fontFromTTF(new ResourceLocation("sleek/fonts/notif-icon.ttf"),20,0), true, true);
     public static final MCFontRenderer UbuntuLight = new MCFontRenderer(fontFromTTF(new ResourceLocation("sleek/fonts/Ubuntu-Light.ttf"),12,0), true, true);
     public static final MCFontRenderer UbuntuMedium = new MCFontRenderer(fontFromTTF(new ResourceLocation("sleek/fonts/Ubuntu-Medium.ttf"),18, 0), true, true);

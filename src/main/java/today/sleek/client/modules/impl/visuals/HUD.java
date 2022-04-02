@@ -1,6 +1,7 @@
 package today.sleek.client.modules.impl.visuals;
 
 import com.google.common.eventbus.Subscribe;
+import today.sleek.base.event.impl.BlurEvent;
 import today.sleek.base.event.impl.RenderOverlayEvent;
 import today.sleek.base.modules.ModuleCategory;
 import today.sleek.base.modules.ModuleData;
@@ -13,7 +14,9 @@ import today.sleek.client.modules.impl.visuals.hud.ArrayListMode;
 import today.sleek.client.modules.impl.visuals.hud.InfoMode;
 import today.sleek.client.modules.impl.visuals.hud.WaterMarkMode;
 import today.sleek.client.utils.java.ReflectUtils;
+import today.sleek.client.utils.render.RenderUtils;
 
+import java.awt.*;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -29,7 +32,7 @@ public class HUD extends Module {
         }
         return null;
     }).sorted(Comparator.comparing(watermarkMode -> watermarkMode != null ? watermarkMode.getName() : null)).collect(Collectors.toList());
-    private final ModeValue watermarkmode = new ModeValue("Watermark Mode", this, watermarkmodes.stream().map(WaterMarkMode::getName).collect(Collectors.toList()).toArray(new String[] {}));
+    private final ModeValue watermarkmode = new ModeValue("Watermark Mode", this, watermarkmodes.stream().map(WaterMarkMode::getName).collect(Collectors.toList()).toArray(new String[]{}));
     private WaterMarkMode currentwatermarkmode = watermarkmodes.stream().anyMatch(watermarkMode -> watermarkMode.getName().equalsIgnoreCase(watermarkmode.getValue())) ? watermarkmodes.stream().filter(watermarkMode -> watermarkMode.getName().equalsIgnoreCase(watermarkmode.getValue())).findAny().get() : null;
     // ArrayList Mode
     private final List<? extends ArrayListMode> arraylistmodes = ReflectUtils.getReflects(this.getClass().getPackage().getName() + ".hud", ArrayListMode.class).stream().map(aClass -> {
@@ -40,7 +43,7 @@ public class HUD extends Module {
         }
         return null;
     }).sorted(Comparator.comparing(arraylistMode -> arraylistMode != null ? arraylistMode.getName() : null)).collect(Collectors.toList());
-    private final ModeValue arraylistmode = new ModeValue("Arraylist Mode", this, arraylistmodes.stream().map(ArrayListMode::getName).collect(Collectors.toList()).toArray(new String[] {}));
+    private final ModeValue arraylistmode = new ModeValue("Arraylist Mode", this, arraylistmodes.stream().map(ArrayListMode::getName).collect(Collectors.toList()).toArray(new String[]{}));
     private ArrayListMode currentarraylistmode = arraylistmodes.stream().anyMatch(arraylistMode -> arraylistMode.getName().equalsIgnoreCase(arraylistmode.getValue())) ? arraylistmodes.stream().filter(arraylistMode -> arraylistMode.getName().equalsIgnoreCase(arraylistmode.getValue())).findAny().get() : null;
     // Info Mode
     private final List<? extends InfoMode> infomodes = ReflectUtils.getReflects(this.getClass().getPackage().getName() + ".hud", InfoMode.class).stream().map(aClass -> {
@@ -51,7 +54,7 @@ public class HUD extends Module {
         }
         return null;
     }).sorted(Comparator.comparing(infoMode -> infoMode != null ? infoMode.getName() : null)).collect(Collectors.toList());
-    private final ModeValue infomode = new ModeValue("Info Mode", this, infomodes.stream().map(InfoMode::getName).collect(Collectors.toList()).toArray(new String[] {}));
+    private final ModeValue infomode = new ModeValue("Info Mode", this, infomodes.stream().map(InfoMode::getName).collect(Collectors.toList()).toArray(new String[]{}));
     private InfoMode currentinfomode = infomodes.stream().anyMatch(infoMode -> infoMode.getName().equalsIgnoreCase(infomode.getValue())) ? infomodes.stream().filter(infoMode -> infoMode.getName().equalsIgnoreCase(infomode.getValue())).findAny().get() : null;
     private final ModeValue colorMode = new ModeValue("Color Mode", this, "Sleek", "Rainbow", "Astolfo", "Nitrogen", "Gradient", "Wave", "Static");
     //wave
@@ -110,6 +113,11 @@ public class HUD extends Module {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Subscribe
+    public void onBlur(BlurEvent event) {
+        RenderUtils.drawRoundedRect(30, 30, 50, 50, 2, new Color(0, 0, 0, 90).getRGB());
     }
 
     @SuppressWarnings("all")

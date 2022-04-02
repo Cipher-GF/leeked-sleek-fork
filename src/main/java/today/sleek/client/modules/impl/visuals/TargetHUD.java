@@ -1,87 +1,69 @@
-package today.sleek.client.modules.impl.combat;
+package today.sleek.client.modules.impl.visuals;
 
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.gui.GuiPlayerTabOverlay;
-import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.client.network.NetworkPlayerInfo;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import optifine.MathUtils;
 import org.lwjgl.opengl.GL11;
-import today.sleek.Sleek;
 import today.sleek.base.event.impl.RenderOverlayEvent;
-import today.sleek.client.utils.Util;
-import today.sleek.client.utils.font.Fonts;
+import today.sleek.base.modules.ModuleCategory;
+import today.sleek.base.modules.ModuleData;
+import today.sleek.base.value.value.ModeValue;
+import today.sleek.base.value.value.NumberValue;
+import today.sleek.client.modules.impl.Module;
+import today.sleek.client.modules.impl.visuals.targethud.TargetHudMode;
+import today.sleek.client.utils.chat.ChatUtil;
+import today.sleek.client.utils.java.ReflectUtils;
 import today.sleek.client.utils.render.AnimationUtils;
-import today.sleek.client.utils.render.ColorUtils;
 import today.sleek.client.utils.render.RenderUtil;
 import today.sleek.client.utils.render.RenderUtils;
 
 import java.awt.*;
-import java.util.Objects;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static net.minecraft.client.gui.Gui.drawScaledCustomSizeModalRect;
 
-public class TargetHUD extends Util {
+@ModuleData(name = "Target HUD", description = "Shows target information", category = ModuleCategory.VISUALS)
+public class TargetHUD extends Module {
+
+    private NumberValue<Integer> x = new NumberValue("X-Pos", this, 200, 0, 800, 1);
+    private NumberValue<Integer> y = new NumberValue("Y-Pos", this, 200, 0, 800, 1);
+
+    private final List<? extends TargetHudMode> modes = ReflectUtils.getReflects(this.getClass().getPackage().getName() + ".targethud", TargetHudMode.class).stream().map(aClass -> {
+        try {
+            return aClass.getDeclaredConstructor().newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }).sorted(Comparator.comparing(mode -> mode != null ? mode.getName() : null)).collect(Collectors.toList());
+
+    private final ModeValue mode = new ModeValue("Mode", this, modes.stream().map(TargetHudMode::getName).collect(Collectors.toList()).toArray(new String[]{}));
+    private TargetHudMode currentMode = modes.stream().anyMatch(infoMode -> infoMode.getName().equalsIgnoreCase(mode.getValue())) ? modes.stream().filter(infoMode -> infoMode.getName().equalsIgnoreCase(mode.getValue())).findAny().get() : null;
 
     public static double currentHealthWidth = (20 * 6.9);
-
     public static float animation = 0;
 
-    public static void render(RenderOverlayEvent event, EntityLivingBase target, double x, double y) {
-        KillAura killaura = (KillAura) Sleek.getInstance().getModuleManager().getModuleByName("KillAura");
-        switch (killaura.targethudmode.getValue()) {
-            case "Sleek": {
-                float targetHealthWidth = (float) (target.getHealth() * 6.9);
-                if (targetHealthWidth > 20 * 6.9) {
-                    targetHealthWidth = (float) (20 * 6.9);
-                    currentHealthWidth = 20 * 6.9;
-                }
+    public void render(RenderOverlayEvent event, EntityLivingBase target) {
+        try {
+            currentMode = modes.stream().anyMatch(infoMode -> infoMode.getName().equalsIgnoreCase(mode.getValue())) ? modes.stream().filter(infoMode -> infoMode.getName().equalsIgnoreCase(mode.getValue())).findAny().get() : null;
 
-                if (targetHealthWidth > currentHealthWidth) {
-                    currentHealthWidth += targetHealthWidth / 10;
-                } else if (targetHealthWidth < currentHealthWidth) {
-                    currentHealthWidth -= targetHealthWidth / 10;
-                }
-
-                //Draw the background with the hurttime animation
-                RenderUtils.drawBorderedRoundedRect(150, 350, 150, 60, 10, 2, 2, new Color(target.hurtTime * 6, 0, 0, 100).getRGB());
-
-//                mc.fontRendererObj.drawStringWithShadow(target.getName(), 210, 370, -1);
-                NetworkPlayerInfo networkPlayerInfo = mc.getNetHandler().getPlayerInfo(target.getUniqueID());
-                Fonts.Verdana.drawString("Name: " + target.getName(), 205, 361, -1);
-                final String ping = "Ping: " + (Objects.isNull(networkPlayerInfo) ? "0ms" : networkPlayerInfo.getResponseTime() + "ms");
-                Fonts.Verdana.drawString("Distance:", 205, 371, -1);
-                Fonts.Verdana.drawString(" " + MathUtils.round(mc.thePlayer.getDistanceToEntity(target), 2), 250, 371, -1);
-                Fonts.Verdana.drawString(ping, 205, 381, -1);
-
-                if (target instanceof EntityPlayer) {
-                    switch (killaura.targetHudPreview.getValue()) {
-                        case "Face": {
-                            ResourceLocation skin = ((AbstractClientPlayer) target).getLocationSkin();
-                            RenderUtils.drawFace(skin, 165, 360, 35, 35);
-                            break;
-                        }
-                        case "Model": {
-                            GuiInventory.drawEntityOnScreen(175, 397, 20, 0, 0, target);
-                            break;
-                        }
-                    }
-                }
-
-                RenderUtils.drawBorderedRoundedRect(155, 400, (float) (20 * 6.9), 5, 5, 0.5f, new Color(40, 40, 40, 255).getRGB(), new Color(45, 45, 45, 255).getRGB());
-                RenderUtils.drawBorderedRoundedRect(155, 400, (float) (target.getHealth() > 0 ? targetHealthWidth : 6.9), 5, 5, 0.5f, ColorUtils.getColorFromHud(1).getRGB(), ColorUtils.getColorFromHud(1).getRGB());
-                break;
+            if (currentMode == null) {
+                ChatUtil.log("Mode not found, please select another one.");
+                return;
             }
-            case "Flux": {
-                render(target, 155, 400);
-                break;
-            }
-            case "Exhi": {
 
-            }
+            if (mc.currentScreen != null)
+                return;
+
+            currentMode.onRender(event, target, x.getValue(), y.getValue());
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

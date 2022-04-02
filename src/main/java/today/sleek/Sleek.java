@@ -32,6 +32,7 @@ import today.sleek.client.modules.impl.player.hackerdetect.CheckManager;
 import today.sleek.client.modules.impl.visuals.ClickGUI;
 import today.sleek.client.rank.UserRank;
 import today.sleek.client.targets.TargetManager;
+import today.sleek.client.utils.glsl.BlurUtil;
 import today.sleek.client.utils.network.HttpUtil;
 import today.sleek.client.utils.server.ServerUtil;
 import viamcp.ViaMCP;
@@ -56,6 +57,8 @@ public class Sleek {
     private Map<String, String> users = new HashMap<>();
     private File dir;
     private static Sleek instance = new Sleek();
+
+    public static BlurUtil BLUR_UTIL = new BlurUtil();
 
     public static Sleek instance() {
         return instance;

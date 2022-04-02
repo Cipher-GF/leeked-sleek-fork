@@ -8,6 +8,7 @@ public enum ModuleCategory {
     VISUALS("Visuals"),
     PLAYER("Player"),
     WORLD("World"),
+    SETTINGS("Settings"),
     SCRIPT("Script"),
     HIDDEN("Hidden");
 

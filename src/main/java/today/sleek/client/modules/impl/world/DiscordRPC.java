@@ -24,12 +24,14 @@ import java.util.TimerTask;
 
 public class DiscordRPC extends Module {
 
+    private IPCClient client = new IPCClient(921136646253056012L);
+    private boolean active = false;
+
     public void onEnable() {
+        active = true;
         try {
             final OffsetDateTime[] time = {OffsetDateTime.now()};
             final String[] lastServer = {ServerUtil.getServer()};
-
-            IPCClient client = new IPCClient(921136646253056012L);
             client.setListener(new IPCListener() {
                 @Override
                 public void onReady(IPCClient client) {
@@ -38,6 +40,11 @@ public class DiscordRPC extends Module {
                         @SneakyThrows
                         @Override
                         public void run() {
+                            if (!active) {
+                                timer.cancel();
+                                return;
+                            }
+
                             //update the time whenever they switch servers
                             if (!lastServer[0].equalsIgnoreCase(ServerUtil.getServer())) {
                                 time[0] = OffsetDateTime.now();
@@ -66,4 +73,9 @@ public class DiscordRPC extends Module {
         }
     }
 
+    @Override
+    public void onDisable() {
+        client.close();
+        active = false;
+    }
 }

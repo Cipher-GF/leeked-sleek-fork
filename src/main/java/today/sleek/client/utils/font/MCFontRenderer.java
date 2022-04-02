@@ -59,6 +59,15 @@ public class MCFontRenderer extends CFont {
         return drawString(text, x - getStringWidth(text) / 2, y, color);
     }
 
+
+    public void drawOutlinedString(String str, float x, float y, int internalCol, int externalCol) {
+        this.drawString(str, x - 0.5f, y, externalCol);
+        this.drawString(str, x + 0.5f, y, externalCol);
+        this.drawString(str, x, y - 0.5f, externalCol);
+        this.drawString(str, x, y + 0.5f, externalCol);
+        this.drawString(str, x, y, internalCol);
+    }
+
     public float drawCenteredStringWithShadow(String text, float x, float y, int color) {
         float shadowWidth = drawString(text, x - getStringWidth(text) / 2 + 0.45D, y + 0.5D, color, true);
         return drawString(text, x - getStringWidth(text) / 2, y, color);

@@ -34,7 +34,9 @@ import net.minecraft.world.border.WorldBorder;
 import optifine.Config;
 import optifine.CustomColors;
 import today.sleek.Sleek;
+import today.sleek.base.event.impl.PreBlurEvent;
 import today.sleek.base.event.impl.RenderOverlayEvent;
+import today.sleek.client.modules.impl.settings.Blur;
 import today.sleek.client.modules.impl.visuals.HUD;
 
 import java.util.ArrayList;
@@ -326,6 +328,12 @@ public class GuiIngame extends Gui {
             e.printStackTrace();
         }
 
+        PreBlurEvent eventPreBlur = new PreBlurEvent();
+        Sleek.getInstance().getEventBus().post(eventPreBlur);
+
+        if (Sleek.getInstance().getModuleManager().getModuleByClass(Blur.class).isToggled()) {
+            Blur.startBlur();
+        }
     }
 
     protected void renderTooltip(ScaledResolution sr, float partialTicks) {

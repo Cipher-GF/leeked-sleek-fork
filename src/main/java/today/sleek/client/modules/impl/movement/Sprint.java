@@ -20,8 +20,6 @@ public class Sprint extends Module {
     private boolean skip;
     private final BooleanValue keepSprint = new BooleanValue("Keep Sprint", this, true); //Handled in NetHandlerPlayerClient at "processEntityAction" and EntityPlayerSP at "setSprinting"
 
-
-
     @Subscribe
     public void onUpdate(UpdateEvent event) {
 
