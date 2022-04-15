@@ -17,57 +17,18 @@ import java.util.List;
 
 public class Zonecraft extends FlightMode {
 
-    private List<Packet<INetHandlerPlayServer>> packets = new ArrayList<>();
-    private boolean disabled = false;
-    private int ticks = 0;
-
-
     public Zonecraft() {
         super("Zonecraft");
     }
 
     @Override
-    public void onEnable() {
-        disabled = false;
-        ticks = 0;
-        PacketUtil.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + 1.0E-7D, mc.thePlayer.posZ, false));
-        PacketUtil.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY - 0.3, mc.thePlayer.posZ, true));
-        PacketUtil.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ, true));
-    }
-
-    @Override
-    public void onPacket(PacketEvent event) {
-        if (event.getPacket() instanceof S08PacketPlayerPosLook) {
-            disabled = true;
-            ChatUtil.log("gooooo");
-        }
-        if(event.getPacket() instanceof C03PacketPlayer){
-            if(ticks < 10)
-                return;
-            ((C03PacketPlayer) event.getPacket()).onGround = true;
-        }
-    }
-
-    @Override
     public void onMove(MoveEvent event) {
-        if(!disabled)
-            return;
-
-        ticks++;
-        if(ticks >= 10)
-            mc.thePlayer.sendQueue.addToSendQueueNoEvent(new C0CPacketInput());
-        if(ticks > 10){
-            ticks = 0;
-            mc.thePlayer.jump();
-            PlayerUtil.setMotion(0.38725);
-            PlayerUtil.setMotion(event,-0.0217);
-            event.setMotionY(mc.thePlayer.motionY);
-        }else{
-
+        if (mc.thePlayer.isMovingOnGround()) {
+            event.setMotionY(mc.thePlayer.motionY = 0.42F);
+        } else {
+            event.setMotionY(mc.thePlayer.motionY = 0.0F);
+            mc.thePlayer.setPosition(mc.thePlayer.posX, mc.thePlayer.posY - 1E-4, mc.thePlayer.posZ);
+            PlayerUtil.setMotion(event, PlayerUtil.getBaseMoveSpeed(mc.thePlayer));
         }
-        event.setStrafeSpeed(0.25);
     }
-
-
-
 }

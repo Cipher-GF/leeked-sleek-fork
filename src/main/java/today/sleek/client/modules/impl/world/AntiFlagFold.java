@@ -30,7 +30,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @ModuleData(
-        name = "New Scaffold",
+        name = "Scaffold",
         description = "Credits to Vince im not making this shit by hand its too hard",
         category = ModuleCategory.PLAYER // TODO: change to world when finished
 )
@@ -45,6 +45,8 @@ public class AntiFlagFold extends Module {
     public NumberValue minRot = new NumberValue("Minimum Rotation", this, 5, 0, 15, 0.2);
     public NumberValue maxRot = new NumberValue("Maximum Rotation", this, 5, 0, 15, 0.2);
     public BooleanValue noAura = new BooleanValue("No Aura", this, false);
+    public BooleanValue customSpeed = new BooleanValue("Custom speed", this, false);
+    public NumberValue<Double> cumstumSpod = new NumberValue<>("Speed", this, 0.22, 0.1, 1.0, 0.1, customSpeed);
     public static BlockDataOld data = null;
     private final List<Block> validBlocks;
     private final List<Block> invalidBlocks;
@@ -66,8 +68,8 @@ public class AntiFlagFold extends Module {
         mc.timer.timerSpeed = timer.getValue().floatValue();
         mc.thePlayer.setSprinting(sprint.getValue());
         mc.gameSettings.keyBindSprint.pressed = false;
-        if (mc.thePlayer.isPotionActive(Potion.moveSpeed)) {
-            PlayerUtil.setMotion(0.075f);
+        if (customSpeed.getValue()) {
+            PlayerUtil.setMotion(cumstumSpod.getValue());
         }
         BlockPos pos = null;
 

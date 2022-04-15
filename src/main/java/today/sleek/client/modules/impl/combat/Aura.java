@@ -11,7 +11,7 @@ import today.sleek.base.modules.ModuleData;
 import today.sleek.base.value.value.BooleanValue;
 import today.sleek.base.value.value.NumberValue;
 import today.sleek.client.modules.impl.Module;
-import today.sleek.client.modules.impl.world.Scaffold;
+import today.sleek.client.modules.impl.world.AntiFlagFold;
 import today.sleek.client.utils.combat.FightUtil;
 import today.sleek.client.utils.math.Stopwatch;
 
@@ -41,9 +41,9 @@ public class Aura extends Module {
 
     @Subscribe
     public void onUpdate(UpdateEvent event) {
-        Scaffold scaffold = Sleek.getInstance().getModuleManager().getModuleByClass(Scaffold.class);
+        AntiFlagFold scaffold = Sleek.getInstance().getModuleManager().getModuleByClass(AntiFlagFold.class);
 
-        if (scaffold.getAuraToggle().getValue() && scaffold.isToggled())
+        if (scaffold.noAura.getValue() && scaffold.isToggled())
             return;
 
         List<EntityLivingBase> targets = new ArrayList<>();

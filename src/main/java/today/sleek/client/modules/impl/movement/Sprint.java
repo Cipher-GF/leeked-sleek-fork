@@ -11,7 +11,7 @@ import today.sleek.base.modules.ModuleData;
 import today.sleek.base.value.value.BooleanValue;
 import today.sleek.base.value.value.ModeValue;
 import today.sleek.client.modules.impl.Module;
-import today.sleek.client.modules.impl.world.Scaffold;
+import today.sleek.client.modules.impl.world.AntiFlagFold;
 
 @ModuleData(name = "Sprint", category = ModuleCategory.MOVEMENT, description = "Automatically sprints")
 public class Sprint extends Module {
@@ -23,9 +23,9 @@ public class Sprint extends Module {
     @Subscribe
     public void onUpdate(UpdateEvent event) {
 
-        Scaffold scaffold = Sleek.getInstance().getModuleManager().getModuleByClass(Scaffold.class);
+        AntiFlagFold scaffold = Sleek.getInstance().getModuleManager().getModuleByClass(AntiFlagFold.class);
 
-        if (scaffold.isToggled() && !scaffold.getSprint().getValue()) {
+        if (scaffold.isToggled() && !scaffold.sprint.getValue()) {
             if (mc.thePlayer.isSprinting()) {
                 mc.thePlayer.setSprinting(false);
             }

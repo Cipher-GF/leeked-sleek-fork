@@ -8,7 +8,6 @@ import today.sleek.base.event.impl.UpdateEvent;
 import today.sleek.base.modules.ModuleCategory;
 import today.sleek.base.modules.ModuleData;
 import today.sleek.client.modules.impl.Module;
-import today.sleek.client.modules.impl.world.Scaffold;
 import today.sleek.client.utils.network.PacketUtil;
 
 /**
